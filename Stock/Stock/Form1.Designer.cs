@@ -57,7 +57,7 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.PaleGreen;
+            this.button3.BackColor = System.Drawing.Color.MidnightBlue;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Image = global::Stock.Properties.Resources.estadistica;
@@ -72,7 +72,7 @@
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.Color.PaleGreen;
+            this.button4.BackColor = System.Drawing.Color.MidnightBlue;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Image = global::Stock.Properties.Resources.Clientes;
@@ -87,7 +87,7 @@
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.Color.PaleGreen;
+            this.button5.BackColor = System.Drawing.Color.MidnightBlue;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.White;
             this.button5.Image = global::Stock.Properties.Resources.empleado;
@@ -102,7 +102,7 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.PaleGreen;
+            this.button2.BackColor = System.Drawing.Color.MidnightBlue;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Image = global::Stock.Properties.Resources.almacen;
@@ -117,7 +117,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.PaleGreen;
+            this.button1.BackColor = System.Drawing.Color.MidnightBlue;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = global::Stock.Properties.Resources.codigo_de_barras;
@@ -132,7 +132,7 @@
             // 
             // btnUsuarios
             // 
-            this.btnUsuarios.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnUsuarios.BackColor = System.Drawing.Color.MidnightBlue;
             this.btnUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUsuarios.ForeColor = System.Drawing.Color.White;
             this.btnUsuarios.Image = global::Stock.Properties.Resources.hombre2;
