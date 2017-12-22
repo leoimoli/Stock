@@ -17,5 +17,13 @@ namespace Stock
             InitializeComponent();
         }
 
+        private void Master_Load(object sender, EventArgs e)
+        {
+            if (Sesion.UsuarioLogueado != null)
+            {
+                label2.Text = Sesion.UsuarioLogueado.Apellido + "  " + Sesion.UsuarioLogueado.Nombre;
+                label3.Text = Convert.ToString(DateTime.Now);
+            }
+        }
     }
 }
