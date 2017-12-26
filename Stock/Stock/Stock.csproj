@@ -47,7 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases_Maestras\ValoresConstantes.cs" />
     <Compile Include="Controlador\Respuesta.cs" />
+    <Compile Include="DAO\AgregarDao.cs" />
     <Compile Include="DAO\ConsultarDao.cs" />
     <Compile Include="Entidades\Productos.cs" />
     <Compile Include="Entidades\Proveedores.cs" />
@@ -70,7 +72,14 @@
     <Compile Include="Master.Designer.cs">
       <DependentUpon>Master.cs</DependentUpon>
     </Compile>
+    <Compile Include="Master2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master2.Designer.cs">
+      <DependentUpon>Master2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Negocio\Consultar.cs" />
+    <Compile Include="Negocio\Usuario.cs" />
     <Compile Include="Producto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +93,12 @@
     </Compile>
     <Compile Include="ProveedoresWF.Designer.cs">
       <DependentUpon>ProveedoresWF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Prueba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prueba.Designer.cs">
+      <DependentUpon>Prueba.cs</DependentUpon>
     </Compile>
     <Compile Include="Sesion.cs" />
     <Compile Include="UsuariosWF.cs">
@@ -101,6 +116,9 @@
     <EmbeddedResource Include="Master.resx">
       <DependentUpon>Master.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Master2.resx">
+      <DependentUpon>Master2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Producto.resx">
       <DependentUpon>Producto.cs</DependentUpon>
     </EmbeddedResource>
@@ -111,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProveedoresWF.resx">
       <DependentUpon>ProveedoresWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prueba.resx">
+      <DependentUpon>Prueba.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsuariosWF.resx">
       <DependentUpon>UsuariosWF.cs</DependentUpon>

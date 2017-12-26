@@ -16,7 +16,9 @@ namespace Stock.Entidades
         public DateTime FechaDeAlta { get; set; }
         public DateTime FechaUltimaConexion { get; set; }
         public string Contraseña { get; set; }
+        public string Contraseña2 { get; set; }
         public string Perfil { get; set; }
         public string Estado { get; set; }
+        public byte[] Foto { get; set; }
     }
 }

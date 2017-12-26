@@ -17,5 +17,22 @@ namespace Stock.Negocio
             //ActualizarDAO.ActualizarUltimaConexion(idUsuario);
             return lista;
         }
+        public static bool ValidarUsuarioExistente(string dni)
+        {
+            bool existe = DAO.ConsultarDao.ValidarUsuarioExistente(dni);
+            return existe;
+        }
+
+        public static List<Usuarios> ListaDeUsuarios()
+        {
+            List<Usuarios> _listaUsuarios = new List<Usuarios>();
+             try
+            {
+                _listaUsuarios = DAO.ConsultarDao.ListarUsuarios();
+            }
+            catch (Exception ex)
+            { }
+            return _listaUsuarios;
+        }
     }
 }

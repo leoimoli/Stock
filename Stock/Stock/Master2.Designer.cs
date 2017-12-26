@@ -1,6 +1,6 @@
 ﻿namespace Stock
 {
-    partial class Master
+    partial class Master2
     {
         /// <summary>
         /// Required designer variable.

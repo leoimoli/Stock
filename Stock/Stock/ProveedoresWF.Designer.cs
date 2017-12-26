@@ -55,14 +55,13 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txtBuscador = new System.Windows.Forms.TextBox();
             this.btnNuevoProveedor = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel100 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel200.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel100.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -315,10 +314,10 @@
             // panel200
             // 
             this.panel200.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel200.Controls.Add(this.panel1);
             this.panel200.Controls.Add(this.label10);
             this.panel200.Controls.Add(this.txtBuscador);
             this.panel200.Controls.Add(this.btnNuevoProveedor);
-            this.panel200.Controls.Add(this.dataGridView1);
             this.panel200.Location = new System.Drawing.Point(18, 99);
             this.panel200.Name = "panel200";
             this.panel200.Size = new System.Drawing.Size(294, 455);
@@ -356,15 +355,6 @@
             this.btnNuevoProveedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnNuevoProveedor.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.LightBlue;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 76);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(288, 375);
-            this.dataGridView1.TabIndex = 0;
-            // 
             // panel100
             // 
             this.panel100.BackColor = System.Drawing.Color.MidnightBlue;
@@ -385,6 +375,14 @@
             this.label7.Size = new System.Drawing.Size(123, 25);
             this.label7.TabIndex = 2;
             this.label7.Text = "Proveedores";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Cornsilk;
+            this.panel1.Location = new System.Drawing.Point(9, 92);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 100);
+            this.panel1.TabIndex = 20;
             // 
             // ProveedoresWF
             // 
@@ -414,7 +412,6 @@
             this.panel3.PerformLayout();
             this.panel200.ResumeLayout(false);
             this.panel200.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel100.ResumeLayout(false);
             this.panel100.PerformLayout();
             this.ResumeLayout(false);
@@ -434,7 +431,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtBuscador;
         private System.Windows.Forms.Button btnNuevoProveedor;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel100;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtSitioWeb;
@@ -454,5 +450,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtCalle;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Panel panel1;
     }
 }

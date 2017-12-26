@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Stock
 {
-    public partial class Master : Form
+    public partial class Master2 : Form
     {
-        public Master()
+        public Master2()
         {
             InitializeComponent();
         }
