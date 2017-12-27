@@ -53,6 +53,7 @@
     <Compile Include="DAO\ConsultarDao.cs" />
     <Compile Include="Entidades\Productos.cs" />
     <Compile Include="Entidades\Proveedores.cs" />
+    <Compile Include="Entidades\UsuarioReducido.cs" />
     <Compile Include="Entidades\Usuarios.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

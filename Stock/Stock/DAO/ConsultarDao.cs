@@ -51,7 +51,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<Usuarios> ListarUsuarios()
         {
             connection.Open();
@@ -87,7 +86,6 @@ namespace Stock.DAO
             connection.Close();
             return _listaUsuarios;
         }
-
         public static bool ValidarUsuarioExistente(string dni)
         {
             bool Existe = false;
