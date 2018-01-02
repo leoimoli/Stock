@@ -155,7 +155,7 @@
             this.lblMaster_UsuarioLogin.AutoSize = true;
             this.lblMaster_UsuarioLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaster_UsuarioLogin.ForeColor = System.Drawing.Color.White;
-            this.lblMaster_UsuarioLogin.Location = new System.Drawing.Point(782, 5);
+            this.lblMaster_UsuarioLogin.Location = new System.Drawing.Point(823, 5);
             this.lblMaster_UsuarioLogin.Name = "lblMaster_UsuarioLogin";
             this.lblMaster_UsuarioLogin.Size = new System.Drawing.Size(111, 20);
             this.lblMaster_UsuarioLogin.TabIndex = 2;
@@ -177,7 +177,7 @@
             this.lblMaster_Usuario.AutoSize = true;
             this.lblMaster_Usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaster_Usuario.ForeColor = System.Drawing.Color.White;
-            this.lblMaster_Usuario.Location = new System.Drawing.Point(708, 5);
+            this.lblMaster_Usuario.Location = new System.Drawing.Point(749, 5);
             this.lblMaster_Usuario.Name = "lblMaster_Usuario";
             this.lblMaster_Usuario.Size = new System.Drawing.Size(68, 20);
             this.lblMaster_Usuario.TabIndex = 0;

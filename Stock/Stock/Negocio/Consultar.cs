@@ -22,13 +22,23 @@ namespace Stock.Negocio
             bool existe = DAO.ConsultarDao.ValidarUsuarioExistente(dni);
             return existe;
         }
-
         public static List<Usuarios> ListaDeUsuarios()
         {
             List<Usuarios> _listaUsuarios = new List<Usuarios>();
-             try
+            try
             {
                 _listaUsuarios = DAO.ConsultarDao.ListarUsuarios();
+            }
+            catch (Exception ex)
+            { }
+            return _listaUsuarios;
+        }
+        public static List<Usuarios> BuscarUsuarioPorID(int idUsuarioSeleccionado)
+        {
+            List<Usuarios> _listaUsuarios = new List<Usuarios>();
+            try
+            {
+                _listaUsuarios = DAO.ConsultarDao.BuscarUsuarioPorID(idUsuarioSeleccionado);
             }
             catch (Exception ex)
             { }

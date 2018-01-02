@@ -47,10 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases_Maestras\Funciones.cs" />
     <Compile Include="Clases_Maestras\ValoresConstantes.cs" />
     <Compile Include="Controlador\Respuesta.cs" />
     <Compile Include="DAO\AgregarDao.cs" />
     <Compile Include="DAO\ConsultarDao.cs" />
+    <Compile Include="DAO\EditarDao.cs" />
     <Compile Include="Entidades\Productos.cs" />
     <Compile Include="Entidades\Proveedores.cs" />
     <Compile Include="Entidades\UsuarioReducido.cs" />
@@ -180,6 +182,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Documentos\Base De Datos\Procedure\1%29LoginUsuario.txt" />
+    <None Include="Resources\Buscar.png" />
+    <None Include="Resources\buscar40X35.png" />
     <Content Include="Resources\login2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

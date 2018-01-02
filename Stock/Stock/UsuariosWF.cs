@@ -29,42 +29,20 @@ namespace Stock
                     cmbPerfil.Text = "Seleccione";
                     cmbPerfil.Items.Add(item);
                 }
-                
+
                 List<Entidades.UsuarioReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeUsuarios());
                 ListaUsuarios = ListaReducidos;
             }
             catch (Exception ex)
             { }
         }
-
-        private List<Entidades.UsuarioReducido> CargarEntidadReducida(List<Usuarios> listaUsuarios)
-        {
-            List<Entidades.UsuarioReducido> _usuarioReducido = new List<UsuarioReducido>();
-            foreach (var item in listaUsuarios)
-            {
-                _usuarioReducido.Add(new UsuarioReducido { IdUsuario = item.IdUsuario, Usuario = item.Dni + ", " + item.Apellido + " " + item.Nombre });
-            }
-            return _usuarioReducido;
-        }
-
+        #region Botones
         private void btnNuevoUsuario_Click(object sender, EventArgs e)
         {
+            LimpiarCampos();
+            ValidacionesUsuarioLogueado();
             HabilitarCampos();
         }
-        private void HabilitarCampos()
-        {
-            panel_CargaUsuario.Enabled = true;
-            txtDni.Focus();
-            btnCancelar.Visible = true;
-            btnGuardar.Visible = true;
-            btnCargarImagen.Visible = true;
-            lblContraseña.Visible = true;
-            lblRepitaContraseña.Visible = true;
-            pictureBox1.Visible = true;
-            txtContraseña.Visible = true;
-            txtRepiteContraseña.Visible = true;
-        }
-        public static string urla;
         private void btnCargarImagen_Click(object sender, EventArgs e)
         {
             string path = "";
@@ -100,14 +78,65 @@ namespace Stock
         {
             try
             {
-                panel_CargaUsuario.Enabled = false;
-                Entidades.Usuarios _usuario = CargarEntidad();
-                ProgressBar();
-                bool Exito = Negocio.Usuario.CargarUsuario(_usuario);
-                if (Exito == true)
+                int idUsuarioSeleccionado = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells[0].Value);
+
+                if (idUsuarioSeleccionado > 0)
                 {
-                    MessageBox.Show("SE REGISTRO EL USUARIO EXITOSAMENTE.");
-                    LimpiarCampos();
+                    panel_CargaUsuario.Enabled = false;
+                    Entidades.Usuarios _usuario = CargarEntidadEdicion();
+                    ProgressBar();
+                    bool Exito = Negocio.Usuario.EditarUsuario(_usuario);
+                    if (Exito == true)
+                    {
+                        MessageBox.Show("LA EDICIÓN DEL USUARIO SE REALIZO EXITOSAMENTE.");
+                        LimpiarCampos();
+                        List<Entidades.UsuarioReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeUsuarios());
+                        ListaUsuarios = ListaReducidos;
+                    }
+                }
+                else
+                {
+                    panel_CargaUsuario.Enabled = false;
+                    Entidades.Usuarios _usuario = CargarEntidad();
+                    ProgressBar();
+                    bool Exito = Negocio.Usuario.CargarUsuario(_usuario);
+                    if (Exito == true)
+                    {
+                        MessageBox.Show("SE REGISTRO EL USUARIO EXITOSAMENTE.");
+                        LimpiarCampos();
+                        List<Entidades.UsuarioReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeUsuarios());
+                        ListaUsuarios = ListaReducidos;
+                    }
+                }
+            }
+            catch (Exception ex)
+            { }
+        }
+        #endregion
+        #region Metodos Genericos
+        private void HabilitarCampos()
+        {
+            panel_CargaUsuario.Enabled = true;
+            txtDni.Focus();
+            btnCancelar.Visible = true;
+            btnGuardar.Visible = true;
+            btnCargarImagen.Visible = true;
+            lblContraseña.Visible = true;
+            lblRepitaContraseña.Visible = true;
+            // pictureBox1.Visible = true;
+            txtContraseña.Visible = true;
+            txtRepiteContraseña.Visible = true;
+        }
+        public static string urla;
+        private void ValidacionesUsuarioLogueado()
+        {
+            try
+            {
+                string perfilUsuarioLogueado = Sesion.UsuarioLogueado.Perfil;
+                if (perfilUsuarioLogueado != "ADMINISTRADOR")
+                {
+                    MessageBox.Show("EL USUARIO LOGUEADO NO TIENE PERMISO PARA LA CREACIÓN DE USUARIOS.");
+                    throw new Exception();
                 }
             }
             catch (Exception ex)
@@ -131,7 +160,7 @@ namespace Stock
             }
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
-            pictureBox1 = null;
+            pictureBox1.Image = null;
         }
         private void ProgressBar()
         {
@@ -193,11 +222,10 @@ namespace Stock
                 dataGridView1.Columns[0].Visible = false;
 
                 dataGridView1.Columns[1].HeaderText = "Usuario";
-                dataGridView1.Columns[1].Width = 250;
+                dataGridView1.Columns[1].Width = 280;
                 dataGridView1.Columns[1].HeaderCell.Style.BackColor = Color.DarkBlue;
                 dataGridView1.Columns[1].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
                 dataGridView1.Columns[1].HeaderCell.Style.ForeColor = Color.White;
-                
 
                 //dataGridView1.Columns[2].HeaderText = "Nombre";
                 //dataGridView1.Columns[2].Width = 100;
@@ -270,5 +298,108 @@ namespace Stock
                 //dataGridView1.Columns[11].Visible = false;
             }
         }
+        private List<Entidades.UsuarioReducido> CargarEntidadReducida(List<Usuarios> listaUsuarios)
+        {
+            List<Entidades.UsuarioReducido> _usuarioReducido = new List<UsuarioReducido>();
+            foreach (var item in listaUsuarios)
+            {
+                _usuarioReducido.Add(new UsuarioReducido { IdUsuario = item.IdUsuario, Usuario = item.Dni + ", " + item.Apellido + " " + item.Nombre });
+            }
+            return _usuarioReducido;
+        }
+        private void UsuarioSeleccionado(int idUsuarioSeleccionado)
+        {
+            try
+            {
+                List<Usuarios> _usuario = new List<Usuarios>();
+                _usuario = Negocio.Consultar.BuscarUsuarioPorID(idUsuarioSeleccionado);
+                HabilitarCamposUsuarioSeleccionado(_usuario);
+            }
+            catch (Exception ex)
+            { }
+        }
+        private void HabilitarCamposUsuarioSeleccionado(List<Usuarios> _usuario)
+        {
+            btnCargarImagen.Visible = true;
+            btnGuardar.Visible = true;
+            btnCancelar.Visible = true;
+            lblapellidoNombreEditar.Text = "Editar Usuario";
+            panel_CargaUsuario.Enabled = true;
+            var usuario = _usuario.First();
+            txtDni.Text = usuario.Dni;
+            txtDni.Enabled = false;
+            txtApellido.Text = usuario.Apellido;
+            txtNombre.Text = usuario.Nombre;
+            txtContraseña.Text = usuario.Contraseña;
+            txtRepiteContraseña.Text = usuario.Contraseña;
+            cmbPerfil.Text = usuario.Perfil;
+            string fecha = Convert.ToString(usuario.FechaDeNacimiento);
+            dtFechaNacimiento.Value = Convert.ToDateTime(fecha);
+            if (usuario.Foto != null)
+            {
+                Bitmap foto1 = Clases_Maestras.Funciones.byteToBipmap(usuario.Foto);
+                pictureBox1.Image = foto1;
+            }
+            else
+            {
+                pictureBox1.Image = null;
+            }
+            lblFechaCreacion.Visible = true;
+            lblFechaUltimaConexion.Visible = true;
+            label6lblFechaCreacion_base.Visible = true;
+            lblFechaUltimaConexion_base.Visible = true;
+            label6lblFechaCreacion_base.Text = Convert.ToString(usuario.FechaDeAlta);
+            lblFechaUltimaConexion_base.Text = Convert.ToString(usuario.FechaUltimaConexion);
+            lblInformacion.Visible = false;
+        }
+        private Usuarios CargarEntidadEdicion()
+        {
+            Usuarios _usuario = new Usuarios();
+            _usuario.Apellido = txtApellido.Text;
+            _usuario.Nombre = txtNombre.Text;
+            DateTime fecha = dtFechaNacimiento.Value;
+            _usuario.FechaDeNacimiento = fecha;
+            _usuario.Perfil = cmbPerfil.Text;
+            _usuario.Estado = "ACTIVO";
+            _usuario.Contraseña = txtContraseña.Text;
+            _usuario.Contraseña2 = txtRepiteContraseña.Text;
+
+            byte[] Imagen = null;
+            MemoryStream ms = new MemoryStream();
+            if (pictureBox1.Image != null)
+            {
+                pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                Imagen = ms.ToArray();
+            }
+            _usuario.Foto = Imagen;
+            return _usuario;
+        }
+        #endregion
+        #region Eventos Grilla
+        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1.Cursor = Cursors.Hand;
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+            { return; }
+            this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.LightBlue;
+        }
+        private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1.Cursor = Cursors.Hand;
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+            { return; }
+            this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.White;
+        }
+        private void dataGridView1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idUsuarioSeleccionado = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells[0].Value);
+                UsuarioSeleccionado(idUsuarioSeleccionado);
+            }
+            catch (Exception ex)
+            { }
+        }
+        #endregion
     }
 }

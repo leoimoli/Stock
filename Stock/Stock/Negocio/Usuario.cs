@@ -31,7 +31,6 @@ namespace Stock.Negocio
             { }
             return exito;
         }
-
         private static void ValidarDatos(Usuarios _usuario)
         {
             if (String.IsNullOrEmpty(_usuario.Dni))
@@ -54,6 +53,18 @@ namespace Stock.Negocio
                 MessageBox.Show("LAS CONTRASEÑAS INGRESADAS NO COINCIDEN.");
                 throw new Exception();
             }
+        }
+        public static bool EditarUsuario(Usuarios _usuario)
+        {
+            bool exito = false;
+            try
+            {
+                ValidarDatos(_usuario);
+                exito = DAO.EditarDao.EditarUsuario(_usuario);
+            }
+            catch (Exception ex)
+            { }
+            return exito;
         }
     }
 }
