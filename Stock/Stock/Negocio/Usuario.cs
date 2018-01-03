@@ -54,13 +54,13 @@ namespace Stock.Negocio
                 throw new Exception();
             }
         }
-        public static bool EditarUsuario(Usuarios _usuario)
+        public static bool EditarUsuario(Usuarios _usuario , int idusuario)
         {
             bool exito = false;
             try
             {
                 ValidarDatos(_usuario);
-                exito = DAO.EditarDao.EditarUsuario(_usuario);
+                exito = DAO.EditarDao.EditarUsuario(_usuario, idusuario);
             }
             catch (Exception ex)
             { }

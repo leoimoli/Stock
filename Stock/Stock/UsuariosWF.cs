@@ -39,6 +39,12 @@ namespace Stock
         #region Botones
         private void btnNuevoUsuario_Click(object sender, EventArgs e)
         {
+            id = 0;
+            txtDni.Focus();
+            txtDni.Enabled = true;
+            lblEstado.Visible = false;
+            checkBox1.Visible = false;
+            checkBox2.Visible = false;
             LimpiarCampos();
             ValidacionesUsuarioLogueado();
             HabilitarCampos();
@@ -74,18 +80,19 @@ namespace Stock
 
             urla = path;
         }
+        public static int id;
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                int idUsuarioSeleccionado = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells[0].Value);
+                int idUsuarioSeleccionado = id;
 
                 if (idUsuarioSeleccionado > 0)
                 {
                     panel_CargaUsuario.Enabled = false;
                     Entidades.Usuarios _usuario = CargarEntidadEdicion();
                     ProgressBar();
-                    bool Exito = Negocio.Usuario.EditarUsuario(_usuario);
+                    bool Exito = Negocio.Usuario.EditarUsuario(_usuario, idUsuarioSeleccionado);
                     if (Exito == true)
                     {
                         MessageBox.Show("LA EDICIÓN DEL USUARIO SE REALIZO EXITOSAMENTE.");
@@ -320,12 +327,25 @@ namespace Stock
         }
         private void HabilitarCamposUsuarioSeleccionado(List<Usuarios> _usuario)
         {
+            lblEstado.Visible = true;
+            checkBox1.Visible = true;
+            checkBox2.Visible = true;
+
+
             btnCargarImagen.Visible = true;
             btnGuardar.Visible = true;
             btnCancelar.Visible = true;
             lblapellidoNombreEditar.Text = "Editar Usuario";
             panel_CargaUsuario.Enabled = true;
             var usuario = _usuario.First();
+            if (usuario.Estado == "ACTIVO")
+            {
+                checkBox1.Checked = true;
+            }
+            else
+            {
+                checkBox2.Checked = true;
+            }
             txtDni.Text = usuario.Dni;
             txtDni.Enabled = false;
             txtApellido.Text = usuario.Apellido;
@@ -354,16 +374,21 @@ namespace Stock
         }
         private Usuarios CargarEntidadEdicion()
         {
+            string estado = "ACTIVO";
             Usuarios _usuario = new Usuarios();
+            if (checkBox2.Checked == true)
+            {
+                estado = "INACTIVO";
+            }
+            _usuario.Dni = txtDni.Text;
             _usuario.Apellido = txtApellido.Text;
             _usuario.Nombre = txtNombre.Text;
             DateTime fecha = dtFechaNacimiento.Value;
             _usuario.FechaDeNacimiento = fecha;
             _usuario.Perfil = cmbPerfil.Text;
-            _usuario.Estado = "ACTIVO";
+            _usuario.Estado = estado;
             _usuario.Contraseña = txtContraseña.Text;
             _usuario.Contraseña2 = txtRepiteContraseña.Text;
-
             byte[] Imagen = null;
             MemoryStream ms = new MemoryStream();
             if (pictureBox1.Image != null)
@@ -394,11 +419,29 @@ namespace Stock
         {
             try
             {
-                int idUsuarioSeleccionado = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells[0].Value);
-                UsuarioSeleccionado(idUsuarioSeleccionado);
+                id = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells[0].Value);
+                UsuarioSeleccionado(id);
+
+
             }
             catch (Exception ex)
             { }
+        }
+        #endregion
+        #region Eventos Check
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                checkBox2.Checked = false;
+            }
+        }
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked == true)
+            {
+                checkBox1.Checked = false;
+            }
         }
         #endregion
     }
