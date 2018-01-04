@@ -327,50 +327,113 @@ namespace Stock
         }
         private void HabilitarCamposUsuarioSeleccionado(List<Usuarios> _usuario)
         {
-            lblEstado.Visible = true;
-            checkBox1.Visible = true;
-            checkBox2.Visible = true;
-
-
-            btnCargarImagen.Visible = true;
-            btnGuardar.Visible = true;
-            btnCancelar.Visible = true;
-            lblapellidoNombreEditar.Text = "Editar Usuario";
-            panel_CargaUsuario.Enabled = true;
-            var usuario = _usuario.First();
-            if (usuario.Estado == "ACTIVO")
+            bool usuarioPermitido = ValidarPerfil();
+            if (usuarioPermitido == true)
             {
-                checkBox1.Checked = true;
+                lblEstado.Visible = true;
+                checkBox1.Visible = true;
+                checkBox2.Visible = true;
+                btnCargarImagen.Visible = true;
+                btnGuardar.Visible = true;
+                btnCancelar.Visible = true;
+                lblapellidoNombreEditar.Text = "Editar Usuario";
+                panel_CargaUsuario.Enabled = true;
+                var usuario = _usuario.First();
+                if (usuario.Estado == "ACTIVO")
+                {
+                    checkBox1.Checked = true;
+                }
+                else
+                {
+                    checkBox2.Checked = true;
+                }
+                txtDni.Text = usuario.Dni;
+                txtDni.Enabled = false;
+                txtApellido.Text = usuario.Apellido;
+                txtNombre.Text = usuario.Nombre;
+                txtContraseña.Text = usuario.Contraseña;
+                txtRepiteContraseña.Text = usuario.Contraseña;
+                cmbPerfil.Text = usuario.Perfil;
+                string fecha = Convert.ToString(usuario.FechaDeNacimiento);
+                dtFechaNacimiento.Value = Convert.ToDateTime(fecha);
+                if (usuario.Foto != null)
+                {
+                    Bitmap foto1 = Clases_Maestras.Funciones.byteToBipmap(usuario.Foto);
+                    pictureBox1.Image = foto1;
+                }
+                else
+                {
+                    pictureBox1.Image = null;
+                }
+                lblFechaCreacion.Visible = true;
+                lblFechaUltimaConexion.Visible = true;
+                label6lblFechaCreacion_base.Visible = true;
+                lblFechaUltimaConexion_base.Visible = true;
+                label6lblFechaCreacion_base.Text = Convert.ToString(usuario.FechaDeAlta);
+                lblFechaUltimaConexion_base.Text = Convert.ToString(usuario.FechaUltimaConexion);
+                lblInformacion.Visible = false;
             }
             else
             {
-                checkBox2.Checked = true;
+                panel_CargaUsuario.Enabled = false;
+                lblEstado.Visible = true;
+                checkBox1.Visible = true;
+                checkBox2.Visible = true;
+                btnCargarImagen.Visible = true;
+                btnGuardar.Visible = true;
+                btnCancelar.Visible = true;
+                lblapellidoNombreEditar.Text = "Editar Usuario";
+                //panel_CargaUsuario.Enabled = true;
+                var usuario = _usuario.First();
+                if (usuario.Estado == "ACTIVO")
+                {
+                    checkBox1.Checked = true;
+                }
+                else
+                {
+                    checkBox2.Checked = true;
+                }
+                txtDni.Text = usuario.Dni;
+                txtDni.Enabled = false;
+                txtApellido.Text = usuario.Apellido;
+                txtNombre.Text = usuario.Nombre;
+                txtContraseña.Text = usuario.Contraseña;
+                txtRepiteContraseña.Text = usuario.Contraseña;
+                cmbPerfil.Text = usuario.Perfil;
+                string fecha = Convert.ToString(usuario.FechaDeNacimiento);
+                dtFechaNacimiento.Value = Convert.ToDateTime(fecha);
+                if (usuario.Foto != null)
+                {
+                    Bitmap foto1 = Clases_Maestras.Funciones.byteToBipmap(usuario.Foto);
+                    pictureBox1.Image = foto1;
+                }
+                else
+                {
+                    pictureBox1.Image = null;
+                }
+                lblFechaCreacion.Visible = true;
+                lblFechaUltimaConexion.Visible = true;
+                label6lblFechaCreacion_base.Visible = true;
+                lblFechaUltimaConexion_base.Visible = true;
+                label6lblFechaCreacion_base.Text = Convert.ToString(usuario.FechaDeAlta);
+                lblFechaUltimaConexion_base.Text = Convert.ToString(usuario.FechaUltimaConexion);
+                lblInformacion.Visible = false;
             }
-            txtDni.Text = usuario.Dni;
-            txtDni.Enabled = false;
-            txtApellido.Text = usuario.Apellido;
-            txtNombre.Text = usuario.Nombre;
-            txtContraseña.Text = usuario.Contraseña;
-            txtRepiteContraseña.Text = usuario.Contraseña;
-            cmbPerfil.Text = usuario.Perfil;
-            string fecha = Convert.ToString(usuario.FechaDeNacimiento);
-            dtFechaNacimiento.Value = Convert.ToDateTime(fecha);
-            if (usuario.Foto != null)
+        }
+        private bool ValidarPerfil()
+        {
+            bool PerfilHabilitado = true;
+            try
             {
-                Bitmap foto1 = Clases_Maestras.Funciones.byteToBipmap(usuario.Foto);
-                pictureBox1.Image = foto1;
+                string perfilUsuarioLogueado = Sesion.UsuarioLogueado.Perfil;
+                if (perfilUsuarioLogueado != "ADMINISTRADOR")
+                {
+                    PerfilHabilitado = false;
+                }
             }
-            else
-            {
-                pictureBox1.Image = null;
-            }
-            lblFechaCreacion.Visible = true;
-            lblFechaUltimaConexion.Visible = true;
-            label6lblFechaCreacion_base.Visible = true;
-            lblFechaUltimaConexion_base.Visible = true;
-            label6lblFechaCreacion_base.Text = Convert.ToString(usuario.FechaDeAlta);
-            lblFechaUltimaConexion_base.Text = Convert.ToString(usuario.FechaUltimaConexion);
-            lblInformacion.Visible = false;
+            catch (Exception ex)
+            { }
+            return PerfilHabilitado;
         }
         private Usuarios CargarEntidadEdicion()
         {

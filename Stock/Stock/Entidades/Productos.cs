@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace Stock.Entidades
 {
-    class Productos
+    public class Productos
     {
+        public int idProducto { get; set; }
+        public string CodigoProducto { get; set; }
+        public string NombreProducto { get; set; }
+        public string MarcaProducto { get; set; }
+        public string Descripcion { get; set; }
+        public DateTime FechaDeAlta { get; set; }
+        public int idUsuario { get; set; }
+        public byte[] Foto { get; set; }
     }
 }

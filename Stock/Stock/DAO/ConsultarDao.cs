@@ -52,6 +52,80 @@ namespace Stock.DAO
             return lista;
         }
 
+        public static List<string> CargarCombomMarcas()
+        {
+            connection.Open();
+            List<string> _listaMarcas = new List<string>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ListarMarcas";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            DataSet ds = new DataSet();
+            dt.Fill(ds, "marcas");
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in ds.Tables[0].Rows)
+                {
+                    _listaMarcas.Add(item["txNombreMarca"].ToString());
+                }
+            }
+            connection.Close();
+            return _listaMarcas;
+        }
+
+        public static bool ValidarMarcaExistente(string nombreMarca)
+        {
+            bool Existe = false;
+            connection.Open();
+            List<Entidades.Marca> lista = new List<Entidades.Marca>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("NombreMarca_in", nombreMarca) };
+            string proceso = "ValidarMarcaExistente";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            DataSet ds = new DataSet();
+            dt.Fill(ds, "marcas");
+            if (Tabla.Rows.Count > 0)
+            {
+                Existe = true;
+            }
+            connection.Close();
+            return Existe;
+        }
+        public static bool ValidarProductoExistente(string codigoProducto)
+        {
+            bool Existe = false;
+            connection.Open();
+            List<Entidades.Productos> lista = new List<Entidades.Productos>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("CodigoProducto_in", codigoProducto) };
+            string proceso = "ValidarProductoExistente";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            DataSet ds = new DataSet();
+            dt.Fill(ds, "productos");
+            if (Tabla.Rows.Count > 0)
+            {
+                Existe = true;
+            }
+            connection.Close();
+            return Existe;
+        }
         public static List<Usuarios> BuscarUsuarioPorID(int idUsuarioSeleccionado)
         {
             connection.Close();
@@ -94,7 +168,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<Usuarios> ListarUsuarios()
         {
             connection.Open();

@@ -17,6 +17,24 @@ namespace Stock.Negocio
             //ActualizarDAO.ActualizarUltimaConexion(idUsuario);
             return lista;
         }
+
+        public static List<string> CargarComboMarcas()
+        {
+            List<string> lista = new List<string>();
+            lista = DAO.ConsultarDao.CargarCombomMarcas();
+            return lista;
+        }
+
+        public static bool ValidarMarcaExistente(string nombreMarca)
+        {
+            bool existe = DAO.ConsultarDao.ValidarMarcaExistente(nombreMarca);
+            return existe;
+        }
+        public static bool ValidarProductoExistente(string codigoProducto)
+        {
+            bool existe = DAO.ConsultarDao.ValidarProductoExistente(codigoProducto);
+            return existe;
+        }
         public static bool ValidarUsuarioExistente(string dni)
         {
             bool existe = DAO.ConsultarDao.ValidarUsuarioExistente(dni);

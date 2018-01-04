@@ -16,16 +16,20 @@ namespace Stock
         {
             InitializeComponent();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             label2.Text = Sesion.UsuarioLogueado.Apellido + "  " + Sesion.UsuarioLogueado.Nombre;
         }
-
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
             UsuariosWF _usuario = new UsuariosWF();
             _usuario.Show();
+            Hide();
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Producto _producto = new Producto();
+            _producto.Show();
             Hide();
         }
     }

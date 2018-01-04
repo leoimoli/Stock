@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Stock.Entidades;
 using MySql.Data.MySqlClient;
 using System.Data;
+using Stock.Negocio;
+
 namespace Stock.DAO
 {
     public class AgregarDao
@@ -28,6 +30,41 @@ namespace Stock.DAO
             cmd.Parameters.AddWithValue("Perfil_in", _usuario.Perfil);
             cmd.Parameters.AddWithValue("Estado_in", _usuario.Estado);
             cmd.Parameters.AddWithValue("Foto_in", _usuario.Foto);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+        public static bool InsertMarca(Entidades.Marca _marca)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string proceso = "AltaMarca";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("NombreMarca_in", _marca.NombreMarca);
+            cmd.Parameters.AddWithValue("Foto_in", _marca.Foto);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+        public static bool InsertarProducto(Productos _producto)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string proceso = "AltaProducto";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("CodigoProducto_in", _producto.CodigoProducto);
+            cmd.Parameters.AddWithValue("NombreProducto_in", _producto.NombreProducto);
+            cmd.Parameters.AddWithValue("MarcaProducto_in", _producto.MarcaProducto);
+            cmd.Parameters.AddWithValue("Descripcion_in", _producto.Descripcion);
+            cmd.Parameters.AddWithValue("FechaDeAlta_in", _producto.FechaDeAlta);
+            cmd.Parameters.AddWithValue("idUsuario_in", _producto.idUsuario);
+            cmd.Parameters.AddWithValue("Foto_in", _producto.Foto);
             cmd.ExecuteNonQuery();
             exito = true;
             connection.Close();
