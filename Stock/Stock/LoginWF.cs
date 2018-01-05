@@ -25,7 +25,11 @@ namespace Stock
                 string usuario = txtUsuario.Text;
                 string contraseña = txtContraseña.Text;
                 usuarios = Negocio.Consultar.LoginUsuario(usuario, contraseña);
-                if (usuarios.Count == 0) { throw new Exception("El usuario ingresado/contraseña incorrecta."); }
+                if (usuarios.Count == 0)
+                {
+                    MessageBox.Show("Usuario ingresado/contraseña incorrecta.");
+                    throw new Exception();
+                }
                 else
                 {
                     Sesion.UsuarioLogueado = usuarios.First();

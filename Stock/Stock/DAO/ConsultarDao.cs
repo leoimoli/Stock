@@ -52,8 +52,122 @@ namespace Stock.DAO
             return lista;
         }
 
+        public static List<Productos> ListarProductos()
+        {
+            connection.Open();
+            List<Productos> _listaProductos = new List<Productos>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ListarProductos";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            DataSet ds = new DataSet();
+            dt.Fill(ds, "productos");
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in ds.Tables[0].Rows)
+                {
+                    Entidades.Productos listaProducto = new Entidades.Productos();
+                    listaProducto.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    listaProducto.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaProducto.NombreProducto = item["txNombreProducto"].ToString();
+                    listaProducto.MarcaProducto = item["txMarcaProducto"].ToString();
+                    listaProducto.Descripcion = item["txDescripcion"].ToString();
+                    _listaProductos.Add(listaProducto);
+                }
+            }
+            connection.Close();
+            return _listaProductos;
+        }
+
+        public static List<Usuarios> BuscarUsuarioPorDNI(string dni)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.Usuarios> lista = new List<Entidades.Usuarios>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("DNI_in", dni)};
+            string proceso = "BuscarUsuarioPorDNI";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            DataSet ds = new DataSet();
+            dt.Fill(ds, "usuarios");
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in ds.Tables[0].Rows)
+                {
+                    Entidades.Usuarios listaUsuario = new Entidades.Usuarios();
+                    listaUsuario.IdUsuario = Convert.ToInt32(item["idUsuarios"].ToString());
+                    listaUsuario.Apellido = item["txApellido"].ToString();
+                    listaUsuario.Nombre = item["txNombre"].ToString();
+                    listaUsuario.Dni = item["txDni"].ToString();
+                    listaUsuario.FechaDeNacimiento = Convert.ToDateTime(item["dtFechaNacimiento"].ToString());
+                    listaUsuario.FechaDeAlta = Convert.ToDateTime(item["dtFechaDeAlta"].ToString());
+                    listaUsuario.FechaUltimaConexion = Convert.ToDateTime(item["dtFechaUltimaConexion"].ToString());
+                    listaUsuario.Contraseña = item["txContrasena"].ToString();
+                    listaUsuario.Estado = item["txEstado"].ToString();
+                    listaUsuario.Perfil = item["txPerfil"].ToString();
+                    if (item[10].ToString() != string.Empty)
+                    {
+                        listaUsuario.Foto = (byte[])item["txFoto"];
+                    }
+                    lista.Add(listaUsuario);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
+        public static List<Productos> BuscarProductoPorID(int idProductoGrilla)
+        {
+
+            connection.Close();
+            connection.Open();
+            List<Entidades.Productos> lista = new List<Entidades.Productos>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("IDProducto_in", idProductoGrilla)};
+            string proceso = "BuscarProductoPorID";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            DataSet ds = new DataSet();
+            dt.Fill(ds, "productos");
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in ds.Tables[0].Rows)
+                {
+                    Entidades.Productos listaProducto = new Entidades.Productos();
+                    listaProducto.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    listaProducto.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaProducto.NombreProducto = item["txNombreProducto"].ToString();
+                    listaProducto.MarcaProducto = item["txMarcaProducto"].ToString();
+                    listaProducto.Descripcion = item["txDescripcion"].ToString();
+                    if (item[7].ToString() != string.Empty)
+                    {
+                        listaProducto.Foto = (byte[])item["txFoto"];
+                    }
+                    lista.Add(listaProducto);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
         public static List<string> CargarCombomMarcas()
         {
+            connection.Close();
             connection.Open();
             List<string> _listaMarcas = new List<string>();
             MySqlCommand cmd = new MySqlCommand();
@@ -77,7 +191,6 @@ namespace Stock.DAO
             connection.Close();
             return _listaMarcas;
         }
-
         public static bool ValidarMarcaExistente(string nombreMarca)
         {
             bool Existe = false;

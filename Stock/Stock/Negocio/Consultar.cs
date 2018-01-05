@@ -13,8 +13,11 @@ namespace Stock.Negocio
         {
             List<Entidades.Usuarios> lista = new List<Entidades.Usuarios>();
             lista = DAO.ConsultarDao.LoginUsuario(usuario, contraseña);
-            int idUsuario = Convert.ToInt32(lista[0].IdUsuario.ToString());
-            //ActualizarDAO.ActualizarUltimaConexion(idUsuario);
+            if (lista.Count > 0)
+            {
+                int idUsuario = Convert.ToInt32(lista[0].IdUsuario.ToString());
+                //ActualizarDAO.ActualizarUltimaConexion(idUsuario);
+            }
             return lista;
         }
 
@@ -30,6 +33,19 @@ namespace Stock.Negocio
             bool existe = DAO.ConsultarDao.ValidarMarcaExistente(nombreMarca);
             return existe;
         }
+
+        public static List<Productos> ListaDeProductos()
+        {
+            List<Productos> _listaProductos = new List<Productos>();
+            try
+            {
+                _listaProductos = DAO.ConsultarDao.ListarProductos();
+            }
+            catch (Exception ex)
+            { }
+            return _listaProductos;
+        }
+
         public static bool ValidarProductoExistente(string codigoProducto)
         {
             bool existe = DAO.ConsultarDao.ValidarProductoExistente(codigoProducto);
@@ -57,6 +73,30 @@ namespace Stock.Negocio
             try
             {
                 _listaUsuarios = DAO.ConsultarDao.BuscarUsuarioPorID(idUsuarioSeleccionado);
+            }
+            catch (Exception ex)
+            { }
+            return _listaUsuarios;
+        }
+
+        public static List<Productos> BuscarProductoPorID(int idProductoGrilla)
+        {
+            List<Productos> _listaProductos = new List<Productos>();
+            try
+            {
+                _listaProductos = DAO.ConsultarDao.BuscarProductoPorID(idProductoGrilla);
+            }
+            catch (Exception ex)
+            { }
+            return _listaProductos;
+        }
+
+        public static List<Usuarios> BuscarUsuarioPorDNI(string dni)
+        {
+            List<Usuarios> _listaUsuarios = new List<Usuarios>();
+            try
+            {
+                _listaUsuarios = DAO.ConsultarDao.BuscarUsuarioPorDNI(dni);
             }
             catch (Exception ex)
             { }

@@ -63,6 +63,16 @@ namespace Stock.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Agregar_2__40X35 {
+            get {
+                object obj = ResourceManager.GetObject("Agregar-2- 40X35", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap almacen {
             get {
                 object obj = ResourceManager.GetObject("almacen", resourceCulture);

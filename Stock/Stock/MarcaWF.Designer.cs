@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtImagen = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.btnVolver = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -47,6 +48,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel1.Controls.Add(this.txtImagen);
             this.panel1.Controls.Add(this.progressBar1);
             this.panel1.Controls.Add(this.btnVolver);
             this.panel1.Controls.Add(this.btnCancelar);
@@ -59,6 +61,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(376, 277);
             this.panel1.TabIndex = 0;
+            // 
+            // txtImagen
+            // 
+            this.txtImagen.Location = new System.Drawing.Point(93, 118);
+            this.txtImagen.Name = "txtImagen";
+            this.txtImagen.Size = new System.Drawing.Size(75, 20);
+            this.txtImagen.TabIndex = 95;
+            this.txtImagen.Visible = false;
             // 
             // progressBar1
             // 
@@ -111,6 +121,7 @@
             this.btnCargarImagen.TabIndex = 20;
             this.btnCargarImagen.Text = "Cargar";
             this.btnCargarImagen.UseVisualStyleBackColor = false;
+            this.btnCargarImagen.Click += new System.EventHandler(this.btnCargarImagen_Click);
             // 
             // pictureBox1
             // 
@@ -118,6 +129,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(174, 34);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(170, 145);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 19;
             this.pictureBox1.TabStop = false;
             // 
@@ -192,5 +204,6 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.TextBox txtImagen;
     }
 }

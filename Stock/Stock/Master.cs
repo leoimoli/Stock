@@ -25,5 +25,19 @@ namespace Stock
                 lblMaster_FechaHoraReal.Text = Convert.ToString(DateTime.Now);
             }
         }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UsuariosWF _usuario = new UsuariosWF();
+            _usuario.Show();
+            Hide();
+        }
+
+        private void productosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Producto _producto = new Producto();
+            _producto.Show();
+            Hide();
+        }
     }
 }

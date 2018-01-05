@@ -22,22 +22,62 @@ namespace Stock
         {
             try
             {
-                List<string> Marcas = Negocio.Consultar.CargarComboMarcas();
-                cmbMarca.Items.Add("Seleccione");
-                foreach (string item in Marcas)
-                {
-                    cmbMarca.Text = "Seleccione";
-                    cmbMarca.Items.Add(item);
-                }
-                //List<Entidades.UsuarioReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeUsuarios());
-                //ListaUsuarios = ListaReducidos;
+                List<Entidades.ProductoReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProductos());
+                ListaProductos = ListaReducidos;
             }
             catch (Exception ex)
             { }
         }
         #region Metodos Generales
+        public void CargarCombo()
+        {
+            List<string> Marcas = new List<string>();
+            Marcas = Negocio.Consultar.CargarComboMarcas();
+            cmbMarca.Items.Add("Seleccione");
+            cmbMarca.Items.Clear();
+            foreach (string item in Marcas)
+            {
+                cmbMarca.Text = "Seleccione";
+                cmbMarca.Items.Add(item);
+            }
+        }
+        public static int idProductoGrilla;
+        private List<Entidades.ProductoReducido> CargarEntidadReducida(List<Entidades.Productos> listaProductos)
+        {
+            List<ProductoReducido> _productoReducido = new List<ProductoReducido>();
+            foreach (var item in listaProductos)
+            {
+                _productoReducido.Add(new ProductoReducido { idProducto = item.idProducto, Producto = item.CodigoProducto + ", " + item.NombreProducto });
+            }
+            return _productoReducido;
+        }
+        public List<Entidades.ProductoReducido> ListaProductos
+        {
+            set
+            {
+                dataGridView1.ColumnHeadersVisible = false;
+                dataGridView1.RowHeadersVisible = false;
+                dataGridView1.DataSource = value;
+                //dataGridView1.AutoGenerateColumns = true;
+                //dataGridView1.sty
+
+                dataGridView1.Columns[0].HeaderText = "id Usuario";
+                dataGridView1.Columns[0].Width = 100;
+                dataGridView1.Columns[0].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView1.Columns[0].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
+                dataGridView1.Columns[0].HeaderCell.Style.ForeColor = Color.White;
+                dataGridView1.Columns[0].Visible = false;
+
+                dataGridView1.Columns[1].HeaderText = "Usuario";
+                dataGridView1.Columns[1].Width = 280;
+                dataGridView1.Columns[1].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView1.Columns[1].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
+                dataGridView1.Columns[1].HeaderCell.Style.ForeColor = Color.White;
+            }
+        }
         private void HabilitarCampos()
         {
+            CargarCombo();
             btnAgregarMarca.Visible = true;
             panel_Producto.Enabled = true;
             txtCodigoProducto.Focus();
@@ -85,7 +125,20 @@ namespace Stock
         }
         private void LimpiarCampos()
         {
-            throw new NotImplementedException();
+            txtCodigoProducto.Clear();
+            txtNombreProducto.Clear();
+            textBox2.Clear();
+            txtImagen.Clear();
+            List<string> Marcas = Negocio.Consultar.CargarComboMarcas();
+            cmbMarca.Items.Add("Seleccione");
+            foreach (string item in Marcas)
+            {
+                cmbMarca.Text = "Seleccione";
+                cmbMarca.Items.Add(item);
+            }
+            progressBar1.Value = Convert.ToInt32(null);
+            progressBar1.Visible = false;
+            pictureBox1.Image = null;
         }
         private void ProgressBar()
         {
@@ -103,22 +156,94 @@ namespace Stock
         {
             double pow = Math.Pow(i, i);
         }
+        private void ProductoSeleccionado(int idProductoGrilla)
+        {
+            try
+            {
+                List<Entidades.Productos> _producto = new List<Entidades.Productos>();
+                _producto = Negocio.Consultar.BuscarProductoPorID(idProductoGrilla);
+                HabilitarCamposProductoSeleccionado(_producto);
+            }
+            catch (Exception ex)
+            { }
+        }
+        private void HabilitarCamposProductoSeleccionado(List<Productos> _producto)
+        {
+
+            btnCargarImagen.Visible = true;
+            btnGuardar.Visible = true;
+            btnCancelar.Visible = true;
+            lblapellidoNombreEditar.Text = "Editar Producto";
+            panel_Producto.Enabled = true;
+            var producto = _producto.First();
+            txtCodigoProducto.Text = producto.CodigoProducto;
+            txtCodigoProducto.Enabled = false;
+            txtNombreProducto.Text = producto.NombreProducto;
+            textBox2.Text = producto.Descripcion;
+            cmbMarca.Text = producto.MarcaProducto;
+            if (producto.Foto != null)
+            {
+                Bitmap foto1 = Clases_Maestras.Funciones.byteToBipmap(producto.Foto);
+                pictureBox1.Image = foto1;
+            }
+            else
+            {
+                pictureBox1.Image = null;
+            }
+            //lblFechaCreacion.Visible = true;
+            //lblFechaUltimaConexion.Visible = true;
+            //label6lblFechaCreacion_base.Visible = true;
+            //lblFechaUltimaConexion_base.Visible = true;
+            //label6lblFechaCreacion_base.Text = Convert.ToString(usuario.FechaDeAlta);
+            //lblFechaUltimaConexion_base.Text = Convert.ToString(usuario.FechaUltimaConexion);
+            //lblInformacion.Visible = false;
+        }
         #endregion
         #region Botones
+        public static string urla;
+        private void btnCargarImagen_Click(object sender, EventArgs e)
+        {
+            string path = "";
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            DialogResult result = openFileDialog1.ShowDialog();
+            path = openFileDialog1.FileName;
+            if (path != "")
+            {
+
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox1.Image = Image.FromFile(path);
+            }
+            if (result == DialogResult.OK)
+            {
+                byte[] Imagen = null;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    Imagen = ms.ToArray();
+                }
+            }
+            else
+            {
+                txtImagen.Text = path;
+                pictureBox1.ImageLocation = txtImagen.Text;
+            }
+
+            urla = path;
+        }
         private void btnProducto_Click(object sender, EventArgs e)
         {
-            //id = 0;
-
-            //LimpiarCampos();
-            //ValidacionesUsuarioLogueado();
+            idProductoGrilla = 0;
+            txtCodigoProducto.Enabled = true;
+            txtCodigoProducto.Focus();
+            LimpiarCampos();
             HabilitarCampos();
         }
-        public static int idProductoGrilla;
+        public static int idProductoGrillaSeleccionado;
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                
+
                 int idProductoGrillaSeleccionado = idProductoGrilla;
 
                 if (idProductoGrillaSeleccionado > 0)
@@ -131,8 +256,8 @@ namespace Stock
                     {
                         MessageBox.Show("LA EDICIÓN DEL PRODUCTO SE REALIZO EXITOSAMENTE.");
                         LimpiarCampos();
-                        //List<Entidades.UsuarioReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeUsuarios());
-                        //ListaUsuarios = ListaReducidos;
+                        List<Entidades.ProductoReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProductos());
+                        ListaProductos = ListaReducidos;
                     }
                 }
                 else
@@ -145,8 +270,8 @@ namespace Stock
                     {
                         MessageBox.Show("SE REGISTRO EL PRODUCTO EXITOSAMENTE.");
                         LimpiarCampos();
-                        //List<Entidades.UsuarioReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeUsuarios());
-                        //ListaUsuarios = ListaReducidos;
+                        List<Entidades.ProductoReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProductos());
+                        ListaProductos = ListaReducidos;
                     }
                 }
             }
@@ -158,7 +283,37 @@ namespace Stock
             MarcaWF _marca = new MarcaWF();
             _marca.Show();
         }
-
+        private void cmbMarca_Click(object sender, EventArgs e)
+        {
+            CargarCombo();
+        }
         #endregion
+        #region Eventos Grilla
+        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1.Cursor = Cursors.Hand;
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+            { return; }
+            this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.LightBlue;
+        }
+        private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1.Cursor = Cursors.Hand;
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+            { return; }
+            this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.White;
+        }
+        private void dataGridView1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                idProductoGrilla = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells[0].Value);
+                ProductoSeleccionado(idProductoGrilla);
+            }
+            catch (Exception ex)
+            { }
+        }
+
+        #endregion             
     }
 }

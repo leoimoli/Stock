@@ -22,13 +22,7 @@ namespace Stock
         {
             try
             {
-                string[] Perfiles = Clases_Maestras.ValoresConstantes.Perfiles;
-                cmbPerfil.Items.Add("Seleccione");
-                foreach (string item in Perfiles)
-                {
-                    cmbPerfil.Text = "Seleccione";
-                    cmbPerfil.Items.Add(item);
-                }
+
 
                 List<Entidades.UsuarioReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeUsuarios());
                 ListaUsuarios = ListaReducidos;
@@ -37,6 +31,10 @@ namespace Stock
             { }
         }
         #region Botones
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+        }
         private void btnNuevoUsuario_Click(object sender, EventArgs e)
         {
             id = 0;
@@ -55,20 +53,28 @@ namespace Stock
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             DialogResult result = openFileDialog1.ShowDialog();
             path = openFileDialog1.FileName;
-            pictureBox1.Image = Image.FromFile(path);
+            if (path != "")
+            {
+
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox1.Image = Image.FromFile(path);
+            }
             if (result == DialogResult.OK)
             {
                 byte[] Imagen = null;
                 using (MemoryStream ms = new MemoryStream())
                 {
+                    //if (pictureBox1.Image.Width > 150 || pictureBox1.Image.Height > 145)
+                    //{
+                    //    MessageBox.Show("EL TAMAÑO DE LA IMAGEN SUPERA EL ANCHO(150) O EL LARGO(145) PERMITIDO");
+                    //    pictureBox1.Image = null;
+                    //    txtImagen.Clear();
+                    //}
+                    //else
+                    //{
                     pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
                     Imagen = ms.ToArray();
-                    if (Imagen.Length > 50000)
-                    {
-                        MessageBox.Show("EL TAMAÑO DE LA IMAGEN ES SUPERIOR AL PERMITIDO. DEBE SER MENOR A 500kbs");
-                        pictureBox1.Image = null;
-                        txtImagen.Clear();
-                    }
+                    //}
                 }
             }
             else
@@ -76,7 +82,6 @@ namespace Stock
                 txtImagen.Text = path;
                 pictureBox1.ImageLocation = txtImagen.Text;
             }
-
 
             urla = path;
         }
@@ -119,6 +124,16 @@ namespace Stock
             catch (Exception ex)
             { }
         }
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Entidades.UsuarioReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.BuscarUsuarioPorDNI(txtDniBuscar.Text));
+                ListaUsuarios = ListaReducidos;
+            }
+            catch (Exception ex)
+            { }
+        }
         #endregion
         #region Metodos Genericos
         private void HabilitarCampos()
@@ -133,7 +148,20 @@ namespace Stock
             // pictureBox1.Visible = true;
             txtContraseña.Visible = true;
             txtRepiteContraseña.Visible = true;
+            CargarCombo();
         }
+        private void CargarCombo()
+        {
+            string[] Perfiles = Clases_Maestras.ValoresConstantes.Perfiles;
+            cmbPerfil.Items.Add("Seleccione");
+            cmbPerfil.Items.Clear();
+            foreach (string item in Perfiles)
+            {
+                cmbPerfil.Text = "Seleccione";
+                cmbPerfil.Items.Add(item);
+            }
+        }
+
         public static string urla;
         private void ValidacionesUsuarioLogueado()
         {
@@ -484,8 +512,6 @@ namespace Stock
             {
                 id = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells[0].Value);
                 UsuarioSeleccionado(id);
-
-
             }
             catch (Exception ex)
             { }
@@ -507,5 +533,7 @@ namespace Stock
             }
         }
         #endregion
+
+
     }
 }

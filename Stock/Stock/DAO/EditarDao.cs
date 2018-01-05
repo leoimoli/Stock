@@ -35,5 +35,26 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
+
+        public static bool EditarProducto(Productos _producto, int idProductoGrillaSeleccionado)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string Actualizar = "EditarProducto";
+            MySqlCommand cmd = new MySqlCommand(Actualizar, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("idProducto_in", idProductoGrillaSeleccionado);
+            cmd.Parameters.AddWithValue("CodigoProducto_in", _producto.CodigoProducto);
+            cmd.Parameters.AddWithValue("NombreProducto_in", _producto.NombreProducto);
+            cmd.Parameters.AddWithValue("MarcaProducto_in", _producto.MarcaProducto);
+            cmd.Parameters.AddWithValue("Descripcion_in", _producto.Descripcion);
+            cmd.Parameters.AddWithValue("Foto_in", _producto.Foto);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
     }
 }
