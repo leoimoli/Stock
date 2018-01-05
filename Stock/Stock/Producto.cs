@@ -287,6 +287,10 @@ namespace Stock
         {
             CargarCombo();
         }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
         #endregion
         #region Eventos Grilla
         private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
@@ -314,6 +318,8 @@ namespace Stock
             { }
         }
 
-        #endregion             
+        #endregion
+
+
     }
 }
