@@ -21,6 +21,12 @@ namespace Stock.Negocio
             return lista;
         }
 
+        public static bool ValidarProveedorExistente(string nombreEmpresa)
+        {
+            bool existe = DAO.ConsultarDao.ValidarProveedorExistente(nombreEmpresa);
+            return existe;
+        }
+
         public static List<string> CargarComboMarcas()
         {
             List<string> lista = new List<string>();
@@ -101,6 +107,30 @@ namespace Stock.Negocio
             catch (Exception ex)
             { }
             return _listaUsuarios;
+        }
+
+        public static List<Entidades.Proveedores> ListaDeProveedores()
+        {
+            List<Entidades.Proveedores> _listaProveedores = new List<Entidades.Proveedores>();
+            try
+            {
+                _listaProveedores = DAO.ConsultarDao.ListarProveedores();
+            }
+            catch (Exception ex)
+            { }
+            return _listaProveedores;
+        }
+
+        public static List<Entidades.Proveedores> BuscarProveedorPorID(int idProveedorGrilla)
+        {
+            List<Entidades.Proveedores> _listaProveedores = new List<Entidades.Proveedores>();
+            try
+            {
+                _listaProveedores = DAO.ConsultarDao.BuscarProveedorPorID(idProveedorGrilla);
+            }
+            catch (Exception ex)
+            { }
+            return _listaProveedores;
         }
     }
 }

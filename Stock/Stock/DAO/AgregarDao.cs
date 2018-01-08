@@ -35,6 +35,29 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
+        public static bool InsertProveedor(Entidades.Proveedores _proveedor)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string proceso = "AltaProveedor";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("NombreEmpresa_in", _proveedor.NombreEmpresa);
+            cmd.Parameters.AddWithValue("Contacto_in", _proveedor.Contacto);
+            cmd.Parameters.AddWithValue("Email_in", _proveedor.Email);
+            cmd.Parameters.AddWithValue("SitioWeb_in", _proveedor.SitioWeb);
+            cmd.Parameters.AddWithValue("Calle_in", _proveedor.Calle);
+            cmd.Parameters.AddWithValue("Altura_in", _proveedor.Altura);
+            cmd.Parameters.AddWithValue("Telefono_in", _proveedor.Telefono);
+            cmd.Parameters.AddWithValue("FechaDeAlta_in", _proveedor.FechaDeAlta);
+            cmd.Parameters.AddWithValue("idUsuario_in", _proveedor.idUsuario);
+            cmd.Parameters.AddWithValue("Foto_in", _proveedor.Foto);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
         public static bool InsertMarca(Entidades.Marca _marca)
         {
             bool exito = false;

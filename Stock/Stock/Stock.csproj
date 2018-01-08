@@ -49,6 +49,12 @@
   <ItemGroup>
     <Compile Include="Clases_Maestras\Funciones.cs" />
     <Compile Include="Clases_Maestras\ValoresConstantes.cs" />
+    <Compile Include="ClientesWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientesWF.Designer.cs">
+      <DependentUpon>ClientesWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controlador\Respuesta.cs" />
     <Compile Include="DAO\AgregarDao.cs" />
     <Compile Include="DAO\ConsultarDao.cs" />
@@ -57,6 +63,7 @@
     <Compile Include="Entidades\ProductoReducido.cs" />
     <Compile Include="Entidades\Productos.cs" />
     <Compile Include="Entidades\Proveedores.cs" />
+    <Compile Include="Entidades\ProveedorReducido.cs" />
     <Compile Include="Entidades\UsuarioReducido.cs" />
     <Compile Include="Entidades\Usuarios.cs" />
     <Compile Include="Form1.cs">
@@ -121,6 +128,9 @@
     <Compile Include="UsuariosWF.Designer.cs">
       <DependentUpon>UsuariosWF.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ClientesWF.resx">
+      <DependentUpon>ClientesWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Stock.Entidades;
 using MySql.Data.MySqlClient;
 using System.Data;
+using Stock.Negocio;
 
 namespace Stock.DAO
 {
@@ -29,11 +30,12 @@ namespace Stock.DAO
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
             dt.Fill(Tabla);
-            DataSet ds = new DataSet();
-            dt.Fill(ds, "usuarios");
+            //DataSet ds = new DataSet();
+            //dt.Fill(ds, "usuarios");
             if (Tabla.Rows.Count > 0)
             {
-                foreach (DataRow item in ds.Tables[0].Rows)
+                //foreach (DataRow item in ds.Tables[0].Rows)
+                foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.Usuarios listaUsuario = new Entidades.Usuarios();
                     listaUsuario.IdUsuario = Convert.ToInt32(item["idUsuarios"].ToString());
@@ -50,6 +52,31 @@ namespace Stock.DAO
             }
             connection.Close();
             return lista;
+        }
+
+        public static bool ValidarProveedorExistente(string nombreEmpresa)
+        {
+            bool Existe = false;
+            connection.Open();
+            List<Entidades.Marca> lista = new List<Entidades.Marca>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("NombreEmpresa_in", nombreEmpresa) };
+            string proceso = "ValidarEmpresaExistente";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            DataSet ds = new DataSet();
+            dt.Fill(ds, "proveedores");
+            if (Tabla.Rows.Count > 0)
+            {
+                Existe = true;
+            }
+            connection.Close();
+            return Existe;
         }
 
         public static List<Productos> ListarProductos()
@@ -82,6 +109,83 @@ namespace Stock.DAO
             }
             connection.Close();
             return _listaProductos;
+        }
+
+        public static List<Entidades.Proveedores> BuscarProveedorPorID(int idProveedorGrilla)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.Proveedores> lista = new List<Entidades.Proveedores>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("IDProveedor_in", idProveedorGrilla)};
+            string proceso = "BuscarProveedorPorID";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            DataSet ds = new DataSet();
+            dt.Fill(ds, "proveedores");
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in ds.Tables[0].Rows)
+                {
+                    Entidades.Proveedores listaProveedor = new Entidades.Proveedores();
+                    listaProveedor.idProveedor = Convert.ToInt32(item["idProveedores"].ToString());
+                    listaProveedor.NombreEmpresa = item["txNombreEmpresa"].ToString();
+                    listaProveedor.Contacto = item["txNombreContacto"].ToString();
+                    listaProveedor.Email = item["txEmail"].ToString();
+                    listaProveedor.SitioWeb = item["txSitioWeb"].ToString();
+                    listaProveedor.Calle = item["txCalle"].ToString();
+                    listaProveedor.Altura = item["txAltura"].ToString();
+                    listaProveedor.Telefono = item["txTelefono"].ToString();
+                    if (item[10].ToString() != string.Empty)
+                    {
+                        listaProveedor.Foto = (byte[])item["txFoto"];
+                    }
+                    lista.Add(listaProveedor);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
+        public static List<Entidades.Proveedores> ListarProveedores()
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.Proveedores> _listaProveedores = new List<Entidades.Proveedores>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ListarProveedores";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            DataSet ds = new DataSet();
+            dt.Fill(ds, "proveedores");
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in ds.Tables[0].Rows)
+                {
+                    Entidades.Proveedores listaProveedor = new Entidades.Proveedores();
+                    listaProveedor.idProveedor = Convert.ToInt32(item["idProveedores"].ToString());
+                    listaProveedor.NombreEmpresa = item["txNombreEmpresa"].ToString();
+                    listaProveedor.Contacto = item["txNombreContacto"].ToString();
+                    listaProveedor.Email = item["txEmail"].ToString();
+                    listaProveedor.SitioWeb = item["txSitioWeb"].ToString();
+                    listaProveedor.Calle = item["txCalle"].ToString();
+                    listaProveedor.Altura = item["txAltura"].ToString();
+                    listaProveedor.Telefono = item["txTelefono"].ToString();
+                    _listaProveedores.Add(listaProveedor);
+                }
+            }
+            connection.Close();
+            return _listaProveedores;
         }
 
         public static List<Usuarios> BuscarUsuarioPorDNI(string dni)
@@ -126,7 +230,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<Productos> BuscarProductoPorID(int idProductoGrilla)
         {
 

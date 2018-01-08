@@ -39,5 +39,12 @@ namespace Stock
             _producto.Show();
             Hide();
         }
+
+        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProveedoresWF _proveedores = new ProveedoresWF();
+            _proveedores.Show();
+            Hide();
+        }
     }
 }

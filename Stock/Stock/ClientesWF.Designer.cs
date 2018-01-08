@@ -1,6 +1,6 @@
 ﻿namespace Stock
 {
-    partial class ProveedoresWF
+    partial class ClientesWF
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.lblUsuarioEstadisticas = new System.Windows.Forms.Label();
-            this.panel_Proveedores = new System.Windows.Forms.Panel();
             this.txtImagen = new System.Windows.Forms.TextBox();
             this.btnCargarImagen = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -42,91 +38,38 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txtCalle = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtSitioWeb = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtPersonaContacto = new System.Windows.Forms.TextBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.txtSitioWeb = new System.Windows.Forms.TextBox();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.lblUsuarioEstadisticas = new System.Windows.Forms.Label();
+            this.panel_Proveedores = new System.Windows.Forms.Panel();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.txtNombreEmpresa = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblapellidoNombreEditar = new System.Windows.Forms.Label();
-            this.panel200 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
+            this.btnNuevoCliente = new System.Windows.Forms.Button();
             this.txtBuscador = new System.Windows.Forms.TextBox();
-            this.btnNuevoProveedor = new System.Windows.Forms.Button();
+            this.panel200 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.panel100 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel_Proveedores.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
-            this.panel200.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel200.SuspendLayout();
             this.panel100.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel6.Location = new System.Drawing.Point(324, 364);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(611, 187);
-            this.panel6.TabIndex = 22;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panel5.Controls.Add(this.lblUsuarioEstadisticas);
-            this.panel5.Location = new System.Drawing.Point(324, 339);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(611, 25);
-            this.panel5.TabIndex = 21;
-            // 
-            // lblUsuarioEstadisticas
-            // 
-            this.lblUsuarioEstadisticas.AutoSize = true;
-            this.lblUsuarioEstadisticas.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuarioEstadisticas.ForeColor = System.Drawing.Color.White;
-            this.lblUsuarioEstadisticas.Location = new System.Drawing.Point(19, -1);
-            this.lblUsuarioEstadisticas.Name = "lblUsuarioEstadisticas";
-            this.lblUsuarioEstadisticas.Size = new System.Drawing.Size(197, 25);
-            this.lblUsuarioEstadisticas.TabIndex = 1;
-            this.lblUsuarioEstadisticas.Text = "Historial Proveedores";
-            // 
-            // panel_Proveedores
-            // 
-            this.panel_Proveedores.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel_Proveedores.Controls.Add(this.txtImagen);
-            this.panel_Proveedores.Controls.Add(this.btnCargarImagen);
-            this.panel_Proveedores.Controls.Add(this.pictureBox1);
-            this.panel_Proveedores.Controls.Add(this.txtTelefono);
-            this.panel_Proveedores.Controls.Add(this.txtCodArea);
-            this.panel_Proveedores.Controls.Add(this.label8);
-            this.panel_Proveedores.Controls.Add(this.txtAltura);
-            this.panel_Proveedores.Controls.Add(this.label13);
-            this.panel_Proveedores.Controls.Add(this.txtCalle);
-            this.panel_Proveedores.Controls.Add(this.label14);
-            this.panel_Proveedores.Controls.Add(this.txtSitioWeb);
-            this.panel_Proveedores.Controls.Add(this.label6);
-            this.panel_Proveedores.Controls.Add(this.txtEmail);
-            this.panel_Proveedores.Controls.Add(this.label9);
-            this.panel_Proveedores.Controls.Add(this.txtPersonaContacto);
-            this.panel_Proveedores.Controls.Add(this.label11);
-            this.panel_Proveedores.Controls.Add(this.btnCancelar);
-            this.panel_Proveedores.Controls.Add(this.btnGuardar);
-            this.panel_Proveedores.Controls.Add(this.txtNombreEmpresa);
-            this.panel_Proveedores.Controls.Add(this.label12);
-            this.panel_Proveedores.Enabled = false;
-            this.panel_Proveedores.Location = new System.Drawing.Point(324, 99);
-            this.panel_Proveedores.Name = "panel_Proveedores";
-            this.panel_Proveedores.Size = new System.Drawing.Size(611, 220);
-            this.panel_Proveedores.TabIndex = 20;
             // 
             // txtImagen
             // 
@@ -145,7 +88,6 @@
             this.btnCargarImagen.Text = "Cargar";
             this.btnCargarImagen.UseVisualStyleBackColor = false;
             this.btnCargarImagen.Visible = false;
-            this.btnCargarImagen.Click += new System.EventHandler(this.btnCargarImagen_Click_1);
             // 
             // pictureBox1
             // 
@@ -222,14 +164,6 @@
             this.label14.TabIndex = 47;
             this.label14.Text = "Calle";
             // 
-            // txtSitioWeb
-            // 
-            this.txtSitioWeb.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSitioWeb.Location = new System.Drawing.Point(160, 151);
-            this.txtSitioWeb.Name = "txtSitioWeb";
-            this.txtSitioWeb.Size = new System.Drawing.Size(200, 20);
-            this.txtSitioWeb.TabIndex = 44;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -268,6 +202,32 @@
             this.txtPersonaContacto.Size = new System.Drawing.Size(200, 20);
             this.txtPersonaContacto.TabIndex = 40;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.ForeColor = System.Drawing.Color.Lime;
+            this.progressBar1.Location = new System.Drawing.Point(451, 313);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(397, 23);
+            this.progressBar1.TabIndex = 102;
+            this.progressBar1.Value = 10;
+            this.progressBar1.Visible = false;
+            // 
+            // txtSitioWeb
+            // 
+            this.txtSitioWeb.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSitioWeb.Location = new System.Drawing.Point(160, 151);
+            this.txtSitioWeb.Name = "txtSitioWeb";
+            this.txtSitioWeb.Size = new System.Drawing.Size(200, 20);
+            this.txtSitioWeb.TabIndex = 44;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel6.Location = new System.Drawing.Point(321, 361);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(611, 187);
+            this.panel6.TabIndex = 101;
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -278,6 +238,55 @@
             this.label11.Size = new System.Drawing.Size(160, 17);
             this.label11.TabIndex = 39;
             this.label11.Text = "Persona de Contacto";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.MidnightBlue;
+            this.panel5.Controls.Add(this.lblUsuarioEstadisticas);
+            this.panel5.Location = new System.Drawing.Point(321, 336);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(611, 25);
+            this.panel5.TabIndex = 100;
+            // 
+            // lblUsuarioEstadisticas
+            // 
+            this.lblUsuarioEstadisticas.AutoSize = true;
+            this.lblUsuarioEstadisticas.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuarioEstadisticas.ForeColor = System.Drawing.Color.White;
+            this.lblUsuarioEstadisticas.Location = new System.Drawing.Point(19, -1);
+            this.lblUsuarioEstadisticas.Name = "lblUsuarioEstadisticas";
+            this.lblUsuarioEstadisticas.Size = new System.Drawing.Size(197, 25);
+            this.lblUsuarioEstadisticas.TabIndex = 1;
+            this.lblUsuarioEstadisticas.Text = "Historial Proveedores";
+            // 
+            // panel_Proveedores
+            // 
+            this.panel_Proveedores.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel_Proveedores.Controls.Add(this.txtImagen);
+            this.panel_Proveedores.Controls.Add(this.btnCargarImagen);
+            this.panel_Proveedores.Controls.Add(this.pictureBox1);
+            this.panel_Proveedores.Controls.Add(this.txtTelefono);
+            this.panel_Proveedores.Controls.Add(this.txtCodArea);
+            this.panel_Proveedores.Controls.Add(this.label8);
+            this.panel_Proveedores.Controls.Add(this.txtAltura);
+            this.panel_Proveedores.Controls.Add(this.label13);
+            this.panel_Proveedores.Controls.Add(this.txtCalle);
+            this.panel_Proveedores.Controls.Add(this.label14);
+            this.panel_Proveedores.Controls.Add(this.txtSitioWeb);
+            this.panel_Proveedores.Controls.Add(this.label6);
+            this.panel_Proveedores.Controls.Add(this.txtEmail);
+            this.panel_Proveedores.Controls.Add(this.label9);
+            this.panel_Proveedores.Controls.Add(this.txtPersonaContacto);
+            this.panel_Proveedores.Controls.Add(this.label11);
+            this.panel_Proveedores.Controls.Add(this.btnCancelar);
+            this.panel_Proveedores.Controls.Add(this.btnGuardar);
+            this.panel_Proveedores.Controls.Add(this.txtNombreEmpresa);
+            this.panel_Proveedores.Controls.Add(this.label12);
+            this.panel_Proveedores.Enabled = false;
+            this.panel_Proveedores.Location = new System.Drawing.Point(321, 96);
+            this.panel_Proveedores.Name = "panel_Proveedores";
+            this.panel_Proveedores.Size = new System.Drawing.Size(611, 220);
+            this.panel_Proveedores.TabIndex = 99;
             // 
             // btnCancelar
             // 
@@ -300,7 +309,6 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Visible = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // txtNombreEmpresa
             // 
@@ -326,10 +334,10 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.MidnightBlue;
             this.panel3.Controls.Add(this.lblapellidoNombreEditar);
-            this.panel3.Location = new System.Drawing.Point(324, 74);
+            this.panel3.Location = new System.Drawing.Point(321, 71);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(611, 25);
-            this.panel3.TabIndex = 19;
+            this.panel3.TabIndex = 98;
             // 
             // lblapellidoNombreEditar
             // 
@@ -342,18 +350,6 @@
             this.lblapellidoNombreEditar.TabIndex = 1;
             this.lblapellidoNombreEditar.Text = "Proveedor/Editar";
             // 
-            // panel200
-            // 
-            this.panel200.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel200.Controls.Add(this.dataGridView1);
-            this.panel200.Controls.Add(this.label10);
-            this.panel200.Controls.Add(this.txtBuscador);
-            this.panel200.Controls.Add(this.btnNuevoProveedor);
-            this.panel200.Location = new System.Drawing.Point(18, 99);
-            this.panel200.Name = "panel200";
-            this.panel200.Size = new System.Drawing.Size(294, 455);
-            this.panel200.TabIndex = 18;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.LightBlue;
@@ -362,9 +358,37 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(288, 375);
             this.dataGridView1.TabIndex = 20;
-            this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseEnter);
-            this.dataGridView1.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseLeave);
-            this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
+            // 
+            // btnNuevoCliente
+            // 
+            this.btnNuevoCliente.BackColor = System.Drawing.Color.Silver;
+            this.btnNuevoCliente.Location = new System.Drawing.Point(90, 40);
+            this.btnNuevoCliente.Name = "btnNuevoCliente";
+            this.btnNuevoCliente.Size = new System.Drawing.Size(100, 35);
+            this.btnNuevoCliente.TabIndex = 13;
+            this.btnNuevoCliente.Text = "Nuevo Cliente";
+            this.btnNuevoCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnNuevoCliente.UseVisualStyleBackColor = false;
+            // 
+            // txtBuscador
+            // 
+            this.txtBuscador.Enabled = false;
+            this.txtBuscador.Location = new System.Drawing.Point(77, 9);
+            this.txtBuscador.Name = "txtBuscador";
+            this.txtBuscador.Size = new System.Drawing.Size(170, 20);
+            this.txtBuscador.TabIndex = 18;
+            // 
+            // panel200
+            // 
+            this.panel200.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel200.Controls.Add(this.dataGridView1);
+            this.panel200.Controls.Add(this.label10);
+            this.panel200.Controls.Add(this.txtBuscador);
+            this.panel200.Controls.Add(this.btnNuevoCliente);
+            this.panel200.Location = new System.Drawing.Point(15, 96);
+            this.panel200.Name = "panel200";
+            this.panel200.Size = new System.Drawing.Size(294, 455);
+            this.panel200.TabIndex = 97;
             // 
             // label10
             // 
@@ -379,35 +403,15 @@
             this.label10.Text = "Código Producto";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // txtBuscador
-            // 
-            this.txtBuscador.Enabled = false;
-            this.txtBuscador.Location = new System.Drawing.Point(77, 9);
-            this.txtBuscador.Name = "txtBuscador";
-            this.txtBuscador.Size = new System.Drawing.Size(170, 20);
-            this.txtBuscador.TabIndex = 18;
-            // 
-            // btnNuevoProveedor
-            // 
-            this.btnNuevoProveedor.BackColor = System.Drawing.Color.Silver;
-            this.btnNuevoProveedor.Location = new System.Drawing.Point(90, 40);
-            this.btnNuevoProveedor.Name = "btnNuevoProveedor";
-            this.btnNuevoProveedor.Size = new System.Drawing.Size(100, 35);
-            this.btnNuevoProveedor.TabIndex = 13;
-            this.btnNuevoProveedor.Text = "Nuevo Proveedor";
-            this.btnNuevoProveedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnNuevoProveedor.UseVisualStyleBackColor = false;
-            this.btnNuevoProveedor.Click += new System.EventHandler(this.btnNuevoProveedor_Click);
-            // 
             // panel100
             // 
             this.panel100.BackColor = System.Drawing.Color.MidnightBlue;
             this.panel100.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel100.Controls.Add(this.label7);
-            this.panel100.Location = new System.Drawing.Point(18, 74);
+            this.panel100.Location = new System.Drawing.Point(15, 71);
             this.panel100.Name = "panel100";
             this.panel100.Size = new System.Drawing.Size(294, 25);
-            this.panel100.TabIndex = 17;
+            this.panel100.TabIndex = 96;
             // 
             // label7
             // 
@@ -416,25 +420,15 @@
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(3, -1);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(123, 25);
+            this.label7.Size = new System.Drawing.Size(83, 25);
             this.label7.TabIndex = 2;
-            this.label7.Text = "Proveedores";
+            this.label7.Text = "Clientes";
             // 
-            // progressBar1
-            // 
-            this.progressBar1.ForeColor = System.Drawing.Color.Lime;
-            this.progressBar1.Location = new System.Drawing.Point(454, 316);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(397, 23);
-            this.progressBar1.TabIndex = 95;
-            this.progressBar1.Value = 10;
-            this.progressBar1.Visible = false;
-            // 
-            // ProveedoresWF
+            // ClientesWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(890, 585);
+            this.ClientSize = new System.Drawing.Size(837, 545);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
@@ -443,9 +437,9 @@
             this.Controls.Add(this.panel200);
             this.Controls.Add(this.panel100);
             this.Location = new System.Drawing.Point(0, 0);
-            this.Name = "ProveedoresWF";
-            this.Text = "ProveedoresWF";
-            this.Load += new System.EventHandler(this.ProveedoresWF_Load);
+            this.Name = "ClientesWF";
+            this.Text = "ClientesWF";
+            this.Load += new System.EventHandler(this.ClientesWF_Load);
             this.Controls.SetChildIndex(this.panel100, 0);
             this.Controls.SetChildIndex(this.panel200, 0);
             this.Controls.SetChildIndex(this.panel3, 0);
@@ -453,16 +447,16 @@
             this.Controls.SetChildIndex(this.panel5, 0);
             this.Controls.SetChildIndex(this.panel6, 0);
             this.Controls.SetChildIndex(this.progressBar1, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel_Proveedores.ResumeLayout(false);
             this.panel_Proveedores.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel200.ResumeLayout(false);
             this.panel200.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel100.ResumeLayout(false);
             this.panel100.PerformLayout();
             this.ResumeLayout(false);
@@ -472,28 +466,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label lblUsuarioEstadisticas;
-        private System.Windows.Forms.Panel panel_Proveedores;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label lblapellidoNombreEditar;
-        private System.Windows.Forms.Panel panel200;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtBuscador;
-        private System.Windows.Forms.Button btnNuevoProveedor;
-        private System.Windows.Forms.Panel panel100;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtSitioWeb;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtPersonaContacto;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.TextBox txtNombreEmpresa;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtImagen;
+        private System.Windows.Forms.Button btnCargarImagen;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.TextBox txtCodArea;
         private System.Windows.Forms.Label label8;
@@ -501,10 +476,29 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtCalle;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtImagen;
-        private System.Windows.Forms.Button btnCargarImagen;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtPersonaContacto;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.TextBox txtSitioWeb;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label lblUsuarioEstadisticas;
+        private System.Windows.Forms.Panel panel_Proveedores;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.TextBox txtNombreEmpresa;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label lblapellidoNombreEditar;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnNuevoCliente;
+        private System.Windows.Forms.TextBox txtBuscador;
+        private System.Windows.Forms.Panel panel200;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel panel100;
+        private System.Windows.Forms.Label label7;
     }
 }
