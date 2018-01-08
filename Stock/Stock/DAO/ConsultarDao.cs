@@ -15,6 +15,7 @@ namespace Stock.DAO
         private static MySql.Data.MySqlClient.MySqlConnection connection = new MySqlConnection(Properties.Settings.Default.db);
         public static List<Usuarios> LoginUsuario(string usuario, string contraseña)
         {
+            connection.Close();
             string estado = "ACTIVO";
             connection.Open();
             List<Entidades.Usuarios> lista = new List<Entidades.Usuarios>();
@@ -56,6 +57,7 @@ namespace Stock.DAO
 
         public static bool ValidarProveedorExistente(string nombreEmpresa)
         {
+            connection.Close();
             bool Existe = false;
             connection.Open();
             List<Entidades.Marca> lista = new List<Entidades.Marca>();
@@ -81,6 +83,7 @@ namespace Stock.DAO
 
         public static List<Productos> ListarProductos()
         {
+            connection.Close();
             connection.Open();
             List<Productos> _listaProductos = new List<Productos>();
             MySqlCommand cmd = new MySqlCommand();
@@ -92,11 +95,12 @@ namespace Stock.DAO
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
             dt.Fill(Tabla);
-            DataSet ds = new DataSet();
-            dt.Fill(ds, "productos");
+            //DataSet ds = new DataSet();
+            //dt.Fill(ds, "usuarios");
             if (Tabla.Rows.Count > 0)
             {
-                foreach (DataRow item in ds.Tables[0].Rows)
+                //foreach (DataRow item in ds.Tables[0].Rows)
+                foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.Productos listaProducto = new Entidades.Productos();
                     listaProducto.idProducto = Convert.ToInt32(item["idProducto"].ToString());
@@ -126,11 +130,12 @@ namespace Stock.DAO
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
             dt.Fill(Tabla);
-            DataSet ds = new DataSet();
-            dt.Fill(ds, "proveedores");
+            //DataSet ds = new DataSet();
+            //dt.Fill(ds, "usuarios");
             if (Tabla.Rows.Count > 0)
             {
-                foreach (DataRow item in ds.Tables[0].Rows)
+                //foreach (DataRow item in ds.Tables[0].Rows)
+                foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.Proveedores listaProveedor = new Entidades.Proveedores();
                     listaProveedor.idProveedor = Convert.ToInt32(item["idProveedores"].ToString());
@@ -167,10 +172,12 @@ namespace Stock.DAO
             dt.SelectCommand.Parameters.AddRange(oParam);
             dt.Fill(Tabla);
             DataSet ds = new DataSet();
-            dt.Fill(ds, "proveedores");
+            //DataSet ds = new DataSet();
+            //dt.Fill(ds, "usuarios");
             if (Tabla.Rows.Count > 0)
             {
-                foreach (DataRow item in ds.Tables[0].Rows)
+                //foreach (DataRow item in ds.Tables[0].Rows)
+                foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.Proveedores listaProveedor = new Entidades.Proveedores();
                     listaProveedor.idProveedor = Convert.ToInt32(item["idProveedores"].ToString());
@@ -203,11 +210,12 @@ namespace Stock.DAO
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
             dt.Fill(Tabla);
-            DataSet ds = new DataSet();
-            dt.Fill(ds, "usuarios");
+            //DataSet ds = new DataSet();
+            //dt.Fill(ds, "usuarios");
             if (Tabla.Rows.Count > 0)
             {
-                foreach (DataRow item in ds.Tables[0].Rows)
+                //foreach (DataRow item in ds.Tables[0].Rows)
+                foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.Usuarios listaUsuario = new Entidades.Usuarios();
                     listaUsuario.IdUsuario = Convert.ToInt32(item["idUsuarios"].ToString());
@@ -246,11 +254,12 @@ namespace Stock.DAO
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
             dt.Fill(Tabla);
-            DataSet ds = new DataSet();
-            dt.Fill(ds, "productos");
+            //DataSet ds = new DataSet();
+            //dt.Fill(ds, "usuarios");
             if (Tabla.Rows.Count > 0)
             {
-                foreach (DataRow item in ds.Tables[0].Rows)
+                //foreach (DataRow item in ds.Tables[0].Rows)
+                foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.Productos listaProducto = new Entidades.Productos();
                     listaProducto.idProducto = Convert.ToInt32(item["idProducto"].ToString());
@@ -296,6 +305,7 @@ namespace Stock.DAO
         }
         public static bool ValidarMarcaExistente(string nombreMarca)
         {
+            connection.Close();
             bool Existe = false;
             connection.Open();
             List<Entidades.Marca> lista = new List<Entidades.Marca>();
@@ -320,6 +330,7 @@ namespace Stock.DAO
         }
         public static bool ValidarProductoExistente(string codigoProducto)
         {
+            connection.Close();
             bool Existe = false;
             connection.Open();
             List<Entidades.Productos> lista = new List<Entidades.Productos>();
@@ -357,11 +368,12 @@ namespace Stock.DAO
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
             dt.Fill(Tabla);
-            DataSet ds = new DataSet();
-            dt.Fill(ds, "usuarios");
+            //DataSet ds = new DataSet();
+            //dt.Fill(ds, "usuarios");
             if (Tabla.Rows.Count > 0)
             {
-                foreach (DataRow item in ds.Tables[0].Rows)
+                //foreach (DataRow item in ds.Tables[0].Rows)
+                foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.Usuarios listaUsuario = new Entidades.Usuarios();
                     listaUsuario.IdUsuario = Convert.ToInt32(item["idUsuarios"].ToString());
@@ -386,6 +398,7 @@ namespace Stock.DAO
         }
         public static List<Usuarios> ListarUsuarios()
         {
+            connection.Close();
             connection.Open();
             List<Usuarios> _listaUsuarios = new List<Usuarios>();
             MySqlCommand cmd = new MySqlCommand();
@@ -397,11 +410,12 @@ namespace Stock.DAO
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
             dt.Fill(Tabla);
-            DataSet ds = new DataSet();
-            dt.Fill(ds, "usuarios");
+            //DataSet ds = new DataSet();
+            //dt.Fill(ds, "usuarios");
             if (Tabla.Rows.Count > 0)
             {
-                foreach (DataRow item in ds.Tables[0].Rows)
+                //foreach (DataRow item in ds.Tables[0].Rows)
+                foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.Usuarios listaUsuario = new Entidades.Usuarios();
                     listaUsuario.IdUsuario = Convert.ToInt32(item["idUsuarios"].ToString());
@@ -421,6 +435,7 @@ namespace Stock.DAO
         }
         public static bool ValidarUsuarioExistente(string dni)
         {
+            connection.Close();
             bool Existe = false;
             connection.Open();
             List<Entidades.Usuarios> lista = new List<Entidades.Usuarios>();
