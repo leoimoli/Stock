@@ -31,11 +31,8 @@ namespace Stock.DAO
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
             dt.Fill(Tabla);
-            //DataSet ds = new DataSet();
-            //dt.Fill(ds, "usuarios");
             if (Tabla.Rows.Count > 0)
             {
-                //foreach (DataRow item in ds.Tables[0].Rows)
                 foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.Usuarios listaUsuario = new Entidades.Usuarios();
@@ -54,7 +51,30 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
+        public static List<string> CargarComboProveedor()
+        {
+            connection.Close();
+            connection.Open();
+            List<string> _listaProveedores = new List<string>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ListarProveedores";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);        
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    _listaProveedores.Add(item["txNombreEmpresa"].ToString());
+                }
+            }
+            connection.Close();
+            return _listaProveedores;
+        }
         public static bool ValidarProveedorExistente(string nombreEmpresa)
         {
             connection.Close();
@@ -80,7 +100,6 @@ namespace Stock.DAO
             connection.Close();
             return Existe;
         }
-
         public static List<Productos> ListarProductos()
         {
             connection.Close();
@@ -114,7 +133,6 @@ namespace Stock.DAO
             connection.Close();
             return _listaProductos;
         }
-
         public static List<Entidades.Proveedores> BuscarProveedorPorID(int idProveedorGrilla)
         {
             connection.Close();
@@ -156,7 +174,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<Entidades.Proveedores> ListarProveedores()
         {
             connection.Close();
@@ -194,7 +211,6 @@ namespace Stock.DAO
             connection.Close();
             return _listaProveedores;
         }
-
         public static List<Usuarios> BuscarUsuarioPorDNI(string dni)
         {
             connection.Close();

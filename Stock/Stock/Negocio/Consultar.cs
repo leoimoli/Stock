@@ -27,6 +27,13 @@ namespace Stock.Negocio
             return existe;
         }
 
+        public static List<string> CargarComboProveedor()
+        {
+            List<string> lista = new List<string>();
+            lista = DAO.ConsultarDao.CargarComboProveedor();
+            return lista;
+        }
+
         public static List<string> CargarComboMarcas()
         {
             List<string> lista = new List<string>();
