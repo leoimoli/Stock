@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.panel_CargaUsuario = new System.Windows.Forms.Panel();
+            this.txtReditoPorcentual = new System.Windows.Forms.MaskedTextBox();
             this.dtFechaVencimiento = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.txtPrecioVenta = new System.Windows.Forms.TextBox();
-            this.txtReditoPorcentual = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dtFechaCompra = new System.Windows.Forms.DateTimePicker();
@@ -54,9 +54,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblapellidoNombreEditar = new System.Windows.Forms.Label();
             this.panel200 = new System.Windows.Forms.Panel();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtDniBuscar = new System.Windows.Forms.TextBox();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel100 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -81,10 +80,10 @@
             // panel_CargaUsuario
             // 
             this.panel_CargaUsuario.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel_CargaUsuario.Controls.Add(this.txtReditoPorcentual);
             this.panel_CargaUsuario.Controls.Add(this.dtFechaVencimiento);
             this.panel_CargaUsuario.Controls.Add(this.label9);
             this.panel_CargaUsuario.Controls.Add(this.txtPrecioVenta);
-            this.panel_CargaUsuario.Controls.Add(this.txtReditoPorcentual);
             this.panel_CargaUsuario.Controls.Add(this.label6);
             this.panel_CargaUsuario.Controls.Add(this.label2);
             this.panel_CargaUsuario.Controls.Add(this.dtFechaCompra);
@@ -108,12 +107,21 @@
             this.panel_CargaUsuario.Size = new System.Drawing.Size(611, 220);
             this.panel_CargaUsuario.TabIndex = 10;
             // 
+            // txtReditoPorcentual
+            // 
+            this.txtReditoPorcentual.Location = new System.Drawing.Point(418, 26);
+            this.txtReditoPorcentual.Mask = "000%";
+            this.txtReditoPorcentual.Name = "txtReditoPorcentual";
+            this.txtReditoPorcentual.Size = new System.Drawing.Size(170, 20);
+            this.txtReditoPorcentual.TabIndex = 31;
+            this.txtReditoPorcentual.TextChanged += new System.EventHandler(this.txtReditoPorcentual_TextChanged);
+            // 
             // dtFechaVencimiento
             // 
             this.dtFechaVencimiento.Location = new System.Drawing.Point(210, 153);
             this.dtFechaVencimiento.Name = "dtFechaVencimiento";
             this.dtFechaVencimiento.Size = new System.Drawing.Size(170, 20);
-            this.dtFechaVencimiento.TabIndex = 31;
+            this.dtFechaVencimiento.TabIndex = 13;
             // 
             // label9
             // 
@@ -131,18 +139,8 @@
             this.txtPrecioVenta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPrecioVenta.Location = new System.Drawing.Point(418, 67);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
-            this.txtPrecioVenta.PasswordChar = '*';
             this.txtPrecioVenta.Size = new System.Drawing.Size(170, 20);
-            this.txtPrecioVenta.TabIndex = 29;
-            // 
-            // txtReditoPorcentual
-            // 
-            this.txtReditoPorcentual.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtReditoPorcentual.Location = new System.Drawing.Point(418, 27);
-            this.txtReditoPorcentual.Name = "txtReditoPorcentual";
-            this.txtReditoPorcentual.PasswordChar = '*';
-            this.txtReditoPorcentual.Size = new System.Drawing.Size(170, 20);
-            this.txtReditoPorcentual.TabIndex = 28;
+            this.txtPrecioVenta.TabIndex = 15;
             // 
             // label6
             // 
@@ -171,7 +169,7 @@
             this.dtFechaCompra.Location = new System.Drawing.Point(6, 153);
             this.dtFechaCompra.Name = "dtFechaCompra";
             this.dtFechaCompra.Size = new System.Drawing.Size(170, 20);
-            this.dtFechaCompra.TabIndex = 23;
+            this.dtFechaCompra.TabIndex = 9;
             // 
             // label1
             // 
@@ -190,23 +188,23 @@
             this.cmbProveedor.Location = new System.Drawing.Point(6, 110);
             this.cmbProveedor.Name = "cmbProveedor";
             this.cmbProveedor.Size = new System.Drawing.Size(170, 21);
-            this.cmbProveedor.TabIndex = 21;
+            this.cmbProveedor.TabIndex = 8;
             // 
             // txtValorUni
             // 
             this.txtValorUni.Location = new System.Drawing.Point(210, 25);
             this.txtValorUni.Name = "txtValorUni";
             this.txtValorUni.Size = new System.Drawing.Size(170, 20);
-            this.txtValorUni.TabIndex = 20;
+            this.txtValorUni.TabIndex = 10;
+            this.txtValorUni.TextChanged += new System.EventHandler(this.txtValorUni_TextChanged);
             // 
             // txtRemito
             // 
             this.txtRemito.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtRemito.Location = new System.Drawing.Point(210, 110);
             this.txtRemito.Name = "txtRemito";
-            this.txtRemito.PasswordChar = '*';
             this.txtRemito.Size = new System.Drawing.Size(170, 20);
-            this.txtRemito.TabIndex = 11;
+            this.txtRemito.TabIndex = 12;
             // 
             // lblRepitaContraseña
             // 
@@ -246,7 +244,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(306, 194);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 14;
+            this.btnGuardar.TabIndex = 16;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -258,15 +256,16 @@
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(170, 20);
             this.txtCantidad.TabIndex = 7;
+            this.txtCantidad.TextChanged += new System.EventHandler(this.txtCantidad_TextChanged);
             // 
             // txtTotalCompra
             // 
             this.txtTotalCompra.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtTotalCompra.Location = new System.Drawing.Point(210, 67);
             this.txtTotalCompra.Name = "txtTotalCompra";
-            this.txtTotalCompra.PasswordChar = '*';
             this.txtTotalCompra.Size = new System.Drawing.Size(170, 20);
-            this.txtTotalCompra.TabIndex = 10;
+            this.txtTotalCompra.TabIndex = 11;
+            this.txtTotalCompra.Enter += new System.EventHandler(this.txtTotalCompra_Enter);
             // 
             // txtCodigoProducto
             // 
@@ -342,42 +341,32 @@
             // panel200
             // 
             this.panel200.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel200.Controls.Add(this.btnBuscar);
             this.panel200.Controls.Add(this.label10);
-            this.panel200.Controls.Add(this.txtDniBuscar);
+            this.panel200.Controls.Add(this.txtCodigo);
             this.panel200.Controls.Add(this.dataGridView1);
             this.panel200.Location = new System.Drawing.Point(5, 94);
             this.panel200.Name = "panel200";
             this.panel200.Size = new System.Drawing.Size(294, 455);
             this.panel200.TabIndex = 8;
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnBuscar.Image = global::Stock.Properties.Resources.buscar40X35;
-            this.btnBuscar.Location = new System.Drawing.Point(236, 6);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(40, 35);
-            this.btnBuscar.TabIndex = 18;
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(17, 11);
+            this.label10.Location = new System.Drawing.Point(7, 14);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(37, 17);
+            this.label10.Size = new System.Drawing.Size(151, 17);
             this.label10.TabIndex = 17;
-            this.label10.Text = "Dni:";
+            this.label10.Text = "Código Producto(*):";
             // 
-            // txtDniBuscar
+            // txtCodigo
             // 
-            this.txtDniBuscar.Location = new System.Drawing.Point(60, 10);
-            this.txtDniBuscar.Name = "txtDniBuscar";
-            this.txtDniBuscar.Size = new System.Drawing.Size(170, 20);
-            this.txtDniBuscar.TabIndex = 16;
+            this.txtCodigo.Location = new System.Drawing.Point(73, 34);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(170, 20);
+            this.txtCodigo.TabIndex = 16;
+            this.txtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigo_KeyDown);
             // 
             // dataGridView1
             // 
@@ -571,9 +560,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lblapellidoNombreEditar;
         private System.Windows.Forms.Panel panel200;
-        private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtDniBuscar;
+        private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel100;
         private System.Windows.Forms.Label label7;
@@ -591,10 +578,11 @@
         private System.Windows.Forms.DateTimePicker dtFechaCompra;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtReditoPorcentual;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtPrecioVenta;
         private System.Windows.Forms.DateTimePicker dtFechaVencimiento;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.MaskedTextBox txtReditoPorcentual;
     }
 }

@@ -57,6 +57,22 @@ namespace Stock.DAO
             return exito;
         }
 
+        public static bool ActualizarStock(int idProducto, int cantidad)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string Actualizar = "EditarStock";
+            MySqlCommand cmd = new MySqlCommand(Actualizar, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("idProducto_in", idProducto);
+            cmd.Parameters.AddWithValue("cantidad_in", cantidad);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+
         public static bool EditarProveedor(Proveedores _proveedor, int idProductoGrillaSeleccionado)
         {
             bool exito = false;
@@ -76,6 +92,21 @@ namespace Stock.DAO
             cmd.Parameters.AddWithValue("FechaDeAlta_in", _proveedor.FechaDeAlta);
             cmd.Parameters.AddWithValue("idUsuario_in", _proveedor.idUsuario);
             cmd.Parameters.AddWithValue("Foto_in", _proveedor.Foto);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+        public static bool ActualizarPrecioDeVentaProducto(int idProducto, decimal precioDeVenta)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string Actualizar = "ActualizarPrecioDeVentaProducto";
+            MySqlCommand cmd = new MySqlCommand(Actualizar, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("idProducto_in", idProducto);
+            cmd.Parameters.AddWithValue("precioDeVenta_in", precioDeVenta);
             cmd.ExecuteNonQuery();
             exito = true;
             connection.Close();

@@ -35,6 +35,93 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
+        public static bool InsertarStock(Entidades.Stock _stock)
+        {
+            bool exito = false;
+
+
+            bool stockExistente = DAO.ConsultarDao.ValidarStockExistente(_stock.idProducto);
+            if (stockExistente == true)
+            {
+                exito = DAO.EditarDao.ActualizarStock(_stock.idProducto, _stock.Cantidad);
+            }
+            else
+            {
+                exito = InsertarStock(_stock.idProducto, _stock.Cantidad, _stock.CodigoProducto);
+            }
+            if (_stock.PrecioDeVenta > 0)
+            {
+                exito = InsertarPrecioVenta(_stock.idProducto, _stock.PrecioDeVenta, _stock.FechaActual, _stock.idUsuario);
+            }
+            if (exito == true)
+            {
+                connection.Close();
+                connection.Open();
+                string proceso = "AltaMovimientoStock";
+                MySqlCommand cmd = new MySqlCommand(proceso, connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("idProducto_in", _stock.idProducto);
+                cmd.Parameters.AddWithValue("Cantidad_in", _stock.Cantidad);
+                cmd.Parameters.AddWithValue("Proveedor_in", _stock.Proveedor);
+                cmd.Parameters.AddWithValue("FechaCompra_in", _stock.FechaCompra);
+                cmd.Parameters.AddWithValue("ValorUnitario_in", _stock.ValorUnitario);
+                cmd.Parameters.AddWithValue("ValorCompra_in", _stock.ValorCompra);
+                cmd.Parameters.AddWithValue("Remito_in", _stock.Remito);
+                cmd.Parameters.AddWithValue("VencimientoLote_in", _stock.VencimientoLote);
+                cmd.Parameters.AddWithValue("ReditoPorcentual_in", _stock.ReditoPorcentual);
+                cmd.Parameters.AddWithValue("PrecioDeVenta_in", _stock.PrecioDeVenta);
+                cmd.Parameters.AddWithValue("FechaActual_in", _stock.FechaActual);
+                cmd.Parameters.AddWithValue("idUsuario_in", _stock.idUsuario);
+                cmd.ExecuteNonQuery();
+                exito = true;
+                connection.Close();
+                return exito;
+            }
+            else
+            {
+                exito = false;
+            }
+            return exito;
+        }
+
+        private static bool InsertarPrecioVenta(int idProducto, decimal precioDeVenta, DateTime fechaActual, int idUsuario)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string proceso = "InsertarHistorialPrecioDeVenta";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("idProducto_in", idProducto);
+            cmd.Parameters.AddWithValue("PrecioDeVenta_in", precioDeVenta);
+            cmd.Parameters.AddWithValue("FechaActual_in", fechaActual);
+            cmd.Parameters.AddWithValue("idUsuario_in", idUsuario);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            if (exito == true)
+            {
+                exito = DAO.EditarDao.ActualizarPrecioDeVentaProducto(idProducto, precioDeVenta);
+            }
+            return exito;
+        }
+
+        private static bool InsertarStock(int idProducto, int cantidad, string codigoProducto)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string proceso = "AltaStock";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("idProducto_in", idProducto);
+            cmd.Parameters.AddWithValue("CodigoProducto_in", codigoProducto);
+            cmd.Parameters.AddWithValue("Cantidad_in", cantidad);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
         public static bool InsertProveedor(Entidades.Proveedores _proveedor)
         {
             bool exito = false;

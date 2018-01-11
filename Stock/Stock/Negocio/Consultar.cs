@@ -21,6 +21,18 @@ namespace Stock.Negocio
             return lista;
         }
 
+        public static int BuscarProductoPorCodigo(string codigoProducto)
+        {
+            int idProducto = 0;
+            try
+            {
+                idProducto = DAO.ConsultarDao.BuscarProductoPorCodigo(codigoProducto);
+            }
+            catch (Exception ex)
+            { }
+            return idProducto;
+        }
+
         public static bool ValidarProveedorExistente(string nombreEmpresa)
         {
             bool existe = DAO.ConsultarDao.ValidarProveedorExistente(nombreEmpresa);
@@ -127,7 +139,6 @@ namespace Stock.Negocio
             { }
             return _listaProveedores;
         }
-
         public static List<Entidades.Proveedores> BuscarProveedorPorID(int idProveedorGrilla)
         {
             List<Entidades.Proveedores> _listaProveedores = new List<Entidades.Proveedores>();

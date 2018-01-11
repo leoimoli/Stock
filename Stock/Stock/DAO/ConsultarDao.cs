@@ -51,6 +51,56 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
+
+        public static bool ValidarStockExistente(int idProducto)
+        {
+            connection.Close();
+            bool Existe = false;
+            connection.Open();
+            List<Entidades.Marca> lista = new List<Entidades.Marca>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("idProducto_in", idProducto) };
+            string proceso = "ValidarStockExistente";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                Existe = true;
+            }
+            connection.Close();
+            return Existe;
+        }
+
+        public static int BuscarProductoPorCodigo(string codigoProducto)
+        {
+            connection.Close();
+            connection.Open();
+            int idProducto = 0;
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("CodigoProducto_in", codigoProducto)};
+            string proceso = "BuscarProductoPorCodigo";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                }
+            }
+            connection.Close();
+            return idProducto;
+        }
         public static List<string> CargarComboProveedor()
         {
             connection.Close();
@@ -64,7 +114,7 @@ namespace Stock.DAO
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
-            dt.Fill(Tabla);        
+            dt.Fill(Tabla);
             if (Tabla.Rows.Count > 0)
             {
                 foreach (DataRow item in Tabla.Rows)
