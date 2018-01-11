@@ -25,7 +25,7 @@ namespace Stock
             {
                 CargarComboProveedor();
             }
-            catch { }
+            catch (Exception ex) { }
         }
         #region Metodos Generales
         private void CalcularCostos()
@@ -154,7 +154,7 @@ namespace Stock
                     int idProducto = Negocio.Consultar.BuscarProductoPorCodigo(codigoIngresado);
                     if (idProducto > 0)
                     {
-                        int ProductoIngresado = idProducto;
+                        ProductoIngresado = idProducto;
                         txtCodigoProducto.Text = codigoIngresado;
                         txtCodigoProducto.Enabled = false;
                     }
