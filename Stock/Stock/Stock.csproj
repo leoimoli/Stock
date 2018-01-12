@@ -61,12 +61,15 @@
     <Compile Include="DAO\AgregarDao.cs" />
     <Compile Include="DAO\ConsultarDao.cs" />
     <Compile Include="DAO\EditarDao.cs" />
+    <Compile Include="Entidades\ListaStock.cs" />
+    <Compile Include="Entidades\ListaStockProducto.cs" />
     <Compile Include="Entidades\Marca.cs" />
     <Compile Include="Entidades\ProductoReducido.cs" />
     <Compile Include="Entidades\Productos.cs" />
     <Compile Include="Entidades\Proveedores.cs" />
     <Compile Include="Entidades\ProveedorReducido.cs" />
     <Compile Include="Entidades\Stock.cs" />
+    <Compile Include="Entidades\StockReducido.cs" />
     <Compile Include="Entidades\UsuarioReducido.cs" />
     <Compile Include="Entidades\Usuarios.cs" />
     <Compile Include="Form1.cs">

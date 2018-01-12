@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Stock.Entidades;
 
 namespace Stock
 {
@@ -23,11 +24,71 @@ namespace Stock
         {
             try
             {
+                txtCodigo.Focus();
                 CargarComboProveedor();
+                Lista = new List<ListaStock>();
+                Lista = Negocio.Consultar.ListaDeStock();
             }
             catch (Exception ex) { }
         }
         #region Metodos Generales
+        private void HabilitarLabels()
+        {
+            EditCódigo_Producto.Visible = true;
+            EditNombre_Producto.Visible = true;
+            EditMarca_Producto.Visible = true;
+            EditStock_Disponible.Visible = true;
+            EditPrecio_de_Venta.Visible = true;
+            EditFecha_Alta_Producto.Visible = true;
+            EditUsuario_Creador.Visible = true;
+        }
+        public List<Entidades.ListaStock> Lista
+        {
+            set
+            {
+                lblUltimoMovimientos.Text = "Últimos Movimientos";
+                dataGridView1.RowHeadersVisible = false;
+                dataGridView1.DataSource = value;
+                dataGridView1.Columns[0].HeaderText = "idProducto";
+                dataGridView1.Columns[0].Width = 100;
+                dataGridView1.Columns[0].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView1.Columns[0].HeaderCell.Style.Font = new Font("Tahoma", 7, FontStyle.Bold);
+                dataGridView1.Columns[0].HeaderCell.Style.ForeColor = Color.White;
+                dataGridView1.Columns[0].Visible = false;
+
+                dataGridView1.Columns[1].HeaderText = "Código";
+                dataGridView1.Columns[1].Width = 95;
+                dataGridView1.Columns[1].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView1.Columns[1].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
+                dataGridView1.Columns[1].HeaderCell.Style.ForeColor = Color.White;
+
+                dataGridView1.Columns[2].HeaderText = "Nombre";
+                dataGridView1.Columns[2].Width = 95;
+                dataGridView1.Columns[2].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView1.Columns[2].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
+                dataGridView1.Columns[2].HeaderCell.Style.ForeColor = Color.White;
+
+                dataGridView1.Columns[3].HeaderText = "Marca";
+                dataGridView1.Columns[3].Width = 95;
+                dataGridView1.Columns[3].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView1.Columns[3].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
+                dataGridView1.Columns[3].HeaderCell.Style.ForeColor = Color.White;
+
+                dataGridView1.Columns[4].HeaderText = "Cantidad";
+                dataGridView1.Columns[4].Width = 80;
+                dataGridView1.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView1.Columns[4].HeaderCell.Style.Font = new Font("Tahoma", 7, FontStyle.Bold);
+                dataGridView1.Columns[4].HeaderCell.Style.ForeColor = Color.White;
+                dataGridView1.Columns[4].Visible = false;
+
+                dataGridView1.Columns[5].HeaderText = "Fecha";
+                dataGridView1.Columns[5].Width = 80;
+                dataGridView1.Columns[5].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView1.Columns[5].HeaderCell.Style.Font = new Font("Tahoma", 7, FontStyle.Bold);
+                dataGridView1.Columns[5].HeaderCell.Style.ForeColor = Color.White;
+                dataGridView1.Columns[5].Visible = false;
+            }
+        }
         private void CalcularCostos()
         {
             if (txtCantidad.Text != "" & txtValorUni.Text != "")
@@ -57,6 +118,7 @@ namespace Stock
         }
         private void LimpiarCampos()
         {
+            txtTotalCompra.Clear();
             txtCodigoProducto.Clear();
             txtCantidad.Clear();
             dtFechaCompra.Value = DateTime.Now;
@@ -67,12 +129,6 @@ namespace Stock
             txtReditoPorcentual.Clear();
             txtPrecioVenta.Clear();
             List<string> Marcas = Negocio.Consultar.CargarComboMarcas();
-            //cmbMarca.Items.Add("Seleccione");
-            //foreach (string item in Marcas)
-            //{
-            //    cmbMarca.Text = "Seleccione";
-            //    cmbMarca.Items.Add(item);
-            //}
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
         }
@@ -114,6 +170,7 @@ namespace Stock
             _stock.Cantidad = Convert.ToInt32(txtCantidad.Text);
             _stock.Proveedor = cmbProveedor.Text;
             DateTime fechaActual = DateTime.Now;
+            _stock.FechaActual = fechaActual;
             _stock.FechaCompra = dtFechaCompra.Value;
             _stock.ValorUnitario = Convert.ToDecimal(txtValorUni.Text);
             _stock.ValorCompra = Convert.ToDecimal(txtTotalCompra.Text);
@@ -125,6 +182,7 @@ namespace Stock
             return _stock;
         }
         #endregion
+
         #region Botones
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -154,9 +212,30 @@ namespace Stock
                     int idProducto = Negocio.Consultar.BuscarProductoPorCodigo(codigoIngresado);
                     if (idProducto > 0)
                     {
+                        panel_CargarStock.Enabled = true;
+                        lblStock.Text = "Ingreso de Stock";
                         ProductoIngresado = idProducto;
+                        Lista = new List<ListaStock>();
+                        Lista = Negocio.Consultar.ListaDeStockPoridProdcuto(idProducto);
                         txtCodigoProducto.Text = codigoIngresado;
                         txtCodigoProducto.Enabled = false;
+                        ///// Armo una nueva lista para mostrar en el panel Información.
+                        List<ListaStockProducto> _lista = new List<ListaStockProducto>();
+                        _lista = Negocio.Consultar.ListarStockProdcuto(idProducto);
+                        if (_lista.Count > 0)
+                        {
+                            lblEstadisticas.Text = "Información del producto ingresado";
+                            lblInformacion.Visible = false;
+                            var lista = _lista.First();
+                            HabilitarLabels();
+                            EditCódigo_Producto.Text = lista.CodigoProducto;
+                            EditNombre_Producto.Text = lista.NombreProducto;
+                            EditMarca_Producto.Text = lista.Marca;
+                            EditStock_Disponible.Text = Convert.ToString(lista.Cantidad);
+                            EditPrecio_de_Venta.Text = Convert.ToString(lista.PrecioVenta);
+                            EditFecha_Alta_Producto.Text = Convert.ToString(lista.FechaAlta);
+                            EditUsuario_Creador.Text = lista.Apellido + "  " + lista.Nombre;
+                        }
                     }
                     else
                     {
@@ -184,10 +263,11 @@ namespace Stock
         {
             CalcularCostos();
         }
-        #endregion
         private void txtReditoPorcentual_TextChanged(object sender, EventArgs e)
         {
             CalcularCostos();
         }
+        #endregion
+
     }
 }

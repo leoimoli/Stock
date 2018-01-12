@@ -38,11 +38,13 @@ namespace Stock.DAO
         public static bool InsertarStock(Entidades.Stock _stock)
         {
             bool exito = false;
-
-
-            bool stockExistente = DAO.ConsultarDao.ValidarStockExistente(_stock.idProducto);
-            if (stockExistente == true)
+            //bool stockExistente = DAO.ConsultarDao.ValidarStockExistente(_stock.idProducto);
+            List<int> stockExistente = new List<int>();
+            stockExistente = DAO.ConsultarDao.ValidarStockExistente(_stock.idProducto);
+            if (stockExistente.Count > 0)
             {
+                int cant =Convert.ToInt32(stockExistente[0].ToString());
+                _stock.Cantidad = _stock.Cantidad + cant;
                 exito = DAO.EditarDao.ActualizarStock(_stock.idProducto, _stock.Cantidad);
             }
             else
@@ -83,7 +85,6 @@ namespace Stock.DAO
             }
             return exito;
         }
-
         private static bool InsertarPrecioVenta(int idProducto, decimal precioDeVenta, DateTime fechaActual, int idUsuario)
         {
             bool exito = false;
@@ -105,7 +106,6 @@ namespace Stock.DAO
             }
             return exito;
         }
-
         private static bool InsertarStock(int idProducto, int cantidad, string codigoProducto)
         {
             bool exito = false;

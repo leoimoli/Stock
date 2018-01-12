@@ -21,6 +21,18 @@ namespace Stock.Negocio
             return lista;
         }
 
+        public static List<ListaStock> ListaDeStock()
+        {
+            List<ListaStock> _listaStock = new List<ListaStock>();
+            try
+            {
+                _listaStock = DAO.ConsultarDao.ListarStock();
+            }
+            catch (Exception ex)
+            { }
+            return _listaStock;
+        }
+
         public static int BuscarProductoPorCodigo(string codigoProducto)
         {
             int idProducto = 0;
@@ -149,6 +161,29 @@ namespace Stock.Negocio
             catch (Exception ex)
             { }
             return _listaProveedores;
+        }
+
+        public static List<ListaStock> ListaDeStockPoridProdcuto(int idProducto)
+        {
+            List<ListaStock> _listaStock = new List<ListaStock>();
+            try
+            {
+                _listaStock = DAO.ConsultarDao.ListaDeStockPoridProdcuto(idProducto);
+            }
+            catch (Exception ex)
+            { }
+            return _listaStock;
+        }
+        public static List<ListaStockProducto> ListarStockProdcuto(int idProducto)
+        {
+            List<ListaStockProducto> _listaStock = new List<ListaStockProducto>();
+            try
+            {
+                _listaStock = DAO.ConsultarDao.ListarStockProdcuto(idProducto);
+            }
+            catch (Exception ex)
+            { }
+            return _listaStock;
         }
     }
 }

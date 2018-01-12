@@ -52,10 +52,42 @@ namespace Stock.DAO
             return lista;
         }
 
-        public static bool ValidarStockExistente(int idProducto)
+        public static List<ListaStock> ListarStock()
         {
             connection.Close();
-            bool Existe = false;
+            connection.Open();
+            List<ListaStock> _listaStocks = new List<ListaStock>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ListarStockGeneral";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaStock listaStock = new Entidades.ListaStock();
+                    listaStock.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    listaStock.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaStock.NombreProducto = item["txNombreProducto"].ToString();
+                    listaStock.Marca = item["txMarcaProducto"].ToString();
+                    listaStock.Cantidad = Convert.ToInt32(item["txCantidad"].ToString());
+                    listaStock.FechaIngreso = Convert.ToDateTime(item["dtFechaIngreso"].ToString());
+                    _listaStocks.Add(listaStock);
+                }
+            }
+            connection.Close();
+            return _listaStocks;
+        }
+
+        public static List<int> ValidarStockExistente(int idProducto)
+        {
+            connection.Close();
+            List<int> cantidad = new List<int>();
             connection.Open();
             List<Entidades.Marca> lista = new List<Entidades.Marca>();
             MySqlCommand cmd = new MySqlCommand();
@@ -70,12 +102,14 @@ namespace Stock.DAO
             dt.Fill(Tabla);
             if (Tabla.Rows.Count > 0)
             {
-                Existe = true;
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    cantidad.Add(Convert.ToInt32(item["txCantidad"].ToString()));
+                }
             }
             connection.Close();
-            return Existe;
+            return cantidad;
         }
-
         public static int BuscarProductoPorCodigo(string codigoProducto)
         {
             connection.Close();
@@ -101,6 +135,75 @@ namespace Stock.DAO
             connection.Close();
             return idProducto;
         }
+
+        public static List<ListaStockProducto> ListarStockProdcuto(int idProducto)
+        {
+            connection.Close();
+            connection.Open();
+            List<ListaStockProducto> _listaStocks = new List<ListaStockProducto>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("idProducto_in", idProducto) };
+            string proceso = "ListarStockProductoPorIdProducto";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaStockProducto listaStock = new Entidades.ListaStockProducto();
+                    listaStock.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    listaStock.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaStock.NombreProducto = item["txNombreProducto"].ToString();
+                    listaStock.Marca = item["txMarcaProducto"].ToString();
+                    listaStock.Cantidad = Convert.ToInt32(item["txCantidad"].ToString());
+                    listaStock.FechaAlta = Convert.ToDateTime(item["dtFechaAlta"].ToString());
+                    listaStock.idUsuarioCreador = Convert.ToInt32(item["idUsuario"].ToString());
+                    listaStock.PrecioVenta = Convert.ToDecimal(item["txPrecioDeVenta"].ToString());
+                    listaStock.Apellido = item["txApellido"].ToString();
+                    listaStock.Nombre = item["txNombre"].ToString();
+                    _listaStocks.Add(listaStock);
+                }
+            }
+            connection.Close();
+            return _listaStocks;
+        }
+
+        public static List<ListaStock> ListaDeStockPoridProdcuto(int idProducto)
+        {
+            connection.Close();
+            connection.Open();
+            List<ListaStock> _listaStocks = new List<ListaStock>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("idProducto_in", idProducto) };
+            string proceso = "ListarStockGeneralPorIdProducto";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaStock listaStock = new Entidades.ListaStock();
+                    listaStock.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    listaStock.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaStock.NombreProducto = item["txNombreProducto"].ToString();
+                    listaStock.Marca = item["txMarcaProducto"].ToString();
+                    listaStock.Cantidad = Convert.ToInt32(item["txCantidad"].ToString());
+                    listaStock.FechaIngreso = Convert.ToDateTime(item["dtFechaIngreso"].ToString());
+                    _listaStocks.Add(listaStock);
+                }
+            }
+            connection.Close();
+            return _listaStocks;
+        }
+
         public static List<string> CargarComboProveedor()
         {
             connection.Close();
