@@ -49,6 +49,7 @@ namespace Stock
                 lblUltimoMovimientos.Text = "Últimos Movimientos";
                 dataGridView1.RowHeadersVisible = false;
                 dataGridView1.DataSource = value;
+
                 dataGridView1.Columns[0].HeaderText = "idProducto";
                 dataGridView1.Columns[0].Width = 100;
                 dataGridView1.Columns[0].HeaderCell.Style.BackColor = Color.DarkBlue;
@@ -246,7 +247,6 @@ namespace Stock
                             Hide();
                         }
                     }
-
                 }
                 catch { }
             }
