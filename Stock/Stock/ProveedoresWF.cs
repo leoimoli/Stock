@@ -79,41 +79,46 @@ namespace Stock
         public static string urla;
         private void btnCargarImagen_Click_1(object sender, EventArgs e)
         {
-            string path = "";
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            DialogResult result = openFileDialog1.ShowDialog();
-            path = openFileDialog1.FileName;
-            if (path != "")
+            try
             {
-
-                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-                pictureBox1.Image = Image.FromFile(path);
-            }
-            if (result == DialogResult.OK)
-            {
-                byte[] Imagen = null;
-                using (MemoryStream ms = new MemoryStream())
+                string path = "";
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                DialogResult result = openFileDialog1.ShowDialog();
+                path = openFileDialog1.FileName;
+                if (path != "")
                 {
-                    //if (pictureBox1.Image.Width > 150 || pictureBox1.Image.Height > 145)
-                    //{
-                    //    MessageBox.Show("EL TAMAÑO DE LA IMAGEN SUPERA EL ANCHO(150) O EL LARGO(145) PERMITIDO");
-                    //    pictureBox1.Image = null;
-                    //    txtImagen.Clear();
-                    //}
-                    //else
-                    //{
-                    pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                    Imagen = ms.ToArray();
-                    //}
-                }
-            }
-            else
-            {
-                txtImagen.Text = path;
-                pictureBox1.ImageLocation = txtImagen.Text;
-            }
 
-            urla = path;
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                    var imagen = Image.FromFile(path);
+                    if (imagen.Size.Height > 1024 || imagen.Size.Width > 1024)
+                    {
+                        throw new Exception("EL TAMAÑO DE LA IMAGEN SUPERA EL PERMITIDO(1024x1024)");
+                    }
+                    pictureBox1.Image = Image.FromFile(path);
+                }
+                if (result == DialogResult.OK)
+                {
+                    byte[] Imagen = null;
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        Imagen = ms.ToArray();
+
+                    }
+                }
+                else
+                {
+                    txtImagen.Text = path;
+                    pictureBox1.ImageLocation = txtImagen.Text;
+                }
+
+                urla = path;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
         }
         private void ProveedorSeleccionado(int idProveedorGrilla)
         {
