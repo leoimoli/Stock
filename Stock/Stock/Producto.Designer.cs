@@ -36,6 +36,17 @@
             this.panel100 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.panelInformacion = new System.Windows.Forms.Panel();
+            this.EditUsuario_Creador = new System.Windows.Forms.Label();
+            this.EditFecha_Alta_Producto = new System.Windows.Forms.Label();
+            this.EditMarca_Producto = new System.Windows.Forms.Label();
+            this.EditNombre_Producto = new System.Windows.Forms.Label();
+            this.EditCódigo_Producto = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lblUsuarioEstadisticas = new System.Windows.Forms.Label();
             this.panel_Producto = new System.Windows.Forms.Panel();
@@ -59,6 +70,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel200.SuspendLayout();
             this.panel100.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panelInformacion.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel_Producto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -145,10 +158,144 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel6.Controls.Add(this.panelInformacion);
             this.panel6.Location = new System.Drawing.Point(325, 370);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(611, 187);
             this.panel6.TabIndex = 16;
+            // 
+            // panelInformacion
+            // 
+            this.panelInformacion.BackColor = System.Drawing.Color.LightBlue;
+            this.panelInformacion.Controls.Add(this.EditUsuario_Creador);
+            this.panelInformacion.Controls.Add(this.EditFecha_Alta_Producto);
+            this.panelInformacion.Controls.Add(this.EditMarca_Producto);
+            this.panelInformacion.Controls.Add(this.EditNombre_Producto);
+            this.panelInformacion.Controls.Add(this.EditCódigo_Producto);
+            this.panelInformacion.Controls.Add(this.label17);
+            this.panelInformacion.Controls.Add(this.label16);
+            this.panelInformacion.Controls.Add(this.label13);
+            this.panelInformacion.Controls.Add(this.label12);
+            this.panelInformacion.Controls.Add(this.label11);
+            this.panelInformacion.Location = new System.Drawing.Point(30, 18);
+            this.panelInformacion.Name = "panelInformacion";
+            this.panelInformacion.Size = new System.Drawing.Size(550, 150);
+            this.panelInformacion.TabIndex = 1;
+            // 
+            // EditUsuario_Creador
+            // 
+            this.EditUsuario_Creador.AutoSize = true;
+            this.EditUsuario_Creador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditUsuario_Creador.ForeColor = System.Drawing.Color.Black;
+            this.EditUsuario_Creador.Location = new System.Drawing.Point(401, 48);
+            this.EditUsuario_Creador.Name = "EditUsuario_Creador";
+            this.EditUsuario_Creador.Size = new System.Drawing.Size(102, 13);
+            this.EditUsuario_Creador.TabIndex = 36;
+            this.EditUsuario_Creador.Text = "Usuario Creador:";
+            this.EditUsuario_Creador.Visible = false;
+            // 
+            // EditFecha_Alta_Producto
+            // 
+            this.EditFecha_Alta_Producto.AutoSize = true;
+            this.EditFecha_Alta_Producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditFecha_Alta_Producto.ForeColor = System.Drawing.Color.Black;
+            this.EditFecha_Alta_Producto.Location = new System.Drawing.Point(401, 13);
+            this.EditFecha_Alta_Producto.Name = "EditFecha_Alta_Producto";
+            this.EditFecha_Alta_Producto.Size = new System.Drawing.Size(127, 13);
+            this.EditFecha_Alta_Producto.TabIndex = 35;
+            this.EditFecha_Alta_Producto.Text = "Fecha Alta Producto:";
+            this.EditFecha_Alta_Producto.Visible = false;
+            // 
+            // EditMarca_Producto
+            // 
+            this.EditMarca_Producto.AutoSize = true;
+            this.EditMarca_Producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditMarca_Producto.ForeColor = System.Drawing.Color.Black;
+            this.EditMarca_Producto.Location = new System.Drawing.Point(117, 75);
+            this.EditMarca_Producto.Name = "EditMarca_Producto";
+            this.EditMarca_Producto.Size = new System.Drawing.Size(101, 13);
+            this.EditMarca_Producto.TabIndex = 32;
+            this.EditMarca_Producto.Text = "Marca Producto:";
+            this.EditMarca_Producto.Visible = false;
+            // 
+            // EditNombre_Producto
+            // 
+            this.EditNombre_Producto.AutoSize = true;
+            this.EditNombre_Producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditNombre_Producto.ForeColor = System.Drawing.Color.Black;
+            this.EditNombre_Producto.Location = new System.Drawing.Point(117, 43);
+            this.EditNombre_Producto.Name = "EditNombre_Producto";
+            this.EditNombre_Producto.Size = new System.Drawing.Size(109, 13);
+            this.EditNombre_Producto.TabIndex = 31;
+            this.EditNombre_Producto.Text = "Nombre Producto:";
+            this.EditNombre_Producto.Visible = false;
+            // 
+            // EditCódigo_Producto
+            // 
+            this.EditCódigo_Producto.AutoSize = true;
+            this.EditCódigo_Producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditCódigo_Producto.ForeColor = System.Drawing.Color.Black;
+            this.EditCódigo_Producto.Location = new System.Drawing.Point(117, 13);
+            this.EditCódigo_Producto.Name = "EditCódigo_Producto";
+            this.EditCódigo_Producto.Size = new System.Drawing.Size(105, 13);
+            this.EditCódigo_Producto.TabIndex = 30;
+            this.EditCódigo_Producto.Text = "Código Producto:";
+            this.EditCódigo_Producto.Visible = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.Black;
+            this.label17.Location = new System.Drawing.Point(268, 13);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(127, 13);
+            this.label17.TabIndex = 29;
+            this.label17.Text = "Fecha Alta Producto:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.Black;
+            this.label16.Location = new System.Drawing.Point(293, 48);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(102, 13);
+            this.label16.TabIndex = 28;
+            this.label16.Text = "Usuario Creador:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(8, 75);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(101, 13);
+            this.label13.TabIndex = 25;
+            this.label13.Text = "Marca Producto:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(2, 43);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(109, 13);
+            this.label12.TabIndex = 24;
+            this.label12.Text = "Nombre Producto:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(6, 13);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(105, 13);
+            this.label11.TabIndex = 23;
+            this.label11.Text = "Código Producto:";
             // 
             // panel5
             // 
@@ -394,6 +541,9 @@
             this.panel200.PerformLayout();
             this.panel100.ResumeLayout(false);
             this.panel100.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panelInformacion.ResumeLayout(false);
+            this.panelInformacion.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel_Producto.ResumeLayout(false);
@@ -435,5 +585,16 @@
         private System.Windows.Forms.ComboBox cmbMarca;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button btnAgregarMarca;
+        private System.Windows.Forms.Panel panelInformacion;
+        private System.Windows.Forms.Label EditFecha_Alta_Producto;
+        private System.Windows.Forms.Label EditMarca_Producto;
+        private System.Windows.Forms.Label EditNombre_Producto;
+        private System.Windows.Forms.Label EditCódigo_Producto;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label EditUsuario_Creador;
     }
 }

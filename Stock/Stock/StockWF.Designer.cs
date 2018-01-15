@@ -80,6 +80,10 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.lblEstadisticas = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.txtNombreProducto = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtMarca = new System.Windows.Forms.TextBox();
             this.panel_CargarStock.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel200.SuspendLayout();
@@ -93,6 +97,10 @@
             // panel_CargarStock
             // 
             this.panel_CargarStock.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel_CargarStock.Controls.Add(this.txtMarca);
+            this.panel_CargarStock.Controls.Add(this.txtNombreProducto);
+            this.panel_CargarStock.Controls.Add(this.label18);
+            this.panel_CargarStock.Controls.Add(this.label19);
             this.panel_CargarStock.Controls.Add(this.txtReditoPorcentual);
             this.panel_CargarStock.Controls.Add(this.dtFechaVencimiento);
             this.panel_CargarStock.Controls.Add(this.label9);
@@ -123,7 +131,7 @@
             // 
             // txtReditoPorcentual
             // 
-            this.txtReditoPorcentual.Location = new System.Drawing.Point(418, 26);
+            this.txtReditoPorcentual.Location = new System.Drawing.Point(424, 111);
             this.txtReditoPorcentual.Mask = "000%";
             this.txtReditoPorcentual.Name = "txtReditoPorcentual";
             this.txtReditoPorcentual.Size = new System.Drawing.Size(170, 20);
@@ -142,7 +150,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(415, 49);
+            this.label9.Location = new System.Drawing.Point(421, 134);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(129, 17);
             this.label9.TabIndex = 30;
@@ -151,7 +159,7 @@
             // txtPrecioVenta
             // 
             this.txtPrecioVenta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtPrecioVenta.Location = new System.Drawing.Point(418, 67);
+            this.txtPrecioVenta.Location = new System.Drawing.Point(424, 152);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(170, 20);
             this.txtPrecioVenta.TabIndex = 15;
@@ -161,7 +169,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(415, 7);
+            this.label6.Location = new System.Drawing.Point(421, 92);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(143, 17);
             this.label6.TabIndex = 27;
@@ -199,14 +207,14 @@
             // cmbProveedor
             // 
             this.cmbProveedor.FormattingEnabled = true;
-            this.cmbProveedor.Location = new System.Drawing.Point(6, 110);
+            this.cmbProveedor.Location = new System.Drawing.Point(210, 68);
             this.cmbProveedor.Name = "cmbProveedor";
             this.cmbProveedor.Size = new System.Drawing.Size(170, 21);
             this.cmbProveedor.TabIndex = 8;
             // 
             // txtValorUni
             // 
-            this.txtValorUni.Location = new System.Drawing.Point(210, 25);
+            this.txtValorUni.Location = new System.Drawing.Point(424, 25);
             this.txtValorUni.Name = "txtValorUni";
             this.txtValorUni.Size = new System.Drawing.Size(170, 20);
             this.txtValorUni.TabIndex = 10;
@@ -266,7 +274,7 @@
             // txtCantidad
             // 
             this.txtCantidad.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCantidad.Location = new System.Drawing.Point(6, 67);
+            this.txtCantidad.Location = new System.Drawing.Point(210, 25);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(170, 20);
             this.txtCantidad.TabIndex = 7;
@@ -275,7 +283,7 @@
             // txtTotalCompra
             // 
             this.txtTotalCompra.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtTotalCompra.Location = new System.Drawing.Point(210, 67);
+            this.txtTotalCompra.Location = new System.Drawing.Point(424, 67);
             this.txtTotalCompra.Name = "txtTotalCompra";
             this.txtTotalCompra.Size = new System.Drawing.Size(170, 20);
             this.txtTotalCompra.TabIndex = 11;
@@ -293,7 +301,7 @@
             this.lblContraseña.AutoSize = true;
             this.lblContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContraseña.ForeColor = System.Drawing.Color.Black;
-            this.lblContraseña.Location = new System.Drawing.Point(207, 49);
+            this.lblContraseña.Location = new System.Drawing.Point(421, 49);
             this.lblContraseña.Name = "lblContraseña";
             this.lblContraseña.Size = new System.Drawing.Size(184, 17);
             this.lblContraseña.TabIndex = 5;
@@ -304,7 +312,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(207, 6);
+            this.label5.Location = new System.Drawing.Point(421, 6);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(113, 17);
             this.label5.TabIndex = 4;
@@ -315,7 +323,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(4, 90);
+            this.label4.Location = new System.Drawing.Point(208, 48);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(88, 17);
             this.label4.TabIndex = 3;
@@ -326,7 +334,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(4, 48);
+            this.label3.Location = new System.Drawing.Point(208, 6);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(95, 17);
             this.label3.TabIndex = 2;
@@ -660,6 +668,44 @@
             this.progressBar1.Value = 10;
             this.progressBar1.Visible = false;
             // 
+            // txtNombreProducto
+            // 
+            this.txtNombreProducto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNombreProducto.Location = new System.Drawing.Point(6, 68);
+            this.txtNombreProducto.Name = "txtNombreProducto";
+            this.txtNombreProducto.Size = new System.Drawing.Size(170, 20);
+            this.txtNombreProducto.TabIndex = 34;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.Black;
+            this.label18.Location = new System.Drawing.Point(4, 91);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(57, 17);
+            this.label18.TabIndex = 33;
+            this.label18.Text = "Marca:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Black;
+            this.label19.Location = new System.Drawing.Point(4, 49);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(139, 17);
+            this.label19.TabIndex = 32;
+            this.label19.Text = "Nombre Producto:";
+            // 
+            // txtMarca
+            // 
+            this.txtMarca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtMarca.Location = new System.Drawing.Point(6, 111);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(170, 20);
+            this.txtMarca.TabIndex = 35;
+            // 
             // StockWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -756,5 +802,9 @@
         private System.Windows.Forms.Label EditPrecio_de_Venta;
         private System.Windows.Forms.Label EditStock_Disponible;
         private System.Windows.Forms.Label EditMarca_Producto;
+        private System.Windows.Forms.TextBox txtNombreProducto;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox txtMarca;
     }
 }

@@ -130,6 +130,8 @@ namespace Stock.DAO
                 foreach (DataRow item in Tabla.Rows)
                 {
                     idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    //idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    //idProducto = Convert.ToInt32(item["idProducto"].ToString());
                 }
             }
             connection.Close();

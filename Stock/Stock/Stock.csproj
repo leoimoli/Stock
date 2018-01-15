@@ -150,6 +150,12 @@
     <Compile Include="UsuariosWF.Designer.cs">
       <DependentUpon>UsuariosWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="VentasWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentasWF.Designer.cs">
+      <DependentUpon>VentasWF.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ClientesWF.resx">
       <DependentUpon>ClientesWF.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UsuariosWF.resx">
       <DependentUpon>UsuariosWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentasWF.resx">
+      <DependentUpon>VentasWF.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Documentos\Diagrama_Stock.vsd" />
     <None Include="packages.config" />

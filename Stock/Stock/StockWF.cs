@@ -105,7 +105,8 @@ namespace Stock
             }
             if (txtTotalCompra.Text != "" & txtReditoPorcentual.Text != "   %")
             {
-                decimal totalCompraIngresada = Convert.ToDecimal(txtTotalCompra.Text);
+                //decimal totalCompraIngresada = Convert.ToDecimal(txtTotalCompra.Text);
+                decimal totalCompraIngresada = Convert.ToDecimal(txtValorUni.Text);
                 var split = txtReditoPorcentual.Text.Split('%')[0];
                 split = split.Trim();
                 decimal porcentaje = Convert.ToDecimal(split) / 100;
@@ -228,6 +229,10 @@ namespace Stock
                             lblEstadisticas.Text = "Información del producto ingresado";
                             lblInformacion.Visible = false;
                             var lista = _lista.First();
+                            txtMarca.Text = lista.Marca;
+                            txtNombreProducto.Text = lista.NombreProducto;
+                            txtMarca.Enabled = false;
+                            txtNombreProducto.Enabled = false;
                             HabilitarLabels();
                             EditCódigo_Producto.Text = lista.CodigoProducto;
                             EditNombre_Producto.Text = lista.NombreProducto;

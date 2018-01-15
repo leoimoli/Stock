@@ -92,7 +92,7 @@ namespace Stock
             _producto.CodigoProducto = txtCodigoProducto.Text;
             _producto.NombreProducto = txtNombreProducto.Text;
             _producto.MarcaProducto = cmbMarca.Text;
-            _producto.Descripcion = txtDescripcion.Text;
+            _producto.Descripcion = textBox2.Text;
             DateTime fechaActual = DateTime.Now;
             _producto.FechaDeAlta = fechaActual;
             _producto.idUsuario = idusuarioLogueado;
