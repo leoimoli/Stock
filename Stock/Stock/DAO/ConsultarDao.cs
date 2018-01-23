@@ -52,6 +52,41 @@ namespace Stock.DAO
             return lista;
         }
 
+        public static List<ListaProductoVenta> BuscarProductoParaVenta(string codigoProducto)
+        {
+            connection.Close();
+            connection.Open();
+            List<ListaProductoVenta> _lista = new List<ListaProductoVenta>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("codigoProducto_in", codigoProducto) };
+            string proceso = "BuscarProductoParaVenta";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaProductoVenta listaProducto = new Entidades.ListaProductoVenta();
+                    listaProducto.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    listaProducto.CodigoProducto = codigoProducto;
+                    listaProducto.NombreProducto = item["txNombreProducto"].ToString();
+                    listaProducto.PrecioUnitario = Convert.ToDecimal(item["txValorUnitario"].ToString());
+                    listaProducto.PrecioVenta = Convert.ToDecimal(item["txPrecioDeVenta"].ToString());
+                    if (item[3].ToString() != string.Empty)
+                    {
+                        listaProducto.Foto = (byte[])item["txFoto"];
+                    }
+                    _lista.Add(listaProducto);
+                }
+            }
+            connection.Close();
+            return _lista;
+        }
+
         public static List<ListaStock> ListarStock()
         {
             connection.Close();

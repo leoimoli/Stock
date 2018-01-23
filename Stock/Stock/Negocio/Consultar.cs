@@ -33,6 +33,18 @@ namespace Stock.Negocio
             return _listaStock;
         }
 
+        public static List<ListaProductoVenta> BuscarProductoParaVenta(string codigoProducto)
+        {
+            List<ListaProductoVenta> _lista = new List<ListaProductoVenta>();
+            try
+            {
+                _lista = DAO.ConsultarDao.BuscarProductoParaVenta(codigoProducto);
+            }
+            catch (Exception ex)
+            { }
+            return _lista;
+        }
+
         public static int BuscarProductoPorCodigo(string codigoProducto)
         {
             int idProducto = 0;
