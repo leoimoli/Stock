@@ -16,10 +16,11 @@ namespace Stock
         {
             InitializeComponent();
         }
-
         private void VentasWF_Load(object sender, EventArgs e)
         {
             listaProductos = new List<Entidades.ListaProductoVenta>();
+            dgvVentas.RowHeadersVisible = false;
+            dgvVentas.ReadOnly = true;
         }
         public static List<Entidades.ListaProductoVenta> listaProductos;
         private void txtCodigo_KeyDown(object sender, KeyEventArgs e)
@@ -33,14 +34,11 @@ namespace Stock
 
                     if (!listaProductos.Any(x => x.CodigoProducto == codigoProducto))
                     {
-                        int cantidadingresada = 1;
-                        if (txtCantidad.Text != "")
-                        {
-                            cantidadingresada = Convert.ToInt32(txtCantidad.Text);
-                        }
                         _lista = Negocio.Consultar.BuscarProductoParaVenta(codigoProducto);
                         if (_lista.Count > 0)
                         {
+                            int cantidadingresada = 1;
+                            _lista[0].Cantidad = cantidadingresada;
                             var lista = _lista.First();
                             listaProductos.Add(lista);
                             decimal PrecioFinal = lista.PrecioVenta * cantidadingresada;
@@ -68,6 +66,7 @@ namespace Stock
                                 int CantidadOld = Convert.ToInt32(row.Cells[2].Value.ToString());
                                 int CantidadNew = Convert.ToInt32(cantidadingresada.ToString());
                                 int cantidad = CantidadOld + CantidadNew;
+                                listaProductos[row.Index].Cantidad = cantidad;
                                 row.Cells[2].Value = cantidad;
                                 decimal ValorVenta = Convert.ToDecimal(row.Cells[3].Value.ToString());
                                 decimal PrecioFinal = cantidad * ValorVenta;
@@ -85,6 +84,43 @@ namespace Stock
                 }
                 catch (Exception ex)
                 { }
+            }
+        }
+        private void btnCobrar_Click(object sender, EventArgs e)
+        {
+            if (listaProductos.Count > 0)
+            {
+                int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
+                int idusuario = idusuarioLogueado;
+                listaProductos[0].PrecioVentaFinal = Convert.ToDecimal(lblTotalPagarReal.Text);
+                bool Exito = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
+                if (Exito == true)
+                {
+                    //MessageBox.Show("SE REGISTRO EL COBRO EXITOSAMENTE.");
+                    BloquearPantalla();
+                }
+            }
+        }
+        private void BloquearPantalla()
+        {
+            //dgvVentas.Enabled = false;
+            panel1.Enabled = false;
+            panel2.Enabled = false;
+            dgvVentas.Focus();
+
+        }
+        private void dgvVentas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Back)
+            {
+                panel1.Enabled = true;
+                panel2.Enabled = true;
+                lblTotalPagarReal.Visible = false;
+                label3.Visible = false;
+                lblNombreProducto.Visible = false;
+                txtCodigo.Clear();
+                dgvVentas.DataSource = null;
+                pictureBox1.Visible = false;
             }
         }
     }

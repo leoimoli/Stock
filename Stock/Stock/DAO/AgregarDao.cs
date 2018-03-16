@@ -13,9 +13,82 @@ namespace Stock.DAO
     public class AgregarDao
     {
         private static MySql.Data.MySqlClient.MySqlConnection connection = new MySqlConnection(Properties.Settings.Default.db);
+
+        public static bool InsertVenta(List<ListaProductoVenta> listaProductos, int idUsuario)
+        {
+            bool exito = false;
+            int idUltimoVenta = 0;
+            connection.Close();
+            connection.Open();
+            var producto = listaProductos.First();
+            producto.Fecha = DateTime.Now;
+            string proceso = "AltaVenta";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("PrecioVentaFinal_in", producto.PrecioVentaFinal);
+            cmd.Parameters.AddWithValue("idUsuario_in", idUsuario);
+            cmd.Parameters.AddWithValue("Fecha_in", producto.Fecha);
+            //cmd.ExecuteNonQuery();
+            MySqlDataReader r = cmd.ExecuteReader();
+            while (r.Read())
+            {
+                idUltimoVenta = Convert.ToInt32(r["ID"].ToString());
+            }
+            if (idUltimoVenta > 0)
+            {
+                exito = RegistrarDetalleVenta(listaProductos, idUltimoVenta);
+            }
+            if (exito == true)
+            {
+                exito = ActualizarStockPorProductosVendidos(listaProductos);
+            }
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+
+        private static bool ActualizarStockPorProductosVendidos(List<ListaProductoVenta> listaProductos)
+        {
+            bool exito = false;
+            for (int i = 0; i < listaProductos.Count; i++)
+            {
+                connection.Close();
+                connection.Open();
+                string proceso = "ActualizarStock";
+                MySqlCommand cmd = new MySqlCommand(proceso, connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("idProducto_in", listaProductos[i].idProducto);
+                cmd.Parameters.AddWithValue("Cantidad_in", listaProductos[i].Cantidad);
+                cmd.ExecuteNonQuery();
+            }
+            return exito;
+        }
+
+        private static bool RegistrarDetalleVenta(List<ListaProductoVenta> listaProductos, int idUltimoVenta)
+        {
+            bool exito = false;
+            for (int i = 0; i < listaProductos.Count; i++)
+            {
+                connection.Close();
+                connection.Open();
+                string proceso = "RegistrarDetalleVenta";
+                MySqlCommand cmd = new MySqlCommand(proceso, connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("idUltimaVenta_in", idUltimoVenta);
+                cmd.Parameters.AddWithValue("idProducto_in", listaProductos[i].idProducto);
+                cmd.Parameters.AddWithValue("Cantidad_in", listaProductos[i].Cantidad);
+                cmd.Parameters.AddWithValue("PrecioUnitario_in", listaProductos[i].PrecioUnitario);
+                cmd.ExecuteNonQuery();
+            }
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+
         public static bool InsertUsuario(Usuarios _usuario)
         {
             bool exito = false;
+            connection.Close();
             connection.Open();
             string proceso = "AltaUsuario";
             MySqlCommand cmd = new MySqlCommand(proceso, connection);
@@ -43,7 +116,7 @@ namespace Stock.DAO
             stockExistente = DAO.ConsultarDao.ValidarStockExistente(_stock.idProducto);
             if (stockExistente.Count > 0)
             {
-                int cant =Convert.ToInt32(stockExistente[0].ToString());
+                int cant = Convert.ToInt32(stockExistente[0].ToString());
                 _stock.Cantidad = _stock.Cantidad + cant;
                 exito = DAO.EditarDao.ActualizarStock(_stock.idProducto, _stock.Cantidad);
             }

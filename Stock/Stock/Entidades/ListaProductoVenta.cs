@@ -11,9 +11,12 @@ namespace Stock.Entidades
         public int idProducto { get; set; }
         public string CodigoProducto { get; set; }
         public string NombreProducto { get; set; }
-        //public int Cantidad { get; set; }
+        public int Cantidad { get; set; }
         public decimal PrecioVenta { get; set; }
         public decimal PrecioUnitario { get; set; }
         public byte[] Foto { get; set; }
+        public decimal PrecioVentaFinal { get; set; }
+        //public int idUsuario { get; set; }
+        public DateTime Fecha { get; set; }
     }
 }

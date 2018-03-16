@@ -78,6 +78,7 @@
     <Compile Include="Entidades\Productos.cs" />
     <Compile Include="Entidades\Proveedores.cs" />
     <Compile Include="Entidades\ProveedorReducido.cs" />
+    <Compile Include="Entidades\ReducirStockProducto.cs" />
     <Compile Include="Entidades\Stock.cs" />
     <Compile Include="Entidades\StockReducido.cs" />
     <Compile Include="Entidades\UsuarioReducido.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Negocio\Proveedores.cs" />
     <Compile Include="Negocio\Stock.cs" />
     <Compile Include="Negocio\Usuario.cs" />
+    <Compile Include="Negocio\Ventas.cs" />
     <Compile Include="Producto.cs">
       <SubType>Form</SubType>
     </Compile>
