@@ -255,9 +255,24 @@
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Documentos\Base De Datos\Procedure\1%29LoginUsuario.txt" />
+    <None Include="Resources\Ventas1.png" />
+    <None Include="Resources\subir.png" />
+    <None Include="Resources\Nuevo Usuario.png" />
+    <None Include="Resources\Nuevo Proveedor.png" />
+    <None Include="Resources\Nuevo Producto.png" />
+    <None Include="Resources\Ventas.png" />
     <None Include="Resources\Buscar.png" />
     <None Include="Resources\buscar40X35.png" />
     <None Include="Resources\Agregar-2- 40X35.png" />
+    <None Include="Resources\Clientes_Nuevo.png" />
+    <None Include="Resources\empleado_Nuevo.png" />
+    <None Include="Resources\almacen_Nuevo.png" />
+    <None Include="Resources\codigo-de-barras_Nuevo.png" />
+    <None Include="Resources\hombre2_Nuevo.png" />
+    <None Include="Resources\Buscar_Nuevo.png" />
+    <None Include="Resources\Guardar.png" />
+    <None Include="Resources\Guardar1.png" />
+    <None Include="Resources\Eliminar.png" />
     <Content Include="Resources\login2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

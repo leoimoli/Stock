@@ -22,6 +22,7 @@ namespace Stock
         {
             try
             {
+                lblUltimoMovimientosProductos.Text = "Últimos Productos cargados";
                 List<Entidades.ProductoReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProductos());
                 ListaProductos = ListaReducidos;
             }
@@ -112,7 +113,7 @@ namespace Stock
             _producto.CodigoProducto = txtCodigoProducto.Text;
             _producto.NombreProducto = txtNombreProducto.Text;
             _producto.MarcaProducto = cmbMarca.Text;
-            _producto.Descripcion = txtDescripcion.Text;
+            _producto.Descripcion = textBox2.Text;
             byte[] Imagen = null;
             MemoryStream ms = new MemoryStream();
             if (pictureBox1.Image != null)
@@ -169,7 +170,7 @@ namespace Stock
         }
         private void HabilitarCamposProductoSeleccionado(List<Productos> _producto)
         {
-
+            lblHistorialProducto.Text = "Historial Producto";
             btnCargarImagen.Visible = true;
             btnGuardar.Visible = true;
             btnCancelar.Visible = true;
@@ -190,13 +191,18 @@ namespace Stock
             {
                 pictureBox1.Image = null;
             }
-            //lblFechaCreacion.Visible = true;
-            //lblFechaUltimaConexion.Visible = true;
-            //label6lblFechaCreacion_base.Visible = true;
-            //lblFechaUltimaConexion_base.Visible = true;
-            //label6lblFechaCreacion_base.Text = Convert.ToString(usuario.FechaDeAlta);
-            //lblFechaUltimaConexion_base.Text = Convert.ToString(usuario.FechaUltimaConexion);
-            //lblInformacion.Visible = false;
+            EditCódigo_Producto.Text = producto.CodigoProducto;
+            EditNombre_Producto.Text = producto.NombreProducto;
+            EditMarca_Producto.Text = producto.MarcaProducto;
+            EditUsuario_Creador.Text = producto.Usuario;
+            EditPrecioDeVenta_Producto.Text = Convert.ToString(producto.PrecioDeVenta);
+            EditFecha_Alta_Producto.Text = Convert.ToString(producto.FechaDeAlta);
+            EditCódigo_Producto.Visible = true;
+            EditNombre_Producto.Visible = true;
+            EditMarca_Producto.Visible = true;
+            EditUsuario_Creador.Visible = true;
+            EditFecha_Alta_Producto.Visible = true;
+            EditPrecioDeVenta_Producto.Visible = true;
         }
         #endregion
         #region Botones
@@ -246,6 +252,13 @@ namespace Stock
         }
         private void btnProducto_Click(object sender, EventArgs e)
         {
+            lblHistorialProducto.Text = "No hay información del producto para visualizar";
+            EditCódigo_Producto.Visible = false;
+            EditNombre_Producto.Visible = false;
+            EditMarca_Producto.Visible = false;
+            EditUsuario_Creador.Visible = false;
+            EditFecha_Alta_Producto.Visible = false;
+            EditPrecioDeVenta_Producto.Visible = false;
             idProductoGrilla = 0;
             txtCodigoProducto.Enabled = true;
             txtCodigoProducto.Focus();
@@ -332,8 +345,7 @@ namespace Stock
             { }
         }
 
+
         #endregion
-
-
     }
 }

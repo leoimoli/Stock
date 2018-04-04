@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lblUsuarioEstadisticas = new System.Windows.Forms.Label();
             this.panel_Proveedores = new System.Windows.Forms.Panel();
-            this.txtImagen = new System.Windows.Forms.TextBox();
             this.btnCargarImagen = new System.Windows.Forms.Button();
+            this.txtImagen = new System.Windows.Forms.TextBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtCodArea = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -48,13 +51,14 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtPersonaContacto = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.txtNombreEmpresa = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblapellidoNombreEditar = new System.Windows.Forms.Label();
             this.panel200 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.lblUltimoMovimientosProveedores = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
             this.txtBuscador = new System.Windows.Forms.TextBox();
@@ -62,6 +66,7 @@
             this.panel100 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel5.SuspendLayout();
             this.panel_Proveedores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -102,9 +107,11 @@
             // panel_Proveedores
             // 
             this.panel_Proveedores.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel_Proveedores.Controls.Add(this.txtImagen);
             this.panel_Proveedores.Controls.Add(this.btnCargarImagen);
+            this.panel_Proveedores.Controls.Add(this.txtImagen);
+            this.panel_Proveedores.Controls.Add(this.btnCancelar);
             this.panel_Proveedores.Controls.Add(this.pictureBox1);
+            this.panel_Proveedores.Controls.Add(this.btnGuardar);
             this.panel_Proveedores.Controls.Add(this.txtTelefono);
             this.panel_Proveedores.Controls.Add(this.txtCodArea);
             this.panel_Proveedores.Controls.Add(this.label8);
@@ -118,8 +125,6 @@
             this.panel_Proveedores.Controls.Add(this.label9);
             this.panel_Proveedores.Controls.Add(this.txtPersonaContacto);
             this.panel_Proveedores.Controls.Add(this.label11);
-            this.panel_Proveedores.Controls.Add(this.btnCancelar);
-            this.panel_Proveedores.Controls.Add(this.btnGuardar);
             this.panel_Proveedores.Controls.Add(this.txtNombreEmpresa);
             this.panel_Proveedores.Controls.Add(this.label12);
             this.panel_Proveedores.Enabled = false;
@@ -128,6 +133,19 @@
             this.panel_Proveedores.Size = new System.Drawing.Size(611, 220);
             this.panel_Proveedores.TabIndex = 20;
             // 
+            // btnCargarImagen
+            // 
+            this.btnCargarImagen.BackColor = System.Drawing.Color.Transparent;
+            this.btnCargarImagen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCargarImagen.Image = global::Stock.Properties.Resources.subir;
+            this.btnCargarImagen.Location = new System.Drawing.Point(56, 179);
+            this.btnCargarImagen.Name = "btnCargarImagen";
+            this.btnCargarImagen.Size = new System.Drawing.Size(49, 39);
+            this.btnCargarImagen.TabIndex = 98;
+            this.toolTip1.SetToolTip(this.btnCargarImagen, "Cargar Imagen");
+            this.btnCargarImagen.UseVisualStyleBackColor = false;
+            this.btnCargarImagen.Visible = false;
+            // 
             // txtImagen
             // 
             this.txtImagen.Location = new System.Drawing.Point(5, 155);
@@ -135,17 +153,19 @@
             this.txtImagen.Size = new System.Drawing.Size(150, 20);
             this.txtImagen.TabIndex = 57;
             // 
-            // btnCargarImagen
+            // btnCancelar
             // 
-            this.btnCargarImagen.BackColor = System.Drawing.Color.Silver;
-            this.btnCargarImagen.Location = new System.Drawing.Point(40, 188);
-            this.btnCargarImagen.Name = "btnCargarImagen";
-            this.btnCargarImagen.Size = new System.Drawing.Size(75, 23);
-            this.btnCargarImagen.TabIndex = 56;
-            this.btnCargarImagen.Text = "Cargar";
-            this.btnCargarImagen.UseVisualStyleBackColor = false;
-            this.btnCargarImagen.Visible = false;
-            this.btnCargarImagen.Click += new System.EventHandler(this.btnCargarImagen_Click_1);
+            this.btnCancelar.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.Image = global::Stock.Properties.Resources.Eliminar;
+            this.btnCancelar.Location = new System.Drawing.Point(293, 176);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(49, 39);
+            this.btnCancelar.TabIndex = 97;
+            this.toolTip1.SetToolTip(this.btnCancelar, "Cancelar");
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Visible = false;
             // 
             // pictureBox1
             // 
@@ -156,6 +176,19 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 55;
             this.pictureBox1.TabStop = false;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.Transparent;
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.Image = global::Stock.Properties.Resources.Guardar1;
+            this.btnGuardar.Location = new System.Drawing.Point(357, 176);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(49, 39);
+            this.btnGuardar.TabIndex = 96;
+            this.toolTip1.SetToolTip(this.btnGuardar, "Guardar");
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Visible = false;
             // 
             // txtTelefono
             // 
@@ -177,7 +210,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(362, 91);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(72, 17);
@@ -196,7 +229,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.ForeColor = System.Drawing.Color.White;
             this.label13.Location = new System.Drawing.Point(362, 51);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(51, 17);
@@ -215,7 +248,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Location = new System.Drawing.Point(362, 10);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(44, 17);
@@ -234,7 +267,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(158, 131);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 17);
@@ -253,7 +286,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(158, 91);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(47, 17);
@@ -272,35 +305,12 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(158, 51);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(160, 17);
             this.label11.TabIndex = 39;
             this.label11.Text = "Persona de Contacto";
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.Silver;
-            this.btnCancelar.Location = new System.Drawing.Point(272, 188);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 38;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Visible = false;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.Silver;
-            this.btnGuardar.Location = new System.Drawing.Point(377, 188);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 37;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Visible = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // txtNombreEmpresa
             // 
@@ -315,7 +325,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Location = new System.Drawing.Point(158, 10);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(132, 17);
@@ -345,6 +355,9 @@
             // panel200
             // 
             this.panel200.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel200.Controls.Add(this.label1);
+            this.panel200.Controls.Add(this.lblTotal);
+            this.panel200.Controls.Add(this.lblUltimoMovimientosProveedores);
             this.panel200.Controls.Add(this.dataGridView1);
             this.panel200.Controls.Add(this.label10);
             this.panel200.Controls.Add(this.txtBuscador);
@@ -354,13 +367,48 @@
             this.panel200.Size = new System.Drawing.Size(294, 455);
             this.panel200.TabIndex = 18;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(180, 431);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 17);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Total:";
+            this.label1.Visible = false;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.Color.White;
+            this.lblTotal.Location = new System.Drawing.Point(226, 431);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(50, 17);
+            this.lblTotal.TabIndex = 25;
+            this.lblTotal.Text = "Total:";
+            this.lblTotal.Visible = false;
+            // 
+            // lblUltimoMovimientosProveedores
+            // 
+            this.lblUltimoMovimientosProveedores.AutoSize = true;
+            this.lblUltimoMovimientosProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUltimoMovimientosProveedores.ForeColor = System.Drawing.Color.White;
+            this.lblUltimoMovimientosProveedores.Location = new System.Drawing.Point(6, 88);
+            this.lblUltimoMovimientosProveedores.Name = "lblUltimoMovimientosProveedores";
+            this.lblUltimoMovimientosProveedores.Size = new System.Drawing.Size(145, 17);
+            this.lblUltimoMovimientosProveedores.TabIndex = 22;
+            this.lblUltimoMovimientosProveedores.Text = "Lista Proveedores:";
+            // 
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.LightBlue;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 77);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 108);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(288, 375);
+            this.dataGridView1.Size = new System.Drawing.Size(288, 320);
             this.dataGridView1.TabIndex = 20;
             this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseEnter);
             this.dataGridView1.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseLeave);
@@ -370,7 +418,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(6, 3);
             this.label10.MaximumSize = new System.Drawing.Size(100, 0);
             this.label10.Name = "label10";
@@ -390,11 +438,11 @@
             // btnNuevoProveedor
             // 
             this.btnNuevoProveedor.BackColor = System.Drawing.Color.Silver;
+            this.btnNuevoProveedor.Image = global::Stock.Properties.Resources.Nuevo_Proveedor;
             this.btnNuevoProveedor.Location = new System.Drawing.Point(90, 40);
             this.btnNuevoProveedor.Name = "btnNuevoProveedor";
-            this.btnNuevoProveedor.Size = new System.Drawing.Size(100, 35);
+            this.btnNuevoProveedor.Size = new System.Drawing.Size(115, 35);
             this.btnNuevoProveedor.TabIndex = 13;
-            this.btnNuevoProveedor.Text = "Nuevo Proveedor";
             this.btnNuevoProveedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnNuevoProveedor.UseVisualStyleBackColor = false;
             this.btnNuevoProveedor.Click += new System.EventHandler(this.btnNuevoProveedor_Click);
@@ -490,8 +538,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtPersonaContacto;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.TextBox txtNombreEmpresa;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtTelefono;
@@ -502,9 +548,15 @@
         private System.Windows.Forms.TextBox txtCalle;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtImagen;
-        private System.Windows.Forms.Button btnCargarImagen;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label lblUltimoMovimientosProveedores;
+        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Button btnCargarImagen;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

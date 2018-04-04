@@ -196,10 +196,10 @@ namespace Stock.DAO
                     listaStock.CodigoProducto = item["txCodigoProducto"].ToString();
                     listaStock.NombreProducto = item["txNombreProducto"].ToString();
                     listaStock.Marca = item["txMarcaProducto"].ToString();
-                    listaStock.Cantidad = Convert.ToInt32(item["txCantidad"].ToString());
+                    listaStock.Cantidad = String.IsNullOrEmpty(item["txCantidad"].ToString()) ? 0 : Convert.ToInt32(item["txCantidad"].ToString());
                     listaStock.FechaAlta = Convert.ToDateTime(item["dtFechaAlta"].ToString());
                     listaStock.idUsuarioCreador = Convert.ToInt32(item["idUsuario"].ToString());
-                    listaStock.PrecioVenta = Convert.ToDecimal(item["txPrecioDeVenta"].ToString());
+                    listaStock.PrecioVenta = String.IsNullOrEmpty(item["txPrecioDeVenta"].ToString()) ? 0 : Convert.ToDecimal(item["txPrecioDeVenta"].ToString());
                     listaStock.Apellido = item["txApellido"].ToString();
                     listaStock.Nombre = item["txNombre"].ToString();
                     _listaStocks.Add(listaStock);
@@ -460,11 +460,9 @@ namespace Stock.DAO
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
             dt.Fill(Tabla);
-            //DataSet ds = new DataSet();
-            //dt.Fill(ds, "usuarios");
             if (Tabla.Rows.Count > 0)
             {
-                //foreach (DataRow item in ds.Tables[0].Rows)
+
                 foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.Productos listaProducto = new Entidades.Productos();
@@ -477,6 +475,12 @@ namespace Stock.DAO
                     {
                         listaProducto.Foto = (byte[])item["txFoto"];
                     }
+                    //listaUsuario.CantidadVentasDelMes = String.IsNullOrEmpty(item["TotalVentas"].ToString()) ? 0 : Convert.ToInt32(item["TotalVentas"].ToString());
+                    listaProducto.PrecioDeVenta = String.IsNullOrEmpty(item["txPrecioDeVenta"].ToString()) ? 0 : Convert.ToDecimal(item["txPrecioDeVenta"].ToString());
+                    listaProducto.FechaDeAlta = Convert.ToDateTime(item["dtFechaAlta"].ToString());
+                    var apellido = item["txApellido"].ToString();
+                    var nombre = item["txNombre"].ToString();
+                    listaProducto.Usuario = apellido + " " + nombre;
                     lista.Add(listaProducto);
                 }
             }
@@ -592,6 +596,9 @@ namespace Stock.DAO
                     listaUsuario.Contraseña = item["txContrasena"].ToString();
                     listaUsuario.Estado = item["txEstado"].ToString();
                     listaUsuario.Perfil = item["txPerfil"].ToString();
+                    listaUsuario.NroLote = String.IsNullOrEmpty(item["ultimoLote"].ToString()) ? 0 : Convert.ToInt32(item["ultimoLote"].ToString());
+                    listaUsuario.CantidadVentasDelMes = String.IsNullOrEmpty(item["TotalVentas"].ToString()) ? 0 : Convert.ToInt32(item["TotalVentas"].ToString());
+                    listaUsuario.EfectivoVentasDelMes = String.IsNullOrEmpty(item["efectivoVentas"].ToString()) ? 0 : Convert.ToDecimal(item["efectivoVentas"].ToString());
                     if (item[10].ToString() != string.Empty)
                     {
                         listaUsuario.Foto = (byte[])item["txFoto"];

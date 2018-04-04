@@ -60,7 +60,7 @@
             this.button3.BackColor = System.Drawing.Color.MidnightBlue;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Image = global::Stock.Properties.Resources.estadistica;
+            this.button3.Image = global::Stock.Properties.Resources.Buscar_Nuevo;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.Location = new System.Drawing.Point(613, 147);
             this.button3.Name = "button3";
@@ -76,22 +76,23 @@
             this.button4.BackColor = System.Drawing.Color.MidnightBlue;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Image = global::Stock.Properties.Resources.Clientes;
+            this.button4.Image = global::Stock.Properties.Resources.Ventas;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button4.Location = new System.Drawing.Point(326, 147);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(181, 82);
             this.button4.TabIndex = 13;
-            this.button4.Text = "Clientes";
+            this.button4.Text = "Ventas";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.MidnightBlue;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Image = global::Stock.Properties.Resources.empleado;
+            this.button5.Image = global::Stock.Properties.Resources.empleado_Nuevo;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button5.Location = new System.Drawing.Point(29, 147);
             this.button5.Name = "button5";
@@ -107,7 +108,7 @@
             this.button2.BackColor = System.Drawing.Color.MidnightBlue;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = global::Stock.Properties.Resources.almacen;
+            this.button2.Image = global::Stock.Properties.Resources.almacen_Nuevo;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.Location = new System.Drawing.Point(613, 19);
             this.button2.Name = "button2";
@@ -123,7 +124,7 @@
             this.button1.BackColor = System.Drawing.Color.MidnightBlue;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = global::Stock.Properties.Resources.codigo_de_barras;
+            this.button1.Image = global::Stock.Properties.Resources.codigo_de_barras_Nuevo;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(326, 19);
             this.button1.Name = "button1";
@@ -139,7 +140,7 @@
             this.btnUsuarios.BackColor = System.Drawing.Color.MidnightBlue;
             this.btnUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUsuarios.ForeColor = System.Drawing.Color.White;
-            this.btnUsuarios.Image = global::Stock.Properties.Resources.hombre2;
+            this.btnUsuarios.Image = global::Stock.Properties.Resources.hombre2_Nuevo;
             this.btnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUsuarios.Location = new System.Drawing.Point(29, 19);
             this.btnUsuarios.Name = "btnUsuarios";

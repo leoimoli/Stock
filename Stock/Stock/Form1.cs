@@ -53,5 +53,12 @@ namespace Stock
             _ventas.Show();
             Hide();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            VentasWF _ventas = new VentasWF();
+            _ventas.Show();
+            Hide();
+        }
     }
 }

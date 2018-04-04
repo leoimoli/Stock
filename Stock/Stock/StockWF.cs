@@ -273,6 +273,5 @@ namespace Stock
             CalcularCostos();
         }
         #endregion
-
     }
 }

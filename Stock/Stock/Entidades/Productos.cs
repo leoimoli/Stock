@@ -15,6 +15,8 @@ namespace Stock.Entidades
         public string Descripcion { get; set; }
         public DateTime FechaDeAlta { get; set; }
         public int idUsuario { get; set; }
+        public string Usuario { get; set; }
         public byte[] Foto { get; set; }
+        public decimal PrecioDeVenta { get; set; }
     }
 }

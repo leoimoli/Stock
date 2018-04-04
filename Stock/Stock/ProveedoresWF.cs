@@ -167,8 +167,10 @@ namespace Stock
                 dataGridView1.ColumnHeadersVisible = false;
                 dataGridView1.RowHeadersVisible = false;
                 dataGridView1.DataSource = value;
-                //dataGridView1.AutoGenerateColumns = true;
-                //dataGridView1.sty
+                var contadortotal = value.Count;
+                lblTotal.Visible = true;
+                label1.Visible = true;
+                lblTotal.Text = Convert.ToString(contadortotal);
 
                 dataGridView1.Columns[0].HeaderText = "id Usuario";
                 dataGridView1.Columns[0].Width = 100;

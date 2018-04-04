@@ -18,6 +18,7 @@ namespace Stock
         }
         private void VentasWF_Load(object sender, EventArgs e)
         {
+            txtCodigo.Focus();
             listaProductos = new List<Entidades.ListaProductoVenta>();
             dgvVentas.RowHeadersVisible = false;
             dgvVentas.ReadOnly = true;
@@ -107,7 +108,6 @@ namespace Stock
             panel1.Enabled = false;
             panel2.Enabled = false;
             dgvVentas.Focus();
-
         }
         private void dgvVentas_KeyDown(object sender, KeyEventArgs e)
         {
@@ -115,12 +115,16 @@ namespace Stock
             {
                 panel1.Enabled = true;
                 panel2.Enabled = true;
-                lblTotalPagarReal.Visible = false;
-                label3.Visible = false;
-                lblNombreProducto.Visible = false;
+                lblTotalPagarReal.Text = "0";
+                label3.Text = "0";
+                lblNombreProducto.Text = "Nuevo Producto";
                 txtCodigo.Clear();
-                dgvVentas.DataSource = null;
-                pictureBox1.Visible = false;
+                dgvVentas.Rows.Clear();
+                txtCodigo.Focus();
+                listaProductos = new List<Entidades.ListaProductoVenta>();
+                dgvVentas.RowHeadersVisible = false;
+                dgvVentas.ReadOnly = true;
+                pictureBox1.Image = null;
             }
         }
     }

@@ -28,10 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel100 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel200 = new System.Windows.Forms.Panel();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblUltimoMovimientosUsuarios = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txtDniBuscar = new System.Windows.Forms.TextBox();
@@ -40,6 +44,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblapellidoNombreEditar = new System.Windows.Forms.Label();
             this.panel_CargaUsuario = new System.Windows.Forms.Panel();
+            this.btnCargarImagen = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.lblEstado = new System.Windows.Forms.Label();
@@ -49,9 +56,6 @@
             this.txtRepiteContraseña = new System.Windows.Forms.TextBox();
             this.lblRepitaContraseña = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnCargarImagen = new System.Windows.Forms.Button();
             this.dtFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -67,11 +71,19 @@
             this.lblUsuarioEstadisticas = new System.Windows.Forms.Label();
             this.lblInformacion = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.panelInformacion = new System.Windows.Forms.Panel();
+            this.lblUltimoLoteIngresado = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblVentasRealizadas = new System.Windows.Forms.Label();
+            this.lblIngresoRecaudado = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.lblFechaUltimaConexion_base = new System.Windows.Forms.Label();
             this.label6lblFechaCreacion_base = new System.Windows.Forms.Label();
-            this.lblFechaUltimaConexion = new System.Windows.Forms.Label();
             this.lblFechaCreacion = new System.Windows.Forms.Label();
+            this.lblFechaUltimaConexion = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel100.SuspendLayout();
             this.panel200.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -80,6 +92,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panelInformacion.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel100
@@ -117,6 +130,9 @@
             // panel200
             // 
             this.panel200.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel200.Controls.Add(this.lblTotal);
+            this.panel200.Controls.Add(this.label6);
+            this.panel200.Controls.Add(this.lblUltimoMovimientosUsuarios);
             this.panel200.Controls.Add(this.btnBuscar);
             this.panel200.Controls.Add(this.label10);
             this.panel200.Controls.Add(this.txtDniBuscar);
@@ -127,8 +143,46 @@
             this.panel200.Size = new System.Drawing.Size(294, 455);
             this.panel200.TabIndex = 2;
             // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.Color.White;
+            this.lblTotal.Location = new System.Drawing.Point(226, 425);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(50, 17);
+            this.lblTotal.TabIndex = 23;
+            this.lblTotal.Text = "Total:";
+            this.lblTotal.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(180, 425);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 17);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Total:";
+            this.label6.Visible = false;
+            // 
+            // lblUltimoMovimientosUsuarios
+            // 
+            this.lblUltimoMovimientosUsuarios.AutoSize = true;
+            this.lblUltimoMovimientosUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUltimoMovimientosUsuarios.ForeColor = System.Drawing.Color.White;
+            this.lblUltimoMovimientosUsuarios.Location = new System.Drawing.Point(3, 82);
+            this.lblUltimoMovimientosUsuarios.Name = "lblUltimoMovimientosUsuarios";
+            this.lblUltimoMovimientosUsuarios.Size = new System.Drawing.Size(117, 17);
+            this.lblUltimoMovimientosUsuarios.TabIndex = 21;
+            this.lblUltimoMovimientosUsuarios.Text = "Lista Usuarios:";
+            // 
             // btnBuscar
             // 
+            this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBuscar.BackColor = System.Drawing.Color.SteelBlue;
             this.btnBuscar.Image = global::Stock.Properties.Resources.buscar40X35;
             this.btnBuscar.Location = new System.Drawing.Point(236, 6);
@@ -142,7 +196,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(17, 11);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(37, 17);
@@ -159,11 +213,11 @@
             // btnNuevoUsuario
             // 
             this.btnNuevoUsuario.BackColor = System.Drawing.Color.Silver;
+            this.btnNuevoUsuario.Image = global::Stock.Properties.Resources.Nuevo_Usuario;
             this.btnNuevoUsuario.Location = new System.Drawing.Point(88, 35);
             this.btnNuevoUsuario.Name = "btnNuevoUsuario";
-            this.btnNuevoUsuario.Size = new System.Drawing.Size(100, 40);
+            this.btnNuevoUsuario.Size = new System.Drawing.Size(113, 33);
             this.btnNuevoUsuario.TabIndex = 14;
-            this.btnNuevoUsuario.Text = "Nuevo Usuario";
             this.btnNuevoUsuario.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnNuevoUsuario.UseVisualStyleBackColor = false;
             this.btnNuevoUsuario.Click += new System.EventHandler(this.btnNuevoUsuario_Click);
@@ -172,9 +226,9 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.LightBlue;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 76);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 102);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(288, 375);
+            this.dataGridView1.Size = new System.Drawing.Size(288, 320);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseEnter);
             this.dataGridView1.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseLeave);
@@ -203,6 +257,9 @@
             // panel_CargaUsuario
             // 
             this.panel_CargaUsuario.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel_CargaUsuario.Controls.Add(this.btnCargarImagen);
+            this.panel_CargaUsuario.Controls.Add(this.btnCancelar);
+            this.panel_CargaUsuario.Controls.Add(this.btnGuardar);
             this.panel_CargaUsuario.Controls.Add(this.checkBox2);
             this.panel_CargaUsuario.Controls.Add(this.checkBox1);
             this.panel_CargaUsuario.Controls.Add(this.lblEstado);
@@ -212,9 +269,6 @@
             this.panel_CargaUsuario.Controls.Add(this.txtRepiteContraseña);
             this.panel_CargaUsuario.Controls.Add(this.lblRepitaContraseña);
             this.panel_CargaUsuario.Controls.Add(this.label8);
-            this.panel_CargaUsuario.Controls.Add(this.btnCancelar);
-            this.panel_CargaUsuario.Controls.Add(this.btnGuardar);
-            this.panel_CargaUsuario.Controls.Add(this.btnCargarImagen);
             this.panel_CargaUsuario.Controls.Add(this.dtFechaNacimiento);
             this.panel_CargaUsuario.Controls.Add(this.txtApellido);
             this.panel_CargaUsuario.Controls.Add(this.txtNombre);
@@ -230,6 +284,46 @@
             this.panel_CargaUsuario.Name = "panel_CargaUsuario";
             this.panel_CargaUsuario.Size = new System.Drawing.Size(611, 220);
             this.panel_CargaUsuario.TabIndex = 4;
+            // 
+            // btnCargarImagen
+            // 
+            this.btnCargarImagen.BackColor = System.Drawing.Color.Transparent;
+            this.btnCargarImagen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCargarImagen.Image = global::Stock.Properties.Resources.subir;
+            this.btnCargarImagen.Location = new System.Drawing.Point(50, 178);
+            this.btnCargarImagen.Name = "btnCargarImagen";
+            this.btnCargarImagen.Size = new System.Drawing.Size(49, 39);
+            this.btnCargarImagen.TabIndex = 33;
+            this.toolTip1.SetToolTip(this.btnCargarImagen, "Cargar Imagen");
+            this.btnCargarImagen.UseVisualStyleBackColor = false;
+            this.btnCargarImagen.Visible = false;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.Image = global::Stock.Properties.Resources.Eliminar;
+            this.btnCancelar.Location = new System.Drawing.Point(497, 175);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(49, 39);
+            this.btnCancelar.TabIndex = 32;
+            this.toolTip1.SetToolTip(this.btnCancelar, "Cancelar");
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Visible = false;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.Transparent;
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.Image = global::Stock.Properties.Resources.Guardar1;
+            this.btnGuardar.Location = new System.Drawing.Point(549, 175);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(49, 39);
+            this.btnGuardar.TabIndex = 31;
+            this.toolTip1.SetToolTip(this.btnGuardar, "Guardar");
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Visible = false;
             // 
             // checkBox2
             // 
@@ -261,7 +355,7 @@
             // 
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstado.ForeColor = System.Drawing.Color.Black;
+            this.lblEstado.ForeColor = System.Drawing.Color.White;
             this.lblEstado.Location = new System.Drawing.Point(264, 175);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(63, 17);
@@ -281,7 +375,7 @@
             // 
             this.lblPerfil.AutoSize = true;
             this.lblPerfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPerfil.ForeColor = System.Drawing.Color.Black;
+            this.lblPerfil.ForeColor = System.Drawing.Color.White;
             this.lblPerfil.Location = new System.Drawing.Point(258, 152);
             this.lblPerfil.Name = "lblPerfil";
             this.lblPerfil.Size = new System.Drawing.Size(69, 17);
@@ -290,7 +384,7 @@
             // 
             // txtImagen
             // 
-            this.txtImagen.Location = new System.Drawing.Point(8, 165);
+            this.txtImagen.Location = new System.Drawing.Point(8, 156);
             this.txtImagen.Name = "txtImagen";
             this.txtImagen.Size = new System.Drawing.Size(150, 20);
             this.txtImagen.TabIndex = 18;
@@ -308,7 +402,7 @@
             // 
             this.lblRepitaContraseña.AutoSize = true;
             this.lblRepitaContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRepitaContraseña.ForeColor = System.Drawing.Color.Black;
+            this.lblRepitaContraseña.ForeColor = System.Drawing.Color.White;
             this.lblRepitaContraseña.Location = new System.Drawing.Point(161, 128);
             this.lblRepitaContraseña.Name = "lblRepitaContraseña";
             this.lblRepitaContraseña.Size = new System.Drawing.Size(166, 17);
@@ -319,48 +413,12 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(272, 4);
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(273, 2);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 17);
             this.label8.TabIndex = 15;
             this.label8.Text = "Dni(*):";
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.Silver;
-            this.btnCancelar.Location = new System.Drawing.Point(330, 195);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 15;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Visible = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.Silver;
-            this.btnGuardar.Location = new System.Drawing.Point(425, 195);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 14;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Visible = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnCargarImagen
-            // 
-            this.btnCargarImagen.BackColor = System.Drawing.Color.Silver;
-            this.btnCargarImagen.Location = new System.Drawing.Point(39, 195);
-            this.btnCargarImagen.Name = "btnCargarImagen";
-            this.btnCargarImagen.Size = new System.Drawing.Size(75, 23);
-            this.btnCargarImagen.TabIndex = 13;
-            this.btnCargarImagen.Text = "Cargar";
-            this.btnCargarImagen.UseVisualStyleBackColor = false;
-            this.btnCargarImagen.Visible = false;
-            this.btnCargarImagen.Click += new System.EventHandler(this.btnCargarImagen_Click);
             // 
             // dtFechaNacimiento
             // 
@@ -372,7 +430,7 @@
             // txtApellido
             // 
             this.txtApellido.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtApellido.Location = new System.Drawing.Point(327, 25);
+            this.txtApellido.Location = new System.Drawing.Point(328, 26);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(170, 20);
             this.txtApellido.TabIndex = 7;
@@ -396,7 +454,7 @@
             // 
             // txtDni
             // 
-            this.txtDni.Location = new System.Drawing.Point(327, 2);
+            this.txtDni.Location = new System.Drawing.Point(328, 0);
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(170, 20);
             this.txtDni.TabIndex = 6;
@@ -405,7 +463,7 @@
             // 
             this.lblContraseña.AutoSize = true;
             this.lblContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContraseña.ForeColor = System.Drawing.Color.Black;
+            this.lblContraseña.ForeColor = System.Drawing.Color.White;
             this.lblContraseña.Location = new System.Drawing.Point(213, 102);
             this.lblContraseña.Name = "lblContraseña";
             this.lblContraseña.Size = new System.Drawing.Size(114, 17);
@@ -416,7 +474,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(164, 76);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(163, 17);
@@ -427,7 +485,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(240, 50);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 17);
@@ -438,8 +496,8 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(238, 28);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(239, 29);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 17);
             this.label3.TabIndex = 2;
@@ -448,7 +506,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pictureBox1.Location = new System.Drawing.Point(8, 16);
+            this.pictureBox1.Location = new System.Drawing.Point(8, 7);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(150, 145);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -501,24 +559,111 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel6.Controls.Add(this.lblFechaUltimaConexion_base);
-            this.panel6.Controls.Add(this.label6lblFechaCreacion_base);
-            this.panel6.Controls.Add(this.lblFechaUltimaConexion);
-            this.panel6.Controls.Add(this.lblFechaCreacion);
+            this.panel6.Controls.Add(this.panelInformacion);
             this.panel6.Enabled = false;
             this.panel6.Location = new System.Drawing.Point(316, 369);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(611, 187);
             this.panel6.TabIndex = 6;
             // 
+            // panelInformacion
+            // 
+            this.panelInformacion.BackColor = System.Drawing.Color.LightBlue;
+            this.panelInformacion.Controls.Add(this.lblUltimoLoteIngresado);
+            this.panelInformacion.Controls.Add(this.label13);
+            this.panelInformacion.Controls.Add(this.lblVentasRealizadas);
+            this.panelInformacion.Controls.Add(this.lblIngresoRecaudado);
+            this.panelInformacion.Controls.Add(this.label11);
+            this.panelInformacion.Controls.Add(this.label12);
+            this.panelInformacion.Controls.Add(this.lblFechaUltimaConexion_base);
+            this.panelInformacion.Controls.Add(this.label6lblFechaCreacion_base);
+            this.panelInformacion.Controls.Add(this.lblFechaCreacion);
+            this.panelInformacion.Controls.Add(this.lblFechaUltimaConexion);
+            this.panelInformacion.Location = new System.Drawing.Point(30, 18);
+            this.panelInformacion.Name = "panelInformacion";
+            this.panelInformacion.Size = new System.Drawing.Size(550, 150);
+            this.panelInformacion.TabIndex = 2;
+            // 
+            // lblUltimoLoteIngresado
+            // 
+            this.lblUltimoLoteIngresado.AutoSize = true;
+            this.lblUltimoLoteIngresado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUltimoLoteIngresado.ForeColor = System.Drawing.Color.Black;
+            this.lblUltimoLoteIngresado.Location = new System.Drawing.Point(467, 12);
+            this.lblUltimoLoteIngresado.Name = "lblUltimoLoteIngresado";
+            this.lblUltimoLoteIngresado.Size = new System.Drawing.Size(19, 13);
+            this.lblUltimoLoteIngresado.TabIndex = 10;
+            this.lblUltimoLoteIngresado.Text = "@";
+            this.lblUltimoLoteIngresado.Visible = false;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(336, 12);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(134, 13);
+            this.label13.TabIndex = 9;
+            this.label13.Text = "Último Lote ingresado:";
+            this.label13.Visible = false;
+            // 
+            // lblVentasRealizadas
+            // 
+            this.lblVentasRealizadas.AutoSize = true;
+            this.lblVentasRealizadas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVentasRealizadas.ForeColor = System.Drawing.Color.Black;
+            this.lblVentasRealizadas.Location = new System.Drawing.Point(169, 73);
+            this.lblVentasRealizadas.Name = "lblVentasRealizadas";
+            this.lblVentasRealizadas.Size = new System.Drawing.Size(19, 13);
+            this.lblVentasRealizadas.TabIndex = 8;
+            this.lblVentasRealizadas.Text = "@";
+            this.lblVentasRealizadas.Visible = false;
+            // 
+            // lblIngresoRecaudado
+            // 
+            this.lblIngresoRecaudado.AutoSize = true;
+            this.lblIngresoRecaudado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIngresoRecaudado.ForeColor = System.Drawing.Color.Black;
+            this.lblIngresoRecaudado.Location = new System.Drawing.Point(169, 105);
+            this.lblIngresoRecaudado.Name = "lblIngresoRecaudado";
+            this.lblIngresoRecaudado.Size = new System.Drawing.Size(19, 13);
+            this.lblIngresoRecaudado.TabIndex = 7;
+            this.lblIngresoRecaudado.Text = "@";
+            this.lblIngresoRecaudado.Visible = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(-1, 73);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(170, 13);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Cantidad Ventas Realizadas:";
+            this.label11.Visible = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(48, 105);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(122, 13);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "Ingreso Recaudado:";
+            this.label12.Visible = false;
+            // 
             // lblFechaUltimaConexion_base
             // 
             this.lblFechaUltimaConexion_base.AutoSize = true;
-            this.lblFechaUltimaConexion_base.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaUltimaConexion_base.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaUltimaConexion_base.ForeColor = System.Drawing.Color.Black;
-            this.lblFechaUltimaConexion_base.Location = new System.Drawing.Point(212, 32);
+            this.lblFechaUltimaConexion_base.Location = new System.Drawing.Point(169, 43);
             this.lblFechaUltimaConexion_base.Name = "lblFechaUltimaConexion_base";
-            this.lblFechaUltimaConexion_base.Size = new System.Drawing.Size(24, 18);
+            this.lblFechaUltimaConexion_base.Size = new System.Drawing.Size(19, 13);
             this.lblFechaUltimaConexion_base.TabIndex = 4;
             this.lblFechaUltimaConexion_base.Text = "@";
             this.lblFechaUltimaConexion_base.Visible = false;
@@ -526,38 +671,38 @@
             // label6lblFechaCreacion_base
             // 
             this.label6lblFechaCreacion_base.AutoSize = true;
-            this.label6lblFechaCreacion_base.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6lblFechaCreacion_base.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6lblFechaCreacion_base.ForeColor = System.Drawing.Color.Black;
-            this.label6lblFechaCreacion_base.Location = new System.Drawing.Point(213, 1);
+            this.label6lblFechaCreacion_base.Location = new System.Drawing.Point(169, 12);
             this.label6lblFechaCreacion_base.Name = "label6lblFechaCreacion_base";
-            this.label6lblFechaCreacion_base.Size = new System.Drawing.Size(24, 18);
+            this.label6lblFechaCreacion_base.Size = new System.Drawing.Size(19, 13);
             this.label6lblFechaCreacion_base.TabIndex = 3;
             this.label6lblFechaCreacion_base.Text = "@";
             this.label6lblFechaCreacion_base.Visible = false;
             // 
-            // lblFechaUltimaConexion
-            // 
-            this.lblFechaUltimaConexion.AutoSize = true;
-            this.lblFechaUltimaConexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaUltimaConexion.ForeColor = System.Drawing.Color.Black;
-            this.lblFechaUltimaConexion.Location = new System.Drawing.Point(10, 32);
-            this.lblFechaUltimaConexion.Name = "lblFechaUltimaConexion";
-            this.lblFechaUltimaConexion.Size = new System.Drawing.Size(205, 18);
-            this.lblFechaUltimaConexion.TabIndex = 2;
-            this.lblFechaUltimaConexion.Text = "Fecha de ultima conexión:";
-            this.lblFechaUltimaConexion.Visible = false;
-            // 
             // lblFechaCreacion
             // 
             this.lblFechaCreacion.AutoSize = true;
-            this.lblFechaCreacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaCreacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaCreacion.ForeColor = System.Drawing.Color.Black;
-            this.lblFechaCreacion.Location = new System.Drawing.Point(100, 0);
+            this.lblFechaCreacion.Location = new System.Drawing.Point(75, 12);
             this.lblFechaCreacion.Name = "lblFechaCreacion";
-            this.lblFechaCreacion.Size = new System.Drawing.Size(115, 18);
+            this.lblFechaCreacion.Size = new System.Drawing.Size(90, 13);
             this.lblFechaCreacion.TabIndex = 1;
             this.lblFechaCreacion.Text = "Fecha de Alta:";
             this.lblFechaCreacion.Visible = false;
+            // 
+            // lblFechaUltimaConexion
+            // 
+            this.lblFechaUltimaConexion.AutoSize = true;
+            this.lblFechaUltimaConexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaUltimaConexion.ForeColor = System.Drawing.Color.Black;
+            this.lblFechaUltimaConexion.Location = new System.Drawing.Point(31, 43);
+            this.lblFechaUltimaConexion.Name = "lblFechaUltimaConexion";
+            this.lblFechaUltimaConexion.Size = new System.Drawing.Size(138, 13);
+            this.lblFechaUltimaConexion.TabIndex = 2;
+            this.lblFechaUltimaConexion.Text = "Fecha última conexión:";
+            this.lblFechaUltimaConexion.Visible = false;
             // 
             // progressBar1
             // 
@@ -605,7 +750,8 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
+            this.panelInformacion.ResumeLayout(false);
+            this.panelInformacion.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -634,9 +780,6 @@
         private System.Windows.Forms.TextBox txtDni;
         private System.Windows.Forms.Label lblContraseña;
         private System.Windows.Forms.DateTimePicker dtFechaNacimiento;
-        private System.Windows.Forms.Button btnCargarImagen;
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnNuevoUsuario;
         private System.Windows.Forms.Label label8;
@@ -657,5 +800,19 @@
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label lblUltimoMovimientosUsuarios;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Button btnCargarImagen;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Panel panelInformacion;
+        private System.Windows.Forms.Label lblVentasRealizadas;
+        private System.Windows.Forms.Label lblIngresoRecaudado;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblUltimoLoteIngresado;
+        private System.Windows.Forms.Label label13;
     }
 }

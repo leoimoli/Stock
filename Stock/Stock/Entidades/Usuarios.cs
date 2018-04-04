@@ -20,5 +20,8 @@ namespace Stock.Entidades
         public string Perfil { get; set; }
         public string Estado { get; set; }
         public byte[] Foto { get; set; }
+        public int NroLote { get; set; }
+        public int CantidadVentasDelMes { get; set; }
+        public decimal EfectivoVentasDelMes { get; set; }
     }
 }

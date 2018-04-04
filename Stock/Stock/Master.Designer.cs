@@ -69,7 +69,7 @@
             // 
             this.usuariosToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 12F);
             this.usuariosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.usuariosToolStripMenuItem.Image = global::Stock.Properties.Resources.hombre2;
+            this.usuariosToolStripMenuItem.Image = global::Stock.Properties.Resources.hombre2_Nuevo;
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
             this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(98, 23);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
@@ -79,7 +79,7 @@
             // 
             this.productosToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 12F);
             this.productosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.productosToolStripMenuItem.Image = global::Stock.Properties.Resources.codigo_de_barras;
+            this.productosToolStripMenuItem.Image = global::Stock.Properties.Resources.codigo_de_barras_Nuevo;
             this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
             this.productosToolStripMenuItem.Size = new System.Drawing.Size(107, 23);
             this.productosToolStripMenuItem.Text = "Productos";
@@ -89,7 +89,7 @@
             // 
             this.stockToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 12F);
             this.stockToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.stockToolStripMenuItem.Image = global::Stock.Properties.Resources.almacen;
+            this.stockToolStripMenuItem.Image = global::Stock.Properties.Resources.almacen_Nuevo;
             this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
             this.stockToolStripMenuItem.Size = new System.Drawing.Size(75, 23);
             this.stockToolStripMenuItem.Text = "Stock";
@@ -99,7 +99,7 @@
             // 
             this.proveedoresToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 12F);
             this.proveedoresToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.proveedoresToolStripMenuItem.Image = global::Stock.Properties.Resources.empleado;
+            this.proveedoresToolStripMenuItem.Image = global::Stock.Properties.Resources.empleado_Nuevo;
             this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
             this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(124, 23);
             this.proveedoresToolStripMenuItem.Text = "Proveedores";
@@ -109,7 +109,7 @@
             // 
             this.clientesToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 12F);
             this.clientesToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.clientesToolStripMenuItem.Image = global::Stock.Properties.Resources.Clientes;
+            this.clientesToolStripMenuItem.Image = global::Stock.Properties.Resources.Clientes_Nuevo;
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
             this.clientesToolStripMenuItem.Size = new System.Drawing.Size(92, 23);
             this.clientesToolStripMenuItem.Text = "Clientes";
@@ -118,8 +118,9 @@
             // 
             this.ventasToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 12F);
             this.ventasToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.ventasToolStripMenuItem.Image = global::Stock.Properties.Resources.Ventas1;
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
-            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(68, 23);
+            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(84, 23);
             this.ventasToolStripMenuItem.Text = "Ventas";
             this.ventasToolStripMenuItem.Click += new System.EventHandler(this.ventasToolStripMenuItem_Click);
             // 

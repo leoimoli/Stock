@@ -22,8 +22,6 @@ namespace Stock
         {
             try
             {
-
-
                 List<Entidades.UsuarioReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeUsuarios());
                 ListaUsuarios = ListaReducidos;
             }
@@ -248,11 +246,14 @@ namespace Stock
         {
             set
             {
+                lblUltimoMovimientosUsuarios.Text = "Listado de Usuarios:";
                 dataGridView1.ColumnHeadersVisible = false;
                 dataGridView1.RowHeadersVisible = false;
                 dataGridView1.DataSource = value;
-                //dataGridView1.AutoGenerateColumns = true;
-                //dataGridView1.sty
+                var contadortotal = value.Count;
+                lblTotal.Visible = true;
+                label6.Visible = true;
+                lblTotal.Text = Convert.ToString(contadortotal);
 
                 dataGridView1.Columns[0].HeaderText = "id Usuario";
                 dataGridView1.Columns[0].Width = 100;
@@ -401,10 +402,20 @@ namespace Stock
                 lblFechaCreacion.Visible = true;
                 lblFechaUltimaConexion.Visible = true;
                 label6lblFechaCreacion_base.Visible = true;
+                label11.Visible = true;
+                label12.Visible = true;
+                label13.Visible = true;
+                lblUltimoLoteIngresado.Visible = true;
+                lblVentasRealizadas.Visible = true;
+                lblIngresoRecaudado.Visible = true;
+
                 lblFechaUltimaConexion_base.Visible = true;
                 label6lblFechaCreacion_base.Text = Convert.ToString(usuario.FechaDeAlta);
                 lblFechaUltimaConexion_base.Text = Convert.ToString(usuario.FechaUltimaConexion);
                 lblInformacion.Visible = false;
+                lblUltimoLoteIngresado.Text = Convert.ToString(usuario.NroLote);
+                lblVentasRealizadas.Text = Convert.ToString(usuario.CantidadVentasDelMes);
+                lblIngresoRecaudado.Text = Convert.ToString(usuario.EfectivoVentasDelMes);
             }
             else
             {
@@ -537,8 +548,7 @@ namespace Stock
                 checkBox1.Checked = false;
             }
         }
+
         #endregion
-
-
     }
 }

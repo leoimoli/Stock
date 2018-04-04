@@ -48,6 +48,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnCobrar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.panelGrande_Ventas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.panel2.SuspendLayout();
@@ -239,19 +240,32 @@
             // btnCobrar
             // 
             this.btnCobrar.BackColor = System.Drawing.Color.Silver;
-            this.btnCobrar.Location = new System.Drawing.Point(807, 497);
+            this.btnCobrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCobrar.Location = new System.Drawing.Point(882, 472);
             this.btnCobrar.Name = "btnCobrar";
-            this.btnCobrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCobrar.Size = new System.Drawing.Size(75, 50);
             this.btnCobrar.TabIndex = 17;
-            this.btnCobrar.Text = "Guardar";
+            this.btnCobrar.Text = "(F12)Cobrar";
+            this.btnCobrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCobrar.UseVisualStyleBackColor = false;
             this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.Silver;
+            this.btnCancelar.Location = new System.Drawing.Point(785, 472);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 50);
+            this.btnCancelar.TabIndex = 18;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
             // 
             // VentasWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1005, 704);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnCobrar);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -260,11 +274,11 @@
             this.Name = "VentasWF";
             this.Text = "Ventas";
             this.Load += new System.EventHandler(this.VentasWF_Load);
-            //this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.VentasWF_KeyDown);
             this.Controls.SetChildIndex(this.panelGrande_Ventas, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.btnCobrar, 0);
+            this.Controls.SetChildIndex(this.btnCancelar, 0);
             this.panelGrande_Ventas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -299,5 +313,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioFinal;
         private System.Windows.Forms.Button btnCobrar;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }
