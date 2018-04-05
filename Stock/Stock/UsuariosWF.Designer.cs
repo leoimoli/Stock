@@ -36,17 +36,12 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblUltimoMovimientosUsuarios = new System.Windows.Forms.Label();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txtDniBuscar = new System.Windows.Forms.TextBox();
-            this.btnNuevoUsuario = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblapellidoNombreEditar = new System.Windows.Forms.Label();
             this.panel_CargaUsuario = new System.Windows.Forms.Panel();
-            this.btnCargarImagen = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.lblEstado = new System.Windows.Forms.Label();
@@ -65,7 +60,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lblUsuarioEstadisticas = new System.Windows.Forms.Label();
@@ -84,15 +78,21 @@
             this.lblFechaUltimaConexion = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnCargarImagen = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnNuevoUsuario = new System.Windows.Forms.Button();
             this.panel100.SuspendLayout();
             this.panel200.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel_CargaUsuario.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panelInformacion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel100
@@ -178,26 +178,12 @@
             this.lblUltimoMovimientosUsuarios.TabIndex = 21;
             this.lblUltimoMovimientosUsuarios.Text = "Lista Usuarios:";
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuscar.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnBuscar.Image = global::Stock.Properties.Resources.buscar40X35;
-            this.btnBuscar.Location = new System.Drawing.Point(236, 6);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(40, 35);
-            this.btnBuscar.TabIndex = 18;
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(17, 11);
+            this.label10.Location = new System.Drawing.Point(17, 15);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(37, 17);
             this.label10.TabIndex = 17;
@@ -205,22 +191,10 @@
             // 
             // txtDniBuscar
             // 
-            this.txtDniBuscar.Location = new System.Drawing.Point(60, 10);
+            this.txtDniBuscar.Location = new System.Drawing.Point(60, 14);
             this.txtDniBuscar.Name = "txtDniBuscar";
             this.txtDniBuscar.Size = new System.Drawing.Size(170, 20);
             this.txtDniBuscar.TabIndex = 16;
-            // 
-            // btnNuevoUsuario
-            // 
-            this.btnNuevoUsuario.BackColor = System.Drawing.Color.Silver;
-            this.btnNuevoUsuario.Image = global::Stock.Properties.Resources.Nuevo_Usuario;
-            this.btnNuevoUsuario.Location = new System.Drawing.Point(88, 35);
-            this.btnNuevoUsuario.Name = "btnNuevoUsuario";
-            this.btnNuevoUsuario.Size = new System.Drawing.Size(113, 33);
-            this.btnNuevoUsuario.TabIndex = 14;
-            this.btnNuevoUsuario.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnNuevoUsuario.UseVisualStyleBackColor = false;
-            this.btnNuevoUsuario.Click += new System.EventHandler(this.btnNuevoUsuario_Click);
             // 
             // dataGridView1
             // 
@@ -284,46 +258,6 @@
             this.panel_CargaUsuario.Name = "panel_CargaUsuario";
             this.panel_CargaUsuario.Size = new System.Drawing.Size(611, 220);
             this.panel_CargaUsuario.TabIndex = 4;
-            // 
-            // btnCargarImagen
-            // 
-            this.btnCargarImagen.BackColor = System.Drawing.Color.Transparent;
-            this.btnCargarImagen.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCargarImagen.Image = global::Stock.Properties.Resources.subir;
-            this.btnCargarImagen.Location = new System.Drawing.Point(50, 178);
-            this.btnCargarImagen.Name = "btnCargarImagen";
-            this.btnCargarImagen.Size = new System.Drawing.Size(49, 39);
-            this.btnCargarImagen.TabIndex = 33;
-            this.toolTip1.SetToolTip(this.btnCargarImagen, "Cargar Imagen");
-            this.btnCargarImagen.UseVisualStyleBackColor = false;
-            this.btnCargarImagen.Visible = false;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.Transparent;
-            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.Image = global::Stock.Properties.Resources.Eliminar;
-            this.btnCancelar.Location = new System.Drawing.Point(497, 175);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(0);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(49, 39);
-            this.btnCancelar.TabIndex = 32;
-            this.toolTip1.SetToolTip(this.btnCancelar, "Cancelar");
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Visible = false;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.Transparent;
-            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGuardar.Image = global::Stock.Properties.Resources.Guardar1;
-            this.btnGuardar.Location = new System.Drawing.Point(549, 175);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(49, 39);
-            this.btnGuardar.TabIndex = 31;
-            this.toolTip1.SetToolTip(this.btnGuardar, "Guardar");
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Visible = false;
             // 
             // checkBox2
             // 
@@ -502,16 +436,6 @@
             this.label3.Size = new System.Drawing.Size(89, 17);
             this.label3.TabIndex = 2;
             this.label3.Text = "Apellido(*):";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pictureBox1.Location = new System.Drawing.Point(8, 7);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 145);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // label2
             // 
@@ -714,6 +638,82 @@
             this.progressBar1.Value = 10;
             this.progressBar1.Visible = false;
             // 
+            // btnCargarImagen
+            // 
+            this.btnCargarImagen.BackColor = System.Drawing.Color.Transparent;
+            this.btnCargarImagen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCargarImagen.Image = global::Stock.Properties.Resources.subir;
+            this.btnCargarImagen.Location = new System.Drawing.Point(50, 178);
+            this.btnCargarImagen.Name = "btnCargarImagen";
+            this.btnCargarImagen.Size = new System.Drawing.Size(49, 39);
+            this.btnCargarImagen.TabIndex = 33;
+            this.toolTip1.SetToolTip(this.btnCargarImagen, "Cargar Imagen");
+            this.btnCargarImagen.UseVisualStyleBackColor = false;
+            this.btnCargarImagen.Visible = false;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.Image = global::Stock.Properties.Resources.Eliminar;
+            this.btnCancelar.Location = new System.Drawing.Point(497, 175);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(49, 39);
+            this.btnCancelar.TabIndex = 32;
+            this.toolTip1.SetToolTip(this.btnCancelar, "Cancelar");
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Visible = false;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.Transparent;
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.Image = global::Stock.Properties.Resources.Guardar1;
+            this.btnGuardar.Location = new System.Drawing.Point(549, 175);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(49, 39);
+            this.btnGuardar.TabIndex = 31;
+            this.toolTip1.SetToolTip(this.btnGuardar, "Guardar");
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pictureBox1.Location = new System.Drawing.Point(8, 7);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(150, 145);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBuscar.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnBuscar.Image = global::Stock.Properties.Resources.lupita;
+            this.btnBuscar.Location = new System.Drawing.Point(236, 7);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(49, 39);
+            this.btnBuscar.TabIndex = 18;
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // btnNuevoUsuario
+            // 
+            this.btnNuevoUsuario.BackColor = System.Drawing.Color.Silver;
+            this.btnNuevoUsuario.Image = global::Stock.Properties.Resources.Nuevo_Usuario;
+            this.btnNuevoUsuario.Location = new System.Drawing.Point(88, 39);
+            this.btnNuevoUsuario.Name = "btnNuevoUsuario";
+            this.btnNuevoUsuario.Size = new System.Drawing.Size(113, 33);
+            this.btnNuevoUsuario.TabIndex = 14;
+            this.btnNuevoUsuario.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnNuevoUsuario.UseVisualStyleBackColor = false;
+            this.btnNuevoUsuario.Click += new System.EventHandler(this.btnNuevoUsuario_Click);
+            // 
             // UsuariosWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -746,12 +746,12 @@
             this.panel3.PerformLayout();
             this.panel_CargaUsuario.ResumeLayout(false);
             this.panel_CargaUsuario.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panelInformacion.ResumeLayout(false);
             this.panelInformacion.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

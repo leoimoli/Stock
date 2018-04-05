@@ -74,6 +74,7 @@
     <Compile Include="Entidades\ListaStock.cs" />
     <Compile Include="Entidades\ListaStockProducto.cs" />
     <Compile Include="Entidades\Marca.cs" />
+    <Compile Include="Entidades\HistorialProductoPrecioDeVenta.cs" />
     <Compile Include="Entidades\ProductoReducido.cs" />
     <Compile Include="Entidades\Productos.cs" />
     <Compile Include="Entidades\Proveedores.cs" />
@@ -120,6 +121,12 @@
     <Compile Include="Negocio\Stock.cs" />
     <Compile Include="Negocio\Usuario.cs" />
     <Compile Include="Negocio\Ventas.cs" />
+    <Compile Include="PrecioDeVentaWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrecioDeVentaWF.Designer.cs">
+      <DependentUpon>PrecioDeVentaWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Producto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Master2.resx">
       <DependentUpon>Master2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrecioDeVentaWF.resx">
+      <DependentUpon>PrecioDeVentaWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Producto.resx">
       <DependentUpon>Producto.cs</DependentUpon>
@@ -255,6 +265,7 @@
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Documentos\Base De Datos\Procedure\1%29LoginUsuario.txt" />
+    <None Include="Resources\lupita.png" />
     <None Include="Resources\Ventas1.png" />
     <None Include="Resources\subir.png" />
     <None Include="Resources\Nuevo Usuario.png" />

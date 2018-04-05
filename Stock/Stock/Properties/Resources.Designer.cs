@@ -243,6 +243,16 @@ namespace Stock.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap lupita {
+            get {
+                object obj = ResourceManager.GetObject("lupita", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Nuevo_Producto {
             get {
                 object obj = ResourceManager.GetObject("Nuevo Producto", resourceCulture);

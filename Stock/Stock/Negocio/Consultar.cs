@@ -45,6 +45,18 @@ namespace Stock.Negocio
             return _lista;
         }
 
+        public static List<HistorialProductoPrecioDeVenta> HistorialPrecioDeVenta(int idProducto)
+        {
+            List<HistorialProductoPrecioDeVenta> _listaHistorialProductoPrecioDeVenta = new List<HistorialProductoPrecioDeVenta>();
+            try
+            {
+                _listaHistorialProductoPrecioDeVenta = DAO.ConsultarDao.HistorialPrecioDeVenta(idProducto);
+            }
+            catch (Exception ex)
+            { }
+            return _listaHistorialProductoPrecioDeVenta;
+        }
+
         public static int BuscarProductoPorCodigo(string codigoProducto)
         {
             int idProducto = 0;

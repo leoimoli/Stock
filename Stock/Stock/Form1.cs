@@ -32,28 +32,24 @@ namespace Stock
             _producto.Show();
             Hide();
         }
-
         private void button5_Click(object sender, EventArgs e)
         {
             ProveedoresWF _proveedores = new ProveedoresWF();
             _proveedores.Show();
             Hide();
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             StockWF _stock = new StockWF();
             _stock.Show();
             Hide();
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
-            VentasWF _ventas = new VentasWF();
-            _ventas.Show();
+            PrecioDeVentaWF _precioVenta = new PrecioDeVentaWF();
+            _precioVenta.Show();
             Hide();
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
             VentasWF _ventas = new VentasWF();
