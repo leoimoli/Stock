@@ -51,6 +51,37 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
+        public static List<HistorialDelProductoSeleccionado> HistorialProducto(int idProducto)
+        {
+            connection.Close();
+            connection.Open();
+            List<HistorialDelProductoSeleccionado> _lista = new List<HistorialDelProductoSeleccionado>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("idProducto_in", idProducto) };
+            string proceso = "BuscarHistorialDelProductoSeleccionado";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.HistorialDelProductoSeleccionado _historialProducto = new Entidades.HistorialDelProductoSeleccionado();
+                    _historialProducto.idPrecioVenta = Convert.ToInt32(item["idprecioVenta"].ToString());
+                    _historialProducto.CodigoProducto = item["txCodigoProducto"].ToString();
+                    _historialProducto.PrecioDeVenta = Convert.ToDecimal(item["txPrecio"].ToString());
+                    _historialProducto.FechaCambio = Convert.ToDateTime(item["dtFechaCambio"].ToString());
+                    var usuario = item["txApellido"].ToString() + " " + item["txNombre"].ToString();
+                    _historialProducto.Usuario = usuario;
+                    _lista.Add(_historialProducto);
+                }
+            }
+            connection.Close();
+            return _lista;
+        }
 
         public static List<HistorialProductoPrecioDeVenta> HistorialPrecioDeVenta(int idProducto)
         {
@@ -118,6 +149,38 @@ namespace Stock.DAO
             return _lista;
         }
 
+        public static List<HistorialDelProductoSeleccionado> ListaHistorialPrecioDeVenta()
+        {
+            connection.Close();
+            connection.Open();
+            List<HistorialDelProductoSeleccionado> _lista = new List<HistorialDelProductoSeleccionado>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter() };
+            string proceso = "ListaHistorialPrecioDeVenta";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.HistorialDelProductoSeleccionado _historialProducto = new Entidades.HistorialDelProductoSeleccionado();
+                    //_historialProducto.idProducto = idProducto;
+                    _historialProducto.idPrecioVenta = Convert.ToInt32(item["idprecioVenta"].ToString());
+                    _historialProducto.CodigoProducto = item["txCodigoProducto"].ToString();
+                    _historialProducto.PrecioDeVenta = Convert.ToDecimal(item["txPrecio"].ToString());
+                    _historialProducto.FechaCambio = Convert.ToDateTime(item["dtFechaCambio"].ToString());
+                    var usuario = item["txApellido"].ToString() + " " + item["txNombre"].ToString();
+                    _historialProducto.Usuario = usuario;
+                    _lista.Add(_historialProducto);
+                }
+            }
+            connection.Close();
+            return _lista;
+        }
         public static List<ListaStock> ListarStock()
         {
             connection.Close();
@@ -149,7 +212,6 @@ namespace Stock.DAO
             connection.Close();
             return _listaStocks;
         }
-
         public static List<int> ValidarStockExistente(int idProducto)
         {
             connection.Close();
@@ -203,7 +265,6 @@ namespace Stock.DAO
             connection.Close();
             return idProducto;
         }
-
         public static List<ListaStockProducto> ListarStockProdcuto(int idProducto)
         {
             connection.Close();
@@ -239,7 +300,6 @@ namespace Stock.DAO
             connection.Close();
             return _listaStocks;
         }
-
         public static List<ListaStock> ListaDeStockPoridProdcuto(int idProducto)
         {
             connection.Close();
@@ -271,7 +331,6 @@ namespace Stock.DAO
             connection.Close();
             return _listaStocks;
         }
-
         public static List<string> CargarComboProveedor()
         {
             connection.Close();

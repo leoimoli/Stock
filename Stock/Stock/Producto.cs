@@ -22,7 +22,8 @@ namespace Stock
         {
             try
             {
-                lblUltimoMovimientosProductos.Text = "Últimos Productos cargados";
+
+               lblUltimoMovimientosProductos.Text = "Últimos Productos cargados";
                 List<Entidades.ProductoReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProductos());
                 ListaProductos = ListaReducidos;
             }

@@ -20,9 +20,112 @@ namespace Stock
 
         private void PrecioDeVentaWF_Load(object sender, EventArgs e)
         {
+            try
+            {
+                ListaHistorialPrecioDeVenta = Negocio.Consultar.ListaHistorialPrecioDeVenta();
+            }
+            catch (Exception ex)
+            { }
 
         }
+        public List<Entidades.HistorialDelProductoSeleccionado> ListaHistorialDelProductoSeleccionado
+        {
+            set
+            {
+                dataGridView2.RowHeadersVisible = false;
+                dataGridView2.DataSource = value;
+                dataGridView2.ReadOnly = true;
 
+                dataGridView2.Columns[0].HeaderText = "id Movimiento";
+                dataGridView2.Columns[0].Width = 95;
+                dataGridView2.Columns[0].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView2.Columns[0].HeaderCell.Style.Font = new Font("Tahoma", 7, FontStyle.Bold);
+                dataGridView2.Columns[0].HeaderCell.Style.ForeColor = Color.White;
+                dataGridView2.Columns[0].Visible = true;
+
+                dataGridView2.Columns[1].HeaderText = "Código Producto";
+                dataGridView2.Columns[1].Width = 95;
+                dataGridView2.Columns[1].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView2.Columns[1].HeaderCell.Style.Font = new Font("Tahoma", 7, FontStyle.Bold);
+                dataGridView2.Columns[1].HeaderCell.Style.ForeColor = Color.White;
+                dataGridView2.Columns[1].Visible = true;
+
+                dataGridView2.Columns[2].HeaderText = "Precio de venta";
+                dataGridView2.Columns[2].Width = 95;
+                dataGridView2.Columns[2].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView2.Columns[2].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
+                dataGridView2.Columns[2].HeaderCell.Style.ForeColor = Color.White;
+
+                dataGridView2.Columns[3].HeaderText = "Fecha de Cambio";
+                dataGridView2.Columns[3].Width = 125;
+                dataGridView2.Columns[3].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView2.Columns[3].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
+                dataGridView2.Columns[3].HeaderCell.Style.ForeColor = Color.White;
+
+                dataGridView2.Columns[4].HeaderText = "Usuario";
+                dataGridView2.Columns[4].Width = 95;
+                dataGridView2.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView2.Columns[4].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
+                dataGridView2.Columns[4].HeaderCell.Style.ForeColor = Color.White;
+            }
+        }
+        public List<Entidades.HistorialDelProductoSeleccionado> ListaHistorialPrecioDeVenta
+        {
+            set
+            {
+                dataGridView1.ReadOnly = true;
+                dataGridView1.RowHeadersVisible = false;
+                dataGridView1.DataSource = value;
+
+                dataGridView1.Columns[0].HeaderText = "id Movimiento";
+                dataGridView1.Columns[0].Width = 95;
+                dataGridView1.Columns[0].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView1.Columns[0].HeaderCell.Style.Font = new Font("Tahoma", 7, FontStyle.Bold);
+                dataGridView1.Columns[0].HeaderCell.Style.ForeColor = Color.White;
+                dataGridView1.Columns[0].Visible = false;
+
+                dataGridView1.Columns[1].HeaderText = "Código Producto";
+                dataGridView1.Columns[1].Width = 95;
+                dataGridView1.Columns[1].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView1.Columns[1].HeaderCell.Style.Font = new Font("Tahoma", 7, FontStyle.Bold);
+                dataGridView1.Columns[1].HeaderCell.Style.ForeColor = Color.White;
+                dataGridView1.Columns[1].Visible = true;
+
+                dataGridView1.Columns[2].HeaderText = "Precio de venta";
+                dataGridView1.Columns[2].Width = 95;
+                dataGridView1.Columns[2].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView1.Columns[2].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
+                dataGridView1.Columns[2].HeaderCell.Style.ForeColor = Color.White;
+
+                dataGridView1.Columns[3].HeaderText = "Fecha de Cambio";
+                dataGridView1.Columns[3].Width = 125;
+                dataGridView1.Columns[3].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView1.Columns[3].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
+                dataGridView1.Columns[3].HeaderCell.Style.ForeColor = Color.White;
+
+                dataGridView1.Columns[4].HeaderText = "Usuario";
+                dataGridView1.Columns[4].Width = 95;
+                dataGridView1.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView1.Columns[4].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
+                dataGridView1.Columns[4].HeaderCell.Style.ForeColor = Color.White;
+            }
+        }
+        private void CalcularCostos()
+        {
+            if (txtTotalCompra.Text != "" & txtReditoPorcentual.Text != "   %")
+            {
+                decimal totalCompraIngresada = Convert.ToDecimal(txtValorUni.Text);
+                var split = txtReditoPorcentual.Text.Split('%')[0];
+                split = split.Trim();
+                decimal porcentaje = Convert.ToDecimal(split) / 100;
+                decimal ValorVentaCalculado;
+                if (totalCompraIngresada > 0 & porcentaje > 0)
+                {
+                    ValorVentaCalculado = totalCompraIngresada * porcentaje + totalCompraIngresada;
+                    txtPrecioVenta.Text = Convert.ToString(decimal.Round(ValorVentaCalculado,2));
+                }
+            }
+        }
         #region Botones
         private void txtCodigo_KeyDown(object sender, KeyEventArgs e)
         {
@@ -36,41 +139,20 @@ namespace Stock
                     {
                         List<HistorialProductoPrecioDeVenta> Lista = new List<HistorialProductoPrecioDeVenta>();
                         Lista = Negocio.Consultar.HistorialPrecioDeVenta(idProducto);
-                        //txtCodigoProducto.Text = codigoIngresado;
-                        //txtCodigoProducto.Enabled = false;
-                        /////// Armo una nueva lista para mostrar en el panel Información.
-                        //List<ListaStockProducto> _lista = new List<ListaStockProducto>();
-                        //_lista = Negocio.Consultar.ListarStockProdcuto(idProducto);
-                        //if (_lista.Count > 0)
-                        //{
-                        //    lblEstadisticas.Text = "Información del producto ingresado";
-                        //    lblInformacion.Visible = false;
-                        //    var lista = _lista.First();
-                        //    txtMarca.Text = lista.Marca;
-                        //    txtNombreProducto.Text = lista.NombreProducto;
-                        //    txtMarca.Enabled = false;
-                        //    txtNombreProducto.Enabled = false;
-                        //    HabilitarLabels();
-                        //    EditCódigo_Producto.Text = lista.CodigoProducto;
-                        //    EditNombre_Producto.Text = lista.NombreProducto;
-                        //    EditMarca_Producto.Text = lista.Marca;
-                        //    EditStock_Disponible.Text = Convert.ToString(lista.Cantidad);
-                        //    EditPrecio_de_Venta.Text = Convert.ToString(lista.PrecioVenta);
-                        //    EditFecha_Alta_Producto.Text = Convert.ToString(lista.FechaAlta);
-                        //    EditUsuario_Creador.Text = lista.Apellido + "  " + lista.Nombre;
+                        var lista = Lista.First();
+                        txtValorUni.Text = Convert.ToString(lista.ValorUnitario);
+                        txtTotalCompra.Text = Convert.ToString(lista.PrecioTotalDeCompra);
+                        txtPrecioActualVenta.Text = Convert.ToString(lista.PrecioDeVenta);
+                        ListaHistorialDelProductoSeleccionado = Negocio.Consultar.HistorialProducto(idProducto);
                     }
                 }
                 catch { }
             }
-            //else
-            //{
-            //    if (MessageBox.Show("Desea agregar un nuevo producto ?", "Producto Inexistente", MessageBoxButtons.YesNo) == DialogResult.Yes) ;
-            //    {
-            //        Producto _producto = new Producto();
-            //        _producto.Show();
-            //        Hide();
-            //    }
-            //}
+        }
+
+        private void txtReditoPorcentual_TextChanged(object sender, EventArgs e)
+        {
+            CalcularCostos();
         }
     }
     #endregion

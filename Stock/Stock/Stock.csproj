@@ -70,6 +70,7 @@
     <Compile Include="DAO\AgregarDao.cs" />
     <Compile Include="DAO\ConsultarDao.cs" />
     <Compile Include="DAO\EditarDao.cs" />
+    <Compile Include="Entidades\HistorialDelProductoSeleccionado.cs" />
     <Compile Include="Entidades\ListaProductoVenta.cs" />
     <Compile Include="Entidades\ListaStock.cs" />
     <Compile Include="Entidades\ListaStockProducto.cs" />

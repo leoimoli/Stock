@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace Stock
@@ -15,6 +16,10 @@ namespace Stock
         public Master()
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
+            System.Timers.Timer t = new System.Timers.Timer(1000);
+            t.Elapsed += new System.Timers.ElapsedEventHandler(this.timer1_Tick);
+            t.Start();
         }
 
         private void Master_Load(object sender, EventArgs e)
@@ -22,8 +27,9 @@ namespace Stock
             if (Sesion.UsuarioLogueado != null)
             {
                 lblMaster_UsuarioLogin.Text = Sesion.UsuarioLogueado.Apellido + "  " + Sesion.UsuarioLogueado.Nombre;
-                lblMaster_FechaHoraReal.Text = Convert.ToString(DateTime.Now);
+                //lblMaster_FechaHoraReal.Text = Convert.ToString(DateTime.Now);
             }
+
         }
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -58,6 +64,12 @@ namespace Stock
             VentasWF _ventas = new VentasWF();
             _ventas.Show();
             Hide();
+        }
+
+        private void timer1_Tick(object sender, ElapsedEventArgs el)
+        {
+            CheckForIllegalCrossThreadCalls = false;
+            lblMaster_FechaHoraReal.Text = DateTime.Now.ToString();
         }
     }
 }

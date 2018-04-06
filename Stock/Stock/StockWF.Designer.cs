@@ -201,6 +201,7 @@
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(170, 20);
             this.txtPrecioVenta.TabIndex = 15;
+          
             // 
             // label6
             // 
@@ -787,24 +788,24 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.MaskedTextBox txtReditoPorcentual;
         private System.Windows.Forms.Panel panelInformacion;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label EditNombre_Producto;
-        private System.Windows.Forms.Label EditCódigo_Producto;
-        private System.Windows.Forms.Label EditUsuario_Creador;
-        private System.Windows.Forms.Label EditFecha_Alta_Producto;
-        private System.Windows.Forms.Label EditPrecio_de_Venta;
-        private System.Windows.Forms.Label EditStock_Disponible;
-        private System.Windows.Forms.Label EditMarca_Producto;
         private System.Windows.Forms.TextBox txtNombreProducto;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox txtMarca;
         private System.Windows.Forms.Label lblUltimoMovimientos;
+        private System.Windows.Forms.Label EditUsuario_Creador;
+        private System.Windows.Forms.Label EditFecha_Alta_Producto;
+        private System.Windows.Forms.Label EditPrecio_de_Venta;
+        private System.Windows.Forms.Label EditStock_Disponible;
+        private System.Windows.Forms.Label EditMarca_Producto;
+        private System.Windows.Forms.Label EditNombre_Producto;
+        private System.Windows.Forms.Label EditCódigo_Producto;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
     }
 }

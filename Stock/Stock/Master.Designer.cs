@@ -1,4 +1,7 @@
-﻿namespace Stock
+﻿using System;
+using System.Timers;
+
+namespace Stock
 {
     partial class Master
     {
@@ -28,6 +31,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Master_menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,6 +47,7 @@
             this.lblMaster_Usuario = new System.Windows.Forms.Label();
             this.Master_panel2 = new System.Windows.Forms.Panel();
             this.lblMaster_Version = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Master_menuStrip1.SuspendLayout();
             this.Master_panel1.SuspendLayout();
             this.Master_panel2.SuspendLayout();
@@ -152,9 +157,8 @@
             this.lblMaster_FechaHoraReal.ForeColor = System.Drawing.Color.White;
             this.lblMaster_FechaHoraReal.Location = new System.Drawing.Point(106, 5);
             this.lblMaster_FechaHoraReal.Name = "lblMaster_FechaHoraReal";
-            this.lblMaster_FechaHoraReal.Size = new System.Drawing.Size(95, 17);
+            this.lblMaster_FechaHoraReal.Size = new System.Drawing.Size(0, 17);
             this.lblMaster_FechaHoraReal.TabIndex = 4;
-            this.lblMaster_FechaHoraReal.Text = "Fecha Y Hora";
             // 
             // lblMaster_UsuarioLogin
             // 
@@ -248,7 +252,8 @@
         private System.Windows.Forms.Label lblMaster_UsuarioLogin;
         private System.Windows.Forms.Panel Master_panel2;
         private System.Windows.Forms.Label lblMaster_Version;
-        private System.Windows.Forms.Label lblMaster_FechaHoraReal;
         private System.Windows.Forms.Label lblMaster_FechaHora;
+        private System.Windows.Forms.Label lblMaster_FechaHoraReal;
+        private System.Windows.Forms.Timer timer1;
     }
 }

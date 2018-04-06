@@ -74,13 +74,14 @@ namespace Stock
                 dataGridView1.Columns[3].HeaderCell.Style.BackColor = Color.DarkBlue;
                 dataGridView1.Columns[3].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
                 dataGridView1.Columns[3].HeaderCell.Style.ForeColor = Color.White;
+                dataGridView1.Columns[3].Visible = false;
 
                 dataGridView1.Columns[4].HeaderText = "Cantidad";
                 dataGridView1.Columns[4].Width = 80;
                 dataGridView1.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
                 dataGridView1.Columns[4].HeaderCell.Style.Font = new Font("Tahoma", 7, FontStyle.Bold);
                 dataGridView1.Columns[4].HeaderCell.Style.ForeColor = Color.White;
-                dataGridView1.Columns[4].Visible = false;
+               
 
                 dataGridView1.Columns[5].HeaderText = "Fecha";
                 dataGridView1.Columns[5].Width = 80;
@@ -88,6 +89,13 @@ namespace Stock
                 dataGridView1.Columns[5].HeaderCell.Style.Font = new Font("Tahoma", 7, FontStyle.Bold);
                 dataGridView1.Columns[5].HeaderCell.Style.ForeColor = Color.White;
                 dataGridView1.Columns[5].Visible = false;
+
+                dataGridView1.Columns[6].HeaderText = "Fecha";
+                dataGridView1.Columns[6].Width = 80;
+                dataGridView1.Columns[6].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView1.Columns[6].HeaderCell.Style.Font = new Font("Tahoma", 7, FontStyle.Bold);
+                dataGridView1.Columns[6].HeaderCell.Style.ForeColor = Color.White;
+                dataGridView1.Columns[6].Visible = false;
             }
         }
         private void CalcularCostos()
@@ -272,6 +280,6 @@ namespace Stock
         {
             CalcularCostos();
         }
-        #endregion
+        #endregion     
     }
 }
