@@ -15,6 +15,8 @@ namespace Stock
         public VentasWF()
         {
             InitializeComponent();
+            this.KeyPreview = true;
+            this.KeyDown += new KeyEventHandler(Menu_KeyDown);
         }
         private void VentasWF_Load(object sender, EventArgs e)
         {
@@ -97,7 +99,6 @@ namespace Stock
                 bool Exito = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
                 if (Exito == true)
                 {
-                    //MessageBox.Show("SE REGISTRO EL COBRO EXITOSAMENTE.");
                     BloquearPantalla();
                 }
             }
@@ -127,5 +128,23 @@ namespace Stock
                 pictureBox1.Image = null;
             }
         }
+        void Menu_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F12")
+            {
+                if (listaProductos.Count > 0)
+                {
+                    int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
+                    int idusuario = idusuarioLogueado;
+                    listaProductos[0].PrecioVentaFinal = Convert.ToDecimal(lblTotalPagarReal.Text);
+                    bool Exito = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
+                    if (Exito == true)
+                    {
+                        BloquearPantalla();
+                    }
+                }
+            }
+        }
     }
 }
+

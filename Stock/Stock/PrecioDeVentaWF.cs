@@ -17,7 +17,7 @@ namespace Stock
         {
             InitializeComponent();
         }
-
+        public static int ProductoIngresado;
         private void PrecioDeVentaWF_Load(object sender, EventArgs e)
         {
             try
@@ -122,7 +122,7 @@ namespace Stock
                 if (totalCompraIngresada > 0 & porcentaje > 0)
                 {
                     ValorVentaCalculado = totalCompraIngresada * porcentaje + totalCompraIngresada;
-                    txtPrecioVenta.Text = Convert.ToString(decimal.Round(ValorVentaCalculado,2));
+                    txtPrecioVenta.Text = Convert.ToString(decimal.Round(ValorVentaCalculado, 2));
                 }
             }
         }
@@ -133,10 +133,13 @@ namespace Stock
             {
                 try
                 {
+                    txtReditoPorcentual.Enabled = true;
+                    txtPrecioVenta.Enabled = true;
                     string codigoIngresado = txtCodigo.Text;
                     int idProducto = Negocio.Consultar.BuscarProductoPorCodigo(codigoIngresado);
                     if (idProducto > 0)
                     {
+                        ProductoIngresado = idProducto;
                         List<HistorialProductoPrecioDeVenta> Lista = new List<HistorialProductoPrecioDeVenta>();
                         Lista = Negocio.Consultar.HistorialPrecioDeVenta(idProducto);
                         var lista = Lista.First();
@@ -149,10 +152,70 @@ namespace Stock
                 catch { }
             }
         }
-
         private void txtReditoPorcentual_TextChanged(object sender, EventArgs e)
         {
             CalcularCostos();
+        }
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Entidades.PrecioDeVenta _precio = CargarEntidad();
+                ProgressBar();
+                bool Exito = Negocio.PrecioDeVenta_Negocio.InsertPrecioDeVenta(_precio);
+                if (Exito == true)
+                {
+                    MessageBox.Show("SE REGISTRO EL NUEVO PRECIO DE VENTA EXITOSAMENTE.");
+                    LimpiarCampos();
+                }
+            }
+            catch (Exception ex)
+            { }
+        }
+        private void LimpiarCampos()
+        {
+            txtTotalCompra.Clear();
+            txtValorUni.Clear();
+            txtPrecioVenta.Clear();
+            txtReditoPorcentual.Clear();
+            txtPrecioVenta.Clear();
+            progressBar1.Value = Convert.ToInt32(null);
+            progressBar1.Visible = false;
+            ListaHistorialPrecioDeVenta = Negocio.Consultar.ListaHistorialPrecioDeVenta();
+            ListaHistorialDelProductoSeleccionado = Negocio.Consultar.HistorialProducto(ProductoIngresado);
+            txtPrecioActualVenta.Clear();
+            txtCodigo.Clear();
+        }
+        private PrecioDeVenta CargarEntidad()
+        {
+            Entidades.PrecioDeVenta _precio = new Entidades.PrecioDeVenta();
+            int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
+            _precio.idProducto = ProductoIngresado;
+            _precio.ReditoPorcentual = txtReditoPorcentual.Text;
+            if (txtPrecioVenta.Text != "")
+            {
+                _precio.Precio = Convert.ToDecimal(txtPrecioVenta.Text);
+            }
+            DateTime fechaActual = DateTime.Now;
+            _precio.FechaActual = fechaActual;
+            _precio.idUsuario = idusuarioLogueado;
+            return _precio;
+        }
+        private void ProgressBar()
+        {
+            progressBar1.Visible = true;
+            progressBar1.Maximum = 100000;
+            progressBar1.Step = 1;
+
+            for (int j = 0; j < 100000; j++)
+            {
+                Caluculate(j);
+                progressBar1.PerformStep();
+            }
+        }
+        private void Caluculate(int i)
+        {
+            double pow = Math.Pow(i, i);
         }
     }
     #endregion

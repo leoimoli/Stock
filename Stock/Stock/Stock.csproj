@@ -76,6 +76,7 @@
     <Compile Include="Entidades\ListaStockProducto.cs" />
     <Compile Include="Entidades\Marca.cs" />
     <Compile Include="Entidades\HistorialProductoPrecioDeVenta.cs" />
+    <Compile Include="Entidades\PrecioDeVenta.cs" />
     <Compile Include="Entidades\ProductoReducido.cs" />
     <Compile Include="Entidades\Productos.cs" />
     <Compile Include="Entidades\Proveedores.cs" />
@@ -117,6 +118,7 @@
     </Compile>
     <Compile Include="Negocio\Consultar.cs" />
     <Compile Include="Negocio\Marca.cs" />
+    <Compile Include="Negocio\PrecioDeVenta_Negocio.cs" />
     <Compile Include="Negocio\Producto.cs" />
     <Compile Include="Negocio\Proveedores.cs" />
     <Compile Include="Negocio\Stock.cs" />
@@ -147,6 +149,12 @@
     </Compile>
     <Compile Include="Prueba.Designer.cs">
       <DependentUpon>Prueba.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CobrarWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CobrarWF.Designer.cs">
+      <DependentUpon>CobrarWF.cs</DependentUpon>
     </Compile>
     <Compile Include="Sesion.cs" />
     <Compile Include="StockWF.cs">
@@ -201,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Prueba.resx">
       <DependentUpon>Prueba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CobrarWF.resx">
+      <DependentUpon>CobrarWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StockWF.resx">
       <DependentUpon>StockWF.cs</DependentUpon>
@@ -285,6 +296,11 @@
     <None Include="Resources\Guardar.png" />
     <None Include="Resources\Guardar1.png" />
     <None Include="Resources\Eliminar.png" />
+    <None Include="Resources\cobrar.png" />
+    <None Include="Resources\cobrar1.png" />
+    <None Include="Resources\F1.png" />
+    <None Include="Resources\F2.png" />
+    <None Include="Resources\F3.png" />
     <Content Include="Resources\login2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

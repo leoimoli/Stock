@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel_Producto = new System.Windows.Forms.Panel();
             this.txtPrecioVenta = new System.Windows.Forms.TextBox();
             this.txtPrecioActualVenta = new System.Windows.Forms.TextBox();
@@ -55,6 +56,8 @@
             this.panelInformacion = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel_Producto.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel200.SuspendLayout();
@@ -90,6 +93,7 @@
             // txtPrecioVenta
             // 
             this.txtPrecioVenta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtPrecioVenta.Enabled = false;
             this.txtPrecioVenta.Location = new System.Drawing.Point(310, 92);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(170, 20);
@@ -117,6 +121,7 @@
             // 
             // txtReditoPorcentual
             // 
+            this.txtReditoPorcentual.Enabled = false;
             this.txtReditoPorcentual.Location = new System.Drawing.Point(310, 34);
             this.txtReditoPorcentual.Mask = "000%";
             this.txtReditoPorcentual.Name = "txtReditoPorcentual";
@@ -190,11 +195,12 @@
             this.btnCancelar.BackColor = System.Drawing.Color.Transparent;
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.Image = global::Stock.Properties.Resources.Eliminar;
-            this.btnCancelar.Location = new System.Drawing.Point(301, 170);
+            this.btnCancelar.Location = new System.Drawing.Point(332, 131);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(0);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(49, 39);
             this.btnCancelar.TabIndex = 26;
+            this.toolTip1.SetToolTip(this.btnCancelar, "Cancelar");
             this.btnCancelar.UseVisualStyleBackColor = false;
             // 
             // btnGuardar
@@ -202,11 +208,13 @@
             this.btnGuardar.BackColor = System.Drawing.Color.Transparent;
             this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGuardar.Image = global::Stock.Properties.Resources.Guardar1;
-            this.btnGuardar.Location = new System.Drawing.Point(370, 170);
+            this.btnGuardar.Location = new System.Drawing.Point(401, 131);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(49, 39);
             this.btnGuardar.TabIndex = 25;
+            this.toolTip1.SetToolTip(this.btnGuardar, "Guardar");
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // panel3
             // 
@@ -349,11 +357,22 @@
             this.panel5.Size = new System.Drawing.Size(611, 25);
             this.panel5.TabIndex = 21;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.ForeColor = System.Drawing.Color.Lime;
+            this.progressBar1.Location = new System.Drawing.Point(468, 317);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(397, 23);
+            this.progressBar1.TabIndex = 96;
+            this.progressBar1.Value = 10;
+            this.progressBar1.Visible = false;
+            // 
             // PrecioDeVentaWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1333, 620);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.panel_Producto);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel200);
@@ -370,6 +389,7 @@
             this.Controls.SetChildIndex(this.panel200, 0);
             this.Controls.SetChildIndex(this.panel3, 0);
             this.Controls.SetChildIndex(this.panel_Producto, 0);
+            this.Controls.SetChildIndex(this.progressBar1, 0);
             this.panel_Producto.ResumeLayout(false);
             this.panel_Producto.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -418,5 +438,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.TextBox txtPrecioVenta;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

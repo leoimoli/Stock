@@ -81,7 +81,7 @@ namespace Stock
                 dataGridView1.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
                 dataGridView1.Columns[4].HeaderCell.Style.Font = new Font("Tahoma", 7, FontStyle.Bold);
                 dataGridView1.Columns[4].HeaderCell.Style.ForeColor = Color.White;
-               
+
 
                 dataGridView1.Columns[5].HeaderText = "Fecha";
                 dataGridView1.Columns[5].Width = 80;
@@ -113,7 +113,6 @@ namespace Stock
             }
             if (txtTotalCompra.Text != "" & txtReditoPorcentual.Text != "   %")
             {
-                //decimal totalCompraIngresada = Convert.ToDecimal(txtTotalCompra.Text);
                 decimal totalCompraIngresada = Convert.ToDecimal(txtValorUni.Text);
                 var split = txtReditoPorcentual.Text.Split('%')[0];
                 split = split.Trim();
@@ -122,7 +121,8 @@ namespace Stock
                 if (totalCompraIngresada > 0 & porcentaje > 0)
                 {
                     ValorVentaCalculado = totalCompraIngresada * porcentaje + totalCompraIngresada;
-                    txtPrecioVenta.Text = Convert.ToString(ValorVentaCalculado);
+                    //txtPrecioVenta.Text = Convert.ToString(ValorVentaCalculado);
+                    txtPrecioVenta.Text = Convert.ToString(decimal.Round(ValorVentaCalculado, 2));
                 }
             }
         }
@@ -138,9 +138,22 @@ namespace Stock
             dtFechaVencimiento.Value = DateTime.Now;
             txtReditoPorcentual.Clear();
             txtPrecioVenta.Clear();
-            List<string> Marcas = Negocio.Consultar.CargarComboMarcas();
+            List<string> Proveedores = Negocio.Consultar.CargarComboProveedor();
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
+            txtCodigo.Clear();
+            txtMarca.Clear();
+            txtNombreProducto.Clear();
+            txtCodigo.Focus();
+
+            //// Limpiar Labels
+            EditCódigo_Producto.Visible = false;
+            EditNombre_Producto.Visible = false;
+            EditMarca_Producto.Visible = false;
+            EditStock_Disponible.Visible = false;
+            EditPrecio_de_Venta.Visible = false;
+            EditFecha_Alta_Producto.Visible = false;
+            EditUsuario_Creador.Visible = false;
         }
         public static int idStockGrilla;
         public void CargarComboProveedor()
@@ -192,7 +205,6 @@ namespace Stock
             return _stock;
         }
         #endregion
-
         #region Botones
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -205,8 +217,8 @@ namespace Stock
                 {
                     MessageBox.Show("SE REGISTRO EL STOCK EXITOSAMENTE.");
                     LimpiarCampos();
-                    //List<Entidades.ProductoReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProductos());
-                    //ListaProductos = ListaReducidos;
+                    Lista = new List<ListaStock>();
+                    Lista = Negocio.Consultar.ListaDeStock();
                 }
             }
             catch (Exception ex)
@@ -280,6 +292,6 @@ namespace Stock
         {
             CalcularCostos();
         }
-        #endregion     
+        #endregion       
     }
 }

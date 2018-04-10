@@ -82,7 +82,6 @@ namespace Stock.DAO
             connection.Close();
             return _lista;
         }
-
         public static List<HistorialProductoPrecioDeVenta> HistorialPrecioDeVenta(int idProducto)
         {
             connection.Close();
@@ -113,7 +112,6 @@ namespace Stock.DAO
             connection.Close();
             return _lista;
         }
-
         public static List<ListaProductoVenta> BuscarProductoParaVenta(string codigoProducto)
         {
             connection.Close();
@@ -148,7 +146,6 @@ namespace Stock.DAO
             connection.Close();
             return _lista;
         }
-
         public static List<HistorialDelProductoSeleccionado> ListaHistorialPrecioDeVenta()
         {
             connection.Close();

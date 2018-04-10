@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel_CargarStock = new System.Windows.Forms.Panel();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.txtMarca = new System.Windows.Forms.TextBox();
             this.txtNombreProducto = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -46,8 +49,6 @@
             this.txtRemito = new System.Windows.Forms.TextBox();
             this.lblRepitaContraseña = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.txtTotalCompra = new System.Windows.Forms.TextBox();
             this.txtCodigoProducto = new System.Windows.Forms.TextBox();
@@ -84,6 +85,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.lblEstadisticas = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel_CargarStock.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel200.SuspendLayout();
@@ -97,6 +99,8 @@
             // panel_CargarStock
             // 
             this.panel_CargarStock.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel_CargarStock.Controls.Add(this.btnCancelar);
+            this.panel_CargarStock.Controls.Add(this.btnGuardar);
             this.panel_CargarStock.Controls.Add(this.txtMarca);
             this.panel_CargarStock.Controls.Add(this.txtNombreProducto);
             this.panel_CargarStock.Controls.Add(this.label18);
@@ -114,8 +118,6 @@
             this.panel_CargarStock.Controls.Add(this.txtRemito);
             this.panel_CargarStock.Controls.Add(this.lblRepitaContraseña);
             this.panel_CargarStock.Controls.Add(this.label8);
-            this.panel_CargarStock.Controls.Add(this.btnCancelar);
-            this.panel_CargarStock.Controls.Add(this.btnGuardar);
             this.panel_CargarStock.Controls.Add(this.txtCantidad);
             this.panel_CargarStock.Controls.Add(this.txtTotalCompra);
             this.panel_CargarStock.Controls.Add(this.txtCodigoProducto);
@@ -128,6 +130,32 @@
             this.panel_CargarStock.Name = "panel_CargarStock";
             this.panel_CargarStock.Size = new System.Drawing.Size(611, 220);
             this.panel_CargarStock.TabIndex = 10;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.Image = global::Stock.Properties.Resources.Eliminar;
+            this.btnCancelar.Location = new System.Drawing.Point(262, 179);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(49, 39);
+            this.btnCancelar.TabIndex = 37;
+            this.toolTip1.SetToolTip(this.btnCancelar, "Cancelar");
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.Transparent;
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.Image = global::Stock.Properties.Resources.Guardar1;
+            this.btnGuardar.Location = new System.Drawing.Point(331, 179);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(49, 39);
+            this.btnGuardar.TabIndex = 36;
+            this.toolTip1.SetToolTip(this.btnGuardar, "Guardar");
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // txtMarca
             // 
@@ -201,7 +229,6 @@
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(170, 20);
             this.txtPrecioVenta.TabIndex = 15;
-          
             // 
             // label6
             // 
@@ -288,27 +315,6 @@
             this.label8.Size = new System.Drawing.Size(151, 17);
             this.label8.TabIndex = 15;
             this.label8.Text = "Código Producto(*):";
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.Silver;
-            this.btnCancelar.Location = new System.Drawing.Point(231, 181);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 35);
-            this.btnCancelar.TabIndex = 15;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.Silver;
-            this.btnGuardar.Location = new System.Drawing.Point(326, 181);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 35);
-            this.btnGuardar.TabIndex = 16;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // txtCantidad
             // 
@@ -755,8 +761,6 @@
         private System.Windows.Forms.TextBox txtRemito;
         private System.Windows.Forms.Label lblRepitaContraseña;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.TextBox txtTotalCompra;
         private System.Windows.Forms.TextBox txtCodigoProducto;
@@ -807,5 +811,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btnGuardar;
     }
 }

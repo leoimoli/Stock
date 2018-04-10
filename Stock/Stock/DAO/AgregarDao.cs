@@ -47,6 +47,21 @@ namespace Stock.DAO
             return exito;
         }
 
+        public static bool InsertPrecioDeVenta(PrecioDeVenta _precio)
+        {
+            bool exito = false;
+
+            if (_precio.Precio > 0)
+            {
+                exito = InsertarPrecioVenta(_precio.idProducto, _precio.Precio, _precio.FechaActual, _precio.idUsuario);
+            }
+            else
+            {
+                exito = false;
+            }
+            return exito;
+        }
+
         private static bool ActualizarStockPorProductosVendidos(List<ListaProductoVenta> listaProductos)
         {
             bool exito = false;
@@ -63,7 +78,6 @@ namespace Stock.DAO
             }
             return exito;
         }
-
         private static bool RegistrarDetalleVenta(List<ListaProductoVenta> listaProductos, int idUltimoVenta)
         {
             bool exito = false;
@@ -84,7 +98,6 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
-
         public static bool InsertUsuario(Usuarios _usuario)
         {
             bool exito = false;
