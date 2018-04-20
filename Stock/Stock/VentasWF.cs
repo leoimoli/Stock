@@ -53,6 +53,7 @@ namespace Stock
                             }
                             label3.Text = Convert.ToString(lista.PrecioUnitario);
                             lblNombreProducto.Text = lista.NombreProducto;
+                            txtCodigo.Clear();
                         }
                     }
                     else
@@ -76,7 +77,75 @@ namespace Stock
                                 row.Cells[4].Value = PrecioFinal;
                             }
                         }
+                      
                     }
+                    decimal PrecioTotalFinal = 0;
+                    foreach (DataGridViewRow row in dgvVentas.Rows)
+                    {
+                        if (row.Cells[4].Value != null)
+                            PrecioTotalFinal += Convert.ToDecimal(row.Cells[4].Value.ToString());
+                    }
+                    txtCodigo.Clear();
+                    lblTotalPagarReal.Text = Convert.ToString(PrecioTotalFinal);
+                }
+                catch (Exception ex)
+                { }
+            }
+        }
+        private void txtCantidad_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    string codigoProducto = txtCodigo.Text;
+                    List<Entidades.ListaProductoVenta> _lista = new List<Entidades.ListaProductoVenta>();
+                    int cantidadingresada = 1;
+                    if (txtCantidad.Text != "")
+                    {
+                        cantidadingresada = Convert.ToInt32(txtCantidad.Text);
+                    }
+                    if (!listaProductos.Any(x => x.CodigoProducto == codigoProducto))
+                    {
+                        _lista = Negocio.Consultar.BuscarProductoParaVenta(codigoProducto);
+                        if (_lista.Count > 0)
+                        {
+                            _lista[0].Cantidad = cantidadingresada;
+                            var lista = _lista.First();
+                            listaProductos.Add(lista);
+                            decimal PrecioFinal = lista.PrecioVenta * cantidadingresada;
+                            dgvVentas.Rows.Add(lista.CodigoProducto, lista.NombreProducto, cantidadingresada, lista.PrecioVenta, PrecioFinal);
+                            if (lista.Foto != null)
+                            {
+                                Bitmap foto1 = Clases_Maestras.Funciones.byteToBipmap(lista.Foto);
+                                pictureBox1.Image = foto1;
+                            }
+                            label3.Text = Convert.ToString(lista.PrecioUnitario);
+                            lblNombreProducto.Text = lista.NombreProducto;
+                            txtCodigo.Clear();
+                        }
+                    }
+                    else
+                    {
+                        foreach (DataGridViewRow row in dgvVentas.Rows)
+                        {
+                            if (row.Cells[0].Value != null && row.Cells[0].Value.ToString() == codigoProducto)
+                            {
+                                int CantidadOld = Convert.ToInt32(row.Cells[2].Value.ToString());
+                                int CantidadNew = Convert.ToInt32(cantidadingresada.ToString());
+                                int cantidad = CantidadOld + CantidadNew;
+                                listaProductos[row.Index].Cantidad = cantidad;
+                                row.Cells[2].Value = cantidad;
+                                decimal ValorVenta = Convert.ToDecimal(row.Cells[3].Value.ToString());
+                                decimal PrecioFinal = cantidad * ValorVenta;
+                                row.Cells[4].Value = PrecioFinal;
+                            }
+                        }
+                    }
+                    txtCodigo.Clear();
+                    cantidadingresada = 1;
+                    txtCantidad.Text = "1";
+                    txtCodigo.Focus();
                     decimal PrecioTotalFinal = 0;
                     foreach (DataGridViewRow row in dgvVentas.Rows)
                     {
@@ -93,9 +162,12 @@ namespace Stock
         {
             if (listaProductos.Count > 0)
             {
+
                 int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
                 int idusuario = idusuarioLogueado;
-                listaProductos[0].PrecioVentaFinal = Convert.ToDecimal(lblTotalPagarReal.Text);
+                //listaProductos[0].PrecioVentaFinal = Convert.ToDecimal(lblTotalPagarReal.Text);
+                //CobrarWF _cobrar = new CobrarWF(listaProductos, idusuario);
+                //_cobrar.ShowDialog();
                 bool Exito = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
                 if (Exito == true)
                 {

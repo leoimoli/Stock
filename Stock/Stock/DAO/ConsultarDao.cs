@@ -146,6 +146,37 @@ namespace Stock.DAO
             connection.Close();
             return _lista;
         }
+
+        public static List<HistorialDelProveedor> BuscarHistorialDelProveedor(string Proveedor)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.HistorialDelProveedor> lista = new List<Entidades.HistorialDelProveedor>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("Proveedor_in", Proveedor)};
+            string proceso = "BuscarHistorialProveedor";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.HistorialDelProveedor historialProveedor = new Entidades.HistorialDelProveedor();
+                    historialProveedor.año = item["anno"].ToString();
+                    historialProveedor.mes = item["mes"].ToString();
+                    historialProveedor.TotalCompras =Convert.ToInt32(item["Compras"].ToString());
+                    lista.Add(historialProveedor);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
         public static List<HistorialDelProductoSeleccionado> ListaHistorialPrecioDeVenta()
         {
             connection.Close();

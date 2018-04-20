@@ -29,7 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lblUsuarioEstadisticas = new System.Windows.Forms.Label();
             this.panel_Proveedores = new System.Windows.Forms.Panel();
@@ -67,6 +70,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel_Proveedores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -79,10 +84,23 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel6.Controls.Add(this.chart1);
             this.panel6.Location = new System.Drawing.Point(324, 364);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(611, 187);
             this.panel6.TabIndex = 22;
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(3, 4);
+            this.chart1.Name = "chart1";
+            this.chart1.Size = new System.Drawing.Size(560, 180);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
             // 
             // panel5
             // 
@@ -100,9 +118,9 @@
             this.lblUsuarioEstadisticas.ForeColor = System.Drawing.Color.White;
             this.lblUsuarioEstadisticas.Location = new System.Drawing.Point(19, -1);
             this.lblUsuarioEstadisticas.Name = "lblUsuarioEstadisticas";
-            this.lblUsuarioEstadisticas.Size = new System.Drawing.Size(197, 25);
+            this.lblUsuarioEstadisticas.Size = new System.Drawing.Size(193, 25);
             this.lblUsuarioEstadisticas.TabIndex = 1;
-            this.lblUsuarioEstadisticas.Text = "Historial Proveedores";
+            this.lblUsuarioEstadisticas.Text = "Historial de compras ";
             // 
             // panel_Proveedores
             // 
@@ -501,6 +519,8 @@
             this.Controls.SetChildIndex(this.panel5, 0);
             this.Controls.SetChildIndex(this.panel6, 0);
             this.Controls.SetChildIndex(this.progressBar1, 0);
+            this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel_Proveedores.ResumeLayout(false);
@@ -558,5 +578,6 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

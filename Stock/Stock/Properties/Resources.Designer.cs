@@ -233,6 +233,16 @@ namespace Stock.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap F11 {
+            get {
+                object obj = ResourceManager.GetObject("F11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap F2 {
             get {
                 object obj = ResourceManager.GetObject("F2", resourceCulture);
@@ -293,9 +303,29 @@ namespace Stock.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IMPRIMIR_TICKET {
+            get {
+                object obj = ResourceManager.GetObject("IMPRIMIR TICKET", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap lupita {
             get {
                 object obj = ResourceManager.GetObject("lupita", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MC {
+            get {
+                object obj = ResourceManager.GetObject("MC", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -356,6 +386,16 @@ namespace Stock.Properties {
         internal static System.Drawing.Bitmap Ventas1 {
             get {
                 object obj = ResourceManager.GetObject("Ventas1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VISA {
+            get {
+                object obj = ResourceManager.GetObject("VISA", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -199,6 +199,18 @@ namespace Stock.Negocio
             return _listaProveedores;
         }
 
+        public static List<HistorialDelProveedor> HistorialDelProveedor(string Proveedor)
+        {
+            List<Entidades.HistorialDelProveedor> _listaHistorialProveedores = new List<Entidades.HistorialDelProveedor>();
+            try
+            {
+                _listaHistorialProveedores = DAO.ConsultarDao.BuscarHistorialDelProveedor(Proveedor);
+            }
+            catch (Exception ex)
+            { }
+            return _listaHistorialProveedores;
+        }
+
         public static List<HistorialDelProductoSeleccionado> ListaHistorialPrecioDeVenta()
         {
             List<HistorialDelProductoSeleccionado> _listaHistorialProductoPrecioDeVenta = new List<HistorialDelProductoSeleccionado>();

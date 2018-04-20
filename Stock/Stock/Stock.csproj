@@ -45,6 +45,7 @@
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -71,6 +72,7 @@
     <Compile Include="DAO\ConsultarDao.cs" />
     <Compile Include="DAO\EditarDao.cs" />
     <Compile Include="Entidades\HistorialDelProductoSeleccionado.cs" />
+    <Compile Include="Entidades\HistorialDelProveedor.cs" />
     <Compile Include="Entidades\ListaProductoVenta.cs" />
     <Compile Include="Entidades\ListaStock.cs" />
     <Compile Include="Entidades\ListaStockProducto.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="Entidades\Proveedores.cs" />
     <Compile Include="Entidades\ProveedorReducido.cs" />
     <Compile Include="Entidades\ReducirStockProducto.cs" />
+    <Compile Include="Entidades\Series.cs" />
     <Compile Include="Entidades\Stock.cs" />
     <Compile Include="Entidades\StockReducido.cs" />
     <Compile Include="Entidades\UsuarioReducido.cs" />
@@ -277,6 +280,8 @@
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Documentos\Base De Datos\Procedure\1%29LoginUsuario.txt" />
+    <None Include="Resources\VISA.png" />
+    <None Include="Resources\MC.png" />
     <None Include="Resources\lupita.png" />
     <None Include="Resources\Ventas1.png" />
     <None Include="Resources\subir.png" />
@@ -301,6 +306,8 @@
     <None Include="Resources\F1.png" />
     <None Include="Resources\F2.png" />
     <None Include="Resources\F3.png" />
+    <None Include="Resources\F11.png" />
+    <None Include="Resources\IMPRIMIR TICKET.png" />
     <Content Include="Resources\login2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

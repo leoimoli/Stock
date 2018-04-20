@@ -165,6 +165,7 @@
             this.txtCantidad.Size = new System.Drawing.Size(80, 20);
             this.txtCantidad.TabIndex = 20;
             this.txtCantidad.Text = "1";
+            this.txtCantidad.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCantidad_KeyDown);
             // 
             // label1
             // 
@@ -241,7 +242,7 @@
             this.btnCobrar.BackColor = System.Drawing.Color.Silver;
             this.btnCobrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCobrar.Image = global::Stock.Properties.Resources.cobrar1;
-            this.btnCobrar.Location = new System.Drawing.Point(884, 480);
+            this.btnCobrar.Location = new System.Drawing.Point(936, 480);
             this.btnCobrar.Name = "btnCobrar";
             this.btnCobrar.Size = new System.Drawing.Size(50, 40);
             this.btnCobrar.TabIndex = 17;

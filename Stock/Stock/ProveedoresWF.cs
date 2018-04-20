@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Stock.Entidades;
 using System.IO;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Stock
 {
@@ -20,9 +21,11 @@ namespace Stock
         }
         private void ProveedoresWF_Load(object sender, EventArgs e)
         {
+
             List<Entidades.ProveedorReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProveedores());
             ListaProveedores = ListaReducidos;
         }
+
         #region Botones
         public static int idProveedorGrilla;
         private void btnNuevoProveedor_Click(object sender, EventArgs e)
@@ -159,7 +162,26 @@ namespace Stock
             {
                 pictureBox1.Image = null;
             }
+
+            ///// Trabajo Gráfico.........
+            List<HistorialDelProveedor> _historial = new List<HistorialDelProveedor>();
+            _historial = Negocio.Consultar.HistorialDelProveedor(proveedor.NombreEmpresa);
+            string[] series1 = { proveedor.NombreEmpresa };
+            fillChart(series1, _historial);
+
         }
+        private void fillChart(string[] series1, List<HistorialDelProveedor> _historial)
+        {
+            chart1.Series.Clear();
+            string nombreNuevaSerie = series1[0].ToString();
+            chart1.Series.Add(nombreNuevaSerie);
+            foreach (var item in _historial)
+            {
+                chart1.Series[nombreNuevaSerie].Points.AddXY(item.mes, item.TotalCompras);
+            }
+            
+        }
+
         public List<Entidades.ProveedorReducido> ListaProveedores
         {
             set
