@@ -15,6 +15,13 @@ namespace Stock.Clases_Maestras
                 return new string[] { "ADMINISTRADOR", "OPERADOR" };
             }
         }
+        public static string[] Sexo
+        {
+            get
+            {
+                return new string[] { "MASCULINO", "FEMENINO" };
+            }
+        }
 
     }
 }

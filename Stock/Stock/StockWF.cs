@@ -265,11 +265,21 @@ namespace Stock
                     }
                     else
                     {
-                        if (MessageBox.Show("Desea agregar un nuevo producto ?", "Producto Inexistente", MessageBoxButtons.YesNo) == DialogResult.Yes) ;
+                        const string message = "Desea agregar un nuevo producto ?";
+                        const string caption = "Producto Inexistente";
+                        var result = MessageBox.Show(message, caption,
+                                                     MessageBoxButtons.YesNo,
+                                                     MessageBoxIcon.Question);
                         {
-                            Producto _producto = new Producto();
-                            _producto.Show();
-                            Hide();
+                            if (result == DialogResult.Yes)
+                            {
+                                Producto _producto = new Producto();
+                                _producto.Show();
+                                Hide();
+                            }
+                            else
+                            { }
+
                         }
                     }
                 }

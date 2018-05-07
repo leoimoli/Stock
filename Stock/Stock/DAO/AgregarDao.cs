@@ -47,6 +47,46 @@ namespace Stock.DAO
             return exito;
         }
 
+        public static bool RegistrarPuntos(int idCliente, int actualizarPuntos)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string proceso = "RegistrarPuntos";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+            cmd.Parameters.AddWithValue("actualizarPuntos_in", actualizarPuntos);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+
+        public static bool InsertCliente(Entidades.Clientes _cliente)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string proceso = "AltaCliente";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("Dni_in", _cliente.Dni);
+            cmd.Parameters.AddWithValue("Sexo_in", _cliente.Sexo);
+            cmd.Parameters.AddWithValue("Apellido_in", _cliente.Apellido);
+            cmd.Parameters.AddWithValue("Nombre_in", _cliente.Nombre);
+            cmd.Parameters.AddWithValue("Email_in", _cliente.Email);
+            cmd.Parameters.AddWithValue("Telefono_in", _cliente.Telefono);
+            cmd.Parameters.AddWithValue("FechaDeAlta_in", _cliente.FechaDeAlta);
+            cmd.Parameters.AddWithValue("Calle_in", _cliente.Calle);
+            cmd.Parameters.AddWithValue("Altura_in", _cliente.Altura);
+            cmd.Parameters.AddWithValue("idUsuario_in", _cliente.idUsuario);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+
         public static bool InsertPrecioDeVenta(PrecioDeVenta _precio)
         {
             bool exito = false;

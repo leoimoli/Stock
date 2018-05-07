@@ -51,6 +51,127 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
+        public static int BuscarPuntosViejos(int idCliente)
+        {
+            connection.Close();
+            connection.Open();
+            int PuntosViejos = 0;
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("idCliente_in", idCliente)};
+            string proceso = "BuscarPuntos";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    PuntosViejos = Convert.ToInt32(item["txPuntos"].ToString());
+
+                }
+            }
+            connection.Close();
+            return PuntosViejos;
+        }
+
+        public static List<Entidades.Clientes> BuscarClienteIngresado(string dni)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.Clientes> _listaClientes = new List<Entidades.Clientes>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("Dni_in", dni) };
+            string proceso = "BuscarCliente";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Clientes listaCliente = new Entidades.Clientes();
+                    listaCliente.IdCliente = Convert.ToInt32(item["idClientes"].ToString());
+                    listaCliente.Apellido = item["txApellido"].ToString();
+                    listaCliente.Nombre = item["txNombre"].ToString();
+                    listaCliente.Dni = item["txDni"].ToString();
+                    listaCliente.FechaDeAlta = Convert.ToDateTime(item["dtFechaDeAlta"].ToString());
+                    listaCliente.Email = item["txEmail"].ToString();
+                    listaCliente.Telefono = item["txTelefono"].ToString();
+                    listaCliente.Calle = item["txCalle"].ToString();
+                    listaCliente.Altura = item["txAltura"].ToString();
+                    _listaClientes.Add(listaCliente);
+                }
+            }
+            connection.Close();
+            return _listaClientes;
+        }
+
+        public static List<Entidades.Clientes> ListarClientes()
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.Clientes> _listaClientes = new List<Entidades.Clientes>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ListarClientes";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Clientes listaCliente = new Entidades.Clientes();
+                    listaCliente.IdCliente = Convert.ToInt32(item["idClientes"].ToString());
+                    listaCliente.Apellido = item["txApellido"].ToString();
+                    listaCliente.Nombre = item["txNombre"].ToString();
+                    listaCliente.Dni = item["txDni"].ToString();
+                    listaCliente.FechaDeAlta = Convert.ToDateTime(item["dtFechaDeAlta"].ToString());
+                    listaCliente.Email = item["txEmail"].ToString();
+                    listaCliente.Telefono = item["txTelefono"].ToString();
+                    listaCliente.Calle = item["txCalle"].ToString();
+                    listaCliente.Altura = item["txAltura"].ToString();
+                    _listaClientes.Add(listaCliente);
+                }
+            }
+            connection.Close();
+            return _listaClientes;
+        }
+        public static bool ValidarClienteExistente(string dni)
+        {
+            connection.Close();
+            bool Existe = false;
+            connection.Open();
+            List<Entidades.Usuarios> lista = new List<Entidades.Usuarios>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("Dni_in", dni) };
+            string proceso = "ValidarClienteExistente";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            DataSet ds = new DataSet();
+            dt.Fill(ds, "cliente");
+            if (Tabla.Rows.Count > 0)
+            {
+                Existe = true;
+            }
+            connection.Close();
+            return Existe;
+        }
         public static List<HistorialDelProductoSeleccionado> HistorialProducto(int idProducto)
         {
             connection.Close();
@@ -112,6 +233,45 @@ namespace Stock.DAO
             connection.Close();
             return _lista;
         }
+
+        public static List<Entidades.Clientes> BuscarClientePorID(int idClienteSeleccionado)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.Clientes> lista = new List<Entidades.Clientes>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("idClientes_in", idClienteSeleccionado)};
+            string proceso = "BuscarClientePorID";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Clientes listaCliente = new Entidades.Clientes();
+                    listaCliente.IdCliente = Convert.ToInt32(item["idClientes"].ToString());
+                    listaCliente.Dni = item["txDni"].ToString();
+                    listaCliente.Sexo = item["txSexo"].ToString();
+                    listaCliente.Apellido = item["txApellido"].ToString();
+                    listaCliente.Nombre = item["txNombre"].ToString();
+                    //listaCliente.FechaDeNacimiento = Convert.ToDateTime(item["dtFechaNacimiento"].ToString());
+                    listaCliente.FechaDeAlta = Convert.ToDateTime(item["dtFechaDeAlta"].ToString());
+                    listaCliente.Email = item["txEmail"].ToString();
+                    listaCliente.Telefono = item["txTelefono"].ToString();
+                    listaCliente.Calle = item["txCalle"].ToString();
+                    listaCliente.Altura = item["txAltura"].ToString();
+                    lista.Add(listaCliente);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
         public static List<ListaProductoVenta> BuscarProductoParaVenta(string codigoProducto)
         {
             connection.Close();
@@ -146,7 +306,6 @@ namespace Stock.DAO
             connection.Close();
             return _lista;
         }
-
         public static List<HistorialDelProveedor> BuscarHistorialDelProveedor(string Proveedor)
         {
             connection.Close();
@@ -169,14 +328,13 @@ namespace Stock.DAO
                     Entidades.HistorialDelProveedor historialProveedor = new Entidades.HistorialDelProveedor();
                     historialProveedor.año = item["anno"].ToString();
                     historialProveedor.mes = item["mes"].ToString();
-                    historialProveedor.TotalCompras =Convert.ToInt32(item["Compras"].ToString());
+                    historialProveedor.TotalCompras = Convert.ToInt32(item["Compras"].ToString());
                     lista.Add(historialProveedor);
                 }
             }
             connection.Close();
             return lista;
         }
-
         public static List<HistorialDelProductoSeleccionado> ListaHistorialPrecioDeVenta()
         {
             connection.Close();

@@ -164,7 +164,6 @@ namespace Stock
                 cmbPerfil.Items.Add(item);
             }
         }
-
         public static string urla;
         private void ValidacionesUsuarioLogueado()
         {

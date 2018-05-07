@@ -71,5 +71,25 @@ namespace Stock
             CheckForIllegalCrossThreadCalls = false;
             lblMaster_FechaHoraReal.Text = DateTime.Now.ToString();
         }
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ClientesWF _clientes = new ClientesWF();
+            _clientes.Show();
+            Hide();
+        }
+
+        private void consultasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reporte_VentasWF _reporte = new Reporte_VentasWF();
+            _reporte.Show();
+            Hide();
+        }
+
+        private void consultasToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Reporte_VentasWF _reporte = new Reporte_VentasWF();
+            _reporte.Show();
+            Hide();
+        }
     }
 }

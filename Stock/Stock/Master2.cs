@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Stock
 {
-    public partial class Master2 : Form
+    public partial class Master2 : Master
     {
         public Master2()
         {
@@ -21,9 +21,16 @@ namespace Stock
         {
             if (Sesion.UsuarioLogueado != null)
             {
-                lblMaster_UsuarioLogin.Text = Sesion.UsuarioLogueado.Apellido + "  " + Sesion.UsuarioLogueado.Nombre;
-                lblMaster_FechaHoraReal.Text = Convert.ToString(DateTime.Now);
+                //lblMaster_UsuarioLogin.Text = Sesion.UsuarioLogueado.Apellido + "  " + Sesion.UsuarioLogueado.Nombre;
+                //lblMaster_FechaHoraReal.Text = Convert.ToString(DateTime.Now);
             }
+        }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            Reporte_VentasWF _reporte = new Reporte_VentasWF();
+            _reporte.Show();
+            Hide();
         }
     }
 }

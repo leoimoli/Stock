@@ -21,6 +21,47 @@ namespace Stock.Negocio
             return lista;
         }
 
+        public static List<Entidades.Clientes> ListaDeClientes()
+        {
+            List<Entidades.Clientes> _listaClientes = new List<Entidades.Clientes>();
+            try
+            {
+                _listaClientes = DAO.ConsultarDao.ListarClientes();
+            }
+            catch (Exception ex)
+            { }
+            return _listaClientes;
+        }
+
+        public static List<Entidades.Clientes> BuscarClienteIngresado(string dni)
+        {
+            List<Entidades.Clientes> _cliente = new List<Entidades.Clientes>();
+            try
+            {
+                _cliente = DAO.ConsultarDao.BuscarClienteIngresado(dni);
+            }
+            catch (Exception ex)
+            { }
+            return _cliente;
+        }
+
+        public static int BuscarPuntosViejos(int idCliente)
+        {
+            int PuntosViejos = 0;
+            try
+            {
+                PuntosViejos = DAO.ConsultarDao.BuscarPuntosViejos(idCliente);
+            }
+            catch (Exception ex)
+            { }
+            return PuntosViejos;
+        }
+        public static bool ValidarClienteExistente(string dni)
+        {
+            bool existe = DAO.ConsultarDao.ValidarClienteExistente(dni);
+            return existe;
+        }
+
         public static List<ListaStock> ListaDeStock()
         {
             List<ListaStock> _listaStock = new List<ListaStock>();
@@ -221,6 +262,18 @@ namespace Stock.Negocio
             catch (Exception ex)
             { }
             return _listaHistorialProductoPrecioDeVenta;
+        }
+
+        public static List<Entidades.Clientes> BuscarClientePorID(int idClienteSeleccionado)
+        {
+            List<Entidades.Clientes> _Cliente = new List<Entidades.Clientes>();
+            try
+            {
+                _Cliente = DAO.ConsultarDao.BuscarClientePorID(idClienteSeleccionado);
+            }
+            catch (Exception ex)
+            { }
+            return _Cliente;
         }
 
         public static List<ListaStock> ListaDeStockPoridProdcuto(int idProducto)

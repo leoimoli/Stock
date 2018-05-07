@@ -77,7 +77,7 @@ namespace Stock
                                 row.Cells[4].Value = PrecioFinal;
                             }
                         }
-                      
+
                     }
                     decimal PrecioTotalFinal = 0;
                     foreach (DataGridViewRow row in dgvVentas.Rows)
@@ -172,6 +172,24 @@ namespace Stock
                 if (Exito == true)
                 {
                     BloquearPantalla();
+                    const string message = "Desea cargar puntos al cliente";
+                    const string caption = "Cliente registrado";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Question);
+                    {
+                        if (result == DialogResult.Yes)
+                        {
+                            Char delimiter = ',';
+                            String[] pts = lblTotalPagarReal.Text.Split(delimiter);
+                            int puntos = Convert.ToInt32(pts[0]);
+                            CargarPuntosWF _cargar = new CargarPuntosWF(puntos);
+                            _cargar.Show();
+                        }
+                        else
+                        { }
+
+                    }
                 }
             }
         }

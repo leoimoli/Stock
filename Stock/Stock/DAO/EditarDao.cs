@@ -57,6 +57,22 @@ namespace Stock.DAO
             return exito;
         }
 
+        public static bool ActualizarPuntaje(int idCliente, int actualizarPuntos)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string Actualizar = "ActualizarPuntos";
+            MySqlCommand cmd = new MySqlCommand(Actualizar, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+            cmd.Parameters.AddWithValue("actualizarPuntos_in", actualizarPuntos);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+
         public static bool ActualizarStock(int idProducto, int cantidad)
         {
             bool exito = false;

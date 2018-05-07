@@ -403,8 +403,7 @@ namespace Stock
             catch (Exception ex)
             { }
         }
+
         #endregion
-
-
     }
 }

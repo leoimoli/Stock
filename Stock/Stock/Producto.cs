@@ -301,6 +301,22 @@ namespace Stock
                         List<Entidades.ProductoReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProductos());
                         ListaProductos = ListaReducidos;
                     }
+                    else
+                    {
+                        lblHistorialProducto.Text = "No hay información del producto para visualizar";
+                        EditCódigo_Producto.Visible = false;
+                        EditNombre_Producto.Visible = false;
+                        EditMarca_Producto.Visible = false;
+                        EditUsuario_Creador.Visible = false;
+                        EditFecha_Alta_Producto.Visible = false;
+                        EditPrecioDeVenta_Producto.Visible = false;
+                        idProductoGrilla = 0;
+                        txtCodigoProducto.Enabled = true;
+                        txtCodigoProducto.Focus();
+                        LimpiarCampos();
+                        HabilitarCampos();
+                    }
+
                 }
             }
             catch (Exception ex)
