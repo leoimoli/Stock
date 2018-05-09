@@ -125,7 +125,7 @@
             this.btnGuardar.Image = global::Stock.Properties.Resources.f12Guardar;
             this.btnGuardar.Location = new System.Drawing.Point(198, 163);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(49, 39);
+            this.btnGuardar.Size = new System.Drawing.Size(50, 40);
             this.btnGuardar.TabIndex = 37;
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Visible = false;

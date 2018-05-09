@@ -24,6 +24,7 @@ namespace Stock
             {
                 List<Entidades.UsuarioReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeUsuarios());
                 ListaUsuarios = ListaReducidos;
+                dataGridView1.ReadOnly = true;
             }
             catch (Exception ex)
             { }
@@ -44,7 +45,23 @@ namespace Stock
             LimpiarCampos();
             ValidacionesUsuarioLogueado();
             HabilitarCampos();
+            lblapellidoNombreEditar.Text = "Nuevo Usuario";
+            LimpiarLabels();
         }
+        private void LimpiarLabels()
+        {
+            lblFechaCreacion.Visible = false;
+            lblFechaUltimaConexion.Visible = false;
+            label6lblFechaCreacion_base.Visible = false;
+            label11.Visible = false;
+            label12.Visible = false;
+            label13.Visible = false;
+            lblUltimoLoteIngresado.Visible = false;
+            lblVentasRealizadas.Visible = false;
+            lblIngresoRecaudado.Visible = false;
+            lblFechaUltimaConexion_base.Visible = false;
+        }
+
         private void btnCargarImagen_Click(object sender, EventArgs e)
         {
             try
@@ -504,6 +521,11 @@ namespace Stock
             }
             _usuario.Foto = Imagen;
             return _usuario;
+        }
+
+        private void SoloNumeros(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back);
         }
         #endregion
         #region Eventos Grilla

@@ -17,7 +17,6 @@ namespace Stock
         {
             InitializeComponent();
         }
-
         private void ClientesWF_Load(object sender, EventArgs e)
         {
             try
@@ -245,7 +244,6 @@ namespace Stock
             txtCalle.Text = cliente.Calle;
             txtAltura.Text = cliente.Altura;
         }
-
         #region Eventos Grilla
         private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {

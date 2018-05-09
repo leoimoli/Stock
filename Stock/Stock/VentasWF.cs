@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibPrintTicket;
 
 namespace Stock
 {
@@ -172,7 +173,7 @@ namespace Stock
                 if (Exito == true)
                 {
                     BloquearPantalla();
-                    const string message = "Desea cargar puntos al cliente";
+                    const string message = "¿Desea cargar puntos al cliente?";
                     const string caption = "Cliente registrado";
                     var result = MessageBox.Show(message, caption,
                                                  MessageBoxButtons.YesNo,
@@ -187,7 +188,39 @@ namespace Stock
                             _cargar.Show();
                         }
                         else
-                        { }
+                        {
+                            Ticket ticket = new Ticket();
+
+                            ticket.AddHeaderLine("La Brújula");
+                            ticket.AddHeaderLine("EXPEDIDO EN:");
+                            ticket.AddHeaderLine("44 N°1111");
+                            ticket.AddHeaderLine("La Plata, BsAS");
+                            ticket.AddHeaderLine("RFC: CSI-020226-MV4");
+
+                            ticket.AddSubHeaderLine("Ticket # 1");
+                            ticket.AddSubHeaderLine(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString());
+
+                            foreach (DataGridViewRow row in dgvVentas.Rows)
+                            {
+                                if (row.Cells[0].Value != null)
+                                {
+                                    ticket.AddItem(row.Cells[2].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[4].Value.ToString());
+                                }
+
+                            }
+                            //ticket.AddTotal("SUBTOTAL", "12.00");
+                            //ticket.AddTotal("IVA", "0");
+                            ticket.AddTotal("TOTAL", lblTotalPagarReal.Text);
+                            ticket.AddTotal("", "");
+                            //ticket.AddTotal("RECIBIDO", "0");
+                            //ticket.AddTotal("CAMBIO", "0");
+                            ticket.AddTotal("", "");
+
+                            ticket.AddFooterLine("VUELVA PRONTO Y SINO CHUPALA");
+
+                            // ticket.PrintTicket("EPSON TM-T88III Receipt"); //Nombre de la impresora de tickets
+                            ticket.PrintTicket("RICOH MP C2004 PCL 6");
+                        }
 
                     }
                 }

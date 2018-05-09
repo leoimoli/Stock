@@ -31,7 +31,6 @@ namespace Stock.Negocio
             { }
             return exito;
         }
-
         private static void ValidarDatos(Entidades.Clientes _cliente)
         {
             if (String.IsNullOrEmpty(_cliente.Dni))

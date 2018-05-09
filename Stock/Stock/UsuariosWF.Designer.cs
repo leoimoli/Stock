@@ -366,6 +366,7 @@
             // 
             // cmbPerfil
             // 
+            this.cmbPerfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPerfil.FormattingEnabled = true;
             this.cmbPerfil.Location = new System.Drawing.Point(327, 151);
             this.cmbPerfil.Name = "cmbPerfil";
