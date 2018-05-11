@@ -87,6 +87,7 @@
     <Compile Include="Entidades\ListaProductoVenta.cs" />
     <Compile Include="Entidades\ListaStock.cs" />
     <Compile Include="Entidades\ListaStockProducto.cs" />
+    <Compile Include="Entidades\ListaVentas.cs" />
     <Compile Include="Entidades\Marca.cs" />
     <Compile Include="Entidades\HistorialProductoPrecioDeVenta.cs" />
     <Compile Include="Entidades\PrecioDeVenta.cs" />
@@ -171,6 +172,12 @@
     <Compile Include="CobrarWF.Designer.cs">
       <DependentUpon>CobrarWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="RemarcarPreciosWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RemarcarPreciosWF.Designer.cs">
+      <DependentUpon>RemarcarPreciosWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reporte_VentasWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CobrarWF.resx">
       <DependentUpon>CobrarWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RemarcarPreciosWF.resx">
+      <DependentUpon>RemarcarPreciosWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporte_VentasWF.resx">
       <DependentUpon>Reporte_VentasWF.cs</DependentUpon>

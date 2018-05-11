@@ -46,5 +46,10 @@ namespace Stock
             }
             //return resultado;
         }
+
+        private void SoloNumeros(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back);
+        }
     }
 }

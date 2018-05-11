@@ -23,6 +23,7 @@ namespace Stock
             {
                 List<Entidades.ClienteReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeClientes());
                 ListaClientes = ListaReducidos;
+                dataGridView1.ReadOnly = true;
             }
             catch (Exception ex)
             { }
@@ -270,5 +271,10 @@ namespace Stock
             { }
         }
         #endregion
+
+        private void SoloNumeros(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back);
+        }
     }
 }

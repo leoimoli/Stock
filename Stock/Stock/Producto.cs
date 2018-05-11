@@ -26,6 +26,7 @@ namespace Stock
                lblUltimoMovimientosProductos.Text = "Últimos Productos cargados";
                 List<Entidades.ProductoReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProductos());
                 ListaProductos = ListaReducidos;
+                dataGridView1.ReadOnly = true;
             }
             catch (Exception ex)
             { }

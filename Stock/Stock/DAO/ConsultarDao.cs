@@ -78,6 +78,40 @@ namespace Stock.DAO
             return PuntosViejos;
         }
 
+        public static List<ListaVentas> ConsultarVentasPorFecha(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaVentas> lista = new List<Entidades.ListaVentas>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("FechaDesde_in", fechaDesde),
+                                       new MySqlParameter("FechaHasta_in", fechaHasta)};
+            string proceso = "ConsultarVentasPorFecha";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaVentas listaVenta = new Entidades.ListaVentas();
+                    listaVenta.idVenta = Convert.ToInt32(item["idventas"].ToString());
+                    DateTime fechaReal = Convert.ToDateTime(item["dtFecha"].ToString());
+                    listaVenta.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
+                    listaVenta.PrecioVenta = item["txPrecioVentaFinal"].ToString();
+                    var usuario = item["txApellido"].ToString() + " " + item["txNombre"].ToString();
+                    listaVenta.usuario = usuario;
+                    lista.Add(listaVenta);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
         public static List<Entidades.Clientes> BuscarClienteIngresado(string dni)
         {
             connection.Close();

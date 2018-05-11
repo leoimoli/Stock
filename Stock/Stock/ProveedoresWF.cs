@@ -24,6 +24,7 @@ namespace Stock
 
             List<Entidades.ProveedorReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProveedores());
             ListaProveedores = ListaReducidos;
+            dataGridView1.ReadOnly = true;
         }
 
         #region Botones

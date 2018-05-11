@@ -74,6 +74,18 @@ namespace Stock.Negocio
             return _listaStock;
         }
 
+        public static List<ListaVentas> ConsultarVentasPorFecha(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            List<ListaVentas> _lista = new List<ListaVentas>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarVentasPorFecha(fechaDesde, fechaHasta);
+            }
+            catch (Exception ex)
+            { }
+            return _lista;
+        }
+
         public static List<ListaProductoVenta> BuscarProductoParaVenta(string codigoProducto)
         {
             List<ListaProductoVenta> _lista = new List<ListaProductoVenta>();

@@ -79,7 +79,6 @@
             this.dgvVentas.Name = "dgvVentas";
             this.dgvVentas.Size = new System.Drawing.Size(650, 430);
             this.dgvVentas.TabIndex = 0;
-            //this.dgvVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_CellContentClick);
             this.dgvVentas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvVentas_KeyDown);
             // 
             // CodigoProducto
@@ -168,6 +167,7 @@
             this.txtCantidad.TabIndex = 20;
             this.txtCantidad.Text = "1";
             this.txtCantidad.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCantidad_KeyDown);
+            this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
             // 
             // label1
             // 
@@ -263,7 +263,6 @@
             this.button1.TabIndex = 18;
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = false;
-            //this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // VentasWF
             // 

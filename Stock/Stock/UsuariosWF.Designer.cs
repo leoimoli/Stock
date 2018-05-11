@@ -209,6 +209,7 @@
             this.txtDniBuscar.Name = "txtDniBuscar";
             this.txtDniBuscar.Size = new System.Drawing.Size(170, 20);
             this.txtDniBuscar.TabIndex = 16;
+            this.txtDniBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
             // 
             // btnNuevoUsuario
             // 
@@ -460,6 +461,7 @@
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(170, 20);
             this.txtDni.TabIndex = 6;
+            this.txtDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
             // 
             // lblContraseña
             // 

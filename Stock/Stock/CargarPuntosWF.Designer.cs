@@ -68,6 +68,7 @@
             this.txtDni.Size = new System.Drawing.Size(159, 20);
             this.txtDni.TabIndex = 2;
             this.txtDni.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDni_KeyDown);
+            this.txtDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
             // 
             // lblPuntosVisible
             // 
