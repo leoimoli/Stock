@@ -78,6 +78,100 @@ namespace Stock.DAO
             return PuntosViejos;
         }
 
+        public static List<ListaVentas> ConsultarVentasPorUsuario(string dniUsuario)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaVentas> lista = new List<Entidades.ListaVentas>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                       new MySqlParameter("dniUsuario_in", dniUsuario)};
+            string proceso = "ConsultarVentasPorUsuario";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaVentas listaVenta = new Entidades.ListaVentas();
+                    listaVenta.idVenta = Convert.ToInt32(item["idventas"].ToString());
+                    DateTime fechaReal = Convert.ToDateTime(item["dtFecha"].ToString());
+                    listaVenta.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
+                    listaVenta.PrecioVenta = item["txPrecioVentaFinal"].ToString();
+                    var usuario = item["txApellido"].ToString() + " " + item["txNombre"].ToString();
+                    listaVenta.usuario = usuario;
+                    lista.Add(listaVenta);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
+        public static List<ListaVentasEstadistica> ConsultarVentasPorUsuarioEstadistica(string dniUsuario)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaVentasEstadistica> lista = new List<Entidades.ListaVentasEstadistica>();
+            MySqlCommand cmd2 = new MySqlCommand();
+            cmd2.Connection = connection;
+            DataTable Tabla2 = new DataTable();
+            MySqlParameter[] oParam2 = {
+                                        new MySqlParameter("dniUsuario_in", dniUsuario)};
+            string proceso2 = "ConsultarVentasPorUsuarioEstadistica";
+            MySqlDataAdapter dt2 = new MySqlDataAdapter(proceso2, connection);
+            dt2.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt2.SelectCommand.Parameters.AddRange(oParam2);
+            dt2.Fill(Tabla2);
+            if (Tabla2.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla2.Rows)
+                {
+                    Entidades.ListaVentasEstadistica listaVenta = new Entidades.ListaVentasEstadistica();
+                    listaVenta.mes = item["mes"].ToString();
+                    listaVenta.anno = item["anno"].ToString();
+                    listaVenta.TotalVentasPorMes = Convert.ToInt32(item["Ventas"].ToString());
+                    lista.Add(listaVenta);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
+        public static List<ListaVentasEstadistica> ConsultarVentasPorFechaEstadistica(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaVentasEstadistica> lista = new List<Entidades.ListaVentasEstadistica>();
+            MySqlCommand cmd2 = new MySqlCommand();
+            cmd2.Connection = connection;
+            DataTable Tabla2 = new DataTable();
+            MySqlParameter[] oParam2 = {
+                                      new MySqlParameter("FechaDesde_in", fechaDesde),
+                                       new MySqlParameter("FechaHasta_in", fechaHasta)};
+            string proceso2 = "ConsultarVentasPorFechaEstadistica";
+            MySqlDataAdapter dt2 = new MySqlDataAdapter(proceso2, connection);
+            dt2.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt2.SelectCommand.Parameters.AddRange(oParam2);
+            dt2.Fill(Tabla2);
+            if (Tabla2.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla2.Rows)
+                {
+                    Entidades.ListaVentasEstadistica listaVenta = new Entidades.ListaVentasEstadistica();
+                    listaVenta.mes = item["mes"].ToString();
+                    listaVenta.anno = item["anno"].ToString();
+                    listaVenta.TotalVentasPorMes = Convert.ToInt32(item["Ventas"].ToString());
+                    lista.Add(listaVenta);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
         public static List<ListaVentas> ConsultarVentasPorFecha(DateTime fechaDesde, DateTime fechaHasta)
         {
             connection.Close();
@@ -93,6 +187,7 @@ namespace Stock.DAO
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
+            //Entidades.ListaVentas listaVenta = new Entidades.ListaVentas();
             dt.Fill(Tabla);
             if (Tabla.Rows.Count > 0)
             {

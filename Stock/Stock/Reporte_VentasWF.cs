@@ -26,13 +26,10 @@ namespace Stock
         {
             if (chcFecha.Checked == true)
             {
-
-                chcCliente.Checked = false;
                 chcUsuario.Checked = false;
-                groupBox1.Visible = true;
-                groupBox2.Visible = false;
+                groupBox6.Visible = true;
                 groupBox3.Visible = false;
-                btnBuscar.Visible = true;
+                btnBuscarPorFecha.Visible = true;
             }
         }
         private void chcUsuario_CheckedChanged(object sender, EventArgs e)
@@ -40,259 +37,23 @@ namespace Stock
             if (chcUsuario.Checked == true)
             {
                 chcFecha.Checked = false;
-                chcCliente.Checked = false;
-                groupBox2.Visible = true;
-                groupBox1.Visible = false;
-                groupBox3.Visible = false;
-                txtDni.Focus();
-                btnBuscarPorUsuario.Visible = true;
-            }
-        }
-        private void chcCliente_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chcCliente.Checked == true)
-            {
-                chcFecha.Checked = false;
-                chcUsuario.Checked = false;
+                groupBox6.Visible = false;
                 groupBox3.Visible = true;
-                groupBox2.Visible = false;
-                groupBox1.Visible = false;
-                txtDni.Focus();
-                btnBuscarPorCliente.Visible = true;
+                btnBuscarPorUsuario.Visible = true;
+                textBox1.Focus();
             }
         }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                List<Entidades.ListaVentas> resultado = new List<ListaVentas>();
-                DateTime FechaDesde = dtFechaDesde.Value.Date;
-                DateTime FechaHasta = dtFechaHasta.Value.Date;
-                ValidarFechas(FechaDesde, FechaHasta);
-                Lista = resultado = Negocio.Consultar.ConsultarVentasPorFecha(FechaDesde, FechaHasta);
-
-                var stores = from store in resultado
-                                                group store by new
-                                                {
-                                                    store.Fecha.Month,
-                                                    store.Fecha.Year
-                                                }
-                                                into g
-                                                select new
-                                                {
-                                                    g.Key,
-                                                    cantidad = g.Count()
-                                                };
-
-
-
-                //from student in resultado
-                //group student.Fecha.Month & student.Fecha.Year by student.Fecha.Year into ResultadoGroup;
-
-
-                //List<Entidades.ListaVentas> a =  resultado.GroupBy(x => x.Fecha.Month).ToList();
-                //var b = a.GroupBy(x => x.Fecha.Year).ToList();
-
-                List<ObjetoResultado> cantidadesMeses = new List<ObjetoResultado>();
-                //#region consulta por mew
-                //ObjetoResultado obj = new ObjetoResultado();
-                //foreach (var item in resultado)
-                //{
-
-                //    switch (item.Fecha.Month)
-                //    {
-                //        case 1:
-
-
-                //            if (obj.cantidad == 0)
-                //            {
-                //                obj = new ObjetoResultado();
-                //                obj.cantidad++;
-                //                obj.mes = item.Fecha.Month;
-                //                obj.anio = item.Fecha.Year;
-                //                obj.nombre = "ENERO";
-                //                cantidadesMeses.Add(obj);
-                //            }
-                //            else
-                //            {
-                //                cantidadesMeses.Where(x => x.mes == item.Fecha.Month).LastOrDefault().cantidad = obj.cantidad++;
-                //            }
-
-                //            break;
-                //        case 2:
-                //            if (obj.cantidad == 0)
-                //            {
-                //                obj = new ObjetoResultado();
-                //                obj.cantidad++;
-                //                obj.mes = item.Fecha.Month;
-                //                obj.anio = item.Fecha.Year;
-                //                obj.nombre = "FEBRERO";
-                //                cantidadesMeses.Add(obj);
-                //            }
-                //            else
-                //            {
-                //                cantidadesMeses.Where(x => x.mes == item.Fecha.Month).LastOrDefault().cantidad = obj.cantidad++;
-                //            }
-                //            break;
-                //        case 3:
-                //            if (obj.cantidad == 0)
-                //            {
-                //                obj = new ObjetoResultado();
-                //                obj.cantidad++;
-                //                obj.mes = item.Fecha.Month; obj.anio = item.Fecha.Year;
-                //                obj.nombre = "MARZO";
-                //                cantidadesMeses.Add(obj);
-                //            }
-                //            else
-                //            {
-                //                cantidadesMeses.Where(x => x.mes == item.Fecha.Month).LastOrDefault().cantidad = obj.cantidad++;
-                //            }
-                //            break;
-                //        case 4:
-                //            if (obj.cantidad == 0)
-                //            {
-                //                obj = new ObjetoResultado();
-                //                obj.cantidad++;
-                //                obj.mes = item.Fecha.Month; obj.anio = item.Fecha.Year;
-                //                obj.nombre = "ABRIL";
-                //                cantidadesMeses.Add(obj);
-                //            }
-                //            else
-                //            {
-                //                cantidadesMeses.Where(x => x.mes == item.Fecha.Month).LastOrDefault().cantidad = obj.cantidad++;
-                //            }
-                //            break;
-                //        case 5:
-                //            if (obj.cantidad == 0)
-                //            {
-                //                obj = new ObjetoResultado();
-                //                obj.cantidad++;
-                //                obj.mes = item.Fecha.Month; obj.anio = item.Fecha.Year;
-                //                obj.nombre = "MAYO";
-                //                cantidadesMeses.Add(obj);
-                //            }
-                //            else
-                //            {
-                //                cantidadesMeses.Where(x => x.mes == item.Fecha.Month).LastOrDefault().cantidad = obj.cantidad++;
-                //            }
-                //            break;
-                //        case 6:
-                //            if (obj.cantidad == 0)
-                //            {
-                //                obj = new ObjetoResultado();
-                //                obj.cantidad++;
-                //                obj.mes = item.Fecha.Month; obj.anio = item.Fecha.Year;
-                //                obj.nombre = "JUNIO";
-                //                cantidadesMeses.Add(obj);
-                //            }
-                //            else
-                //            {
-                //                cantidadesMeses.Where(x => x.mes == item.Fecha.Month).LastOrDefault().cantidad = obj.cantidad++;
-                //            }
-                //            break;
-                //        case 7:
-                //            if (obj.cantidad == 0)
-                //            {
-                //                obj = new ObjetoResultado();
-                //                obj.cantidad++;
-                //                obj.mes = item.Fecha.Month; obj.anio = item.Fecha.Year;
-                //                obj.nombre = "JULIO";
-                //                cantidadesMeses.Add(obj);
-                //            }
-                //            else
-                //            {
-                //                cantidadesMeses.Where(x => x.mes == item.Fecha.Month).LastOrDefault().cantidad = obj.cantidad++;
-                //            }
-                //            break;
-                //        case 8:
-                //            if (obj.cantidad == 0)
-                //            {
-                //                obj = new ObjetoResultado();
-                //                obj.cantidad++;
-                //                obj.mes = item.Fecha.Month; obj.anio = item.Fecha.Year;
-                //                obj.nombre = "AGOSTO";
-                //                cantidadesMeses.Add(obj);
-                //            }
-                //            else
-                //            {
-                //                cantidadesMeses.Where(x => x.mes == item.Fecha.Month).LastOrDefault().cantidad = obj.cantidad++;
-                //            }
-                //            break;
-                //        case 9:
-                //            if (obj.cantidad == 0)
-                //            {
-                //                obj = new ObjetoResultado();
-                //                obj.cantidad++;
-                //                obj.mes = item.Fecha.Month; obj.anio = item.Fecha.Year;
-                //                obj.nombre = "SEPTIEMBRE";
-                //                cantidadesMeses.Add(obj);
-                //            }
-                //            else
-                //            {
-                //                cantidadesMeses.Where(x => x.mes == item.Fecha.Month).LastOrDefault().cantidad = obj.cantidad++;
-                //            }
-                //            break;
-                //        case 10:
-                //            if (obj.cantidad == 0)
-                //            {
-                //                obj = new ObjetoResultado();
-                //                obj.cantidad++;
-                //                obj.mes = item.Fecha.Month; obj.anio = item.Fecha.Year;
-                //                obj.nombre = "OCTUBRE";
-                //                cantidadesMeses.Add(obj);
-                //            }
-                //            else
-                //            {
-                //                cantidadesMeses.Where(x => x.mes == item.Fecha.Month).LastOrDefault().cantidad = obj.cantidad++;
-                //            }
-                //            break;
-                //        case 11:
-                //            if (obj.cantidad == 0)
-                //            {
-                //                obj.cantidad++;
-                //                obj.mes = item.Fecha.Month; obj.anio = item.Fecha.Year;
-                //                obj.nombre = "NOVIEMBRE";
-                //                cantidadesMeses.Add(obj);
-                //            }
-                //            else
-                //            {
-                //                cantidadesMeses.Where(x => x.mes == item.Fecha.Month).LastOrDefault().cantidad = obj.cantidad++;
-                //            }
-                //            break;
-                //        case 12:
-                //            if (obj.cantidad == 0)
-                //            {
-                //                obj.cantidad++;
-                //                obj.mes = item.Fecha.Month; obj.anio = item.Fecha.Year;
-                //                obj.nombre = "DICIEMBRE";
-                //                cantidadesMeses.Add(obj);
-                //            }
-                //            else
-                //            {
-                //                cantidadesMeses.Where(x => x.mes == item.Fecha.Month).LastOrDefault().cantidad = obj.cantidad++;
-                //            }
-                //            break;
-                //    }
-                //}
-                //#endregion
-                string[] series1 = { "Ventas" };
-                // fillChart(series1, Lista);
-            }
-            catch { }
-        }
-        private void fillChart(string[] series1, List<ListaVentas> Lista)
+        private void fillChart(string[] series1, List<ListaVentasEstadistica> Lista)
         {
             chart1.Series.Clear();
             string nombreNuevaSerie = series1[0].ToString();
             chart1.Series.Add(nombreNuevaSerie);
             foreach (var item in Lista)
             {
-                //chart1.Series[nombreNuevaSerie].Points.AddXY(item.mes, item.TotalCompras);
+                chart1.Series[nombreNuevaSerie].Points.AddXY(item.mes, item.TotalVentasPorMes);
             }
 
         }
-
         private void ValidarFechas(DateTime fechaDesde, DateTime fechaHasta)
         {
             if (fechaDesde > fechaHasta)
@@ -301,7 +62,6 @@ namespace Stock
                 throw new Exception();
             }
         }
-
         public List<Entidades.ListaVentas> Lista
         {
             set
@@ -337,12 +97,72 @@ namespace Stock
             }
 
         }
-
-        private class ObjetoResultado
+        private void btnBuscarPorUsuario_Click(object sender, EventArgs e)
         {
-            public int mes { get; set; }
-            public int anio { get; set; }            
-            public int cantidad { get; set; }
+            try
+            {
+                chart1.Series.Clear();
+                List<Entidades.ListaVentas> resultado = new List<ListaVentas>();
+                List<Entidades.ListaVentasEstadistica> listaVentasEstadistica = new List<ListaVentasEstadistica>();
+                if (chcUsuario.Checked == true)
+                {
+                  
+                    string dniUsuario = textBox1.Text;
+                    Lista = resultado = Negocio.Consultar.ConsultarVentasPorUsuario(dniUsuario);
+                    if (resultado.Count > 0)
+                    {
+                        lblTotal1.Visible = true;
+                        lblTotal2.Visible = true;
+                        lblTotal2.Text = Convert.ToString(resultado.Count);
+                        listaVentasEstadistica = Negocio.Consultar.ConsultarVentasPorUsuarioEstadistica(dniUsuario);
+                        string[] series1 = { "Ventas" };
+                        fillChart(series1, listaVentasEstadistica);
+                    }
+                    else
+                    {
+                        lblTotal1.Visible = true;
+                        lblTotal2.Visible = true;
+                        lblTotal2.Text = Convert.ToString(0);
+                        chart1.Series.Clear();
+                    }
+                }
+            }
+            catch (Exception ex)
+            { }
+        }
+        private void btnBuscarPorFecha_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                chart1.Series.Clear();
+                List<Entidades.ListaVentas> resultado = new List<ListaVentas>();
+                List<Entidades.ListaVentasEstadistica> listaVentasEstadistica = new List<ListaVentasEstadistica>();
+                if (chcFecha.Checked == true)
+                {
+                    DateTime FechaDesde = dateTimePicker1.Value.Date;
+                    DateTime FechaHasta = dateTimePicker2.Value.Date;
+                    ValidarFechas(FechaDesde, FechaHasta);
+                    Lista = resultado = Negocio.Consultar.ConsultarVentasPorFecha(FechaDesde, FechaHasta);
+                    if (resultado.Count > 0)
+                    {
+                        lblTotal1.Visible = true;
+                        lblTotal2.Visible = true;
+                        lblTotal2.Text = Convert.ToString(resultado.Count);
+                        listaVentasEstadistica = Negocio.Consultar.ConsultarVentasPorFechaEstadistica(FechaDesde, FechaHasta);
+                        string[] series1 = { "Ventas" };
+                        fillChart(series1, listaVentasEstadistica);
+                    }
+                 else
+                    {
+                        lblTotal1.Visible = true;
+                        lblTotal2.Visible = true;
+                        lblTotal2.Text = Convert.ToString(0);
+                        chart1.Series.Clear();
+                    }
+                }
+            }
+            catch (Exception ex)
+            { }
         }
     }
 }

@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.grbMenu = new System.Windows.Forms.GroupBox();
-            this.btnClientes = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCompras = new System.Windows.Forms.Button();
+            this.btnVentas = new System.Windows.Forms.Button();
             this.grbMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbMenu
             // 
-            this.grbMenu.Controls.Add(this.button1);
-            this.grbMenu.Controls.Add(this.btnClientes);
+            this.grbMenu.Controls.Add(this.btnVentas);
+            this.grbMenu.Controls.Add(this.btnCompras);
             this.grbMenu.Location = new System.Drawing.Point(11, 77);
             this.grbMenu.Name = "grbMenu";
             this.grbMenu.Size = new System.Drawing.Size(200, 500);
@@ -45,34 +45,36 @@
             this.grbMenu.TabStop = false;
             this.grbMenu.Text = "Menú Reportes";
             // 
-            // btnClientes
+            // btnCompras
             // 
-            this.btnClientes.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btnClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClientes.ForeColor = System.Drawing.Color.White;
-            this.btnClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClientes.Location = new System.Drawing.Point(30, 44);
-            this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Size = new System.Drawing.Size(130, 50);
-            this.btnClientes.TabIndex = 5;
-            this.btnClientes.Text = "Clientes";
-            this.btnClientes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClientes.UseVisualStyleBackColor = false;
-            this.btnClientes.Click += new System.EventHandler(this.btnUsuarios_Click);
+            this.btnCompras.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnCompras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCompras.ForeColor = System.Drawing.Color.White;
+            this.btnCompras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCompras.Location = new System.Drawing.Point(30, 44);
+            this.btnCompras.Name = "btnCompras";
+            this.btnCompras.Size = new System.Drawing.Size(130, 50);
+            this.btnCompras.TabIndex = 5;
+            this.btnCompras.Text = "Compras";
+            this.btnCompras.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCompras.UseVisualStyleBackColor = false;
+            //this.btnCompras.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
-            // button1
+            // btnVentas
             // 
-            this.button1.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(30, 132);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 50);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Ventas";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnVentas.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVentas.ForeColor = System.Drawing.Color.White;
+            this.btnVentas.Image = global::Stock.Properties.Resources.ventas65x50;
+            this.btnVentas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVentas.Location = new System.Drawing.Point(30, 132);
+            this.btnVentas.Name = "btnVentas";
+            this.btnVentas.Size = new System.Drawing.Size(130, 50);
+            this.btnVentas.TabIndex = 6;
+            this.btnVentas.Text = "Ventas";
+            this.btnVentas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVentas.UseVisualStyleBackColor = false;
+            this.btnVentas.Click += new System.EventHandler(this.button1_Click);
             // 
             // Master2
             // 
@@ -93,7 +95,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox grbMenu;
-        private System.Windows.Forms.Button btnClientes;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCompras;
+        private System.Windows.Forms.Button btnVentas;
     }
 }

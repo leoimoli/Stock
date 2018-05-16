@@ -88,6 +88,7 @@
     <Compile Include="Entidades\ListaStock.cs" />
     <Compile Include="Entidades\ListaStockProducto.cs" />
     <Compile Include="Entidades\ListaVentas.cs" />
+    <Compile Include="Entidades\ListaVentasEstadistica.cs" />
     <Compile Include="Entidades\Marca.cs" />
     <Compile Include="Entidades\HistorialProductoPrecioDeVenta.cs" />
     <Compile Include="Entidades\PrecioDeVenta.cs" />
@@ -178,6 +179,12 @@
     <Compile Include="RemarcarPreciosWF.Designer.cs">
       <DependentUpon>RemarcarPreciosWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reporte_ComprasWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reporte_ComprasWF.Designer.cs">
+      <DependentUpon>Reporte_ComprasWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reporte_VentasWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,6 +254,9 @@
     <EmbeddedResource Include="RemarcarPreciosWF.resx">
       <DependentUpon>RemarcarPreciosWF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reporte_ComprasWF.resx">
+      <DependentUpon>Reporte_ComprasWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reporte_VentasWF.resx">
       <DependentUpon>Reporte_VentasWF.cs</DependentUpon>
     </EmbeddedResource>
@@ -314,6 +324,7 @@
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Documentos\Base De Datos\Procedure\1%29LoginUsuario.txt" />
+    <None Include="Resources\ventas65x50.png" />
     <None Include="Resources\Nuevo Cliente.png" />
     <None Include="Resources\VISA.png" />
     <None Include="Resources\MC.png" />

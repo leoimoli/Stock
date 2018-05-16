@@ -86,6 +86,42 @@ namespace Stock.Negocio
             return _lista;
         }
 
+        public static List<ListaVentasEstadistica> ConsultarVentasPorFechaEstadistica(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            List<ListaVentasEstadistica> _lista = new List<ListaVentasEstadistica>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarVentasPorFechaEstadistica(fechaDesde, fechaHasta);
+            }
+            catch (Exception ex)
+            { }
+            return _lista;
+        }
+
+        public static List<ListaVentas> ConsultarVentasPorUsuario(string dniUsuario)
+        {
+            List<ListaVentas> _lista = new List<ListaVentas>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarVentasPorUsuario(dniUsuario);
+            }
+            catch (Exception ex)
+            { }
+            return _lista;
+        }
+
+        public static List<ListaVentasEstadistica> ConsultarVentasPorUsuarioEstadistica(string dniUsuario)
+        {
+            List<ListaVentasEstadistica> _lista = new List<ListaVentasEstadistica>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarVentasPorUsuarioEstadistica(dniUsuario);
+            }
+            catch (Exception ex)
+            { }
+            return _lista;
+        }
+
         public static List<ListaProductoVenta> BuscarProductoParaVenta(string codigoProducto)
         {
             List<ListaProductoVenta> _lista = new List<ListaProductoVenta>();

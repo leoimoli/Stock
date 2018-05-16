@@ -16,7 +16,6 @@ namespace Stock
         {
             InitializeComponent();
         }
-
         private void Master_Load(object sender, EventArgs e)
         {
             if (Sesion.UsuarioLogueado != null)
@@ -25,8 +24,7 @@ namespace Stock
                 //lblMaster_FechaHoraReal.Text = Convert.ToString(DateTime.Now);
             }
         }
-
-        private void btnUsuarios_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             Reporte_VentasWF _reporte = new Reporte_VentasWF();
             _reporte.Show();
