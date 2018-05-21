@@ -111,6 +111,200 @@ namespace Stock.DAO
             return lista;
         }
 
+        public static List<ListaCompras> ConsultarComprasPorProveedor(string proveedor)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaCompras> lista = new List<Entidades.ListaCompras>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                       new MySqlParameter("Proveedor_in", proveedor)};
+            string proceso = "ConsultarComprasPorProveedor";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaCompras listaCompras = new Entidades.ListaCompras();
+                    listaCompras.idCompra = Convert.ToInt32(item["idMovimiento"].ToString());
+                    DateTime fechaReal = Convert.ToDateTime(item["dtFechaIngreso"].ToString());
+                    listaCompras.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
+                    listaCompras.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaCompras.Proveedor = item["idProveedor"].ToString();
+                    //var usuario = item["txApellido"].ToString() + " " + item["txNombre"].ToString();
+                    //listaCompras.Proveedor = usuario;
+                    lista.Add(listaCompras);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
+        public static List<ListaComprasEstadistica> ConsultarComprasPorRemitoEstadistica(string remito)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaComprasEstadistica> lista = new List<Entidades.ListaComprasEstadistica>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("Remito_in", remito)};
+            string proceso = "ConsultarComprasPorRemitoEstadistica";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaComprasEstadistica listaCompras = new Entidades.ListaComprasEstadistica();
+                    listaCompras.anno = item["anno"].ToString();
+                    listaCompras.mes = item["mes"].ToString();
+                    listaCompras.TotalComprasPorMes = Convert.ToInt32(item["Compras"].ToString());
+                    lista.Add(listaCompras);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
+        public static List<ListaCompras> ConsultarComprasPorRemito(string remito)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaCompras> lista = new List<Entidades.ListaCompras>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                       new MySqlParameter("Remito_in", remito)};
+            string proceso = "ConsultarComprasPorRemito";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaCompras listaCompras = new Entidades.ListaCompras();
+                    listaCompras.idCompra = Convert.ToInt32(item["idMovimiento"].ToString());
+                    DateTime fechaReal = Convert.ToDateTime(item["dtFechaIngreso"].ToString());
+                    listaCompras.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
+                    listaCompras.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaCompras.Proveedor = item["idProveedor"].ToString();
+                    lista.Add(listaCompras);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
+        public static List<ListaComprasEstadistica> ConsultarComprasPorProveedorEstadistica(string proveedor)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaComprasEstadistica> lista = new List<Entidades.ListaComprasEstadistica>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("Proveedor_in", proveedor)};
+            string proceso = "ConsultarComprasPorProveedorEstadistica";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaComprasEstadistica listaCompras = new Entidades.ListaComprasEstadistica();
+                    listaCompras.anno = item["anno"].ToString();
+                    listaCompras.mes = item["mes"].ToString();
+                    listaCompras.TotalComprasPorMes = Convert.ToInt32(item["Compras"].ToString());
+
+                    lista.Add(listaCompras);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
+        public static List<ListaComprasEstadistica> ConsultarComprasPorFechaEstadistica(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaComprasEstadistica> lista = new List<Entidades.ListaComprasEstadistica>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("FechaDesde_in", fechaDesde),
+                                       new MySqlParameter("FechaHasta_in", fechaHasta)};
+            string proceso = "ConsultarComprasPorFechaEstadistica";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaComprasEstadistica listaCompras = new Entidades.ListaComprasEstadistica();
+                    listaCompras.anno = item["anno"].ToString();
+                    listaCompras.mes = item["mes"].ToString();
+                    listaCompras.TotalComprasPorMes = Convert.ToInt32(item["Compras"].ToString());
+
+                    lista.Add(listaCompras);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
+        public static List<ListaCompras> ConsultarComprasPorFecha(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaCompras> lista = new List<Entidades.ListaCompras>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("FechaDesde_in", fechaDesde),
+                                       new MySqlParameter("FechaHasta_in", fechaHasta)};
+            string proceso = "ConsultarComprasPorFecha";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaCompras listaCompras = new Entidades.ListaCompras();
+                    listaCompras.idCompra = Convert.ToInt32(item["idMovimiento"].ToString());
+                    DateTime fechaReal = Convert.ToDateTime(item["dtFechaIngreso"].ToString());
+                    listaCompras.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
+                    listaCompras.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaCompras.Proveedor = item["idProveedor"].ToString();
+                    //var usuario = item["txApellido"].ToString() + " " + item["txNombre"].ToString();
+                    //listaCompras.Proveedor = usuario;
+                    lista.Add(listaCompras);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
         public static List<ListaVentasEstadistica> ConsultarVentasPorUsuarioEstadistica(string dniUsuario)
         {
             connection.Close();

@@ -30,5 +30,12 @@ namespace Stock
             _reporte.Show();
             Hide();
         }
+
+        private void btnCompras_Click(object sender, EventArgs e)
+        {
+            Reporte_ComprasWF _compra = new Reporte_ComprasWF();
+            _compra.Show();
+            Hide();
+        }
     }
 }

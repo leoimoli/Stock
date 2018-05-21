@@ -35,5 +35,17 @@ namespace Stock.Properties {
                 this["db"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Imagenes")]
+        public string Imagen {
+            get {
+                return ((string)(this["Imagen"]));
+            }
+            set {
+                this["Imagen"] = value;
+            }
+        }
     }
 }

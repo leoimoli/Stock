@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.grbMenu = new System.Windows.Forms.GroupBox();
-            this.btnCompras = new System.Windows.Forms.Button();
             this.btnVentas = new System.Windows.Forms.Button();
+            this.btnCompras = new System.Windows.Forms.Button();
             this.grbMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,21 +44,6 @@
             this.grbMenu.TabIndex = 3;
             this.grbMenu.TabStop = false;
             this.grbMenu.Text = "Menú Reportes";
-            // 
-            // btnCompras
-            // 
-            this.btnCompras.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btnCompras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCompras.ForeColor = System.Drawing.Color.White;
-            this.btnCompras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCompras.Location = new System.Drawing.Point(30, 44);
-            this.btnCompras.Name = "btnCompras";
-            this.btnCompras.Size = new System.Drawing.Size(130, 50);
-            this.btnCompras.TabIndex = 5;
-            this.btnCompras.Text = "Compras";
-            this.btnCompras.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCompras.UseVisualStyleBackColor = false;
-            //this.btnCompras.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
             // btnVentas
             // 
@@ -75,6 +60,22 @@
             this.btnVentas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnVentas.UseVisualStyleBackColor = false;
             this.btnVentas.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnCompras
+            // 
+            this.btnCompras.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnCompras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCompras.ForeColor = System.Drawing.Color.White;
+            this.btnCompras.Image = global::Stock.Properties.Resources.compras65x50;
+            this.btnCompras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCompras.Location = new System.Drawing.Point(30, 44);
+            this.btnCompras.Name = "btnCompras";
+            this.btnCompras.Size = new System.Drawing.Size(130, 50);
+            this.btnCompras.TabIndex = 5;
+            this.btnCompras.Text = "Compras";
+            this.btnCompras.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCompras.UseVisualStyleBackColor = false;
+            this.btnCompras.Click += new System.EventHandler(this.btnCompras_Click);
             // 
             // Master2
             // 

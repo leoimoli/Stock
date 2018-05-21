@@ -110,6 +110,42 @@ namespace Stock.Negocio
             return _lista;
         }
 
+        public static List<ListaCompras> ConsultarComprasPorFecha(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            List<ListaCompras> _lista = new List<ListaCompras>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarComprasPorFecha(fechaDesde, fechaHasta);
+            }
+            catch (Exception ex)
+            { }
+            return _lista;
+        }
+
+        public static List<ListaComprasEstadistica> ConsultarComprasPorFechaEstadistica(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            List<ListaComprasEstadistica> _lista = new List<ListaComprasEstadistica>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarComprasPorFechaEstadistica(fechaDesde, fechaHasta);
+            }
+            catch (Exception ex)
+            { }
+            return _lista;
+        }
+
+        public static List<ListaCompras> ConsultarComprasPorProveedor(string proveedor)
+        {
+            List<ListaCompras> _lista = new List<ListaCompras>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarComprasPorProveedor(proveedor);
+            }
+            catch (Exception ex)
+            { }
+            return _lista;
+        }
+
         public static List<ListaVentasEstadistica> ConsultarVentasPorUsuarioEstadistica(string dniUsuario)
         {
             List<ListaVentasEstadistica> _lista = new List<ListaVentasEstadistica>();
@@ -122,12 +158,48 @@ namespace Stock.Negocio
             return _lista;
         }
 
+        public static List<ListaComprasEstadistica> ConsultarComprasPorProveedorEstadistica(string proveedor)
+        {
+            List<ListaComprasEstadistica> _lista = new List<ListaComprasEstadistica>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarComprasPorProveedorEstadistica(proveedor);
+            }
+            catch (Exception ex)
+            { }
+            return _lista;
+        }
+
+        public static List<ListaCompras> ConsultarComprasPorRemito(string remito)
+        {
+            List<ListaCompras> _lista = new List<ListaCompras>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarComprasPorRemito(remito);
+            }
+            catch (Exception ex)
+            { }
+            return _lista;
+        }
+
         public static List<ListaProductoVenta> BuscarProductoParaVenta(string codigoProducto)
         {
             List<ListaProductoVenta> _lista = new List<ListaProductoVenta>();
             try
             {
                 _lista = DAO.ConsultarDao.BuscarProductoParaVenta(codigoProducto);
+            }
+            catch (Exception ex)
+            { }
+            return _lista;
+        }
+
+        public static List<ListaComprasEstadistica> ConsultarComprasPorRemitoEstadistica(string remito)
+        {
+            List<ListaComprasEstadistica> _lista = new List<ListaComprasEstadistica>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarComprasPorRemitoEstadistica(remito);
             }
             catch (Exception ex)
             { }

@@ -84,6 +84,8 @@
     <Compile Include="Entidades\Clientes.cs" />
     <Compile Include="Entidades\HistorialDelProductoSeleccionado.cs" />
     <Compile Include="Entidades\HistorialDelProveedor.cs" />
+    <Compile Include="Entidades\ListaCompras.cs" />
+    <Compile Include="Entidades\ListaComprasEstadistica.cs" />
     <Compile Include="Entidades\ListaProductoVenta.cs" />
     <Compile Include="Entidades\ListaStock.cs" />
     <Compile Include="Entidades\ListaStockProducto.cs" />
@@ -356,6 +358,8 @@
     <None Include="Resources\IMPRIMIR TICKET.png" />
     <None Include="Resources\codigo-de-barras1.png" />
     <None Include="Resources\f12Guardar.png" />
+    <Content Include="Imagenes Botones\Seleccionar.ico" />
+    <None Include="Resources\compras65x50.png" />
     <Content Include="Resources\login2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
