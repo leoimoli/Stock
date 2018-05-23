@@ -28,19 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.grbFiltros = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lblDni = new System.Windows.Forms.Label();
+            this.txtDni = new System.Windows.Forms.TextBox();
+            this.lblHasta = new System.Windows.Forms.Label();
+            this.lblDesde = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.btnBuscarPorFecha = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnBuscarPorUsuario = new System.Windows.Forms.Button();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.chcUsuario = new System.Windows.Forms.CheckBox();
             this.chcFecha = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -55,9 +52,8 @@
             this.lblTotal2 = new System.Windows.Forms.Label();
             this.lblTotal1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnExcel = new System.Windows.Forms.Button();
             this.grbFiltros.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.groupBox5.SuspendLayout();
@@ -66,8 +62,14 @@
             // 
             // grbFiltros
             // 
-            this.grbFiltros.Controls.Add(this.groupBox6);
-            this.grbFiltros.Controls.Add(this.groupBox3);
+            this.grbFiltros.BackColor = System.Drawing.Color.SteelBlue;
+            this.grbFiltros.Controls.Add(this.button1);
+            this.grbFiltros.Controls.Add(this.lblDni);
+            this.grbFiltros.Controls.Add(this.txtDni);
+            this.grbFiltros.Controls.Add(this.lblHasta);
+            this.grbFiltros.Controls.Add(this.lblDesde);
+            this.grbFiltros.Controls.Add(this.dateTimePicker1);
+            this.grbFiltros.Controls.Add(this.dateTimePicker2);
             this.grbFiltros.Controls.Add(this.chcUsuario);
             this.grbFiltros.Controls.Add(this.chcFecha);
             this.grbFiltros.Location = new System.Drawing.Point(251, 77);
@@ -77,115 +79,75 @@
             this.grbFiltros.TabStop = false;
             this.grbFiltros.Text = "groupBox1";
             // 
-            // groupBox6
+            // button1
             // 
-            this.groupBox6.BackColor = System.Drawing.Color.SteelBlue;
-            this.groupBox6.Controls.Add(this.label5);
-            this.groupBox6.Controls.Add(this.label4);
-            this.groupBox6.Controls.Add(this.dateTimePicker2);
-            this.groupBox6.Controls.Add(this.dateTimePicker1);
-            this.groupBox6.Controls.Add(this.btnBuscarPorFecha);
-            this.groupBox6.ForeColor = System.Drawing.Color.White;
-            this.groupBox6.Location = new System.Drawing.Point(86, 66);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(500, 120);
-            this.groupBox6.TabIndex = 8;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Por Fechas";
-            this.groupBox6.Visible = false;
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.Image = global::Stock.Properties.Resources.buscar40X35;
+            this.button1.Location = new System.Drawing.Point(594, 143);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(49, 39);
+            this.button1.TabIndex = 114;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label5
+            // lblDni
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(275, 22);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 20);
-            this.label5.TabIndex = 101;
-            this.label5.Text = "Fecha Hasta";
+            this.lblDni.AutoSize = true;
+            this.lblDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDni.ForeColor = System.Drawing.Color.White;
+            this.lblDni.Location = new System.Drawing.Point(135, 109);
+            this.lblDni.Name = "lblDni";
+            this.lblDni.Size = new System.Drawing.Size(121, 20);
+            this.lblDni.TabIndex = 113;
+            this.lblDni.Text = "Nro.Documento";
             // 
-            // label4
+            // txtDni
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(18, 22);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 20);
-            this.label4.TabIndex = 100;
-            this.label4.Text = "Fecha Desde";
+            this.txtDni.Enabled = false;
+            this.txtDni.Location = new System.Drawing.Point(139, 132);
+            this.txtDni.Name = "txtDni";
+            this.txtDni.Size = new System.Drawing.Size(200, 20);
+            this.txtDni.TabIndex = 112;
             // 
-            // dateTimePicker2
+            // lblHasta
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(279, 48);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 99;
+            this.lblHasta.AutoSize = true;
+            this.lblHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHasta.ForeColor = System.Drawing.Color.White;
+            this.lblHasta.Location = new System.Drawing.Point(401, 48);
+            this.lblHasta.Name = "lblHasta";
+            this.lblHasta.Size = new System.Drawing.Size(101, 20);
+            this.lblHasta.TabIndex = 111;
+            this.lblHasta.Text = "Fecha Hasta";
+            // 
+            // lblDesde
+            // 
+            this.lblDesde.AutoSize = true;
+            this.lblDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDesde.ForeColor = System.Drawing.Color.White;
+            this.lblDesde.Location = new System.Drawing.Point(135, 48);
+            this.lblDesde.Name = "lblDesde";
+            this.lblDesde.Size = new System.Drawing.Size(105, 20);
+            this.lblDesde.TabIndex = 110;
+            this.lblDesde.Text = "Fecha Desde";
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(13, 48);
+            this.dateTimePicker1.Enabled = false;
+            this.dateTimePicker1.Location = new System.Drawing.Point(139, 74);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 98;
+            this.dateTimePicker1.TabIndex = 109;
             // 
-            // btnBuscarPorFecha
+            // dateTimePicker2
             // 
-            this.btnBuscarPorFecha.BackColor = System.Drawing.Color.Transparent;
-            this.btnBuscarPorFecha.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscarPorFecha.Image = global::Stock.Properties.Resources.buscar40X35;
-            this.btnBuscarPorFecha.Location = new System.Drawing.Point(445, 75);
-            this.btnBuscarPorFecha.Name = "btnBuscarPorFecha";
-            this.btnBuscarPorFecha.Size = new System.Drawing.Size(49, 39);
-            this.btnBuscarPorFecha.TabIndex = 97;
-            this.btnBuscarPorFecha.UseVisualStyleBackColor = false;
-            this.btnBuscarPorFecha.Visible = false;
-            this.btnBuscarPorFecha.Click += new System.EventHandler(this.btnBuscarPorFecha_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.Color.SteelBlue;
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.btnBuscarPorUsuario);
-            this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(86, 72);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(500, 120);
-            this.groupBox3.TabIndex = 6;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Por Usuario";
-            this.groupBox3.Visible = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(233, 45);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(159, 20);
-            this.textBox1.TabIndex = 99;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(118, 43);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 20);
-            this.label3.TabIndex = 98;
-            this.label3.Text = "Ingrese Dni:";
-            // 
-            // btnBuscarPorUsuario
-            // 
-            this.btnBuscarPorUsuario.BackColor = System.Drawing.Color.Transparent;
-            this.btnBuscarPorUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscarPorUsuario.Image = global::Stock.Properties.Resources.buscar40X35;
-            this.btnBuscarPorUsuario.Location = new System.Drawing.Point(445, 75);
-            this.btnBuscarPorUsuario.Name = "btnBuscarPorUsuario";
-            this.btnBuscarPorUsuario.Size = new System.Drawing.Size(49, 39);
-            this.btnBuscarPorUsuario.TabIndex = 97;
-            this.btnBuscarPorUsuario.UseVisualStyleBackColor = false;
-            this.btnBuscarPorUsuario.Visible = false;
-            this.btnBuscarPorUsuario.Click += new System.EventHandler(this.btnBuscarPorUsuario_Click);
+            this.dateTimePicker2.Enabled = false;
+            this.dateTimePicker2.Location = new System.Drawing.Point(405, 74);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker2.TabIndex = 108;
             // 
             // chcUsuario
             // 
@@ -274,10 +236,10 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(4, 16);
             this.chart1.Name = "chart1";
             this.chart1.Size = new System.Drawing.Size(330, 280);
@@ -286,6 +248,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.btnExcel);
             this.groupBox5.Controls.Add(this.lblTotal2);
             this.groupBox5.Controls.Add(this.lblTotal1);
             this.groupBox5.Controls.Add(this.dataGridView1);
@@ -327,6 +290,18 @@
             this.dataGridView1.Size = new System.Drawing.Size(330, 240);
             this.dataGridView1.TabIndex = 0;
             // 
+            // btnExcel
+            // 
+            this.btnExcel.BackColor = System.Drawing.Color.Transparent;
+            this.btnExcel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcel.Location = new System.Drawing.Point(260, 257);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(49, 39);
+            this.btnExcel.TabIndex = 115;
+            this.btnExcel.UseVisualStyleBackColor = false;
+            this.btnExcel.Visible = false;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
             // Reporte_VentasWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -343,10 +318,6 @@
             this.Controls.SetChildIndex(this.groupBox5, 0);
             this.grbFiltros.ResumeLayout(false);
             this.grbFiltros.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.groupBox5.ResumeLayout(false);
@@ -370,21 +341,19 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnBuscarPorUsuario;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button btnBuscarPorFecha;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblTotal1;
         private System.Windows.Forms.Label lblTotal2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label lblDni;
+        private System.Windows.Forms.TextBox txtDni;
+        private System.Windows.Forms.Label lblHasta;
+        private System.Windows.Forms.Label lblDesde;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnExcel;
     }
 }

@@ -46,7 +46,6 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
-
         public static bool RegistrarPuntos(int idCliente, int actualizarPuntos)
         {
             bool exito = false;
@@ -62,7 +61,6 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
-
         public static bool InsertCliente(Entidades.Clientes _cliente)
         {
             bool exito = false;
@@ -86,7 +84,6 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
-
         public static bool InsertPrecioDeVenta(PrecioDeVenta _precio)
         {
             bool exito = false;
@@ -101,7 +98,6 @@ namespace Stock.DAO
             }
             return exito;
         }
-
         private static bool ActualizarStockPorProductosVendidos(List<ListaProductoVenta> listaProductos)
         {
             bool exito = false;

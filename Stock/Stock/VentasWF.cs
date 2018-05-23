@@ -166,7 +166,7 @@ namespace Stock
 
                 int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
                 int idusuario = idusuarioLogueado;
-                //listaProductos[0].PrecioVentaFinal = Convert.ToDecimal(lblTotalPagarReal.Text);
+                listaProductos[0].PrecioVentaFinal = Convert.ToDecimal(lblTotalPagarReal.Text);
                 //CobrarWF _cobrar = new CobrarWF(listaProductos, idusuario);
                 //_cobrar.ShowDialog();
                 bool Exito = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
@@ -257,13 +257,68 @@ namespace Stock
             {
                 if (listaProductos.Count > 0)
                 {
-                    int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
-                    int idusuario = idusuarioLogueado;
-                    listaProductos[0].PrecioVentaFinal = Convert.ToDecimal(lblTotalPagarReal.Text);
-                    bool Exito = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
-                    if (Exito == true)
                     {
-                        BloquearPantalla();
+
+                        int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
+                        int idusuario = idusuarioLogueado;
+                        listaProductos[0].PrecioVentaFinal = Convert.ToDecimal(lblTotalPagarReal.Text);
+                        //CobrarWF _cobrar = new CobrarWF(listaProductos, idusuario);
+                        //_cobrar.ShowDialog();
+                        bool Exito = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
+                        if (Exito == true)
+                        {
+                            BloquearPantalla();
+                            const string message = "¿Desea cargar puntos al cliente?";
+                            const string caption = "Cliente registrado";
+                            var result = MessageBox.Show(message, caption,
+                                                         MessageBoxButtons.YesNo,
+                                                         MessageBoxIcon.Question);
+                            {
+                                if (result == DialogResult.Yes)
+                                {
+                                    Char delimiter = ',';
+                                    String[] pts = lblTotalPagarReal.Text.Split(delimiter);
+                                    int puntos = Convert.ToInt32(pts[0]);
+                                    CargarPuntosWF _cargar = new CargarPuntosWF(puntos);
+                                    _cargar.Show();
+                                }
+                                else
+                                {
+                                    Ticket ticket = new Ticket();
+
+                                    ticket.AddHeaderLine("La Brújula");
+                                    ticket.AddHeaderLine("EXPEDIDO EN:");
+                                    ticket.AddHeaderLine("44 N°1111");
+                                    ticket.AddHeaderLine("La Plata, BsAS");
+                                    ticket.AddHeaderLine("RFC: CSI-020226-MV4");
+
+                                    ticket.AddSubHeaderLine("Ticket # 1");
+                                    ticket.AddSubHeaderLine(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString());
+
+                                    foreach (DataGridViewRow row in dgvVentas.Rows)
+                                    {
+                                        if (row.Cells[0].Value != null)
+                                        {
+                                            ticket.AddItem(row.Cells[2].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[4].Value.ToString());
+                                        }
+
+                                    }
+                                    //ticket.AddTotal("SUBTOTAL", "12.00");
+                                    //ticket.AddTotal("IVA", "0");
+                                    ticket.AddTotal("TOTAL", lblTotalPagarReal.Text);
+                                    ticket.AddTotal("", "");
+                                    //ticket.AddTotal("RECIBIDO", "0");
+                                    //ticket.AddTotal("CAMBIO", "0");
+                                    ticket.AddTotal("", "");
+
+                                    ticket.AddFooterLine("VUELVA PRONTO Y SINO CHUPALA");
+
+                                    // ticket.PrintTicket("EPSON TM-T88III Receipt"); //Nombre de la impresora de tickets
+                                    ticket.PrintTicket("RICOH MP C2004 PCL 6");
+                                }
+
+                            }
+                        }
                     }
                 }
             }

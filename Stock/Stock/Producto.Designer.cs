@@ -72,6 +72,7 @@
             this.lblapellidoNombreEditar = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnRemarcarPrecio = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel200.SuspendLayout();
             this.panel100.SuspendLayout();
@@ -362,6 +363,7 @@
             // panel_Producto
             // 
             this.panel_Producto.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel_Producto.Controls.Add(this.btnRemarcarPrecio);
             this.panel_Producto.Controls.Add(this.btnAgregarMarca);
             this.panel_Producto.Controls.Add(this.cmbMarca);
             this.panel_Producto.Controls.Add(this.txtImagen);
@@ -462,7 +464,7 @@
             this.btnCancelar.BackColor = System.Drawing.Color.Transparent;
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.Image = global::Stock.Properties.Resources.Eliminar;
-            this.btnCancelar.Location = new System.Drawing.Point(359, 174);
+            this.btnCancelar.Location = new System.Drawing.Point(404, 175);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(0);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(49, 39);
@@ -477,7 +479,7 @@
             this.btnGuardar.BackColor = System.Drawing.Color.Transparent;
             this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGuardar.Image = global::Stock.Properties.Resources.Guardar1;
-            this.btnGuardar.Location = new System.Drawing.Point(428, 174);
+            this.btnGuardar.Location = new System.Drawing.Point(473, 175);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(49, 39);
             this.btnGuardar.TabIndex = 25;
@@ -564,6 +566,21 @@
             this.progressBar1.TabIndex = 94;
             this.progressBar1.Value = 10;
             this.progressBar1.Visible = false;
+            // 
+            // btnRemarcarPrecio
+            // 
+            this.btnRemarcarPrecio.BackColor = System.Drawing.Color.Transparent;
+            this.btnRemarcarPrecio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemarcarPrecio.Image = global::Stock.Properties.Resources.Eliminar;
+            this.btnRemarcarPrecio.Location = new System.Drawing.Point(334, 175);
+            this.btnRemarcarPrecio.Margin = new System.Windows.Forms.Padding(0);
+            this.btnRemarcarPrecio.Name = "btnRemarcarPrecio";
+            this.btnRemarcarPrecio.Size = new System.Drawing.Size(49, 39);
+            this.btnRemarcarPrecio.TabIndex = 34;
+            this.toolTip1.SetToolTip(this.btnRemarcarPrecio, "Cancelar");
+            this.btnRemarcarPrecio.UseVisualStyleBackColor = false;
+            this.btnRemarcarPrecio.Visible = false;
+            this.btnRemarcarPrecio.Click += new System.EventHandler(this.btnRemarcarPrecio_Click);
             // 
             // Producto
             // 
@@ -652,5 +669,6 @@
         private System.Windows.Forms.Label EditPrecioDeVenta_Producto;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btnRemarcarPrecio;
     }
 }

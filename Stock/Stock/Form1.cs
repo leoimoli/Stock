@@ -46,8 +46,8 @@ namespace Stock
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            PrecioDeVentaWF _precioVenta = new PrecioDeVentaWF();
-            _precioVenta.Show();
+            Reporte_VentasWF _reporte = new Reporte_VentasWF();
+            _reporte.Show();
             Hide();
         }
         private void button4_Click(object sender, EventArgs e)

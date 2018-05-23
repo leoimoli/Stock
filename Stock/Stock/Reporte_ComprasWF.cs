@@ -186,7 +186,8 @@ namespace Stock
         {
             set
             {
-                List<Entidades.ListaCompras> resultado = new List<ListaCompras>();
+                //List<Entidades.ListaCompras> resultado = new List<ListaCompras>();
+                //resultado.Clear();
                 DataGridViewLinkColumn seleccionar = new DataGridViewLinkColumn();
                 dataGridView1.ReadOnly = true;
                 dataGridView1.RowHeadersVisible = false;
@@ -206,7 +207,7 @@ namespace Stock
                 dataGridView1.Columns[1].HeaderCell.Style.ForeColor = Color.White;
 
                 dataGridView1.Columns[2].HeaderText = "Código Producto";
-                dataGridView1.Columns[2].Width = 80;
+                dataGridView1.Columns[2].Width = 100;
                 dataGridView1.Columns[2].HeaderCell.Style.BackColor = Color.DarkBlue;
                 dataGridView1.Columns[2].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
                 dataGridView1.Columns[2].HeaderCell.Style.ForeColor = Color.White;
@@ -221,9 +222,9 @@ namespace Stock
                 BotonSeleccionar.Name = "Ver";
                 BotonSeleccionar.HeaderText = "Ver";
                 this.dataGridView1.Columns.Add(BotonSeleccionar);
-                dataGridView1.Columns[4].Width = 60;
+                dataGridView1.Columns[4].Width = 40;
                 dataGridView1.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
-                dataGridView1.Columns[4].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
+                dataGridView1.Columns[4].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
                 dataGridView1.Columns[4].HeaderCell.Style.ForeColor = Color.White;
             }
 

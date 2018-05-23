@@ -48,7 +48,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnCobrar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.panelGrande_Ventas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.panel2.SuspendLayout();
@@ -252,24 +251,11 @@
             this.btnCobrar.UseVisualStyleBackColor = false;
             this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Silver;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::Stock.Properties.Resources.cobrar1;
-            this.button1.Location = new System.Drawing.Point(849, 480);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(50, 40);
-            this.button1.TabIndex = 18;
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // VentasWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1005, 704);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCobrar);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -282,7 +268,6 @@
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.btnCobrar, 0);
-            this.Controls.SetChildIndex(this.button1, 0);
             this.panelGrande_Ventas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -317,6 +302,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioFinal;
         private System.Windows.Forms.Button btnCobrar;
-        private System.Windows.Forms.Button button1;
     }
 }

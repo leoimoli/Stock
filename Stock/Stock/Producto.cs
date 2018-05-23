@@ -365,5 +365,12 @@ namespace Stock
 
 
         #endregion
+
+        private void btnRemarcarPrecio_Click(object sender, EventArgs e)
+        {
+            PrecioDeVentaWF _precio = new PrecioDeVentaWF();
+            _precio.Show();
+            Hide();
+        }
     }
 }
