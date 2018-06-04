@@ -52,7 +52,7 @@ namespace Stock
                                 Bitmap foto1 = Clases_Maestras.Funciones.byteToBipmap(lista.Foto);
                                 pictureBox1.Image = foto1;
                             }
-                            label3.Text = Convert.ToString(lista.PrecioUnitario);
+                            //label3.Text = Convert.ToString(lista.PrecioUnitario);
                             lblNombreProducto.Text = lista.NombreProducto;
                             txtCodigo.Clear();
                         }
@@ -121,7 +121,7 @@ namespace Stock
                                 Bitmap foto1 = Clases_Maestras.Funciones.byteToBipmap(lista.Foto);
                                 pictureBox1.Image = foto1;
                             }
-                            label3.Text = Convert.ToString(lista.PrecioUnitario);
+                            lblVueltoFijo.Text = Convert.ToString(lista.PrecioUnitario);
                             lblNombreProducto.Text = lista.NombreProducto;
                             txtCodigo.Clear();
                         }
@@ -163,67 +163,45 @@ namespace Stock
         {
             if (listaProductos.Count > 0)
             {
-
                 int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
                 int idusuario = idusuarioLogueado;
                 listaProductos[0].PrecioVentaFinal = Convert.ToDecimal(lblTotalPagarReal.Text);
-                //CobrarWF _cobrar = new CobrarWF(listaProductos, idusuario);
-                //_cobrar.ShowDialog();
                 bool Exito = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
-                if (Exito == true)
+                BloquearPantalla();
+                ///// GENERAR TICKET.........
+                Ticket ticket = new Ticket();
+
+                ticket.AddHeaderLine("La Brújula");
+                ticket.AddHeaderLine("EXPEDIDO EN:");
+                ticket.AddHeaderLine("44 N°1111");
+                ticket.AddHeaderLine("La Plata, BsAS");
+                ticket.AddHeaderLine("RFC: CSI-020226-MV4");
+
+                ticket.AddSubHeaderLine("Ticket # 1");
+                ticket.AddSubHeaderLine(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString());
+
+                foreach (DataGridViewRow row in dgvVentas.Rows)
                 {
-                    BloquearPantalla();
-                    const string message = "¿Desea cargar puntos al cliente?";
-                    const string caption = "Cliente registrado";
-                    var result = MessageBox.Show(message, caption,
-                                                 MessageBoxButtons.YesNo,
-                                                 MessageBoxIcon.Question);
+                    if (row.Cells[0].Value != null)
                     {
-                        if (result == DialogResult.Yes)
-                        {
-                            Char delimiter = ',';
-                            String[] pts = lblTotalPagarReal.Text.Split(delimiter);
-                            int puntos = Convert.ToInt32(pts[0]);
-                            CargarPuntosWF _cargar = new CargarPuntosWF(puntos);
-                            _cargar.Show();
-                        }
-                        else
-                        {
-                            Ticket ticket = new Ticket();
-
-                            ticket.AddHeaderLine("La Brújula");
-                            ticket.AddHeaderLine("EXPEDIDO EN:");
-                            ticket.AddHeaderLine("44 N°1111");
-                            ticket.AddHeaderLine("La Plata, BsAS");
-                            ticket.AddHeaderLine("RFC: CSI-020226-MV4");
-
-                            ticket.AddSubHeaderLine("Ticket # 1");
-                            ticket.AddSubHeaderLine(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString());
-
-                            foreach (DataGridViewRow row in dgvVentas.Rows)
-                            {
-                                if (row.Cells[0].Value != null)
-                                {
-                                    ticket.AddItem(row.Cells[2].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[4].Value.ToString());
-                                }
-
-                            }
-                            //ticket.AddTotal("SUBTOTAL", "12.00");
-                            //ticket.AddTotal("IVA", "0");
-                            ticket.AddTotal("TOTAL", lblTotalPagarReal.Text);
-                            ticket.AddTotal("", "");
-                            //ticket.AddTotal("RECIBIDO", "0");
-                            //ticket.AddTotal("CAMBIO", "0");
-                            ticket.AddTotal("", "");
-
-                            ticket.AddFooterLine("VUELVA PRONTO Y SINO CHUPALA");
-
-                            // ticket.PrintTicket("EPSON TM-T88III Receipt"); //Nombre de la impresora de tickets
-                            ticket.PrintTicket("RICOH MP C2004 PCL 6");
-                        }
-
+                        ticket.AddItem(row.Cells[2].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[4].Value.ToString());
                     }
+
                 }
+                //ticket.AddTotal("SUBTOTAL", "12.00");
+                //ticket.AddTotal("IVA", "0");
+                ticket.AddTotal("TOTAL", lblTotalPagarReal.Text);
+                ticket.AddTotal("", "");
+                //ticket.AddTotal("RECIBIDO", "0");
+                //ticket.AddTotal("CAMBIO", "0");
+                ticket.AddTotal("", "");
+                var Efectivo = txtEfectivo.Text;
+                var Vuelto = lblCambio.Text;
+                ticket.AddFooterLine(Efectivo);
+                ticket.AddFooterLine(Vuelto);
+                // ticket.PrintTicket("EPSON TM-T88III Receipt"); //Nombre de la impresora de tickets
+                ticket.PrintTicket("RICOH MP C2004 PCL 6");
+                //}
             }
         }
         private void BloquearPantalla()
@@ -240,7 +218,7 @@ namespace Stock
                 panel1.Enabled = true;
                 panel2.Enabled = true;
                 lblTotalPagarReal.Text = "0";
-                label3.Text = "0";
+                lblVueltoFijo.Text = "0";
                 lblNombreProducto.Text = "Nuevo Producto";
                 txtCodigo.Clear();
                 dgvVentas.Rows.Clear();
@@ -327,6 +305,36 @@ namespace Stock
         {
             e.Handled = !char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back);
         }
+        private void txtEfectivo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    if (txtEfectivo.Text != "")
+                    {
+                        decimal TotalVenta = Convert.ToDecimal(lblTotalPagarReal.Text);
+                        decimal Efectivo = Convert.ToDecimal(txtEfectivo.Text);
+                        decimal Vuelto = Efectivo - TotalVenta;
+                        lblCambio.Text = Convert.ToString(Vuelto);
+                        btnCobrar.Visible = true;
+                        txtEfectivo.Text = Convert.ToString(Efectivo);
+                    }
+                }
+                catch (Exception ex)
+                { }
+            }
+        }
+        private void btnFinalizarVenta_Click(object sender, EventArgs e)
+        {
+            txtEfectivo.Focus();
+            lblEfectivoFijo.Visible = true;
+            txtEfectivo.Visible = true;
+            lblVueltoFijo.Visible = true;
+            lblCambio.Visible = true;
+            btnFinalizarVenta.Visible = false;
+        }
     }
 }
+
 

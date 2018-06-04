@@ -36,6 +36,10 @@
             this.PrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecioFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtEfectivo = new System.Windows.Forms.TextBox();
+            this.lblEfectivoFijo = new System.Windows.Forms.Label();
+            this.lblCambio = new System.Windows.Forms.Label();
+            this.lblVueltoFijo = new System.Windows.Forms.Label();
             this.lblTotalPagarReal = new System.Windows.Forms.Label();
             this.lblTotalPagar = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
@@ -44,10 +48,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblNombreProducto = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnCobrar = new System.Windows.Forms.Button();
+            this.btnFinalizarVenta = new System.Windows.Forms.Button();
             this.panelGrande_Ventas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.panel2.SuspendLayout();
@@ -110,21 +113,72 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel2.Controls.Add(this.txtEfectivo);
+            this.panel2.Controls.Add(this.lblEfectivoFijo);
+            this.panel2.Controls.Add(this.lblCambio);
+            this.panel2.Controls.Add(this.lblVueltoFijo);
             this.panel2.Controls.Add(this.lblTotalPagarReal);
             this.panel2.Controls.Add(this.lblTotalPagar);
-            this.panel2.Location = new System.Drawing.Point(730, 366);
+            this.panel2.Location = new System.Drawing.Point(730, 325);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(270, 100);
+            this.panel2.Size = new System.Drawing.Size(270, 160);
             this.panel2.TabIndex = 5;
+            // 
+            // txtEfectivo
+            // 
+            this.txtEfectivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEfectivo.Location = new System.Drawing.Point(110, 76);
+            this.txtEfectivo.Multiline = true;
+            this.txtEfectivo.Name = "txtEfectivo";
+            this.txtEfectivo.Size = new System.Drawing.Size(150, 20);
+            this.txtEfectivo.TabIndex = 26;
+            this.txtEfectivo.Visible = false;
+            this.txtEfectivo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEfectivo_KeyDown);
+            // 
+            // lblEfectivoFijo
+            // 
+            this.lblEfectivoFijo.AutoSize = true;
+            this.lblEfectivoFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEfectivoFijo.ForeColor = System.Drawing.Color.White;
+            this.lblEfectivoFijo.Location = new System.Drawing.Point(17, 71);
+            this.lblEfectivoFijo.Name = "lblEfectivoFijo";
+            this.lblEfectivoFijo.Size = new System.Drawing.Size(87, 25);
+            this.lblEfectivoFijo.TabIndex = 25;
+            this.lblEfectivoFijo.Text = "Efectivo:";
+            this.lblEfectivoFijo.Visible = false;
+            // 
+            // lblCambio
+            // 
+            this.lblCambio.AutoSize = true;
+            this.lblCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCambio.ForeColor = System.Drawing.Color.White;
+            this.lblCambio.Location = new System.Drawing.Point(117, 130);
+            this.lblCambio.Name = "lblCambio";
+            this.lblCambio.Size = new System.Drawing.Size(119, 25);
+            this.lblCambio.TabIndex = 24;
+            this.lblCambio.Text = "@lblCambio";
+            this.lblCambio.Visible = false;
+            // 
+            // lblVueltoFijo
+            // 
+            this.lblVueltoFijo.AutoSize = true;
+            this.lblVueltoFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVueltoFijo.ForeColor = System.Drawing.Color.White;
+            this.lblVueltoFijo.Location = new System.Drawing.Point(30, 130);
+            this.lblVueltoFijo.Name = "lblVueltoFijo";
+            this.lblVueltoFijo.Size = new System.Drawing.Size(74, 25);
+            this.lblVueltoFijo.TabIndex = 23;
+            this.lblVueltoFijo.Text = "Vuelto:";
+            this.lblVueltoFijo.Visible = false;
             // 
             // lblTotalPagarReal
             // 
             this.lblTotalPagarReal.AutoSize = true;
-            this.lblTotalPagarReal.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalPagarReal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalPagarReal.ForeColor = System.Drawing.Color.White;
-            this.lblTotalPagarReal.Location = new System.Drawing.Point(71, 42);
+            this.lblTotalPagarReal.Location = new System.Drawing.Point(110, 17);
             this.lblTotalPagarReal.Name = "lblTotalPagarReal";
-            this.lblTotalPagarReal.Size = new System.Drawing.Size(189, 31);
+            this.lblTotalPagarReal.Size = new System.Drawing.Size(142, 25);
             this.lblTotalPagarReal.TabIndex = 22;
             this.lblTotalPagarReal.Text = "Total a Pagar";
             // 
@@ -133,11 +187,11 @@
             this.lblTotalPagar.AutoSize = true;
             this.lblTotalPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalPagar.ForeColor = System.Drawing.Color.White;
-            this.lblTotalPagar.Location = new System.Drawing.Point(3, 11);
+            this.lblTotalPagar.Location = new System.Drawing.Point(2, 24);
             this.lblTotalPagar.Name = "lblTotalPagar";
-            this.lblTotalPagar.Size = new System.Drawing.Size(107, 17);
+            this.lblTotalPagar.Size = new System.Drawing.Size(112, 17);
             this.lblTotalPagar.TabIndex = 21;
-            this.lblTotalPagar.Text = "Total a Pagar";
+            this.lblTotalPagar.Text = "Total a Pagar:";
             // 
             // txtCodigo
             // 
@@ -183,8 +237,6 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.SteelBlue;
             this.panel1.Controls.Add(this.lblNombreProducto);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtCantidad);
@@ -192,7 +244,7 @@
             this.panel1.Controls.Add(this.txtCodigo);
             this.panel1.Location = new System.Drawing.Point(729, 71);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(270, 280);
+            this.panel1.Size = new System.Drawing.Size(270, 250);
             this.panel1.TabIndex = 4;
             // 
             // lblNombreProducto
@@ -200,33 +252,11 @@
             this.lblNombreProducto.AutoSize = true;
             this.lblNombreProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombreProducto.ForeColor = System.Drawing.Color.White;
-            this.lblNombreProducto.Location = new System.Drawing.Point(45, 255);
+            this.lblNombreProducto.Location = new System.Drawing.Point(42, 216);
             this.lblNombreProducto.Name = "lblNombreProducto";
             this.lblNombreProducto.Size = new System.Drawing.Size(195, 25);
             this.lblNombreProducto.TabIndex = 36;
             this.lblNombreProducto.Text = "lblNombreProducto";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(115, 219);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(142, 25);
-            this.label3.TabIndex = 34;
-            this.label3.Text = "Total a Pagar";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(4, 223);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 17);
-            this.label4.TabIndex = 33;
-            this.label4.Text = "Valor Unitario:";
             // 
             // pictureBox1
             // 
@@ -243,19 +273,33 @@
             this.btnCobrar.BackColor = System.Drawing.Color.Silver;
             this.btnCobrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCobrar.Image = global::Stock.Properties.Resources.cobrar1;
-            this.btnCobrar.Location = new System.Drawing.Point(936, 480);
+            this.btnCobrar.Location = new System.Drawing.Point(940, 491);
             this.btnCobrar.Name = "btnCobrar";
             this.btnCobrar.Size = new System.Drawing.Size(50, 40);
             this.btnCobrar.TabIndex = 17;
             this.btnCobrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCobrar.UseVisualStyleBackColor = false;
+            this.btnCobrar.Visible = false;
             this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
+            // 
+            // btnFinalizarVenta
+            // 
+            this.btnFinalizarVenta.BackColor = System.Drawing.Color.Silver;
+            this.btnFinalizarVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinalizarVenta.Location = new System.Drawing.Point(884, 491);
+            this.btnFinalizarVenta.Name = "btnFinalizarVenta";
+            this.btnFinalizarVenta.Size = new System.Drawing.Size(50, 40);
+            this.btnFinalizarVenta.TabIndex = 18;
+            this.btnFinalizarVenta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnFinalizarVenta.UseVisualStyleBackColor = false;
+            this.btnFinalizarVenta.Click += new System.EventHandler(this.btnFinalizarVenta_Click);
             // 
             // VentasWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1005, 704);
+            this.Controls.Add(this.btnFinalizarVenta);
             this.Controls.Add(this.btnCobrar);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -268,6 +312,7 @@
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.btnCobrar, 0);
+            this.Controls.SetChildIndex(this.btnFinalizarVenta, 0);
             this.panelGrande_Ventas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -294,13 +339,16 @@
         private System.Windows.Forms.Label lblTotalPagar;
         private System.Windows.Forms.Label lblTotalPagarReal;
         private System.Windows.Forms.Label lblNombreProducto;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioFinal;
         private System.Windows.Forms.Button btnCobrar;
+        private System.Windows.Forms.TextBox txtEfectivo;
+        private System.Windows.Forms.Label lblEfectivoFijo;
+        private System.Windows.Forms.Label lblCambio;
+        private System.Windows.Forms.Label lblVueltoFijo;
+        private System.Windows.Forms.Button btnFinalizarVenta;
     }
 }

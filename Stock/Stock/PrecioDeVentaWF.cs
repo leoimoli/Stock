@@ -160,13 +160,20 @@ namespace Stock
         {
             try
             {
-                Entidades.PrecioDeVenta _precio = CargarEntidad();
-                ProgressBar();
-                bool Exito = Negocio.PrecioDeVenta_Negocio.InsertPrecioDeVenta(_precio);
-                if (Exito == true)
+                if (chcMarca.Checked == true)
                 {
-                    MessageBox.Show("SE REGISTRO EL NUEVO PRECIO DE VENTA EXITOSAMENTE.");
-                    LimpiarCampos();
+
+                }
+                else
+                {
+                    Entidades.PrecioDeVenta _precio = CargarEntidad();
+                    ProgressBar();
+                    bool Exito = Negocio.PrecioDeVenta_Negocio.InsertPrecioDeVenta(_precio);
+                    if (Exito == true)
+                    {
+                        MessageBox.Show("SE REGISTRO EL NUEVO PRECIO DE VENTA EXITOSAMENTE.");
+                        LimpiarCampos();
+                    }
                 }
             }
             catch (Exception ex)
@@ -216,6 +223,68 @@ namespace Stock
         private void Caluculate(int i)
         {
             double pow = Math.Pow(i, i);
+        }
+        private void chcPorCodigo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chcPorCodigo.Checked == true)
+            {
+                lblValorOMarcaFijo.Text = "Último valor unitario";
+                txtValorUni.Visible = true;
+                txtMarca.Visible = false;
+                chcMarca.Checked = false;
+                txtCodigo.Visible = true;
+                lblCodigoFijo.Visible = true;
+                txtCodigo.Focus();
+                cmbMarca.Visible = false;
+                lblMarcaFijo.Visible = false;
+                txtTotalCompra.Visible = true;
+                txtPrecioVenta.Visible = true;
+                txtPrecioActualVenta.Visible = true;
+                lblPrecioFijo.Visible = true;
+                lblUltimoPrecioFijo.Visible = true;
+                lblPrecioActualFijo.Visible = true;
+            }
+        }
+        private void chcMarca_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chcMarca.Checked == true)
+            {
+                lblValorOMarcaFijo.Text = "Marca Seleccionada";
+                txtValorUni.Visible = false;
+                txtMarca.Visible = true;
+                chcPorCodigo.Checked = false;
+                txtCodigo.Visible = false;
+                lblCodigoFijo.Visible = false;
+                cmbMarca.Focus();
+                cmbMarca.Visible = true;
+                lblMarcaFijo.Visible = true;
+                CargarComboMarcas();
+                txtTotalCompra.Visible = false;
+                txtPrecioVenta.Visible = false;
+                txtPrecioActualVenta.Visible = false;
+                lblPrecioFijo.Visible = false;
+                lblUltimoPrecioFijo.Visible = false;
+                lblPrecioActualFijo.Visible = false;
+            }
+        }
+        private void CargarComboMarcas()
+        {
+            List<string> Marcas = new List<string>();
+            Marcas = Negocio.Consultar.CargarComboMarcas();
+            cmbMarca.Items.Add("Seleccione");
+            cmbMarca.Items.Clear();
+            foreach (string item in Marcas)
+            {
+                cmbMarca.Text = "Seleccione";
+                cmbMarca.Items.Add(item);
+            }
+        }
+
+        private void cmbMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtMarca.Text = cmbMarca.Text;
+            txtReditoPorcentual.Enabled = true;
+            txtReditoPorcentual.Focus();
         }
     }
     #endregion

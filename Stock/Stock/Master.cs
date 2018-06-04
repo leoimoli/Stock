@@ -91,5 +91,12 @@ namespace Stock
             _reporte.Show();
             Hide();
         }
+
+        private void preciosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PrecioDeVentaWF _precio = new PrecioDeVentaWF();
+            _precio.Show();
+            Hide();
+        }
     }
 }

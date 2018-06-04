@@ -30,23 +30,28 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel_Producto = new System.Windows.Forms.Panel();
+            this.txtMarca = new System.Windows.Forms.TextBox();
             this.txtPrecioVenta = new System.Windows.Forms.TextBox();
             this.txtPrecioActualVenta = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblPrecioActualFijo = new System.Windows.Forms.Label();
             this.txtReditoPorcentual = new System.Windows.Forms.MaskedTextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblPrecioFijo = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtValorUni = new System.Windows.Forms.TextBox();
             this.txtTotalCompra = new System.Windows.Forms.TextBox();
-            this.lblContraseña = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblUltimoPrecioFijo = new System.Windows.Forms.Label();
+            this.lblValorOMarcaFijo = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblapellidoNombreEditar = new System.Windows.Forms.Label();
             this.panel200 = new System.Windows.Forms.Panel();
+            this.cmbMarca = new System.Windows.Forms.ComboBox();
+            this.lblMarcaFijo = new System.Windows.Forms.Label();
+            this.chcMarca = new System.Windows.Forms.CheckBox();
+            this.chcPorCodigo = new System.Windows.Forms.CheckBox();
             this.lblUltimoMovimientosProductos = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblCodigoFijo = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel100 = new System.Windows.Forms.Panel();
@@ -72,16 +77,17 @@
             // panel_Producto
             // 
             this.panel_Producto.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel_Producto.Controls.Add(this.txtMarca);
             this.panel_Producto.Controls.Add(this.txtPrecioVenta);
             this.panel_Producto.Controls.Add(this.txtPrecioActualVenta);
-            this.panel_Producto.Controls.Add(this.label1);
+            this.panel_Producto.Controls.Add(this.lblPrecioActualFijo);
             this.panel_Producto.Controls.Add(this.txtReditoPorcentual);
-            this.panel_Producto.Controls.Add(this.label9);
+            this.panel_Producto.Controls.Add(this.lblPrecioFijo);
             this.panel_Producto.Controls.Add(this.label6);
             this.panel_Producto.Controls.Add(this.txtValorUni);
             this.panel_Producto.Controls.Add(this.txtTotalCompra);
-            this.panel_Producto.Controls.Add(this.lblContraseña);
-            this.panel_Producto.Controls.Add(this.label5);
+            this.panel_Producto.Controls.Add(this.lblUltimoPrecioFijo);
+            this.panel_Producto.Controls.Add(this.lblValorOMarcaFijo);
             this.panel_Producto.Controls.Add(this.btnCancelar);
             this.panel_Producto.Controls.Add(this.btnGuardar);
             this.panel_Producto.Cursor = System.Windows.Forms.Cursors.Default;
@@ -89,6 +95,14 @@
             this.panel_Producto.Name = "panel_Producto";
             this.panel_Producto.Size = new System.Drawing.Size(611, 220);
             this.panel_Producto.TabIndex = 20;
+            // 
+            // txtMarca
+            // 
+            this.txtMarca.Enabled = false;
+            this.txtMarca.Location = new System.Drawing.Point(44, 33);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(170, 20);
+            this.txtMarca.TabIndex = 45;
             // 
             // txtPrecioVenta
             // 
@@ -108,16 +122,16 @@
             this.txtPrecioActualVenta.Size = new System.Drawing.Size(170, 20);
             this.txtPrecioActualVenta.TabIndex = 43;
             // 
-            // label1
+            // lblPrecioActualFijo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(38, 130);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(176, 17);
-            this.label1.TabIndex = 42;
-            this.label1.Text = "Precio actual de venta:";
+            this.lblPrecioActualFijo.AutoSize = true;
+            this.lblPrecioActualFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecioActualFijo.ForeColor = System.Drawing.Color.White;
+            this.lblPrecioActualFijo.Location = new System.Drawing.Point(38, 130);
+            this.lblPrecioActualFijo.Name = "lblPrecioActualFijo";
+            this.lblPrecioActualFijo.Size = new System.Drawing.Size(176, 17);
+            this.lblPrecioActualFijo.TabIndex = 42;
+            this.lblPrecioActualFijo.Text = "Precio actual de venta:";
             // 
             // txtReditoPorcentual
             // 
@@ -129,16 +143,16 @@
             this.txtReditoPorcentual.TabIndex = 41;
             this.txtReditoPorcentual.TextChanged += new System.EventHandler(this.txtReditoPorcentual_TextChanged);
             // 
-            // label9
+            // lblPrecioFijo
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(307, 74);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(129, 17);
-            this.label9.TabIndex = 40;
-            this.label9.Text = "Precio de Venta:";
+            this.lblPrecioFijo.AutoSize = true;
+            this.lblPrecioFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecioFijo.ForeColor = System.Drawing.Color.White;
+            this.lblPrecioFijo.Location = new System.Drawing.Point(307, 74);
+            this.lblPrecioFijo.Name = "lblPrecioFijo";
+            this.lblPrecioFijo.Size = new System.Drawing.Size(129, 17);
+            this.lblPrecioFijo.TabIndex = 40;
+            this.lblPrecioFijo.Text = "Precio de Venta:";
             // 
             // label6
             // 
@@ -168,27 +182,27 @@
             this.txtTotalCompra.Size = new System.Drawing.Size(170, 20);
             this.txtTotalCompra.TabIndex = 37;
             // 
-            // lblContraseña
+            // lblUltimoPrecioFijo
             // 
-            this.lblContraseña.AutoSize = true;
-            this.lblContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContraseña.ForeColor = System.Drawing.Color.White;
-            this.lblContraseña.Location = new System.Drawing.Point(38, 72);
-            this.lblContraseña.Name = "lblContraseña";
-            this.lblContraseña.Size = new System.Drawing.Size(234, 17);
-            this.lblContraseña.TabIndex = 35;
-            this.lblContraseña.Text = "Último Precio Total de Compra:";
+            this.lblUltimoPrecioFijo.AutoSize = true;
+            this.lblUltimoPrecioFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUltimoPrecioFijo.ForeColor = System.Drawing.Color.White;
+            this.lblUltimoPrecioFijo.Location = new System.Drawing.Point(38, 72);
+            this.lblUltimoPrecioFijo.Name = "lblUltimoPrecioFijo";
+            this.lblUltimoPrecioFijo.Size = new System.Drawing.Size(234, 17);
+            this.lblUltimoPrecioFijo.TabIndex = 35;
+            this.lblUltimoPrecioFijo.Text = "Último Precio Total de Compra:";
             // 
-            // label5
+            // lblValorOMarcaFijo
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(36, 14);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(163, 17);
-            this.label5.TabIndex = 34;
-            this.label5.Text = "Último Valor Unitario:";
+            this.lblValorOMarcaFijo.AutoSize = true;
+            this.lblValorOMarcaFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorOMarcaFijo.ForeColor = System.Drawing.Color.White;
+            this.lblValorOMarcaFijo.Location = new System.Drawing.Point(36, 14);
+            this.lblValorOMarcaFijo.Name = "lblValorOMarcaFijo";
+            this.lblValorOMarcaFijo.Size = new System.Drawing.Size(163, 17);
+            this.lblValorOMarcaFijo.TabIndex = 34;
+            this.lblValorOMarcaFijo.Text = "Último Valor Unitario:";
             // 
             // btnCancelar
             // 
@@ -239,14 +253,66 @@
             // panel200
             // 
             this.panel200.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel200.Controls.Add(this.cmbMarca);
+            this.panel200.Controls.Add(this.lblMarcaFijo);
+            this.panel200.Controls.Add(this.chcMarca);
+            this.panel200.Controls.Add(this.chcPorCodigo);
             this.panel200.Controls.Add(this.lblUltimoMovimientosProductos);
-            this.panel200.Controls.Add(this.label10);
+            this.panel200.Controls.Add(this.lblCodigoFijo);
             this.panel200.Controls.Add(this.txtCodigo);
             this.panel200.Controls.Add(this.dataGridView1);
             this.panel200.Location = new System.Drawing.Point(7, 96);
             this.panel200.Name = "panel200";
             this.panel200.Size = new System.Drawing.Size(294, 455);
             this.panel200.TabIndex = 18;
+            // 
+            // cmbMarca
+            // 
+            this.cmbMarca.FormattingEnabled = true;
+            this.cmbMarca.Location = new System.Drawing.Point(80, 51);
+            this.cmbMarca.Name = "cmbMarca";
+            this.cmbMarca.Size = new System.Drawing.Size(170, 21);
+            this.cmbMarca.TabIndex = 24;
+            this.cmbMarca.Visible = false;
+            this.cmbMarca.SelectedIndexChanged += new System.EventHandler(this.cmbMarca_SelectedIndexChanged);
+            // 
+            // lblMarcaFijo
+            // 
+            this.lblMarcaFijo.AutoSize = true;
+            this.lblMarcaFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMarcaFijo.ForeColor = System.Drawing.Color.White;
+            this.lblMarcaFijo.Location = new System.Drawing.Point(22, 51);
+            this.lblMarcaFijo.MaximumSize = new System.Drawing.Size(100, 0);
+            this.lblMarcaFijo.Name = "lblMarcaFijo";
+            this.lblMarcaFijo.Size = new System.Drawing.Size(52, 17);
+            this.lblMarcaFijo.TabIndex = 23;
+            this.lblMarcaFijo.Text = "Marca";
+            this.lblMarcaFijo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblMarcaFijo.Visible = false;
+            // 
+            // chcMarca
+            // 
+            this.chcMarca.AutoSize = true;
+            this.chcMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chcMarca.Location = new System.Drawing.Point(158, 10);
+            this.chcMarca.Name = "chcMarca";
+            this.chcMarca.Size = new System.Drawing.Size(92, 21);
+            this.chcMarca.TabIndex = 22;
+            this.chcMarca.Text = "Por Marca";
+            this.chcMarca.UseVisualStyleBackColor = true;
+            this.chcMarca.CheckedChanged += new System.EventHandler(this.chcMarca_CheckedChanged);
+            // 
+            // chcPorCodigo
+            // 
+            this.chcPorCodigo.AutoSize = true;
+            this.chcPorCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chcPorCodigo.Location = new System.Drawing.Point(38, 10);
+            this.chcPorCodigo.Name = "chcPorCodigo";
+            this.chcPorCodigo.Size = new System.Drawing.Size(97, 21);
+            this.chcPorCodigo.TabIndex = 21;
+            this.chcPorCodigo.Text = "Por Código";
+            this.chcPorCodigo.UseVisualStyleBackColor = true;
+            this.chcPorCodigo.CheckedChanged += new System.EventHandler(this.chcPorCodigo_CheckedChanged);
             // 
             // lblUltimoMovimientosProductos
             // 
@@ -259,25 +325,27 @@
             this.lblUltimoMovimientosProductos.TabIndex = 20;
             this.lblUltimoMovimientosProductos.Text = "Últimos Movimientos:";
             // 
-            // label10
+            // lblCodigoFijo
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(12, 14);
-            this.label10.MaximumSize = new System.Drawing.Size(100, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(73, 34);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "Código Producto";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblCodigoFijo.AutoSize = true;
+            this.lblCodigoFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigoFijo.ForeColor = System.Drawing.Color.White;
+            this.lblCodigoFijo.Location = new System.Drawing.Point(9, 34);
+            this.lblCodigoFijo.MaximumSize = new System.Drawing.Size(100, 0);
+            this.lblCodigoFijo.Name = "lblCodigoFijo";
+            this.lblCodigoFijo.Size = new System.Drawing.Size(73, 34);
+            this.lblCodigoFijo.TabIndex = 19;
+            this.lblCodigoFijo.Text = "Código Producto";
+            this.lblCodigoFijo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblCodigoFijo.Visible = false;
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(83, 20);
+            this.txtCodigo.Location = new System.Drawing.Point(80, 40);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(170, 20);
             this.txtCodigo.TabIndex = 18;
+            this.txtCodigo.Visible = false;
             this.txtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigo_KeyDown);
             // 
             // dataGridView1
@@ -418,7 +486,7 @@
         private System.Windows.Forms.Label lblapellidoNombreEditar;
         private System.Windows.Forms.Panel panel200;
         private System.Windows.Forms.Label lblUltimoMovimientosProductos;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblCodigoFijo;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel100;
@@ -428,17 +496,22 @@
         private System.Windows.Forms.Panel panelInformacion;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.MaskedTextBox txtReditoPorcentual;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblPrecioFijo;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtValorUni;
         private System.Windows.Forms.TextBox txtTotalCompra;
-        private System.Windows.Forms.Label lblContraseña;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblUltimoPrecioFijo;
+        private System.Windows.Forms.Label lblValorOMarcaFijo;
         private System.Windows.Forms.TextBox txtPrecioActualVenta;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPrecioActualFijo;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.TextBox txtPrecioVenta;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.CheckBox chcMarca;
+        private System.Windows.Forms.CheckBox chcPorCodigo;
+        private System.Windows.Forms.Label lblMarcaFijo;
+        private System.Windows.Forms.ComboBox cmbMarca;
+        private System.Windows.Forms.TextBox txtMarca;
     }
 }

@@ -39,6 +39,8 @@ namespace Stock
             this.lblCambio = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.cmbCuotas = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtAñoVencimiento = new System.Windows.Forms.TextBox();
@@ -57,8 +59,6 @@ namespace Stock
             this.btnDebito = new System.Windows.Forms.Button();
             this.btnEfectivo = new System.Windows.Forms.Button();
             this.btnCredito = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -156,12 +156,34 @@ namespace Stock
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(118, 144);
+            this.groupBox2.Location = new System.Drawing.Point(94, 144);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(362, 196);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             this.groupBox2.Visible = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(178, 13);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(49, 17);
+            this.label11.TabIndex = 26;
+            this.label11.Text = "Débito";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(72, 13);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(108, 17);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Forma de pago:";
             // 
             // cmbCuotas
             // 
@@ -384,28 +406,6 @@ namespace Stock
             this.btnCredito.TabIndex = 18;
             this.btnCredito.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCredito.UseVisualStyleBackColor = false;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(72, 13);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(108, 17);
-            this.label10.TabIndex = 16;
-            this.label10.Text = "Forma de pago:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(178, 13);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(49, 17);
-            this.label11.TabIndex = 26;
-            this.label11.Text = "Débito";
             // 
             // CobrarWF
             // 

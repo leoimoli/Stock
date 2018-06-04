@@ -48,7 +48,7 @@ namespace Stock
             this.Master_panel2 = new System.Windows.Forms.Panel();
             this.lblMaster_Version = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.remarcarPreciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.preciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Master_menuStrip1.SuspendLayout();
             this.Master_panel1.SuspendLayout();
             this.Master_panel2.SuspendLayout();
@@ -64,10 +64,11 @@ namespace Stock
             this.proveedoresToolStripMenuItem,
             this.clientesToolStripMenuItem,
             this.ventasToolStripMenuItem,
-            this.consultasToolStripMenuItem});
+            this.consultasToolStripMenuItem,
+            this.preciosToolStripMenuItem});
             this.Master_menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.Master_menuStrip1.Name = "Master_menuStrip1";
-            this.Master_menuStrip1.Size = new System.Drawing.Size(1333, 27);
+            this.Master_menuStrip1.Size = new System.Drawing.Size(1333, 29);
             this.Master_menuStrip1.TabIndex = 0;
             this.Master_menuStrip1.Text = "menuStrip1";
             // 
@@ -93,8 +94,6 @@ namespace Stock
             // 
             // stockToolStripMenuItem
             // 
-            this.stockToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.remarcarPreciosToolStripMenuItem});
             this.stockToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 12F);
             this.stockToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.stockToolStripMenuItem.Image = global::Stock.Properties.Resources.almacen_Nuevo;
@@ -218,11 +217,14 @@ namespace Stock
             this.lblMaster_Version.TabIndex = 0;
             this.lblMaster_Version.Text = "Versión 1.0.0";
             // 
-            // remarcarPreciosToolStripMenuItem
+            // preciosToolStripMenuItem
             // 
-            this.remarcarPreciosToolStripMenuItem.Name = "remarcarPreciosToolStripMenuItem";
-            this.remarcarPreciosToolStripMenuItem.Size = new System.Drawing.Size(200, 24);
-            this.remarcarPreciosToolStripMenuItem.Text = "Remarcar Precios";
+            this.preciosToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.preciosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.preciosToolStripMenuItem.Name = "preciosToolStripMenuItem";
+            this.preciosToolStripMenuItem.Size = new System.Drawing.Size(72, 25);
+            this.preciosToolStripMenuItem.Text = "Precios";
+            this.preciosToolStripMenuItem.Click += new System.EventHandler(this.preciosToolStripMenuItem_Click);
             // 
             // Master
             // 
@@ -266,6 +268,6 @@ namespace Stock
         private System.Windows.Forms.Label lblMaster_FechaHora;
         private System.Windows.Forms.Label lblMaster_FechaHoraReal;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ToolStripMenuItem remarcarPreciosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem preciosToolStripMenuItem;
     }
 }

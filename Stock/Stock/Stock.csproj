@@ -34,10 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="itextsharp">
-      <HintPath>..\..\..\..\..\Desktop\Leo\Leo(Codigo)\Windows Form\Sico(Contable)\Fuentes\SICO\SICO\bin\Debug\itextsharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Leo\Cosas de Leo\Leo\Repositorio Fuentes\Windows Form\Sico(Contable)\Fuentes\SICO\SICO\bin\Debug\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="LibPrintTicket">
-      <HintPath>..\..\..\..\..\Desktop\Ticket\LibPrintTicket\Release\LibPrintTicket.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Dll\LibPrintTicket\Release\LibPrintTicket.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -181,12 +181,6 @@
     <Compile Include="CobrarWF.Designer.cs">
       <DependentUpon>CobrarWF.cs</DependentUpon>
     </Compile>
-    <Compile Include="RemarcarPreciosWF.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RemarcarPreciosWF.Designer.cs">
-      <DependentUpon>RemarcarPreciosWF.cs</DependentUpon>
-    </Compile>
     <Compile Include="Reporte_ComprasWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,6 +211,12 @@
     </Compile>
     <Compile Include="VentasWF.Designer.cs">
       <DependentUpon>VentasWF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VueltoWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VueltoWF.Designer.cs">
+      <DependentUpon>VueltoWF.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="CargarPuntosWF.resx">
       <DependentUpon>CargarPuntosWF.cs</DependentUpon>
@@ -259,9 +259,6 @@
     <EmbeddedResource Include="CobrarWF.resx">
       <DependentUpon>CobrarWF.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RemarcarPreciosWF.resx">
-      <DependentUpon>RemarcarPreciosWF.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reporte_ComprasWF.resx">
       <DependentUpon>Reporte_ComprasWF.cs</DependentUpon>
     </EmbeddedResource>
@@ -276,6 +273,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VentasWF.resx">
       <DependentUpon>VentasWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VueltoWF.resx">
+      <DependentUpon>VueltoWF.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Documentos\Diagrama_Stock.vsd" />
     <None Include="packages.config" />
