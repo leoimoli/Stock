@@ -89,6 +89,25 @@ namespace Stock.DAO
             return exito;
         }
 
+        public static bool ActualizarPrecioDeVentaProductoMasivo(List<Productos> _lista)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            foreach (var item in _lista)
+            { 
+                string Actualizar = "ActualizarPrecioDeVentaProducto";
+                MySqlCommand cmd = new MySqlCommand(Actualizar, connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("idProducto_in", item.idProducto);
+                cmd.Parameters.AddWithValue("precioDeVenta_in", item.PrecioDeVenta);
+                cmd.ExecuteNonQuery();
+            }
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+
         public static bool EditarProveedor(Proveedores _proveedor, int idProductoGrillaSeleccionado)
         {
             bool exito = false;

@@ -32,5 +32,36 @@ namespace Stock.Negocio
                 throw new Exception();
             }
         }
+        public static bool InsertPrecioDeVentaPorMarca(string marca, string Redito, int idUsuario)
+        {
+            bool exito = false;
+            List<Productos> _lista = new List<Productos>();
+            _lista = DAO.ConsultarDao.ListarProductosPorMarca(marca);
+            if (_lista.Count > 0)
+            {
+                foreach (var item in _lista)
+                {
+                    decimal PrecioDeVenta = item.PrecioDeVenta;
+                    var split = Redito.Split('%')[0];
+                    split = split.Trim();
+                    decimal porcentaje = Convert.ToDecimal(split) / 100;
+                    decimal ValorVentaCalculado;
+                    ValorVentaCalculado = PrecioDeVenta * porcentaje + PrecioDeVenta;
+                    string ValorFinal = Convert.ToString(decimal.Round(ValorVentaCalculado, 2));
+                    ValorVentaCalculado = Convert.ToDecimal(ValorFinal);
+                    item.PrecioDeVenta = ValorVentaCalculado;
+                    item.idUsuario = idUsuario;
+                    item.FechaDeAlta = DateTime.Now;
+                }
+                exito = DAO.AgregarDao.InsertPrecioDeVentaMasivo(_lista);
+            }
+            else
+            {
+                MessageBox.Show("No hay productos para actualizar con los parametros de busqueda utilizados.");
+                throw new Exception();
+            }
+
+            return exito;
+        }
     }
 }

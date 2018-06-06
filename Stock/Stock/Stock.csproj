@@ -149,6 +149,12 @@
     <Compile Include="Negocio\Stock.cs" />
     <Compile Include="Negocio\Usuario.cs" />
     <Compile Include="Negocio\Ventas.cs" />
+    <Compile Include="PagosWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PagosWF.Designer.cs">
+      <DependentUpon>PagosWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="PrecioDeVentaWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Master2.resx">
       <DependentUpon>Master2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PagosWF.resx">
+      <DependentUpon>PagosWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrecioDeVentaWF.resx">
       <DependentUpon>PrecioDeVentaWF.cs</DependentUpon>

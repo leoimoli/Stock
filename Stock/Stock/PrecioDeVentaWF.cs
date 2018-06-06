@@ -97,7 +97,7 @@ namespace Stock
                 dataGridView1.Columns[2].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
                 dataGridView1.Columns[2].HeaderCell.Style.ForeColor = Color.White;
 
-                dataGridView1.Columns[3].HeaderText = "Fecha de Cambio";
+                dataGridView1.Columns[3].HeaderText = "Fecha de Modificación";
                 dataGridView1.Columns[3].Width = 125;
                 dataGridView1.Columns[3].HeaderCell.Style.BackColor = Color.DarkBlue;
                 dataGridView1.Columns[3].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
@@ -142,14 +142,23 @@ namespace Stock
                         ProductoIngresado = idProducto;
                         List<HistorialProductoPrecioDeVenta> Lista = new List<HistorialProductoPrecioDeVenta>();
                         Lista = Negocio.Consultar.HistorialPrecioDeVenta(idProducto);
-                        var lista = Lista.First();
-                        txtValorUni.Text = Convert.ToString(lista.ValorUnitario);
-                        txtTotalCompra.Text = Convert.ToString(lista.PrecioTotalDeCompra);
-                        txtPrecioActualVenta.Text = Convert.ToString(lista.PrecioDeVenta);
-                        ListaHistorialDelProductoSeleccionado = Negocio.Consultar.HistorialProducto(idProducto);
+                        if (Lista.Count == 0)
+                        {
+                            MessageBox.Show("El producto ingresado no posee un precio de venta previamente cargado.");
+                            throw new Exception();
+                        }
+                        else
+                        {
+                            var lista = Lista.First();
+                            txtValorUni.Text = Convert.ToString(lista.ValorUnitario);
+                            txtTotalCompra.Text = Convert.ToString(lista.PrecioTotalDeCompra);
+                            txtPrecioActualVenta.Text = Convert.ToString(lista.PrecioDeVenta);
+                            ListaHistorialDelProductoSeleccionado = Negocio.Consultar.HistorialProducto(idProducto);
+                        }
                     }
                 }
                 catch { }
+
             }
         }
         private void txtReditoPorcentual_TextChanged(object sender, EventArgs e)
@@ -160,24 +169,36 @@ namespace Stock
         {
             try
             {
+                bool Exito;
                 if (chcMarca.Checked == true)
                 {
-
+                    string marca = txtMarca.Text;
+                    string NuevoRedito = txtReditoPorcentual.Text;
+                    if (NuevoRedito == "" || NuevoRedito == "   %")
+                    {
+                        MessageBox.Show("Debe ingresar el rédito porcentual que desea obtener de la marca seleccionada");
+                        throw new Exception();
+                    }
+                    int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
+                    int idUsuario = idusuarioLogueado;
+                    ProgressBar();
+                    Exito = Negocio.PrecioDeVenta_Negocio.InsertPrecioDeVentaPorMarca(marca, NuevoRedito, idUsuario);
                 }
                 else
                 {
                     Entidades.PrecioDeVenta _precio = CargarEntidad();
                     ProgressBar();
-                    bool Exito = Negocio.PrecioDeVenta_Negocio.InsertPrecioDeVenta(_precio);
-                    if (Exito == true)
-                    {
-                        MessageBox.Show("SE REGISTRO EL NUEVO PRECIO DE VENTA EXITOSAMENTE.");
-                        LimpiarCampos();
-                    }
+                    Exito = Negocio.PrecioDeVenta_Negocio.InsertPrecioDeVenta(_precio);
+                }
+                if (Exito == true)
+                {
+                    MessageBox.Show("Se registro el nuevo precio de venta exitosamente.");
+                    LimpiarCampos();
                 }
             }
             catch (Exception ex)
             { }
+            LimpiarCampos();
         }
         private void LimpiarCampos()
         {
@@ -192,6 +213,7 @@ namespace Stock
             ListaHistorialDelProductoSeleccionado = Negocio.Consultar.HistorialProducto(ProductoIngresado);
             txtPrecioActualVenta.Clear();
             txtCodigo.Clear();
+            txtMarca.Clear();
         }
         private PrecioDeVenta CargarEntidad()
         {
@@ -278,6 +300,7 @@ namespace Stock
                 cmbMarca.Text = "Seleccione";
                 cmbMarca.Items.Add(item);
             }
+            cmbMarca.Items.Add("Seleccione");
         }
 
         private void cmbMarca_SelectedIndexChanged(object sender, EventArgs e)
@@ -285,6 +308,11 @@ namespace Stock
             txtMarca.Text = cmbMarca.Text;
             txtReditoPorcentual.Enabled = true;
             txtReditoPorcentual.Focus();
+        }
+
+        private void panel200_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
     #endregion

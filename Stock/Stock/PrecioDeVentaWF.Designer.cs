@@ -209,7 +209,7 @@
             this.btnCancelar.BackColor = System.Drawing.Color.Transparent;
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.Image = global::Stock.Properties.Resources.Eliminar;
-            this.btnCancelar.Location = new System.Drawing.Point(332, 131);
+            this.btnCancelar.Location = new System.Drawing.Point(226, 176);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(0);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(49, 39);
@@ -222,7 +222,7 @@
             this.btnGuardar.BackColor = System.Drawing.Color.Transparent;
             this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGuardar.Image = global::Stock.Properties.Resources.Guardar1;
-            this.btnGuardar.Location = new System.Drawing.Point(401, 131);
+            this.btnGuardar.Location = new System.Drawing.Point(295, 176);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(49, 39);
             this.btnGuardar.TabIndex = 25;
@@ -246,9 +246,9 @@
             this.lblapellidoNombreEditar.ForeColor = System.Drawing.Color.White;
             this.lblapellidoNombreEditar.Location = new System.Drawing.Point(19, 0);
             this.lblapellidoNombreEditar.Name = "lblapellidoNombreEditar";
-            this.lblapellidoNombreEditar.Size = new System.Drawing.Size(146, 25);
+            this.lblapellidoNombreEditar.Size = new System.Drawing.Size(207, 25);
             this.lblapellidoNombreEditar.TabIndex = 1;
-            this.lblapellidoNombreEditar.Text = "Producto/Editar";
+            this.lblapellidoNombreEditar.Text = "Nuevo precio de venta";
             // 
             // panel200
             // 
@@ -265,6 +265,7 @@
             this.panel200.Name = "panel200";
             this.panel200.Size = new System.Drawing.Size(294, 455);
             this.panel200.TabIndex = 18;
+            this.panel200.Paint += new System.Windows.Forms.PaintEventHandler(this.panel200_Paint);
             // 
             // cmbMarca
             // 

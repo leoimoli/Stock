@@ -61,6 +61,32 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
+
+        public static bool InsertPrecioDeVentaMasivo(List<Productos> _lista)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            foreach (var item in _lista)
+            {
+                string proceso = "InsertarHistorialPrecioDeVenta";
+                MySqlCommand cmd = new MySqlCommand(proceso, connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("idProducto_in", item.idProducto);
+                cmd.Parameters.AddWithValue("PrecioDeVenta_in", item.PrecioDeVenta);
+                cmd.Parameters.AddWithValue("FechaActual_in", item.FechaDeAlta);
+                cmd.Parameters.AddWithValue("idUsuario_in", item.idUsuario);
+                cmd.ExecuteNonQuery();
+            }
+            exito = true;
+            connection.Close();
+            if (exito == true)
+            {
+                exito = DAO.EditarDao.ActualizarPrecioDeVentaProductoMasivo(_lista);
+            }
+            return exito;
+        }
+
         public static bool InsertCliente(Entidades.Clientes _cliente)
         {
             bool exito = false;

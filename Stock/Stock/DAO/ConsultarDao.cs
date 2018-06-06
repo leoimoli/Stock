@@ -51,6 +51,35 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
+
+        public static List<Productos> ListarProductosPorMarca(string marca)
+        {
+            List<Productos> _lista = new List<Productos>();
+            connection.Close();
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("marca_in", marca) };
+            string proceso = "ListarProductosPorMarca";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Productos listaProducto = new Entidades.Productos();
+                    listaProducto.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    listaProducto.PrecioDeVenta = Convert.ToDecimal(item["txPrecioDeVenta"].ToString());
+                    _lista.Add(listaProducto);
+                }
+            }
+            connection.Close();
+            return _lista;
+        }
+
         public static int BuscarPuntosViejos(int idCliente)
         {
             connection.Close();
@@ -77,7 +106,6 @@ namespace Stock.DAO
             connection.Close();
             return PuntosViejos;
         }
-
         public static List<ListaVentas> ConsultarVentasPorUsuario(string dniUsuario)
         {
             connection.Close();
@@ -110,7 +138,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<ListaCompras> ConsultarComprasPorProveedor(string proveedor)
         {
             connection.Close();
@@ -144,7 +171,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<ListaComprasEstadistica> ConsultarComprasPorRemitoEstadistica(string remito)
         {
             connection.Close();
@@ -174,7 +200,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<ListaCompras> ConsultarComprasPorRemito(string remito)
         {
             connection.Close();
@@ -206,7 +231,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<ListaComprasEstadistica> ConsultarComprasPorProveedorEstadistica(string proveedor)
         {
             connection.Close();
@@ -237,7 +261,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<ListaComprasEstadistica> ConsultarComprasPorFechaEstadistica(DateTime fechaDesde, DateTime fechaHasta)
         {
             connection.Close();
@@ -269,7 +292,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<ListaCompras> ConsultarComprasPorFecha(DateTime fechaDesde, DateTime fechaHasta)
         {
             connection.Close();
@@ -304,7 +326,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<ListaVentasEstadistica> ConsultarVentasPorUsuarioEstadistica(string dniUsuario)
         {
             connection.Close();
@@ -334,7 +355,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<ListaVentasEstadistica> ConsultarVentasPorFechaEstadistica(DateTime fechaDesde, DateTime fechaHasta)
         {
             connection.Close();
@@ -365,7 +385,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<ListaVentas> ConsultarVentasPorFecha(DateTime fechaDesde, DateTime fechaHasta)
         {
             connection.Close();
@@ -400,7 +419,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<Entidades.Clientes> BuscarClienteIngresado(string dni)
         {
             connection.Close();
@@ -435,7 +453,6 @@ namespace Stock.DAO
             connection.Close();
             return _listaClientes;
         }
-
         public static List<Entidades.Clientes> ListarClientes()
         {
             connection.Close();
@@ -556,7 +573,6 @@ namespace Stock.DAO
             connection.Close();
             return _lista;
         }
-
         public static List<Entidades.Clientes> BuscarClientePorID(int idClienteSeleccionado)
         {
             connection.Close();
@@ -594,7 +610,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<ListaProductoVenta> BuscarProductoParaVenta(string codigoProducto)
         {
             connection.Close();
