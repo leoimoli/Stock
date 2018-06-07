@@ -119,7 +119,10 @@ namespace Stock
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
         }
         private void btnVolver_Click(object sender, EventArgs e)
         {

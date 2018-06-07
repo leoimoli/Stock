@@ -29,7 +29,11 @@ namespace Stock
                 Lista = new List<ListaStock>();
                 Lista = Negocio.Consultar.ListaDeStock();
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
         }
         #region Metodos Generales
         private void HabilitarLabels()
@@ -222,7 +226,10 @@ namespace Stock
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
         }
         private void txtCodigo_KeyDown(object sender, KeyEventArgs e)
         {

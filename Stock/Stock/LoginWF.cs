@@ -40,11 +40,9 @@ namespace Stock
             }
             catch (Exception ex)
             {
-                //resultado.Exito = false;
-                //resultado.Errores = new List<string>();
-                //resultado.Errores.Add(e.Message);
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
             }
-            //return resultado;
         }
 
         private void SoloNumeros(object sender, KeyPressEventArgs e)

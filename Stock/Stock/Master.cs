@@ -98,5 +98,12 @@ namespace Stock
             _precio.Show();
             Hide();
         }
+
+        private void pagosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PagosWF _pagos = new PagosWF();
+            _pagos.Show();
+            Hide();
+        }
     }
 }

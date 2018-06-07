@@ -51,6 +51,40 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
+        public static List<Entidades.Pagos> ListaDePagos()
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.Pagos> _listaProductos = new List<Entidades.Pagos>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ListaDePagos";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Pagos listaPago = new Entidades.Pagos();
+                    listaPago.IdPago = Convert.ToInt32(item["IdPagos"].ToString());
+                    listaPago.FormaDePago = item["txFormaDePago"].ToString();
+                    listaPago.NroCheque = item["txNroCheque"].ToString();
+                    listaPago.Monto = Convert.ToDecimal(item["txMonto"].ToString());
+                    listaPago.Proveedor = item["txProveedor"].ToString();
+                    listaPago.FechaDePago = item["dtFechaDePago"].ToString();
+                    listaPago.FechaIngreso = Convert.ToDateTime(item["dtFechaIngreso"].ToString());
+                    listaPago.idUsuario = Convert.ToInt32(item["idUsuario"].ToString());
+                    listaPago.Usuario = item["txApellido"].ToString() + " " + item["txNombre"].ToString();
+                    _listaProductos.Add(listaPago);
+                }
+            }
+            connection.Close();
+            return _listaProductos;
+        }
 
         public static List<Productos> ListarProductosPorMarca(string marca)
         {

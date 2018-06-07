@@ -23,5 +23,13 @@ namespace Stock.Clases_Maestras
             }
         }
 
+        public static string[] TipoDePago
+        {
+            get
+            {
+                return new string[] { "EFECTIVO", "CHEQUE" };
+            }
+        }
+
     }
 }

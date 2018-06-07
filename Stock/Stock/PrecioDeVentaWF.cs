@@ -25,8 +25,10 @@ namespace Stock
                 ListaHistorialPrecioDeVenta = Negocio.Consultar.ListaHistorialPrecioDeVenta();
             }
             catch (Exception ex)
-            { }
-
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
         }
         public List<Entidades.HistorialDelProductoSeleccionado> ListaHistorialDelProductoSeleccionado
         {
@@ -197,7 +199,10 @@ namespace Stock
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             LimpiarCampos();
         }
         private void LimpiarCampos()

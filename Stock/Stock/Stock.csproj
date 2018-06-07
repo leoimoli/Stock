@@ -99,6 +99,8 @@
     <Compile Include="Entidades\ListaVentasEstadistica.cs" />
     <Compile Include="Entidades\Marca.cs" />
     <Compile Include="Entidades\HistorialProductoPrecioDeVenta.cs" />
+    <Compile Include="Entidades\Pagos.cs" />
+    <Compile Include="Entidades\PagosReducidos.cs" />
     <Compile Include="Entidades\PrecioDeVenta.cs" />
     <Compile Include="Entidades\ProductoReducido.cs" />
     <Compile Include="Entidades\Productos.cs" />
@@ -143,6 +145,7 @@
     <Compile Include="Negocio\Clientes.cs" />
     <Compile Include="Negocio\Consultar.cs" />
     <Compile Include="Negocio\Marca.cs" />
+    <Compile Include="Negocio\Pagos.cs" />
     <Compile Include="Negocio\PrecioDeVenta_Negocio.cs" />
     <Compile Include="Negocio\Producto.cs" />
     <Compile Include="Negocio\Proveedores.cs" />
@@ -174,12 +177,6 @@
     </Compile>
     <Compile Include="ProveedoresWF.Designer.cs">
       <DependentUpon>ProveedoresWF.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Prueba.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Prueba.Designer.cs">
-      <DependentUpon>Prueba.cs</DependentUpon>
     </Compile>
     <Compile Include="CobrarWF.cs">
       <SubType>Form</SubType>
@@ -261,9 +258,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProveedoresWF.resx">
       <DependentUpon>ProveedoresWF.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Prueba.resx">
-      <DependentUpon>Prueba.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CobrarWF.resx">
       <DependentUpon>CobrarWF.cs</DependentUpon>

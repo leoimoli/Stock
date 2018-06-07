@@ -46,6 +46,28 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
+
+        public static bool RegistrarPago(Entidades.Pagos _pagos)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string proceso = "RegistrarPagos";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("FormaDePago_in", _pagos.FormaDePago);
+            cmd.Parameters.AddWithValue("NroCheque_in", _pagos.NroCheque);
+            cmd.Parameters.AddWithValue("Monto_in", _pagos.Monto);
+            cmd.Parameters.AddWithValue("Proveedor_in", _pagos.Proveedor);
+            cmd.Parameters.AddWithValue("FechaDePago_in", _pagos.FechaDePago);
+            cmd.Parameters.AddWithValue("FechaIngreso_in", _pagos.FechaIngreso);
+            cmd.Parameters.AddWithValue("idUsuario_in", _pagos.idUsuario);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+
         public static bool RegistrarPuntos(int idCliente, int actualizarPuntos)
         {
             bool exito = false;

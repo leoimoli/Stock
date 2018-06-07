@@ -20,6 +20,31 @@ namespace Stock.Negocio
             }
             return lista;
         }
+        public static List<Entidades.Pagos> ListaDePagos()
+        {
+            {
+                List<Entidades.Pagos> _listaPagos = new List<Entidades.Pagos>();
+                try
+                {
+                    _listaPagos = DAO.ConsultarDao.ListaDePagos();
+                }
+                catch (Exception ex)
+                { }
+                return _listaPagos;
+            }
+        }
+
+        public static List<Productos> ListaDeProductos()
+        {
+            List<Productos> _listaProductos = new List<Productos>();
+            try
+            {
+                _listaProductos = DAO.ConsultarDao.ListarProductos();
+            }
+            catch (Exception ex)
+            { }
+            return _listaProductos;
+        }
 
         public static List<Entidades.Clientes> ListaDeClientes()
         {
@@ -267,19 +292,6 @@ namespace Stock.Negocio
             bool existe = DAO.ConsultarDao.ValidarMarcaExistente(nombreMarca);
             return existe;
         }
-
-        public static List<Productos> ListaDeProductos()
-        {
-            List<Productos> _listaProductos = new List<Productos>();
-            try
-            {
-                _listaProductos = DAO.ConsultarDao.ListarProductos();
-            }
-            catch (Exception ex)
-            { }
-            return _listaProductos;
-        }
-
         public static bool ValidarProductoExistente(string codigoProducto)
         {
             bool existe = DAO.ConsultarDao.ValidarProductoExistente(codigoProducto);

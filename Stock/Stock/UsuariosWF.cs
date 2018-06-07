@@ -27,7 +27,10 @@ namespace Stock
                 dataGridView1.ReadOnly = true;
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
         }
         #region Botones
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -142,7 +145,10 @@ namespace Stock
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {

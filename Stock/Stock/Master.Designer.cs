@@ -40,6 +40,7 @@ namespace Stock
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.preciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Master_panel1 = new System.Windows.Forms.Panel();
             this.lblMaster_FechaHoraReal = new System.Windows.Forms.Label();
             this.lblMaster_UsuarioLogin = new System.Windows.Forms.Label();
@@ -48,7 +49,7 @@ namespace Stock
             this.Master_panel2 = new System.Windows.Forms.Panel();
             this.lblMaster_Version = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.preciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Master_menuStrip1.SuspendLayout();
             this.Master_panel1.SuspendLayout();
             this.Master_panel2.SuspendLayout();
@@ -65,7 +66,8 @@ namespace Stock
             this.clientesToolStripMenuItem,
             this.ventasToolStripMenuItem,
             this.consultasToolStripMenuItem,
-            this.preciosToolStripMenuItem});
+            this.preciosToolStripMenuItem,
+            this.pagosToolStripMenuItem});
             this.Master_menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.Master_menuStrip1.Name = "Master_menuStrip1";
             this.Master_menuStrip1.Size = new System.Drawing.Size(1333, 29);
@@ -78,7 +80,7 @@ namespace Stock
             this.usuariosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.usuariosToolStripMenuItem.Image = global::Stock.Properties.Resources.hombre2_Nuevo;
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(98, 23);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(98, 25);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
@@ -88,7 +90,7 @@ namespace Stock
             this.productosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.productosToolStripMenuItem.Image = global::Stock.Properties.Resources.codigo_de_barras_Nuevo;
             this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            this.productosToolStripMenuItem.Size = new System.Drawing.Size(107, 23);
+            this.productosToolStripMenuItem.Size = new System.Drawing.Size(107, 25);
             this.productosToolStripMenuItem.Text = "Productos";
             this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
             // 
@@ -98,7 +100,7 @@ namespace Stock
             this.stockToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.stockToolStripMenuItem.Image = global::Stock.Properties.Resources.almacen_Nuevo;
             this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
-            this.stockToolStripMenuItem.Size = new System.Drawing.Size(75, 23);
+            this.stockToolStripMenuItem.Size = new System.Drawing.Size(75, 25);
             this.stockToolStripMenuItem.Text = "Stock";
             this.stockToolStripMenuItem.Click += new System.EventHandler(this.stockToolStripMenuItem_Click);
             // 
@@ -108,7 +110,7 @@ namespace Stock
             this.proveedoresToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.proveedoresToolStripMenuItem.Image = global::Stock.Properties.Resources.empleado_Nuevo;
             this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
-            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(124, 23);
+            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(124, 25);
             this.proveedoresToolStripMenuItem.Text = "Proveedores";
             this.proveedoresToolStripMenuItem.Click += new System.EventHandler(this.proveedoresToolStripMenuItem_Click);
             // 
@@ -118,7 +120,7 @@ namespace Stock
             this.clientesToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.clientesToolStripMenuItem.Image = global::Stock.Properties.Resources.Clientes_Nuevo;
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(92, 23);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(92, 25);
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
@@ -128,7 +130,7 @@ namespace Stock
             this.ventasToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.ventasToolStripMenuItem.Image = global::Stock.Properties.Resources.Ventas1;
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
-            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(84, 23);
+            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(84, 25);
             this.ventasToolStripMenuItem.Text = "Ventas";
             this.ventasToolStripMenuItem.Click += new System.EventHandler(this.ventasToolStripMenuItem_Click);
             // 
@@ -138,9 +140,18 @@ namespace Stock
             this.consultasToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.consultasToolStripMenuItem.Image = global::Stock.Properties.Resources.estadistica;
             this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
-            this.consultasToolStripMenuItem.Size = new System.Drawing.Size(105, 23);
+            this.consultasToolStripMenuItem.Size = new System.Drawing.Size(105, 25);
             this.consultasToolStripMenuItem.Text = "Consultas";
             this.consultasToolStripMenuItem.Click += new System.EventHandler(this.consultasToolStripMenuItem_Click_1);
+            // 
+            // preciosToolStripMenuItem
+            // 
+            this.preciosToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.preciosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.preciosToolStripMenuItem.Name = "preciosToolStripMenuItem";
+            this.preciosToolStripMenuItem.Size = new System.Drawing.Size(72, 25);
+            this.preciosToolStripMenuItem.Text = "Precios";
+            this.preciosToolStripMenuItem.Click += new System.EventHandler(this.preciosToolStripMenuItem_Click);
             // 
             // Master_panel1
             // 
@@ -217,14 +228,14 @@ namespace Stock
             this.lblMaster_Version.TabIndex = 0;
             this.lblMaster_Version.Text = "Versión 1.0.0";
             // 
-            // preciosToolStripMenuItem
+            // pagosToolStripMenuItem
             // 
-            this.preciosToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.preciosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.preciosToolStripMenuItem.Name = "preciosToolStripMenuItem";
-            this.preciosToolStripMenuItem.Size = new System.Drawing.Size(72, 25);
-            this.preciosToolStripMenuItem.Text = "Precios";
-            this.preciosToolStripMenuItem.Click += new System.EventHandler(this.preciosToolStripMenuItem_Click);
+            this.pagosToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.pagosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.pagosToolStripMenuItem.Name = "pagosToolStripMenuItem";
+            this.pagosToolStripMenuItem.Size = new System.Drawing.Size(63, 25);
+            this.pagosToolStripMenuItem.Text = "Pagos";
+            this.pagosToolStripMenuItem.Click += new System.EventHandler(this.pagosToolStripMenuItem_Click);
             // 
             // Master
             // 
@@ -269,5 +280,6 @@ namespace Stock
         private System.Windows.Forms.Label lblMaster_FechaHoraReal;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem preciosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pagosToolStripMenuItem;
     }
 }

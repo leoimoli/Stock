@@ -29,7 +29,10 @@ namespace Stock
                 dataGridView1.ReadOnly = true;
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
         }
         #region Metodos Generales
         public void CargarCombo()
@@ -321,7 +324,10 @@ namespace Stock
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
         }
         private void btnAgregarMarca_Click(object sender, EventArgs e)
         {
