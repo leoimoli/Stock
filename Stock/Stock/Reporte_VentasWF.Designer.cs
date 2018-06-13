@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.grbFiltros = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lblDni = new System.Windows.Forms.Label();
@@ -49,10 +49,10 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnExcel = new System.Windows.Forms.Button();
             this.lblTotal2 = new System.Windows.Forms.Label();
             this.lblTotal1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnExcel = new System.Windows.Forms.Button();
             this.grbFiltros.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -77,7 +77,7 @@
             this.grbFiltros.Size = new System.Drawing.Size(680, 200);
             this.grbFiltros.TabIndex = 4;
             this.grbFiltros.TabStop = false;
-            this.grbFiltros.Text = "groupBox1";
+            this.grbFiltros.Text = "Ventas";
             // 
             // button1
             // 
@@ -86,7 +86,7 @@
             this.button1.Image = global::Stock.Properties.Resources.buscar40X35;
             this.button1.Location = new System.Drawing.Point(594, 143);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(49, 39);
+            this.button1.Size = new System.Drawing.Size(50, 42);
             this.button1.TabIndex = 114;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Visible = false;
@@ -236,10 +236,10 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(4, 16);
             this.chart1.Name = "chart1";
             this.chart1.Size = new System.Drawing.Size(330, 280);
@@ -258,6 +258,18 @@
             this.groupBox5.TabIndex = 7;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Grilla";
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.BackColor = System.Drawing.Color.Transparent;
+            this.btnExcel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcel.Location = new System.Drawing.Point(260, 257);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(49, 39);
+            this.btnExcel.TabIndex = 115;
+            this.btnExcel.UseVisualStyleBackColor = false;
+            this.btnExcel.Visible = false;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // lblTotal2
             // 
@@ -289,18 +301,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(330, 240);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // btnExcel
-            // 
-            this.btnExcel.BackColor = System.Drawing.Color.Transparent;
-            this.btnExcel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExcel.Location = new System.Drawing.Point(260, 257);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(49, 39);
-            this.btnExcel.TabIndex = 115;
-            this.btnExcel.UseVisualStyleBackColor = false;
-            this.btnExcel.Visible = false;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // Reporte_VentasWF
             // 

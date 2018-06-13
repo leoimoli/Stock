@@ -32,6 +32,7 @@ namespace Stock
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Master));
             this.Master_menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,6 +42,7 @@ namespace Stock
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.preciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Master_panel1 = new System.Windows.Forms.Panel();
             this.lblMaster_FechaHoraReal = new System.Windows.Forms.Label();
             this.lblMaster_UsuarioLogin = new System.Windows.Forms.Label();
@@ -49,7 +51,6 @@ namespace Stock
             this.Master_panel2 = new System.Windows.Forms.Panel();
             this.lblMaster_Version = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.pagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Master_menuStrip1.SuspendLayout();
             this.Master_panel1.SuspendLayout();
             this.Master_panel2.SuspendLayout();
@@ -153,6 +154,15 @@ namespace Stock
             this.preciosToolStripMenuItem.Text = "Precios";
             this.preciosToolStripMenuItem.Click += new System.EventHandler(this.preciosToolStripMenuItem_Click);
             // 
+            // pagosToolStripMenuItem
+            // 
+            this.pagosToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.pagosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.pagosToolStripMenuItem.Name = "pagosToolStripMenuItem";
+            this.pagosToolStripMenuItem.Size = new System.Drawing.Size(63, 25);
+            this.pagosToolStripMenuItem.Text = "Pagos";
+            this.pagosToolStripMenuItem.Click += new System.EventHandler(this.pagosToolStripMenuItem_Click);
+            // 
             // Master_panel1
             // 
             this.Master_panel1.BackColor = System.Drawing.Color.SteelBlue;
@@ -228,15 +238,6 @@ namespace Stock
             this.lblMaster_Version.TabIndex = 0;
             this.lblMaster_Version.Text = "Versión 1.0.0";
             // 
-            // pagosToolStripMenuItem
-            // 
-            this.pagosToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.pagosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.pagosToolStripMenuItem.Name = "pagosToolStripMenuItem";
-            this.pagosToolStripMenuItem.Size = new System.Drawing.Size(63, 25);
-            this.pagosToolStripMenuItem.Text = "Pagos";
-            this.pagosToolStripMenuItem.Click += new System.EventHandler(this.pagosToolStripMenuItem_Click);
-            // 
             // Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,6 +246,7 @@ namespace Stock
             this.Controls.Add(this.Master_panel2);
             this.Controls.Add(this.Master_panel1);
             this.Controls.Add(this.Master_menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.Master_menuStrip1;
             this.Name = "Master";
             this.Text = "Master";

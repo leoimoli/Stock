@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>150 x 150.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="itextsharp">
       <HintPath>..\..\..\..\..\Desktop\Leo\Cosas de Leo\Leo\Repositorio Fuentes\Windows Form\Sico(Contable)\Fuentes\SICO\SICO\bin\Debug\itextsharp.dll</HintPath>
@@ -323,6 +326,7 @@
     <None Include="Resources\estadistica.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="150 x 150.ico" />
     <Content Include="docs\MySqlCommand.xml" />
     <Content Include="docs\MySqlCommandBuilder.xml" />
     <Content Include="docs\MySqlConnection.xml" />

@@ -23,7 +23,7 @@ namespace Stock
             try
             {
 
-               lblUltimoMovimientosProductos.Text = "Últimos Productos cargados";
+                lblUltimoMovimientosProductos.Text = "Últimos Productos cargados";
                 List<Entidades.ProductoReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProductos());
                 ListaProductos = ListaReducidos;
                 dataGridView1.ReadOnly = true;
@@ -131,6 +131,7 @@ namespace Stock
         }
         private void LimpiarCampos()
         {
+            txtCodigoBusqueda.Clear();
             txtCodigoProducto.Clear();
             txtNombreProducto.Clear();
             textBox2.Clear();
@@ -257,6 +258,11 @@ namespace Stock
         }
         private void btnProducto_Click(object sender, EventArgs e)
         {
+            if (txtCodigoBusqueda.Text != "")
+            {
+                txtCodigoProducto.Text = txtCodigoBusqueda.Text;
+                txtCodigoProducto.Enabled = false;
+            }
             lblHistorialProducto.Text = "No hay información del producto para visualizar";
             EditCódigo_Producto.Visible = false;
             EditNombre_Producto.Visible = false;
@@ -265,9 +271,9 @@ namespace Stock
             EditFecha_Alta_Producto.Visible = false;
             EditPrecioDeVenta_Producto.Visible = false;
             idProductoGrilla = 0;
-            txtCodigoProducto.Enabled = true;
-            txtCodigoProducto.Focus();
-            LimpiarCampos();
+            //txtCodigoProducto.Enabled = true;
+            //txtCodigoProducto.Focus();
+            // LimpiarCampos();
             HabilitarCampos();
         }
         public static int idProductoGrillaSeleccionado;
@@ -340,7 +346,7 @@ namespace Stock
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            LimpiarCampos();
         }
         #endregion
         #region Eventos Grilla

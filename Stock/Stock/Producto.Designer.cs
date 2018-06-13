@@ -33,7 +33,7 @@
             this.panel200 = new System.Windows.Forms.Panel();
             this.lblUltimoMovimientosProductos = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtCodigoBusqueda = new System.Windows.Forms.TextBox();
             this.btnProducto = new System.Windows.Forms.Button();
             this.panel100 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -100,7 +100,7 @@
             this.panel200.BackColor = System.Drawing.Color.SteelBlue;
             this.panel200.Controls.Add(this.lblUltimoMovimientosProductos);
             this.panel200.Controls.Add(this.label10);
-            this.panel200.Controls.Add(this.textBox6);
+            this.panel200.Controls.Add(this.txtCodigoBusqueda);
             this.panel200.Controls.Add(this.btnProducto);
             this.panel200.Controls.Add(this.dataGridView1);
             this.panel200.Location = new System.Drawing.Point(19, 101);
@@ -132,12 +132,12 @@
             this.label10.Text = "Código Producto";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // textBox6
+            // txtCodigoBusqueda
             // 
-            this.textBox6.Location = new System.Drawing.Point(77, 9);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(170, 20);
-            this.textBox6.TabIndex = 18;
+            this.txtCodigoBusqueda.Location = new System.Drawing.Point(77, 9);
+            this.txtCodigoBusqueda.Name = "txtCodigoBusqueda";
+            this.txtCodigoBusqueda.Size = new System.Drawing.Size(170, 20);
+            this.txtCodigoBusqueda.TabIndex = 18;
             // 
             // btnProducto
             // 
@@ -621,7 +621,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lblapellidoNombreEditar;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtCodigoBusqueda;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnCancelar;

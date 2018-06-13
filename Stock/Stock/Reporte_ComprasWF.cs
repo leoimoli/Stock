@@ -94,6 +94,7 @@ namespace Stock
                     Lista = resultado = Negocio.Consultar.ConsultarComprasPorFecha(FechaDesde, FechaHasta);
                     if (resultado.Count > 0)
                     {
+                        btnExcel.Visible = true;
                         lblTotal1.Visible = true;
                         lblTotal2.Visible = true;
                         lblTotal2.Text = Convert.ToString(resultado.Count);
@@ -118,6 +119,7 @@ namespace Stock
                         Lista = resultado = Negocio.Consultar.ConsultarComprasPorProveedor(Proveedor);
                         if (resultado.Count > 0)
                         {
+                            btnExcel.Visible = true;
                             lblTotal1.Visible = true;
                             lblTotal2.Visible = true;
                             lblTotal2.Text = Convert.ToString(resultado.Count);
@@ -142,6 +144,7 @@ namespace Stock
                             Lista = resultado = Negocio.Consultar.ConsultarComprasPorRemito(Remito);
                             if (resultado.Count > 0)
                             {
+                                btnExcel.Visible = true;
                                 lblTotal1.Visible = true;
                                 lblTotal2.Visible = true;
                                 lblTotal2.Text = Convert.ToString(resultado.Count);
@@ -218,14 +221,14 @@ namespace Stock
                 dataGridView1.Columns[3].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
                 dataGridView1.Columns[3].HeaderCell.Style.ForeColor = Color.White;
 
-                DataGridViewButtonColumn BotonSeleccionar = new DataGridViewButtonColumn();
-                BotonSeleccionar.Name = "Ver";
-                BotonSeleccionar.HeaderText = "Ver";
-                this.dataGridView1.Columns.Add(BotonSeleccionar);
-                dataGridView1.Columns[4].Width = 40;
-                dataGridView1.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
-                dataGridView1.Columns[4].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                dataGridView1.Columns[4].HeaderCell.Style.ForeColor = Color.White;
+                //DataGridViewButtonColumn BotonSeleccionar = new DataGridViewButtonColumn();
+                //BotonSeleccionar.Name = "Ver";
+                //BotonSeleccionar.HeaderText = "Ver";
+                //this.dataGridView1.Columns.Add(BotonSeleccionar);
+                //dataGridView1.Columns[4].Width = 40;
+                //dataGridView1.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
+                //dataGridView1.Columns[4].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
+                //dataGridView1.Columns[4].HeaderCell.Style.ForeColor = Color.White;
             }
 
         }
@@ -259,6 +262,30 @@ namespace Stock
                 //Close();
                 //_ejercicio.ShowDialog();
             }
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            dataGridView1.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            dataGridView1.MultiSelect = true;
+            dataGridView1.SelectAll();
+
+            DataObject dataObj = dataGridView1.GetClipboardContent();
+            if (dataObj != null)
+                Clipboard.SetDataObject(dataObj);
+
+            //Open an excel instance and paste the copied data
+            Microsoft.Office.Interop.Excel.Application xlexcel;
+            Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+            xlexcel = new Microsoft.Office.Interop.Excel.Application();
+            xlexcel.Visible = true;
+            xlWorkBook = xlexcel.Workbooks.Add(misValue);
+            xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            Microsoft.Office.Interop.Excel.Range CR = (Microsoft.Office.Interop.Excel.Range)xlWorkSheet.Cells[1, 1];
+            CR.Select();
+            xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
         }
     }
 }

@@ -143,6 +143,7 @@
             this.btnCancelar.TabIndex = 37;
             this.toolTip1.SetToolTip(this.btnCancelar, "Cancelar");
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 

@@ -49,6 +49,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnExcel = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -76,16 +77,16 @@
             this.groupBox1.Size = new System.Drawing.Size(680, 200);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Compras";
             // 
             // btnBuscar
             // 
             this.btnBuscar.BackColor = System.Drawing.Color.Transparent;
             this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBuscar.Image = global::Stock.Properties.Resources.buscar40X35;
-            this.btnBuscar.Location = new System.Drawing.Point(612, 155);
+            this.btnBuscar.Location = new System.Drawing.Point(607, 149);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(49, 39);
+            this.btnBuscar.Size = new System.Drawing.Size(50, 42);
             this.btnBuscar.TabIndex = 108;
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Visible = false;
@@ -209,6 +210,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.btnExcel);
             this.groupBox5.Controls.Add(this.lblTotal2);
             this.groupBox5.Controls.Add(this.lblTotal1);
             this.groupBox5.Controls.Add(this.dataGridView1);
@@ -274,6 +276,18 @@
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
+            // btnExcel
+            // 
+            this.btnExcel.BackColor = System.Drawing.Color.Transparent;
+            this.btnExcel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcel.Location = new System.Drawing.Point(268, 258);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(49, 39);
+            this.btnExcel.TabIndex = 116;
+            this.btnExcel.UseVisualStyleBackColor = false;
+            this.btnExcel.Visible = false;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
             // Reporte_ComprasWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,5 +335,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Button btnExcel;
     }
 }
