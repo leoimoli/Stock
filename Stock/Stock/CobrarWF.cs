@@ -49,11 +49,11 @@ namespace Stock
         }
         private void btnImprimirTicket_Click(object sender, EventArgs e)
         {
-            bool Exito = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
-            if (Exito == true)
-            {
-                BloquearPantalla();
-            }
+            //bool Exito = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
+            //if (Exito == true)
+            //{
+            //    BloquearPantalla();
+            //}
         }
         private void BloquearPantalla()
         {

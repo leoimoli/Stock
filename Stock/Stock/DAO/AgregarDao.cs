@@ -14,9 +14,8 @@ namespace Stock.DAO
     {
         private static MySql.Data.MySqlClient.MySqlConnection connection = new MySqlConnection(Properties.Settings.Default.db);
 
-        public static bool InsertVenta(List<ListaProductoVenta> listaProductos, int idUsuario)
+        public static int InsertVenta(List<ListaProductoVenta> listaProductos, int idUsuario)
         {
-            bool exito = false;
             int idUltimoVenta = 0;
             connection.Close();
             connection.Open();
@@ -36,15 +35,20 @@ namespace Stock.DAO
             }
             if (idUltimoVenta > 0)
             {
-                exito = RegistrarDetalleVenta(listaProductos, idUltimoVenta);
+                // exito = RegistrarDetalleVenta(listaProductos, idUltimoVenta);
+                RegistrarDetalleVenta(listaProductos, idUltimoVenta);
             }
-            if (exito == true)
+            if (idUltimoVenta > 0)
             {
-                exito = ActualizarStockPorProductosVendidos(listaProductos);
+                //if (exito == true)
+                //{
+                //exito = ActualizarStockPorProductosVendidos(listaProductos);
+                ActualizarStockPorProductosVendidos(listaProductos);
+                //}
+                //exito = true;
             }
-            exito = true;
             connection.Close();
-            return exito;
+            return idUltimoVenta;
         }
 
         public static bool RegistrarPago(Entidades.Pagos _pagos)
@@ -67,7 +71,6 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
-
         public static bool RegistrarPuntos(int idCliente, int actualizarPuntos)
         {
             bool exito = false;
@@ -83,7 +86,23 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
-
+        public static bool InsertarCuentaCorriente(int idCliente, string deudaGuardar, DateTime fecha, int idVenta)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string proceso = "AltaCuentaCorriente";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+            cmd.Parameters.AddWithValue("deudaGuardar_in", deudaGuardar);
+            cmd.Parameters.AddWithValue("fecha_in", fecha);
+            cmd.Parameters.AddWithValue("idVenta_in", idVenta);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
         public static bool InsertPrecioDeVentaMasivo(List<Productos> _lista)
         {
             bool exito = false;
@@ -108,7 +127,6 @@ namespace Stock.DAO
             }
             return exito;
         }
-
         public static bool InsertCliente(Entidades.Clientes _cliente)
         {
             bool exito = false;

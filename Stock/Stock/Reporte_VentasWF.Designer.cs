@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.grbFiltros = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lblDni = new System.Windows.Forms.Label();
@@ -53,6 +54,7 @@
             this.lblTotal2 = new System.Windows.Forms.Label();
             this.lblTotal1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.grbFiltros.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -88,6 +90,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(50, 42);
             this.button1.TabIndex = 114;
+            this.toolTip1.SetToolTip(this.button1, "Buscar");
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -236,10 +239,10 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(4, 16);
             this.chart1.Name = "chart1";
             this.chart1.Size = new System.Drawing.Size(330, 280);
@@ -263,10 +266,12 @@
             // 
             this.btnExcel.BackColor = System.Drawing.Color.Transparent;
             this.btnExcel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcel.Image = global::Stock.Properties.Resources.Excel_Chico;
             this.btnExcel.Location = new System.Drawing.Point(260, 257);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(49, 39);
             this.btnExcel.TabIndex = 115;
+            this.toolTip1.SetToolTip(this.btnExcel, "Exportar a Excel");
             this.btnExcel.UseVisualStyleBackColor = false;
             this.btnExcel.Visible = false;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
@@ -355,5 +360,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnExcel;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

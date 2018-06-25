@@ -105,5 +105,17 @@ namespace Stock
             _pagos.Show();
             Hide();
         }
+
+        private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 _inicio = new Form2();
+            _inicio.Show();
+            Hide();
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

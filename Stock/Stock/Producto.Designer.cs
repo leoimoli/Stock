@@ -565,6 +565,10 @@
             this.progressBar1.Value = 10;
             this.progressBar1.Visible = false;
             // 
+            // toolTip1
+            // 
+            //this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
+            // 
             // Producto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

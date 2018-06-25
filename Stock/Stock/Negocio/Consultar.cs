@@ -430,5 +430,16 @@ namespace Stock.Negocio
             { }
             return _listaStock;
         }
+        public static List<ListaStockFaltante> ListaStockFaltante()
+        {
+            List<ListaStockFaltante> _listaStock = new List<ListaStockFaltante>();
+            try
+            {
+                _listaStock = DAO.ConsultarDao.ListaStockFaltante();
+            }
+            catch (Exception ex)
+            { }
+            return _listaStock;
+        }
     }
 }

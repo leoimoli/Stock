@@ -51,12 +51,12 @@ namespace Stock
 
         private void btnImprimirTicket_Click(object sender, EventArgs e)
         {
-            try
-            {
-                bool Exito = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
-            }
-            catch (Exception ex)
-            { }
+            //try
+            //{
+            //    bool Exito = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
+            //}
+            //catch (Exception ex)
+            //{ }
         }
     }
 }

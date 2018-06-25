@@ -81,5 +81,19 @@ namespace Stock.Negocio
             { }
             return exito;
         }
+        public static bool RegistrarCuentaCorriente(int idCliente, string deudaGuardar, DateTime fecha, int idVenta)
+        {
+            bool exito = false;
+            try
+            {
+                exito = DAO.AgregarDao.InsertarCuentaCorriente(idCliente, deudaGuardar, fecha, idVenta);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
+            return exito;
+        }
     }
 }

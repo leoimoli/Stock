@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelGrande_Ventas = new System.Windows.Forms.Panel();
             this.dgvVentas = new System.Windows.Forms.DataGridView();
             this.CodigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -36,7 +37,7 @@
             this.PrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecioFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtEfectivo = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.lblEfectivoFijo = new System.Windows.Forms.Label();
             this.lblCambio = new System.Windows.Forms.Label();
             this.lblVueltoFijo = new System.Windows.Forms.Label();
@@ -49,8 +50,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblNombreProducto = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnCobrar = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnFinalizarVenta = new System.Windows.Forms.Button();
+            this.btnCuentaCorriente = new System.Windows.Forms.Button();
+            this.btnCobrar = new System.Windows.Forms.Button();
             this.panelGrande_Ventas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.panel2.SuspendLayout();
@@ -113,7 +116,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel2.Controls.Add(this.txtEfectivo);
+            this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.lblEfectivoFijo);
             this.panel2.Controls.Add(this.lblCambio);
             this.panel2.Controls.Add(this.lblVueltoFijo);
@@ -124,16 +127,14 @@
             this.panel2.Size = new System.Drawing.Size(270, 160);
             this.panel2.TabIndex = 5;
             // 
-            // txtEfectivo
+            // textBox1
             // 
-            this.txtEfectivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEfectivo.Location = new System.Drawing.Point(110, 76);
-            this.txtEfectivo.Multiline = true;
-            this.txtEfectivo.Name = "txtEfectivo";
-            this.txtEfectivo.Size = new System.Drawing.Size(150, 20);
-            this.txtEfectivo.TabIndex = 26;
-            this.txtEfectivo.Visible = false;
-            this.txtEfectivo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEfectivo_KeyDown);
+            this.textBox1.Location = new System.Drawing.Point(110, 77);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(150, 20);
+            this.textBox1.TabIndex = 26;
+            this.textBox1.Visible = false;
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // lblEfectivoFijo
             // 
@@ -268,6 +269,41 @@
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
             // 
+            // btnFinalizarVenta
+            // 
+            this.btnFinalizarVenta.BackColor = System.Drawing.Color.Silver;
+            this.btnFinalizarVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinalizarVenta.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnFinalizarVenta.Image = global::Stock.Properties.Resources.Caja_Chica;
+            this.btnFinalizarVenta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnFinalizarVenta.Location = new System.Drawing.Point(827, 491);
+            this.btnFinalizarVenta.Name = "btnFinalizarVenta";
+            this.btnFinalizarVenta.Size = new System.Drawing.Size(80, 52);
+            this.btnFinalizarVenta.TabIndex = 18;
+            this.btnFinalizarVenta.Text = "Finalizar(F10)";
+            this.btnFinalizarVenta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnFinalizarVenta, "Finalizar(F10)");
+            this.btnFinalizarVenta.UseVisualStyleBackColor = false;
+            this.btnFinalizarVenta.Click += new System.EventHandler(this.btnFinalizarVenta_Click);
+            // 
+            // btnCuentaCorriente
+            // 
+            this.btnCuentaCorriente.BackColor = System.Drawing.Color.Silver;
+            this.btnCuentaCorriente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCuentaCorriente.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnCuentaCorriente.Image = global::Stock.Properties.Resources.Moroso_Grande;
+            this.btnCuentaCorriente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCuentaCorriente.Location = new System.Drawing.Point(919, 491);
+            this.btnCuentaCorriente.Name = "btnCuentaCorriente";
+            this.btnCuentaCorriente.Size = new System.Drawing.Size(80, 52);
+            this.btnCuentaCorriente.TabIndex = 19;
+            this.btnCuentaCorriente.Text = "Deuda(F1)";
+            this.btnCuentaCorriente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnCuentaCorriente, "Registrar Deuda(F1)");
+            this.btnCuentaCorriente.UseVisualStyleBackColor = false;
+            this.btnCuentaCorriente.Visible = false;
+            this.btnCuentaCorriente.Click += new System.EventHandler(this.btnCuentaCorriente_Click);
+            // 
             // btnCobrar
             // 
             this.btnCobrar.BackColor = System.Drawing.Color.Silver;
@@ -282,23 +318,12 @@
             this.btnCobrar.Visible = false;
             this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
             // 
-            // btnFinalizarVenta
-            // 
-            this.btnFinalizarVenta.BackColor = System.Drawing.Color.Silver;
-            this.btnFinalizarVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinalizarVenta.Location = new System.Drawing.Point(884, 491);
-            this.btnFinalizarVenta.Name = "btnFinalizarVenta";
-            this.btnFinalizarVenta.Size = new System.Drawing.Size(50, 40);
-            this.btnFinalizarVenta.TabIndex = 18;
-            this.btnFinalizarVenta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnFinalizarVenta.UseVisualStyleBackColor = false;
-            this.btnFinalizarVenta.Click += new System.EventHandler(this.btnFinalizarVenta_Click);
-            // 
             // VentasWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1005, 704);
+            this.Controls.Add(this.btnCuentaCorriente);
             this.Controls.Add(this.btnFinalizarVenta);
             this.Controls.Add(this.btnCobrar);
             this.Controls.Add(this.panel2);
@@ -313,6 +338,7 @@
             this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.btnCobrar, 0);
             this.Controls.SetChildIndex(this.btnFinalizarVenta, 0);
+            this.Controls.SetChildIndex(this.btnCuentaCorriente, 0);
             this.panelGrande_Ventas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -345,10 +371,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioFinal;
         private System.Windows.Forms.Button btnCobrar;
-        private System.Windows.Forms.TextBox txtEfectivo;
         private System.Windows.Forms.Label lblEfectivoFijo;
         private System.Windows.Forms.Label lblCambio;
         private System.Windows.Forms.Label lblVueltoFijo;
         private System.Windows.Forms.Button btnFinalizarVenta;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnCuentaCorriente;
     }
 }

@@ -86,6 +86,12 @@
       <DependentUpon>ClientesWF.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlador\Respuesta.cs" />
+    <Compile Include="CuentaCorrienteWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CuentaCorrienteWF.Designer.cs">
+      <DependentUpon>CuentaCorrienteWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="DAO\AgregarDao.cs" />
     <Compile Include="DAO\ConsultarDao.cs" />
     <Compile Include="DAO\EditarDao.cs" />
@@ -97,6 +103,7 @@
     <Compile Include="Entidades\ListaComprasEstadistica.cs" />
     <Compile Include="Entidades\ListaProductoVenta.cs" />
     <Compile Include="Entidades\ListaStock.cs" />
+    <Compile Include="Entidades\ListaStockFaltante.cs" />
     <Compile Include="Entidades\ListaStockProducto.cs" />
     <Compile Include="Entidades\ListaVentas.cs" />
     <Compile Include="Entidades\ListaVentasEstadistica.cs" />
@@ -120,6 +127,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginWF.cs">
       <SubType>Form</SubType>
@@ -230,8 +243,14 @@
     <EmbeddedResource Include="ClientesWF.resx">
       <DependentUpon>ClientesWF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CuentaCorrienteWF.resx">
+      <DependentUpon>CuentaCorrienteWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginWF.resx">
       <DependentUpon>LoginWF.cs</DependentUpon>
@@ -339,6 +358,11 @@
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Documentos\Base De Datos\Procedure\1%29LoginUsuario.txt" />
+    <None Include="Resources\Moroso_Grande.png" />
+    <None Include="Resources\Salir_Chico.png" />
+    <None Include="Resources\Pagos_Chico.png" />
+    <None Include="Resources\Pagos_Grande.png" />
+    <None Include="Resources\Precio_Grande.png" />
     <None Include="Resources\ventas65x50.png" />
     <None Include="Resources\Nuevo Cliente.png" />
     <None Include="Resources\VISA.png" />
@@ -373,6 +397,13 @@
     <None Include="Resources\f12Guardar.png" />
     <Content Include="Imagenes Botones\Seleccionar.ico" />
     <None Include="Resources\compras65x50.png" />
+    <None Include="Resources\1280 x 1024.png" />
+    <None Include="Resources\150 x 150.png" />
+    <None Include="Resources\inicio-de-web.png" />
+    <None Include="Resources\etiqueta-del-precio.png" />
+    <None Include="Resources\etiqueta-del-precio1.png" />
+    <None Include="Resources\Excel_Chico.png" />
+    <None Include="Resources\Caja_Chica.png" />
     <Content Include="Resources\login2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

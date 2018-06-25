@@ -33,7 +33,7 @@ namespace Stock
                 else
                 {
                     Sesion.UsuarioLogueado = usuarios.First();
-                    Form1 _inicio = new Form1();
+                    Form2 _inicio = new Form2();
                     _inicio.Show();
                     Hide();
                 }

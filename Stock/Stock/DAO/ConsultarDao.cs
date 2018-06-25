@@ -326,6 +326,36 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
+        public static List<ListaStockFaltante> ListaStockFaltante()
+        {
+            connection.Close();
+            connection.Open();
+            List<ListaStockFaltante> _listaStocks = new List<ListaStockFaltante>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ListaStockFaltante";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaStockFaltante listaStock = new Entidades.ListaStockFaltante();
+                    listaStock.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaStock.Nombre = item["txNombreProducto"].ToString();
+                    listaStock.Marca = item["txMarcaProducto"].ToString();
+                    listaStock.Cantidad = Convert.ToInt32(item["txCantidad"].ToString());
+                    _listaStocks.Add(listaStock);
+                }
+            }
+            connection.Close();
+            return _listaStocks;
+        }
+
         public static List<ListaCompras> ConsultarComprasPorFecha(DateTime fechaDesde, DateTime fechaHasta)
         {
             connection.Close();
