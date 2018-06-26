@@ -85,7 +85,32 @@ namespace Stock.DAO
             connection.Close();
             return _listaProductos;
         }
+        public static decimal BuscarDeudaExistente(int idCliente)
+        {
+            connection.Close();
+            connection.Open();
+            Decimal DeudaVieja = 0;
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("idCliente_in", idCliente)};
+            string proceso = "BuscarDeudaExistente";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    DeudaVieja = Convert.ToDecimal(item["txDeuda"].ToString());
 
+                }
+            }
+            connection.Close();
+            return DeudaVieja;
+        }
         public static List<Productos> ListarProductosPorMarca(string marca)
         {
             List<Productos> _lista = new List<Productos>();
@@ -113,7 +138,6 @@ namespace Stock.DAO
             connection.Close();
             return _lista;
         }
-
         public static int BuscarPuntosViejos(int idCliente)
         {
             connection.Close();
@@ -205,6 +229,41 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
+
+        public static List<CuentaCorriente> BuscarDeudaPorCliente(int idClienteSeleccionado)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.CuentaCorriente> lista = new List<Entidades.CuentaCorriente>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("idCliente_in", idClienteSeleccionado)};
+            string proceso = "BuscarDetalleDeudaPorCliente";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.CuentaCorriente listaCliente = new Entidades.CuentaCorriente();
+                    listaCliente.IdCliente = Convert.ToInt32(item["idCliente"].ToString());
+                    listaCliente.Dni = item["txDni"].ToString();                   
+                    listaCliente.Apellido = item["txApellido"].ToString();
+                    listaCliente.Nombre = item["txNombre"].ToString();
+                    listaCliente.Fecha = Convert.ToDateTime(item["dtFechaDeuda"].ToString());
+                    listaCliente.Deuda = Convert.ToDecimal(item["txDeuda"].ToString());   
+                    listaCliente.DeudaTotal = Convert.ToDecimal(item["txDeudaTotal"].ToString());
+                    lista.Add(listaCliente);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
         public static List<ListaComprasEstadistica> ConsultarComprasPorRemitoEstadistica(string remito)
         {
             connection.Close();
@@ -355,7 +414,6 @@ namespace Stock.DAO
             connection.Close();
             return _listaStocks;
         }
-
         public static List<ListaCompras> ConsultarComprasPorFecha(DateTime fechaDesde, DateTime fechaHasta)
         {
             connection.Close();
@@ -662,7 +720,6 @@ namespace Stock.DAO
                     listaCliente.Sexo = item["txSexo"].ToString();
                     listaCliente.Apellido = item["txApellido"].ToString();
                     listaCliente.Nombre = item["txNombre"].ToString();
-                    //listaCliente.FechaDeNacimiento = Convert.ToDateTime(item["dtFechaNacimiento"].ToString());
                     listaCliente.FechaDeAlta = Convert.ToDateTime(item["dtFechaDeAlta"].ToString());
                     listaCliente.Email = item["txEmail"].ToString();
                     listaCliente.Telefono = item["txTelefono"].ToString();

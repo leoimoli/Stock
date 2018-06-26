@@ -86,7 +86,28 @@ namespace Stock.Negocio
             bool exito = false;
             try
             {
-                exito = DAO.AgregarDao.InsertarCuentaCorriente(idCliente, deudaGuardar, fecha, idVenta);
+                decimal DeudaVieja = DAO.ConsultarDao.BuscarDeudaExistente(idCliente);
+                if (DeudaVieja > 0)
+                {
+                    decimal deudaNueva = Convert.ToDecimal(deudaGuardar);
+                    decimal DEUDA = DeudaVieja + deudaNueva;
+                    exito = DAO.EditarDao.ActualizarDeuda(DEUDA, idCliente);
+                    if (exito == true)
+                    {
+                        exito = DAO.AgregarDao.InsertarDetalleCuentaCorriente(idCliente, deudaGuardar, fecha, idVenta);
+                    }
+                    else { }
+                }
+                else
+                {
+                    exito = DAO.AgregarDao.InsertarCuentaCorriente(idCliente, deudaGuardar);
+                    if (exito == true)
+                    {
+                        exito = DAO.AgregarDao.InsertarDetalleCuentaCorriente(idCliente, deudaGuardar, fecha, idVenta);
+                    }
+                    else { }
+                }
+
             }
             catch (Exception ex)
             {

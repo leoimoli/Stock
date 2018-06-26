@@ -293,7 +293,7 @@
             this.btnCuentaCorriente.ForeColor = System.Drawing.Color.MidnightBlue;
             this.btnCuentaCorriente.Image = global::Stock.Properties.Resources.Moroso_Grande;
             this.btnCuentaCorriente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCuentaCorriente.Location = new System.Drawing.Point(919, 491);
+            this.btnCuentaCorriente.Location = new System.Drawing.Point(913, 537);
             this.btnCuentaCorriente.Name = "btnCuentaCorriente";
             this.btnCuentaCorriente.Size = new System.Drawing.Size(80, 52);
             this.btnCuentaCorriente.TabIndex = 19;

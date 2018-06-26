@@ -38,6 +38,11 @@
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.panelInformacion = new System.Windows.Forms.Panel();
+            this.lblPendiente = new System.Windows.Forms.Label();
+            this.lblPersona = new System.Windows.Forms.Label();
+            this.lblDeudaFijo = new System.Windows.Forms.Label();
+            this.lblPersonaFijo = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lblUsuarioEstadisticas = new System.Windows.Forms.Label();
@@ -64,12 +69,16 @@
             this.label10 = new System.Windows.Forms.Label();
             this.panel100 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.panel6.SuspendLayout();
+            this.panelInformacion.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel_Clientes.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel200.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel100.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // txtTelefono
@@ -160,10 +169,70 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel6.Controls.Add(this.panelInformacion);
             this.panel6.Location = new System.Drawing.Point(321, 361);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(611, 187);
             this.panel6.TabIndex = 101;
+            // 
+            // panelInformacion
+            // 
+            this.panelInformacion.BackColor = System.Drawing.Color.LightBlue;
+            this.panelInformacion.Controls.Add(this.lblPendiente);
+            this.panelInformacion.Controls.Add(this.lblPersona);
+            this.panelInformacion.Controls.Add(this.lblDeudaFijo);
+            this.panelInformacion.Controls.Add(this.lblPersonaFijo);
+            this.panelInformacion.Location = new System.Drawing.Point(5, 8);
+            this.panelInformacion.Name = "panelInformacion";
+            this.panelInformacion.Size = new System.Drawing.Size(250, 150);
+            this.panelInformacion.TabIndex = 2;
+            this.panelInformacion.Visible = false;
+            // 
+            // lblPendiente
+            // 
+            this.lblPendiente.AutoSize = true;
+            this.lblPendiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPendiente.ForeColor = System.Drawing.Color.Black;
+            this.lblPendiente.Location = new System.Drawing.Point(117, 70);
+            this.lblPendiente.Name = "lblPendiente";
+            this.lblPendiente.Size = new System.Drawing.Size(109, 13);
+            this.lblPendiente.TabIndex = 31;
+            this.lblPendiente.Text = "Nombre Producto:";
+            this.lblPendiente.Visible = false;
+            // 
+            // lblPersona
+            // 
+            this.lblPersona.AutoSize = true;
+            this.lblPersona.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPersona.ForeColor = System.Drawing.Color.Black;
+            this.lblPersona.Location = new System.Drawing.Point(117, 21);
+            this.lblPersona.Name = "lblPersona";
+            this.lblPersona.Size = new System.Drawing.Size(105, 13);
+            this.lblPersona.TabIndex = 30;
+            this.lblPersona.Text = "Código Producto:";
+            this.lblPersona.Visible = false;
+            // 
+            // lblDeudaFijo
+            // 
+            this.lblDeudaFijo.AutoSize = true;
+            this.lblDeudaFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeudaFijo.ForeColor = System.Drawing.Color.Black;
+            this.lblDeudaFijo.Location = new System.Drawing.Point(2, 70);
+            this.lblDeudaFijo.Name = "lblDeudaFijo";
+            this.lblDeudaFijo.Size = new System.Drawing.Size(109, 13);
+            this.lblDeudaFijo.TabIndex = 24;
+            this.lblDeudaFijo.Text = "Deuda Pendiente:";
+            // 
+            // lblPersonaFijo
+            // 
+            this.lblPersonaFijo.AutoSize = true;
+            this.lblPersonaFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPersonaFijo.ForeColor = System.Drawing.Color.Black;
+            this.lblPersonaFijo.Location = new System.Drawing.Point(6, 21);
+            this.lblPersonaFijo.Name = "lblPersonaFijo";
+            this.lblPersonaFijo.Size = new System.Drawing.Size(109, 13);
+            this.lblPersonaFijo.TabIndex = 23;
+            this.lblPersonaFijo.Text = "Apellido yNombre:";
             // 
             // label11
             // 
@@ -192,9 +261,9 @@
             this.lblUsuarioEstadisticas.ForeColor = System.Drawing.Color.White;
             this.lblUsuarioEstadisticas.Location = new System.Drawing.Point(19, -1);
             this.lblUsuarioEstadisticas.Name = "lblUsuarioEstadisticas";
-            this.lblUsuarioEstadisticas.Size = new System.Drawing.Size(197, 25);
+            this.lblUsuarioEstadisticas.Size = new System.Drawing.Size(157, 25);
             this.lblUsuarioEstadisticas.TabIndex = 1;
-            this.lblUsuarioEstadisticas.Text = "Historial Proveedores";
+            this.lblUsuarioEstadisticas.Text = "Historial Clientes";
             // 
             // panel_Clientes
             // 
@@ -465,11 +534,22 @@
             this.label7.TabIndex = 2;
             this.label7.Text = "Clientes";
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.LightBlue;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(583, 369);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(340, 150);
+            this.dataGridView2.TabIndex = 3;
+            this.dataGridView2.Visible = false;
+            // 
             // ClientesWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 545);
+            this.ClientSize = new System.Drawing.Size(1155, 749);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
@@ -488,6 +568,10 @@
             this.Controls.SetChildIndex(this.panel5, 0);
             this.Controls.SetChildIndex(this.panel6, 0);
             this.Controls.SetChildIndex(this.progressBar1, 0);
+            this.Controls.SetChildIndex(this.dataGridView2, 0);
+            this.panel6.ResumeLayout(false);
+            this.panelInformacion.ResumeLayout(false);
+            this.panelInformacion.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel_Clientes.ResumeLayout(false);
@@ -499,6 +583,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel100.ResumeLayout(false);
             this.panel100.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -541,5 +626,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblUltimoMovimientosUsuarios;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panelInformacion;
+        private System.Windows.Forms.Label lblPendiente;
+        private System.Windows.Forms.Label lblPersona;
+        private System.Windows.Forms.Label lblDeudaFijo;
+        private System.Windows.Forms.Label lblPersonaFijo;
+        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }

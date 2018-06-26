@@ -86,23 +86,42 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
-        public static bool InsertarCuentaCorriente(int idCliente, string deudaGuardar, DateTime fecha, int idVenta)
+        public static bool InsertarDetalleCuentaCorriente(int idCliente, string deudaGuardar, DateTime fecha, int idVenta)
         {
+            string Estado = "ACTIVA";
             bool exito = false;
             connection.Close();
             connection.Open();
-            string proceso = "AltaCuentaCorriente";
+            string proceso = "AltaDetalleCuentaCorriente";
             MySqlCommand cmd = new MySqlCommand(proceso, connection);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("idCliente_in", idCliente);
             cmd.Parameters.AddWithValue("deudaGuardar_in", deudaGuardar);
             cmd.Parameters.AddWithValue("fecha_in", fecha);
             cmd.Parameters.AddWithValue("idVenta_in", idVenta);
+            cmd.Parameters.AddWithValue("Estado_in", Estado);
             cmd.ExecuteNonQuery();
             exito = true;
             connection.Close();
             return exito;
         }
+
+        public static bool InsertarCuentaCorriente(int idCliente, string deudaGuardar)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string proceso = "InsertarCuentaCorriente";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+            cmd.Parameters.AddWithValue("deudaGuardar_in", deudaGuardar);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+
         public static bool InsertPrecioDeVentaMasivo(List<Productos> _lista)
         {
             bool exito = false;

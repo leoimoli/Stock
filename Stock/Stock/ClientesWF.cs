@@ -219,17 +219,34 @@ namespace Stock
             {
                 List<Clientes> _cliente = new List<Clientes>();
                 _cliente = Negocio.Consultar.BuscarClientePorID(idClienteSeleccionado);
+                if (_cliente.Count > 0)
+                {
+                    List<CuentaCorriente> _deuda = new List<CuentaCorriente>();
+                    _deuda = Negocio.Consultar.BuscarDeudaPorCliente(idClienteSeleccionado);
+                    if (_deuda.Count > 0)
+                    {
+                        HabilitarCamposDeuda(_deuda);
+                        ListaCuentaCorriente = _deuda;
+                    }
+                }
                 HabilitarCamposClienteSeleccionado(_cliente);
             }
             catch (Exception ex)
             { }
         }
+        private void HabilitarCamposDeuda(List<CuentaCorriente> _deuda)
+        {
+            dataGridView2.Visible = true;
+            panelInformacion.Visible = true;
+            var Deuda = _deuda.First();
+            lblPersona.Visible = true;
+            lblPersona.Text = Deuda.Apellido + Deuda.Nombre;
+            lblPendiente.Visible = true;
+            lblPendiente.Text = Convert.ToString("$" + Deuda.DeudaTotal);
+        }
         private void HabilitarCamposClienteSeleccionado(List<Clientes> _cliente)
         {
-            // lblEstado.Visible = true;
-            //checkBox1.Visible = true;
-            //checkBox2.Visible = true;
-            //btnCargarImagen.Visible = true;
+
             btnGuardar.Visible = true;
             btnCancelar.Visible = true;
             lblapellidoNombreEditar.Text = "Editar Cliente";
@@ -240,8 +257,6 @@ namespace Stock
             txtApellido.Text = cliente.Apellido;
             txtNombre.Text = cliente.Nombre;
             txtEmail.Text = cliente.Email;
-            //txtCodArea.Text = usuario.Contraseña;
-            //txtTelefono.Text = usuario.Perfil;
             txtCalle.Text = cliente.Calle;
             txtAltura.Text = cliente.Altura;
         }
@@ -271,10 +286,45 @@ namespace Stock
             { }
         }
         #endregion
-
         private void SoloNumeros(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back);
+        }
+
+        public List<Entidades.CuentaCorriente> ListaCuentaCorriente
+        {
+            set
+            {
+                dataGridView2.RowHeadersVisible = false;
+                dataGridView2.DataSource = value;
+                dataGridView2.ReadOnly = true;
+
+                dataGridView2.Columns[0].HeaderText = "id Movimiento";
+                dataGridView2.Columns[0].Width = 95;
+                dataGridView2.Columns[0].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView2.Columns[0].HeaderCell.Style.Font = new Font("Tahoma", 7, FontStyle.Bold);
+                dataGridView2.Columns[0].HeaderCell.Style.ForeColor = Color.White;
+                dataGridView2.Columns[0].Visible = false;
+
+                dataGridView2.Columns[1].HeaderText = "Deuda";
+                dataGridView2.Columns[1].Width = 95;
+                dataGridView2.Columns[1].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView2.Columns[1].HeaderCell.Style.Font = new Font("Tahoma", 7, FontStyle.Bold);
+                dataGridView2.Columns[1].HeaderCell.Style.ForeColor = Color.White;
+                dataGridView2.Columns[1].Visible = true;
+
+                dataGridView2.Columns[2].HeaderText = "Fecha";
+                dataGridView2.Columns[2].Width = 95;
+                dataGridView2.Columns[2].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView2.Columns[2].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
+                dataGridView2.Columns[2].HeaderCell.Style.ForeColor = Color.White;
+
+                dataGridView2.Columns[3].HeaderText = "idVenta";
+                dataGridView2.Columns[3].Width = 125;
+                dataGridView2.Columns[3].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView2.Columns[3].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
+                dataGridView2.Columns[3].HeaderCell.Style.ForeColor = Color.White;
+            }
         }
     }
 }

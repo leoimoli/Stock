@@ -97,6 +97,7 @@
     <Compile Include="DAO\EditarDao.cs" />
     <Compile Include="Entidades\ClienteReducido.cs" />
     <Compile Include="Entidades\Clientes.cs" />
+    <Compile Include="Entidades\CuentaCorriente.cs" />
     <Compile Include="Entidades\HistorialDelProductoSeleccionado.cs" />
     <Compile Include="Entidades\HistorialDelProveedor.cs" />
     <Compile Include="Entidades\ListaCompras.cs" />

@@ -254,7 +254,17 @@ namespace Stock.Negocio
             { }
             return _historialProducto;
         }
-
+        public static List<CuentaCorriente> BuscarDeudaPorCliente(int idClienteSeleccionado)
+        {
+            List<Entidades.CuentaCorriente> _Cliente = new List<Entidades.CuentaCorriente>();
+            try
+            {
+                _Cliente = DAO.ConsultarDao.BuscarDeudaPorCliente(idClienteSeleccionado);
+            }
+            catch (Exception ex)
+            { }
+            return _Cliente;
+        }
         public static int BuscarProductoPorCodigo(string codigoProducto)
         {
             int idProducto = 0;

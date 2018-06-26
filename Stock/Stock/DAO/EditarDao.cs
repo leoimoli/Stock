@@ -88,7 +88,21 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
-
+        public static bool ActualizarDeuda(decimal dEUDA, int idCliente)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string Actualizar = "ActualizarDeuda";
+            MySqlCommand cmd = new MySqlCommand(Actualizar, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+            cmd.Parameters.AddWithValue("Deuda_in", dEUDA);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
         public static bool ActualizarPrecioDeVentaProductoMasivo(List<Productos> _lista)
         {
             bool exito = false;

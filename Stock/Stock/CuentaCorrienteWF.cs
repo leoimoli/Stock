@@ -47,6 +47,22 @@ namespace Stock
                     lblDeudaFijo.Visible = true;
                     lblTotalVentaVisible.Visible = true;
                 }
+                else
+                {
+                    const string message = "Desea agregar un nuevo cliente?";
+                    const string caption = "Cliente Inexistente";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Question);
+                    {
+                        if (result == DialogResult.Yes)
+                        {
+                            ClientesWF _clientePantalla = new ClientesWF();
+                            _clientePantalla.Show();
+                            Hide();
+                        }
+                    }
+                }
             }
         }
         private void SoloNumeros(object sender, KeyPressEventArgs e)
@@ -72,7 +88,6 @@ namespace Stock
                 throw new Exception();
             }
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Hide();
