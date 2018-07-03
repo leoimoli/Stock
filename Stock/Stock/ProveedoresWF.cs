@@ -21,7 +21,7 @@ namespace Stock
         }
         private void ProveedoresWF_Load(object sender, EventArgs e)
         {
-
+            txtBuscador.Focus();
             List<Entidades.ProveedorReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProveedores());
             ListaProveedores = ListaReducidos;
             dataGridView1.ReadOnly = true;
@@ -169,6 +169,7 @@ namespace Stock
             _historial = Negocio.Consultar.HistorialDelProveedor(proveedor.NombreEmpresa);
             string[] series1 = { proveedor.NombreEmpresa };
             fillChart(series1, _historial);
+            btnCancelar.Visible = false;
 
         }
         private void fillChart(string[] series1, List<HistorialDelProveedor> _historial)
@@ -180,7 +181,7 @@ namespace Stock
             {
                 chart1.Series[nombreNuevaSerie].Points.AddXY(item.mes, item.TotalCompras);
             }
-            
+
         }
 
         public List<Entidades.ProveedorReducido> ListaProveedores
@@ -406,5 +407,36 @@ namespace Stock
         }
 
         #endregion
+
+        private void txtBuscador_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    if (txtBuscador.Text != "")
+                    {
+                        List<Entidades.ProveedorReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.BuscarProvedorPorNombre(txtBuscador.Text));
+                        ListaProveedores = ListaReducidos;
+                    }
+                    else
+                    {
+                        List<Entidades.ProveedorReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProveedores());
+                        ListaProveedores = ListaReducidos;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                    throw new Exception();
+                }
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+        }
     }
 }
+

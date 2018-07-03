@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.panel6 = new System.Windows.Forms.Panel();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -92,10 +92,10 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(3, 4);
             this.chart1.Name = "chart1";
             this.chart1.Size = new System.Drawing.Size(560, 180);
@@ -184,6 +184,7 @@
             this.toolTip1.SetToolTip(this.btnCancelar, "Cancelar");
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Visible = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // pictureBox1
             // 
@@ -441,18 +442,19 @@
             this.label10.Location = new System.Drawing.Point(6, 3);
             this.label10.MaximumSize = new System.Drawing.Size(100, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(73, 34);
+            this.label10.Size = new System.Drawing.Size(83, 34);
             this.label10.TabIndex = 19;
-            this.label10.Text = "Código Producto";
+            this.label10.Text = "Nombre Proveedor";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // txtBuscador
             // 
-            this.txtBuscador.Enabled = false;
-            this.txtBuscador.Location = new System.Drawing.Point(77, 9);
+            this.txtBuscador.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtBuscador.Location = new System.Drawing.Point(91, 10);
             this.txtBuscador.Name = "txtBuscador";
             this.txtBuscador.Size = new System.Drawing.Size(170, 20);
             this.txtBuscador.TabIndex = 18;
+            this.txtBuscador.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscador_KeyDown);
             // 
             // btnNuevoProveedor
             // 
@@ -493,6 +495,7 @@
             this.progressBar1.Location = new System.Drawing.Point(454, 316);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(397, 23);
+            this.progressBar1.Step = 50;
             this.progressBar1.TabIndex = 95;
             this.progressBar1.Value = 10;
             this.progressBar1.Visible = false;
@@ -511,7 +514,7 @@
             this.Controls.Add(this.panel100);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ProveedoresWF";
-            this.Text = "ProveedoresWF";
+            this.Text = "Proveedores";
             this.Load += new System.EventHandler(this.ProveedoresWF_Load);
             this.Controls.SetChildIndex(this.panel100, 0);
             this.Controls.SetChildIndex(this.panel200, 0);

@@ -36,7 +36,6 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblUltimoMovimientosUsuarios = new System.Windows.Forms.Label();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txtDniBuscar = new System.Windows.Forms.TextBox();
             this.btnNuevoUsuario = new System.Windows.Forms.Button();
@@ -133,7 +132,6 @@
             this.panel200.Controls.Add(this.lblTotal);
             this.panel200.Controls.Add(this.label6);
             this.panel200.Controls.Add(this.lblUltimoMovimientosUsuarios);
-            this.panel200.Controls.Add(this.btnBuscar);
             this.panel200.Controls.Add(this.label10);
             this.panel200.Controls.Add(this.txtDniBuscar);
             this.panel200.Controls.Add(this.btnNuevoUsuario);
@@ -178,20 +176,6 @@
             this.lblUltimoMovimientosUsuarios.TabIndex = 21;
             this.lblUltimoMovimientosUsuarios.Text = "Lista Usuarios:";
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuscar.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnBuscar.Image = global::Stock.Properties.Resources.lupita;
-            this.btnBuscar.Location = new System.Drawing.Point(236, 7);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(49, 39);
-            this.btnBuscar.TabIndex = 18;
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -209,6 +193,7 @@
             this.txtDniBuscar.Name = "txtDniBuscar";
             this.txtDniBuscar.Size = new System.Drawing.Size(170, 20);
             this.txtDniBuscar.TabIndex = 16;
+            this.txtDniBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDniBuscar_KeyDown);
             this.txtDniBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
             // 
             // btnNuevoUsuario
@@ -298,6 +283,7 @@
             this.toolTip1.SetToolTip(this.btnCargarImagen, "Cargar Imagen");
             this.btnCargarImagen.UseVisualStyleBackColor = false;
             this.btnCargarImagen.Visible = false;
+            this.btnCargarImagen.Click += new System.EventHandler(this.btnCargarImagen_Click_1);
             // 
             // btnCancelar
             // 
@@ -312,6 +298,7 @@
             this.toolTip1.SetToolTip(this.btnCancelar, "Cancelar");
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Visible = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click_1);
             // 
             // btnGuardar
             // 
@@ -367,7 +354,6 @@
             // 
             // cmbPerfil
             // 
-            this.cmbPerfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPerfil.FormattingEnabled = true;
             this.cmbPerfil.Location = new System.Drawing.Point(327, 151);
             this.cmbPerfil.Name = "cmbPerfil";
@@ -714,6 +700,7 @@
             this.progressBar1.Location = new System.Drawing.Point(419, 322);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(397, 23);
+            this.progressBar1.Step = 50;
             this.progressBar1.TabIndex = 93;
             this.progressBar1.Value = 10;
             this.progressBar1.Visible = false;
@@ -732,7 +719,7 @@
             this.Controls.Add(this.panel100);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "UsuariosWF";
-            this.Text = "UsuariosWF";
+            this.Text = "Usuarios";
             this.Load += new System.EventHandler(this.UsuariosWF_Load);
             this.Controls.SetChildIndex(this.panel100, 0);
             this.Controls.SetChildIndex(this.panel200, 0);
@@ -796,7 +783,6 @@
         private System.Windows.Forms.Label lblPerfil;
         private System.Windows.Forms.ComboBox cmbPerfil;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Label lblFechaCreacion;
         private System.Windows.Forms.Label lblFechaUltimaConexion;
         private System.Windows.Forms.Label lblFechaUltimaConexion_base;

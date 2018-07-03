@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CuentaCorrienteWF));
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.txtDni = new System.Windows.Forms.TextBox();
             this.lblDni = new System.Windows.Forms.Label();
             this.lblApellidoNombre = new System.Windows.Forms.Label();
@@ -39,6 +38,7 @@
             this.lblTotalVentaVisible = new System.Windows.Forms.Label();
             this.lblDeudaFijo = new System.Windows.Forms.Label();
             this.txtDeuda = new System.Windows.Forms.TextBox();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -54,19 +54,6 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Visible = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.Transparent;
-            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGuardar.Image = global::Stock.Properties.Resources.f12Guardar;
-            this.btnGuardar.Location = new System.Drawing.Point(130, 162);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(69, 39);
-            this.btnGuardar.TabIndex = 43;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Visible = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // txtDni
             // 
@@ -156,12 +143,26 @@
             this.txtDeuda.TabIndex = 50;
             this.txtDeuda.Visible = false;
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.Transparent;
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.Image = global::Stock.Properties.Resources.Guardar1;
+            this.btnGuardar.Location = new System.Drawing.Point(141, 162);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(49, 39);
+            this.btnGuardar.TabIndex = 65;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Visible = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // CuentaCorrienteWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(280, 216);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtDeuda);
             this.Controls.Add(this.lblDeudaFijo);
             this.Controls.Add(this.lblTotalPagar);
@@ -169,7 +170,6 @@
             this.Controls.Add(this.lblApellidoNombre);
             this.Controls.Add(this.lblCliente);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtDni);
             this.Controls.Add(this.lblDni);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -185,7 +185,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.TextBox txtDni;
         private System.Windows.Forms.Label lblDni;
         private System.Windows.Forms.Label lblApellidoNombre;
@@ -194,5 +193,6 @@
         private System.Windows.Forms.Label lblTotalVentaVisible;
         private System.Windows.Forms.Label lblDeudaFijo;
         private System.Windows.Forms.TextBox txtDeuda;
+        private System.Windows.Forms.Button btnGuardar;
     }
 }

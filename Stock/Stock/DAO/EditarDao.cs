@@ -72,7 +72,28 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
-
+        public static bool EditarCliente(Clientes _cliente, int idUsuarioSeleccionado)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string Actualizar = "EditarCliente";
+            MySqlCommand cmd = new MySqlCommand(Actualizar, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("idClientes_in", idUsuarioSeleccionado);
+            cmd.Parameters.AddWithValue("Apellido_in", _cliente.Apellido);
+            cmd.Parameters.AddWithValue("Nombre_in", _cliente.Nombre);
+            cmd.Parameters.AddWithValue("Email_in", _cliente.Email);
+            cmd.Parameters.AddWithValue("Telefono_in", _cliente.Telefono);
+            cmd.Parameters.AddWithValue("Calle_in", _cliente.Calle);
+            cmd.Parameters.AddWithValue("Altura_in", _cliente.Altura);
+            cmd.Parameters.AddWithValue("idUsuario_in", _cliente.idUsuario);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
         public static bool ActualizarStock(int idProducto, int cantidad)
         {
             bool exito = false;
@@ -109,7 +130,7 @@ namespace Stock.DAO
             connection.Close();
             connection.Open();
             foreach (var item in _lista)
-            { 
+            {
                 string Actualizar = "ActualizarPrecioDeVentaProducto";
                 MySqlCommand cmd = new MySqlCommand(Actualizar, connection);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -146,6 +167,24 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
+
+        public static bool ModificarEstadoDetalleCuentaCorriente(int idCliente)
+        {
+            string Estado = "INACTIVO";
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string Actualizar = "ModificarEstadoDetalleCuentaCorriente";
+            MySqlCommand cmd = new MySqlCommand(Actualizar, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+            cmd.Parameters.AddWithValue("Estado_in", Estado);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+
         public static bool ActualizarPrecioDeVentaProducto(int idProducto, decimal precioDeVenta)
         {
             bool exito = false;

@@ -64,6 +64,10 @@ namespace Stock
                 dataGridView1.ColumnHeadersVisible = false;
                 dataGridView1.RowHeadersVisible = false;
                 dataGridView1.DataSource = value;
+                var contadortotal = value.Count;
+                lblTotal.Visible = true;
+                label6.Visible = true;
+                lblTotal.Text = Convert.ToString(contadortotal);
                 //dataGridView1.AutoGenerateColumns = true;
                 //dataGridView1.sty
 
@@ -83,6 +87,9 @@ namespace Stock
         }
         private void HabilitarCampos()
         {
+            txtCodigoProducto.Enabled = true;
+            txtCodigoProducto.Focus();
+            LimpiarCampos();
             CargarCombo();
             btnAgregarMarca.Visible = true;
             panel_Producto.Enabled = true;
@@ -199,12 +206,17 @@ namespace Stock
             }
             EditCódigo_Producto.Text = producto.CodigoProducto;
             EditNombre_Producto.Text = producto.NombreProducto;
-            EditMarca_Producto.Text = producto.MarcaProducto;
+            if (producto.MarcaProducto == "Seleccione")
+            {
+                EditMarca_Producto.Text = "No informa";
+            }
+            else { EditMarca_Producto.Text = producto.MarcaProducto; }
             EditUsuario_Creador.Text = producto.Usuario;
             EditPrecioDeVenta_Producto.Text = Convert.ToString(producto.PrecioDeVenta);
             EditFecha_Alta_Producto.Text = Convert.ToString(producto.FechaDeAlta);
             EditCódigo_Producto.Visible = true;
             EditNombre_Producto.Visible = true;
+
             EditMarca_Producto.Visible = true;
             EditUsuario_Creador.Visible = true;
             EditFecha_Alta_Producto.Visible = true;
@@ -302,10 +314,11 @@ namespace Stock
                 {
                     panel_Producto.Enabled = false;
                     Entidades.Productos _producto = CargarEntidad();
-                    ProgressBar();
+
                     bool Exito = Negocio.Producto.CargarProducto(_producto);
                     if (Exito == true)
                     {
+                        ProgressBar();
                         MessageBox.Show("SE REGISTRO EL PRODUCTO EXITOSAMENTE.");
                         LimpiarCampos();
                         List<Entidades.ProductoReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProductos());
@@ -313,6 +326,7 @@ namespace Stock
                     }
                     else
                     {
+                        panel_Producto.Enabled = true;
                         lblHistorialProducto.Text = "No hay información del producto para visualizar";
                         EditCódigo_Producto.Visible = false;
                         EditNombre_Producto.Visible = false;
@@ -323,10 +337,7 @@ namespace Stock
                         idProductoGrilla = 0;
                         txtCodigoProducto.Enabled = true;
                         txtCodigoProducto.Focus();
-                        LimpiarCampos();
-                        HabilitarCampos();
                     }
-
                 }
             }
             catch (Exception ex)
@@ -377,12 +388,36 @@ namespace Stock
 
 
         #endregion
-
         private void btnRemarcarPrecio_Click(object sender, EventArgs e)
         {
             PrecioDeVentaWF _precio = new PrecioDeVentaWF();
             _precio.Show();
             Hide();
+        }
+        private void txtCodigoBusqueda_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    if (txtCodigoBusqueda.Text != "")
+                    {
+                        List<Entidades.ProductoReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.BuscarProducto(txtCodigoBusqueda.Text));
+                        ListaProductos = ListaReducidos;
+                    }
+                    else
+                    {
+                        List<Entidades.ProductoReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProductos());
+                        ListaProductos = ListaReducidos;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                    throw new Exception();
+                }
+            }
+
         }
     }
 }

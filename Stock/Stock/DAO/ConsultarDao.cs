@@ -95,7 +95,7 @@ namespace Stock.DAO
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = {
                                       new MySqlParameter("idCliente_in", idCliente)};
-            string proceso = "BuscarDeudaExistente";
+            string proceso = "BuscarDeudaPorCliente";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
@@ -104,7 +104,7 @@ namespace Stock.DAO
             {
                 foreach (DataRow item in Tabla.Rows)
                 {
-                    DeudaVieja = Convert.ToDecimal(item["txDeuda"].ToString());
+                    DeudaVieja = Convert.ToDecimal(item["txDeudaTotal"].ToString());
 
                 }
             }
@@ -164,6 +164,39 @@ namespace Stock.DAO
             connection.Close();
             return PuntosViejos;
         }
+        public static List<ListaPagosDeDeudas> ConsultaPagoDeuda(int idClienteSeleccionado)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaPagosDeDeudas> lista = new List<Entidades.ListaPagosDeDeudas>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                       new MySqlParameter("idClienteSeleccionado_in", idClienteSeleccionado)};
+            string proceso = "ConsultaPagoDeuda";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaPagosDeDeudas listaPago = new Entidades.ListaPagosDeDeudas();
+                    listaPago.idPago = Convert.ToInt32(item["idCliente"].ToString());
+                    string apellido = item["txApellido"].ToString();
+                    string nombre = item["txNombre"].ToString();
+                    listaPago.Cliente = apellido + " " + nombre;
+                    listaPago.Monto = Convert.ToDecimal(item["txPagoDeuda"].ToString());
+                    listaPago.Fecha = Convert.ToDateTime(item["dtFecha"].ToString());
+                    lista.Add(listaPago);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
         public static List<ListaVentas> ConsultarVentasPorUsuario(string dniUsuario)
         {
             connection.Close();
@@ -251,11 +284,11 @@ namespace Stock.DAO
                 {
                     Entidades.CuentaCorriente listaCliente = new Entidades.CuentaCorriente();
                     listaCliente.IdCliente = Convert.ToInt32(item["idCliente"].ToString());
-                    listaCliente.Dni = item["txDni"].ToString();                   
+                    listaCliente.Dni = item["txDni"].ToString();
                     listaCliente.Apellido = item["txApellido"].ToString();
                     listaCliente.Nombre = item["txNombre"].ToString();
                     listaCliente.Fecha = Convert.ToDateTime(item["dtFechaDeuda"].ToString());
-                    listaCliente.Deuda = Convert.ToDecimal(item["txDeuda"].ToString());   
+                    listaCliente.Deuda = Convert.ToDecimal(item["txDeuda"].ToString());
                     listaCliente.DeudaTotal = Convert.ToDecimal(item["txDeudaTotal"].ToString());
                     lista.Add(listaCliente);
                 }
@@ -293,6 +326,37 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
+
+        public static List<Productos> BuscarProducto(string codigoProducto)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.Productos> lista = new List<Entidades.Productos>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                       new MySqlParameter("CodigoProducto_in", codigoProducto)};
+            string proceso = "BuscarProducto";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Productos listaCompras = new Entidades.Productos();
+                    listaCompras.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    listaCompras.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaCompras.NombreProducto = item["txNombreProducto"].ToString();
+                    lista.Add(listaCompras);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
         public static List<ListaCompras> ConsultarComprasPorRemito(string remito)
         {
             connection.Close();
@@ -385,6 +449,36 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
+
+        public static List<Entidades.Proveedores> BuscarProvedorPorNombre(string nombreProveedor)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.Proveedores> _lista = new List<Entidades.Proveedores>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                       new MySqlParameter("NombreProveedor_in", nombreProveedor)};
+            string proceso = "BuscarProvedorPorNombre";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Proveedores listaStock = new Entidades.Proveedores();
+                    listaStock.idProveedor = Convert.ToInt32(item["idProveedores"].ToString());
+                    listaStock.NombreEmpresa = item["txNombreEmpresa"].ToString();
+                    _lista.Add(listaStock);
+                }
+            }
+            connection.Close();
+            return _lista;
+        }
+
         public static List<ListaStockFaltante> ListaStockFaltante()
         {
             connection.Close();

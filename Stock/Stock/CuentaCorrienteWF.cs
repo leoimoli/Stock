@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Stock
 {
     public partial class CuentaCorrienteWF : Form
@@ -16,12 +17,16 @@ namespace Stock
         private decimal totalPagar;
         public CuentaCorrienteWF(decimal totalPagar, int idVenta)
         {
+
             InitializeComponent();
             this.totalPagar = totalPagar;
             this.idVenta = idVenta;
         }
         private void CuentaCorrienteWF_Load(object sender, EventArgs e)
         {
+            //  string campo = Convert.ToString(totalPagar);
+            //string valor =  campo.Replace(",", ".");         
+            txtDeuda.Text = Convert.ToString(totalPagar);
             txtDeuda.Focus();
         }
         public static int idCliente;

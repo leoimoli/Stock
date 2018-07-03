@@ -53,6 +53,10 @@ namespace Stock
                 lblUltimoMovimientos.Text = "Últimos Movimientos";
                 dataGridView1.RowHeadersVisible = false;
                 dataGridView1.DataSource = value;
+                var contadortotal = value.Count;
+                lblTotal.Visible = true;
+                label20.Visible = true;
+                lblTotal.Text = Convert.ToString(contadortotal);
 
                 dataGridView1.Columns[0].HeaderText = "idProducto";
                 dataGridView1.Columns[0].Width = 100;
@@ -290,7 +294,11 @@ namespace Stock
                         }
                     }
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                    throw new Exception();
+                }
             }
         }
         private void txtTotalCompra_Enter(object sender, EventArgs e)

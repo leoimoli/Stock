@@ -34,14 +34,6 @@ namespace Stock
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Master));
             this.Master_menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.Master_panel1 = new System.Windows.Forms.Panel();
-            this.lblMaster_FechaHoraReal = new System.Windows.Forms.Label();
-            this.lblMaster_UsuarioLogin = new System.Windows.Forms.Label();
-            this.lblMaster_FechaHora = new System.Windows.Forms.Label();
-            this.lblMaster_Usuario = new System.Windows.Forms.Label();
-            this.Master_panel2 = new System.Windows.Forms.Panel();
-            this.lblMaster_Version = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,6 +45,14 @@ namespace Stock
             this.preciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Master_panel1 = new System.Windows.Forms.Panel();
+            this.lblMaster_FechaHoraReal = new System.Windows.Forms.Label();
+            this.lblMaster_UsuarioLogin = new System.Windows.Forms.Label();
+            this.lblMaster_FechaHora = new System.Windows.Forms.Label();
+            this.lblMaster_Usuario = new System.Windows.Forms.Label();
+            this.Master_panel2 = new System.Windows.Forms.Panel();
+            this.lblMaster_Version = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Master_menuStrip1.SuspendLayout();
             this.Master_panel1.SuspendLayout();
             this.Master_panel2.SuspendLayout();
@@ -78,81 +78,6 @@ namespace Stock
             this.Master_menuStrip1.Size = new System.Drawing.Size(1333, 29);
             this.Master_menuStrip1.TabIndex = 0;
             this.Master_menuStrip1.Text = "menuStrip1";
-            // 
-            // Master_panel1
-            // 
-            this.Master_panel1.BackColor = System.Drawing.Color.SteelBlue;
-            this.Master_panel1.Controls.Add(this.lblMaster_FechaHoraReal);
-            this.Master_panel1.Controls.Add(this.lblMaster_UsuarioLogin);
-            this.Master_panel1.Controls.Add(this.lblMaster_FechaHora);
-            this.Master_panel1.Controls.Add(this.lblMaster_Usuario);
-            this.Master_panel1.Location = new System.Drawing.Point(0, 27);
-            this.Master_panel1.Name = "Master_panel1";
-            this.Master_panel1.Size = new System.Drawing.Size(1500, 28);
-            this.Master_panel1.TabIndex = 1;
-            // 
-            // lblMaster_FechaHoraReal
-            // 
-            this.lblMaster_FechaHoraReal.AutoSize = true;
-            this.lblMaster_FechaHoraReal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaster_FechaHoraReal.ForeColor = System.Drawing.Color.White;
-            this.lblMaster_FechaHoraReal.Location = new System.Drawing.Point(106, 5);
-            this.lblMaster_FechaHoraReal.Name = "lblMaster_FechaHoraReal";
-            this.lblMaster_FechaHoraReal.Size = new System.Drawing.Size(0, 17);
-            this.lblMaster_FechaHoraReal.TabIndex = 4;
-            // 
-            // lblMaster_UsuarioLogin
-            // 
-            this.lblMaster_UsuarioLogin.AutoSize = true;
-            this.lblMaster_UsuarioLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaster_UsuarioLogin.ForeColor = System.Drawing.Color.White;
-            this.lblMaster_UsuarioLogin.Location = new System.Drawing.Point(823, 5);
-            this.lblMaster_UsuarioLogin.Name = "lblMaster_UsuarioLogin";
-            this.lblMaster_UsuarioLogin.Size = new System.Drawing.Size(111, 20);
-            this.lblMaster_UsuarioLogin.TabIndex = 2;
-            this.lblMaster_UsuarioLogin.Text = "Datos Usuario";
-            // 
-            // lblMaster_FechaHora
-            // 
-            this.lblMaster_FechaHora.AutoSize = true;
-            this.lblMaster_FechaHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaster_FechaHora.ForeColor = System.Drawing.Color.White;
-            this.lblMaster_FechaHora.Location = new System.Drawing.Point(12, 5);
-            this.lblMaster_FechaHora.Name = "lblMaster_FechaHora";
-            this.lblMaster_FechaHora.Size = new System.Drawing.Size(97, 17);
-            this.lblMaster_FechaHora.TabIndex = 3;
-            this.lblMaster_FechaHora.Text = "Fecha y Hora:";
-            // 
-            // lblMaster_Usuario
-            // 
-            this.lblMaster_Usuario.AutoSize = true;
-            this.lblMaster_Usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaster_Usuario.ForeColor = System.Drawing.Color.White;
-            this.lblMaster_Usuario.Location = new System.Drawing.Point(749, 5);
-            this.lblMaster_Usuario.Name = "lblMaster_Usuario";
-            this.lblMaster_Usuario.Size = new System.Drawing.Size(68, 20);
-            this.lblMaster_Usuario.TabIndex = 0;
-            this.lblMaster_Usuario.Text = "Usuario:";
-            // 
-            // Master_panel2
-            // 
-            this.Master_panel2.BackColor = System.Drawing.Color.SteelBlue;
-            this.Master_panel2.Controls.Add(this.lblMaster_Version);
-            this.Master_panel2.Location = new System.Drawing.Point(-85, 593);
-            this.Master_panel2.Name = "Master_panel2";
-            this.Master_panel2.Size = new System.Drawing.Size(1500, 28);
-            this.Master_panel2.TabIndex = 2;
-            // 
-            // lblMaster_Version
-            // 
-            this.lblMaster_Version.AutoSize = true;
-            this.lblMaster_Version.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaster_Version.ForeColor = System.Drawing.Color.White;
-            this.lblMaster_Version.Location = new System.Drawing.Point(499, 5);
-            this.lblMaster_Version.Name = "lblMaster_Version";
-            this.lblMaster_Version.Size = new System.Drawing.Size(102, 20);
-            this.lblMaster_Version.TabIndex = 0;
-            this.lblMaster_Version.Text = "Versión 1.0.0";
             // 
             // inicioToolStripMenuItem
             // 
@@ -250,8 +175,8 @@ namespace Stock
             this.pagosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.pagosToolStripMenuItem.Image = global::Stock.Properties.Resources.Pagos_Chico;
             this.pagosToolStripMenuItem.Name = "pagosToolStripMenuItem";
-            this.pagosToolStripMenuItem.Size = new System.Drawing.Size(79, 25);
-            this.pagosToolStripMenuItem.Text = "Pagos";
+            this.pagosToolStripMenuItem.Size = new System.Drawing.Size(182, 25);
+            this.pagosToolStripMenuItem.Text = "Pagos a proveedores";
             this.pagosToolStripMenuItem.Click += new System.EventHandler(this.pagosToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
@@ -263,6 +188,81 @@ namespace Stock
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(69, 25);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+            // 
+            // Master_panel1
+            // 
+            this.Master_panel1.BackColor = System.Drawing.Color.SteelBlue;
+            this.Master_panel1.Controls.Add(this.lblMaster_FechaHoraReal);
+            this.Master_panel1.Controls.Add(this.lblMaster_UsuarioLogin);
+            this.Master_panel1.Controls.Add(this.lblMaster_FechaHora);
+            this.Master_panel1.Controls.Add(this.lblMaster_Usuario);
+            this.Master_panel1.Location = new System.Drawing.Point(0, 27);
+            this.Master_panel1.Name = "Master_panel1";
+            this.Master_panel1.Size = new System.Drawing.Size(1500, 28);
+            this.Master_panel1.TabIndex = 1;
+            // 
+            // lblMaster_FechaHoraReal
+            // 
+            this.lblMaster_FechaHoraReal.AutoSize = true;
+            this.lblMaster_FechaHoraReal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaster_FechaHoraReal.ForeColor = System.Drawing.Color.White;
+            this.lblMaster_FechaHoraReal.Location = new System.Drawing.Point(106, 5);
+            this.lblMaster_FechaHoraReal.Name = "lblMaster_FechaHoraReal";
+            this.lblMaster_FechaHoraReal.Size = new System.Drawing.Size(0, 17);
+            this.lblMaster_FechaHoraReal.TabIndex = 4;
+            // 
+            // lblMaster_UsuarioLogin
+            // 
+            this.lblMaster_UsuarioLogin.AutoSize = true;
+            this.lblMaster_UsuarioLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaster_UsuarioLogin.ForeColor = System.Drawing.Color.White;
+            this.lblMaster_UsuarioLogin.Location = new System.Drawing.Point(823, 5);
+            this.lblMaster_UsuarioLogin.Name = "lblMaster_UsuarioLogin";
+            this.lblMaster_UsuarioLogin.Size = new System.Drawing.Size(111, 20);
+            this.lblMaster_UsuarioLogin.TabIndex = 2;
+            this.lblMaster_UsuarioLogin.Text = "Datos Usuario";
+            // 
+            // lblMaster_FechaHora
+            // 
+            this.lblMaster_FechaHora.AutoSize = true;
+            this.lblMaster_FechaHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaster_FechaHora.ForeColor = System.Drawing.Color.White;
+            this.lblMaster_FechaHora.Location = new System.Drawing.Point(12, 5);
+            this.lblMaster_FechaHora.Name = "lblMaster_FechaHora";
+            this.lblMaster_FechaHora.Size = new System.Drawing.Size(97, 17);
+            this.lblMaster_FechaHora.TabIndex = 3;
+            this.lblMaster_FechaHora.Text = "Fecha y Hora:";
+            // 
+            // lblMaster_Usuario
+            // 
+            this.lblMaster_Usuario.AutoSize = true;
+            this.lblMaster_Usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaster_Usuario.ForeColor = System.Drawing.Color.White;
+            this.lblMaster_Usuario.Location = new System.Drawing.Point(749, 5);
+            this.lblMaster_Usuario.Name = "lblMaster_Usuario";
+            this.lblMaster_Usuario.Size = new System.Drawing.Size(68, 20);
+            this.lblMaster_Usuario.TabIndex = 0;
+            this.lblMaster_Usuario.Text = "Usuario:";
+            // 
+            // Master_panel2
+            // 
+            this.Master_panel2.BackColor = System.Drawing.Color.SteelBlue;
+            this.Master_panel2.Controls.Add(this.lblMaster_Version);
+            this.Master_panel2.Location = new System.Drawing.Point(-85, 593);
+            this.Master_panel2.Name = "Master_panel2";
+            this.Master_panel2.Size = new System.Drawing.Size(1500, 28);
+            this.Master_panel2.TabIndex = 2;
+            // 
+            // lblMaster_Version
+            // 
+            this.lblMaster_Version.AutoSize = true;
+            this.lblMaster_Version.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaster_Version.ForeColor = System.Drawing.Color.White;
+            this.lblMaster_Version.Location = new System.Drawing.Point(499, 5);
+            this.lblMaster_Version.Name = "lblMaster_Version";
+            this.lblMaster_Version.Size = new System.Drawing.Size(102, 20);
+            this.lblMaster_Version.TabIndex = 0;
+            this.lblMaster_Version.Text = "Versión 1.0.0";
             // 
             // Master
             // 

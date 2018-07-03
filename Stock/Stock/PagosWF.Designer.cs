@@ -46,10 +46,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblapellidoNombreEditar = new System.Windows.Forms.Label();
             this.panel200 = new System.Windows.Forms.Panel();
+            this.btnNuevoPago = new System.Windows.Forms.Button();
             this.lblUltimoMovimientosProductos = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.btnProducto = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel100 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -122,6 +120,7 @@
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(200, 20);
             this.txtMonto.TabIndex = 40;
+            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
             // 
             // lblChequeFijo
             // 
@@ -256,66 +255,48 @@
             // panel200
             // 
             this.panel200.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel200.Controls.Add(this.btnNuevoPago);
             this.panel200.Controls.Add(this.lblUltimoMovimientosProductos);
-            this.panel200.Controls.Add(this.label10);
-            this.panel200.Controls.Add(this.textBox6);
-            this.panel200.Controls.Add(this.btnProducto);
             this.panel200.Controls.Add(this.dataGridView1);
             this.panel200.Location = new System.Drawing.Point(5, 95);
             this.panel200.Name = "panel200";
             this.panel200.Size = new System.Drawing.Size(294, 455);
             this.panel200.TabIndex = 18;
             // 
+            // btnNuevoPago
+            // 
+            this.btnNuevoPago.BackColor = System.Drawing.Color.Silver;
+            this.btnNuevoPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevoPago.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnNuevoPago.Image = global::Stock.Properties.Resources.Pagos_Chico1;
+            this.btnNuevoPago.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnNuevoPago.Location = new System.Drawing.Point(93, 12);
+            this.btnNuevoPago.Name = "btnNuevoPago";
+            this.btnNuevoPago.Size = new System.Drawing.Size(80, 52);
+            this.btnNuevoPago.TabIndex = 21;
+            this.btnNuevoPago.Text = "Nuevo Pago";
+            this.btnNuevoPago.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnNuevoPago.UseVisualStyleBackColor = false;
+            this.btnNuevoPago.Click += new System.EventHandler(this.btnProducto_Click);
+            // 
             // lblUltimoMovimientosProductos
             // 
             this.lblUltimoMovimientosProductos.AutoSize = true;
             this.lblUltimoMovimientosProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUltimoMovimientosProductos.ForeColor = System.Drawing.Color.White;
-            this.lblUltimoMovimientosProductos.Location = new System.Drawing.Point(3, 82);
+            this.lblUltimoMovimientosProductos.Location = new System.Drawing.Point(3, 105);
             this.lblUltimoMovimientosProductos.Name = "lblUltimoMovimientosProductos";
             this.lblUltimoMovimientosProductos.Size = new System.Drawing.Size(190, 17);
             this.lblUltimoMovimientosProductos.TabIndex = 20;
             this.lblUltimoMovimientosProductos.Text = "Últimos pagos realizados";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(6, 6);
-            this.label10.MaximumSize = new System.Drawing.Size(100, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(92, 34);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "Número de transacción";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(102, 14);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(170, 20);
-            this.textBox6.TabIndex = 18;
-            // 
-            // btnProducto
-            // 
-            this.btnProducto.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnProducto.Image = global::Stock.Properties.Resources.Nuevo_Producto;
-            this.btnProducto.Location = new System.Drawing.Point(90, 45);
-            this.btnProducto.Name = "btnProducto";
-            this.btnProducto.Size = new System.Drawing.Size(113, 33);
-            this.btnProducto.TabIndex = 13;
-            this.btnProducto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnProducto.UseVisualStyleBackColor = false;
-            this.btnProducto.Click += new System.EventHandler(this.btnProducto_Click);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.LightBlue;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 102);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 125);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(288, 350);
+            this.dataGridView1.Size = new System.Drawing.Size(288, 300);
             this.dataGridView1.TabIndex = 0;
             // 
             // panel100
@@ -373,6 +354,7 @@
             this.progressBar1.Location = new System.Drawing.Point(442, 315);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(397, 23);
+            this.progressBar1.Step = 50;
             this.progressBar1.TabIndex = 95;
             this.progressBar1.Value = 10;
             this.progressBar1.Visible = false;
@@ -391,7 +373,7 @@
             this.Controls.Add(this.panel5);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "PagosWF";
-            this.Text = "PagosWF";
+            this.Text = "Pagos";
             this.Load += new System.EventHandler(this.PagosWF_Load);
             this.Controls.SetChildIndex(this.panel5, 0);
             this.Controls.SetChildIndex(this.panel6, 0);
@@ -427,9 +409,6 @@
         private System.Windows.Forms.Label lblapellidoNombreEditar;
         private System.Windows.Forms.Panel panel200;
         private System.Windows.Forms.Label lblUltimoMovimientosProductos;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button btnProducto;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel100;
         private System.Windows.Forms.Label label7;
@@ -447,5 +426,6 @@
         private System.Windows.Forms.Label lblProveedorFijo;
         private System.Windows.Forms.ComboBox cmbProveedor;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button btnNuevoPago;
     }
 }

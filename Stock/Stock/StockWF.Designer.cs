@@ -59,6 +59,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblStock = new System.Windows.Forms.Label();
             this.panel200 = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.lblUltimoMovimientos = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
@@ -211,6 +213,7 @@
             this.dtFechaVencimiento.Name = "dtFechaVencimiento";
             this.dtFechaVencimiento.Size = new System.Drawing.Size(170, 20);
             this.dtFechaVencimiento.TabIndex = 13;
+            this.dtFechaVencimiento.Visible = false;
             // 
             // label9
             // 
@@ -252,6 +255,7 @@
             this.label2.Size = new System.Drawing.Size(167, 17);
             this.label2.TabIndex = 25;
             this.label2.Text = "Vencimiento Del Lote:";
+            this.label2.Visible = false;
             // 
             // dtFechaCompra
             // 
@@ -410,6 +414,8 @@
             // panel200
             // 
             this.panel200.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel200.Controls.Add(this.label20);
+            this.panel200.Controls.Add(this.lblTotal);
             this.panel200.Controls.Add(this.lblUltimoMovimientos);
             this.panel200.Controls.Add(this.label10);
             this.panel200.Controls.Add(this.txtCodigo);
@@ -418,6 +424,30 @@
             this.panel200.Name = "panel200";
             this.panel200.Size = new System.Drawing.Size(294, 455);
             this.panel200.TabIndex = 8;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.White;
+            this.label20.Location = new System.Drawing.Point(195, 428);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(50, 17);
+            this.label20.TabIndex = 28;
+            this.label20.Text = "Total:";
+            this.label20.Visible = false;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.Color.White;
+            this.lblTotal.Location = new System.Drawing.Point(241, 428);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(50, 17);
+            this.lblTotal.TabIndex = 27;
+            this.lblTotal.Text = "Total:";
+            this.lblTotal.Visible = false;
             // 
             // lblUltimoMovimientos
             // 
@@ -456,7 +486,7 @@
             this.dataGridView1.Enabled = false;
             this.dataGridView1.Location = new System.Drawing.Point(3, 102);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(288, 350);
+            this.dataGridView1.Size = new System.Drawing.Size(288, 320);
             this.dataGridView1.TabIndex = 0;
             // 
             // panel100
@@ -711,6 +741,7 @@
             this.progressBar1.Location = new System.Drawing.Point(444, 314);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(397, 23);
+            this.progressBar1.Step = 60;
             this.progressBar1.TabIndex = 95;
             this.progressBar1.Value = 10;
             this.progressBar1.Visible = false;
@@ -729,7 +760,7 @@
             this.Controls.Add(this.panel5);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "StockWF";
-            this.Text = "StockWF";
+            this.Text = "Stock";
             this.Load += new System.EventHandler(this.StockWF_Load);
             this.Controls.SetChildIndex(this.panel5, 0);
             this.Controls.SetChildIndex(this.panel6, 0);
@@ -816,5 +847,7 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label lblTotal;
     }
 }

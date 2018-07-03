@@ -203,7 +203,7 @@ namespace Stock
                 ticket.AddFooterLine(Vuelto);
                 // ticket.PrintTicket("EPSON TM-T88III Receipt"); //Nombre de la impresora de tickets
                 //ticket.PrintTicket("RICOH MP C2004 PCL 6");
-                btnCuentaCorriente.Visible = true;
+               // btnCuentaCorriente.Visible = true;
                 //}
             }
         }
@@ -285,12 +285,14 @@ namespace Stock
                     ticket.AddFooterLine(Vuelto);
                     // ticket.PrintTicket("EPSON TM-T88III Receipt"); //Nombre de la impresora de tickets
                     //ticket.PrintTicket("RICOH MP C2004 PCL 6");
-                    btnCuentaCorriente.Visible = true;
+                    //btnCuentaCorriente.Visible = true;
                     //}
                 }
             }
             if (e.KeyCode.ToString() == "F10")
             {
+                btnCobrar.Visible = true;
+                btnCuentaCorriente.Visible = true;
                 lblEfectivoFijo.Visible = true;
                 textBox1.Visible = true;
                 textBox1.Focus();
@@ -307,7 +309,7 @@ namespace Stock
         }
         private void SoloNumeros(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back);
+
         }
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -335,6 +337,8 @@ namespace Stock
         }
         private void btnFinalizarVenta_Click(object sender, EventArgs e)
         {
+            btnCobrar.Visible = true;
+            btnCuentaCorriente.Visible = true;
             lblEfectivoFijo.Visible = true;
             textBox1.Visible = true;
             textBox1.Focus();
@@ -352,6 +356,12 @@ namespace Stock
             }
             catch (Exception ex)
             { }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int variable;
+            dgvVentas.Rows.Remove(dgvVentas.CurrentRow);
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtCodArea = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -38,11 +39,16 @@
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btnVerPagos = new System.Windows.Forms.Button();
+            this.btnCancelarDeuda = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.btnDescontar = new System.Windows.Forms.Button();
             this.panelInformacion = new System.Windows.Forms.Panel();
             this.lblPendiente = new System.Windows.Forms.Label();
             this.lblPersona = new System.Windows.Forms.Label();
             this.lblDeudaFijo = new System.Windows.Forms.Label();
             this.lblPersonaFijo = new System.Windows.Forms.Label();
+            this.lblMensaje = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lblUsuarioEstadisticas = new System.Windows.Forms.Label();
@@ -69,8 +75,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.panel100 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panelInformacion.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel_Clientes.SuspendLayout();
@@ -78,7 +85,6 @@
             this.panel200.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel100.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // txtTelefono
@@ -87,7 +93,7 @@
             this.txtTelefono.Location = new System.Drawing.Point(342, 111);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(145, 20);
-            this.txtTelefono.TabIndex = 54;
+            this.txtTelefono.TabIndex = 6;
             this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
             // 
             // txtCodArea
@@ -96,7 +102,7 @@
             this.txtCodArea.Location = new System.Drawing.Point(286, 111);
             this.txtCodArea.Name = "txtCodArea";
             this.txtCodArea.Size = new System.Drawing.Size(50, 20);
-            this.txtCodArea.TabIndex = 52;
+            this.txtCodArea.TabIndex = 5;
             this.txtCodArea.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
             // 
             // label8
@@ -116,7 +122,7 @@
             this.txtNombre.Location = new System.Drawing.Point(286, 70);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(200, 20);
-            this.txtNombre.TabIndex = 50;
+            this.txtNombre.TabIndex = 3;
             // 
             // label13
             // 
@@ -125,9 +131,9 @@
             this.label13.ForeColor = System.Drawing.Color.White;
             this.label13.Location = new System.Drawing.Point(284, 51);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(64, 17);
+            this.label13.Size = new System.Drawing.Size(82, 17);
             this.label13.TabIndex = 49;
-            this.label13.Text = "Nombre";
+            this.label13.Text = "Nombre(*)";
             // 
             // txtEmail
             // 
@@ -135,7 +141,7 @@
             this.txtEmail.Location = new System.Drawing.Point(53, 111);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(200, 20);
-            this.txtEmail.TabIndex = 42;
+            this.txtEmail.TabIndex = 4;
             // 
             // label9
             // 
@@ -154,14 +160,15 @@
             this.txtApellido.Location = new System.Drawing.Point(53, 70);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(200, 20);
-            this.txtApellido.TabIndex = 40;
+            this.txtApellido.TabIndex = 2;
             // 
             // progressBar1
             // 
             this.progressBar1.ForeColor = System.Drawing.Color.Lime;
-            this.progressBar1.Location = new System.Drawing.Point(451, 313);
+            this.progressBar1.Location = new System.Drawing.Point(125, -6);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(397, 23);
+            this.progressBar1.Step = 50;
             this.progressBar1.TabIndex = 102;
             this.progressBar1.Value = 10;
             this.progressBar1.Visible = false;
@@ -169,11 +176,76 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel6.Controls.Add(this.btnVerPagos);
+            this.panel6.Controls.Add(this.btnCancelarDeuda);
+            this.panel6.Controls.Add(this.dataGridView2);
+            this.panel6.Controls.Add(this.btnDescontar);
             this.panel6.Controls.Add(this.panelInformacion);
-            this.panel6.Location = new System.Drawing.Point(321, 361);
+            this.panel6.Location = new System.Drawing.Point(321, 346);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(611, 187);
+            this.panel6.Size = new System.Drawing.Size(611, 205);
             this.panel6.TabIndex = 101;
+            // 
+            // btnVerPagos
+            // 
+            this.btnVerPagos.BackColor = System.Drawing.Color.Transparent;
+            this.btnVerPagos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVerPagos.Image = global::Stock.Properties.Resources.binoculares;
+            this.btnVerPagos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnVerPagos.Location = new System.Drawing.Point(386, 153);
+            this.btnVerPagos.Name = "btnVerPagos";
+            this.btnVerPagos.Size = new System.Drawing.Size(65, 52);
+            this.btnVerPagos.TabIndex = 105;
+            this.btnVerPagos.Text = "Ver Pagos";
+            this.btnVerPagos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnVerPagos, "Descontar Deuda");
+            this.btnVerPagos.UseVisualStyleBackColor = false;
+            this.btnVerPagos.Visible = false;
+            this.btnVerPagos.Click += new System.EventHandler(this.btnVerPagos_Click);
+            // 
+            // btnCancelarDeuda
+            // 
+            this.btnCancelarDeuda.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelarDeuda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelarDeuda.Image = global::Stock.Properties.Resources.cancelar;
+            this.btnCancelarDeuda.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCancelarDeuda.Location = new System.Drawing.Point(537, 153);
+            this.btnCancelarDeuda.Name = "btnCancelarDeuda";
+            this.btnCancelarDeuda.Size = new System.Drawing.Size(65, 52);
+            this.btnCancelarDeuda.TabIndex = 104;
+            this.btnCancelarDeuda.Text = "Cancelar";
+            this.btnCancelarDeuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnCancelarDeuda, "Cancelar Deuda");
+            this.btnCancelarDeuda.UseVisualStyleBackColor = false;
+            this.btnCancelarDeuda.Visible = false;
+            this.btnCancelarDeuda.Click += new System.EventHandler(this.btnCancelarDeuda_Click);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.LightBlue;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(261, 3);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(340, 150);
+            this.dataGridView2.TabIndex = 3;
+            this.dataGridView2.Visible = false;
+            // 
+            // btnDescontar
+            // 
+            this.btnDescontar.BackColor = System.Drawing.Color.Transparent;
+            this.btnDescontar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDescontar.Image = global::Stock.Properties.Resources.DescontarDeuda_Chico1;
+            this.btnDescontar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnDescontar.Location = new System.Drawing.Point(466, 153);
+            this.btnDescontar.Name = "btnDescontar";
+            this.btnDescontar.Size = new System.Drawing.Size(65, 52);
+            this.btnDescontar.TabIndex = 103;
+            this.btnDescontar.Text = "Descontar";
+            this.btnDescontar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnDescontar, "Descontar Deuda");
+            this.btnDescontar.UseVisualStyleBackColor = false;
+            this.btnDescontar.Visible = false;
+            this.btnDescontar.Click += new System.EventHandler(this.btnDescontar_Click);
             // 
             // panelInformacion
             // 
@@ -182,7 +254,7 @@
             this.panelInformacion.Controls.Add(this.lblPersona);
             this.panelInformacion.Controls.Add(this.lblDeudaFijo);
             this.panelInformacion.Controls.Add(this.lblPersonaFijo);
-            this.panelInformacion.Location = new System.Drawing.Point(5, 8);
+            this.panelInformacion.Location = new System.Drawing.Point(5, 3);
             this.panelInformacion.Name = "panelInformacion";
             this.panelInformacion.Size = new System.Drawing.Size(250, 150);
             this.panelInformacion.TabIndex = 2;
@@ -234,6 +306,19 @@
             this.lblPersonaFijo.TabIndex = 23;
             this.lblPersonaFijo.Text = "Apellido yNombre:";
             // 
+            // lblMensaje
+            // 
+            this.lblMensaje.AutoSize = true;
+            this.lblMensaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMensaje.ForeColor = System.Drawing.Color.White;
+            this.lblMensaje.Location = new System.Drawing.Point(182, 0);
+            this.lblMensaje.Name = "lblMensaje";
+            this.lblMensaje.Size = new System.Drawing.Size(139, 25);
+            this.lblMensaje.TabIndex = 106;
+            this.lblMensaje.Text = "Clientes/Editar";
+            this.lblMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblMensaje.Visible = false;
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -241,15 +326,17 @@
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(51, 51);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(66, 17);
+            this.label11.Size = new System.Drawing.Size(84, 17);
             this.label11.TabIndex = 39;
-            this.label11.Text = "Apellido";
+            this.label11.Text = "Apellido(*)";
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.MidnightBlue;
+            this.panel5.Controls.Add(this.progressBar1);
+            this.panel5.Controls.Add(this.lblMensaje);
             this.panel5.Controls.Add(this.lblUsuarioEstadisticas);
-            this.panel5.Location = new System.Drawing.Point(321, 336);
+            this.panel5.Location = new System.Drawing.Point(321, 321);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(611, 25);
             this.panel5.TabIndex = 100;
@@ -302,9 +389,10 @@
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(0);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(49, 39);
-            this.btnCancelar.TabIndex = 63;
+            this.btnCancelar.TabIndex = 10;
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Visible = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -314,7 +402,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(287, 177);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(49, 39);
-            this.btnGuardar.TabIndex = 62;
+            this.btnGuardar.TabIndex = 9;
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Visible = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -326,9 +414,9 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(284, 8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 17);
+            this.label2.Size = new System.Drawing.Size(61, 17);
             this.label2.TabIndex = 61;
-            this.label2.Text = "Sexo";
+            this.label2.Text = "Sexo(*)";
             // 
             // cmbSexo
             // 
@@ -336,7 +424,7 @@
             this.cmbSexo.Location = new System.Drawing.Point(286, 28);
             this.cmbSexo.Name = "cmbSexo";
             this.cmbSexo.Size = new System.Drawing.Size(200, 21);
-            this.cmbSexo.TabIndex = 0;
+            this.cmbSexo.TabIndex = 1;
             // 
             // txtAltura
             // 
@@ -344,7 +432,7 @@
             this.txtAltura.Location = new System.Drawing.Point(286, 151);
             this.txtAltura.Name = "txtAltura";
             this.txtAltura.Size = new System.Drawing.Size(200, 20);
-            this.txtAltura.TabIndex = 60;
+            this.txtAltura.TabIndex = 8;
             this.txtAltura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
             // 
             // label1
@@ -364,7 +452,7 @@
             this.txtCalle.Location = new System.Drawing.Point(54, 151);
             this.txtCalle.Name = "txtCalle";
             this.txtCalle.Size = new System.Drawing.Size(200, 20);
-            this.txtCalle.TabIndex = 58;
+            this.txtCalle.TabIndex = 7;
             // 
             // label14
             // 
@@ -384,7 +472,7 @@
             this.txtDni.Location = new System.Drawing.Point(53, 28);
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(200, 20);
-            this.txtDni.TabIndex = 36;
+            this.txtDni.TabIndex = 0;
             this.txtDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
             // 
             // label12
@@ -394,9 +482,9 @@
             this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Location = new System.Drawing.Point(51, 10);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(150, 17);
+            this.label12.Size = new System.Drawing.Size(168, 17);
             this.label12.TabIndex = 35;
-            this.label12.Text = "Número Documento";
+            this.label12.Text = "Número Documento(*)";
             // 
             // panel3
             // 
@@ -423,7 +511,7 @@
             this.txtBuscador.Location = new System.Drawing.Point(77, 9);
             this.txtBuscador.Name = "txtBuscador";
             this.txtBuscador.Size = new System.Drawing.Size(170, 20);
-            this.txtBuscador.TabIndex = 18;
+            this.txtBuscador.TabIndex = 0;
             this.txtBuscador.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
             // 
             // panel200
@@ -495,7 +583,7 @@
             this.btnNuevoCliente.Location = new System.Drawing.Point(94, 38);
             this.btnNuevoCliente.Name = "btnNuevoCliente";
             this.btnNuevoCliente.Size = new System.Drawing.Size(113, 33);
-            this.btnNuevoCliente.TabIndex = 21;
+            this.btnNuevoCliente.TabIndex = 1;
             this.btnNuevoCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnNuevoCliente.UseVisualStyleBackColor = false;
             this.btnNuevoCliente.Click += new System.EventHandler(this.btnNuevoCliente_Click);
@@ -534,23 +622,11 @@
             this.label7.TabIndex = 2;
             this.label7.Text = "Clientes";
             // 
-            // dataGridView2
-            // 
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.LightBlue;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(583, 369);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(340, 150);
-            this.dataGridView2.TabIndex = 3;
-            this.dataGridView2.Visible = false;
-            // 
             // ClientesWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1155, 749);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel_Clientes);
@@ -567,9 +643,8 @@
             this.Controls.SetChildIndex(this.panel_Clientes, 0);
             this.Controls.SetChildIndex(this.panel5, 0);
             this.Controls.SetChildIndex(this.panel6, 0);
-            this.Controls.SetChildIndex(this.progressBar1, 0);
-            this.Controls.SetChildIndex(this.dataGridView2, 0);
             this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panelInformacion.ResumeLayout(false);
             this.panelInformacion.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -583,7 +658,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel100.ResumeLayout(false);
             this.panel100.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -632,5 +706,10 @@
         private System.Windows.Forms.Label lblDeudaFijo;
         private System.Windows.Forms.Label lblPersonaFijo;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button btnDescontar;
+        private System.Windows.Forms.Button btnCancelarDeuda;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btnVerPagos;
+        private System.Windows.Forms.Label lblMensaje;
     }
 }

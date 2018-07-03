@@ -207,6 +207,11 @@ namespace Stock
             _pagos.idUsuario = idusuarioLogueado;
             return _pagos;
         }
+
+        private void SoloNumeros(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back);
+        }
     }
 }
 

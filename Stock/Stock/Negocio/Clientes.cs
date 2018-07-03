@@ -28,7 +28,10 @@ namespace Stock.Negocio
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return exito;
         }
         private static void ValidarDatos(Entidades.Clientes _cliente)
@@ -54,9 +57,41 @@ namespace Stock.Negocio
                 throw new Exception();
             }
         }
-        internal static bool EditarCliente(Entidades.Clientes _cliente, int idUsuarioSeleccionado)
+
+        public static bool ActualizarDeuda(List<Entidades.Clientes> cliente, string deuda, decimal pagoIngresado)
         {
-            throw new NotImplementedException();
+            bool exito = false;
+            try
+            {
+                decimal ValorDeuda = 0;
+                var _cliente = cliente.First();
+                string var = deuda.ToString();
+                var split = var.Split('$')[1];
+                split = split.Trim();
+                decimal DeudaVieja = Convert.ToDecimal(split);
+                ValorDeuda = DeudaVieja - pagoIngresado;
+                exito = DAO.AgregarDao.RegistrarPagoDeDeuda(ValorDeuda, _cliente.IdCliente, _cliente.idUsuario);
+                if (exito == true)
+                {
+                    exito = DAO.EditarDao.ActualizarDeuda(ValorDeuda, _cliente.IdCliente);
+                }
+            }
+            catch (Exception ex)
+            { }
+            return exito;
+        }
+
+        public static bool EditarCliente(Entidades.Clientes _cliente, int idUsuarioSeleccionado)
+        {
+            bool exito = false;
+            try
+            {
+                ValidarDatos(_cliente);
+                exito = DAO.EditarDao.EditarCliente(_cliente, idUsuarioSeleccionado);
+            }
+            catch (Exception ex)
+            { }
+            return exito;
         }
         public static bool RegistrarPuntos(int idCliente, string puntos)
         {
@@ -84,17 +119,17 @@ namespace Stock.Negocio
         public static bool RegistrarCuentaCorriente(int idCliente, string deudaGuardar, DateTime fecha, int idVenta)
         {
             bool exito = false;
+            decimal deudaNueva = Convert.ToDecimal(deudaGuardar);
             try
             {
                 decimal DeudaVieja = DAO.ConsultarDao.BuscarDeudaExistente(idCliente);
-                if (DeudaVieja > 0)
+                if (DeudaVieja >= 0)
                 {
-                    decimal deudaNueva = Convert.ToDecimal(deudaGuardar);
                     decimal DEUDA = DeudaVieja + deudaNueva;
                     exito = DAO.EditarDao.ActualizarDeuda(DEUDA, idCliente);
                     if (exito == true)
                     {
-                        exito = DAO.AgregarDao.InsertarDetalleCuentaCorriente(idCliente, deudaGuardar, fecha, idVenta);
+                        exito = DAO.AgregarDao.InsertarDetalleCuentaCorriente(idCliente, deudaNueva, fecha, idVenta);
                     }
                     else { }
                 }
@@ -103,11 +138,10 @@ namespace Stock.Negocio
                     exito = DAO.AgregarDao.InsertarCuentaCorriente(idCliente, deudaGuardar);
                     if (exito == true)
                     {
-                        exito = DAO.AgregarDao.InsertarDetalleCuentaCorriente(idCliente, deudaGuardar, fecha, idVenta);
+                        exito = DAO.AgregarDao.InsertarDetalleCuentaCorriente(idCliente, deudaNueva, fecha, idVenta);
                     }
                     else { }
                 }
-
             }
             catch (Exception ex)
             {
@@ -115,6 +149,47 @@ namespace Stock.Negocio
                 throw new Exception();
             }
             return exito;
+        }
+        public static bool ActualizarDeudaTotal(List<Entidades.Clientes> cliente, string deuda)
+        {
+            bool exito = false;
+            try
+            {
+                string var = deuda.ToString();
+                var split = var.Split('$')[1];
+                split = split.Trim();
+                decimal PagoRealizado = Convert.ToDecimal(split);
+                decimal ValorDeuda = 0;
+                var _cliente = cliente.First();
+                decimal DeudaVieja = Convert.ToDecimal(split);
+                exito = DAO.AgregarDao.RegistrarPagoDeDeuda(PagoRealizado, _cliente.IdCliente, _cliente.idUsuario);
+                if (exito == true)
+                {
+                    exito = DAO.EditarDao.ActualizarDeuda(ValorDeuda, _cliente.IdCliente);
+                    if (exito == true)
+                    {
+                        exito = DAO.EditarDao.ModificarEstadoDetalleCuentaCorriente(_cliente.IdCliente);
+                    }
+                }
+            }
+            catch (Exception ex)
+            { }
+            return exito;
+        }
+
+        public static List<ListaPagosDeDeudas> ConsultaPagoDeuda(int idClienteSeleccionado)
+        {
+            List<ListaPagosDeDeudas> _lista = new List<ListaPagosDeDeudas>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultaPagoDeuda(idClienteSeleccionado);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
+            return _lista;
         }
     }
 }

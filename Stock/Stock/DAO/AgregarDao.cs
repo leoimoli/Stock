@@ -71,6 +71,25 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
+
+        public static bool RegistrarPagoDeDeuda(decimal valorDeuda, int idCliente, int idUsuario)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string proceso = "RegistrarPagoDeDeuda";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+            cmd.Parameters.AddWithValue("valorDeuda_in", valorDeuda);
+            cmd.Parameters.AddWithValue("idUsuario_in", idUsuario);
+            cmd.Parameters.AddWithValue("Fecha_in", DateTime.Now);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+
         public static bool RegistrarPuntos(int idCliente, int actualizarPuntos)
         {
             bool exito = false;
@@ -86,7 +105,7 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
-        public static bool InsertarDetalleCuentaCorriente(int idCliente, string deudaGuardar, DateTime fecha, int idVenta)
+        public static bool InsertarDetalleCuentaCorriente(int idCliente, decimal deudaGuardar, DateTime fecha, int idVenta)
         {
             string Estado = "ACTIVA";
             bool exito = false;

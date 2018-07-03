@@ -113,6 +113,16 @@ namespace Stock.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap binoculares {
+            get {
+                object obj = ResourceManager.GetObject("binoculares", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Buscar {
             get {
                 object obj = ResourceManager.GetObject("Buscar", resourceCulture);
@@ -146,6 +156,16 @@ namespace Stock.Properties {
         internal static System.Drawing.Bitmap Caja_Chica {
             get {
                 object obj = ResourceManager.GetObject("Caja_Chica", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cancelar {
+            get {
+                object obj = ResourceManager.GetObject("cancelar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -226,6 +246,26 @@ namespace Stock.Properties {
         internal static System.Drawing.Bitmap compras65x50 {
             get {
                 object obj = ResourceManager.GetObject("compras65x50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DescontarDeuda_Chico {
+            get {
+                object obj = ResourceManager.GetObject("DescontarDeuda_Chico", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DescontarDeuda_Chico1 {
+            get {
+                object obj = ResourceManager.GetObject("DescontarDeuda_Chico1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -486,6 +526,16 @@ namespace Stock.Properties {
         internal static System.Drawing.Bitmap Pagos_Chico {
             get {
                 object obj = ResourceManager.GetObject("Pagos_Chico", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pagos_Chico1 {
+            get {
+                object obj = ResourceManager.GetObject("Pagos_Chico1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

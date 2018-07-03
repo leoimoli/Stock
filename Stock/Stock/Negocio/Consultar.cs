@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Stock.Entidades;
+using System.Windows.Forms;
 
 namespace Stock.Negocio
 {
@@ -29,7 +30,10 @@ namespace Stock.Negocio
                     _listaPagos = DAO.ConsultarDao.ListaDePagos();
                 }
                 catch (Exception ex)
-                { }
+                {
+                    MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                    throw new Exception();
+                }
                 return _listaPagos;
             }
         }
@@ -42,7 +46,10 @@ namespace Stock.Negocio
                 _listaProductos = DAO.ConsultarDao.ListarProductos();
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _listaProductos;
         }
 
@@ -54,7 +61,10 @@ namespace Stock.Negocio
                 _listaClientes = DAO.ConsultarDao.ListarClientes();
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _listaClientes;
         }
 
@@ -66,7 +76,10 @@ namespace Stock.Negocio
                 _cliente = DAO.ConsultarDao.BuscarClienteIngresado(dni);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _cliente;
         }
 
@@ -78,7 +91,10 @@ namespace Stock.Negocio
                 PuntosViejos = DAO.ConsultarDao.BuscarPuntosViejos(idCliente);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return PuntosViejos;
         }
         public static bool ValidarClienteExistente(string dni)
@@ -95,7 +111,10 @@ namespace Stock.Negocio
                 _listaStock = DAO.ConsultarDao.ListarStock();
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _listaStock;
         }
 
@@ -107,7 +126,10 @@ namespace Stock.Negocio
                 _lista = DAO.ConsultarDao.ConsultarVentasPorFecha(fechaDesde, fechaHasta);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _lista;
         }
 
@@ -119,7 +141,10 @@ namespace Stock.Negocio
                 _lista = DAO.ConsultarDao.ConsultarVentasPorFechaEstadistica(fechaDesde, fechaHasta);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _lista;
         }
 
@@ -131,7 +156,10 @@ namespace Stock.Negocio
                 _lista = DAO.ConsultarDao.ConsultarVentasPorUsuario(dniUsuario);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _lista;
         }
 
@@ -143,7 +171,10 @@ namespace Stock.Negocio
                 _lista = DAO.ConsultarDao.ConsultarComprasPorFecha(fechaDesde, fechaHasta);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _lista;
         }
 
@@ -155,7 +186,10 @@ namespace Stock.Negocio
                 _lista = DAO.ConsultarDao.ConsultarComprasPorFechaEstadistica(fechaDesde, fechaHasta);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _lista;
         }
 
@@ -167,7 +201,10 @@ namespace Stock.Negocio
                 _lista = DAO.ConsultarDao.ConsultarComprasPorProveedor(proveedor);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _lista;
         }
 
@@ -179,7 +216,10 @@ namespace Stock.Negocio
                 _lista = DAO.ConsultarDao.ConsultarVentasPorUsuarioEstadistica(dniUsuario);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _lista;
         }
 
@@ -191,7 +231,10 @@ namespace Stock.Negocio
                 _lista = DAO.ConsultarDao.ConsultarComprasPorProveedorEstadistica(proveedor);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _lista;
         }
 
@@ -203,9 +246,13 @@ namespace Stock.Negocio
                 _lista = DAO.ConsultarDao.ConsultarComprasPorRemito(remito);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _lista;
         }
+
 
         public static List<ListaProductoVenta> BuscarProductoParaVenta(string codigoProducto)
         {
@@ -215,7 +262,10 @@ namespace Stock.Negocio
                 _lista = DAO.ConsultarDao.BuscarProductoParaVenta(codigoProducto);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _lista;
         }
 
@@ -227,7 +277,10 @@ namespace Stock.Negocio
                 _lista = DAO.ConsultarDao.ConsultarComprasPorRemitoEstadistica(remito);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _lista;
         }
 
@@ -239,7 +292,10 @@ namespace Stock.Negocio
                 _listaHistorialProductoPrecioDeVenta = DAO.ConsultarDao.HistorialPrecioDeVenta(idProducto);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _listaHistorialProductoPrecioDeVenta;
         }
 
@@ -251,7 +307,10 @@ namespace Stock.Negocio
                 _historialProducto = DAO.ConsultarDao.HistorialProducto(idProducto);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _historialProducto;
         }
         public static List<CuentaCorriente> BuscarDeudaPorCliente(int idClienteSeleccionado)
@@ -262,7 +321,10 @@ namespace Stock.Negocio
                 _Cliente = DAO.ConsultarDao.BuscarDeudaPorCliente(idClienteSeleccionado);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _Cliente;
         }
         public static int BuscarProductoPorCodigo(string codigoProducto)
@@ -273,7 +335,10 @@ namespace Stock.Negocio
                 idProducto = DAO.ConsultarDao.BuscarProductoPorCodigo(codigoProducto);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return idProducto;
         }
 
@@ -320,7 +385,10 @@ namespace Stock.Negocio
                 _listaUsuarios = DAO.ConsultarDao.ListarUsuarios();
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _listaUsuarios;
         }
         public static List<Usuarios> BuscarUsuarioPorID(int idUsuarioSeleccionado)
@@ -331,7 +399,10 @@ namespace Stock.Negocio
                 _listaUsuarios = DAO.ConsultarDao.BuscarUsuarioPorID(idUsuarioSeleccionado);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _listaUsuarios;
         }
 
@@ -343,7 +414,10 @@ namespace Stock.Negocio
                 _listaProductos = DAO.ConsultarDao.BuscarProductoPorID(idProductoGrilla);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _listaProductos;
         }
 
@@ -355,7 +429,10 @@ namespace Stock.Negocio
                 _listaUsuarios = DAO.ConsultarDao.BuscarUsuarioPorDNI(dni);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _listaUsuarios;
         }
 
@@ -367,7 +444,10 @@ namespace Stock.Negocio
                 _listaProveedores = DAO.ConsultarDao.ListarProveedores();
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _listaProveedores;
         }
         public static List<Entidades.Proveedores> BuscarProveedorPorID(int idProveedorGrilla)
@@ -378,7 +458,10 @@ namespace Stock.Negocio
                 _listaProveedores = DAO.ConsultarDao.BuscarProveedorPorID(idProveedorGrilla);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _listaProveedores;
         }
 
@@ -390,7 +473,10 @@ namespace Stock.Negocio
                 _listaHistorialProveedores = DAO.ConsultarDao.BuscarHistorialDelProveedor(Proveedor);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _listaHistorialProveedores;
         }
 
@@ -402,7 +488,10 @@ namespace Stock.Negocio
                 _listaHistorialProductoPrecioDeVenta = DAO.ConsultarDao.ListaHistorialPrecioDeVenta();
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _listaHistorialProductoPrecioDeVenta;
         }
 
@@ -414,7 +503,10 @@ namespace Stock.Negocio
                 _Cliente = DAO.ConsultarDao.BuscarClientePorID(idClienteSeleccionado);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _Cliente;
         }
 
@@ -426,7 +518,10 @@ namespace Stock.Negocio
                 _listaStock = DAO.ConsultarDao.ListaDeStockPoridProdcuto(idProducto);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _listaStock;
         }
         public static List<ListaStockProducto> ListarStockProdcuto(int idProducto)
@@ -437,7 +532,10 @@ namespace Stock.Negocio
                 _listaStock = DAO.ConsultarDao.ListarStockProdcuto(idProducto);
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _listaStock;
         }
         public static List<ListaStockFaltante> ListaStockFaltante()
@@ -448,8 +546,41 @@ namespace Stock.Negocio
                 _listaStock = DAO.ConsultarDao.ListaStockFaltante();
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
             return _listaStock;
+        }
+
+        public static List<Productos> BuscarProducto(string codigoProducto)
+        {
+            List<Productos> _producto = new List<Productos>();
+            try
+            {
+                _producto = DAO.ConsultarDao.BuscarProducto(codigoProducto);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
+            return _producto;
+        }
+
+        public static List<Entidades.Proveedores> BuscarProvedorPorNombre(string NombreProveedor)
+        {
+            List<Entidades.Proveedores> _listaProveedores = new List<Entidades.Proveedores>();
+            try
+            {
+                _listaProveedores = DAO.ConsultarDao.BuscarProvedorPorNombre(NombreProveedor);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
+            return _listaProveedores;
         }
     }
 }

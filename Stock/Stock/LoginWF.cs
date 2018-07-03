@@ -27,8 +27,7 @@ namespace Stock
                 usuarios = Negocio.Consultar.LoginUsuario(usuario, contraseña);
                 if (usuarios.Count == 0)
                 {
-                    MessageBox.Show("Usuario ingresado/contraseña incorrecta.");
-                    throw new Exception();
+                    MessageBox.Show("Usuario/contraseña ingresado incorrecta.");
                 }
                 else
                 {

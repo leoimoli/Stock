@@ -54,6 +54,7 @@
             this.btnFinalizarVenta = new System.Windows.Forms.Button();
             this.btnCuentaCorriente = new System.Windows.Forms.Button();
             this.btnCobrar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.panelGrande_Ventas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.panel2.SuspendLayout();
@@ -221,7 +222,6 @@
             this.txtCantidad.TabIndex = 20;
             this.txtCantidad.Text = "1";
             this.txtCantidad.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCantidad_KeyDown);
-            this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
             // 
             // label1
             // 
@@ -293,7 +293,7 @@
             this.btnCuentaCorriente.ForeColor = System.Drawing.Color.MidnightBlue;
             this.btnCuentaCorriente.Image = global::Stock.Properties.Resources.Moroso_Grande;
             this.btnCuentaCorriente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCuentaCorriente.Location = new System.Drawing.Point(913, 537);
+            this.btnCuentaCorriente.Location = new System.Drawing.Point(827, 491);
             this.btnCuentaCorriente.Name = "btnCuentaCorriente";
             this.btnCuentaCorriente.Size = new System.Drawing.Size(80, 52);
             this.btnCuentaCorriente.TabIndex = 19;
@@ -318,11 +318,29 @@
             this.btnCobrar.Visible = false;
             this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.Silver;
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnEliminar.Image = global::Stock.Properties.Resources.Moroso_Grande;
+            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEliminar.Location = new System.Drawing.Point(737, 491);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(80, 52);
+            this.btnEliminar.TabIndex = 20;
+            this.btnEliminar.Text = "Deuda(F1)";
+            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnEliminar, "Registrar Deuda(F1)");
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // VentasWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1005, 704);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnCuentaCorriente);
             this.Controls.Add(this.btnFinalizarVenta);
             this.Controls.Add(this.btnCobrar);
@@ -339,6 +357,7 @@
             this.Controls.SetChildIndex(this.btnCobrar, 0);
             this.Controls.SetChildIndex(this.btnFinalizarVenta, 0);
             this.Controls.SetChildIndex(this.btnCuentaCorriente, 0);
+            this.Controls.SetChildIndex(this.btnEliminar, 0);
             this.panelGrande_Ventas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -378,5 +397,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnCuentaCorriente;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

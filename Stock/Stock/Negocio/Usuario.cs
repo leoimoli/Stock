@@ -33,6 +33,7 @@ namespace Stock.Negocio
         }
         private static void ValidarDatos(Usuarios _usuario)
         {
+
             if (String.IsNullOrEmpty(_usuario.Dni))
             {
                 MessageBox.Show("EL CAMPO DNI ES OBLIGATORIO.");
@@ -54,7 +55,7 @@ namespace Stock.Negocio
                 throw new Exception();
             }
         }
-        public static bool EditarUsuario(Usuarios _usuario , int idusuario)
+        public static bool EditarUsuario(Usuarios _usuario, int idusuario)
         {
             bool exito = false;
             try

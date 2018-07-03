@@ -26,7 +26,10 @@ namespace Stock
                 dataGridView1.ReadOnly = true;
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
         }
         private List<Entidades.ClienteReducido> CargarEntidadReducida(List<Clientes> listaClientes)
         {
@@ -80,13 +83,10 @@ namespace Stock
                     bool Exito = Negocio.Clientes.EditarCliente(_cliente, idUsuarioSeleccionado);
                     if (Exito == true)
                     {
-                        MessageBox.Show("LA EDICIÓN DEL CLIENTE SE REALIZO EXITOSAMENTE.");
+                        MessageBox.Show("La edición del cliente se realizo exitosamente.");
                         LimpiarCampos();
-                        //List<Entidades.UsuarioReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeUsuarios());
-                        //ListaUsuarios = ListaReducidos;
                     }
                 }
-
                 else
                 {
                     panel_Clientes.Enabled = false;
@@ -95,7 +95,7 @@ namespace Stock
                     bool Exito = Negocio.Clientes.CargarCliente(_cliente);
                     if (Exito == true)
                     {
-                        MessageBox.Show("SE REGISTRO EL CLIENTE EXITOSAMENTE.");
+                        MessageBox.Show("Se registro el cliente exitosamente.");
                         LimpiarCampos();
                     }
                     else
@@ -105,7 +105,10 @@ namespace Stock
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
         }
         private Clientes CargarEntidadEdicion()
         {
@@ -136,13 +139,15 @@ namespace Stock
             DateTime fecha = DateTime.Now;
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
-            string[] Sexo = Clases_Maestras.ValoresConstantes.Sexo;
-            cmbSexo.Items.Add("Seleccione");
-            foreach (string item in Sexo)
-            {
-                cmbSexo.Text = "Seleccione";
-                cmbSexo.Items.Add(item);
-            }
+            cmbSexo.Enabled = true;
+            CargarCombo();
+            //string[] Sexo = Clases_Maestras.ValoresConstantes.Sexo;
+            //cmbSexo.Items.Add("Seleccione");
+            //foreach (string item in Sexo)
+            //{
+            //    cmbSexo.Text = "Seleccione";
+            //    cmbSexo.Items.Add(item);
+            //}
 
         }
         private Clientes CargarEntidad()
@@ -201,6 +206,8 @@ namespace Stock
             btnGuardar.Visible = true;
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
+            panelInformacion.Visible = false;
+            dataGridView2.Visible = false;
         }
         private void CargarCombo()
         {
@@ -213,12 +220,14 @@ namespace Stock
                 cmbSexo.Items.Add(item);
             }
         }
+        List<Clientes> Cliente = new List<Clientes>();
         private void ClienteSeleccionado(int idClienteSeleccionado)
         {
             try
             {
                 List<Clientes> _cliente = new List<Clientes>();
                 _cliente = Negocio.Consultar.BuscarClientePorID(idClienteSeleccionado);
+                Cliente = _cliente;
                 if (_cliente.Count > 0)
                 {
                     List<CuentaCorriente> _deuda = new List<CuentaCorriente>();
@@ -228,11 +237,29 @@ namespace Stock
                         HabilitarCamposDeuda(_deuda);
                         ListaCuentaCorriente = _deuda;
                     }
+                    else
+                    {
+                        BloquearCamposDeuda();
+                    }
                 }
+                List<ListaPagosDeDeudas> _lista = new List<ListaPagosDeDeudas>();
+                _lista = Negocio.Clientes.ConsultaPagoDeuda(id);
+                if (_lista.Count > 0)
+                {
+                    btnVerPagos.Visible = true;
+                }
+                else
+                { btnVerPagos.Visible = false; }
                 HabilitarCamposClienteSeleccionado(_cliente);
             }
             catch (Exception ex)
             { }
+        }
+        private void BloquearCamposDeuda()
+        {
+            lblUsuarioEstadisticas.Text = "El Cliente no posee deudas pedientes de saldar";
+            panelInformacion.Visible = false;
+            dataGridView2.Visible = false;
         }
         private void HabilitarCamposDeuda(List<CuentaCorriente> _deuda)
         {
@@ -240,13 +267,15 @@ namespace Stock
             panelInformacion.Visible = true;
             var Deuda = _deuda.First();
             lblPersona.Visible = true;
-            lblPersona.Text = Deuda.Apellido + Deuda.Nombre;
+            lblPersona.Text = Deuda.Apellido + " " + Deuda.Nombre;
             lblPendiente.Visible = true;
             lblPendiente.Text = Convert.ToString("$" + Deuda.DeudaTotal);
+            btnCancelarDeuda.Visible = true;
+            btnDescontar.Visible = true;
+            btnVerPagos.Visible = true;
         }
         private void HabilitarCamposClienteSeleccionado(List<Clientes> _cliente)
         {
-
             btnGuardar.Visible = true;
             btnCancelar.Visible = true;
             lblapellidoNombreEditar.Text = "Editar Cliente";
@@ -259,6 +288,18 @@ namespace Stock
             txtEmail.Text = cliente.Email;
             txtCalle.Text = cliente.Calle;
             txtAltura.Text = cliente.Altura;
+            cmbSexo.Text = cliente.Sexo;
+            cmbSexo.Enabled = false;
+            var telefono = cliente.Telefono;
+            string var = telefono.ToString();
+            var split1 = var.Split('-')[0];
+            split1 = split1.Trim();
+            txtCodArea.Text = split1;
+            string var2 = telefono.ToString();
+            var split2 = var2.Split('-')[1];
+            split2 = split2.Trim();
+            txtTelefono.Text = split2;
+
         }
         #region Eventos Grilla
         private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
@@ -290,7 +331,6 @@ namespace Stock
         {
             e.Handled = !char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back);
         }
-
         public List<Entidades.CuentaCorriente> ListaCuentaCorriente
         {
             set
@@ -299,32 +339,118 @@ namespace Stock
                 dataGridView2.DataSource = value;
                 dataGridView2.ReadOnly = true;
 
-                dataGridView2.Columns[0].HeaderText = "id Movimiento";
-                dataGridView2.Columns[0].Width = 95;
+                dataGridView2.Columns[0].HeaderText = "id Cliente";
+                dataGridView2.Columns[0].Width = 50;
                 dataGridView2.Columns[0].HeaderCell.Style.BackColor = Color.DarkBlue;
                 dataGridView2.Columns[0].HeaderCell.Style.Font = new Font("Tahoma", 7, FontStyle.Bold);
                 dataGridView2.Columns[0].HeaderCell.Style.ForeColor = Color.White;
                 dataGridView2.Columns[0].Visible = false;
 
-                dataGridView2.Columns[1].HeaderText = "Deuda";
-                dataGridView2.Columns[1].Width = 95;
+                dataGridView2.Columns[1].HeaderText = "Dni";
+                dataGridView2.Columns[1].Width = 65;
                 dataGridView2.Columns[1].HeaderCell.Style.BackColor = Color.DarkBlue;
                 dataGridView2.Columns[1].HeaderCell.Style.Font = new Font("Tahoma", 7, FontStyle.Bold);
                 dataGridView2.Columns[1].HeaderCell.Style.ForeColor = Color.White;
-                dataGridView2.Columns[1].Visible = true;
 
-                dataGridView2.Columns[2].HeaderText = "Fecha";
+                dataGridView2.Columns[2].HeaderText = "Apellido";
                 dataGridView2.Columns[2].Width = 95;
                 dataGridView2.Columns[2].HeaderCell.Style.BackColor = Color.DarkBlue;
                 dataGridView2.Columns[2].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
                 dataGridView2.Columns[2].HeaderCell.Style.ForeColor = Color.White;
 
-                dataGridView2.Columns[3].HeaderText = "idVenta";
-                dataGridView2.Columns[3].Width = 125;
+                dataGridView2.Columns[3].HeaderText = "Nombre";
+                dataGridView2.Columns[3].Width = 95;
                 dataGridView2.Columns[3].HeaderCell.Style.BackColor = Color.DarkBlue;
                 dataGridView2.Columns[3].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
                 dataGridView2.Columns[3].HeaderCell.Style.ForeColor = Color.White;
+                dataGridView2.Columns[3].Visible = false;
+
+
+                dataGridView2.Columns[4].HeaderText = "Deuda";
+                dataGridView2.Columns[4].Width = 90;
+                dataGridView2.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView2.Columns[4].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
+                dataGridView2.Columns[4].HeaderCell.Style.ForeColor = Color.White;
+
+                dataGridView2.Columns[5].HeaderText = "DeudaTotal";
+                dataGridView2.Columns[5].Width = 125;
+                dataGridView2.Columns[5].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView2.Columns[5].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
+                dataGridView2.Columns[5].HeaderCell.Style.ForeColor = Color.White;
+                dataGridView2.Columns[5].Visible = false;
+
+                dataGridView2.Columns[6].HeaderText = "Fecha";
+                dataGridView2.Columns[6].Width = 90;
+                dataGridView2.Columns[6].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView2.Columns[6].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
+                dataGridView2.Columns[6].HeaderCell.Style.ForeColor = Color.White;
+
             }
+        }
+        private void btnDescontar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DescontarDeudaWF _descontar = new DescontarDeudaWF(Cliente, lblPendiente.Text);
+                _descontar.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
+        }
+        private void btnCancelarDeuda_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                const string message = "Desea cancelar la deuda que el cliente posee ?";
+                const string caption = "Cancelar Deuda";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Question);
+                {
+                    if (result == DialogResult.Yes)
+                    {
+
+                        bool exito = Negocio.Clientes.ActualizarDeudaTotal(Cliente, lblPendiente.Text);
+                        if (exito == true)
+                        {
+                            MessageBox.Show("La deuda del cliente se cancelo exitosamente.");
+                        }
+                    }
+                    else
+                    { }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
+        }
+        private void btnVerPagos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<ListaPagosDeDeudas> _lista = new List<ListaPagosDeDeudas>();
+                _lista = Negocio.Clientes.ConsultaPagoDeuda(id);
+                if (_lista.Count > 0)
+                {
+                    PagosDeudaWF _pagos = new PagosDeudaWF(_lista);
+                    _pagos.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
         }
     }
 }

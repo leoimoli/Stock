@@ -95,6 +95,12 @@
     <Compile Include="DAO\AgregarDao.cs" />
     <Compile Include="DAO\ConsultarDao.cs" />
     <Compile Include="DAO\EditarDao.cs" />
+    <Compile Include="DescontarDeudaWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DescontarDeudaWF.Designer.cs">
+      <DependentUpon>DescontarDeudaWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entidades\ClienteReducido.cs" />
     <Compile Include="Entidades\Clientes.cs" />
     <Compile Include="Entidades\CuentaCorriente.cs" />
@@ -102,6 +108,7 @@
     <Compile Include="Entidades\HistorialDelProveedor.cs" />
     <Compile Include="Entidades\ListaCompras.cs" />
     <Compile Include="Entidades\ListaComprasEstadistica.cs" />
+    <Compile Include="Entidades\ListaPagosDeDeudas.cs" />
     <Compile Include="Entidades\ListaProductoVenta.cs" />
     <Compile Include="Entidades\ListaStock.cs" />
     <Compile Include="Entidades\ListaStockFaltante.cs" />
@@ -169,6 +176,12 @@
     <Compile Include="Negocio\Stock.cs" />
     <Compile Include="Negocio\Usuario.cs" />
     <Compile Include="Negocio\Ventas.cs" />
+    <Compile Include="PagosDeudaWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PagosDeudaWF.Designer.cs">
+      <DependentUpon>PagosDeudaWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="PagosWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,6 +260,9 @@
     <EmbeddedResource Include="CuentaCorrienteWF.resx">
       <DependentUpon>CuentaCorrienteWF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DescontarDeudaWF.resx">
+      <DependentUpon>DescontarDeudaWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -264,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Master2.resx">
       <DependentUpon>Master2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PagosDeudaWF.resx">
+      <DependentUpon>PagosDeudaWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PagosWF.resx">
       <DependentUpon>PagosWF.cs</DependentUpon>
@@ -359,6 +378,7 @@
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Documentos\Base De Datos\Procedure\1%29LoginUsuario.txt" />
+    <None Include="Resources\Pagos_Chico1.png" />
     <None Include="Resources\Moroso_Grande.png" />
     <None Include="Resources\Salir_Chico.png" />
     <None Include="Resources\Pagos_Chico.png" />
@@ -405,6 +425,10 @@
     <None Include="Resources\etiqueta-del-precio1.png" />
     <None Include="Resources\Excel_Chico.png" />
     <None Include="Resources\Caja_Chica.png" />
+    <None Include="Resources\DescontarDeuda_Chico.png" />
+    <None Include="Resources\DescontarDeuda_Chico1.png" />
+    <None Include="Resources\cancelar.png" />
+    <None Include="Resources\binoculares.png" />
     <Content Include="Resources\login2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -64,7 +64,6 @@ namespace Stock
             lblIngresoRecaudado.Visible = false;
             lblFechaUltimaConexion_base.Visible = false;
         }
-
         private void btnCargarImagen_Click(object sender, EventArgs e)
         {
             try
@@ -119,28 +118,38 @@ namespace Stock
                 {
                     panel_CargaUsuario.Enabled = false;
                     Entidades.Usuarios _usuario = CargarEntidadEdicion();
-                    ProgressBar();
                     bool Exito = Negocio.Usuario.EditarUsuario(_usuario, idUsuarioSeleccionado);
                     if (Exito == true)
                     {
+                        ProgressBar();
                         MessageBox.Show("LA EDICIÓN DEL USUARIO SE REALIZO EXITOSAMENTE.");
                         LimpiarCampos();
                         List<Entidades.UsuarioReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeUsuarios());
                         ListaUsuarios = ListaReducidos;
+                    }
+                    else
+                    {
+                        panel_CargaUsuario.Enabled = true;
+                        txtDni.Focus();
                     }
                 }
                 else
                 {
                     panel_CargaUsuario.Enabled = false;
                     Entidades.Usuarios _usuario = CargarEntidad();
-                    ProgressBar();
                     bool Exito = Negocio.Usuario.CargarUsuario(_usuario);
                     if (Exito == true)
                     {
+                        ProgressBar();
                         MessageBox.Show("SE REGISTRO EL USUARIO EXITOSAMENTE.");
                         LimpiarCampos();
                         List<Entidades.UsuarioReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeUsuarios());
                         ListaUsuarios = ListaReducidos;
+                    }
+                    else
+                    {
+                        panel_CargaUsuario.Enabled = true;
+                        txtDni.Focus();
                     }
                 }
             }
@@ -150,16 +159,16 @@ namespace Stock
                 throw new Exception();
             }
         }
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                List<Entidades.UsuarioReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.BuscarUsuarioPorDNI(txtDniBuscar.Text));
-                ListaUsuarios = ListaReducidos;
-            }
-            catch (Exception ex)
-            { }
-        }
+        //private void btnBuscar_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        List<Entidades.UsuarioReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.BuscarUsuarioPorDNI(txtDniBuscar.Text));
+        //        ListaUsuarios = ListaReducidos;
+        //    }
+        //    catch (Exception ex)
+        //    { }
+        //}
         #endregion
         #region Metodos Genericos
         private void HabilitarCampos()
@@ -212,12 +221,7 @@ namespace Stock
             DateTime fecha = DateTime.Now;
             dtFechaNacimiento.Value = fecha;
             string[] Perfiles = Clases_Maestras.ValoresConstantes.Perfiles;
-            cmbPerfil.Items.Add("Seleccione");
-            foreach (string item in Perfiles)
-            {
-                cmbPerfil.Text = "Seleccione";
-                cmbPerfil.Items.Add(item);
-            }
+            CargarCombo();
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
             pictureBox1.Image = null;
@@ -290,75 +294,6 @@ namespace Stock
                 dataGridView1.Columns[1].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
                 dataGridView1.Columns[1].HeaderCell.Style.ForeColor = Color.White;
 
-                //dataGridView1.Columns[2].HeaderText = "Nombre";
-                //dataGridView1.Columns[2].Width = 100;
-                //dataGridView1.Columns[2].HeaderCell.Style.BackColor = Color.DarkBlue;
-                //dataGridView1.Columns[2].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                //dataGridView1.Columns[2].HeaderCell.Style.ForeColor = Color.White;
-
-                //dataGridView1.Columns[3].HeaderText = "Dni";
-                //dataGridView1.Columns[3].Width = 90;
-                //dataGridView1.Columns[3].HeaderCell.Style.BackColor = Color.DarkBlue;
-                //dataGridView1.Columns[3].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                //dataGridView1.Columns[3].HeaderCell.Style.ForeColor = Color.White;
-
-                //dataGridView1.Columns[4].HeaderText = "FechaDeNacimiento";
-                //dataGridView1.Columns[4].Width = 100;
-                //dataGridView1.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
-                //dataGridView1.Columns[4].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                //dataGridView1.Columns[4].HeaderCell.Style.ForeColor = Color.White;
-                //dataGridView1.Columns[4].Visible = false;
-
-
-                //dataGridView1.Columns[5].HeaderText = "FechaDeAlta";
-                //dataGridView1.Columns[5].Width = 100;
-                //dataGridView1.Columns[5].HeaderCell.Style.BackColor = Color.DarkBlue;
-                //dataGridView1.Columns[5].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                //dataGridView1.Columns[5].HeaderCell.Style.ForeColor = Color.White;
-                //dataGridView1.Columns[5].Visible = false;
-
-                //dataGridView1.Columns[6].HeaderText = "FechaUltimaConexion";
-                //dataGridView1.Columns[6].Width = 100;
-                //dataGridView1.Columns[6].HeaderCell.Style.BackColor = Color.DarkBlue;
-                //dataGridView1.Columns[6].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                //dataGridView1.Columns[6].HeaderCell.Style.ForeColor = Color.White;
-                //dataGridView1.Columns[6].Visible = false;
-
-                //dataGridView1.Columns[7].HeaderText = "Contraseña";
-                //dataGridView1.Columns[7].Width = 100;
-                //dataGridView1.Columns[7].HeaderCell.Style.BackColor = Color.DarkBlue;
-                //dataGridView1.Columns[7].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                //dataGridView1.Columns[7].HeaderCell.Style.ForeColor = Color.White;
-                //dataGridView1.Columns[7].Visible = false;
-
-                //dataGridView1.Columns[8].HeaderText = "Contraseña2";
-                //dataGridView1.Columns[8].Width = 100;
-                //dataGridView1.Columns[8].HeaderCell.Style.BackColor = Color.DarkBlue;
-                //dataGridView1.Columns[8].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                //dataGridView1.Columns[8].HeaderCell.Style.ForeColor = Color.White;
-                //dataGridView1.Columns[8].Visible = false;
-
-
-                //dataGridView1.Columns[9].HeaderText = "Perfil";
-                //dataGridView1.Columns[9].Width = 100;
-                //dataGridView1.Columns[9].HeaderCell.Style.BackColor = Color.DarkBlue;
-                //dataGridView1.Columns[9].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                //dataGridView1.Columns[9].HeaderCell.Style.ForeColor = Color.White;
-                //dataGridView1.Columns[9].Visible = false;
-
-                //dataGridView1.Columns[10].HeaderText = "Estado";
-                //dataGridView1.Columns[10].Width = 100;
-                //dataGridView1.Columns[10].HeaderCell.Style.BackColor = Color.DarkBlue;
-                //dataGridView1.Columns[10].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                //dataGridView1.Columns[10].HeaderCell.Style.ForeColor = Color.White;
-                //dataGridView1.Columns[10].Visible = false;
-
-                //dataGridView1.Columns[11].HeaderText = "Foto";
-                //dataGridView1.Columns[11].Width = 100;
-                //dataGridView1.Columns[11].HeaderCell.Style.BackColor = Color.DarkBlue;
-                //dataGridView1.Columns[11].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                //dataGridView1.Columns[11].HeaderCell.Style.ForeColor = Color.White;
-                //dataGridView1.Columns[11].Visible = false;
             }
         }
         private List<Entidades.UsuarioReducido> CargarEntidadReducida(List<Usuarios> listaUsuarios)
@@ -485,6 +420,7 @@ namespace Stock
                 lblFechaUltimaConexion_base.Text = Convert.ToString(usuario.FechaUltimaConexion);
                 lblInformacion.Visible = false;
             }
+            btnCancelar.Visible = false;
         }
         private bool ValidarPerfil()
         {
@@ -528,7 +464,6 @@ namespace Stock
             _usuario.Foto = Imagen;
             return _usuario;
         }
-
         private void SoloNumeros(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back);
@@ -577,5 +512,64 @@ namespace Stock
         }
 
         #endregion
+        private void txtDniBuscar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (txtDniBuscar.Text != "")
+            {
+                List<Entidades.UsuarioReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.BuscarUsuarioPorDNI(txtDniBuscar.Text));
+                ListaUsuarios = ListaReducidos;
+            }
+            else
+            {
+                List<Entidades.UsuarioReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeUsuarios());
+                ListaUsuarios = ListaReducidos;
+            }
+        }
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+        }
+        private void btnCargarImagen_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                string path = "";
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                DialogResult result = openFileDialog1.ShowDialog();
+                path = openFileDialog1.FileName;
+                if (path != "")
+                {
+
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                    var imagen = Image.FromFile(path);
+                    if (imagen.Size.Height > 1024 || imagen.Size.Width > 1024)
+                    {
+                        throw new Exception("EL TAMAÑO DE LA IMAGEN SUPERA EL MAXIMO PERMITIDO(1024x1024)");
+                    }
+                    pictureBox1.Image = Image.FromFile(path);
+                }
+                if (result == DialogResult.OK)
+                {
+                    byte[] Imagen = null;
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        Imagen = ms.ToArray();
+
+                    }
+                }
+                else
+                {
+                    txtImagen.Text = path;
+                    pictureBox1.ImageLocation = txtImagen.Text;
+                }
+
+                urla = path;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

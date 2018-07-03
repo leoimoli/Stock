@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel200 = new System.Windows.Forms.Panel();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.lblUltimoMovimientosProductos = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtCodigoBusqueda = new System.Windows.Forms.TextBox();
@@ -89,7 +91,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(0, 102);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(288, 350);
+            this.dataGridView1.Size = new System.Drawing.Size(288, 320);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseEnter);
             this.dataGridView1.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseLeave);
@@ -98,6 +100,8 @@
             // panel200
             // 
             this.panel200.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel200.Controls.Add(this.lblTotal);
+            this.panel200.Controls.Add(this.label6);
             this.panel200.Controls.Add(this.lblUltimoMovimientosProductos);
             this.panel200.Controls.Add(this.label10);
             this.panel200.Controls.Add(this.txtCodigoBusqueda);
@@ -107,6 +111,30 @@
             this.panel200.Name = "panel200";
             this.panel200.Size = new System.Drawing.Size(294, 455);
             this.panel200.TabIndex = 12;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.Color.White;
+            this.lblTotal.Location = new System.Drawing.Point(238, 425);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(50, 17);
+            this.lblTotal.TabIndex = 25;
+            this.lblTotal.Text = "Total:";
+            this.lblTotal.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(192, 425);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 17);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Total:";
+            this.label6.Visible = false;
             // 
             // lblUltimoMovimientosProductos
             // 
@@ -138,6 +166,7 @@
             this.txtCodigoBusqueda.Name = "txtCodigoBusqueda";
             this.txtCodigoBusqueda.Size = new System.Drawing.Size(170, 20);
             this.txtCodigoBusqueda.TabIndex = 18;
+            this.txtCodigoBusqueda.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigoBusqueda_KeyDown);
             // 
             // btnProducto
             // 
@@ -250,7 +279,6 @@
             // 
             // EditMarca_Producto
             // 
-            this.EditMarca_Producto.AutoSize = true;
             this.EditMarca_Producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditMarca_Producto.ForeColor = System.Drawing.Color.Black;
             this.EditMarca_Producto.Location = new System.Drawing.Point(117, 75);
@@ -262,7 +290,6 @@
             // 
             // EditNombre_Producto
             // 
-            this.EditNombre_Producto.AutoSize = true;
             this.EditNombre_Producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditNombre_Producto.ForeColor = System.Drawing.Color.Black;
             this.EditNombre_Producto.Location = new System.Drawing.Point(117, 43);
@@ -274,7 +301,6 @@
             // 
             // EditCódigo_Producto
             // 
-            this.EditCódigo_Producto.AutoSize = true;
             this.EditCódigo_Producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditCódigo_Producto.ForeColor = System.Drawing.Color.Black;
             this.EditCódigo_Producto.Location = new System.Drawing.Point(117, 13);
@@ -399,6 +425,7 @@
             // 
             // cmbMarca
             // 
+            this.cmbMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMarca.FormattingEnabled = true;
             this.cmbMarca.Location = new System.Drawing.Point(322, 95);
             this.cmbMarca.Name = "cmbMarca";
@@ -561,13 +588,10 @@
             this.progressBar1.Location = new System.Drawing.Point(450, 321);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(397, 23);
+            this.progressBar1.Step = 50;
             this.progressBar1.TabIndex = 94;
             this.progressBar1.Value = 10;
             this.progressBar1.Visible = false;
-            // 
-            // toolTip1
-            // 
-            //this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
             // Producto
             // 
@@ -656,5 +680,7 @@
         private System.Windows.Forms.Label EditPrecioDeVenta_Producto;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Label label6;
     }
 }
