@@ -27,7 +27,11 @@ namespace Stock
                 usuarios = Negocio.Consultar.LoginUsuario(usuario, contraseña);
                 if (usuarios.Count == 0)
                 {
-                    MessageBox.Show("Usuario/contraseña ingresado incorrecta.");
+                    const string message2 = "Usuario/contraseña ingresado incorrecta.";
+                    const string caption2 = "Error";
+                    var result2 = MessageBox.Show(message2, caption2,
+                                                 MessageBoxButtons.OK,
+                                                 MessageBoxIcon.Exclamation);
                 }
                 else
                 {
@@ -39,7 +43,11 @@ namespace Stock
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
                 throw new Exception();
             }
         }

@@ -26,7 +26,11 @@ namespace Stock
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
                 throw new Exception();
             }
         }
@@ -146,7 +150,11 @@ namespace Stock
                         Lista = Negocio.Consultar.HistorialPrecioDeVenta(idProducto);
                         if (Lista.Count == 0)
                         {
-                            MessageBox.Show("El producto ingresado no posee un precio de venta previamente cargado.");
+                            const string message = "El producto ingresado no posee un precio de venta previamente cargado.";
+                            const string caption = "Atención";
+                            var result = MessageBox.Show(message, caption,
+                                                         MessageBoxButtons.OK,
+                                                       MessageBoxIcon.Exclamation);
                             throw new Exception();
                         }
                         else
@@ -178,24 +186,52 @@ namespace Stock
                     string NuevoRedito = txtReditoPorcentual.Text;
                     if (NuevoRedito == "" || NuevoRedito == "   %")
                     {
-                        MessageBox.Show("Debe ingresar el rédito porcentual que desea obtener de la marca seleccionada");
+                        const string message3 = "Debe ingresar el rédito porcentual que desea obtener de la marca seleccionada.";
+                        const string caption3 = "Atención";
+                        var result3 = MessageBox.Show(message3, caption3,
+                                                     MessageBoxButtons.OK,
+                                                   MessageBoxIcon.Exclamation);
                         throw new Exception();
                     }
-                    int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
-                    int idUsuario = idusuarioLogueado;
-                    ProgressBar();
-                    Exito = Negocio.PrecioDeVenta_Negocio.InsertPrecioDeVentaPorMarca(marca, NuevoRedito, idUsuario);
+                    const string message = "Desea modificar el precio de venta de los productos correspondientes a la marca seleccionada?";
+                    const string caption = "Modificar precio por marca";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Question);
+                    {
+                        if (result == DialogResult.Yes)
+                        {
+                            int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
+                            int idUsuario = idusuarioLogueado;
+                            ProgressBar();
+                            Exito = Negocio.PrecioDeVenta_Negocio.InsertPrecioDeVentaPorMarca(marca, NuevoRedito, idUsuario);
+                            if (Exito == true)
+                            {
+                                const string message2 = "Se registro el nuevo precio de venta exitosamente.";
+                                const string caption2 = "Modificar precio por marca";
+                                var result2 = MessageBox.Show(message2, caption2,
+                                                             MessageBoxButtons.OK,
+                                                             MessageBoxIcon.Asterisk);
+                                LimpiarCampos();
+                            }
+                        }
+                    }
                 }
                 else
                 {
                     Entidades.PrecioDeVenta _precio = CargarEntidad();
                     ProgressBar();
                     Exito = Negocio.PrecioDeVenta_Negocio.InsertPrecioDeVenta(_precio);
-                }
-                if (Exito == true)
-                {
-                    MessageBox.Show("Se registro el nuevo precio de venta exitosamente.");
-                    LimpiarCampos();
+                    if (Exito == true)
+                    {
+                        const string message = "Se registro el nuevo precio de venta exitosamente.";
+                        const string caption = "Modificar precio por marca";
+                        var result = MessageBox.Show(message, caption,
+                                                     MessageBoxButtons.OK,
+                                                     MessageBoxIcon.Asterisk);
+                        MessageBox.Show("Se registro el nuevo precio de venta exitosamente.");
+                        LimpiarCampos();
+                    }
                 }
             }
             catch (Exception ex)
@@ -307,14 +343,12 @@ namespace Stock
             }
             cmbMarca.Items.Add("Seleccione");
         }
-
         private void cmbMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtMarca.Text = cmbMarca.Text;
             txtReditoPorcentual.Enabled = true;
             txtReditoPorcentual.Focus();
         }
-
         private void panel200_Paint(object sender, PaintEventArgs e)
         {
 

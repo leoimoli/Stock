@@ -28,7 +28,11 @@ namespace Stock.Negocio
             var precio = Convert.ToString(_precio.Precio);
             if (precio == "0")
             {
-                MessageBox.Show("EL CAMPO PRECIO ES OBLIGATORIO.");
+                const string message = "El campo precio es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
         }
@@ -57,7 +61,11 @@ namespace Stock.Negocio
             }
             else
             {
-                MessageBox.Show("No hay productos para actualizar con los parametros de busqueda utilizados.");
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
                 throw new Exception();
             }
 

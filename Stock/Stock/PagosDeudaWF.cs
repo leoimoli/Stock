@@ -23,7 +23,6 @@ namespace Stock
         {
             set
             {
-
                 dataGridView1.DataSource = value;
                 var contadortotal = value.Count;
                 dataGridView1.Columns[0].HeaderText = "idPago";
@@ -62,7 +61,11 @@ namespace Stock
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
                 throw new Exception();
             }
         }

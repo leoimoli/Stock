@@ -82,7 +82,6 @@ namespace Stock
         {
             try
             {
-
                 chart1.Series.Clear();
                 List<Entidades.ListaCompras> resultado = new List<ListaCompras>();
                 List<Entidades.ListaComprasEstadistica> listaComprasEstadistica = new List<ListaComprasEstadistica>();
@@ -181,7 +180,11 @@ namespace Stock
         {
             if (fechaDesde > fechaHasta)
             {
-                MessageBox.Show("LA FECHA DESDE NO PUEDE SER MAYOR A LA FECHA HASTA");
+                const string message = "La fecha desde no puede ser mayor a la fecha hasta.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
         }
@@ -189,8 +192,6 @@ namespace Stock
         {
             set
             {
-                //List<Entidades.ListaCompras> resultado = new List<ListaCompras>();
-                //resultado.Clear();
                 DataGridViewLinkColumn seleccionar = new DataGridViewLinkColumn();
                 dataGridView1.ReadOnly = true;
                 dataGridView1.RowHeadersVisible = false;
@@ -255,12 +256,7 @@ namespace Stock
         {
             if (dataGridView1.CurrentCell.ColumnIndex == 4)
             {
-                //var idCliente = Convert.ToString(this.dgvListaDeClientes.CurrentRow.Cells[0].Value);
-                //var NombreRazonSocial = Convert.ToString(this.dgvListaDeClientes.CurrentRow.Cells[1].Value);
-                //var Cuit = Convert.ToString(this.dgvListaDeClientes.CurrentRow.Cells[2].Value);
-                //EjerciciosCliente _ejercicio = new EjerciciosCliente(idCliente, NombreRazonSocial, Cuit, 0, "", "");
-                //Close();
-                //_ejercicio.ShowDialog();
+               
             }
         }
 

@@ -39,13 +39,21 @@ namespace Stock
                 bool exito = Negocio.Clientes.ActualizarDeuda(cliente, Deuda, PagoIngresado);
                 if (exito == true)
                 {
-                    MessageBox.Show("Se realizo el descuento de la deuda exitosamente.");
+                    const string message2 = "Se registro el descuento exitosamente.";
+                    const string caption2 = "Éxito";
+                    var result2 = MessageBox.Show(message2, caption2,
+                                                 MessageBoxButtons.OK,
+                                                 MessageBoxIcon.Asterisk);
                     Hide();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
                 throw new Exception();
             }
         }

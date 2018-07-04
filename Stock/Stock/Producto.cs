@@ -30,7 +30,11 @@ namespace Stock
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
                 throw new Exception();
             }
         }
@@ -304,7 +308,11 @@ namespace Stock
                     bool Exito = Negocio.Producto.EditarProducto(_producto, idProductoGrillaSeleccionado);
                     if (Exito == true)
                     {
-                        MessageBox.Show("LA EDICIÓN DEL PRODUCTO SE REALIZO EXITOSAMENTE.");
+                        const string message2 = "La edición del producto se registro exitosamente.";
+                        const string caption2 = "Éxito";
+                        var result2 = MessageBox.Show(message2, caption2,
+                                                     MessageBoxButtons.OK,
+                                                     MessageBoxIcon.Asterisk);
                         LimpiarCampos();
                         List<Entidades.ProductoReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProductos());
                         ListaProductos = ListaReducidos;
@@ -319,7 +327,11 @@ namespace Stock
                     if (Exito == true)
                     {
                         ProgressBar();
-                        MessageBox.Show("SE REGISTRO EL PRODUCTO EXITOSAMENTE.");
+                        const string message2 = "Se registro el producto exitosamente.";
+                        const string caption2 = "Éxito";
+                        var result2 = MessageBox.Show(message2, caption2,
+                                                     MessageBoxButtons.OK,
+                                                     MessageBoxIcon.Asterisk);
                         LimpiarCampos();
                         List<Entidades.ProductoReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProductos());
                         ListaProductos = ListaReducidos;
@@ -342,7 +354,11 @@ namespace Stock
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
                 throw new Exception();
             }
         }
@@ -413,7 +429,11 @@ namespace Stock
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                    const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                    const string caption = "Atención";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Warning);
                     throw new Exception();
                 }
             }

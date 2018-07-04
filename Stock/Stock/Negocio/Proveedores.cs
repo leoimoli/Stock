@@ -19,7 +19,11 @@ namespace Stock.Negocio
                 bool ProveedorExistente = Negocio.Consultar.ValidarProveedorExistente(_proveedor.NombreEmpresa);
                 if (ProveedorExistente == true)
                 {
-                    MessageBox.Show("YA EXISTE UN PROVEEDOR REGISTRADO CON EL NOMBRE INGRESADO.");
+                    const string message = "Ya existe un proveedor registrado con el nombre ingresado.";
+                    const string caption = "Error";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Exclamation);
                     throw new Exception();
                 }
                 else
@@ -36,7 +40,11 @@ namespace Stock.Negocio
         {
             if (String.IsNullOrEmpty(_proveedor.NombreEmpresa))
             {
-                MessageBox.Show("EL CAMPO NOMBRE EMPRESA ES OBLIGATORIO.");
+                const string message = "El campo nombre es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
         }
@@ -49,7 +57,8 @@ namespace Stock.Negocio
                 exito = DAO.EditarDao.EditarProveedor(_proveedor, idProductoGrillaSeleccionado);
             }
             catch (Exception ex)
-            { }
+            {
+            }
             return exito;
         }
     }

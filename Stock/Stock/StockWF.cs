@@ -31,7 +31,11 @@ namespace Stock
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
                 throw new Exception();
             }
         }
@@ -198,7 +202,11 @@ namespace Stock
             int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
             _stock.idProducto = ProductoIngresado;
             _stock.CodigoProducto = txtCodigoProducto.Text;
-            _stock.Cantidad = Convert.ToInt32(txtCantidad.Text);
+            if (String.IsNullOrEmpty(txtCantidad.Text))
+            {
+                _stock.Cantidad = 0;
+            }
+            else { _stock.Cantidad = Convert.ToInt32(txtCantidad.Text); }
             _stock.Proveedor = cmbProveedor.Text;
             DateTime fechaActual = DateTime.Now;
             _stock.FechaActual = fechaActual;
@@ -232,11 +240,15 @@ namespace Stock
             try
             {
                 Entidades.Stock _stock = CargarEntidad();
-                ProgressBar();
                 bool Exito = Negocio.Stock.CargarStock(_stock);
                 if (Exito == true)
                 {
-                    MessageBox.Show("Se registro el stock exitosamente.");
+                    ProgressBar();
+                    const string message2 = "Se registro el stock exitosamente.";
+                    const string caption2 = "Éxito";
+                    var result2 = MessageBox.Show(message2, caption2,
+                                                 MessageBoxButtons.OK,
+                                                 MessageBoxIcon.Asterisk);
                     LimpiarCampos();
                     Lista = new List<ListaStock>();
                     Lista = Negocio.Consultar.ListaDeStock();
@@ -244,7 +256,11 @@ namespace Stock
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
                 throw new Exception();
             }
         }
@@ -309,7 +325,11 @@ namespace Stock
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                    const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                    const string caption = "Atención";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Warning);
                     throw new Exception();
                 }
             }
@@ -331,12 +351,10 @@ namespace Stock
             CalcularCostos();
         }
         #endregion
-
         private void SoloNumeros(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back);
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();

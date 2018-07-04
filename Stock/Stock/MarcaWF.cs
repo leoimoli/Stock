@@ -113,14 +113,22 @@ namespace Stock
                     bool Exito = Negocio.Marca.CargarMarca(_marca);
                     if (Exito == true)
                     {
-                        MessageBox.Show("SE REGISTRO LA MARCA EXITOSAMENTE.");
+                        const string message2 = "Se registro la marca exitosamente.";
+                        const string caption2 = "Éxito";
+                        var result2 = MessageBox.Show(message2, caption2,
+                                                     MessageBoxButtons.OK,
+                                                     MessageBoxIcon.Asterisk);
                         LimpiarCampos();
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
                 throw new Exception();
             }
         }

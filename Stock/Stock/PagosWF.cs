@@ -22,26 +22,20 @@ namespace Stock
             try
             {
                 CargarCombos();
-                //List<Entidades.PagosReducidos> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDePagos());
                 ListaPagos = Negocio.Consultar.ListaDePagos();
-                //ListaPagos = ListaReducidos;
                 dataGridView1.ReadOnly = true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
                 throw new Exception();
             }
         }
-        //private List<Entidades.PagosReducidos> CargarEntidadReducida(List<Entidades.Pagos> listaPagos)
-        //{
-        //    List<PagosReducidos> _pagoReducido = new List<PagosReducidos>();
-        //    foreach (var item in listaPagos)
-        //    {
-        //        _pagoReducido.Add(new PagosReducidos { IdPago = item.IdPago, Monto = item.Monto, Proveedor = item.Proveedor, FechaDePago = item.FechaDePago });
-        //    }
-        //    return _pagoReducido;
-        //}
+
         public List<Entidades.Pagos> ListaPagos
         {
             set
@@ -139,7 +133,15 @@ namespace Stock
                 btnGuardar.Visible = true;
                 btnCancelar.Visible = true;
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
 
         }
         private void cmbFormaPago_SelectedIndexChanged(object sender, EventArgs e)
@@ -159,13 +161,21 @@ namespace Stock
                 bool Exito = Negocio.Pagos.RegistrarPago(_pagos);
                 if (Exito == true)
                 {
-                    MessageBox.Show("El pago se registro exitosamente.");
+                    const string message2 = "Se registro el pago exitosamente.";
+                    const string caption2 = "Éxito";
+                    var result2 = MessageBox.Show(message2, caption2,
+                                                 MessageBoxButtons.OK,
+                                                 MessageBoxIcon.Asterisk);
                     LimpiarCampos();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
                 throw new Exception();
             }
         }

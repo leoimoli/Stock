@@ -29,7 +29,11 @@ namespace Stock.Negocio
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
                 throw new Exception();
             }
             return exito;
@@ -38,22 +42,39 @@ namespace Stock.Negocio
         {
             if (String.IsNullOrEmpty(_cliente.Dni))
             {
-                MessageBox.Show("EL CAMPO DNI ES OBLIGATORIO.");
+                const string message = "El campo dni es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
             if (_cliente.Sexo == "Seleccione")
             {
-                MessageBox.Show("EL CAMPO SEXO ES OBLIGATORIO.");
+                const string message = "El campo sexo es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+
                 throw new Exception();
             }
             if (String.IsNullOrEmpty(_cliente.Apellido))
             {
-                MessageBox.Show("EL CAMPO APELLIDO ES OBLIGATORIO.");
+                const string message = "El campo apellido es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
             if (String.IsNullOrEmpty(_cliente.Nombre))
             {
-                MessageBox.Show("EL CAMPO NOMBRE ES OBLIGATORIO.");
+                const string message = "El campo nombre es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
         }
@@ -77,7 +98,14 @@ namespace Stock.Negocio
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
             return exito;
         }
 
@@ -90,7 +118,14 @@ namespace Stock.Negocio
                 exito = DAO.EditarDao.EditarCliente(_cliente, idUsuarioSeleccionado);
             }
             catch (Exception ex)
-            { }
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
             return exito;
         }
         public static bool RegistrarPuntos(int idCliente, string puntos)
@@ -113,7 +148,14 @@ namespace Stock.Negocio
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
             return exito;
         }
         public static bool RegistrarCuentaCorriente(int idCliente, string deudaGuardar, DateTime fecha, int idVenta)
@@ -145,7 +187,11 @@ namespace Stock.Negocio
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
                 throw new Exception();
             }
             return exito;
@@ -173,7 +219,14 @@ namespace Stock.Negocio
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
             return exito;
         }
 
@@ -186,7 +239,11 @@ namespace Stock.Negocio
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
                 throw new Exception();
             }
             return _lista;

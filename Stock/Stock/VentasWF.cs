@@ -332,7 +332,14 @@ namespace Stock
                     }
                 }
                 catch (Exception ex)
-                { }
+                {
+                    const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                    const string caption = "Atención";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Warning);
+                    throw new Exception();
+                }
             }
         }
         private void btnFinalizarVenta_Click(object sender, EventArgs e)
@@ -355,7 +362,14 @@ namespace Stock
                 _cuenta.Show();
             }
             catch (Exception ex)
-            { }
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
         }
         public static string ProductoEliminar;
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -386,7 +400,11 @@ namespace Stock
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
                 throw new Exception();
             }
         }

@@ -28,12 +28,21 @@ namespace Stock.Negocio
             var monto = Convert.ToString(_pagos.Monto);
             if (String.IsNullOrEmpty(monto))
             {
-                MessageBox.Show("El campo MONTO PRODUCTO es obligatorio.");
+                const string message = "El campo monto producto es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
                 throw new Exception();
+
             }
             if (String.IsNullOrEmpty(_pagos.Proveedor) || _pagos.Proveedor == "Seleccione")
             {
-                MessageBox.Show("El campo Proveedor es obligatorio.");
+                const string message = "El campo proveedor es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
         }

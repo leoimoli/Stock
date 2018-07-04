@@ -24,14 +24,22 @@ namespace Stock.Negocio
         }
         private static void ValidarDatos(Entidades.Stock _stock)
         {
-            if (String.IsNullOrEmpty(_stock.Proveedor))
+            if (_stock.Cantidad == 0)
             {
-                MessageBox.Show("El campo cantidad es obligatorio.");
+                const string message = "El campo cantidad es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
-                if (String.IsNullOrEmpty(_stock.Proveedor))
+            if (String.IsNullOrEmpty(_stock.Proveedor))
             {
-                MessageBox.Show("El campo proveedor es obligatorio.");
+                const string message = "El campo proveedor es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
         }

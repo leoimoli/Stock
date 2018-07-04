@@ -21,10 +21,22 @@ namespace Stock
         }
         private void ProveedoresWF_Load(object sender, EventArgs e)
         {
-            txtBuscador.Focus();
-            List<Entidades.ProveedorReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProveedores());
-            ListaProveedores = ListaReducidos;
-            dataGridView1.ReadOnly = true;
+            try
+            {
+                txtBuscador.Focus();
+                List<Entidades.ProveedorReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProveedores());
+                ListaProveedores = ListaReducidos;
+                dataGridView1.ReadOnly = true;
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
         }
 
         #region Botones
@@ -54,7 +66,12 @@ namespace Stock
                     bool Exito = Negocio.Proveedores.EditarProducto(_proveedor, idProductoGrillaSeleccionado);
                     if (Exito == true)
                     {
-                        MessageBox.Show("LA EDICIÓN DEL PRODUCTO SE REALIZO EXITOSAMENTE.");
+                        ProgressBar();
+                        const string message2 = "La edición del proveedor se registro exitosamente.";
+                        const string caption2 = "Éxito";
+                        var result2 = MessageBox.Show(message2, caption2,
+                                                     MessageBoxButtons.OK,
+                                                     MessageBoxIcon.Asterisk);
                         LimpiarCampos();
                         List<Entidades.ProveedorReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProveedores());
                         ListaProveedores = ListaReducidos;
@@ -68,7 +85,11 @@ namespace Stock
                     bool Exito = Negocio.Proveedores.CargarProducto(_proveedor);
                     if (Exito == true)
                     {
-                        MessageBox.Show("SE REGISTRO EL PRODUCTO EXITOSAMENTE.");
+                        const string message2 = "Se registro el proveedor exitosamente.";
+                        const string caption2 = "Éxito";
+                        var result2 = MessageBox.Show(message2, caption2,
+                                                     MessageBoxButtons.OK,
+                                                     MessageBoxIcon.Asterisk);
                         LimpiarCampos();
                         List<Entidades.ProveedorReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeProveedores());
                         ListaProveedores = ListaReducidos;
@@ -208,76 +229,6 @@ namespace Stock
                 dataGridView1.Columns[1].HeaderCell.Style.BackColor = Color.DarkBlue;
                 dataGridView1.Columns[1].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
                 dataGridView1.Columns[1].HeaderCell.Style.ForeColor = Color.White;
-
-                //dataGridView1.Columns[2].HeaderText = "Nombre";
-                //dataGridView1.Columns[2].Width = 100;
-                //dataGridView1.Columns[2].HeaderCell.Style.BackColor = Color.DarkBlue;
-                //dataGridView1.Columns[2].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                //dataGridView1.Columns[2].HeaderCell.Style.ForeColor = Color.White;
-
-                //dataGridView1.Columns[3].HeaderText = "Dni";
-                //dataGridView1.Columns[3].Width = 90;
-                //dataGridView1.Columns[3].HeaderCell.Style.BackColor = Color.DarkBlue;
-                //dataGridView1.Columns[3].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                //dataGridView1.Columns[3].HeaderCell.Style.ForeColor = Color.White;
-
-                //dataGridView1.Columns[4].HeaderText = "FechaDeNacimiento";
-                //dataGridView1.Columns[4].Width = 100;
-                //dataGridView1.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
-                //dataGridView1.Columns[4].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                //dataGridView1.Columns[4].HeaderCell.Style.ForeColor = Color.White;
-                //dataGridView1.Columns[4].Visible = false;
-
-
-                //dataGridView1.Columns[5].HeaderText = "FechaDeAlta";
-                //dataGridView1.Columns[5].Width = 100;
-                //dataGridView1.Columns[5].HeaderCell.Style.BackColor = Color.DarkBlue;
-                //dataGridView1.Columns[5].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                //dataGridView1.Columns[5].HeaderCell.Style.ForeColor = Color.White;
-                //dataGridView1.Columns[5].Visible = false;
-
-                //dataGridView1.Columns[6].HeaderText = "FechaUltimaConexion";
-                //dataGridView1.Columns[6].Width = 100;
-                //dataGridView1.Columns[6].HeaderCell.Style.BackColor = Color.DarkBlue;
-                //dataGridView1.Columns[6].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                //dataGridView1.Columns[6].HeaderCell.Style.ForeColor = Color.White;
-                //dataGridView1.Columns[6].Visible = false;
-
-                //dataGridView1.Columns[7].HeaderText = "Contraseña";
-                //dataGridView1.Columns[7].Width = 100;
-                //dataGridView1.Columns[7].HeaderCell.Style.BackColor = Color.DarkBlue;
-                //dataGridView1.Columns[7].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                //dataGridView1.Columns[7].HeaderCell.Style.ForeColor = Color.White;
-                //dataGridView1.Columns[7].Visible = false;
-
-                //dataGridView1.Columns[8].HeaderText = "Contraseña2";
-                //dataGridView1.Columns[8].Width = 100;
-                //dataGridView1.Columns[8].HeaderCell.Style.BackColor = Color.DarkBlue;
-                //dataGridView1.Columns[8].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                //dataGridView1.Columns[8].HeaderCell.Style.ForeColor = Color.White;
-                //dataGridView1.Columns[8].Visible = false;
-
-
-                //dataGridView1.Columns[9].HeaderText = "Perfil";
-                //dataGridView1.Columns[9].Width = 100;
-                //dataGridView1.Columns[9].HeaderCell.Style.BackColor = Color.DarkBlue;
-                //dataGridView1.Columns[9].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                //dataGridView1.Columns[9].HeaderCell.Style.ForeColor = Color.White;
-                //dataGridView1.Columns[9].Visible = false;
-
-                //dataGridView1.Columns[10].HeaderText = "Estado";
-                //dataGridView1.Columns[10].Width = 100;
-                //dataGridView1.Columns[10].HeaderCell.Style.BackColor = Color.DarkBlue;
-                //dataGridView1.Columns[10].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                //dataGridView1.Columns[10].HeaderCell.Style.ForeColor = Color.White;
-                //dataGridView1.Columns[10].Visible = false;
-
-                //dataGridView1.Columns[11].HeaderText = "Foto";
-                //dataGridView1.Columns[11].Width = 100;
-                //dataGridView1.Columns[11].HeaderCell.Style.BackColor = Color.DarkBlue;
-                //dataGridView1.Columns[11].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
-                //dataGridView1.Columns[11].HeaderCell.Style.ForeColor = Color.White;
-                //dataGridView1.Columns[11].Visible = false;
             }
         }
         private List<Entidades.ProveedorReducido> CargarEntidadReducida(List<Proveedores> listaProveedores)
@@ -427,60 +378,65 @@ namespace Stock
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                    const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                    const string caption = "Atención";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Warning);
                     throw new Exception();
                 }
             }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+
+    private void btnCancelar_Click(object sender, EventArgs e)
+    {
+        LimpiarCampos();
+    }
+
+    private void btnCargarImagen_Click(object sender, EventArgs e)
+    {
+        try
         {
-            LimpiarCampos();
+            string path = "";
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            DialogResult result = openFileDialog1.ShowDialog();
+            path = openFileDialog1.FileName;
+            if (path != "")
+            {
+
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                var imagen = Image.FromFile(path);
+                if (imagen.Size.Height > 1024 || imagen.Size.Width > 1024)
+                {
+                    throw new Exception("EL TAMAÑO DE LA IMAGEN SUPERA EL PERMITIDO(1024x1024)");
+                }
+                pictureBox1.Image = Image.FromFile(path);
+            }
+            if (result == DialogResult.OK)
+            {
+                byte[] Imagen = null;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    Imagen = ms.ToArray();
+
+                }
+            }
+            else
+            {
+                txtImagen.Text = path;
+                pictureBox1.ImageLocation = txtImagen.Text;
+            }
+
+            urla = path;
         }
-
-        private void btnCargarImagen_Click(object sender, EventArgs e)
+        catch (Exception ex)
         {
-            try
-            {
-                string path = "";
-                OpenFileDialog openFileDialog1 = new OpenFileDialog();
-                DialogResult result = openFileDialog1.ShowDialog();
-                path = openFileDialog1.FileName;
-                if (path != "")
-                {
+            MessageBox.Show(ex.Message);
 
-                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-                    var imagen = Image.FromFile(path);
-                    if (imagen.Size.Height > 1024 || imagen.Size.Width > 1024)
-                    {
-                        throw new Exception("EL TAMAÑO DE LA IMAGEN SUPERA EL PERMITIDO(1024x1024)");
-                    }
-                    pictureBox1.Image = Image.FromFile(path);
-                }
-                if (result == DialogResult.OK)
-                {
-                    byte[] Imagen = null;
-                    using (MemoryStream ms = new MemoryStream())
-                    {
-                        pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                        Imagen = ms.ToArray();
-
-                    }
-                }
-                else
-                {
-                    txtImagen.Text = path;
-                    pictureBox1.ImageLocation = txtImagen.Text;
-                }
-
-                urla = path;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-
-            }
         }
     }
+}
 }
 

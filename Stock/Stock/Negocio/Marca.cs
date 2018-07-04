@@ -19,7 +19,11 @@ namespace Stock.Negocio
                 bool MarcaExistente = Negocio.Consultar.ValidarMarcaExistente(_marca.NombreMarca);
                 if (MarcaExistente == true)
                 {
-                    MessageBox.Show("YA EXISTE UNA MARCA REGISTRADO CON EL MISMO NOMBRE.");
+                    const string message = "Ya existe una marca registrada con el mismo nombre.";
+                    const string caption = "Error";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Exclamation);
                     throw new Exception();
                 }
                 else
@@ -36,7 +40,11 @@ namespace Stock.Negocio
         {
             if (String.IsNullOrEmpty(_marca.NombreMarca))
             {
-                MessageBox.Show("EL CAMPO NOMBE DE MARCA ES OBLIGATORIO.");
+                const string message = "El campo nombre de marca es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
         }

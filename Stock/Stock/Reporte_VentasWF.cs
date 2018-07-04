@@ -64,7 +64,11 @@ namespace Stock
         {
             if (fechaDesde > fechaHasta)
             {
-                MessageBox.Show("LA FECHA DESDE NO PUEDE SER MAYOR A LA FECHA HASTA");
+                const string message = "La fecha desde no puede ser mayor a la fecha hasta.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
         }

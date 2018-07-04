@@ -20,7 +20,11 @@ namespace Stock.Negocio
                 bool UsuarioExistente = Negocio.Consultar.ValidarProductoExistente(_producto.CodigoProducto);
                 if (UsuarioExistente == true)
                 {
-                    MessageBox.Show("YA EXISTE UN PRODUCTO REGISTRADO CON EL CÓDIGO INGRESADO.");
+                    const string message = "Ya existe un producto registrado con el código ingresado.";
+                    const string caption = "Error";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Exclamation);
                     throw new Exception();
                 }
                 else
@@ -29,7 +33,9 @@ namespace Stock.Negocio
                 }
             }
             catch (Exception ex)
-            { }
+            {
+              
+            }
             return exito;
         }
         public static bool EditarProducto(Productos _producto, int idProductoGrillaSeleccionado)
@@ -41,14 +47,26 @@ namespace Stock.Negocio
                 exito = DAO.EditarDao.EditarProducto(_producto, idProductoGrillaSeleccionado);
             }
             catch (Exception ex)
-            { }
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
             return exito;
         }
         private static void ValidarDatos(Productos _producto)
         {
             if (String.IsNullOrEmpty(_producto.CodigoProducto))
             {
-                MessageBox.Show("EL CAMPO CÓDIGO PRODUCTO ES OBLIGATORIO.");
+
+                const string message = "El campo código es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
         }

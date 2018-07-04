@@ -19,7 +19,11 @@ namespace Stock.Negocio
                 bool UsuarioExistente = Negocio.Consultar.ValidarUsuarioExistente(_usuario.Dni);
                 if (UsuarioExistente == true)
                 {
-                    MessageBox.Show("YA EXISTE UN USUARIO REGISTRADO CON EL DNI INGRESADO.");
+                    const string message = "Ya existe un usuario registrado con el dni ingresado.";
+                    const string caption = "Error";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Exclamation);
                     throw new Exception();
                 }
                 else
@@ -28,7 +32,9 @@ namespace Stock.Negocio
                 }
             }
             catch (Exception ex)
-            { }
+            {
+               
+            }
             return exito;
         }
         private static void ValidarDatos(Usuarios _usuario)
@@ -36,37 +42,65 @@ namespace Stock.Negocio
 
             if (String.IsNullOrEmpty(_usuario.Dni))
             {
-                MessageBox.Show("El campo dni es obligatorio..");
+                const string message = "El campo dni es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
             if (String.IsNullOrEmpty(_usuario.Apellido))
             {
-                MessageBox.Show("El campo apellido es obligatorio.");
+                const string message = "El campo apellido es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
             if (String.IsNullOrEmpty(_usuario.Nombre))
             {
-                MessageBox.Show("El campo nombre es obligatorio.");
+                const string message = "El campo nombre es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
             if (String.IsNullOrEmpty(_usuario.Contraseña))
             {
-                MessageBox.Show("El campo contraseña es obligatorio. ");
+                const string message = "El campo contraseña es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
             if (_usuario.Contraseña != _usuario.Contraseña2)
             {
-                MessageBox.Show("Las contraseñas ingresadas no coinciden.");
+                const string message = "Las contraseñas ingresadas no coinciden.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
             if (String.IsNullOrEmpty(_usuario.Perfil))
             {
-                MessageBox.Show("El perfil es un campo obligatorio.");
+                const string message = "El perfil es un campo obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
-            if (_usuario.Perfil != "ADMINISTRADOR" || _usuario.Perfil != "OPERADOR")
+            if (_usuario.Perfil != "ADMINISTRADOR" & _usuario.Perfil != "OPERADOR")
             {
-                MessageBox.Show("El perfil ingresado es inexistente.");
+                const string message = "El perfil ingresado es inexistente.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
         }
@@ -79,7 +113,9 @@ namespace Stock.Negocio
                 exito = DAO.EditarDao.EditarUsuario(_usuario, idusuario);
             }
             catch (Exception ex)
-            { }
+            {
+              
+            }
             return exito;
         }
     }

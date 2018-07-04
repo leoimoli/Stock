@@ -28,7 +28,11 @@ namespace Stock
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
                 throw new Exception();
             }
         }
@@ -125,7 +129,11 @@ namespace Stock
                     if (Exito == true)
                     {
                         ProgressBar();
-                        MessageBox.Show("LA EDICIÓN DEL USUARIO SE REALIZO EXITOSAMENTE.");
+                        const string message2 = "La edición del usuario se registro exitosamente.";
+                        const string caption2 = "Éxito";
+                        var result2 = MessageBox.Show(message2, caption2,
+                                                     MessageBoxButtons.OK,
+                                                     MessageBoxIcon.Asterisk);
                         LimpiarCampos();
                         List<Entidades.UsuarioReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeUsuarios());
                         ListaUsuarios = ListaReducidos;
@@ -144,7 +152,11 @@ namespace Stock
                     if (Exito == true)
                     {
                         ProgressBar();
-                        MessageBox.Show("SE REGISTRO EL USUARIO EXITOSAMENTE.");
+                        const string message2 = "Se registro el usuario exitosamente.";
+                        const string caption2 = "Éxito";
+                        var result2 = MessageBox.Show(message2, caption2,
+                                                     MessageBoxButtons.OK,
+                                                     MessageBoxIcon.Asterisk);
                         LimpiarCampos();
                         List<Entidades.UsuarioReducido> ListaReducidos = CargarEntidadReducida(Negocio.Consultar.ListaDeUsuarios());
                         ListaUsuarios = ListaReducidos;
@@ -158,7 +170,11 @@ namespace Stock
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
                 throw new Exception();
             }
         }
@@ -208,7 +224,11 @@ namespace Stock
                 string perfilUsuarioLogueado = Sesion.UsuarioLogueado.Perfil;
                 if (perfilUsuarioLogueado != "ADMINISTRADOR")
                 {
-                    MessageBox.Show("El usuario logueado no tiene permiso para la creación de usuarios.");
+                    const string message = "El usuario logueado no tiene permiso para la creación de usuarios.";
+                    const string caption = "Atención";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Exclamation);
                     Validacion = false;
                     throw new Exception();
                 }
