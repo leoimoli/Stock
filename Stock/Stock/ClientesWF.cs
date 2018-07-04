@@ -299,7 +299,6 @@ namespace Stock
             var split2 = var2.Split('-')[1];
             split2 = split2.Trim();
             txtTelefono.Text = split2;
-
         }
         #region Eventos Grilla
         private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)

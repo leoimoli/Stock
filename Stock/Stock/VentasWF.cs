@@ -203,7 +203,7 @@ namespace Stock
                 ticket.AddFooterLine(Vuelto);
                 // ticket.PrintTicket("EPSON TM-T88III Receipt"); //Nombre de la impresora de tickets
                 //ticket.PrintTicket("RICOH MP C2004 PCL 6");
-               // btnCuentaCorriente.Visible = true;
+                // btnCuentaCorriente.Visible = true;
                 //}
             }
         }
@@ -357,11 +357,38 @@ namespace Stock
             catch (Exception ex)
             { }
         }
-
+        public static string ProductoEliminar;
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            int variable;
+            ProductoEliminar = dgvVentas.CurrentRow.Cells[0].Value.ToString();
             dgvVentas.Rows.Remove(dgvVentas.CurrentRow);
+            EliminarProductoDeLista();
+        }
+
+        private void EliminarProductoDeLista()
+        {
+            try
+            {
+                foreach (var item in listaProductos)
+                {
+                    string BuscoCodigo = item.CodigoProducto;
+                    if (BuscoCodigo == ProductoEliminar)
+                    {
+                        decimal PrecioAcumuladoViejo = Convert.ToDecimal(lblTotalPagarReal.Text);
+                        decimal ValorRestar = item.PrecioVenta;
+                        decimal NuevoPrecioFinal = PrecioAcumuladoViejo - ValorRestar;
+                        item.PrecioVentaFinal = NuevoPrecioFinal;
+                        lblTotalPagarReal.Text = Convert.ToString(NuevoPrecioFinal);
+                        listaProductos.Remove(item);
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en el sistema. Intente nuevamente o comuniquese con el administrador.");
+                throw new Exception();
+            }
         }
     }
 }

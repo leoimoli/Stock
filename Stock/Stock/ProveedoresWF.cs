@@ -437,6 +437,50 @@ namespace Stock
         {
             LimpiarCampos();
         }
+
+        private void btnCargarImagen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string path = "";
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                DialogResult result = openFileDialog1.ShowDialog();
+                path = openFileDialog1.FileName;
+                if (path != "")
+                {
+
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                    var imagen = Image.FromFile(path);
+                    if (imagen.Size.Height > 1024 || imagen.Size.Width > 1024)
+                    {
+                        throw new Exception("EL TAMAÑO DE LA IMAGEN SUPERA EL PERMITIDO(1024x1024)");
+                    }
+                    pictureBox1.Image = Image.FromFile(path);
+                }
+                if (result == DialogResult.OK)
+                {
+                    byte[] Imagen = null;
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        Imagen = ms.ToArray();
+
+                    }
+                }
+                else
+                {
+                    txtImagen.Text = path;
+                    pictureBox1.ImageLocation = txtImagen.Text;
+                }
+
+                urla = path;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+        }
     }
 }
 

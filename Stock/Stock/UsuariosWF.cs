@@ -40,16 +40,19 @@ namespace Stock
         private void btnNuevoUsuario_Click(object sender, EventArgs e)
         {
             id = 0;
-            txtDni.Focus();
-            txtDni.Enabled = true;
-            lblEstado.Visible = false;
-            checkBox1.Visible = false;
-            checkBox2.Visible = false;
             LimpiarCampos();
-            ValidacionesUsuarioLogueado();
-            HabilitarCampos();
-            lblapellidoNombreEditar.Text = "Nuevo Usuario";
-            LimpiarLabels();
+            bool Validacion = ValidacionesUsuarioLogueado();
+            if (Validacion == true)
+            {
+                txtDni.Focus();
+                txtDni.Enabled = true;
+                lblEstado.Visible = false;
+                checkBox1.Visible = false;
+                checkBox2.Visible = false;
+                HabilitarCampos();
+                lblapellidoNombreEditar.Text = "Nuevo Usuario";
+                LimpiarLabels();
+            }
         }
         private void LimpiarLabels()
         {
@@ -197,19 +200,26 @@ namespace Stock
             }
         }
         public static string urla;
-        private void ValidacionesUsuarioLogueado()
+        private static bool ValidacionesUsuarioLogueado()
         {
+            bool Validacion = false;
             try
             {
                 string perfilUsuarioLogueado = Sesion.UsuarioLogueado.Perfil;
                 if (perfilUsuarioLogueado != "ADMINISTRADOR")
                 {
-                    MessageBox.Show("EL USUARIO LOGUEADO NO TIENE PERMISO PARA LA CREACIÓN DE USUARIOS.");
+                    MessageBox.Show("El usuario logueado no tiene permiso para la creación de usuarios.");
+                    Validacion = false;
                     throw new Exception();
+                }
+                else
+                {
+                    Validacion = true;
                 }
             }
             catch (Exception ex)
             { }
+            return Validacion;
         }
         private void LimpiarCampos()
         {

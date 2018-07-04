@@ -53,8 +53,8 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnFinalizarVenta = new System.Windows.Forms.Button();
             this.btnCuentaCorriente = new System.Windows.Forms.Button();
-            this.btnCobrar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnCobrar = new System.Windows.Forms.Button();
             this.panelGrande_Ventas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.panel2.SuspendLayout();
@@ -304,36 +304,36 @@
             this.btnCuentaCorriente.Visible = false;
             this.btnCuentaCorriente.Click += new System.EventHandler(this.btnCuentaCorriente_Click);
             // 
-            // btnCobrar
-            // 
-            this.btnCobrar.BackColor = System.Drawing.Color.Silver;
-            this.btnCobrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCobrar.Image = global::Stock.Properties.Resources.cobrar1;
-            this.btnCobrar.Location = new System.Drawing.Point(940, 491);
-            this.btnCobrar.Name = "btnCobrar";
-            this.btnCobrar.Size = new System.Drawing.Size(50, 40);
-            this.btnCobrar.TabIndex = 17;
-            this.btnCobrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCobrar.UseVisualStyleBackColor = false;
-            this.btnCobrar.Visible = false;
-            this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
-            // 
             // btnEliminar
             // 
             this.btnEliminar.BackColor = System.Drawing.Color.Silver;
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnEliminar.Image = global::Stock.Properties.Resources.Moroso_Grande;
+            this.btnEliminar.Image = global::Stock.Properties.Resources.cancelar;
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEliminar.Location = new System.Drawing.Point(737, 491);
+            this.btnEliminar.Location = new System.Drawing.Point(741, 491);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(80, 52);
             this.btnEliminar.TabIndex = 20;
-            this.btnEliminar.Text = "Deuda(F1)";
+            this.btnEliminar.Text = "Borrar";
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip1.SetToolTip(this.btnEliminar, "Registrar Deuda(F1)");
+            this.toolTip1.SetToolTip(this.btnEliminar, "Borrar Produto");
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnCobrar
+            // 
+            this.btnCobrar.BackColor = System.Drawing.Color.Silver;
+            this.btnCobrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCobrar.Image = global::Stock.Properties.Resources.cobrar1;
+            this.btnCobrar.Location = new System.Drawing.Point(919, 491);
+            this.btnCobrar.Name = "btnCobrar";
+            this.btnCobrar.Size = new System.Drawing.Size(80, 52);
+            this.btnCobrar.TabIndex = 17;
+            this.btnCobrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCobrar.UseVisualStyleBackColor = false;
+            this.btnCobrar.Visible = false;
+            this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
             // 
             // VentasWF
             // 

@@ -36,22 +36,37 @@ namespace Stock.Negocio
 
             if (String.IsNullOrEmpty(_usuario.Dni))
             {
-                MessageBox.Show("EL CAMPO DNI ES OBLIGATORIO.");
+                MessageBox.Show("El campo dni es obligatorio..");
                 throw new Exception();
             }
             if (String.IsNullOrEmpty(_usuario.Apellido))
             {
-                MessageBox.Show("EL CAMPO APELLIDO ES OBLIGATORIO.");
+                MessageBox.Show("El campo apellido es obligatorio.");
                 throw new Exception();
             }
             if (String.IsNullOrEmpty(_usuario.Nombre))
             {
-                MessageBox.Show("EL CAMPO NOMBRE ES OBLIGATORIO.");
+                MessageBox.Show("El campo nombre es obligatorio.");
+                throw new Exception();
+            }
+            if (String.IsNullOrEmpty(_usuario.Contraseña))
+            {
+                MessageBox.Show("El campo contraseña es obligatorio. ");
                 throw new Exception();
             }
             if (_usuario.Contraseña != _usuario.Contraseña2)
             {
-                MessageBox.Show("LAS CONTRASEÑAS INGRESADAS NO COINCIDEN.");
+                MessageBox.Show("Las contraseñas ingresadas no coinciden.");
+                throw new Exception();
+            }
+            if (String.IsNullOrEmpty(_usuario.Perfil))
+            {
+                MessageBox.Show("El perfil es un campo obligatorio.");
+                throw new Exception();
+            }
+            if (_usuario.Perfil != "ADMINISTRADOR" || _usuario.Perfil != "OPERADOR")
+            {
+                MessageBox.Show("El perfil ingresado es inexistente.");
                 throw new Exception();
             }
         }

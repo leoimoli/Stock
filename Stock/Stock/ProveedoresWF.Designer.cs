@@ -163,6 +163,7 @@
             this.toolTip1.SetToolTip(this.btnCargarImagen, "Cargar Imagen");
             this.btnCargarImagen.UseVisualStyleBackColor = false;
             this.btnCargarImagen.Visible = false;
+            this.btnCargarImagen.Click += new System.EventHandler(this.btnCargarImagen_Click);
             // 
             // txtImagen
             // 

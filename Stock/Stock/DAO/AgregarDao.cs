@@ -264,6 +264,7 @@ namespace Stock.DAO
         public static bool InsertarStock(Entidades.Stock _stock)
         {
             bool exito = false;
+            int CantidadEnviada = _stock.Cantidad;
             //bool stockExistente = DAO.ConsultarDao.ValidarStockExistente(_stock.idProducto);
             List<int> stockExistente = new List<int>();
             stockExistente = DAO.ConsultarDao.ValidarStockExistente(_stock.idProducto);
@@ -289,7 +290,7 @@ namespace Stock.DAO
                 MySqlCommand cmd = new MySqlCommand(proceso, connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("idProducto_in", _stock.idProducto);
-                cmd.Parameters.AddWithValue("Cantidad_in", _stock.Cantidad);
+                cmd.Parameters.AddWithValue("Cantidad_in", CantidadEnviada);
                 cmd.Parameters.AddWithValue("Proveedor_in", _stock.Proveedor);
                 cmd.Parameters.AddWithValue("FechaCompra_in", _stock.FechaCompra);
                 cmd.Parameters.AddWithValue("ValorUnitario_in", _stock.ValorUnitario);

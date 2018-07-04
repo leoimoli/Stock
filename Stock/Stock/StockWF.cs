@@ -203,12 +203,25 @@ namespace Stock
             DateTime fechaActual = DateTime.Now;
             _stock.FechaActual = fechaActual;
             _stock.FechaCompra = dtFechaCompra.Value;
-            _stock.ValorUnitario = Convert.ToDecimal(txtValorUni.Text);
-            _stock.ValorCompra = Convert.ToDecimal(txtTotalCompra.Text);
+            if (!String.IsNullOrEmpty(txtValorUni.Text))
+            {
+                _stock.ValorUnitario = Convert.ToDecimal(txtValorUni.Text);
+            }
+            if (!String.IsNullOrEmpty(txtTotalCompra.Text))
+            {
+                _stock.ValorCompra = Convert.ToDecimal(txtTotalCompra.Text);
+            }
             _stock.Remito = txtRemito.Text;
             _stock.VencimientoLote = dtFechaVencimiento.Value;
-            _stock.ReditoPorcentual = txtReditoPorcentual.Text;
-            _stock.PrecioDeVenta = Convert.ToDecimal(txtPrecioVenta.Text);
+            if (String.IsNullOrEmpty(txtReditoPorcentual.Text))
+            {
+                _stock.ReditoPorcentual = "0 %";
+            }
+            else { _stock.ReditoPorcentual = txtReditoPorcentual.Text; }
+            if (!String.IsNullOrEmpty(txtPrecioVenta.Text))
+            {
+                _stock.PrecioDeVenta = Convert.ToDecimal(txtPrecioVenta.Text);
+            }
             _stock.idUsuario = idusuarioLogueado;
             return _stock;
         }
@@ -223,7 +236,7 @@ namespace Stock
                 bool Exito = Negocio.Stock.CargarStock(_stock);
                 if (Exito == true)
                 {
-                    MessageBox.Show("SE REGISTRO EL STOCK EXITOSAMENTE.");
+                    MessageBox.Show("Se registro el stock exitosamente.");
                     LimpiarCampos();
                     Lista = new List<ListaStock>();
                     Lista = Negocio.Consultar.ListaDeStock();
