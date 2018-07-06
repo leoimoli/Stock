@@ -27,7 +27,7 @@ namespace Stock.Clases_Maestras
         {
             get
             {
-                return new string[] { "EFECTIVO", "CHEQUE" };
+                return new string[] {"SELECCIONE", "EFECTIVO", "CHEQUE" };
             }
         }
 

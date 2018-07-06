@@ -377,9 +377,9 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(208, 48);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 17);
+            this.label4.Size = new System.Drawing.Size(106, 17);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Proveedor:";
+            this.label4.Text = "Proveedor(*):";
             // 
             // label3
             // 

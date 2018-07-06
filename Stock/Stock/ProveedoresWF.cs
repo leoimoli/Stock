@@ -188,10 +188,16 @@ namespace Stock
             ///// Trabajo Gráfico.........
             List<HistorialDelProveedor> _historial = new List<HistorialDelProveedor>();
             _historial = Negocio.Consultar.HistorialDelProveedor(proveedor.NombreEmpresa);
-            string[] series1 = { proveedor.NombreEmpresa };
-            fillChart(series1, _historial);
-            btnCancelar.Visible = false;
-
+            if (_historial.Count > 0)
+            {
+                string[] series1 = { proveedor.NombreEmpresa };
+                fillChart(series1, _historial);
+                btnCancelar.Visible = false;
+            }
+            else
+            {
+                lblUsuarioEstadisticas.Text = "El proveedor no tiene historial de compras para mostrar";
+            }
         }
         private void fillChart(string[] series1, List<HistorialDelProveedor> _historial)
         {
@@ -389,54 +395,54 @@ namespace Stock
         }
 
 
-    private void btnCancelar_Click(object sender, EventArgs e)
-    {
-        LimpiarCampos();
-    }
-
-    private void btnCargarImagen_Click(object sender, EventArgs e)
-    {
-        try
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-            string path = "";
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            DialogResult result = openFileDialog1.ShowDialog();
-            path = openFileDialog1.FileName;
-            if (path != "")
-            {
-
-                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-                var imagen = Image.FromFile(path);
-                if (imagen.Size.Height > 1024 || imagen.Size.Width > 1024)
-                {
-                    throw new Exception("EL TAMAÑO DE LA IMAGEN SUPERA EL PERMITIDO(1024x1024)");
-                }
-                pictureBox1.Image = Image.FromFile(path);
-            }
-            if (result == DialogResult.OK)
-            {
-                byte[] Imagen = null;
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                    Imagen = ms.ToArray();
-
-                }
-            }
-            else
-            {
-                txtImagen.Text = path;
-                pictureBox1.ImageLocation = txtImagen.Text;
-            }
-
-            urla = path;
+            LimpiarCampos();
         }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.Message);
 
+        private void btnCargarImagen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string path = "";
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                DialogResult result = openFileDialog1.ShowDialog();
+                path = openFileDialog1.FileName;
+                if (path != "")
+                {
+
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                    var imagen = Image.FromFile(path);
+                    if (imagen.Size.Height > 1024 || imagen.Size.Width > 1024)
+                    {
+                        throw new Exception("EL TAMAÑO DE LA IMAGEN SUPERA EL PERMITIDO(1024x1024)");
+                    }
+                    pictureBox1.Image = Image.FromFile(path);
+                }
+                if (result == DialogResult.OK)
+                {
+                    byte[] Imagen = null;
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        Imagen = ms.ToArray();
+
+                    }
+                }
+                else
+                {
+                    txtImagen.Text = path;
+                    pictureBox1.ImageLocation = txtImagen.Text;
+                }
+
+                urla = path;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
         }
     }
-}
 }
 

@@ -39,7 +39,6 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lblFormaPagoFijo = new System.Windows.Forms.Label();
             this.cmbFormaPago = new System.Windows.Forms.ComboBox();
-            this.btnAgregarMarca = new System.Windows.Forms.Button();
             this.btnCargar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
@@ -76,7 +75,6 @@
             this.panel_RegistrarPago.Controls.Add(this.dateTimePicker1);
             this.panel_RegistrarPago.Controls.Add(this.lblFormaPagoFijo);
             this.panel_RegistrarPago.Controls.Add(this.cmbFormaPago);
-            this.panel_RegistrarPago.Controls.Add(this.btnAgregarMarca);
             this.panel_RegistrarPago.Controls.Add(this.btnCargar);
             this.panel_RegistrarPago.Controls.Add(this.btnCancelar);
             this.panel_RegistrarPago.Controls.Add(this.btnGuardar);
@@ -175,24 +173,13 @@
             // 
             // cmbFormaPago
             // 
+            this.cmbFormaPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFormaPago.FormattingEnabled = true;
             this.cmbFormaPago.Location = new System.Drawing.Point(240, 6);
             this.cmbFormaPago.Name = "cmbFormaPago";
             this.cmbFormaPago.Size = new System.Drawing.Size(200, 21);
             this.cmbFormaPago.TabIndex = 34;
             this.cmbFormaPago.SelectedIndexChanged += new System.EventHandler(this.cmbFormaPago_SelectedIndexChanged);
-            // 
-            // btnAgregarMarca
-            // 
-            this.btnAgregarMarca.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnAgregarMarca.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAgregarMarca.Image = global::Stock.Properties.Resources.Agregar_2__40X35;
-            this.btnAgregarMarca.Location = new System.Drawing.Point(492, 174);
-            this.btnAgregarMarca.Name = "btnAgregarMarca";
-            this.btnAgregarMarca.Size = new System.Drawing.Size(50, 40);
-            this.btnAgregarMarca.TabIndex = 33;
-            this.btnAgregarMarca.UseVisualStyleBackColor = false;
-            this.btnAgregarMarca.Visible = false;
             // 
             // btnCargar
             // 
@@ -401,7 +388,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel_RegistrarPago;
-        private System.Windows.Forms.Button btnAgregarMarca;
         private System.Windows.Forms.Button btnCargar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
