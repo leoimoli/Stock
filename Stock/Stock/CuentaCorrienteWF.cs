@@ -36,9 +36,10 @@ namespace Stock
             {
                 List<Entidades.Clientes> _cliente = new List<Entidades.Clientes>();
                 _cliente = Negocio.Consultar.BuscarClienteIngresado(txtDni.Text);
-                idCliente = _cliente[0].IdCliente;
+               
                 if (_cliente.Count > 0)
                 {
+                    idCliente = _cliente[0].IdCliente;
                     lblTotalPagar.Text = Convert.ToString(totalPagar);
                     var cliente = _cliente[0].Apellido + " " + _cliente[0].Nombre;
                     lblApellidoNombre.Text = cliente;

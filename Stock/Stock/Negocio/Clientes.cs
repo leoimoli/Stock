@@ -91,7 +91,7 @@ namespace Stock.Negocio
                 split = split.Trim();
                 decimal DeudaVieja = Convert.ToDecimal(split);
                 ValorDeuda = DeudaVieja - pagoIngresado;
-                exito = DAO.AgregarDao.RegistrarPagoDeDeuda(ValorDeuda, _cliente.IdCliente, _cliente.idUsuario);
+                exito = DAO.AgregarDao.RegistrarPagoDeDeuda(pagoIngresado, _cliente.IdCliente, _cliente.idUsuario);
                 if (exito == true)
                 {
                     exito = DAO.EditarDao.ActualizarDeuda(ValorDeuda, _cliente.IdCliente);
@@ -164,8 +164,9 @@ namespace Stock.Negocio
             decimal deudaNueva = Convert.ToDecimal(deudaGuardar);
             try
             {
+                bool ExisteCC = DAO.ConsultarDao.BuscarCCExistente(idCliente);
                 decimal DeudaVieja = DAO.ConsultarDao.BuscarDeudaExistente(idCliente);
-                if (DeudaVieja >= 0)
+                if (DeudaVieja >= 0 & ExisteCC == true)
                 {
                     decimal DEUDA = DeudaVieja + deudaNueva;
                     exito = DAO.EditarDao.ActualizarDeuda(DEUDA, idCliente);
@@ -177,7 +178,7 @@ namespace Stock.Negocio
                 }
                 else
                 {
-                    exito = DAO.AgregarDao.InsertarCuentaCorriente(idCliente, deudaGuardar);
+                    exito = DAO.AgregarDao.InsertarCuentaCorriente(idCliente, deudaNueva);
                     if (exito == true)
                     {
                         exito = DAO.AgregarDao.InsertarDetalleCuentaCorriente(idCliente, deudaNueva, fecha, idVenta);

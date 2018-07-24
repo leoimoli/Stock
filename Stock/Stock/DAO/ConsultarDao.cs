@@ -85,6 +85,76 @@ namespace Stock.DAO
             connection.Close();
             return _listaProductos;
         }
+
+        public static List<Productos> ListarProductoPorCodigo(string codigo)
+        {
+            connection.Close();
+            connection.Open();
+            List<Productos> _listaProductos = new List<Productos>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("codigo_in", codigo) };
+            string proceso = "ListarConsultaProductoPorCodigo";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Productos listaProducto = new Entidades.Productos();
+                    listaProducto.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    listaProducto.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaProducto.NombreProducto = item["txNombreProducto"].ToString();
+                    listaProducto.MarcaProducto = item["txMarcaProducto"].ToString();
+                    listaProducto.Descripcion = item["txDescripcion"].ToString();
+                    listaProducto.PrecioDeVenta = Convert.ToDecimal(item["txPrecioDeVenta"].ToString());
+                    listaProducto.Cantidad = item["txCantidad"].ToString();
+                    _listaProductos.Add(listaProducto);
+                }
+            }
+            connection.Close();
+            return _listaProductos;
+        }
+
+        public static List<Productos> ListarProductoPorDescripcion(string descripcion)
+        {
+            connection.Close();
+            connection.Open();
+            List<Productos> _listaProductos = new List<Productos>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("descripcion_in", descripcion) };
+            string proceso = "ListarProductoPorDescripcion";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Productos listaProducto = new Entidades.Productos();
+                    listaProducto.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    listaProducto.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaProducto.NombreProducto = item["txNombreProducto"].ToString();
+                    listaProducto.MarcaProducto = item["txMarcaProducto"].ToString();
+                    listaProducto.Descripcion = item["txDescripcion"].ToString();
+                    var variable = item["txPrecioDeVenta"].ToString();
+                    if (variable != "")
+                    { listaProducto.PrecioDeVenta = Convert.ToDecimal(item["txPrecioDeVenta"].ToString()); }
+                    else { listaProducto.PrecioDeVenta = 0; }
+
+                    listaProducto.Cantidad = item["txCantidad"].ToString();
+                    _listaProductos.Add(listaProducto);
+                }
+            }
+            connection.Close();
+            return _listaProductos;
+        }
         public static decimal BuscarDeudaExistente(int idCliente)
         {
             connection.Close();
@@ -164,6 +234,32 @@ namespace Stock.DAO
             connection.Close();
             return PuntosViejos;
         }
+
+        public static bool BuscarCCExistente(int idCliente)
+        {
+            connection.Close();
+            bool Existe = false;
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("idCliente_in", idCliente) };
+            string proceso = "BuscarCCExistente";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            DataSet ds = new DataSet();
+            dt.Fill(ds, "cuentacorriente");
+            if (Tabla.Rows.Count > 0)
+            {
+                Existe = true;
+            }
+            connection.Close();
+            return Existe;
+        }
+
         public static List<ListaPagosDeDeudas> ConsultaPagoDeuda(int idClienteSeleccionado)
         {
             connection.Close();
@@ -326,6 +422,8 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
+
+
 
         public static List<Productos> BuscarProducto(string codigoProducto)
         {
@@ -782,7 +880,12 @@ namespace Stock.DAO
                     _historialProductoPrecioDeVenta.ValorUnitario = Convert.ToDecimal(item["txValorUnitario"].ToString());
                     _historialProductoPrecioDeVenta.PrecioTotalDeCompra = Convert.ToDecimal(item["txPrecioTotal"].ToString());
                     _historialProductoPrecioDeVenta.ReditoPorcentual = item["txReditoPorcentual"].ToString();
-                    _historialProductoPrecioDeVenta.PrecioDeVenta = Convert.ToDecimal(item["ultimoPrecioVenta"].ToString());
+                    var asss = item["ultimoPrecioVenta"].ToString();
+                    if (asss != "")
+                    {
+                        _historialProductoPrecioDeVenta.PrecioDeVenta = Convert.ToDecimal(item["ultimoPrecioVenta"].ToString());
+                    }
+                    else { _historialProductoPrecioDeVenta.PrecioDeVenta = 0; }
                     _lista.Add(_historialProductoPrecioDeVenta);
                 }
             }

@@ -61,6 +61,63 @@ namespace Stock.Negocio
             return _listaProductos;
         }
 
+        public static List<Productos> ConsultaProductoPorCodigo(string codigo)
+        {
+            List<Productos> _listaProductos = new List<Productos>();
+            try
+            {
+                _listaProductos = DAO.ConsultarDao.ListarProductoPorCodigo(codigo);
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaProductos;
+        }
+
+        public static List<Productos> ListarProductoPorDescripcion(string descripcion)
+        {
+            List<Productos> _listaProductos = new List<Productos>();
+            try
+            {
+                _listaProductos = DAO.ConsultarDao.ListarProductoPorDescripcion(descripcion);
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaProductos;
+        }
+
+        public static List<Productos> ListarProducto(string descripcion)
+        {
+             List<Productos> _listaProductos = new List<Productos>();
+            try
+            {
+                _listaProductos = DAO.ConsultarDao.ListarProductos();
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaProductos;
+        }
+
         public static List<Entidades.Clientes> ListaDeClientes()
         {
             List<Entidades.Clientes> _listaClientes = new List<Entidades.Clientes>();

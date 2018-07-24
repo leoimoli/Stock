@@ -41,7 +41,7 @@ namespace Stock
                         _lista = Negocio.Consultar.BuscarProductoParaVenta(codigoProducto);
                         if (_lista.Count > 0)
                         {
-                            int cantidadingresada = 1;
+                            int cantidadingresada = Convert.ToInt32(txtCantidad.Text);
                             _lista[0].Cantidad = cantidadingresada;
                             var lista = _lista.First();
                             listaProductos.Add(lista);
@@ -55,6 +55,15 @@ namespace Stock
                             //label3.Text = Convert.ToString(lista.PrecioUnitario);
                             lblNombreProducto.Text = lista.NombreProducto;
                             txtCodigo.Clear();
+                            txtCantidad.Text = "1";
+                        }
+                        else
+                        {
+                            const string message2 = "El producto ingresado no existe o no tiene un precio de venta cargado.";
+                            const string caption2 = "Error";
+                            var result2 = MessageBox.Show(message2, caption2,
+                                                         MessageBoxButtons.OK,
+                                                         MessageBoxIcon.Exclamation);
                         }
                     }
                     else
@@ -121,7 +130,7 @@ namespace Stock
                                 Bitmap foto1 = Clases_Maestras.Funciones.byteToBipmap(lista.Foto);
                                 pictureBox1.Image = foto1;
                             }
-                            lblVueltoFijo.Text = Convert.ToString(lista.PrecioUnitario);
+                            // lblVueltoFijo.Text = Convert.ToString(lista.PrecioUnitario);
                             lblNombreProducto.Text = lista.NombreProducto;
                             txtCodigo.Clear();
                         }
@@ -203,7 +212,7 @@ namespace Stock
                 ticket.AddFooterLine(Vuelto);
                 // ticket.PrintTicket("EPSON TM-T88III Receipt"); //Nombre de la impresora de tickets
                 //ticket.PrintTicket("RICOH MP C2004 PCL 6");
-                // btnCuentaCorriente.Visible = true;
+                btnCuentaCorriente.Visible = true;
                 //}
             }
         }
@@ -345,7 +354,7 @@ namespace Stock
         private void btnFinalizarVenta_Click(object sender, EventArgs e)
         {
             btnCobrar.Visible = true;
-            btnCuentaCorriente.Visible = true;
+            btnCuentaCorriente.Visible = false;
             lblEfectivoFijo.Visible = true;
             textBox1.Visible = true;
             textBox1.Focus();
@@ -374,11 +383,16 @@ namespace Stock
         public static string ProductoEliminar;
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            ProductoEliminar = dgvVentas.CurrentRow.Cells[0].Value.ToString();
-            dgvVentas.Rows.Remove(dgvVentas.CurrentRow);
-            EliminarProductoDeLista();
+            if (listaProductos.Count > 0)
+            {
+                if (dgvVentas.CurrentRow.Cells[0].Value != null)
+                {
+                    ProductoEliminar = dgvVentas.CurrentRow.Cells[0].Value.ToString();
+                    dgvVentas.Rows.Remove(dgvVentas.CurrentRow);
+                    EliminarProductoDeLista();
+                }
+            }
         }
-
         private void EliminarProductoDeLista()
         {
             try

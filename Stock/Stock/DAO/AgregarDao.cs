@@ -125,7 +125,7 @@ namespace Stock.DAO
             return exito;
         }
 
-        public static bool InsertarCuentaCorriente(int idCliente, string deudaGuardar)
+        public static bool InsertarCuentaCorriente(int idCliente, decimal deudaGuardar)
         {
             bool exito = false;
             connection.Close();

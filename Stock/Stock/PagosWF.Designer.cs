@@ -54,12 +54,15 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.lblHistorialProducto = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel_RegistrarPago.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel200.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel100.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_RegistrarPago
@@ -310,6 +313,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel6.Controls.Add(this.dataGridView2);
             this.panel6.Location = new System.Drawing.Point(311, 364);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(611, 187);
@@ -346,6 +350,15 @@
             this.progressBar1.Value = 10;
             this.progressBar1.Visible = false;
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.LightBlue;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(35, 23);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(540, 140);
+            this.dataGridView2.TabIndex = 2;
+            // 
             // PagosWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -378,8 +391,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel100.ResumeLayout(false);
             this.panel100.PerformLayout();
+            this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -413,5 +428,6 @@
         private System.Windows.Forms.ComboBox cmbProveedor;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button btnNuevoPago;
+        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }

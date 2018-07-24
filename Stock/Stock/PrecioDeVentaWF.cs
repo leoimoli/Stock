@@ -118,7 +118,23 @@ namespace Stock
         }
         private void CalcularCostos()
         {
-            if (txtTotalCompra.Text != "" & txtReditoPorcentual.Text != "   %")
+            if (txtPrecioActualVenta.Text != "" & txtReditoPorcentual.Text != "   %")
+            {
+                ///// Realizo el calculo teniendo en cuenta el valor actual de venta.
+                decimal totalCompraIngresada = Convert.ToDecimal(txtPrecioActualVenta.Text);
+                var split = txtReditoPorcentual.Text.Split('%')[0];
+                split = split.Trim();
+                decimal porcentaje = Convert.ToDecimal(split) / 100;
+                decimal ValorVentaCalculado;
+                if (totalCompraIngresada > 0 & porcentaje > 0)
+                {
+                    ValorVentaCalculado = totalCompraIngresada * porcentaje + totalCompraIngresada;
+                    txtPrecioVenta.Text = Convert.ToString(decimal.Round(ValorVentaCalculado, 2));
+                }
+
+            }
+            else
+                if (txtTotalCompra.Text != "" & txtReditoPorcentual.Text != "   %")
             {
                 decimal totalCompraIngresada = Convert.ToDecimal(txtValorUni.Text);
                 var split = txtReditoPorcentual.Text.Split('%')[0];
@@ -214,7 +230,16 @@ namespace Stock
                                                              MessageBoxIcon.Asterisk);
                                 LimpiarCampos();
                             }
+                            else
+                            {
+                                const string message3 = "Los productos asociados a la marca seleccionada, no tiene un precio de venta predefinido que se pueda modificar.";
+                                const string caption3 = "Modificar precio por marca";
+                                var result3 = MessageBox.Show(message3, caption3,
+                                                             MessageBoxButtons.OK,
+                                                             MessageBoxIcon.Exclamation);
+                            }
                         }
+
                     }
                 }
                 else
@@ -229,7 +254,6 @@ namespace Stock
                         var result = MessageBox.Show(message, caption,
                                                      MessageBoxButtons.OK,
                                                      MessageBoxIcon.Asterisk);
-                        MessageBox.Show("Se registro el nuevo precio de venta exitosamente.");
                         LimpiarCampos();
                     }
                 }
