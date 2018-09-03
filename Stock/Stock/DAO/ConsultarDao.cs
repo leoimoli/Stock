@@ -455,6 +455,32 @@ namespace Stock.DAO
             return lista;
         }
 
+        public static int BuscarProductoPorDescripcion(string descripcion)
+        {
+            connection.Close();
+            connection.Open();
+            var CodigoProducto = 0;
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("Descripcion_in", descripcion)};
+            string proceso = "BuscarProductoPorDescripcion";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    CodigoProducto = Convert.ToInt32(item["txCodigoProducto"].ToString());
+                }
+            }
+            connection.Close();
+            return CodigoProducto;
+        }
+
         public static List<ListaCompras> ConsultarComprasPorRemito(string remito)
         {
             connection.Close();
@@ -547,7 +573,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<Entidades.Proveedores> BuscarProvedorPorNombre(string nombreProveedor)
         {
             connection.Close();

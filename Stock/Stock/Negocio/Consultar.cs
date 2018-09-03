@@ -101,7 +101,7 @@ namespace Stock.Negocio
 
         public static List<Productos> ListarProducto(string descripcion)
         {
-             List<Productos> _listaProductos = new List<Productos>();
+            List<Productos> _listaProductos = new List<Productos>();
             try
             {
                 _listaProductos = DAO.ConsultarDao.ListarProductos();
@@ -481,6 +481,19 @@ namespace Stock.Negocio
                 throw new Exception();
             }
             return idProducto;
+        }
+        public static object BuscarPorDescripcion(string descripcion)
+        {
+            var CodigoProducto = 0;
+            try
+            {
+                CodigoProducto = DAO.ConsultarDao.BuscarProductoPorDescripcion(descripcion);
+            }
+            catch (Exception ex)
+            {
+               
+            }
+            return CodigoProducto;
         }
 
         public static bool ValidarProveedorExistente(string nombreEmpresa)

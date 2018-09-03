@@ -25,6 +25,9 @@ namespace Stock
             listaProductos = new List<Entidades.ListaProductoVenta>();
             dgvVentas.RowHeadersVisible = false;
             dgvVentas.ReadOnly = true;
+            txtNombreBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleClass.Autocomplete();
+            txtNombreBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtNombreBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
         public static List<Entidades.ListaProductoVenta> listaProductos;
         private void txtCodigo_KeyDown(object sender, KeyEventArgs e)
@@ -422,7 +425,30 @@ namespace Stock
                 throw new Exception();
             }
         }
+
+        private void txtNombreBuscar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    string descripcion = txtNombreBuscar.Text;
+                    var CodigoProducto = Negocio.Consultar.BuscarPorDescripcion(descripcion);
+                    if (CodigoProducto != "")
+                    {
+                        txtCodigo.Text = Convert.ToString(CodigoProducto);
+                        txtNombreBuscar.Clear();
+                        txtCodigo.Focus();
+                    }
+
+                }
+                catch (Exception ex)
+                { }
+            }
+        }
+
     }
 }
+
 
 
