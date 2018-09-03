@@ -31,11 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.panelGrande_Ventas = new System.Windows.Forms.Panel();
             this.dgvVentas = new System.Windows.Forms.DataGridView();
-            this.CodigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lblEfectivoFijo = new System.Windows.Forms.Label();
@@ -58,6 +53,11 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtNombreBuscar = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.CodigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelGrande_Ventas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.panel2.SuspendLayout();
@@ -85,38 +85,11 @@
             this.Cantidad,
             this.PrecioVenta,
             this.PrecioFinal});
-            this.dgvVentas.Location = new System.Drawing.Point(24, 12);
+            this.dgvVentas.Location = new System.Drawing.Point(3, 12);
             this.dgvVentas.Name = "dgvVentas";
-            this.dgvVentas.Size = new System.Drawing.Size(650, 430);
+            this.dgvVentas.Size = new System.Drawing.Size(695, 430);
             this.dgvVentas.TabIndex = 0;
             this.dgvVentas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvVentas_KeyDown);
-            // 
-            // CodigoProducto
-            // 
-            this.CodigoProducto.HeaderText = "Código Producto";
-            this.CodigoProducto.Name = "CodigoProducto";
-            this.CodigoProducto.Width = 150;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripción";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.Width = 150;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            // 
-            // PrecioVenta
-            // 
-            this.PrecioVenta.HeaderText = "Valor Venta";
-            this.PrecioVenta.Name = "PrecioVenta";
-            // 
-            // PrecioFinal
-            // 
-            this.PrecioFinal.HeaderText = "Precio Final";
-            this.PrecioFinal.Name = "PrecioFinal";
             // 
             // panel2
             // 
@@ -368,6 +341,34 @@
             this.lblNombre.TabIndex = 20;
             this.lblNombre.Text = "Nombre Producto:";
             // 
+            // CodigoProducto
+            // 
+            this.CodigoProducto.HeaderText = "Código Producto";
+            this.CodigoProducto.Name = "CodigoProducto";
+            this.CodigoProducto.Width = 145;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripción";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.Width = 245;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.Width = 60;
+            // 
+            // PrecioVenta
+            // 
+            this.PrecioVenta.HeaderText = "Valor Venta";
+            this.PrecioVenta.Name = "PrecioVenta";
+            // 
+            // PrecioFinal
+            // 
+            this.PrecioFinal.HeaderText = "Precio Final";
+            this.PrecioFinal.Name = "PrecioFinal";
+            // 
             // VentasWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -421,11 +422,6 @@
         private System.Windows.Forms.Label lblTotalPagar;
         private System.Windows.Forms.Label lblTotalPagarReal;
         private System.Windows.Forms.Label lblNombreProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioFinal;
         private System.Windows.Forms.Button btnCobrar;
         private System.Windows.Forms.Label lblEfectivoFijo;
         private System.Windows.Forms.Label lblCambio;
@@ -438,5 +434,10 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txtNombreBuscar;
         private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioFinal;
     }
 }

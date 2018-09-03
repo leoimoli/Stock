@@ -70,6 +70,8 @@
             this.lblInformacion = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panelInformacion = new System.Windows.Forms.Panel();
+            this.EditDescripcion_Producto = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.EditUsuario_Creador = new System.Windows.Forms.Label();
             this.EditFecha_Alta_Producto = new System.Windows.Forms.Label();
             this.EditPrecio_de_Venta = new System.Windows.Forms.Label();
@@ -535,6 +537,8 @@
             // panelInformacion
             // 
             this.panelInformacion.BackColor = System.Drawing.Color.LightBlue;
+            this.panelInformacion.Controls.Add(this.EditDescripcion_Producto);
+            this.panelInformacion.Controls.Add(this.label21);
             this.panelInformacion.Controls.Add(this.EditUsuario_Creador);
             this.panelInformacion.Controls.Add(this.EditFecha_Alta_Producto);
             this.panelInformacion.Controls.Add(this.EditPrecio_de_Venta);
@@ -549,17 +553,40 @@
             this.panelInformacion.Controls.Add(this.label13);
             this.panelInformacion.Controls.Add(this.label12);
             this.panelInformacion.Controls.Add(this.label11);
-            this.panelInformacion.Location = new System.Drawing.Point(33, 16);
+            this.panelInformacion.Location = new System.Drawing.Point(33, 2);
             this.panelInformacion.Name = "panelInformacion";
-            this.panelInformacion.Size = new System.Drawing.Size(550, 150);
+            this.panelInformacion.Size = new System.Drawing.Size(550, 180);
             this.panelInformacion.TabIndex = 0;
+            // 
+            // EditDescripcion_Producto
+            // 
+            this.EditDescripcion_Producto.AutoSize = true;
+            this.EditDescripcion_Producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditDescripcion_Producto.ForeColor = System.Drawing.Color.Black;
+            this.EditDescripcion_Producto.Location = new System.Drawing.Point(141, 138);
+            this.EditDescripcion_Producto.Name = "EditDescripcion_Producto";
+            this.EditDescripcion_Producto.Size = new System.Drawing.Size(102, 13);
+            this.EditDescripcion_Producto.TabIndex = 38;
+            this.EditDescripcion_Producto.Text = "Usuario Creador:";
+            this.EditDescripcion_Producto.Visible = false;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.Black;
+            this.label21.Location = new System.Drawing.Point(9, 138);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(132, 13);
+            this.label21.TabIndex = 37;
+            this.label21.Text = "Descripción producto:";
             // 
             // EditUsuario_Creador
             // 
             this.EditUsuario_Creador.AutoSize = true;
             this.EditUsuario_Creador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditUsuario_Creador.ForeColor = System.Drawing.Color.Black;
-            this.EditUsuario_Creador.Location = new System.Drawing.Point(398, 110);
+            this.EditUsuario_Creador.Location = new System.Drawing.Point(398, 102);
             this.EditUsuario_Creador.Name = "EditUsuario_Creador";
             this.EditUsuario_Creador.Size = new System.Drawing.Size(102, 13);
             this.EditUsuario_Creador.TabIndex = 36;
@@ -654,7 +681,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(290, 110);
+            this.label16.Location = new System.Drawing.Point(290, 102);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(102, 13);
             this.label16.TabIndex = 28;
@@ -850,5 +877,7 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label EditDescripcion_Producto;
     }
 }

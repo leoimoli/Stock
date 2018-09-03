@@ -425,7 +425,6 @@ namespace Stock
                 throw new Exception();
             }
         }
-
         private void txtNombreBuscar_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

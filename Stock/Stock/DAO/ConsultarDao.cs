@@ -622,7 +622,7 @@ namespace Stock.DAO
                 {
                     Entidades.ListaStockFaltante listaStock = new Entidades.ListaStockFaltante();
                     listaStock.CodigoProducto = item["txCodigoProducto"].ToString();
-                    listaStock.Nombre = item["txNombreProducto"].ToString();
+                    listaStock.Nombre = item["txDescripcion"].ToString();
                     listaStock.Marca = item["txMarcaProducto"].ToString();
                     listaStock.Cantidad = Convert.ToInt32(item["txCantidad"].ToString());
                     _listaStocks.Add(listaStock);
@@ -974,7 +974,7 @@ namespace Stock.DAO
                     Entidades.ListaProductoVenta listaProducto = new Entidades.ListaProductoVenta();
                     listaProducto.idProducto = Convert.ToInt32(item["idProducto"].ToString());
                     listaProducto.CodigoProducto = codigoProducto;
-                    listaProducto.NombreProducto = item["txNombreProducto"].ToString();
+                    listaProducto.NombreProducto = item["txDescripcion"].ToString();
                     listaProducto.PrecioUnitario = Convert.ToDecimal(item["txValorUnitario"].ToString());
                     listaProducto.PrecioVenta = Convert.ToDecimal(item["txPrecioDeVenta"].ToString());
                     if (item[3].ToString() != string.Empty)
@@ -1161,6 +1161,7 @@ namespace Stock.DAO
                     listaStock.PrecioVenta = String.IsNullOrEmpty(item["txPrecioDeVenta"].ToString()) ? 0 : Convert.ToDecimal(item["txPrecioDeVenta"].ToString());
                     listaStock.Apellido = item["txApellido"].ToString();
                     listaStock.Nombre = item["txNombre"].ToString();
+                    listaStock.Descripcion = item["txDescripcion"].ToString();
                     _listaStocks.Add(listaStock);
                 }
             }

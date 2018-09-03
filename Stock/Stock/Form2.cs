@@ -78,8 +78,8 @@ namespace Stock
                     dataGridView1.Columns[0].HeaderCell.Style.Font = new Font("Tahoma", 9, FontStyle.Bold);
                     dataGridView1.Columns[0].HeaderCell.Style.ForeColor = Color.White;
 
-                    dataGridView1.Columns[1].HeaderText = "Nombre";
-                    dataGridView1.Columns[1].Width = 95;
+                    dataGridView1.Columns[1].HeaderText = "Descripción";
+                    dataGridView1.Columns[1].Width = 400;
                     dataGridView1.Columns[1].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dataGridView1.Columns[1].HeaderCell.Style.Font = new Font("Tahoma", 9, FontStyle.Bold);
                     dataGridView1.Columns[1].HeaderCell.Style.ForeColor = Color.White;

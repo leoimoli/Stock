@@ -49,6 +49,7 @@ namespace Stock
             EditPrecio_de_Venta.Visible = true;
             EditFecha_Alta_Producto.Visible = true;
             EditUsuario_Creador.Visible = true;
+            EditDescripcion_Producto.Visible = true;
         }
         public List<Entidades.ListaStock> Lista
         {
@@ -301,6 +302,7 @@ namespace Stock
                             EditPrecio_de_Venta.Text = Convert.ToString(lista.PrecioVenta);
                             EditFecha_Alta_Producto.Text = Convert.ToString(lista.FechaAlta);
                             EditUsuario_Creador.Text = lista.Apellido + "  " + lista.Nombre;
+                            EditDescripcion_Producto.Text = lista.Descripcion + Environment.NewLine;
                         }
                     }
                     else
