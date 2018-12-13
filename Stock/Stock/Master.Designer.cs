@@ -175,7 +175,7 @@ namespace Stock
             this.pagosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.pagosToolStripMenuItem.Image = global::Stock.Properties.Resources.Pagos_Chico;
             this.pagosToolStripMenuItem.Name = "pagosToolStripMenuItem";
-            this.pagosToolStripMenuItem.Size = new System.Drawing.Size(182, 25);
+            this.pagosToolStripMenuItem.Size = new System.Drawing.Size(183, 25);
             this.pagosToolStripMenuItem.Text = "Pagos a proveedores";
             this.pagosToolStripMenuItem.Click += new System.EventHandler(this.pagosToolStripMenuItem_Click);
             // 
@@ -262,7 +262,7 @@ namespace Stock
             this.lblMaster_Version.Name = "lblMaster_Version";
             this.lblMaster_Version.Size = new System.Drawing.Size(102, 20);
             this.lblMaster_Version.TabIndex = 0;
-            this.lblMaster_Version.Text = "Versión 1.0.0";
+            this.lblMaster_Version.Text = "Versión 1.0.1";
             // 
             // Master
             // 

@@ -484,7 +484,7 @@ namespace Stock.Negocio
         }
         public static object BuscarPorDescripcion(string descripcion)
         {
-            var CodigoProducto = 0;
+            string CodigoProducto = "0";
             try
             {
                 CodigoProducto = DAO.ConsultarDao.BuscarProductoPorDescripcion(descripcion);

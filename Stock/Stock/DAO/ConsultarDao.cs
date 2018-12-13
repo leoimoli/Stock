@@ -455,11 +455,11 @@ namespace Stock.DAO
             return lista;
         }
 
-        public static int BuscarProductoPorDescripcion(string descripcion)
+        public static string BuscarProductoPorDescripcion(string descripcion)
         {
             connection.Close();
             connection.Open();
-            var CodigoProducto = 0;
+            string CodigoProducto = "0";
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
@@ -474,7 +474,7 @@ namespace Stock.DAO
             {
                 foreach (DataRow item in Tabla.Rows)
                 {
-                    CodigoProducto = Convert.ToInt32(item["txCodigoProducto"].ToString());
+                    CodigoProducto = item["txCodigoProducto"].ToString();
                 }
             }
             connection.Close();
