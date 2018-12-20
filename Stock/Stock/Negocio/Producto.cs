@@ -34,7 +34,7 @@ namespace Stock.Negocio
             }
             catch (Exception ex)
             {
-              
+
             }
             return exito;
         }
@@ -69,6 +69,48 @@ namespace Stock.Negocio
                                            MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
+            if (String.IsNullOrEmpty(_producto.Descripcion))
+            {
+
+                const string message = "El campo Descripción es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
+            }
+        }
+
+        public static bool EditarCodigo(string nuevoCodigo, int idProductoSeleccionado)
+        {
+            bool exito = false;
+            try
+            {
+                bool CodigoExistente = Negocio.Consultar.ValidarProductoExistente(nuevoCodigo);
+                if (CodigoExistente == true)
+                {
+                    const string message = "Ya existe un producto registrado con el código ingresado.";
+                    const string caption = "Error";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Exclamation);
+                    throw new Exception();
+                }
+                else
+                {
+                    exito = DAO.EditarDao.EditarCodigo(nuevoCodigo, idProductoSeleccionado);
+                }
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return exito;
         }
     }
 }

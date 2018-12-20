@@ -273,6 +273,16 @@ namespace Stock.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap editar {
+            get {
+                object obj = ResourceManager.GetObject("editar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Eliminar {
             get {
                 object obj = ResourceManager.GetObject("Eliminar", resourceCulture);
@@ -386,6 +396,16 @@ namespace Stock.Properties {
         internal static System.Drawing.Bitmap F3 {
             get {
                 object obj = ResourceManager.GetObject("F3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap flecha_hacia_la_izquierda {
+            get {
+                object obj = ResourceManager.GetObject("flecha-hacia-la-izquierda", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

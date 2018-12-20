@@ -102,6 +102,12 @@
     <Compile Include="DescontarDeudaWF.Designer.cs">
       <DependentUpon>DescontarDeudaWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditarCodigoProductoWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarCodigoProductoWF.Designer.cs">
+      <DependentUpon>EditarCodigoProductoWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entidades\ClienteReducido.cs" />
     <Compile Include="Entidades\Clientes.cs" />
     <Compile Include="Entidades\CuentaCorriente.cs" />
@@ -270,6 +276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DescontarDeudaWF.resx">
       <DependentUpon>DescontarDeudaWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditarCodigoProductoWF.resx">
+      <DependentUpon>EditarCodigoProductoWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -440,6 +449,8 @@
     <None Include="Resources\DescontarDeuda_Chico1.png" />
     <None Include="Resources\cancelar.png" />
     <None Include="Resources\binoculares.png" />
+    <None Include="Resources\editar.png" />
+    <None Include="Resources\flecha-hacia-la-izquierda.png" />
     <Content Include="Resources\login2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

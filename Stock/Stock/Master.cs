@@ -117,5 +117,12 @@ namespace Stock
         {
             Close();
         }
+
+        private void editarCódigoProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditarCodigoProductoWF _editar = new EditarCodigoProductoWF();
+            _editar.Show();
+            Hide();
+        }
     }
 }

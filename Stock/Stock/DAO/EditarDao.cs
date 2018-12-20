@@ -94,6 +94,24 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
+
+        public static bool EditarCodigo(string nuevoCodigo, int idProductoSeleccionado)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string Actualizar = "EditarCodigo";
+            MySqlCommand cmd = new MySqlCommand(Actualizar, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("idProducto_in", idProductoSeleccionado);
+            cmd.Parameters.AddWithValue("NuevoCodigo_in", nuevoCodigo);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+
         public static bool ActualizarStock(int idProducto, int cantidad)
         {
             bool exito = false;

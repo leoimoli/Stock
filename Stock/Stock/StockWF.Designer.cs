@@ -59,6 +59,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblStock = new System.Windows.Forms.Label();
             this.panel200 = new System.Windows.Forms.Panel();
+            this.txtNombreProductoBuscar = new System.Windows.Forms.TextBox();
+            this.chcProducto = new System.Windows.Forms.CheckBox();
+            this.chcPorCodigo = new System.Windows.Forms.CheckBox();
             this.label20 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblUltimoMovimientos = new System.Windows.Forms.Label();
@@ -417,6 +420,9 @@
             // panel200
             // 
             this.panel200.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel200.Controls.Add(this.txtNombreProductoBuscar);
+            this.panel200.Controls.Add(this.chcProducto);
+            this.panel200.Controls.Add(this.chcPorCodigo);
             this.panel200.Controls.Add(this.label20);
             this.panel200.Controls.Add(this.lblTotal);
             this.panel200.Controls.Add(this.lblUltimoMovimientos);
@@ -427,6 +433,39 @@
             this.panel200.Name = "panel200";
             this.panel200.Size = new System.Drawing.Size(294, 455);
             this.panel200.TabIndex = 8;
+            // 
+            // txtNombreProductoBuscar
+            // 
+            this.txtNombreProductoBuscar.Location = new System.Drawing.Point(3, 57);
+            this.txtNombreProductoBuscar.Name = "txtNombreProductoBuscar";
+            this.txtNombreProductoBuscar.Size = new System.Drawing.Size(280, 20);
+            this.txtNombreProductoBuscar.TabIndex = 31;
+            this.txtNombreProductoBuscar.Visible = false;
+            this.txtNombreProductoBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombreProductoBuscar_KeyDown);
+            // 
+            // chcProducto
+            // 
+            this.chcProducto.AutoSize = true;
+            this.chcProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chcProducto.Location = new System.Drawing.Point(124, 5);
+            this.chcProducto.Name = "chcProducto";
+            this.chcProducto.Size = new System.Drawing.Size(164, 21);
+            this.chcProducto.TabIndex = 30;
+            this.chcProducto.Text = "Por Nombre Producto";
+            this.chcProducto.UseVisualStyleBackColor = true;
+            this.chcProducto.CheckedChanged += new System.EventHandler(this.chcProducto_CheckedChanged);
+            // 
+            // chcPorCodigo
+            // 
+            this.chcPorCodigo.AutoSize = true;
+            this.chcPorCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chcPorCodigo.Location = new System.Drawing.Point(12, 5);
+            this.chcPorCodigo.Name = "chcPorCodigo";
+            this.chcPorCodigo.Size = new System.Drawing.Size(97, 21);
+            this.chcPorCodigo.TabIndex = 29;
+            this.chcPorCodigo.Text = "Por Código";
+            this.chcPorCodigo.UseVisualStyleBackColor = true;
+            this.chcPorCodigo.CheckedChanged += new System.EventHandler(this.chcPorCodigo_CheckedChanged);
             // 
             // label20
             // 
@@ -468,7 +507,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(7, 14);
+            this.label10.Location = new System.Drawing.Point(6, 36);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(151, 17);
             this.label10.TabIndex = 17;
@@ -476,9 +515,9 @@
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(73, 34);
+            this.txtCodigo.Location = new System.Drawing.Point(5, 56);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(170, 20);
+            this.txtCodigo.Size = new System.Drawing.Size(280, 20);
             this.txtCodigo.TabIndex = 16;
             this.txtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigo_KeyDown);
             // 
@@ -879,5 +918,8 @@
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label EditDescripcion_Producto;
+        private System.Windows.Forms.CheckBox chcProducto;
+        private System.Windows.Forms.CheckBox chcPorCodigo;
+        private System.Windows.Forms.TextBox txtNombreProductoBuscar;
     }
 }

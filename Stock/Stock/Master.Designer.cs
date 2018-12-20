@@ -53,6 +53,7 @@ namespace Stock
             this.Master_panel2 = new System.Windows.Forms.Panel();
             this.lblMaster_Version = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.editarCódigoProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Master_menuStrip1.SuspendLayout();
             this.Master_panel1.SuspendLayout();
             this.Master_panel2.SuspendLayout();
@@ -101,6 +102,8 @@ namespace Stock
             // 
             // productosToolStripMenuItem
             // 
+            this.productosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editarCódigoProductoToolStripMenuItem});
             this.productosToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 12F);
             this.productosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.productosToolStripMenuItem.Image = global::Stock.Properties.Resources.codigo_de_barras_Nuevo;
@@ -264,6 +267,13 @@ namespace Stock
             this.lblMaster_Version.TabIndex = 0;
             this.lblMaster_Version.Text = "Versión 1.0.1";
             // 
+            // editarCódigoProductoToolStripMenuItem
+            // 
+            this.editarCódigoProductoToolStripMenuItem.Name = "editarCódigoProductoToolStripMenuItem";
+            this.editarCódigoProductoToolStripMenuItem.Size = new System.Drawing.Size(242, 24);
+            this.editarCódigoProductoToolStripMenuItem.Text = "Editar Código Producto";
+            this.editarCódigoProductoToolStripMenuItem.Click += new System.EventHandler(this.editarCódigoProductoToolStripMenuItem_Click);
+            // 
             // Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -311,5 +321,6 @@ namespace Stock
         private System.Windows.Forms.ToolStripMenuItem pagosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inicioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editarCódigoProductoToolStripMenuItem;
     }
 }

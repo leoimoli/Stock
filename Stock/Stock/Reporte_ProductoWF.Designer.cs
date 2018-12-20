@@ -83,9 +83,9 @@
             // txtProducto
             // 
             this.txtProducto.Enabled = false;
-            this.txtProducto.Location = new System.Drawing.Point(271, 76);
+            this.txtProducto.Location = new System.Drawing.Point(272, 78);
             this.txtProducto.Name = "txtProducto";
-            this.txtProducto.Size = new System.Drawing.Size(200, 20);
+            this.txtProducto.Size = new System.Drawing.Size(280, 20);
             this.txtProducto.TabIndex = 112;
             // 
             // chcCodigo

@@ -428,6 +428,11 @@ namespace Stock.Negocio
             return _listaHistorialProductoPrecioDeVenta;
         }
 
+        public static int BuscaridProductoPorCodigo(string text)
+        {
+            throw new NotImplementedException();
+        }
+
         public static List<HistorialDelProductoSeleccionado> HistorialProducto(int idProducto)
         {
             List<HistorialDelProductoSeleccionado> _historialProducto = new List<HistorialDelProductoSeleccionado>();

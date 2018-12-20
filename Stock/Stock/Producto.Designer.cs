@@ -534,11 +534,11 @@
             this.txtDescripcion.AutoSize = true;
             this.txtDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescripcion.ForeColor = System.Drawing.Color.White;
-            this.txtDescripcion.Location = new System.Drawing.Point(222, 137);
+            this.txtDescripcion.Location = new System.Drawing.Point(204, 134);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(98, 17);
+            this.txtDescripcion.Size = new System.Drawing.Size(116, 17);
             this.txtDescripcion.TabIndex = 20;
-            this.txtDescripcion.Text = "Descripción:";
+            this.txtDescripcion.Text = "Descripción(*):";
             // 
             // label4
             // 

@@ -28,6 +28,9 @@ namespace Stock
                 CargarComboProveedor();
                 Lista = new List<ListaStock>();
                 Lista = Negocio.Consultar.ListaDeStock();
+                txtNombreProductoBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleClass.Autocomplete();
+                txtNombreProductoBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
+                txtNombreProductoBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
             }
             catch (Exception ex)
             {
@@ -360,6 +363,99 @@ namespace Stock
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
+        }
+        private void chcPorCodigo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chcPorCodigo.Checked == true)
+            {
+                txtCodigo.Visible = true;
+                txtNombreProductoBuscar.Visible = false;
+                chcProducto.Checked = false;
+                label10.Text = "Código del Producto(*)";
+            }
+        }
+        private void chcProducto_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chcProducto.Checked == true)
+            {
+                txtCodigo.Visible = false;
+                txtNombreProductoBuscar.Visible = true;
+                chcPorCodigo.Checked = false;
+                label10.Text = "Nombre del Producto(*)";
+                txtNombreProductoBuscar.Focus();
+            }
+        }
+        private void txtNombreProductoBuscar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    var CodigoProducto = Negocio.Consultar.BuscarPorDescripcion(txtNombreProductoBuscar.Text);
+                    string codigo = Convert.ToString(CodigoProducto);
+                    int idProducto = Negocio.Consultar.BuscarProductoPorCodigo(codigo);
+                    if (idProducto > 0)
+                    {
+                        panel_CargarStock.Enabled = true;
+                        lblStock.Text = "Ingreso de Stock";
+                        ProductoIngresado = idProducto;
+                        Lista = new List<ListaStock>();
+                        Lista = Negocio.Consultar.ListaDeStockPoridProdcuto(idProducto);
+                        txtCodigoProducto.Text = codigo;
+                        txtCodigoProducto.Enabled = false;
+                        ///// Armo una nueva lista para mostrar en el panel Información.
+                        List<ListaStockProducto> _lista = new List<ListaStockProducto>();
+                        _lista = Negocio.Consultar.ListarStockProdcuto(idProducto);
+                        if (_lista.Count > 0)
+                        {
+                            lblEstadisticas.Text = "Información del producto ingresado";
+                            lblInformacion.Visible = false;
+                            var lista = _lista.First();
+                            txtMarca.Text = lista.Marca;
+                            txtNombreProducto.Text = lista.NombreProducto;
+                            txtMarca.Enabled = false;
+                            txtNombreProducto.Enabled = false;
+                            HabilitarLabels();
+                            EditCódigo_Producto.Text = lista.CodigoProducto;
+                            EditNombre_Producto.Text = lista.NombreProducto;
+                            EditMarca_Producto.Text = lista.Marca;
+                            EditStock_Disponible.Text = Convert.ToString(lista.Cantidad);
+                            EditPrecio_de_Venta.Text = Convert.ToString(lista.PrecioVenta);
+                            EditFecha_Alta_Producto.Text = Convert.ToString(lista.FechaAlta);
+                            EditUsuario_Creador.Text = lista.Apellido + "  " + lista.Nombre;
+                            EditDescripcion_Producto.Text = lista.Descripcion + Environment.NewLine;
+                        }
+                    }
+                    else
+                    {
+                        const string message = "Desea agregar un nuevo producto ?";
+                        const string caption = "Producto Inexistente";
+                        var result = MessageBox.Show(message, caption,
+                                                     MessageBoxButtons.YesNo,
+                                                     MessageBoxIcon.Question);
+                        {
+                            if (result == DialogResult.Yes)
+                            {
+                                Producto _producto = new Producto();
+                                _producto.Show();
+                                Hide();
+                            }
+                            else
+                            { }
+
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                    const string caption = "Atención";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Warning);
+                    throw new Exception();
+                }
+            }
         }
     }
 }
