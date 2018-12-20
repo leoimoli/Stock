@@ -22,6 +22,9 @@ namespace Stock
         {
             try
             {
+                txtNombreProductoBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleClass.Autocomplete();
+                txtNombreProductoBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
+                txtNombreProductoBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 ListaHistorialPrecioDeVenta = Negocio.Consultar.ListaHistorialPrecioDeVenta();
             }
             catch (Exception ex)
@@ -330,6 +333,9 @@ namespace Stock
                 lblPrecioFijo.Visible = true;
                 lblUltimoPrecioFijo.Visible = true;
                 lblPrecioActualFijo.Visible = true;
+                chcProducto.Checked = false;
+                txtNombreProductoBuscar.Visible = false;
+                lblNombreProducto.Visible = false;
             }
         }
         private void chcMarca_CheckedChanged(object sender, EventArgs e)
@@ -352,6 +358,36 @@ namespace Stock
                 lblPrecioFijo.Visible = false;
                 lblUltimoPrecioFijo.Visible = false;
                 lblPrecioActualFijo.Visible = false;
+                chcProducto.Checked = false;
+                txtNombreProductoBuscar.Visible = false;
+                lblNombreProducto.Visible = false;
+            }
+        }
+        private void chcProducto_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chcProducto.Checked == true)
+            {
+                lblValorOMarcaFijo.Text = "Último valor unitario";
+                txtValorUni.Visible = true;
+                txtMarca.Visible = false;
+                chcMarca.Checked = false;
+                txtCodigo.Visible = false;
+                chcMarca.Checked = false;
+                txtCodigo.Visible = false;
+                lblCodigoFijo.Visible = false;
+                cmbMarca.Visible = false;
+                lblMarcaFijo.Visible = false;
+                txtTotalCompra.Visible = true;
+                txtPrecioVenta.Visible = true;
+                txtPrecioActualVenta.Visible = true;
+                lblPrecioFijo.Visible = true;
+                lblUltimoPrecioFijo.Visible = true;
+                lblPrecioActualFijo.Visible = true;
+                txtNombreProductoBuscar.Visible = true;
+                txtNombreProductoBuscar.Focus();
+                lblNombreProducto.Visible = true;
+                lblNombreProducto.Text = "Nombre Producto";
+                chcPorCodigo.Checked = false;
             }
         }
         private void CargarComboMarcas()
@@ -376,6 +412,49 @@ namespace Stock
         private void panel200_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+        private void txtNombreProductoBuscar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    txtReditoPorcentual.Enabled = true;
+                    txtPrecioVenta.Enabled = true;
+
+                    string DescripcionProducto = txtNombreProductoBuscar.Text;
+                    var codigo = Negocio.Consultar.BuscarPorDescripcion(DescripcionProducto);
+                    string codigoIngresado = Convert.ToString(codigo);
+                    int idProducto = Negocio.Consultar.BuscarProductoPorCodigo(codigoIngresado);
+                    if (idProducto > 0)
+                    {
+                        ProductoIngresado = idProducto;
+                        List<HistorialProductoPrecioDeVenta> Lista = new List<HistorialProductoPrecioDeVenta>();
+                        Lista = Negocio.Consultar.HistorialPrecioDeVenta(idProducto);
+                        if (Lista.Count == 0)
+                        {
+                            const string message = "El producto ingresado no posee un precio de venta previamente cargado.";
+                            const string caption = "Atención";
+                            var result = MessageBox.Show(message, caption,
+                                                         MessageBoxButtons.OK,
+                                                       MessageBoxIcon.Exclamation);
+                            LimpiarCampos();
+                            throw new Exception();
+                           
+                        }
+                        else
+                        {
+                            var lista = Lista.First();
+                            txtValorUni.Text = Convert.ToString(lista.ValorUnitario);
+                            txtTotalCompra.Text = Convert.ToString(lista.PrecioTotalDeCompra);
+                            txtPrecioActualVenta.Text = Convert.ToString(lista.PrecioDeVenta);
+                            ListaHistorialDelProductoSeleccionado = Negocio.Consultar.HistorialProducto(idProducto);
+                        }
+                    }
+                }
+                catch { }
+
+            }
         }
     }
     #endregion

@@ -46,6 +46,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblapellidoNombreEditar = new System.Windows.Forms.Label();
             this.panel200 = new System.Windows.Forms.Panel();
+            this.lblNombreProducto = new System.Windows.Forms.Label();
+            this.txtNombreProductoBuscar = new System.Windows.Forms.TextBox();
+            this.chcProducto = new System.Windows.Forms.CheckBox();
             this.cmbMarca = new System.Windows.Forms.ComboBox();
             this.lblMarcaFijo = new System.Windows.Forms.Label();
             this.chcMarca = new System.Windows.Forms.CheckBox();
@@ -253,6 +256,9 @@
             // panel200
             // 
             this.panel200.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel200.Controls.Add(this.lblNombreProducto);
+            this.panel200.Controls.Add(this.txtNombreProductoBuscar);
+            this.panel200.Controls.Add(this.chcProducto);
             this.panel200.Controls.Add(this.cmbMarca);
             this.panel200.Controls.Add(this.lblMarcaFijo);
             this.panel200.Controls.Add(this.chcMarca);
@@ -267,10 +273,43 @@
             this.panel200.TabIndex = 18;
             this.panel200.Paint += new System.Windows.Forms.PaintEventHandler(this.panel200_Paint);
             // 
+            // lblNombreProducto
+            // 
+            this.lblNombreProducto.AutoSize = true;
+            this.lblNombreProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreProducto.ForeColor = System.Drawing.Color.White;
+            this.lblNombreProducto.Location = new System.Drawing.Point(3, 43);
+            this.lblNombreProducto.Name = "lblNombreProducto";
+            this.lblNombreProducto.Size = new System.Drawing.Size(160, 17);
+            this.lblNombreProducto.TabIndex = 33;
+            this.lblNombreProducto.Text = "Últimos Movimientos:";
+            this.lblNombreProducto.Visible = false;
+            // 
+            // txtNombreProductoBuscar
+            // 
+            this.txtNombreProductoBuscar.Location = new System.Drawing.Point(0, 60);
+            this.txtNombreProductoBuscar.Name = "txtNombreProductoBuscar";
+            this.txtNombreProductoBuscar.Size = new System.Drawing.Size(280, 20);
+            this.txtNombreProductoBuscar.TabIndex = 32;
+            this.txtNombreProductoBuscar.Visible = false;
+            this.txtNombreProductoBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombreProductoBuscar_KeyDown);
+            // 
+            // chcProducto
+            // 
+            this.chcProducto.AutoSize = true;
+            this.chcProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chcProducto.Location = new System.Drawing.Point(3, 25);
+            this.chcProducto.Name = "chcProducto";
+            this.chcProducto.Size = new System.Drawing.Size(164, 21);
+            this.chcProducto.TabIndex = 31;
+            this.chcProducto.Text = "Por Nombre Producto";
+            this.chcProducto.UseVisualStyleBackColor = true;
+            this.chcProducto.CheckedChanged += new System.EventHandler(this.chcProducto_CheckedChanged);
+            // 
             // cmbMarca
             // 
             this.cmbMarca.FormattingEnabled = true;
-            this.cmbMarca.Location = new System.Drawing.Point(80, 51);
+            this.cmbMarca.Location = new System.Drawing.Point(80, 63);
             this.cmbMarca.Name = "cmbMarca";
             this.cmbMarca.Size = new System.Drawing.Size(170, 21);
             this.cmbMarca.TabIndex = 24;
@@ -282,7 +321,7 @@
             this.lblMarcaFijo.AutoSize = true;
             this.lblMarcaFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMarcaFijo.ForeColor = System.Drawing.Color.White;
-            this.lblMarcaFijo.Location = new System.Drawing.Point(22, 51);
+            this.lblMarcaFijo.Location = new System.Drawing.Point(22, 63);
             this.lblMarcaFijo.MaximumSize = new System.Drawing.Size(100, 0);
             this.lblMarcaFijo.Name = "lblMarcaFijo";
             this.lblMarcaFijo.Size = new System.Drawing.Size(52, 17);
@@ -295,7 +334,7 @@
             // 
             this.chcMarca.AutoSize = true;
             this.chcMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chcMarca.Location = new System.Drawing.Point(158, 10);
+            this.chcMarca.Location = new System.Drawing.Point(196, 10);
             this.chcMarca.Name = "chcMarca";
             this.chcMarca.Size = new System.Drawing.Size(92, 21);
             this.chcMarca.TabIndex = 22;
@@ -307,7 +346,7 @@
             // 
             this.chcPorCodigo.AutoSize = true;
             this.chcPorCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chcPorCodigo.Location = new System.Drawing.Point(38, 10);
+            this.chcPorCodigo.Location = new System.Drawing.Point(3, 10);
             this.chcPorCodigo.Name = "chcPorCodigo";
             this.chcPorCodigo.Size = new System.Drawing.Size(97, 21);
             this.chcPorCodigo.TabIndex = 21;
@@ -320,7 +359,7 @@
             this.lblUltimoMovimientosProductos.AutoSize = true;
             this.lblUltimoMovimientosProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUltimoMovimientosProductos.ForeColor = System.Drawing.Color.White;
-            this.lblUltimoMovimientosProductos.Location = new System.Drawing.Point(3, 82);
+            this.lblUltimoMovimientosProductos.Location = new System.Drawing.Point(3, 83);
             this.lblUltimoMovimientosProductos.Name = "lblUltimoMovimientosProductos";
             this.lblUltimoMovimientosProductos.Size = new System.Drawing.Size(160, 17);
             this.lblUltimoMovimientosProductos.TabIndex = 20;
@@ -331,7 +370,7 @@
             this.lblCodigoFijo.AutoSize = true;
             this.lblCodigoFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigoFijo.ForeColor = System.Drawing.Color.White;
-            this.lblCodigoFijo.Location = new System.Drawing.Point(9, 34);
+            this.lblCodigoFijo.Location = new System.Drawing.Point(9, 46);
             this.lblCodigoFijo.MaximumSize = new System.Drawing.Size(100, 0);
             this.lblCodigoFijo.Name = "lblCodigoFijo";
             this.lblCodigoFijo.Size = new System.Drawing.Size(73, 34);
@@ -342,7 +381,7 @@
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(80, 40);
+            this.txtCodigo.Location = new System.Drawing.Point(80, 52);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(170, 20);
             this.txtCodigo.TabIndex = 18;
@@ -353,7 +392,7 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.LightBlue;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 102);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 103);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(288, 350);
             this.dataGridView1.TabIndex = 0;
@@ -515,5 +554,8 @@
         private System.Windows.Forms.Label lblMarcaFijo;
         private System.Windows.Forms.ComboBox cmbMarca;
         private System.Windows.Forms.TextBox txtMarca;
+        private System.Windows.Forms.CheckBox chcProducto;
+        private System.Windows.Forms.TextBox txtNombreProductoBuscar;
+        private System.Windows.Forms.Label lblNombreProducto;
     }
 }
