@@ -403,6 +403,26 @@ namespace Stock.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap flecha_de_bucle {
+            get {
+                object obj = ResourceManager.GetObject("flecha-de-bucle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap flecha_derecha {
+            get {
+                object obj = ResourceManager.GetObject("flecha-derecha", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap flecha_hacia_la_izquierda {
             get {
                 object obj = ResourceManager.GetObject("flecha-hacia-la-izquierda", resourceCulture);
@@ -466,6 +486,26 @@ namespace Stock.Properties {
         internal static System.Drawing.Bitmap inicio_de_web {
             get {
                 object obj = ResourceManager.GetObject("inicio-de-web", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lupa {
+            get {
+                object obj = ResourceManager.GetObject("lupa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lupa__1_ {
+            get {
+                object obj = ResourceManager.GetObject("lupa (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

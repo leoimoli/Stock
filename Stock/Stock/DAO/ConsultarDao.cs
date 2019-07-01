@@ -51,6 +51,38 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
+
+        public static List<Productos> BuscarProductosSinCodigo()
+        {
+            connection.Close();
+            connection.Open();
+            List<Productos> _listaProductos = new List<Productos>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("CodigoProducto_in", "0") };
+            string proceso = "BuscarProductoSinCodigo";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Productos listaProducto = new Entidades.Productos();
+                    listaProducto.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    listaProducto.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaProducto.NombreProducto = item["txNombreProducto"].ToString();
+                    listaProducto.MarcaProducto = item["txMarcaProducto"].ToString();
+                    listaProducto.Descripcion = item["txDescripcion"].ToString();
+                    _listaProductos.Add(listaProducto);
+                }
+            }
+            connection.Close();
+            return _listaProductos;
+        }
+
         public static List<Entidades.Pagos> ListaDePagos()
         {
             connection.Close();
@@ -1404,7 +1436,6 @@ namespace Stock.DAO
         }
         public static List<Productos> BuscarProductoPorID(int idProductoGrilla)
         {
-
             connection.Close();
             connection.Open();
             List<Entidades.Productos> lista = new List<Entidades.Productos>();

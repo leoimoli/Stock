@@ -71,6 +71,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActualizarCodigoProductoWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActualizarCodigoProductoWF.Designer.cs">
+      <DependentUpon>ActualizarCodigoProductoWF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CargaMasivaDeProductosWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CargaMasivaDeProductosWF.Designer.cs">
+      <DependentUpon>CargaMasivaDeProductosWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="CargarPuntosWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +91,7 @@
     </Compile>
     <Compile Include="Clases_Maestras\AutoCompleClass.cs" />
     <Compile Include="Clases_Maestras\Funciones.cs" />
+    <Compile Include="Clases_Maestras\RutasDeAcceso.cs" />
     <Compile Include="Clases_Maestras\ValoresConstantes.cs" />
     <Compile Include="ClientesWF.cs">
       <SubType>Form</SubType>
@@ -265,6 +278,12 @@
     <Compile Include="VueltoWF.Designer.cs">
       <DependentUpon>VueltoWF.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ActualizarCodigoProductoWF.resx">
+      <DependentUpon>ActualizarCodigoProductoWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CargaMasivaDeProductosWF.resx">
+      <DependentUpon>CargaMasivaDeProductosWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CargarPuntosWF.resx">
       <DependentUpon>CargarPuntosWF.cs</DependentUpon>
     </EmbeddedResource>
@@ -398,6 +417,8 @@
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Documentos\Base De Datos\Procedure\1%29LoginUsuario.txt" />
+    <None Include="Resources\lupa.png" />
+    <None Include="Resources\lupa %281%29.png" />
     <None Include="Resources\Pagos_Chico1.png" />
     <None Include="Resources\Moroso_Grande.png" />
     <None Include="Resources\Salir_Chico.png" />
@@ -451,6 +472,8 @@
     <None Include="Resources\binoculares.png" />
     <None Include="Resources\editar.png" />
     <None Include="Resources\flecha-hacia-la-izquierda.png" />
+    <None Include="Resources\flecha-derecha.png" />
+    <None Include="Resources\flecha-de-bucle.png" />
     <Content Include="Resources\login2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

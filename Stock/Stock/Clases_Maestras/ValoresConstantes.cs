@@ -12,7 +12,7 @@ namespace Stock.Clases_Maestras
         {
             get
             {
-                return new string[] { "ADMINISTRADOR", "OPERADOR" };
+                return new string[] { "ADMINISTRADOR", "OPERADOR", "SUPERADMIN" };
             }
         }
         public static string[] Sexo

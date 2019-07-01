@@ -30,6 +30,29 @@ namespace Stock
                 //lblMaster_FechaHoraReal.Text = Convert.ToString(DateTime.Now);
             }
 
+            if (Sesion.UsuarioLogueado.Perfil == "SUPERADMIN")
+            {
+                ToolStripMenuItem CargaMasivaDeProductos = new ToolStripMenuItem();
+                CargaMasivaDeProductos.Name = "CargaMasivaDeProductos";
+                CargaMasivaDeProductos.Text = "Carga masiva de productos";
+                CargaMasivaDeProductos.ForeColor = Color.White;
+                CargaMasivaDeProductos.Font = new Font("Tahoma", 12);
+                Master_menuStrip1.Items.Add(CargaMasivaDeProductos);
+                CargaMasivaDeProductos.Click += new EventHandler(CargaMasivaDeProductosToolStripMenuItem_Click);
+
+                CargaMasivaDeProductos.Image = Stock.Properties.Resources.subir;
+
+                ToolStripMenuItem ActualizarCódigoProducto = new ToolStripMenuItem();
+                ActualizarCódigoProducto.Name = "ActualizarCódigoProducto";
+                ActualizarCódigoProducto.Text = "Actualizar Código Producto";
+                ActualizarCódigoProducto.ForeColor = Color.White;
+                ActualizarCódigoProducto.Font = new Font("Tahoma", 12);
+                Master_menuStrip1.Items.Add(ActualizarCódigoProducto);
+                //Master_menuStrip1.Items.Add(CargaMasivaDeProductos);
+                ActualizarCódigoProducto.Click += new EventHandler(ActualizarCódigoProductoToolStripMenuItem_Click);
+                ActualizarCódigoProducto.Image = Stock.Properties.Resources.subir;
+            }
+
         }
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -124,5 +147,19 @@ namespace Stock
             _editar.Show();
             Hide();
         }
+
+        private void CargaMasivaDeProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CargaMasivaDeProductosWF _cargar = new CargaMasivaDeProductosWF();
+            _cargar.Show();
+            Hide();
+        }
+        private void ActualizarCódigoProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActualizarCodigoProductoWF _actualizar = new ActualizarCodigoProductoWF();
+            _actualizar.Show();
+            Hide();
+        }
+
     }
 }

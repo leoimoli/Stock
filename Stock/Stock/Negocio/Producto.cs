@@ -38,6 +38,26 @@ namespace Stock.Negocio
             }
             return exito;
         }
+
+        public static List<Productos> BuscarProductosSinCodigo()
+        {
+            List<Productos> _listaProductos = new List<Productos>();
+            try
+            {
+                _listaProductos = DAO.ConsultarDao.BuscarProductosSinCodigo();
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaProductos;
+        }
+
         public static bool EditarProducto(Productos _producto, int idProductoGrillaSeleccionado)
         {
             bool exito = false;
@@ -109,6 +129,34 @@ namespace Stock.Negocio
                                              MessageBoxButtons.OK,
                                            MessageBoxIcon.Warning);
                 throw new Exception();
+            }
+            return exito;
+        }
+
+        public static bool GaurdarProductosMasivo(List<Productos> listaGuardar)
+        {
+            bool exito = false;
+            try
+            {
+                //ValidarDatos(_producto);
+                //bool UsuarioExistente = Negocio.Consultar.ValidarProductoExistente(_producto.CodigoProducto);
+                //if (UsuarioExistente == true)
+                //{
+                //    const string message = "Ya existe un producto registrado con el código ingresado.";
+                //    const string caption = "Error";
+                //    var result = MessageBox.Show(message, caption,
+                //                                 MessageBoxButtons.OK,
+                //                               MessageBoxIcon.Exclamation);
+                //    throw new Exception();
+                //}
+                //else
+                //{
+                exito = DAO.AgregarDao.InsertarProductoMasivo(listaGuardar);
+                //}
+            }
+            catch (Exception ex)
+            {
+
             }
             return exito;
         }

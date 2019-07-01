@@ -141,6 +141,32 @@ namespace Stock.DAO
             return exito;
         }
 
+        public static bool InsertarProductoMasivo(List<Productos> listaGuardar)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            //foreach (var item in listaGuardar)
+            //{
+            for (int i = 0; i < listaGuardar.Count; i++)
+            {
+                string proceso = "AltaProducto";
+                MySqlCommand cmd = new MySqlCommand(proceso, connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("CodigoProducto_in", listaGuardar[i].CodigoProducto);
+                cmd.Parameters.AddWithValue("NombreProducto_in", listaGuardar[i].NombreProducto);
+                cmd.Parameters.AddWithValue("MarcaProducto_in", listaGuardar[i].MarcaProducto);
+                cmd.Parameters.AddWithValue("Descripcion_in", listaGuardar[i].Descripcion);
+                cmd.Parameters.AddWithValue("FechaDeAlta_in", listaGuardar[i].FechaDeAlta);
+                cmd.Parameters.AddWithValue("idUsuario_in", listaGuardar[i].idUsuario);
+                cmd.Parameters.AddWithValue("Foto_in", listaGuardar[i].Foto);
+                cmd.ExecuteNonQuery();
+            }
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+
         public static bool InsertPrecioDeVentaMasivo(List<Productos> _lista)
         {
             bool exito = false;
