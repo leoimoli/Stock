@@ -20,7 +20,6 @@ namespace Stock
         {
             InitializeComponent();
         }
-
         private void btnCargar_Click(object sender, EventArgs e)
         {
             ProgressBar();
@@ -200,6 +199,12 @@ namespace Stock
             { MessageBox.Show("Se registraron los productos exitosamente."); }
             else { MessageBox.Show("Fallo la carga masiva de productos."); }
             LimpiarCampos();
+        }
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            Form2 _inicio = new Form2();
+            _inicio.Show();
+            Hide();
         }
     }
 }

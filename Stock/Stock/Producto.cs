@@ -39,7 +39,6 @@ namespace Stock
             }
         }
         #region Metodos Generales
-
         public void CargarCombo()
         {
             List<string> Marcas = new List<string>();

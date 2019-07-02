@@ -90,6 +90,7 @@
       <DependentUpon>CargarPuntosWF.cs</DependentUpon>
     </Compile>
     <Compile Include="Clases_Maestras\AutoCompleClass.cs" />
+    <Compile Include="Clases_Maestras\AutoCompleteProductosSinCodigo.cs" />
     <Compile Include="Clases_Maestras\Funciones.cs" />
     <Compile Include="Clases_Maestras\RutasDeAcceso.cs" />
     <Compile Include="Clases_Maestras\ValoresConstantes.cs" />
@@ -197,6 +198,12 @@
     <Compile Include="Negocio\Stock.cs" />
     <Compile Include="Negocio\Usuario.cs" />
     <Compile Include="Negocio\Ventas.cs" />
+    <Compile Include="New_MasterWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New_MasterWF.Designer.cs">
+      <DependentUpon>New_MasterWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="PagosDeudaWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -316,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Master2.resx">
       <DependentUpon>Master2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="New_MasterWF.resx">
+      <DependentUpon>New_MasterWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PagosDeudaWF.resx">
       <DependentUpon>PagosDeudaWF.cs</DependentUpon>

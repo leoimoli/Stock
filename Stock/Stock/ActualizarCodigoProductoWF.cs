@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Stock.Entidades;
 
 namespace Stock
 {
@@ -20,8 +21,10 @@ namespace Stock
         {
             List<Entidades.Productos> ListaGrilla = Negocio.Producto.BuscarProductosSinCodigo();
             ListaProductos = ListaGrilla;
+            txtBuscarProducto.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteProductosSinCodigo.Autocomplete();
+            txtBuscarProducto.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtBuscarProducto.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
-
         public List<Entidades.Productos> ListaProductos
         {
             set
@@ -40,22 +43,22 @@ namespace Stock
                 dataGridView1.Columns[0].HeaderCell.Style.BackColor = Color.DarkBlue;
                 dataGridView1.Columns[0].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
                 dataGridView1.Columns[0].HeaderCell.Style.ForeColor = Color.White;
-                
+
 
                 dataGridView1.Columns[1].HeaderText = "Código";
-                dataGridView1.Columns[1].Width = 40;
+                dataGridView1.Columns[1].Width = 80;
                 dataGridView1.Columns[1].HeaderCell.Style.BackColor = Color.DarkBlue;
                 dataGridView1.Columns[1].HeaderCell.Style.Font = new Font("Tahoma", 8, FontStyle.Bold);
                 dataGridView1.Columns[1].HeaderCell.Style.ForeColor = Color.White;
 
                 dataGridView1.Columns[2].HeaderText = "txNombreProducto";
-                dataGridView1.Columns[2].Width = 250;
+                dataGridView1.Columns[2].Width = 200;
                 dataGridView1.Columns[2].HeaderCell.Style.BackColor = Color.DarkBlue;
                 dataGridView1.Columns[2].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                 dataGridView1.Columns[2].HeaderCell.Style.ForeColor = Color.White;
 
                 dataGridView1.Columns[3].HeaderText = "txMarca";
-                dataGridView1.Columns[3].Width = 150;
+                dataGridView1.Columns[3].Width = 100;
                 dataGridView1.Columns[3].HeaderCell.Style.BackColor = Color.DarkBlue;
                 dataGridView1.Columns[3].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                 dataGridView1.Columns[3].HeaderCell.Style.ForeColor = Color.White;
@@ -108,6 +111,110 @@ namespace Stock
                 dataGridView1.Columns[10].HeaderCell.Style.ForeColor = Color.White;
                 dataGridView1.Columns[10].Visible = false;
             }
+        }
+        private void dataGridView1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                txtIdProducto.Text = Convert.ToString(this.dataGridView1.CurrentRow.Cells[0].Value);
+                txtNombreProducto.Text = Convert.ToString(this.dataGridView1.CurrentRow.Cells[2].Value);
+                txtMarcaProducto.Text = Convert.ToString(this.dataGridView1.CurrentRow.Cells[3].Value);
+                txtDescripcion.Text = Convert.ToString(this.dataGridView1.CurrentRow.Cells[4].Value);
+                groupBox1.Enabled = true;
+                txtCodigoProducto.Focus();
+                btnGuardar.Visible = true;
+                btnCancelar.Visible = true;
+                //ProductoSeleccionado(idProductoGrilla);
+            }
+            catch (Exception ex)
+            { }
+        }
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string DescripcionProducto = txtBuscarProducto.Text;
+                ListaProductos = Negocio.Consultar.ListarProductoPorDescripcion(DescripcionProducto);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            txtIdProducto.Clear();
+            txtCodigoProducto.Clear();
+            txtNombreProducto.Clear();
+            txtDescripcion.Clear();
+            txtMarcaProducto.Clear();
+        }
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Entidades.Productos _producto = CargarEntidad();
+                bool Exito = Negocio.Producto.EditarCodigo(_producto.CodigoProducto, _producto.idProducto);
+                if (Exito == true)
+                {
+                    ProgressBar();
+                    const string message2 = "Se registro el producto exitosamente.";
+                    const string caption2 = "Éxito";
+                    var result2 = MessageBox.Show(message2, caption2,
+                                                 MessageBoxButtons.OK,
+                                                 MessageBoxIcon.Asterisk);
+                    LimpiarCampos();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private void ProgressBar()
+        {
+            progressBar1.Visible = true;
+            progressBar1.Maximum = 100000;
+            progressBar1.Step = 1;
+
+            for (int j = 0; j < 100000; j++)
+            {
+                Caluculate(j);
+                progressBar1.PerformStep();
+            }
+        }
+        private void Caluculate(int i)
+        {
+            double pow = Math.Pow(i, i);
+        }
+        private void LimpiarCampos()
+        {
+            txtIdProducto.Clear();
+            txtCodigoProducto.Clear();
+            txtNombreProducto.Clear();
+            txtDescripcion.Clear();
+            txtMarcaProducto.Clear();
+            progressBar1.Value = Convert.ToInt32(null);
+            progressBar1.Visible = false;
+            List<Entidades.Productos> ListaGrilla = Negocio.Producto.BuscarProductosSinCodigo();
+            ListaProductos = ListaGrilla;
+
+        }
+        private Productos CargarEntidad()
+        {
+            Productos _producto = new Productos();
+            _producto.idProducto = Convert.ToInt32(txtIdProducto.Text);
+            _producto.CodigoProducto = txtCodigoProducto.Text;
+            _producto.NombreProducto = txtNombreProducto.Text;
+            _producto.MarcaProducto = txtMarcaProducto.Text;
+            _producto.Descripcion = txtDescripcion.Text;
+            return _producto;
+        }
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            Form2 _inicio = new Form2();
+            _inicio.Show();
+            Hide();
         }
     }
 }

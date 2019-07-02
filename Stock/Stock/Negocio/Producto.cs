@@ -114,7 +114,7 @@ namespace Stock.Negocio
                     var result = MessageBox.Show(message, caption,
                                                  MessageBoxButtons.OK,
                                                MessageBoxIcon.Exclamation);
-                    throw new Exception();
+                    //throw new Exception();
                 }
                 else
                 {

@@ -160,7 +160,7 @@ namespace Stock.DAO
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = { new MySqlParameter("descripcion_in", descripcion) };
-            string proceso = "ListarProductoPorDescripcion";
+            string proceso = "ListarProductoPorDescripcionSinCodigo";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
@@ -175,12 +175,6 @@ namespace Stock.DAO
                     listaProducto.NombreProducto = item["txNombreProducto"].ToString();
                     listaProducto.MarcaProducto = item["txMarcaProducto"].ToString();
                     listaProducto.Descripcion = item["txDescripcion"].ToString();
-                    var variable = item["txPrecioDeVenta"].ToString();
-                    if (variable != "")
-                    { listaProducto.PrecioDeVenta = Convert.ToDecimal(item["txPrecioDeVenta"].ToString()); }
-                    else { listaProducto.PrecioDeVenta = 0; }
-
-                    listaProducto.Cantidad = item["txCantidad"].ToString();
                     _listaProductos.Add(listaProducto);
                 }
             }
