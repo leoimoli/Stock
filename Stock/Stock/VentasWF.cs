@@ -36,6 +36,15 @@ namespace Stock
             {
                 try
                 {
+                    if (txtCodigo.Text == "0")
+                    {
+                        const string message = "El código del producto es invalido.";
+                        const string caption = "Atención";
+                        var result = MessageBox.Show(message, caption,
+                                                     MessageBoxButtons.OK,
+                                                   MessageBoxIcon.Warning);
+                        throw new Exception();
+                    }
                     string codigoProducto = txtCodigo.Text;
                     List<Entidades.ListaProductoVenta> _lista = new List<Entidades.ListaProductoVenta>();
 

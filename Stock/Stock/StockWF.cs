@@ -24,6 +24,7 @@ namespace Stock
         {
             try
             {
+                chcPorCodigo.Checked = true;
                 txtCodigo.Focus();
                 CargarComboProveedor();
                 Lista = new List<ListaStock>();
@@ -43,6 +44,10 @@ namespace Stock
             }
         }
         #region Metodos Generales
+        private void SoloNumeros(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back);
+        }
         private void HabilitarLabels()
         {
             EditCódigo_Producto.Visible = true;
@@ -239,127 +244,6 @@ namespace Stock
         }
         #endregion
         #region Botones
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Entidades.Stock _stock = CargarEntidad();
-                bool Exito = Negocio.Stock.CargarStock(_stock);
-                if (Exito == true)
-                {
-                    ProgressBar();
-                    const string message2 = "Se registro el stock exitosamente.";
-                    const string caption2 = "Éxito";
-                    var result2 = MessageBox.Show(message2, caption2,
-                                                 MessageBoxButtons.OK,
-                                                 MessageBoxIcon.Asterisk);
-                    LimpiarCampos();
-                    Lista = new List<ListaStock>();
-                    Lista = Negocio.Consultar.ListaDeStock();
-                }
-            }
-            catch (Exception ex)
-            {
-                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
-                const string caption = "Atención";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.OK,
-                                           MessageBoxIcon.Warning);
-                throw new Exception();
-            }
-        }
-        private void txtCodigo_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                try
-                {
-                    string codigoIngresado = txtCodigo.Text;
-                    int idProducto = Negocio.Consultar.BuscarProductoPorCodigo(codigoIngresado);
-                    if (idProducto > 0)
-                    {
-                        panel_CargarStock.Enabled = true;
-                        lblStock.Text = "Ingreso de Stock";
-                        ProductoIngresado = idProducto;
-                        Lista = new List<ListaStock>();
-                        Lista = Negocio.Consultar.ListaDeStockPoridProdcuto(idProducto);
-                        txtCodigoProducto.Text = codigoIngresado;
-                        txtCodigoProducto.Enabled = false;
-                        ///// Armo una nueva lista para mostrar en el panel Información.
-                        List<ListaStockProducto> _lista = new List<ListaStockProducto>();
-                        _lista = Negocio.Consultar.ListarStockProdcuto(idProducto);
-                        if (_lista.Count > 0)
-                        {
-                            lblEstadisticas.Text = "Información del producto ingresado";
-                            lblInformacion.Visible = false;
-                            var lista = _lista.First();
-                            txtMarca.Text = lista.Marca;
-                            txtNombreProducto.Text = lista.NombreProducto;
-                            txtMarca.Enabled = false;
-                            txtNombreProducto.Enabled = false;
-                            HabilitarLabels();
-                            EditCódigo_Producto.Text = lista.CodigoProducto;
-                            EditNombre_Producto.Text = lista.NombreProducto;
-                            EditMarca_Producto.Text = lista.Marca;
-                            EditStock_Disponible.Text = Convert.ToString(lista.Cantidad);
-                            EditPrecio_de_Venta.Text = Convert.ToString(lista.PrecioVenta);
-                            EditFecha_Alta_Producto.Text = Convert.ToString(lista.FechaAlta);
-                            EditUsuario_Creador.Text = lista.Apellido + "  " + lista.Nombre;
-                            EditDescripcion_Producto.Text = lista.Descripcion + Environment.NewLine;
-                        }
-                    }
-                    else
-                    {
-                        const string message = "Desea agregar un nuevo producto ?";
-                        const string caption = "Producto Inexistente";
-                        var result = MessageBox.Show(message, caption,
-                                                     MessageBoxButtons.YesNo,
-                                                     MessageBoxIcon.Question);
-                        {
-                            if (result == DialogResult.Yes)
-                            {
-                                Producto _producto = new Producto();
-                                _producto.Show();
-                                Hide();
-                            }
-                            else
-                            { }
-
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
-                    const string caption = "Atención";
-                    var result = MessageBox.Show(message, caption,
-                                                 MessageBoxButtons.OK,
-                                               MessageBoxIcon.Warning);
-                    throw new Exception();
-                }
-            }
-        }
-        private void txtTotalCompra_Enter(object sender, EventArgs e)
-        {
-            CalcularCostos();
-        }
-        private void txtCantidad_TextChanged(object sender, EventArgs e)
-        {
-            CalcularCostos();
-        }
-        private void txtValorUni_TextChanged(object sender, EventArgs e)
-        {
-            CalcularCostos();
-        }
-        private void txtReditoPorcentual_TextChanged(object sender, EventArgs e)
-        {
-            CalcularCostos();
-        }
-        #endregion
-        private void SoloNumeros(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back);
-        }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
@@ -457,5 +341,131 @@ namespace Stock
                 }
             }
         }
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Entidades.Stock _stock = CargarEntidad();
+                bool Exito = Negocio.Stock.CargarStock(_stock);
+                if (Exito == true)
+                {
+                    ProgressBar();
+                    const string message2 = "Se registro el stock exitosamente.";
+                    const string caption2 = "Éxito";
+                    var result2 = MessageBox.Show(message2, caption2,
+                                                 MessageBoxButtons.OK,
+                                                 MessageBoxIcon.Asterisk);
+                    LimpiarCampos();
+                    Lista = new List<ListaStock>();
+                    Lista = Negocio.Consultar.ListaDeStock();
+                }
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+        }
+        private void txtCodigo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    if (txtCodigo.Text == "0")
+                    {
+                        const string message = "El código del producto es invalido.";
+                        const string caption = "Atención";
+                        var result = MessageBox.Show(message, caption,
+                                                     MessageBoxButtons.OK,
+                                                   MessageBoxIcon.Warning);
+                        throw new Exception();
+                    }
+                    string codigoIngresado = txtCodigo.Text;
+                    int idProducto = Negocio.Consultar.BuscarProductoPorCodigo(codigoIngresado);
+                    if (idProducto > 0)
+                    {
+                        panel_CargarStock.Enabled = true;
+                        lblStock.Text = "Ingreso de Stock";
+                        ProductoIngresado = idProducto;
+                        Lista = new List<ListaStock>();
+                        Lista = Negocio.Consultar.ListaDeStockPoridProdcuto(idProducto);
+                        txtCodigoProducto.Text = codigoIngresado;
+                        txtCodigoProducto.Enabled = false;
+                        ///// Armo una nueva lista para mostrar en el panel Información.
+                        List<ListaStockProducto> _lista = new List<ListaStockProducto>();
+                        _lista = Negocio.Consultar.ListarStockProdcuto(idProducto);
+                        if (_lista.Count > 0)
+                        {
+                            lblEstadisticas.Text = "Información del producto ingresado";
+                            lblInformacion.Visible = false;
+                            var lista = _lista.First();
+                            txtMarca.Text = lista.Marca;
+                            txtNombreProducto.Text = lista.NombreProducto;
+                            txtMarca.Enabled = false;
+                            txtNombreProducto.Enabled = false;
+                            HabilitarLabels();
+                            EditCódigo_Producto.Text = lista.CodigoProducto;
+                            EditNombre_Producto.Text = lista.NombreProducto;
+                            EditMarca_Producto.Text = lista.Marca;
+                            EditStock_Disponible.Text = Convert.ToString(lista.Cantidad);
+                            EditPrecio_de_Venta.Text = Convert.ToString(lista.PrecioVenta);
+                            EditFecha_Alta_Producto.Text = Convert.ToString(lista.FechaAlta);
+                            EditUsuario_Creador.Text = lista.Apellido + "  " + lista.Nombre;
+                            EditDescripcion_Producto.Text = lista.Descripcion + Environment.NewLine;
+                        }
+                    }
+                    else
+                    {
+                        const string message = "Desea agregar un nuevo producto ?";
+                        const string caption = "Producto Inexistente";
+                        var result = MessageBox.Show(message, caption,
+                                                     MessageBoxButtons.YesNo,
+                                                     MessageBoxIcon.Question);
+                        {
+                            if (result == DialogResult.Yes)
+                            {
+                                Producto _producto = new Producto();
+                                _producto.Show();
+                                Hide();
+                            }
+                            else
+                            { }
+
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                    //const string caption = "Atención";
+                    //var result = MessageBox.Show(message, caption,
+                    //                             MessageBoxButtons.OK,
+                    //                           MessageBoxIcon.Warning);
+                    //throw new Exception();
+                }
+            }
+        }
+        private void txtTotalCompra_Enter(object sender, EventArgs e)
+        {
+            CalcularCostos();
+        }
+        private void txtCantidad_TextChanged(object sender, EventArgs e)
+        {
+            CalcularCostos();
+        }
+        private void txtValorUni_TextChanged(object sender, EventArgs e)
+        {
+            CalcularCostos();
+        }
+        private void txtReditoPorcentual_TextChanged(object sender, EventArgs e)
+        {
+            CalcularCostos();
+        }
+        #endregion
     }
 }

@@ -37,6 +37,7 @@ namespace Stock
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editarCódigoProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,7 +54,6 @@ namespace Stock
             this.Master_panel2 = new System.Windows.Forms.Panel();
             this.lblMaster_Version = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.editarCódigoProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Master_menuStrip1.SuspendLayout();
             this.Master_panel1.SuspendLayout();
             this.Master_panel2.SuspendLayout();
@@ -111,6 +111,13 @@ namespace Stock
             this.productosToolStripMenuItem.Size = new System.Drawing.Size(107, 25);
             this.productosToolStripMenuItem.Text = "Productos";
             this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
+            // 
+            // editarCódigoProductoToolStripMenuItem
+            // 
+            this.editarCódigoProductoToolStripMenuItem.Name = "editarCódigoProductoToolStripMenuItem";
+            this.editarCódigoProductoToolStripMenuItem.Size = new System.Drawing.Size(242, 24);
+            this.editarCódigoProductoToolStripMenuItem.Text = "Editar Código Producto";
+            this.editarCódigoProductoToolStripMenuItem.Click += new System.EventHandler(this.editarCódigoProductoToolStripMenuItem_Click);
             // 
             // stockToolStripMenuItem
             // 
@@ -265,14 +272,7 @@ namespace Stock
             this.lblMaster_Version.Name = "lblMaster_Version";
             this.lblMaster_Version.Size = new System.Drawing.Size(102, 20);
             this.lblMaster_Version.TabIndex = 0;
-            this.lblMaster_Version.Text = "Versión 1.0.1";
-            // 
-            // editarCódigoProductoToolStripMenuItem
-            // 
-            this.editarCódigoProductoToolStripMenuItem.Name = "editarCódigoProductoToolStripMenuItem";
-            this.editarCódigoProductoToolStripMenuItem.Size = new System.Drawing.Size(242, 24);
-            this.editarCódigoProductoToolStripMenuItem.Text = "Editar Código Producto";
-            this.editarCódigoProductoToolStripMenuItem.Click += new System.EventHandler(this.editarCódigoProductoToolStripMenuItem_Click);
+            this.lblMaster_Version.Text = "Versión 1.2.0";
             // 
             // Master
             // 

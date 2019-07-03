@@ -101,6 +101,7 @@ namespace Stock
             btnCancelar.Visible = true;
             btnGuardar.Visible = true;
             btnCargarImagen.Visible = true;
+            lblapellidoNombreEditar.Text = "Nuevo Producto";
         }
         private Productos CargarEntidad()
         {
@@ -287,9 +288,6 @@ namespace Stock
             EditFecha_Alta_Producto.Visible = false;
             EditPrecioDeVenta_Producto.Visible = false;
             idProductoGrilla = 0;
-            //txtCodigoProducto.Enabled = true;
-            //txtCodigoProducto.Focus();
-            // LimpiarCampos();
             HabilitarCampos();
         }
         public static int idProductoGrillaSeleccionado;

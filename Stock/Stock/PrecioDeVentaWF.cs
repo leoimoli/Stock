@@ -158,6 +158,15 @@ namespace Stock
             {
                 try
                 {
+                    if (txtCodigo.Text == "0")
+                    {
+                        const string message = "El código del producto es invalido.";
+                        const string caption = "Atención";
+                        var result = MessageBox.Show(message, caption,
+                                                     MessageBoxButtons.OK,
+                                                   MessageBoxIcon.Warning);
+                        throw new Exception();
+                    }
                     txtReditoPorcentual.Enabled = true;
                     txtPrecioVenta.Enabled = true;
                     string codigoIngresado = txtCodigo.Text;

@@ -138,21 +138,7 @@ namespace Stock.Negocio
             bool exito = false;
             try
             {
-                //ValidarDatos(_producto);
-                //bool UsuarioExistente = Negocio.Consultar.ValidarProductoExistente(_producto.CodigoProducto);
-                //if (UsuarioExistente == true)
-                //{
-                //    const string message = "Ya existe un producto registrado con el código ingresado.";
-                //    const string caption = "Error";
-                //    var result = MessageBox.Show(message, caption,
-                //                                 MessageBoxButtons.OK,
-                //                               MessageBoxIcon.Exclamation);
-                //    throw new Exception();
-                //}
-                //else
-                //{
                 exito = DAO.AgregarDao.InsertarProductoMasivo(listaGuardar);
-                //}
             }
             catch (Exception ex)
             {
