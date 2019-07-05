@@ -29,53 +29,47 @@ namespace Stock
                 lblMaster_UsuarioLogin.Text = Sesion.UsuarioLogueado.Apellido + "  " + Sesion.UsuarioLogueado.Nombre;
                 //lblMaster_FechaHoraReal.Text = Convert.ToString(DateTime.Now);
             }
+            //if (Sesion.UsuarioLogueado.Perfil == "SUPERADMIN")
+            //{
+            //    ToolStripMenuItem CargaMasivaDeProductos = new ToolStripMenuItem();
+            //    CargaMasivaDeProductos.Name = "CargaMasivaDeProductos";
+            //    CargaMasivaDeProductos.Text = "Carga masiva de productos";
+            //    CargaMasivaDeProductos.ForeColor = Color.White;
+            //    CargaMasivaDeProductos.Font = new Font("Tahoma", 12);
+            //    Master_menuStrip1.Items.Add(CargaMasivaDeProductos);
+            //    CargaMasivaDeProductos.Click += new EventHandler(CargaMasivaDeProductosToolStripMenuItem_Click);
 
-            if (Sesion.UsuarioLogueado.Perfil == "SUPERADMIN")
-            {
-                ToolStripMenuItem CargaMasivaDeProductos = new ToolStripMenuItem();
-                CargaMasivaDeProductos.Name = "CargaMasivaDeProductos";
-                CargaMasivaDeProductos.Text = "Carga masiva de productos";
-                CargaMasivaDeProductos.ForeColor = Color.White;
-                CargaMasivaDeProductos.Font = new Font("Tahoma", 12);
-                Master_menuStrip1.Items.Add(CargaMasivaDeProductos);
-                CargaMasivaDeProductos.Click += new EventHandler(CargaMasivaDeProductosToolStripMenuItem_Click);
+            //    CargaMasivaDeProductos.Image = Stock.Properties.Resources.subir;
 
-                CargaMasivaDeProductos.Image = Stock.Properties.Resources.subir;
-
-                ToolStripMenuItem ActualizarCódigoProducto = new ToolStripMenuItem();
-                ActualizarCódigoProducto.Name = "ActualizarCódigoProducto";
-                ActualizarCódigoProducto.Text = "Actualizar Código Producto";
-                ActualizarCódigoProducto.ForeColor = Color.White;
-                ActualizarCódigoProducto.Font = new Font("Tahoma", 12);
-                Master_menuStrip1.Items.Add(ActualizarCódigoProducto);
-                //Master_menuStrip1.Items.Add(CargaMasivaDeProductos);
-                ActualizarCódigoProducto.Click += new EventHandler(ActualizarCódigoProductoToolStripMenuItem_Click);
-                ActualizarCódigoProducto.Image = Stock.Properties.Resources.subir;
-            }
-
+            //    ToolStripMenuItem ActualizarCódigoProducto = new ToolStripMenuItem();
+            //    ActualizarCódigoProducto.Name = "ActualizarCódigoProducto";
+            //    ActualizarCódigoProducto.Text = "Actualizar Código Producto";
+            //    ActualizarCódigoProducto.ForeColor = Color.White;
+            //    ActualizarCódigoProducto.Font = new Font("Tahoma", 12);
+            //    Master_menuStrip1.Items.Add(ActualizarCódigoProducto);
+            //    //Master_menuStrip1.Items.Add(CargaMasivaDeProductos);
+            //    ActualizarCódigoProducto.Click += new EventHandler(ActualizarCódigoProductoToolStripMenuItem_Click);
+            //    ActualizarCódigoProducto.Image = Stock.Properties.Resources.subir;
+            //}
         }
-
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UsuariosWF _usuario = new UsuariosWF();
             _usuario.Show();
             Hide();
         }
-
         private void productosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Producto _producto = new Producto();
             _producto.Show();
             Hide();
         }
-
         private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ProveedoresWF _proveedores = new ProveedoresWF();
             _proveedores.Show();
             Hide();
         }
-
         private void stockToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StockWF _stock = new StockWF();
@@ -88,7 +82,6 @@ namespace Stock
             _ventas.Show();
             Hide();
         }
-
         private void timer1_Tick(object sender, ElapsedEventArgs el)
         {
             CheckForIllegalCrossThreadCalls = false;
@@ -100,54 +93,46 @@ namespace Stock
             _clientes.Show();
             Hide();
         }
-
         private void consultasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Reporte_VentasWF _reporte = new Reporte_VentasWF();
             _reporte.Show();
             Hide();
         }
-
         private void consultasToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Reporte_VentasWF _reporte = new Reporte_VentasWF();
             _reporte.Show();
             Hide();
         }
-
         private void preciosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PrecioDeVentaWF _precio = new PrecioDeVentaWF();
             _precio.Show();
             Hide();
         }
-
         private void pagosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PagosWF _pagos = new PagosWF();
             _pagos.Show();
             Hide();
         }
-
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form2 _inicio = new Form2();
             _inicio.Show();
             Hide();
         }
-
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void editarCódigoProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EditarCodigoProductoWF _editar = new EditarCodigoProductoWF();
             _editar.Show();
             Hide();
         }
-
         private void CargaMasivaDeProductosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CargaMasivaDeProductosWF _cargar = new CargaMasivaDeProductosWF();

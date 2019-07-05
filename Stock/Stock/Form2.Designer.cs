@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnSuperAdmin = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -50,6 +51,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.SteelBlue;
+            this.groupBox1.Controls.Add(this.btnSuperAdmin);
             this.groupBox1.Controls.Add(this.button7);
             this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.button3);
@@ -62,10 +64,26 @@
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(210, 666);
+            this.groupBox1.Size = new System.Drawing.Size(210, 736);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Menú";
+            // 
+            // btnSuperAdmin
+            // 
+            this.btnSuperAdmin.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnSuperAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuperAdmin.ForeColor = System.Drawing.Color.White;
+            this.btnSuperAdmin.Image = global::Stock.Properties.Resources.subir;
+            this.btnSuperAdmin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSuperAdmin.Location = new System.Drawing.Point(6, 654);
+            this.btnSuperAdmin.Name = "btnSuperAdmin";
+            this.btnSuperAdmin.Size = new System.Drawing.Size(200, 82);
+            this.btnSuperAdmin.TabIndex = 20;
+            this.btnSuperAdmin.Text = "Super Admin";
+            this.btnSuperAdmin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSuperAdmin.UseVisualStyleBackColor = false;
+            this.btnSuperAdmin.Click += new System.EventHandler(this.btnSuperAdmin_Click);
             // 
             // button7
             // 
@@ -294,5 +312,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label lblAtencion;
         private System.Windows.Forms.Label lblStock;
+        private System.Windows.Forms.Button btnSuperAdmin;
     }
 }

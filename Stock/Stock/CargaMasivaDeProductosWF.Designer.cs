@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnVolver = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
@@ -35,6 +36,9 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCargar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lblProgreso = new System.Windows.Forms.Label();
+            this.lblProgresoEdit = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,7 +47,7 @@
             this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVolver.Image = global::Stock.Properties.Resources.flecha_hacia_la_izquierda;
             this.btnVolver.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnVolver.Location = new System.Drawing.Point(345, 489);
+            this.btnVolver.Location = new System.Drawing.Point(345, 496);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(84, 60);
             this.btnVolver.TabIndex = 72;
@@ -58,7 +62,6 @@
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(330, 23);
             this.progressBar1.TabIndex = 71;
-            this.progressBar1.Value = 50;
             this.progressBar1.Visible = false;
             // 
             // label2
@@ -88,7 +91,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Image = global::Stock.Properties.Resources.Guardar1;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnGuardar.Location = new System.Drawing.Point(573, 489);
+            this.btnGuardar.Location = new System.Drawing.Point(573, 496);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(84, 60);
             this.btnGuardar.TabIndex = 68;
@@ -103,7 +106,7 @@
             this.btnCargar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCargar.Image = global::Stock.Properties.Resources.subir;
             this.btnCargar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCargar.Location = new System.Drawing.Point(458, 489);
+            this.btnCargar.Location = new System.Drawing.Point(458, 496);
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.Size = new System.Drawing.Size(84, 60);
             this.btnCargar.TabIndex = 67;
@@ -120,11 +123,31 @@
             this.dataGridView1.Size = new System.Drawing.Size(896, 438);
             this.dataGridView1.TabIndex = 66;
             // 
+            // lblProgreso
+            // 
+            this.lblProgreso.AutoSize = true;
+            this.lblProgreso.Location = new System.Drawing.Point(404, 474);
+            this.lblProgreso.Name = "lblProgreso";
+            this.lblProgreso.Size = new System.Drawing.Size(52, 13);
+            this.lblProgreso.TabIndex = 73;
+            this.lblProgreso.Text = "Progreso:";
+            // 
+            // lblProgresoEdit
+            // 
+            this.lblProgresoEdit.AutoSize = true;
+            this.lblProgresoEdit.Location = new System.Drawing.Point(462, 474);
+            this.lblProgresoEdit.Name = "lblProgresoEdit";
+            this.lblProgresoEdit.Size = new System.Drawing.Size(10, 13);
+            this.lblProgresoEdit.TabIndex = 74;
+            this.lblProgresoEdit.Text = "-";
+            // 
             // CargaMasivaDeProductosWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 573);
+            this.Controls.Add(this.lblProgresoEdit);
+            this.Controls.Add(this.lblProgreso);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label2);
@@ -135,6 +158,7 @@
             this.Name = "CargaMasivaDeProductosWF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Carga Masiva De Productos";
+            this.Load += new System.EventHandler(this.CargaMasivaDeProductosWF_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -150,5 +174,8 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCargar;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label lblProgreso;
+        private System.Windows.Forms.Label lblProgresoEdit;
+        private System.Windows.Forms.Timer timer1;
     }
 }

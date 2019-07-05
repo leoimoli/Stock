@@ -188,6 +188,12 @@
     <Compile Include="Master2.Designer.cs">
       <DependentUpon>Master2.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuSuperAdminWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuSuperAdminWF.Designer.cs">
+      <DependentUpon>MenuSuperAdminWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Negocio\Clientes.cs" />
     <Compile Include="Negocio\Consultar.cs" />
     <Compile Include="Negocio\Marca.cs" />
@@ -323,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Master2.resx">
       <DependentUpon>Master2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuSuperAdminWF.resx">
+      <DependentUpon>MenuSuperAdminWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="New_MasterWF.resx">
       <DependentUpon>New_MasterWF.cs</DependentUpon>

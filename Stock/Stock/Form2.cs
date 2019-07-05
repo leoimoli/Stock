@@ -53,11 +53,12 @@ namespace Stock
             _ventas.Show();
             Hide();
         }
-
         private void Form2_Load(object sender, EventArgs e)
         {
             label2.Text = Sesion.UsuarioLogueado.Apellido + "  " + Sesion.UsuarioLogueado.Nombre;
             ListaStockFaltante = Negocio.Consultar.ListaStockFaltante();
+            if (Sesion.UsuarioLogueado.Perfil != "SUPERADMIN")
+            { btnSuperAdmin.Visible = false; }
         }
         public List<Entidades.ListaStockFaltante> ListaStockFaltante
         {
@@ -109,6 +110,13 @@ namespace Stock
         {
             PrecioDeVentaWF _precios = new PrecioDeVentaWF();
             _precios.Show();
+        }
+
+        private void btnSuperAdmin_Click(object sender, EventArgs e)
+        {
+            MenuSuperAdminWF _super = new MenuSuperAdminWF();
+            _super.Show();
+            Hide();
         }
     }
 }

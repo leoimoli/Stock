@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Stock.Clases_Maestras;
 using static Stock.Clases_Maestras.RutasDeAcceso;
+using System.Threading;
 
 namespace Stock
 {
@@ -185,6 +186,7 @@ namespace Stock
         private void Caluculate(int i)
         {
             double pow = Math.Pow(i, i);
+
         }
         private void LimpiarCampos()
         {
@@ -193,6 +195,9 @@ namespace Stock
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            btnVolver.Enabled = false;
+            btnGuardar.Enabled = false;
+            dataGridView1.Enabled = false;
             ProgressBar();
             bool exito = Negocio.Producto.GaurdarProductosMasivo(listaGuardar);
             if (exito == true)
@@ -205,6 +210,10 @@ namespace Stock
             Form2 _inicio = new Form2();
             _inicio.Show();
             Hide();
+        }
+        private void CargaMasivaDeProductosWF_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
