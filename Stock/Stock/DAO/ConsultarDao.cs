@@ -151,6 +151,29 @@ namespace Stock.DAO
             return _listaProductos;
         }
 
+        public static bool ValidarProductoMasivoExistente(string descripcion)
+        {
+            connection.Close();
+            connection.Open();
+            bool Exito = false;
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("Descripcion_in", descripcion)};
+            string proceso = "ValidarProductoMasivoExistente";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                Exito = true;
+            }
+            connection.Close();
+            return Exito;
+        }
+
         public static List<Productos> ListarProductoPorDescripcion(string descripcion)
         {
             connection.Close();

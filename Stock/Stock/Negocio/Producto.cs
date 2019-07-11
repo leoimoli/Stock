@@ -133,9 +133,9 @@ namespace Stock.Negocio
             return exito;
         }
 
-        public static bool GaurdarProductosMasivo(List<Productos> listaGuardar)
+        public static int GaurdarProductosMasivo(List<Productos> listaGuardar)
         {
-            bool exito = false;
+            int exito = 0;
             try
             {
                 exito = DAO.AgregarDao.InsertarProductoMasivo(listaGuardar);

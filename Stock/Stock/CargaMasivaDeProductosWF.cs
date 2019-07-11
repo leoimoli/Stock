@@ -199,10 +199,10 @@ namespace Stock
             btnGuardar.Enabled = false;
             dataGridView1.Enabled = false;
             ProgressBar();
-            bool exito = Negocio.Producto.GaurdarProductosMasivo(listaGuardar);
-            if (exito == true)
-            { MessageBox.Show("Se registraron los productos exitosamente."); }
-            else { MessageBox.Show("Fallo la carga masiva de productos."); }
+            int ContadorDeexito = Negocio.Producto.GaurdarProductosMasivo(listaGuardar);
+            if (ContadorDeexito > 0)
+            { MessageBox.Show("Se registraron los productos exitosamente. Se registro un total de:'"+ ContadorDeexito + "' productos. "); }
+            else { MessageBox.Show("Todos los productos ya fueron previamentes cargados. Se registro un total de:'" + ContadorDeexito + "' productos."); }
             LimpiarCampos();
         }
         private void btnVolver_Click(object sender, EventArgs e)
