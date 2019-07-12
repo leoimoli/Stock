@@ -95,7 +95,7 @@ namespace Stock.DAO
             return exito;
         }
 
-        public static bool EditarCodigo(string nuevoCodigo, int idProductoSeleccionado)
+        public static bool EditarCodigo(string nuevoCodigo, int idProductoSeleccionado, string MarcaProducto)
         {
             bool exito = false;
             connection.Close();
@@ -106,12 +106,12 @@ namespace Stock.DAO
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("idProducto_in", idProductoSeleccionado);
             cmd.Parameters.AddWithValue("NuevoCodigo_in", nuevoCodigo);
+            cmd.Parameters.AddWithValue("MarcaProducto_in", MarcaProducto);
             cmd.ExecuteNonQuery();
             exito = true;
             connection.Close();
             return exito;
         }
-
         public static bool ActualizarStock(int idProducto, int cantidad)
         {
             bool exito = false;

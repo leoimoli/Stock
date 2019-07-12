@@ -101,7 +101,7 @@ namespace Stock.Negocio
             }
         }
 
-        public static bool EditarCodigo(string nuevoCodigo, int idProductoSeleccionado)
+        public static bool EditarCodigo(string nuevoCodigo, int idProductoSeleccionado, string MarcaProducto)
         {
             bool exito = false;
             try
@@ -118,7 +118,7 @@ namespace Stock.Negocio
                 }
                 else
                 {
-                    exito = DAO.EditarDao.EditarCodigo(nuevoCodigo, idProductoSeleccionado);
+                    exito = DAO.EditarDao.EditarCodigo(nuevoCodigo, idProductoSeleccionado, MarcaProducto);
                 }
             }
             catch (Exception ex)

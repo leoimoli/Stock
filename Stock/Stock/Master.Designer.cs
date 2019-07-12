@@ -37,7 +37,6 @@ namespace Stock
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editarCódigoProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,8 +101,6 @@ namespace Stock
             // 
             // productosToolStripMenuItem
             // 
-            this.productosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editarCódigoProductoToolStripMenuItem});
             this.productosToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 12F);
             this.productosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.productosToolStripMenuItem.Image = global::Stock.Properties.Resources.codigo_de_barras_Nuevo;
@@ -111,13 +108,6 @@ namespace Stock
             this.productosToolStripMenuItem.Size = new System.Drawing.Size(107, 25);
             this.productosToolStripMenuItem.Text = "Productos";
             this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
-            // 
-            // editarCódigoProductoToolStripMenuItem
-            // 
-            this.editarCódigoProductoToolStripMenuItem.Name = "editarCódigoProductoToolStripMenuItem";
-            this.editarCódigoProductoToolStripMenuItem.Size = new System.Drawing.Size(242, 24);
-            this.editarCódigoProductoToolStripMenuItem.Text = "Editar Código Producto";
-            this.editarCódigoProductoToolStripMenuItem.Click += new System.EventHandler(this.editarCódigoProductoToolStripMenuItem_Click);
             // 
             // stockToolStripMenuItem
             // 
@@ -321,6 +311,5 @@ namespace Stock
         private System.Windows.Forms.ToolStripMenuItem pagosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inicioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editarCódigoProductoToolStripMenuItem;
     }
 }

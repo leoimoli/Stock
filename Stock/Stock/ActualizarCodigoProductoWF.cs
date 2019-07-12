@@ -118,16 +118,37 @@ namespace Stock
             {
                 txtIdProducto.Text = Convert.ToString(this.dataGridView1.CurrentRow.Cells[0].Value);
                 txtNombreProducto.Text = Convert.ToString(this.dataGridView1.CurrentRow.Cells[2].Value);
-                txtMarcaProducto.Text = Convert.ToString(this.dataGridView1.CurrentRow.Cells[3].Value);
+                string Marca = Convert.ToString(this.dataGridView1.CurrentRow.Cells[3].Value);
+                if (Marca == "\"Carga Masiva No Especifica\"")
+                {
+                    CargarCombo();
+                }
+                else
+                {
+                    cmbMarca.Text = Convert.ToString(this.dataGridView1.CurrentRow.Cells[3].Value);
+                }
                 txtDescripcion.Text = Convert.ToString(this.dataGridView1.CurrentRow.Cells[4].Value);
                 groupBox1.Enabled = true;
                 txtCodigoProducto.Focus();
                 btnGuardar.Visible = true;
                 btnCancelar.Visible = true;
+                btnGenerarCodigo.Enabled = true;
                 //ProductoSeleccionado(idProductoGrilla);
             }
             catch (Exception ex)
             { }
+        }
+        public void CargarCombo()
+        {
+            List<string> Marcas = new List<string>();
+            Marcas = Negocio.Consultar.CargarComboMarcas();
+            cmbMarca.Items.Add("Seleccione");
+            cmbMarca.Items.Clear();
+            foreach (string item in Marcas)
+            {
+                cmbMarca.Text = "Seleccione";
+                cmbMarca.Items.Add(item);
+            }
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -147,14 +168,14 @@ namespace Stock
             txtCodigoProducto.Clear();
             txtNombreProducto.Clear();
             txtDescripcion.Clear();
-            txtMarcaProducto.Clear();
+            
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
                 Entidades.Productos _producto = CargarEntidad();
-                bool Exito = Negocio.Producto.EditarCodigo(_producto.CodigoProducto, _producto.idProducto);
+                bool Exito = Negocio.Producto.EditarCodigo(_producto.CodigoProducto, _producto.idProducto, _producto.MarcaProducto);
                 if (Exito == true)
                 {
                     ProgressBar();
@@ -193,7 +214,7 @@ namespace Stock
             txtCodigoProducto.Clear();
             txtNombreProducto.Clear();
             txtDescripcion.Clear();
-            txtMarcaProducto.Clear();
+            //txtMarcaProducto.Clear();
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
             List<Entidades.Productos> ListaGrilla = Negocio.Producto.BuscarProductosSinCodigo();
@@ -206,7 +227,7 @@ namespace Stock
             _producto.idProducto = Convert.ToInt32(txtIdProducto.Text);
             _producto.CodigoProducto = txtCodigoProducto.Text;
             _producto.NombreProducto = txtNombreProducto.Text;
-            _producto.MarcaProducto = txtMarcaProducto.Text;
+            _producto.MarcaProducto = cmbMarca.Text;
             _producto.Descripcion = txtDescripcion.Text;
             return _producto;
         }

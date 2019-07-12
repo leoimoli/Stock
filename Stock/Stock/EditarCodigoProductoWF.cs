@@ -61,26 +61,26 @@ namespace Stock
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (txtCodigoProductoActual.Text != txtNuevoCodigoProducto.Text)
-                {
-                    string nuevoCodigo = txtNuevoCodigoProducto.Text;
-                    ProgressBar();
-                    bool Exito = Negocio.Producto.EditarCodigo(nuevoCodigo, idProductoSeleccionado);
-                    if (Exito == true)
-                    {
-                        const string message2 = "La edición del código del producto se registro exitosamente.";
-                        const string caption2 = "Éxito";
-                        var result2 = MessageBox.Show(message2, caption2,
-                                                     MessageBoxButtons.OK,
-                                                     MessageBoxIcon.Asterisk);
-                        LimpiarCampos();
-                    }
-                }
-            }
-            catch (Exception)
-            { }
+            //try
+            //{
+            //    if (txtCodigoProductoActual.Text != txtNuevoCodigoProducto.Text)
+            //    {
+            //        string nuevoCodigo = txtNuevoCodigoProducto.Text;
+            //        ProgressBar();
+            //        bool Exito = Negocio.Producto.EditarCodigo(nuevoCodigo, idProductoSeleccionado);
+            //        if (Exito == true)
+            //        {
+            //            const string message2 = "La edición del código del producto se registro exitosamente.";
+            //            const string caption2 = "Éxito";
+            //            var result2 = MessageBox.Show(message2, caption2,
+            //                                         MessageBoxButtons.OK,
+            //                                         MessageBoxIcon.Asterisk);
+            //            LimpiarCampos();
+            //        }
+            //    }
+            //}
+            //catch (Exception)
+            //{ }
         }
         private void LimpiarCampos()
         {

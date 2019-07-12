@@ -127,12 +127,12 @@ namespace Stock
         {
             Close();
         }
-        private void editarCódigoProductoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            EditarCodigoProductoWF _editar = new EditarCodigoProductoWF();
-            _editar.Show();
-            Hide();
-        }
+        //private void editarCódigoProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    EditarCodigoProductoWF _editar = new EditarCodigoProductoWF();
+        //    _editar.Show();
+        //    Hide();
+        //}
         private void CargaMasivaDeProductosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CargaMasivaDeProductosWF _cargar = new CargaMasivaDeProductosWF();

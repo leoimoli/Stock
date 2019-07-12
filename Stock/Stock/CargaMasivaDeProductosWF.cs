@@ -192,6 +192,7 @@ namespace Stock
         {
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
+            btnVolver.Enabled = true;
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -201,8 +202,8 @@ namespace Stock
             ProgressBar();
             int ContadorDeexito = Negocio.Producto.GaurdarProductosMasivo(listaGuardar);
             if (ContadorDeexito > 0)
-            { MessageBox.Show("Se registraron los productos exitosamente. Se registro un total de:'"+ ContadorDeexito + "' productos. "); }
-            else { MessageBox.Show("Todos los productos ya fueron previamentes cargados. Se registro un total de:'" + ContadorDeexito + "' productos."); }
+            { MessageBox.Show("El proceso finzalizo exitosamente. Se registro un total de:'"+ ContadorDeexito + "' productos. "); }
+            else { MessageBox.Show("Todos los productos ya fueron previamentes cargados. No se registraron nuevos ingresos."); }
             LimpiarCampos();
         }
         private void btnVolver_Click(object sender, EventArgs e)
