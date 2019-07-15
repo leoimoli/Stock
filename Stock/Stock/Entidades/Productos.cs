@@ -19,5 +19,6 @@ namespace Stock.Entidades
         public byte[] Foto { get; set; }
         public decimal PrecioDeVenta { get; set; }
         public string Cantidad { get; set; }
+        public int idProveedor { get; set; }
     }
 }

@@ -39,6 +39,8 @@
             this.lblProgreso = new System.Windows.Forms.Label();
             this.lblProgresoEdit = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblInicio = new System.Windows.Forms.Label();
+            this.lblFin = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +60,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(323, 448);
+            this.progressBar1.Location = new System.Drawing.Point(317, 379);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(330, 23);
             this.progressBar1.TabIndex = 71;
@@ -126,26 +128,48 @@
             // lblProgreso
             // 
             this.lblProgreso.AutoSize = true;
-            this.lblProgreso.Location = new System.Drawing.Point(404, 474);
+            this.lblProgreso.Location = new System.Drawing.Point(455, 478);
             this.lblProgreso.Name = "lblProgreso";
-            this.lblProgreso.Size = new System.Drawing.Size(52, 13);
+            this.lblProgreso.Size = new System.Drawing.Size(65, 13);
             this.lblProgreso.TabIndex = 73;
-            this.lblProgreso.Text = "Progreso:";
+            this.lblProgreso.Text = "En Progreso";
+            this.lblProgreso.Visible = false;
             // 
             // lblProgresoEdit
             // 
             this.lblProgresoEdit.AutoSize = true;
             this.lblProgresoEdit.Location = new System.Drawing.Point(462, 474);
             this.lblProgresoEdit.Name = "lblProgresoEdit";
-            this.lblProgresoEdit.Size = new System.Drawing.Size(10, 13);
+            this.lblProgresoEdit.Size = new System.Drawing.Size(0, 13);
             this.lblProgresoEdit.TabIndex = 74;
-            this.lblProgresoEdit.Text = "-";
+            // 
+            // lblInicio
+            // 
+            this.lblInicio.AutoSize = true;
+            this.lblInicio.Location = new System.Drawing.Point(455, 445);
+            this.lblInicio.Name = "lblInicio";
+            this.lblInicio.Size = new System.Drawing.Size(65, 13);
+            this.lblInicio.TabIndex = 75;
+            this.lblInicio.Text = "En Progreso";
+            this.lblInicio.Visible = false;
+            // 
+            // lblFin
+            // 
+            this.lblFin.AutoSize = true;
+            this.lblFin.Location = new System.Drawing.Point(455, 461);
+            this.lblFin.Name = "lblFin";
+            this.lblFin.Size = new System.Drawing.Size(65, 13);
+            this.lblFin.TabIndex = 76;
+            this.lblFin.Text = "En Progreso";
+            this.lblFin.Visible = false;
             // 
             // CargaMasivaDeProductosWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 573);
+            this.Controls.Add(this.lblFin);
+            this.Controls.Add(this.lblInicio);
             this.Controls.Add(this.lblProgresoEdit);
             this.Controls.Add(this.lblProgreso);
             this.Controls.Add(this.btnVolver);
@@ -177,5 +201,7 @@
         private System.Windows.Forms.Label lblProgreso;
         private System.Windows.Forms.Label lblProgresoEdit;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lblInicio;
+        private System.Windows.Forms.Label lblFin;
     }
 }

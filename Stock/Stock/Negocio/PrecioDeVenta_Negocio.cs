@@ -66,5 +66,36 @@ namespace Stock.Negocio
 
             return exito;
         }
+
+        public static bool InsertPrecioDeVentaPorProveedor(string proveedor, string nuevoRedito, int idUsuario)
+        {
+            bool exito = false;
+            List<Productos> _lista = new List<Productos>();
+            _lista = DAO.ConsultarDao.ListarProductosPorProveedor(proveedor);
+            if (_lista.Count > 0)
+            {
+                foreach (var item in _lista)
+                {
+                    decimal PrecioDeVenta = item.PrecioDeVenta;
+                    var split = nuevoRedito.Split('%')[0];
+                    split = split.Trim();
+                    decimal porcentaje = Convert.ToDecimal(split) / 100;
+                    decimal ValorVentaCalculado;
+                    ValorVentaCalculado = PrecioDeVenta * porcentaje + PrecioDeVenta;
+                    string ValorFinal = Convert.ToString(decimal.Round(ValorVentaCalculado, 2));
+                    ValorVentaCalculado = Convert.ToDecimal(ValorFinal);
+                    item.PrecioDeVenta = ValorVentaCalculado;
+                    item.idUsuario = idUsuario;
+                    item.FechaDeAlta = DateTime.Now;
+                }
+                exito = DAO.AgregarDao.InsertPrecioDeVentaMasivo(_lista);
+            }
+            else
+            {
+
+            }
+
+            return exito;
+        }
     }
 }

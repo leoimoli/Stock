@@ -143,33 +143,67 @@ namespace Stock.DAO
 
         public static int InsertarProductoMasivo(List<Productos> listaGuardar)
         {
+            int idUltimoProductoCargado = 0;
             int exito = 0;
             connection.Close();
             connection.Open();
 
             for (int i = 0; i < listaGuardar.Count; i++)
             {
-                bool ProductoExistente = ConsultarDao.ValidarProductoMasivoExistente(listaGuardar[i].Descripcion);
-                if (ProductoExistente != true)
+                //bool ProductoExistente = ConsultarDao.ValidarProductoMasivoExistente(listaGuardar[i].Descripcion);
+                //if (ProductoExistente != true)
+                //{
+                string proceso = "AltaProductoMasivo";
+                MySqlCommand cmd = new MySqlCommand(proceso, connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("CodigoProducto_in", listaGuardar[i].CodigoProducto);
+                cmd.Parameters.AddWithValue("NombreProducto_in", listaGuardar[i].NombreProducto);
+                cmd.Parameters.AddWithValue("MarcaProducto_in", listaGuardar[i].MarcaProducto);
+                cmd.Parameters.AddWithValue("Descripcion_in", listaGuardar[i].Descripcion);
+                cmd.Parameters.AddWithValue("FechaDeAlta_in", listaGuardar[i].FechaDeAlta);
+                cmd.Parameters.AddWithValue("idUsuario_in", listaGuardar[i].idUsuario);
+                cmd.Parameters.AddWithValue("Foto_in", listaGuardar[i].Foto);
+                cmd.Parameters.AddWithValue("PrecioDeVenta_in", listaGuardar[i].PrecioDeVenta);
+                //cmd.ExecuteNonQuery();
+                MySqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
                 {
-                    string proceso = "AltaProducto";
-                    MySqlCommand cmd = new MySqlCommand(proceso, connection);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("CodigoProducto_in", listaGuardar[i].CodigoProducto);
-                    cmd.Parameters.AddWithValue("NombreProducto_in", listaGuardar[i].NombreProducto);
-                    cmd.Parameters.AddWithValue("MarcaProducto_in", listaGuardar[i].MarcaProducto);
-                    cmd.Parameters.AddWithValue("Descripcion_in", listaGuardar[i].Descripcion);
-                    cmd.Parameters.AddWithValue("FechaDeAlta_in", listaGuardar[i].FechaDeAlta);
-                    cmd.Parameters.AddWithValue("idUsuario_in", listaGuardar[i].idUsuario);
-                    cmd.Parameters.AddWithValue("Foto_in", listaGuardar[i].Foto);
-                    cmd.ExecuteNonQuery();
+                    idUltimoProductoCargado = Convert.ToInt32(r["ID"].ToString());
+
+                }
+                if (idUltimoProductoCargado > 0)
+                {
+                    r.Close();
+                    string proceso2 = "AltaProductoPorProveedor";
+                    MySqlCommand cmd2 = new MySqlCommand(proceso2, connection);
+                    cmd2.CommandType = CommandType.StoredProcedure;
+                    cmd2.Parameters.AddWithValue("idProducto_in", idUltimoProductoCargado);
+                    cmd2.Parameters.AddWithValue("idProveedor_in", listaGuardar[i].idProveedor);
+                    cmd2.Parameters.AddWithValue("ProductoCompartido_in", null);
+                    cmd2.ExecuteNonQuery();
+                }
+                if (listaGuardar[i].PrecioDeVenta != null && listaGuardar[i].PrecioDeVenta > 0)
+                {
+                    bool Exito = false;
+                    string proceso3 = "InsertarHistorialPrecioDeVenta";
+                    MySqlCommand cmd3 = new MySqlCommand(proceso3, connection);
+                    cmd3.CommandType = CommandType.StoredProcedure;
+                    cmd3.Parameters.AddWithValue("idProducto_in", idUltimoProductoCargado);
+                    cmd3.Parameters.AddWithValue("PrecioDeVenta_in", listaGuardar[i].PrecioDeVenta);
+                    cmd3.Parameters.AddWithValue("FechaActual_in", listaGuardar[i].FechaDeAlta);
+                    cmd3.Parameters.AddWithValue("idUsuario_in", listaGuardar[i].idUsuario);
+                    cmd3.ExecuteNonQuery();
+                    Exito = true;
+                    if (Exito == true)
+                    {
+                        Exito = DAO.EditarDao.ActualizarPrecioDeVentaProducto(idUltimoProductoCargado, listaGuardar[i].PrecioDeVenta);
+                    }
                     exito = exito + 1;
                 }
             }
             connection.Close();
             return exito;
         }
-
         public static bool InsertPrecioDeVentaMasivo(List<Productos> _lista)
         {
             bool exito = false;

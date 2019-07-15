@@ -37,7 +37,7 @@
             this.txtReditoPorcentual = new System.Windows.Forms.MaskedTextBox();
             this.lblPrecioFijo = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtValorUni = new System.Windows.Forms.TextBox();
+            this.txtValorUnit = new System.Windows.Forms.TextBox();
             this.txtTotalCompra = new System.Windows.Forms.TextBox();
             this.lblUltimoPrecioFijo = new System.Windows.Forms.Label();
             this.lblValorOMarcaFijo = new System.Windows.Forms.Label();
@@ -46,6 +46,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblapellidoNombreEditar = new System.Windows.Forms.Label();
             this.panel200 = new System.Windows.Forms.Panel();
+            this.cmbProveedores = new System.Windows.Forms.ComboBox();
+            this.chcProveedor = new System.Windows.Forms.CheckBox();
             this.lblNombreProducto = new System.Windows.Forms.Label();
             this.txtNombreProductoBuscar = new System.Windows.Forms.TextBox();
             this.chcProducto = new System.Windows.Forms.CheckBox();
@@ -66,6 +68,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lblEnProgreso = new System.Windows.Forms.Label();
             this.panel_Producto.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel200.SuspendLayout();
@@ -80,6 +83,7 @@
             // panel_Producto
             // 
             this.panel_Producto.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel_Producto.Controls.Add(this.lblEnProgreso);
             this.panel_Producto.Controls.Add(this.txtMarca);
             this.panel_Producto.Controls.Add(this.txtPrecioVenta);
             this.panel_Producto.Controls.Add(this.txtPrecioActualVenta);
@@ -87,7 +91,7 @@
             this.panel_Producto.Controls.Add(this.txtReditoPorcentual);
             this.panel_Producto.Controls.Add(this.lblPrecioFijo);
             this.panel_Producto.Controls.Add(this.label6);
-            this.panel_Producto.Controls.Add(this.txtValorUni);
+            this.panel_Producto.Controls.Add(this.txtValorUnit);
             this.panel_Producto.Controls.Add(this.txtTotalCompra);
             this.panel_Producto.Controls.Add(this.lblUltimoPrecioFijo);
             this.panel_Producto.Controls.Add(this.lblValorOMarcaFijo);
@@ -102,7 +106,7 @@
             // txtMarca
             // 
             this.txtMarca.Enabled = false;
-            this.txtMarca.Location = new System.Drawing.Point(44, 33);
+            this.txtMarca.Location = new System.Drawing.Point(41, 34);
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.Size = new System.Drawing.Size(170, 20);
             this.txtMarca.TabIndex = 45;
@@ -168,13 +172,13 @@
             this.label6.TabIndex = 39;
             this.label6.Text = "Rédito Porcentual:";
             // 
-            // txtValorUni
+            // txtValorUnit
             // 
-            this.txtValorUni.Enabled = false;
-            this.txtValorUni.Location = new System.Drawing.Point(41, 34);
-            this.txtValorUni.Name = "txtValorUni";
-            this.txtValorUni.Size = new System.Drawing.Size(170, 20);
-            this.txtValorUni.TabIndex = 36;
+            this.txtValorUnit.Enabled = false;
+            this.txtValorUnit.Location = new System.Drawing.Point(41, 34);
+            this.txtValorUnit.Name = "txtValorUnit";
+            this.txtValorUnit.Size = new System.Drawing.Size(170, 20);
+            this.txtValorUnit.TabIndex = 36;
             // 
             // txtTotalCompra
             // 
@@ -256,6 +260,8 @@
             // panel200
             // 
             this.panel200.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel200.Controls.Add(this.cmbProveedores);
+            this.panel200.Controls.Add(this.chcProveedor);
             this.panel200.Controls.Add(this.lblNombreProducto);
             this.panel200.Controls.Add(this.txtNombreProductoBuscar);
             this.panel200.Controls.Add(this.chcProducto);
@@ -272,6 +278,28 @@
             this.panel200.Size = new System.Drawing.Size(294, 455);
             this.panel200.TabIndex = 18;
             this.panel200.Paint += new System.Windows.Forms.PaintEventHandler(this.panel200_Paint);
+            // 
+            // cmbProveedores
+            // 
+            this.cmbProveedores.FormattingEnabled = true;
+            this.cmbProveedores.Location = new System.Drawing.Point(36, 61);
+            this.cmbProveedores.Name = "cmbProveedores";
+            this.cmbProveedores.Size = new System.Drawing.Size(200, 21);
+            this.cmbProveedores.TabIndex = 35;
+            this.cmbProveedores.Visible = false;
+            this.cmbProveedores.SelectedIndexChanged += new System.EventHandler(this.cmbProveedor_SelectedIndexChanged);
+            // 
+            // chcProveedor
+            // 
+            this.chcProveedor.AutoSize = true;
+            this.chcProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chcProveedor.Location = new System.Drawing.Point(175, 27);
+            this.chcProveedor.Name = "chcProveedor";
+            this.chcProveedor.Size = new System.Drawing.Size(119, 21);
+            this.chcProveedor.TabIndex = 34;
+            this.chcProveedor.Text = "Por Proveedor";
+            this.chcProveedor.UseVisualStyleBackColor = true;
+            this.chcProveedor.CheckedChanged += new System.EventHandler(this.chcProveedor_CheckedChanged);
             // 
             // lblNombreProducto
             // 
@@ -334,7 +362,7 @@
             // 
             this.chcMarca.AutoSize = true;
             this.chcMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chcMarca.Location = new System.Drawing.Point(196, 10);
+            this.chcMarca.Location = new System.Drawing.Point(175, 9);
             this.chcMarca.Name = "chcMarca";
             this.chcMarca.Size = new System.Drawing.Size(92, 21);
             this.chcMarca.TabIndex = 22;
@@ -476,6 +504,18 @@
             this.progressBar1.Value = 10;
             this.progressBar1.Visible = false;
             // 
+            // lblEnProgreso
+            // 
+            this.lblEnProgreso.AutoSize = true;
+            this.lblEnProgreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEnProgreso.ForeColor = System.Drawing.Color.White;
+            this.lblEnProgreso.Location = new System.Drawing.Point(220, 150);
+            this.lblEnProgreso.Name = "lblEnProgreso";
+            this.lblEnProgreso.Size = new System.Drawing.Size(113, 17);
+            this.lblEnProgreso.TabIndex = 46;
+            this.lblEnProgreso.Text = "En Progreso...";
+            this.lblEnProgreso.Visible = false;
+            // 
             // PrecioDeVentaWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -539,7 +579,7 @@
         private System.Windows.Forms.MaskedTextBox txtReditoPorcentual;
         private System.Windows.Forms.Label lblPrecioFijo;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtValorUni;
+        private System.Windows.Forms.TextBox txtValorUnit;
         private System.Windows.Forms.TextBox txtTotalCompra;
         private System.Windows.Forms.Label lblUltimoPrecioFijo;
         private System.Windows.Forms.Label lblValorOMarcaFijo;
@@ -557,5 +597,8 @@
         private System.Windows.Forms.CheckBox chcProducto;
         private System.Windows.Forms.TextBox txtNombreProductoBuscar;
         private System.Windows.Forms.Label lblNombreProducto;
+        private System.Windows.Forms.CheckBox chcProveedor;
+        private System.Windows.Forms.ComboBox cmbProveedores;
+        private System.Windows.Forms.Label lblEnProgreso;
     }
 }

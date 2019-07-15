@@ -83,6 +83,40 @@ namespace Stock.DAO
             return _listaProductos;
         }
 
+        public static List<Productos> ListarProductosPorProveedor(string proveedor)
+        {
+            List<Productos> _lista = new List<Productos>();
+            List<Entidades.Proveedores> Lista = new List<Entidades.Proveedores>();
+            Lista = BuscarProvedorPorNombre(proveedor);
+            if (Lista[0].idProveedor > 0)
+            {
+                int idProveedor = Lista[0].idProveedor;
+                connection.Close();
+                connection.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla = new DataTable();
+                MySqlParameter[] oParam = { new MySqlParameter("idProveedor_in", idProveedor) };
+                string proceso = "ListarProductosPoridProveedor";
+                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt.SelectCommand.Parameters.AddRange(oParam);
+                dt.Fill(Tabla);
+                if (Tabla.Rows.Count > 0)
+                {
+                    foreach (DataRow item in Tabla.Rows)
+                    {
+                        Entidades.Productos listaProducto = new Entidades.Productos();
+                        listaProducto.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                        listaProducto.PrecioDeVenta = Convert.ToDecimal(item["txPrecioDeVenta"].ToString());
+                        _lista.Add(listaProducto);
+                    }
+                }
+            }
+            connection.Close();
+            return _lista;
+        }
+
         public static List<Entidades.Pagos> ListaDePagos()
         {
             connection.Close();

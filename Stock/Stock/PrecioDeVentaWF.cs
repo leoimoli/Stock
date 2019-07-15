@@ -139,7 +139,7 @@ namespace Stock
             else
                 if (txtTotalCompra.Text != "" & txtReditoPorcentual.Text != "   %")
             {
-                decimal totalCompraIngresada = Convert.ToDecimal(txtValorUni.Text);
+                decimal totalCompraIngresada = Convert.ToDecimal(txtValorUnit.Text);
                 var split = txtReditoPorcentual.Text.Split('%')[0];
                 split = split.Trim();
                 decimal porcentaje = Convert.ToDecimal(split) / 100;
@@ -188,7 +188,7 @@ namespace Stock
                         else
                         {
                             var lista = Lista.First();
-                            txtValorUni.Text = Convert.ToString(lista.ValorUnitario);
+                            txtValorUnit.Text = Convert.ToString(lista.ValorUnitario);
                             txtTotalCompra.Text = Convert.ToString(lista.PrecioTotalDeCompra);
                             txtPrecioActualVenta.Text = Convert.ToString(lista.PrecioDeVenta);
                             ListaHistorialDelProductoSeleccionado = Negocio.Consultar.HistorialProducto(idProducto);
@@ -207,6 +207,7 @@ namespace Stock
         {
             try
             {
+                lblEnProgreso.Visible = true;
                 bool Exito;
                 if (chcMarca.Checked == true)
                 {
@@ -231,7 +232,8 @@ namespace Stock
                         {
                             int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
                             int idUsuario = idusuarioLogueado;
-                            ProgressBar();
+                            InhabilitarPaneles();
+                            ProgressBar();                           
                             Exito = Negocio.PrecioDeVenta_Negocio.InsertPrecioDeVentaPorMarca(marca, NuevoRedito, idUsuario);
                             if (Exito == true)
                             {
@@ -245,6 +247,52 @@ namespace Stock
                             else
                             {
                                 const string message3 = "Los productos asociados a la marca seleccionada, no tiene un precio de venta predefinido que se pueda modificar.";
+                                const string caption3 = "Modificar precio por marca";
+                                var result3 = MessageBox.Show(message3, caption3,
+                                                             MessageBoxButtons.OK,
+                                                             MessageBoxIcon.Exclamation);
+                            }
+                        }
+
+                    }
+                }
+                if (chcProveedor.Checked == true)
+                {
+                    string proveedor = txtMarca.Text;
+                    string NuevoRedito = txtReditoPorcentual.Text;
+                    if (NuevoRedito == "" || NuevoRedito == "   %")
+                    {
+                        const string message3 = "Debe ingresar el rédito porcentual que desea obtener de la marca seleccionada.";
+                        const string caption3 = "Atención";
+                        var result3 = MessageBox.Show(message3, caption3,
+                                                     MessageBoxButtons.OK,
+                                                   MessageBoxIcon.Exclamation);
+                        throw new Exception();
+                    }
+                    const string message = "Desea modificar el precio de venta de los productos correspondientes al proveedor seleccionada?";
+                    const string caption = "Modificar precio por proveedor";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Question);
+                    {
+                        if (result == DialogResult.Yes)
+                        {
+                            int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
+                            int idUsuario = idusuarioLogueado;
+                            ProgressBar();
+                            Exito = Negocio.PrecioDeVenta_Negocio.InsertPrecioDeVentaPorProveedor(proveedor, NuevoRedito, idUsuario);
+                            if (Exito == true)
+                            {
+                                const string message2 = "Se registro el nuevo precio de venta exitosamente.";
+                                const string caption2 = "Modificar precio por proveedor";
+                                var result2 = MessageBox.Show(message2, caption2,
+                                                             MessageBoxButtons.OK,
+                                                             MessageBoxIcon.Asterisk);
+                                LimpiarCampos();
+                            }
+                            else
+                            {
+                                const string message3 = "Los productos asociados al proveedor seleccionada, no tiene un precio de venta predefinido que se pueda modificar.";
                                 const string caption3 = "Modificar precio por marca";
                                 var result3 = MessageBox.Show(message3, caption3,
                                                              MessageBoxButtons.OK,
@@ -269,6 +317,7 @@ namespace Stock
                         LimpiarCampos();
                     }
                 }
+                lblEnProgreso.Visible = false;
             }
             catch (Exception ex)
             {
@@ -277,10 +326,18 @@ namespace Stock
             }
             LimpiarCampos();
         }
+
+        private void InhabilitarPaneles()
+        {
+            panel200.Enabled = false;
+            panel6.Enabled = false;
+            panel_Producto.Enabled = false;
+        }
+
         private void LimpiarCampos()
         {
             txtTotalCompra.Clear();
-            txtValorUni.Clear();
+            txtValorUnit.Clear();
             txtPrecioVenta.Clear();
             txtReditoPorcentual.Clear();
             txtPrecioVenta.Clear();
@@ -291,6 +348,9 @@ namespace Stock
             txtPrecioActualVenta.Clear();
             txtCodigo.Clear();
             txtMarca.Clear();
+            panel200.Enabled = true;
+            panel6.Enabled = true;
+            panel_Producto.Enabled = true;
         }
         private PrecioDeVenta CargarEntidad()
         {
@@ -327,8 +387,9 @@ namespace Stock
         {
             if (chcPorCodigo.Checked == true)
             {
+                cmbProveedores.Visible = false;
                 lblValorOMarcaFijo.Text = "Último valor unitario";
-                txtValorUni.Visible = true;
+                txtValorUnit.Visible = true;
                 txtMarca.Visible = false;
                 chcMarca.Checked = false;
                 txtCodigo.Visible = true;
@@ -345,14 +406,16 @@ namespace Stock
                 chcProducto.Checked = false;
                 txtNombreProductoBuscar.Visible = false;
                 lblNombreProducto.Visible = false;
+                chcProveedor.Checked = false;
             }
         }
         private void chcMarca_CheckedChanged(object sender, EventArgs e)
         {
             if (chcMarca.Checked == true)
             {
+                cmbProveedores.Visible = false;
                 lblValorOMarcaFijo.Text = "Marca Seleccionada";
-                txtValorUni.Visible = false;
+                txtValorUnit.Visible = false;
                 txtMarca.Visible = true;
                 chcPorCodigo.Checked = false;
                 txtCodigo.Visible = false;
@@ -370,14 +433,16 @@ namespace Stock
                 chcProducto.Checked = false;
                 txtNombreProductoBuscar.Visible = false;
                 lblNombreProducto.Visible = false;
+                chcProveedor.Checked = false;
             }
         }
         private void chcProducto_CheckedChanged(object sender, EventArgs e)
         {
             if (chcProducto.Checked == true)
             {
+                cmbProveedores.Visible = false;
                 lblValorOMarcaFijo.Text = "Último valor unitario";
-                txtValorUni.Visible = true;
+                txtValorUnit.Visible = true;
                 txtMarca.Visible = false;
                 chcMarca.Checked = false;
                 txtCodigo.Visible = false;
@@ -397,6 +462,35 @@ namespace Stock
                 lblNombreProducto.Visible = true;
                 lblNombreProducto.Text = "Nombre Producto";
                 chcPorCodigo.Checked = false;
+                chcProveedor.Checked = false;
+            }
+        }
+        private void chcProveedor_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chcProveedor.Checked == true)
+            {
+                txtMarca.Visible = true;
+                chcMarca.Checked = false;
+                cmbProveedores.Visible = true;
+                lblValorOMarcaFijo.Text = "Proveedor Seleccionado";
+                txtValorUnit.Visible = false;
+                chcPorCodigo.Checked = false;
+                txtCodigo.Visible = false;
+                lblCodigoFijo.Visible = false;
+                cmbProveedores.Focus();
+                cmbMarca.Visible = false;
+                lblMarcaFijo.Visible = false;
+                txtTotalCompra.Visible = false;
+                txtPrecioVenta.Visible = false;
+                txtPrecioActualVenta.Visible = false;
+                lblPrecioFijo.Visible = false;
+                lblUltimoPrecioFijo.Visible = false;
+                lblPrecioActualFijo.Visible = false;
+                chcProducto.Checked = false;
+                txtNombreProductoBuscar.Visible = false;
+                lblNombreProducto.Visible = false;
+                chcProveedor.Checked = true;
+                CargarComboProveedores();
             }
         }
         private void CargarComboMarcas()
@@ -412,9 +506,28 @@ namespace Stock
             }
             cmbMarca.Items.Add("Seleccione");
         }
+        private void CargarComboProveedores()
+        {
+            List<string> Proveedor = new List<string>();
+            Proveedor = Negocio.Consultar.CargarComboProveedor();
+            cmbProveedores.Items.Add("Seleccione");
+            cmbProveedores.Items.Clear();
+            foreach (string item in Proveedor)
+            {
+                cmbProveedores.Text = "Seleccione";
+                cmbProveedores.Items.Add(item);
+            }
+            cmbProveedores.Items.Add("Seleccione");
+        }
         private void cmbMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtMarca.Text = cmbMarca.Text;
+            txtReditoPorcentual.Enabled = true;
+            txtReditoPorcentual.Focus();
+        }
+        private void cmbProveedor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtMarca.Text = cmbProveedores.Text;
             txtReditoPorcentual.Enabled = true;
             txtReditoPorcentual.Focus();
         }
@@ -449,12 +562,12 @@ namespace Stock
                                                        MessageBoxIcon.Exclamation);
                             LimpiarCampos();
                             throw new Exception();
-                           
+
                         }
                         else
                         {
                             var lista = Lista.First();
-                            txtValorUni.Text = Convert.ToString(lista.ValorUnitario);
+                            txtValorUnit.Text = Convert.ToString(lista.ValorUnitario);
                             txtTotalCompra.Text = Convert.ToString(lista.PrecioTotalDeCompra);
                             txtPrecioActualVenta.Text = Convert.ToString(lista.PrecioDeVenta);
                             ListaHistorialDelProductoSeleccionado = Negocio.Consultar.HistorialProducto(idProducto);

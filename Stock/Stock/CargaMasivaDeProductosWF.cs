@@ -152,7 +152,9 @@ namespace Stock
                         list.FechaDeAlta = DateTime.Now;
                         list.idUsuario = Convert.ToInt32(item[4].ToString());
                         //list.Foto = Convert.ToByte(item[6].ToString());
-                        list.PrecioDeVenta = Convert.ToDecimal(item[5].ToString());
+                        double Valor = Convert.ToDouble(item[5].ToString());
+                        list.PrecioDeVenta = Convert.ToDecimal(Valor.ToString("000000.00"));
+                        list.idProveedor = Convert.ToInt32(item[6].ToString());
                         listaVotos.Add(list);
                     }
                 }
@@ -196,14 +198,25 @@ namespace Stock
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            DateTime FechaInicio = DateTime.Now;
+            lblInicio.Text = "Fecha Inicio:" + Convert.ToString(FechaInicio);
+            lblInicio.Visible = true;
+            lblProgreso.Visible = true;
             btnVolver.Enabled = false;
             btnGuardar.Enabled = false;
             dataGridView1.Enabled = false;
             ProgressBar();
             int ContadorDeexito = Negocio.Producto.GaurdarProductosMasivo(listaGuardar);
             if (ContadorDeexito > 0)
-            { MessageBox.Show("El proceso finzalizo exitosamente. Se registro un total de:'"+ ContadorDeexito + "' productos. "); }
+            { MessageBox.Show("El proceso finzalizo exitosamente. Se registro un total de:'" + ContadorDeexito + "' productos. "); }
             else { MessageBox.Show("Todos los productos ya fueron previamentes cargados. No se registraron nuevos ingresos."); }
+            DateTime FechaFin = DateTime.Now;
+            lblFin.Text = "Fecha Fin:" + Convert.ToString(FechaFin);
+            TimeSpan result = FechaFin.Subtract(FechaInicio);
+            lblFin.Visible = true;
+            int Minutos = Convert.ToInt32(result.TotalMinutes);
+            lblProgreso.Text = "El proceso tardo:" + Convert.ToString(Minutos) + "Minutos.";
+
             LimpiarCampos();
         }
         private void btnVolver_Click(object sender, EventArgs e)
