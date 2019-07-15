@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel_Producto = new System.Windows.Forms.Panel();
+            this.lblEnProgreso = new System.Windows.Forms.Label();
             this.txtMarca = new System.Windows.Forms.TextBox();
             this.txtPrecioVenta = new System.Windows.Forms.TextBox();
             this.txtPrecioActualVenta = new System.Windows.Forms.TextBox();
@@ -68,7 +69,8 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.lblEnProgreso = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.lblTotalEdit = new System.Windows.Forms.Label();
             this.panel_Producto.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel200.SuspendLayout();
@@ -83,6 +85,8 @@
             // panel_Producto
             // 
             this.panel_Producto.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel_Producto.Controls.Add(this.lblTotalEdit);
+            this.panel_Producto.Controls.Add(this.lblTotal);
             this.panel_Producto.Controls.Add(this.lblEnProgreso);
             this.panel_Producto.Controls.Add(this.txtMarca);
             this.panel_Producto.Controls.Add(this.txtPrecioVenta);
@@ -102,6 +106,18 @@
             this.panel_Producto.Name = "panel_Producto";
             this.panel_Producto.Size = new System.Drawing.Size(611, 220);
             this.panel_Producto.TabIndex = 20;
+            // 
+            // lblEnProgreso
+            // 
+            this.lblEnProgreso.AutoSize = true;
+            this.lblEnProgreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEnProgreso.ForeColor = System.Drawing.Color.White;
+            this.lblEnProgreso.Location = new System.Drawing.Point(220, 150);
+            this.lblEnProgreso.Name = "lblEnProgreso";
+            this.lblEnProgreso.Size = new System.Drawing.Size(113, 17);
+            this.lblEnProgreso.TabIndex = 46;
+            this.lblEnProgreso.Text = "En Progreso...";
+            this.lblEnProgreso.Visible = false;
             // 
             // txtMarca
             // 
@@ -504,17 +520,29 @@
             this.progressBar1.Value = 10;
             this.progressBar1.Visible = false;
             // 
-            // lblEnProgreso
+            // lblTotal
             // 
-            this.lblEnProgreso.AutoSize = true;
-            this.lblEnProgreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEnProgreso.ForeColor = System.Drawing.Color.White;
-            this.lblEnProgreso.Location = new System.Drawing.Point(220, 150);
-            this.lblEnProgreso.Name = "lblEnProgreso";
-            this.lblEnProgreso.Size = new System.Drawing.Size(113, 17);
-            this.lblEnProgreso.TabIndex = 46;
-            this.lblEnProgreso.Text = "En Progreso...";
-            this.lblEnProgreso.Visible = false;
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.Color.White;
+            this.lblTotal.Location = new System.Drawing.Point(373, 198);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(151, 17);
+            this.lblTotal.TabIndex = 47;
+            this.lblTotal.Text = "Total de Productos:";
+            this.lblTotal.Visible = false;
+            // 
+            // lblTotalEdit
+            // 
+            this.lblTotalEdit.AutoSize = true;
+            this.lblTotalEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalEdit.ForeColor = System.Drawing.Color.White;
+            this.lblTotalEdit.Location = new System.Drawing.Point(530, 198);
+            this.lblTotalEdit.Name = "lblTotalEdit";
+            this.lblTotalEdit.Size = new System.Drawing.Size(20, 17);
+            this.lblTotalEdit.TabIndex = 48;
+            this.lblTotalEdit.Text = "--";
+            this.lblTotalEdit.Visible = false;
             // 
             // PrecioDeVentaWF
             // 
@@ -600,5 +628,7 @@
         private System.Windows.Forms.CheckBox chcProveedor;
         private System.Windows.Forms.ComboBox cmbProveedores;
         private System.Windows.Forms.Label lblEnProgreso;
+        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Label lblTotalEdit;
     }
 }
