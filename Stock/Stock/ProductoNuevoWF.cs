@@ -125,6 +125,7 @@ namespace Stock
         }
         private Productos CargarEntidad()
         {
+            ///// Harcodear idUsuarios
             Productos _producto = new Productos();
             int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
             _producto.CodigoProducto = txtCodigoProducto.Text;
