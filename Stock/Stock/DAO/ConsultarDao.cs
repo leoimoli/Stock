@@ -1342,12 +1342,9 @@ namespace Stock.DAO
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
-            dt.Fill(Tabla);
-            //DataSet ds = new DataSet();
-            //dt.Fill(ds, "usuarios");
+            dt.Fill(Tabla);        
             if (Tabla.Rows.Count > 0)
-            {
-                //foreach (DataRow item in ds.Tables[0].Rows)
+            {             
                 foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.Productos listaProducto = new Entidades.Productos();

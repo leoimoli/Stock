@@ -51,12 +51,6 @@ namespace Stock.Negocio
             }
             catch (Exception ex)
             {
-                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
-                const string caption = "Atención";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.OK,
-                                           MessageBoxIcon.Warning);
-                throw new Exception();
             }
             return _listaProductos;
         }
@@ -496,7 +490,7 @@ namespace Stock.Negocio
             }
             catch (Exception ex)
             {
-               
+
             }
             return CodigoProducto;
         }

@@ -38,7 +38,6 @@ namespace Stock.Negocio
             }
             return exito;
         }
-
         public static List<Productos> BuscarProductosSinCodigo()
         {
             List<Productos> _listaProductos = new List<Productos>();
@@ -57,7 +56,6 @@ namespace Stock.Negocio
             }
             return _listaProductos;
         }
-
         public static bool EditarProducto(Productos _producto, int idProductoGrillaSeleccionado)
         {
             bool exito = false;

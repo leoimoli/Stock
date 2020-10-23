@@ -204,6 +204,12 @@
     <Compile Include="Negocio\Stock.cs" />
     <Compile Include="Negocio\Usuario.cs" />
     <Compile Include="Negocio\Ventas.cs" />
+    <Compile Include="NewMasterWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewMasterWF.Designer.cs">
+      <DependentUpon>NewMasterWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="New_MasterWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +239,12 @@
     </Compile>
     <Compile Include="Producto.Designer.cs">
       <DependentUpon>Producto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductoNuevoWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductoNuevoWF.Designer.cs">
+      <DependentUpon>ProductoNuevoWF.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -333,6 +345,9 @@
     <EmbeddedResource Include="MenuSuperAdminWF.resx">
       <DependentUpon>MenuSuperAdminWF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewMasterWF.resx">
+      <DependentUpon>NewMasterWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="New_MasterWF.resx">
       <DependentUpon>New_MasterWF.cs</DependentUpon>
     </EmbeddedResource>
@@ -347,6 +362,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Producto.resx">
       <DependentUpon>Producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductoNuevoWF.resx">
+      <DependentUpon>ProductoNuevoWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -436,6 +454,15 @@
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Documentos\Base De Datos\Procedure\1%29LoginUsuario.txt" />
+    <None Include="Resources\StoCom4.png" />
+    <None Include="Resources\StoCom3.png" />
+    <None Include="Resources\StoCom2.png" />
+    <None Include="Resources\StoCom.png" />
+    <None Include="Resources\metodo-de-pago.png" />
+    <None Include="Resources\restaurar %281%29.png" />
+    <None Include="Resources\restaurar.png" />
+    <None Include="Resources\menos %282%29.png" />
+    <None Include="Resources\maximizar.png" />
     <None Include="Resources\lupa.png" />
     <None Include="Resources\lupa %281%29.png" />
     <None Include="Resources\Pagos_Chico1.png" />
@@ -493,6 +520,18 @@
     <None Include="Resources\flecha-hacia-la-izquierda.png" />
     <None Include="Resources\flecha-derecha.png" />
     <None Include="Resources\flecha-de-bucle.png" />
+    <None Include="Resources\cancelar1.png" />
+    <None Include="Resources\codigo-de-barras2.png" />
+    <None Include="Resources\codigo-de-barras %281%29.png" />
+    <None Include="Resources\capital.png" />
+    <None Include="Resources\envio.png" />
+    <None Include="Resources\cliente.png" />
+    <None Include="Resources\envio1.png" />
+    <None Include="Resources\capital1.png" />
+    <None Include="Resources\caja.png" />
+    <None Include="Resources\grafico-de-barras.png" />
+    <None Include="Resources\cuadrado.png" />
+    <None Include="Resources\grupo %282%29.png" />
     <Content Include="Resources\login2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

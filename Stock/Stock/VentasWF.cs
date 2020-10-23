@@ -222,7 +222,7 @@ namespace Stock
                 var Vuelto = lblCambio.Text;
                 ticket.AddFooterLine(Efectivo);
                 ticket.AddFooterLine(Vuelto);
-                // ticket.PrintTicket("EPSON TM-T88III Receipt"); //Nombre de la impresora de tickets
+                ticket.PrintTicket("EPSON TM-T88III Receipt"); //Nombre de la impresora de tickets
                 //ticket.PrintTicket("RICOH MP C2004 PCL 6");
                 btnCuentaCorriente.Visible = true;
                 //}
