@@ -52,6 +52,212 @@ namespace Stock.DAO
             return lista;
         }
 
+        public static int ContadorProveedores()
+        {
+            connection.Close();
+            connection.Open();
+            int total = 0;
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ContadorProveedores";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    total = Convert.ToInt32(item["Total"].ToString());
+                }
+            }
+            connection.Close();
+            return total;
+        }
+        public static List<ListaStock> ListaStockPorDescripcion(string descripcion)
+        {
+            connection.Close();
+            connection.Open();
+            List<ListaStock> _listaStocks = new List<ListaStock>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("descripcion_in", descripcion) };
+            string proceso = "ListaStockPorDescripcion";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaStock listaStock = new Entidades.ListaStock();
+                    listaStock.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    listaStock.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaStock.Marca = item["txMarcaProducto"].ToString();
+                    listaStock.Cantidad = String.IsNullOrEmpty(item["txCantidad"].ToString()) ? 0 : Convert.ToInt32(item["txCantidad"].ToString());
+                    listaStock.NombreProducto = item["txDescripcion"].ToString();
+                    _listaStocks.Add(listaStock);
+                }
+            }
+            connection.Close();
+            return _listaStocks;
+        }
+
+        public static List<ListaStock> ListaStockPorCodigoProducto(string codigo)
+        {
+            connection.Close();
+            connection.Open();
+            List<ListaStock> _listaStocks = new List<ListaStock>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("descripcion_in", codigo) };
+            string proceso = "ListaStockPorCodigoProducto";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaStock listaStock = new Entidades.ListaStock();
+                    listaStock.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    listaStock.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaStock.Marca = item["txMarcaProducto"].ToString();
+                    listaStock.Cantidad = String.IsNullOrEmpty(item["txCantidad"].ToString()) ? 0 : Convert.ToInt32(item["txCantidad"].ToString());
+                    listaStock.NombreProducto = item["txDescripcion"].ToString();
+                    _listaStocks.Add(listaStock);
+                }
+            }
+            connection.Close();
+            return _listaStocks;
+        }
+
+        public static int ContadorClientes()
+        {
+            connection.Close();
+            connection.Open();
+            int total = 0;
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ContadorClientes";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    total = Convert.ToInt32(item["Total"].ToString());
+                }
+            }
+            connection.Close();
+            return total;
+        }
+        public static int ContadorProductos()
+        {
+            connection.Close();
+            connection.Open();
+            int total = 0;
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ContadorProductos";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    total = Convert.ToInt32(item["Total"].ToString());
+                }
+            }
+            connection.Close();
+            return total;
+        }
+        public static int ContadorMarcas()
+        {
+            connection.Close();
+            connection.Open();
+            int total = 0;
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ContadorMarcas";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    total = Convert.ToInt32(item["Total"].ToString());
+                }
+            }
+            connection.Close();
+            return total;
+        }
+        public static decimal ContadorVentas()
+        {
+            connection.Close();
+            connection.Open();
+            decimal total = 0;
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ContadorVentas";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    total = Convert.ToDecimal(item["Total"].ToString());
+                }
+            }
+            connection.Close();
+            return total;
+        }
+        public static int ContadorUsuarios()
+        {
+            connection.Close();
+            connection.Open();
+            int total = 0;
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ContadorUsuarios";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    total = Convert.ToInt32(item["Total"].ToString());
+                }
+            }
+            connection.Close();
+            return total;
+        }
         public static List<Productos> BuscarProductosSinCodigo()
         {
             connection.Close();
@@ -82,7 +288,6 @@ namespace Stock.DAO
             connection.Close();
             return _listaProductos;
         }
-
         public static List<Productos> ListarProductosPorProveedor(string proveedor)
         {
             List<Productos> _lista = new List<Productos>();
@@ -116,7 +321,6 @@ namespace Stock.DAO
             connection.Close();
             return _lista;
         }
-
         public static List<Entidades.Pagos> ListaDePagos()
         {
             connection.Close();
@@ -151,7 +355,67 @@ namespace Stock.DAO
             connection.Close();
             return _listaProductos;
         }
+        public static List<Productos> BusquedaProductoPorCodigoIngresado(string codigo)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.Productos> lista = new List<Entidades.Productos>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("Codigo_in", codigo)};
+            string proceso = "BusquedaProductoPorCodigo";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
 
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Productos listaProducto = new Entidades.Productos();
+                    listaProducto.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    listaProducto.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaProducto.MarcaProducto = item["txMarcaProducto"].ToString();
+                    listaProducto.Descripcion = item["txDescripcion"].ToString();
+                    lista.Add(listaProducto);
+                }
+            }
+            return lista;
+        }
+
+        public static List<Productos> BusquedaProductoPorDescripcion(string descripcion)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.Productos> lista = new List<Entidades.Productos>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("Descripcion_in", descripcion)};
+            string proceso = "BuscarProductoPorDescripcion";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Productos listaProducto = new Entidades.Productos();
+                    listaProducto.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    listaProducto.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaProducto.MarcaProducto = item["txMarcaProducto"].ToString();
+                    listaProducto.Descripcion = item["txDescripcion"].ToString();
+                    lista.Add(listaProducto);
+                }
+            }
+            return lista;
+        }
         public static List<Productos> ListarProductoPorCodigo(string codigo)
         {
             connection.Close();
@@ -184,7 +448,6 @@ namespace Stock.DAO
             connection.Close();
             return _listaProductos;
         }
-
         public static bool ValidarProductoMasivoExistente(string descripcion)
         {
             connection.Close();
@@ -207,7 +470,6 @@ namespace Stock.DAO
             connection.Close();
             return Exito;
         }
-
         public static List<Productos> ListarProductoPorDescripcion(string descripcion)
         {
             connection.Close();
@@ -317,7 +579,6 @@ namespace Stock.DAO
             connection.Close();
             return PuntosViejos;
         }
-
         public static bool BuscarCCExistente(int idCliente)
         {
             connection.Close();
@@ -1140,7 +1401,7 @@ namespace Stock.DAO
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = { };
-            string proceso = "ListarStockGeneral";
+            string proceso = "ListarStock";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
@@ -1152,10 +1413,9 @@ namespace Stock.DAO
                     Entidades.ListaStock listaStock = new Entidades.ListaStock();
                     listaStock.idProducto = Convert.ToInt32(item["idProducto"].ToString());
                     listaStock.CodigoProducto = item["txCodigoProducto"].ToString();
-                    listaStock.NombreProducto = item["txNombreProducto"].ToString();
+                    listaStock.NombreProducto = item["txDescripcion"].ToString();
                     listaStock.Marca = item["txMarcaProducto"].ToString();
                     listaStock.Cantidad = Convert.ToInt32(item["txCantidad"].ToString());
-                    listaStock.FechaIngreso = Convert.ToDateTime(item["dtFechaIngreso"].ToString());
                     _listaStocks.Add(listaStock);
                 }
             }
@@ -1342,9 +1602,9 @@ namespace Stock.DAO
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
-            dt.Fill(Tabla);        
+            dt.Fill(Tabla);
             if (Tabla.Rows.Count > 0)
-            {             
+            {
                 foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.Productos listaProducto = new Entidades.Productos();

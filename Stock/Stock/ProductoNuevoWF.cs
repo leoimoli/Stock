@@ -22,14 +22,24 @@ namespace Stock
         {
             try
             {
-                FuncionListarProductos();              
+                FuncionListarProductos();
                 CargarCombo();
+                FuncionBuscartexto();
             }
             catch (Exception ex)
             { }
         }
+
+        private void FuncionBuscartexto()
+        {
+            txtDescipcionBus.AutoCompleteCustomSource = Clases_Maestras.AutoCompletePorDescripcion.Autocomplete();
+            txtDescipcionBus.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtDescipcionBus.AutoCompleteSource = AutoCompleteSource.CustomSource;
+        }
         private void FuncionListarProductos()
         {
+            FuncionBuscartexto();
+            dgvProductos.Rows.Clear();
             List<Entidades.Productos> ListaProductos = Negocio.Consultar.ListaDeProductos();
             if (ListaProductos.Count > 0)
             {
@@ -137,10 +147,45 @@ namespace Stock
             _producto.idUsuario = idusuarioLogueado;
             return _producto;
         }
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             Funcion = 3;
+        }
+        private void txtDescipcionBus_KeyDown(object sender, KeyEventArgs e)
+        {
+            dgvProductos.Rows.Clear();
+            string Descripcion = txtDescipcionBus.Text;
+            List<Entidades.Productos> ListaProductos = Negocio.Consultar.BuscarProductoPorDescripcion(Descripcion);
+            if (ListaProductos.Count > 0)
+            {
+                foreach (var item in ListaProductos)
+                {
+                    dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto);
+                }
+            }
+            dgvProductos.ReadOnly = true;
+        }
+        private void txtCodigoBus_KeyDown(object sender, KeyEventArgs e)
+        {
+            dgvProductos.Rows.Clear();
+            string Codigo = txtCodigoBus.Text;
+            List<Entidades.Productos> ListaProductos = Negocio.Consultar.BuscarProductoPorCodigoIngresado(Codigo);
+            if (ListaProductos.Count > 0)
+            {
+                foreach (var item in ListaProductos)
+                {
+                    dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto);
+                }
+            }
+            dgvProductos.ReadOnly = true;
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+            txtCodigoProducto.Focus();
+            idProductoSeleccionado = 0;
+            Funcion = 2;
         }
     }
 }

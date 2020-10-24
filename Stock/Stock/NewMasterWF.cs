@@ -16,6 +16,7 @@ namespace Stock
         public NewMasterWF()
         {
             InitializeComponent();
+            AbrirFormEnPanel(new InicioNuevoWF());
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -61,11 +62,11 @@ namespace Stock
         {
             if (MenuVertical.Width == 201)
             {
-                MenuVertical.Width = 47;
+                MenuVertical.Width = 55;
             }
             else
             {
-                if (MenuVertical.Width == 47)
+                if (MenuVertical.Width == 55)
                 {
                     MenuVertical.Width = 201;
                 }
@@ -86,6 +87,21 @@ namespace Stock
         private void btnProductos_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel(new ProductoNuevoWF());
+        }
+
+        private void NewMasterWF_Load(object sender, EventArgs e)
+        {
+            label6.Text = Sesion.UsuarioLogueado.Apellido + "  " + Sesion.UsuarioLogueado.Nombre;
+        }
+
+        private void btnInicio_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new InicioNuevoWF());
+        }
+
+        private void btnStock_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new StockNuevoWF());
         }
     }
 }

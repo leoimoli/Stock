@@ -90,6 +90,7 @@
       <DependentUpon>CargarPuntosWF.cs</DependentUpon>
     </Compile>
     <Compile Include="Clases_Maestras\AutoCompleClass.cs" />
+    <Compile Include="Clases_Maestras\AutoCompletePorDescripcion.cs" />
     <Compile Include="Clases_Maestras\AutoCompleteProductosSinCodigo.cs" />
     <Compile Include="Clases_Maestras\Funciones.cs" />
     <Compile Include="Clases_Maestras\RutasDeAcceso.cs" />
@@ -163,6 +164,18 @@
     </Compile>
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InicioNuevoWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InicioNuevoWF.Designer.cs">
+      <DependentUpon>InicioNuevoWF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginNuevoWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginNuevoWF.Designer.cs">
+      <DependentUpon>LoginNuevoWF.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginWF.cs">
       <SubType>Form</SubType>
@@ -279,6 +292,12 @@
       <DependentUpon>Reporte_VentasWF.cs</DependentUpon>
     </Compile>
     <Compile Include="Sesion.cs" />
+    <Compile Include="StockNuevoWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockNuevoWF.Designer.cs">
+      <DependentUpon>StockNuevoWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="StockWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -329,6 +348,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InicioNuevoWF.resx">
+      <DependentUpon>InicioNuevoWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginNuevoWF.resx">
+      <DependentUpon>LoginNuevoWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginWF.resx">
       <DependentUpon>LoginWF.cs</DependentUpon>
@@ -385,6 +410,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reporte_VentasWF.resx">
       <DependentUpon>Reporte_VentasWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockNuevoWF.resx">
+      <DependentUpon>StockNuevoWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StockWF.resx">
       <DependentUpon>StockWF.cs</DependentUpon>
@@ -454,6 +482,9 @@
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Documentos\Base De Datos\Procedure\1%29LoginUsuario.txt" />
+    <None Include="Resources\usuario.png" />
+    <None Include="Resources\menos %282%291.png" />
+    <None Include="Resources\trabajando.png" />
     <None Include="Resources\StoCom4.png" />
     <None Include="Resources\StoCom3.png" />
     <None Include="Resources\StoCom2.png" />
@@ -532,6 +563,11 @@
     <None Include="Resources\grafico-de-barras.png" />
     <None Include="Resources\cuadrado.png" />
     <None Include="Resources\grupo %282%29.png" />
+    <None Include="Resources\cancelar2.png" />
+    <None Include="Resources\Free_Sample_By_Wix.jpg" />
+    <None Include="Resources\casa.png" />
+    <None Include="Resources\envio2.png" />
+    <None Include="Resources\desgaste-de-android.png" />
     <Content Include="Resources\login2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
