@@ -439,6 +439,7 @@
             this.txtImagen.Name = "txtImagen";
             this.txtImagen.Size = new System.Drawing.Size(150, 20);
             this.txtImagen.TabIndex = 31;
+            this.txtImagen.TextChanged += new System.EventHandler(this.txtImagen_TextChanged);
             // 
             // btnCargarImagen
             // 
@@ -463,6 +464,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 29;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // textBox2
             // 
