@@ -13,8 +13,6 @@ namespace Stock
 {
     public partial class RegistroStockWF : Form
     {
-
-
         public RegistroStockWF()
         {
             InitializeComponent();
