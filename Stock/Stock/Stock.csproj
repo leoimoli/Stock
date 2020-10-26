@@ -93,6 +93,7 @@
     <Compile Include="Clases_Maestras\AutoCompletePorDescripcion.cs" />
     <Compile Include="Clases_Maestras\AutoCompleteProductosSinCodigo.cs" />
     <Compile Include="Clases_Maestras\Funciones.cs" />
+    <Compile Include="Clases_Maestras\ListarProveedores.cs" />
     <Compile Include="Clases_Maestras\RutasDeAcceso.cs" />
     <Compile Include="Clases_Maestras\ValoresConstantes.cs" />
     <Compile Include="ClientesWF.cs">
@@ -148,6 +149,7 @@
     <Compile Include="Entidades\Proveedores.cs" />
     <Compile Include="Entidades\ProveedorReducido.cs" />
     <Compile Include="Entidades\ReducirStockProducto.cs" />
+    <Compile Include="Entidades\RegistroStock.cs" />
     <Compile Include="Entidades\Series.cs" />
     <Compile Include="Entidades\Stock.cs" />
     <Compile Include="Entidades\StockReducido.cs" />
@@ -272,6 +274,12 @@
     </Compile>
     <Compile Include="CobrarWF.Designer.cs">
       <DependentUpon>CobrarWF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroStockWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistroStockWF.Designer.cs">
+      <DependentUpon>RegistroStockWF.cs</DependentUpon>
     </Compile>
     <Compile Include="Reporte_ComprasWF.cs">
       <SubType>Form</SubType>
@@ -401,6 +409,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CobrarWF.resx">
       <DependentUpon>CobrarWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistroStockWF.resx">
+      <DependentUpon>RegistroStockWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporte_ComprasWF.resx">
       <DependentUpon>Reporte_ComprasWF.cs</DependentUpon>

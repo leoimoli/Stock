@@ -115,7 +115,7 @@ namespace Stock.DAO
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
-            MySqlParameter[] oParam = { new MySqlParameter("descripcion_in", codigo) };
+            MySqlParameter[] oParam = { new MySqlParameter("codigo_in", codigo) };
             string proceso = "ListaStockPorCodigoProducto";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;

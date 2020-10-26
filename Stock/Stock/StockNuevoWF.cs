@@ -22,7 +22,6 @@ namespace Stock
             try
             {
                 FuncionListarProductos();
-                CargarCombo();
                 FuncionBuscartexto();
             }
             catch (Exception ex)
@@ -41,18 +40,6 @@ namespace Stock
                 }
             }
             dgvProductos.ReadOnly = true;
-        }
-        public void CargarCombo()
-        {
-            List<string> Marcas = new List<string>();
-            Marcas = Negocio.Consultar.CargarComboProveedor();
-            cmbProveedor.Items.Add("Seleccione");
-            cmbProveedor.Items.Clear();
-            foreach (string item in Marcas)
-            {
-                cmbProveedor.Text = "Seleccione";
-                cmbProveedor.Items.Add(item);
-            }
         }
         private void FuncionBuscartexto()
         {
@@ -91,6 +78,12 @@ namespace Stock
                 }
             }
             dgvProductos.ReadOnly = true;
+        }
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+            RegistroStockWF _registro = new RegistroStockWF();
+            _registro.Show();
         }
     }
 }

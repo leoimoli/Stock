@@ -43,5 +43,16 @@ namespace Stock.Negocio
                 throw new Exception();
             }
         }
+        public static bool CargarlistaStock(List<RegistroStock> listaStock)
+        {
+            bool exito = false;
+            try
+            {
+                exito = DAO.AgregarDao.InsertarListaStock(listaStock);
+            }
+            catch (Exception ex)
+            { }
+            return exito;
+        }
     }
 }

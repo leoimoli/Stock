@@ -153,31 +153,37 @@ namespace Stock
         }
         private void txtDescipcionBus_KeyDown(object sender, KeyEventArgs e)
         {
-            dgvProductos.Rows.Clear();
-            string Descripcion = txtDescipcionBus.Text;
-            List<Entidades.Productos> ListaProductos = Negocio.Consultar.BuscarProductoPorDescripcion(Descripcion);
-            if (ListaProductos.Count > 0)
+            if (e.KeyCode == Keys.Enter)
             {
-                foreach (var item in ListaProductos)
+                dgvProductos.Rows.Clear();
+                string Descripcion = txtDescipcionBus.Text;
+                List<Entidades.Productos> ListaProductos = Negocio.Consultar.BuscarProductoPorDescripcion(Descripcion);
+                if (ListaProductos.Count > 0)
                 {
-                    dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto);
+                    foreach (var item in ListaProductos)
+                    {
+                        dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto);
+                    }
                 }
+                dgvProductos.ReadOnly = true;
             }
-            dgvProductos.ReadOnly = true;
         }
         private void txtCodigoBus_KeyDown(object sender, KeyEventArgs e)
         {
-            dgvProductos.Rows.Clear();
-            string Codigo = txtCodigoBus.Text;
-            List<Entidades.Productos> ListaProductos = Negocio.Consultar.BuscarProductoPorCodigoIngresado(Codigo);
-            if (ListaProductos.Count > 0)
+            if (e.KeyCode == Keys.Enter)
             {
-                foreach (var item in ListaProductos)
+                dgvProductos.Rows.Clear();
+                string Codigo = txtCodigoBus.Text;
+                List<Entidades.Productos> ListaProductos = Negocio.Consultar.BuscarProductoPorCodigoIngresado(Codigo);
+                if (ListaProductos.Count > 0)
                 {
-                    dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto);
+                    foreach (var item in ListaProductos)
+                    {
+                        dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto);
+                    }
                 }
+                dgvProductos.ReadOnly = true;
             }
-            dgvProductos.ReadOnly = true;
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)

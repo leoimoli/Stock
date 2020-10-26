@@ -50,7 +50,50 @@ namespace Stock.DAO
             connection.Close();
             return idUltimoVenta;
         }
-
+        public static bool InsertarListaStock(List<RegistroStock> listaStock)
+        {
+            bool exito = false;
+            foreach (var item in listaStock)
+            {
+                int CantidadTotal = 0;
+                List<int> stockExistente = new List<int>();
+                stockExistente = DAO.ConsultarDao.ValidarStockExistente(item.idProducto);
+                if (stockExistente.Count > 0)
+                {
+                    int cant = Convert.ToInt32(stockExistente[0].ToString());
+                    CantidadTotal = item.Cantidad + cant;
+                    exito = DAO.EditarDao.ActualizarStock(item.idProducto, CantidadTotal);
+                }
+                else
+                {
+                    exito = InsertarStock(item.idProducto, item.Cantidad, item.CodigoProducto);
+                }
+                if (exito == true)
+                {
+                    connection.Close();
+                    connection.Open();
+                    string proceso = "AltaMovimientoStock";
+                    MySqlCommand cmd = new MySqlCommand(proceso, connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("idProducto_in", item.idProducto);
+                    cmd.Parameters.AddWithValue("Cantidad_in", item.Cantidad);
+                    cmd.Parameters.AddWithValue("Proveedor_in", item.Proveedor);
+                    cmd.Parameters.AddWithValue("FechaCompra_in", item.FechaFactura);
+                    cmd.Parameters.AddWithValue("ValorUnitario_in", item.ValorUnitario);
+                    cmd.Parameters.AddWithValue("Remito_in", item.Remito);
+                    cmd.Parameters.AddWithValue("FechaActual_in", DateTime.Now);
+                    cmd.Parameters.AddWithValue("idUsuario_in", item.idUsuario);
+                    cmd.ExecuteNonQuery();
+                    exito = true;
+                    connection.Close();
+                }
+                else
+                {
+                    exito = false;
+                }
+            }
+            return exito;
+        }
         public static bool RegistrarPago(Entidades.Pagos _pagos)
         {
             bool exito = false;
@@ -71,7 +114,6 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
-
         public static bool RegistrarPagoDeDeuda(decimal valorDeuda, int idCliente, int idUsuario)
         {
             bool exito = false;
@@ -89,7 +131,6 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
-
         public static bool RegistrarPuntos(int idCliente, int actualizarPuntos)
         {
             bool exito = false;
@@ -124,7 +165,6 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
-
         public static bool InsertarCuentaCorriente(int idCliente, decimal deudaGuardar)
         {
             bool exito = false;
@@ -140,7 +180,6 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
-
         public static int InsertarProductoMasivo(List<Productos> listaGuardar)
         {
             int idUltimoProductoCargado = 0;

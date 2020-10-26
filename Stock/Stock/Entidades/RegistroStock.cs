@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace Stock.Entidades
 {
-    public class ListaStock
+   public class RegistroStock
     {
+        public int idUsuario { get; set; }
         public int idProducto { get; set; }
         public string CodigoProducto { get; set; }
-        public string NombreProducto { get; set; }
-        public string Marca { get; set; }
-        public int Cantidad { get; set; }
-        public DateTime FechaIngreso { get; set; }
-        public Decimal PrecioDeVenta { get; set; }
-        public string Remito { get; set; }
-
+        public string Descripcion { get; set; }
         public string Proveedor { get; set; }
+        public string Marca { get; set; }
+        public string Remito { get; set; }
+        public int Cantidad { get; set; }
+        public DateTime FechaFactura { get; set; }
+        public Decimal ValorUnitario { get; set; }
 
     }
 }
