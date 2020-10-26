@@ -53,9 +53,6 @@ namespace Stock
                     {
                         if (result == DialogResult.Yes)
                         {
-                            //Producto _producto = new Producto();
-                            //_producto.Show();
-                            //Hide();
                         }
                     }
                     dgvProductos.ReadOnly = true;
@@ -195,8 +192,8 @@ namespace Stock
         }
         private List<RegistroStock> CargarEntidadFinal()
         {
-            List<RegistroStock> ListaStock = new List<RegistroStock>();          
-            foreach ( DataGridViewRow row in dgvProductos.Rows)
+            List<RegistroStock> ListaStock = new List<RegistroStock>();
+            foreach (DataGridViewRow row in dgvProductos.Rows)
             {
                 RegistroStock Lista = new RegistroStock();
                 Lista.idProducto = Convert.ToInt32(row.Cells[0].Value.ToString());
