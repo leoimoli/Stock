@@ -53,6 +53,7 @@ namespace Stock.DAO
         public static bool InsertarListaStock(List<RegistroStock> listaStock)
         {
             bool exito = false;
+            int idMovimiento = 0;
             foreach (var item in listaStock)
             {
                 int CantidadTotal = 0;
@@ -75,14 +76,37 @@ namespace Stock.DAO
                     string proceso = "AltaMovimientoStock";
                     MySqlCommand cmd = new MySqlCommand(proceso, connection);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("idProducto_in", item.idProducto);
-                    cmd.Parameters.AddWithValue("Cantidad_in", item.Cantidad);
                     cmd.Parameters.AddWithValue("Proveedor_in", item.Proveedor);
                     cmd.Parameters.AddWithValue("FechaCompra_in", item.FechaFactura);
-                    cmd.Parameters.AddWithValue("ValorUnitario_in", item.ValorUnitario);
                     cmd.Parameters.AddWithValue("Remito_in", item.Remito);
                     cmd.Parameters.AddWithValue("FechaActual_in", DateTime.Now);
                     cmd.Parameters.AddWithValue("idUsuario_in", item.idUsuario);
+                    cmd.Parameters.AddWithValue("Archivos_in", 0);
+                    MySqlDataReader r = cmd.ExecuteReader();
+                    while (r.Read())
+                    {
+                        idMovimiento = Convert.ToInt32(r["ID"].ToString());
+                    }
+                    if (idMovimiento > 0)
+                    {
+                        exito = true;
+                    }
+                    else
+                    {
+                        exito = false;
+                    }
+                }
+                if (exito == true)
+                {
+                    connection.Close();
+                    connection.Open();
+                    string proceso = "AltaDetalleStock";
+                    MySqlCommand cmd = new MySqlCommand(proceso, connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("idProducto_in", item.idProducto);
+                    cmd.Parameters.AddWithValue("Cantidad_in", item.Cantidad);
+                    cmd.Parameters.AddWithValue("ValorUnitario_in", item.ValorUnitario);
+                    cmd.Parameters.AddWithValue("idMovimiento_in", idMovimiento);
                     cmd.ExecuteNonQuery();
                     exito = true;
                     connection.Close();

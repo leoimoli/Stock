@@ -23,9 +23,24 @@ namespace Stock
             {
                 FuncionListarProductos();
                 FuncionBuscartexto();
+                FuncionListaMovimientos();
             }
             catch (Exception ex)
             { }
+        }
+
+        private void FuncionListaMovimientos()
+        {
+            dgvMovimientos.Rows.Clear();
+            List<Entidades.ListaStock> ListaProductos = Negocio.Consultar.ConsultarUltimosIngresosDeStock();
+            if (ListaProductos.Count > 0)
+            {
+                foreach (var item in ListaProductos)
+                {
+                    dgvMovimientos.Rows.Add(item.idProducto, item.FechaIngreso, item.Proveedor);
+                }
+            }
+            dgvProductos.ReadOnly = true;
         }
         private void FuncionListarProductos()
         {

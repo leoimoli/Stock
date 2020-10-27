@@ -51,6 +51,35 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
+        public static List<ListaStock> ConsultarUltimosIngresosDeStock()
+        {
+            connection.Close();
+            connection.Open();
+            List<ListaStock> _listaStocks = new List<ListaStock>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ConsultarUltimosIngresosDeStock";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaStock listaStock = new Entidades.ListaStock();
+                    listaStock.idProducto = Convert.ToInt32(item["idMovimientoStock"].ToString());
+                    DateTime fecha = Convert.ToDateTime(item["FechaFactura"].ToString());
+                    listaStock.FechaIngreso = Convert.ToDateTime(fecha.ToShortTimeString());
+                    listaStock.Proveedor = item["Proveedor"].ToString();
+                    _listaStocks.Add(listaStock);
+                }
+            }
+            connection.Close();
+            return _listaStocks;
+        }
 
         public static int ContadorProveedores()
         {

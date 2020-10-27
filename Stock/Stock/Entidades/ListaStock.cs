@@ -16,7 +16,6 @@ namespace Stock.Entidades
         public DateTime FechaIngreso { get; set; }
         public Decimal PrecioDeVenta { get; set; }
         public string Remito { get; set; }
-
         public string Proveedor { get; set; }
 
     }

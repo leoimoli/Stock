@@ -41,6 +41,18 @@ namespace Stock.Negocio
                 return _listaPagos;
             }
         }
+        public static List<ListaStock> ConsultarUltimosIngresosDeStock()
+        {
+            List<ListaStock> _lista = new List<ListaStock>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarUltimosIngresosDeStock();
+            }
+            catch (Exception ex)
+            {
+            }
+            return _lista;
+        }
 
         public static List<Productos> ListaDeProductos()
         {
@@ -108,7 +120,7 @@ namespace Stock.Negocio
                 _listaProductos = DAO.ConsultarDao.ListarProductoPorDescripcion(descripcion);
             }
             catch (Exception ex)
-            {               
+            {
             }
             return _listaProductos;
         }
@@ -179,7 +191,7 @@ namespace Stock.Negocio
             }
             catch (Exception ex)
             {
-              
+
             }
             return _listaProductos;
         }
