@@ -51,6 +51,93 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
+
+        public static List<Archivos> BuscarArchivos(int idMovimiento)
+        {
+            connection.Close();
+            connection.Open();
+            List<Archivos> _lista = new List<Archivos>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("idMovimiento_in", idMovimiento) };
+            string proceso = "BuscarArchivos";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Archivos listaArchivos = new Entidades.Archivos();
+                    if (item[0].ToString() != string.Empty)
+                    {
+                        listaArchivos.Archivo1 = (byte[])item["Archivo"];
+                    }
+                    _lista.Add(listaArchivos);
+                }
+            }
+            connection.Close();
+            return _lista;
+        }
+
+        public static int BuscarUltimoMovimientoCargado()
+        {
+            connection.Close();
+            connection.Open();
+            int idMovimiento = 0;
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "BuscarUltimoMovimientoCargado";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    idMovimiento = Convert.ToInt32(item["idMovimientoStock"].ToString());
+                }
+            }
+            connection.Close();
+            return idMovimiento;
+        }
+
+        public static List<ListaStock> ListarDetalleStock(int idMovimiento)
+        {
+            connection.Close();
+            connection.Open();
+            List<ListaStock> _listaStocks = new List<ListaStock>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("idMovimiento_in", idMovimiento) };
+            string proceso = "ListarDetalleStock";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaStock listaStock = new Entidades.ListaStock();
+                    listaStock.Remito = item["Remito"].ToString();
+                    listaStock.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaStock.ValorUnitario = Convert.ToDecimal(item["txValorUnitario"].ToString());
+                    listaStock.Cantidad = Convert.ToInt32(item["txCantidad"].ToString());
+                    listaStock.NombreProducto = item["txDescripcion"].ToString();
+                    listaStock.Archivos = Convert.ToInt32(item["Archivos"].ToString());
+                    _listaStocks.Add(listaStock);
+                }
+            }
+            connection.Close();
+            return _listaStocks;
+        }
         public static List<ListaStock> ConsultarUltimosIngresosDeStock()
         {
             connection.Close();
@@ -72,7 +159,7 @@ namespace Stock.DAO
                     Entidades.ListaStock listaStock = new Entidades.ListaStock();
                     listaStock.idProducto = Convert.ToInt32(item["idMovimientoStock"].ToString());
                     DateTime fecha = Convert.ToDateTime(item["FechaFactura"].ToString());
-                    listaStock.FechaIngreso = Convert.ToDateTime(fecha.ToShortTimeString());
+                    listaStock.FechaIngreso = Convert.ToDateTime(fecha);
                     listaStock.Proveedor = item["Proveedor"].ToString();
                     _listaStocks.Add(listaStock);
                 }
@@ -80,7 +167,38 @@ namespace Stock.DAO
             connection.Close();
             return _listaStocks;
         }
-
+        public static List<ListaStock> ConsultarIngresosDeStockPorFecha(string desde, string hasta)
+        {
+            connection.Close();
+            connection.Open();
+            List<ListaStock> _listaStocks = new List<ListaStock>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            DateTime FechaDesde = Convert.ToDateTime(desde);
+            DateTime FechaHasta = Convert.ToDateTime(hasta);
+            MySqlParameter[] oParam = {new MySqlParameter("Desde_in", FechaDesde),
+            new MySqlParameter("Hasta_in", FechaHasta)};
+            string proceso = "ConsultarIngresosDeStockPorFecha";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaStock listaStock = new Entidades.ListaStock();
+                    listaStock.idProducto = Convert.ToInt32(item["idMovimientoStock"].ToString());
+                    DateTime fecha = Convert.ToDateTime(item["FechaFactura"].ToString());
+                    listaStock.FechaIngreso = Convert.ToDateTime(fecha);
+                    listaStock.Proveedor = item["Proveedor"].ToString();
+                    _listaStocks.Add(listaStock);
+                }
+            }
+            connection.Close();
+            return _listaStocks;
+        }
         public static int ContadorProveedores()
         {
             connection.Close();
@@ -135,7 +253,6 @@ namespace Stock.DAO
             connection.Close();
             return _listaStocks;
         }
-
         public static List<ListaStock> ListaStockPorCodigoProducto(string codigo)
         {
             connection.Close();
@@ -166,7 +283,6 @@ namespace Stock.DAO
             connection.Close();
             return _listaStocks;
         }
-
         public static int ContadorClientes()
         {
             connection.Close();
@@ -1703,12 +1819,10 @@ namespace Stock.DAO
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
             dt.Fill(Tabla);
-            DataSet ds = new DataSet();
-            //DataSet ds = new DataSet();
-            //dt.Fill(ds, "usuarios");
+            DataSet ds = new DataSet();          
             if (Tabla.Rows.Count > 0)
             {
-                //foreach (DataRow item in ds.Tables[0].Rows)
+               
                 foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.Proveedores listaProveedor = new Entidades.Proveedores();

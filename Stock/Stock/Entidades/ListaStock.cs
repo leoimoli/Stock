@@ -14,9 +14,9 @@ namespace Stock.Entidades
         public string Marca { get; set; }
         public int Cantidad { get; set; }
         public DateTime FechaIngreso { get; set; }
-        public Decimal PrecioDeVenta { get; set; }
+        public Decimal ValorUnitario { get; set; }
         public string Remito { get; set; }
         public string Proveedor { get; set; }
-
+        public int Archivos { get; set; }
     }
 }

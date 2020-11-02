@@ -77,6 +77,12 @@
     <Compile Include="ActualizarCodigoProductoWF.Designer.cs">
       <DependentUpon>ActualizarCodigoProductoWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="ArchivosWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArchivosWF.Designer.cs">
+      <DependentUpon>ArchivosWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="CargaMasivaDeProductosWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,7 @@
     <Compile Include="Clases_Maestras\AutoCompleClass.cs" />
     <Compile Include="Clases_Maestras\AutoCompletePorDescripcion.cs" />
     <Compile Include="Clases_Maestras\AutoCompleteProductosSinCodigo.cs" />
+    <Compile Include="Clases_Maestras\AutoCompleteProveedores.cs" />
     <Compile Include="Clases_Maestras\Funciones.cs" />
     <Compile Include="Clases_Maestras\ListarProveedores.cs" />
     <Compile Include="Clases_Maestras\RutasDeAcceso.cs" />
@@ -124,6 +131,7 @@
     <Compile Include="EditarCodigoProductoWF.Designer.cs">
       <DependentUpon>EditarCodigoProductoWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\Archivos.cs" />
     <Compile Include="Entidades\ClienteReducido.cs" />
     <Compile Include="Entidades\Clientes.cs" />
     <Compile Include="Entidades\CuentaCorriente.cs" />
@@ -263,6 +271,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProveedoresNuevoWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProveedoresNuevoWF.Designer.cs">
+      <DependentUpon>ProveedoresNuevoWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProveedoresWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -324,6 +338,12 @@
     <Compile Include="VentasWF.Designer.cs">
       <DependentUpon>VentasWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="VerDetalleMovimientoWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerDetalleMovimientoWF.Designer.cs">
+      <DependentUpon>VerDetalleMovimientoWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="VueltoWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -332,6 +352,9 @@
     </Compile>
     <EmbeddedResource Include="ActualizarCodigoProductoWF.resx">
       <DependentUpon>ActualizarCodigoProductoWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArchivosWF.resx">
+      <DependentUpon>ArchivosWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CargaMasivaDeProductosWF.resx">
       <DependentUpon>CargaMasivaDeProductosWF.cs</DependentUpon>
@@ -404,6 +427,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProveedoresNuevoWF.resx">
+      <DependentUpon>ProveedoresNuevoWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProveedoresWF.resx">
       <DependentUpon>ProveedoresWF.cs</DependentUpon>
     </EmbeddedResource>
@@ -433,6 +459,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VentasWF.resx">
       <DependentUpon>VentasWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerDetalleMovimientoWF.resx">
+      <DependentUpon>VerDetalleMovimientoWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VueltoWF.resx">
       <DependentUpon>VueltoWF.cs</DependentUpon>
@@ -493,6 +522,7 @@
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Documentos\Base De Datos\Procedure\1%29LoginUsuario.txt" />
+    <None Include="Resources\sistema-de-archivos.png" />
     <None Include="Resources\usuario.png" />
     <None Include="Resources\menos %282%291.png" />
     <None Include="Resources\trabajando.png" />
@@ -579,6 +609,8 @@
     <None Include="Resources\casa.png" />
     <None Include="Resources\envio2.png" />
     <None Include="Resources\desgaste-de-android.png" />
+    <None Include="Resources\adjuntar-simbolo-de-clip.png" />
+    <None Include="Resources\lente.png" />
     <Content Include="Resources\login2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

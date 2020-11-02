@@ -54,68 +54,123 @@ namespace Stock.DAO
         {
             bool exito = false;
             int idMovimiento = 0;
-            foreach (var item in listaStock)
+            connection.Close();
+            connection.Open();
+            string proceso = "AltaMovimientoStock";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("Proveedor_in", listaStock[0].Proveedor);
+            cmd.Parameters.AddWithValue("FechaCompra_in", listaStock[0].FechaFactura);
+            cmd.Parameters.AddWithValue("Remito_in", listaStock[0].Remito);
+            cmd.Parameters.AddWithValue("FechaActual_in", DateTime.Now);
+            cmd.Parameters.AddWithValue("idUsuario_in", listaStock[0].idUsuario);
+            cmd.Parameters.AddWithValue("Archivos_in", 0);
+            MySqlDataReader r = cmd.ExecuteReader();
+            while (r.Read())
             {
-                int CantidadTotal = 0;
-                List<int> stockExistente = new List<int>();
-                stockExistente = DAO.ConsultarDao.ValidarStockExistente(item.idProducto);
-                if (stockExistente.Count > 0)
+                idMovimiento = Convert.ToInt32(r["ID"].ToString());
+            }
+            if (idMovimiento > 0)
+            {
+                exito = true;
+            }
+            else
+            {
+                exito = false;
+            }
+
+            if (exito == true)
+            {
+                foreach (var item in listaStock)
                 {
-                    int cant = Convert.ToInt32(stockExistente[0].ToString());
-                    CantidadTotal = item.Cantidad + cant;
-                    exito = DAO.EditarDao.ActualizarStock(item.idProducto, CantidadTotal);
-                }
-                else
-                {
-                    exito = InsertarStock(item.idProducto, item.Cantidad, item.CodigoProducto);
-                }
-                if (exito == true)
-                {
-                    connection.Close();
-                    connection.Open();
-                    string proceso = "AltaMovimientoStock";
-                    MySqlCommand cmd = new MySqlCommand(proceso, connection);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("Proveedor_in", item.Proveedor);
-                    cmd.Parameters.AddWithValue("FechaCompra_in", item.FechaFactura);
-                    cmd.Parameters.AddWithValue("Remito_in", item.Remito);
-                    cmd.Parameters.AddWithValue("FechaActual_in", DateTime.Now);
-                    cmd.Parameters.AddWithValue("idUsuario_in", item.idUsuario);
-                    cmd.Parameters.AddWithValue("Archivos_in", 0);
-                    MySqlDataReader r = cmd.ExecuteReader();
-                    while (r.Read())
+                    int CantidadTotal = 0;
+                    List<int> stockExistente = new List<int>();
+                    stockExistente = DAO.ConsultarDao.ValidarStockExistente(item.idProducto);
+                    if (stockExistente.Count > 0)
                     {
-                        idMovimiento = Convert.ToInt32(r["ID"].ToString());
+                        int cant = Convert.ToInt32(stockExistente[0].ToString());
+                        CantidadTotal = item.Cantidad + cant;
+                        exito = DAO.EditarDao.ActualizarStock(item.idProducto, CantidadTotal);
                     }
-                    if (idMovimiento > 0)
+                    else
                     {
+                        exito = InsertarStock(item.idProducto, item.Cantidad, item.CodigoProducto);
+                    }
+
+                    if (exito == true)
+                    {
+                        connection.Close();
+                        connection.Open();
+                        string proceso2 = "AltaDetalleStock";
+                        MySqlCommand cmd2 = new MySqlCommand(proceso2, connection);
+                        cmd2.CommandType = CommandType.StoredProcedure;
+                        cmd2.Parameters.AddWithValue("idProducto_in", item.idProducto);
+                        cmd2.Parameters.AddWithValue("Cantidad_in", item.Cantidad);
+                        cmd2.Parameters.AddWithValue("ValorUnitario_in", item.ValorUnitario);
+                        cmd2.Parameters.AddWithValue("idMovimiento_in", idMovimiento);
+                        cmd2.ExecuteNonQuery();
                         exito = true;
+                        connection.Close();
                     }
                     else
                     {
                         exito = false;
                     }
                 }
-                if (exito == true)
-                {
-                    connection.Close();
-                    connection.Open();
-                    string proceso = "AltaDetalleStock";
-                    MySqlCommand cmd = new MySqlCommand(proceso, connection);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("idProducto_in", item.idProducto);
-                    cmd.Parameters.AddWithValue("Cantidad_in", item.Cantidad);
-                    cmd.Parameters.AddWithValue("ValorUnitario_in", item.ValorUnitario);
-                    cmd.Parameters.AddWithValue("idMovimiento_in", idMovimiento);
-                    cmd.ExecuteNonQuery();
-                    exito = true;
-                    connection.Close();
-                }
-                else
-                {
-                    exito = false;
-                }
             }
+            return exito;
+        }
+        public static int GuardarArchivos(Archivos archivos)
+        {
+            int idMovimiento = DAO.ConsultarDao.BuscarUltimoMovimientoCargado();
+            int exito = 0;
+            if (archivos.Archivo1 != null)
+            {
+                connection.Close();
+                connection.Open();
+                string proceso = "GuardarArchivos";
+                MySqlCommand cmd = new MySqlCommand(proceso, connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("Archivo_in", archivos.Archivo1);
+                cmd.Parameters.AddWithValue("idMovimiento_in", idMovimiento);
+                cmd.ExecuteNonQuery();
+            }
+            if (archivos.Archivo2 != null)
+            {
+                connection.Close();
+                connection.Open();
+                string proceso = "GuardarArchivos";
+                MySqlCommand cmd2 = new MySqlCommand(proceso, connection);
+                cmd2.CommandType = CommandType.StoredProcedure;
+                cmd2.Parameters.AddWithValue("Archivo_in", archivos.Archivo2);
+                cmd2.Parameters.AddWithValue("idMovimiento_in", idMovimiento);
+                cmd2.ExecuteNonQuery();
+            }
+            if (archivos.Archivo3 != null)
+            {
+                connection.Close();
+                connection.Open();
+                string proceso = "GuardarArchivos";
+                MySqlCommand cmd3 = new MySqlCommand(proceso, connection);
+                cmd3.CommandType = CommandType.StoredProcedure;
+                cmd3.Parameters.AddWithValue("Archivo_in", archivos.Archivo3);
+                cmd3.Parameters.AddWithValue("idMovimiento_in", idMovimiento);
+                cmd3.ExecuteNonQuery();
+            }
+            if (archivos.Archivo4 != null)
+            {
+                connection.Close();
+                connection.Open();
+                string proceso = "GuardarArchivos";
+                MySqlCommand cmd4 = new MySqlCommand(proceso, connection);
+                cmd4.CommandType = CommandType.StoredProcedure;
+                cmd4.Parameters.AddWithValue("Archivo_in", archivos.Archivo4);
+                cmd4.Parameters.AddWithValue("idMovimiento_in", idMovimiento);
+                cmd4.ExecuteNonQuery();
+            }
+            exito = DAO.EditarDao.ActualizarEstadoArchivo(idMovimiento);
+            exito = 1;
+            connection.Close();
             return exito;
         }
         public static bool RegistrarPago(Entidades.Pagos _pagos)

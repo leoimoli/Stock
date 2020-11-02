@@ -141,6 +141,23 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
+        public static int ActualizarEstadoArchivo(int idMovimiento)
+        {
+            int exito = 0;
+            int Estado = 1;
+            connection.Close();
+            connection.Open();
+            string Actualizar = "ActualizarEstadoArchivo";
+            MySqlCommand cmd = new MySqlCommand(Actualizar, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("idMovimiento_in", idMovimiento);
+            cmd.Parameters.AddWithValue("Estado_in", Estado);
+            cmd.ExecuteNonQuery();
+            exito = 1;
+            connection.Close();
+            return exito;
+        }
+
         public static bool ActualizarPrecioDeVentaProductoMasivo(List<Productos> _lista)
         {
             bool exito = false;

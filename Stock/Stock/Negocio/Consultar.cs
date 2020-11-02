@@ -41,6 +41,18 @@ namespace Stock.Negocio
                 return _listaPagos;
             }
         }
+        public static List<ListaStock> ListarDetalleStock(int idMovimiento)
+        {
+            List<ListaStock> _lista = new List<ListaStock>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ListarDetalleStock(idMovimiento);
+            }
+            catch (Exception ex)
+            {
+            }
+            return _lista;
+        }
         public static List<ListaStock> ConsultarUltimosIngresosDeStock()
         {
             List<ListaStock> _lista = new List<ListaStock>();
@@ -161,6 +173,19 @@ namespace Stock.Negocio
                 throw new Exception();
             }
             return _listaClientes;
+        }
+
+        public static List<ListaStock> ConsultarIngresosDeStockPorFecha(string desde, string hasta)
+        {
+            List<ListaStock> _listaProductos = new List<ListaStock>();
+            try
+            {
+                _listaProductos = DAO.ConsultarDao.ConsultarIngresosDeStockPorFecha(desde, hasta);
+            }
+            catch (Exception ex)
+            {
+            }
+            return _listaProductos;
         }
 
         public static List<Entidades.Clientes> BuscarClienteIngresado(string dni)

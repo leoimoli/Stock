@@ -29,44 +29,44 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.lblContadorUsuarios = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.lblContadorVentas = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.lblContadorMarcas = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lblContadorProdcutos = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblContadorProveedores = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblContadorClientes = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label8 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblMaster_FechaHoraReal = new System.Windows.Forms.Label();
             this.lblDia = new System.Windows.Forms.Label();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblContadorProveedores = new System.Windows.Forms.Button();
-            this.lblContadorClientes = new System.Windows.Forms.Button();
-            this.lblContadorProdcutos = new System.Windows.Forms.Button();
-            this.lblContadorMarcas = new System.Windows.Forms.Button();
-            this.lblContadorVentas = new System.Windows.Forms.Button();
-            this.lblContadorUsuarios = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -107,6 +107,19 @@
             this.panel7.Size = new System.Drawing.Size(110, 128);
             this.panel7.TabIndex = 5;
             // 
+            // lblContadorUsuarios
+            // 
+            this.lblContadorUsuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.lblContadorUsuarios.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.lblContadorUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblContadorUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContadorUsuarios.ForeColor = System.Drawing.Color.White;
+            this.lblContadorUsuarios.Location = new System.Drawing.Point(24, 89);
+            this.lblContadorUsuarios.Name = "lblContadorUsuarios";
+            this.lblContadorUsuarios.Size = new System.Drawing.Size(57, 34);
+            this.lblContadorUsuarios.TabIndex = 50;
+            this.lblContadorUsuarios.UseVisualStyleBackColor = false;
+            // 
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
@@ -141,6 +154,19 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(110, 128);
             this.panel6.TabIndex = 5;
+            // 
+            // lblContadorVentas
+            // 
+            this.lblContadorVentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.lblContadorVentas.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.lblContadorVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblContadorVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContadorVentas.ForeColor = System.Drawing.Color.White;
+            this.lblContadorVentas.Location = new System.Drawing.Point(24, 89);
+            this.lblContadorVentas.Name = "lblContadorVentas";
+            this.lblContadorVentas.Size = new System.Drawing.Size(57, 34);
+            this.lblContadorVentas.TabIndex = 53;
+            this.lblContadorVentas.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
@@ -177,6 +203,19 @@
             this.panel5.Size = new System.Drawing.Size(110, 128);
             this.panel5.TabIndex = 5;
             // 
+            // lblContadorMarcas
+            // 
+            this.lblContadorMarcas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.lblContadorMarcas.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.lblContadorMarcas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblContadorMarcas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContadorMarcas.ForeColor = System.Drawing.Color.White;
+            this.lblContadorMarcas.Location = new System.Drawing.Point(24, 89);
+            this.lblContadorMarcas.Name = "lblContadorMarcas";
+            this.lblContadorMarcas.Size = new System.Drawing.Size(57, 34);
+            this.lblContadorMarcas.TabIndex = 52;
+            this.lblContadorMarcas.UseVisualStyleBackColor = false;
+            // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
@@ -211,6 +250,19 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(110, 128);
             this.panel4.TabIndex = 5;
+            // 
+            // lblContadorProdcutos
+            // 
+            this.lblContadorProdcutos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.lblContadorProdcutos.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.lblContadorProdcutos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblContadorProdcutos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContadorProdcutos.ForeColor = System.Drawing.Color.White;
+            this.lblContadorProdcutos.Location = new System.Drawing.Point(24, 89);
+            this.lblContadorProdcutos.Name = "lblContadorProdcutos";
+            this.lblContadorProdcutos.Size = new System.Drawing.Size(57, 34);
+            this.lblContadorProdcutos.TabIndex = 51;
+            this.lblContadorProdcutos.UseVisualStyleBackColor = false;
             // 
             // button3
             // 
@@ -247,6 +299,19 @@
             this.panel2.Size = new System.Drawing.Size(110, 128);
             this.panel2.TabIndex = 5;
             // 
+            // lblContadorProveedores
+            // 
+            this.lblContadorProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.lblContadorProveedores.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.lblContadorProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblContadorProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContadorProveedores.ForeColor = System.Drawing.Color.White;
+            this.lblContadorProveedores.Location = new System.Drawing.Point(24, 89);
+            this.lblContadorProveedores.Name = "lblContadorProveedores";
+            this.lblContadorProveedores.Size = new System.Drawing.Size(57, 34);
+            this.lblContadorProveedores.TabIndex = 49;
+            this.lblContadorProveedores.UseVisualStyleBackColor = false;
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
@@ -281,6 +346,19 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(110, 128);
             this.panel3.TabIndex = 4;
+            // 
+            // lblContadorClientes
+            // 
+            this.lblContadorClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.lblContadorClientes.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.lblContadorClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblContadorClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContadorClientes.ForeColor = System.Drawing.Color.White;
+            this.lblContadorClientes.Location = new System.Drawing.Point(25, 89);
+            this.lblContadorClientes.Name = "lblContadorClientes";
+            this.lblContadorClientes.Size = new System.Drawing.Size(57, 34);
+            this.lblContadorClientes.TabIndex = 50;
+            this.lblContadorClientes.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
@@ -319,48 +397,65 @@
             // 
             // dgvProductos
             // 
+            this.dgvProductos.AllowUserToAddRows = false;
             this.dgvProductos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
             this.dgvProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProductos.ColumnHeadersHeight = 30;
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Descripcion,
             this.Marca,
             this.Stock});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProductos.EnableHeadersVisualStyles = false;
             this.dgvProductos.GridColor = System.Drawing.Color.SteelBlue;
             this.dgvProductos.Location = new System.Drawing.Point(60, 257);
             this.dgvProductos.Name = "dgvProductos";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            this.dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            this.dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvProductos.Size = new System.Drawing.Size(596, 300);
             this.dgvProductos.TabIndex = 3;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripción";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.Width = 350;
+            // 
+            // Marca
+            // 
+            this.Marca.HeaderText = "Marca";
+            this.Marca.Name = "Marca";
+            // 
+            // Stock
+            // 
+            this.Stock.HeaderText = "Stock";
+            this.Stock.Name = "Stock";
             // 
             // label8
             // 
@@ -394,100 +489,6 @@
             this.lblDia.Size = new System.Drawing.Size(102, 36);
             this.lblDia.TabIndex = 6;
             this.lblDia.Text = "label9";
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripción";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.Width = 350;
-            // 
-            // Marca
-            // 
-            this.Marca.HeaderText = "Marca";
-            this.Marca.Name = "Marca";
-            // 
-            // Stock
-            // 
-            this.Stock.HeaderText = "Stock";
-            this.Stock.Name = "Stock";
-            // 
-            // lblContadorProveedores
-            // 
-            this.lblContadorProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.lblContadorProveedores.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.lblContadorProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblContadorProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContadorProveedores.ForeColor = System.Drawing.Color.White;
-            this.lblContadorProveedores.Location = new System.Drawing.Point(24, 89);
-            this.lblContadorProveedores.Name = "lblContadorProveedores";
-            this.lblContadorProveedores.Size = new System.Drawing.Size(57, 34);
-            this.lblContadorProveedores.TabIndex = 49;
-            this.lblContadorProveedores.UseVisualStyleBackColor = false;
-            // 
-            // lblContadorClientes
-            // 
-            this.lblContadorClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.lblContadorClientes.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.lblContadorClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblContadorClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContadorClientes.ForeColor = System.Drawing.Color.White;
-            this.lblContadorClientes.Location = new System.Drawing.Point(25, 89);
-            this.lblContadorClientes.Name = "lblContadorClientes";
-            this.lblContadorClientes.Size = new System.Drawing.Size(57, 34);
-            this.lblContadorClientes.TabIndex = 50;
-            this.lblContadorClientes.UseVisualStyleBackColor = false;
-            // 
-            // lblContadorProdcutos
-            // 
-            this.lblContadorProdcutos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.lblContadorProdcutos.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.lblContadorProdcutos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblContadorProdcutos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContadorProdcutos.ForeColor = System.Drawing.Color.White;
-            this.lblContadorProdcutos.Location = new System.Drawing.Point(24, 89);
-            this.lblContadorProdcutos.Name = "lblContadorProdcutos";
-            this.lblContadorProdcutos.Size = new System.Drawing.Size(57, 34);
-            this.lblContadorProdcutos.TabIndex = 51;
-            this.lblContadorProdcutos.UseVisualStyleBackColor = false;
-            // 
-            // lblContadorMarcas
-            // 
-            this.lblContadorMarcas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.lblContadorMarcas.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.lblContadorMarcas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblContadorMarcas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContadorMarcas.ForeColor = System.Drawing.Color.White;
-            this.lblContadorMarcas.Location = new System.Drawing.Point(24, 89);
-            this.lblContadorMarcas.Name = "lblContadorMarcas";
-            this.lblContadorMarcas.Size = new System.Drawing.Size(57, 34);
-            this.lblContadorMarcas.TabIndex = 52;
-            this.lblContadorMarcas.UseVisualStyleBackColor = false;
-            // 
-            // lblContadorVentas
-            // 
-            this.lblContadorVentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.lblContadorVentas.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.lblContadorVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblContadorVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContadorVentas.ForeColor = System.Drawing.Color.White;
-            this.lblContadorVentas.Location = new System.Drawing.Point(24, 89);
-            this.lblContadorVentas.Name = "lblContadorVentas";
-            this.lblContadorVentas.Size = new System.Drawing.Size(57, 34);
-            this.lblContadorVentas.TabIndex = 53;
-            this.lblContadorVentas.UseVisualStyleBackColor = false;
-            // 
-            // lblContadorUsuarios
-            // 
-            this.lblContadorUsuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.lblContadorUsuarios.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.lblContadorUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblContadorUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContadorUsuarios.ForeColor = System.Drawing.Color.White;
-            this.lblContadorUsuarios.Location = new System.Drawing.Point(24, 89);
-            this.lblContadorUsuarios.Name = "lblContadorUsuarios";
-            this.lblContadorUsuarios.Size = new System.Drawing.Size(57, 34);
-            this.lblContadorUsuarios.TabIndex = 50;
-            this.lblContadorUsuarios.UseVisualStyleBackColor = false;
             // 
             // InicioNuevoWF
             // 

@@ -54,5 +54,17 @@ namespace Stock.Negocio
             { }
             return exito;
         }
+
+        public static int GuardarArchivos(Archivos archivos)
+        {
+            int exito = 0;
+            try
+            {
+                exito = DAO.AgregarDao.GuardarArchivos(archivos);
+            }
+            catch (Exception ex)
+            { }
+            return exito;
+        }
     }
 }
