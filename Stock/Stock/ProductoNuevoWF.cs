@@ -185,13 +185,12 @@ namespace Stock
                 dgvProductos.ReadOnly = true;
             }
         }
-
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
             txtCodigoProducto.Focus();
             idProductoSeleccionado = 0;
-            Funcion = 2;
+            Funcion = 1;
         }
     }
 }

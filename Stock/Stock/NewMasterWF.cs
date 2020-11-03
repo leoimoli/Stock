@@ -88,20 +88,25 @@ namespace Stock
         {
             AbrirFormEnPanel(new ProductoNuevoWF());
         }
-
         private void NewMasterWF_Load(object sender, EventArgs e)
         {
             label6.Text = Sesion.UsuarioLogueado.Apellido + "  " + Sesion.UsuarioLogueado.Nombre;
         }
-
         private void btnInicio_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel(new InicioNuevoWF());
         }
-
         private void btnStock_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel(new StockNuevoWF());
+        }
+        private void btnProveedores_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new ProveedoresNuevoWF());
+        }
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new ClientesNuevoWF());
         }
     }
 }

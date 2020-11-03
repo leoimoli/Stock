@@ -65,6 +65,18 @@ namespace Stock.Negocio
             }
             return _lista;
         }
+        public static List<Entidades.Clientes> BuscarClientePorApellidoNombre(string apellido, string nombre)
+        {
+            List<Entidades.Clientes> _lista = new List<Entidades.Clientes>();
+            try
+            {
+                _lista = DAO.ConsultarDao.BuscarClientePorApellidoNombre(apellido, nombre);
+            }
+            catch (Exception ex)
+            {
+            }
+            return _lista;
+        }
 
         public static List<Productos> ListaDeProductos()
         {
@@ -88,16 +100,21 @@ namespace Stock.Negocio
             }
             catch (Exception ex)
             {
-                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
-                const string caption = "Atención";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.OK,
-                                           MessageBoxIcon.Warning);
-                throw new Exception();
             }
             return _listaProductos;
         }
-
+        public static List<Entidades.Clientes> BuscarClientePorDni(string dni)
+        {
+            List<Entidades.Clientes> _lista = new List<Entidades.Clientes>();
+            try
+            {
+                _lista = DAO.ConsultarDao.BuscarClientePorDni(dni);
+            }
+            catch (Exception ex)
+            {
+            }
+            return _lista;
+        }
         public static List<ListaStock> ListaStockPorDescripcion(string descripcion)
         {
             List<ListaStock> _listaStock = new List<ListaStock>();
@@ -110,7 +127,6 @@ namespace Stock.Negocio
             }
             return _listaStock;
         }
-
         public static List<ListaStock> ListaStockPorCodigoProducto(string codigo)
         {
             List<ListaStock> _listaStock = new List<ListaStock>();
@@ -123,7 +139,6 @@ namespace Stock.Negocio
             }
             return _listaStock;
         }
-
         public static List<Productos> ListarProductoPorDescripcion(string descripcion)
         {
             List<Productos> _listaProductos = new List<Productos>();
@@ -136,7 +151,6 @@ namespace Stock.Negocio
             }
             return _listaProductos;
         }
-
         public static List<Productos> ListarProducto(string descripcion)
         {
             List<Productos> _listaProductos = new List<Productos>();
@@ -155,7 +169,6 @@ namespace Stock.Negocio
             }
             return _listaProductos;
         }
-
         public static List<Entidades.Clientes> ListaDeClientes()
         {
             List<Entidades.Clientes> _listaClientes = new List<Entidades.Clientes>();
@@ -165,16 +178,9 @@ namespace Stock.Negocio
             }
             catch (Exception ex)
             {
-                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
-                const string caption = "Atención";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.OK,
-                                           MessageBoxIcon.Warning);
-                throw new Exception();
             }
             return _listaClientes;
         }
-
         public static List<ListaStock> ConsultarIngresosDeStockPorFecha(string desde, string hasta)
         {
             List<ListaStock> _listaProductos = new List<ListaStock>();
@@ -187,7 +193,6 @@ namespace Stock.Negocio
             }
             return _listaProductos;
         }
-
         public static List<Entidades.Clientes> BuscarClienteIngresado(string dni)
         {
             List<Entidades.Clientes> _cliente = new List<Entidades.Clientes>();
@@ -206,7 +211,6 @@ namespace Stock.Negocio
             }
             return _cliente;
         }
-
         public static List<Productos> BuscarProductoPorDescripcion(string descripcion)
         {
             List<Productos> _listaProductos = new List<Productos>();
@@ -220,7 +224,6 @@ namespace Stock.Negocio
             }
             return _listaProductos;
         }
-
         public static int BuscarPuntosViejos(int idCliente)
         {
             int PuntosViejos = 0;
@@ -239,7 +242,6 @@ namespace Stock.Negocio
             }
             return PuntosViejos;
         }
-
         public static List<Productos> BuscarProductoPorCodigoIngresado(string codigo)
         {
             List<Productos> _listaProductos = new List<Productos>();
@@ -253,7 +255,6 @@ namespace Stock.Negocio
             }
             return _listaProductos;
         }
-
         public static bool ValidarClienteExistente(string dni)
         {
             bool existe = DAO.ConsultarDao.ValidarClienteExistente(dni);
@@ -277,7 +278,6 @@ namespace Stock.Negocio
             }
             return _listaStock;
         }
-
         public static List<ListaVentas> ConsultarVentasPorFecha(DateTime fechaDesde, DateTime fechaHasta)
         {
             List<ListaVentas> _lista = new List<ListaVentas>();
@@ -296,7 +296,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<ListaVentasEstadistica> ConsultarVentasPorFechaEstadistica(DateTime fechaDesde, DateTime fechaHasta)
         {
             List<ListaVentasEstadistica> _lista = new List<ListaVentasEstadistica>();

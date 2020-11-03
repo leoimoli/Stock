@@ -455,6 +455,7 @@
             this.btnClientes.Text = "Clientes";
             this.toolTip1.SetToolTip(this.btnClientes, "Clientes");
             this.btnClientes.UseVisualStyleBackColor = true;
+            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
             // panel3
             // 
@@ -481,6 +482,7 @@
             this.btnProveedores.Text = "Proveedores";
             this.toolTip1.SetToolTip(this.btnProveedores, "Proveedores");
             this.btnProveedores.UseVisualStyleBackColor = true;
+            this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
             // 
             // panel2
             // 

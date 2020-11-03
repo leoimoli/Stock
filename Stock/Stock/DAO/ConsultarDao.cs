@@ -81,6 +81,77 @@ namespace Stock.DAO
             connection.Close();
             return _lista;
         }
+        public static List<Entidades.Clientes> BuscarClientePorApellidoNombre(string apellido, string nombre)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.Clientes> _listaClientes = new List<Entidades.Clientes>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("Apellido_in", apellido),
+            new MySqlParameter("Nombre_in", nombre)};
+            string proceso = "BuscarClientePorApellidoNombre";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Clientes listaCliente = new Entidades.Clientes();
+                    listaCliente.IdCliente = Convert.ToInt32(item["idClientes"].ToString());
+                    listaCliente.Apellido = item["txApellido"].ToString();
+                    listaCliente.Nombre = item["txNombre"].ToString();
+                    listaCliente.Dni = item["txDni"].ToString();
+                    listaCliente.FechaDeAlta = Convert.ToDateTime(item["dtFechaDeAlta"].ToString());
+                    listaCliente.Email = item["txEmail"].ToString();
+                    listaCliente.Telefono = item["txTelefono"].ToString();
+                    listaCliente.Calle = item["txCalle"].ToString();
+                    listaCliente.Altura = item["txAltura"].ToString();
+                    _listaClientes.Add(listaCliente);
+                }
+            }
+            connection.Close();
+            return _listaClientes;
+        }
+
+        public static List<Entidades.Clientes> BuscarClientePorDni(string dni)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.Clientes> _listaClientes = new List<Entidades.Clientes>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { 
+            new MySqlParameter("Dni_in", dni)};
+            string proceso = "BuscarClientePorDni";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Clientes listaCliente = new Entidades.Clientes();
+                    listaCliente.IdCliente = Convert.ToInt32(item["idClientes"].ToString());
+                    listaCliente.Apellido = item["txApellido"].ToString();
+                    listaCliente.Nombre = item["txNombre"].ToString();
+                    listaCliente.Dni = item["txDni"].ToString();
+                    listaCliente.FechaDeAlta = Convert.ToDateTime(item["dtFechaDeAlta"].ToString());
+                    listaCliente.Email = item["txEmail"].ToString();
+                    listaCliente.Telefono = item["txTelefono"].ToString();
+                    listaCliente.Calle = item["txCalle"].ToString();
+                    listaCliente.Altura = item["txAltura"].ToString();
+                    _listaClientes.Add(listaCliente);
+                }
+            }
+            connection.Close();
+            return _listaClientes;
+        }
 
         public static int BuscarUltimoMovimientoCargado()
         {
@@ -1081,10 +1152,16 @@ namespace Stock.DAO
             {
                 foreach (DataRow item in Tabla.Rows)
                 {
-                    Entidades.Proveedores listaStock = new Entidades.Proveedores();
-                    listaStock.idProveedor = Convert.ToInt32(item["idProveedores"].ToString());
-                    listaStock.NombreEmpresa = item["txNombreEmpresa"].ToString();
-                    _lista.Add(listaStock);
+                    Entidades.Proveedores listaProveedor = new Entidades.Proveedores();
+                    listaProveedor.idProveedor = Convert.ToInt32(item["idProveedores"].ToString());
+                    listaProveedor.NombreEmpresa = item["txNombreEmpresa"].ToString();
+                    listaProveedor.Contacto = item["txNombreContacto"].ToString();
+                    listaProveedor.Email = item["txEmail"].ToString();
+                    listaProveedor.SitioWeb = item["txSitioWeb"].ToString();
+                    listaProveedor.Calle = item["txCalle"].ToString();
+                    listaProveedor.Altura = item["txAltura"].ToString();
+                    listaProveedor.Telefono = item["txTelefono"].ToString();
+                    _lista.Add(listaProveedor);
                 }
             }
             connection.Close();

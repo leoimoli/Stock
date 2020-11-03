@@ -258,5 +258,15 @@ namespace Stock
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+        private void btnCrear_Click(object sender, EventArgs e)
+        {
+            AltaProveedorWF _alta = new AltaProveedorWF();
+            _alta.Show();
+        }
+
+        private void txtProveedor_Click(object sender, EventArgs e)
+        {
+            ListaProveedores();
+        }
     }
 }

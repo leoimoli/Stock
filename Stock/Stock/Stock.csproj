@@ -77,6 +77,12 @@
     <Compile Include="ActualizarCodigoProductoWF.Designer.cs">
       <DependentUpon>ActualizarCodigoProductoWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="AltaProveedorWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AltaProveedorWF.Designer.cs">
+      <DependentUpon>AltaProveedorWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="ArchivosWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,7 @@
       <DependentUpon>CargarPuntosWF.cs</DependentUpon>
     </Compile>
     <Compile Include="Clases_Maestras\AutoCompleClass.cs" />
+    <Compile Include="Clases_Maestras\AutoCompletePorApellido.cs" />
     <Compile Include="Clases_Maestras\AutoCompletePorDescripcion.cs" />
     <Compile Include="Clases_Maestras\AutoCompleteProductosSinCodigo.cs" />
     <Compile Include="Clases_Maestras\AutoCompleteProveedores.cs" />
@@ -103,6 +110,12 @@
     <Compile Include="Clases_Maestras\ListarProveedores.cs" />
     <Compile Include="Clases_Maestras\RutasDeAcceso.cs" />
     <Compile Include="Clases_Maestras\ValoresConstantes.cs" />
+    <Compile Include="ClientesNuevoWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientesNuevoWF.Designer.cs">
+      <DependentUpon>ClientesNuevoWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClientesWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,6 +366,9 @@
     <EmbeddedResource Include="ActualizarCodigoProductoWF.resx">
       <DependentUpon>ActualizarCodigoProductoWF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AltaProveedorWF.resx">
+      <DependentUpon>AltaProveedorWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ArchivosWF.resx">
       <DependentUpon>ArchivosWF.cs</DependentUpon>
     </EmbeddedResource>
@@ -361,6 +377,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CargarPuntosWF.resx">
       <DependentUpon>CargarPuntosWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientesNuevoWF.resx">
+      <DependentUpon>ClientesNuevoWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientesWF.resx">
       <DependentUpon>ClientesWF.cs</DependentUpon>
@@ -522,6 +541,7 @@
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Documentos\Base De Datos\Procedure\1%29LoginUsuario.txt" />
+    <None Include="Resources\mas %282%29.png" />
     <None Include="Resources\sistema-de-archivos.png" />
     <None Include="Resources\usuario.png" />
     <None Include="Resources\menos %282%291.png" />
