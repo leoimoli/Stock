@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel_Producto = new System.Windows.Forms.Panel();
+            this.lblTotalEdit = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.lblEnProgreso = new System.Windows.Forms.Label();
             this.txtMarca = new System.Windows.Forms.TextBox();
             this.txtPrecioVenta = new System.Windows.Forms.TextBox();
@@ -69,8 +71,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.lblTotalEdit = new System.Windows.Forms.Label();
             this.panel_Producto.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel200.SuspendLayout();
@@ -106,6 +106,30 @@
             this.panel_Producto.Name = "panel_Producto";
             this.panel_Producto.Size = new System.Drawing.Size(611, 220);
             this.panel_Producto.TabIndex = 20;
+            // 
+            // lblTotalEdit
+            // 
+            this.lblTotalEdit.AutoSize = true;
+            this.lblTotalEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalEdit.ForeColor = System.Drawing.Color.White;
+            this.lblTotalEdit.Location = new System.Drawing.Point(530, 198);
+            this.lblTotalEdit.Name = "lblTotalEdit";
+            this.lblTotalEdit.Size = new System.Drawing.Size(20, 17);
+            this.lblTotalEdit.TabIndex = 48;
+            this.lblTotalEdit.Text = "--";
+            this.lblTotalEdit.Visible = false;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.Color.White;
+            this.lblTotal.Location = new System.Drawing.Point(373, 198);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(151, 17);
+            this.lblTotal.TabIndex = 47;
+            this.lblTotal.Text = "Total de Productos:";
+            this.lblTotal.Visible = false;
             // 
             // lblEnProgreso
             // 
@@ -298,7 +322,7 @@
             // cmbProveedores
             // 
             this.cmbProveedores.FormattingEnabled = true;
-            this.cmbProveedores.Location = new System.Drawing.Point(36, 61);
+            this.cmbProveedores.Location = new System.Drawing.Point(39, 103);
             this.cmbProveedores.Name = "cmbProveedores";
             this.cmbProveedores.Size = new System.Drawing.Size(200, 21);
             this.cmbProveedores.TabIndex = 35;
@@ -331,7 +355,7 @@
             // 
             // txtNombreProductoBuscar
             // 
-            this.txtNombreProductoBuscar.Location = new System.Drawing.Point(0, 60);
+            this.txtNombreProductoBuscar.Location = new System.Drawing.Point(0, 130);
             this.txtNombreProductoBuscar.Name = "txtNombreProductoBuscar";
             this.txtNombreProductoBuscar.Size = new System.Drawing.Size(280, 20);
             this.txtNombreProductoBuscar.TabIndex = 32;
@@ -353,7 +377,7 @@
             // cmbMarca
             // 
             this.cmbMarca.FormattingEnabled = true;
-            this.cmbMarca.Location = new System.Drawing.Point(80, 63);
+            this.cmbMarca.Location = new System.Drawing.Point(110, 176);
             this.cmbMarca.Name = "cmbMarca";
             this.cmbMarca.Size = new System.Drawing.Size(170, 21);
             this.cmbMarca.TabIndex = 24;
@@ -425,7 +449,7 @@
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(80, 52);
+            this.txtCodigo.Location = new System.Drawing.Point(79, 224);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(170, 20);
             this.txtCodigo.TabIndex = 18;
@@ -519,30 +543,6 @@
             this.progressBar1.TabIndex = 96;
             this.progressBar1.Value = 10;
             this.progressBar1.Visible = false;
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.ForeColor = System.Drawing.Color.White;
-            this.lblTotal.Location = new System.Drawing.Point(373, 198);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(151, 17);
-            this.lblTotal.TabIndex = 47;
-            this.lblTotal.Text = "Total de Productos:";
-            this.lblTotal.Visible = false;
-            // 
-            // lblTotalEdit
-            // 
-            this.lblTotalEdit.AutoSize = true;
-            this.lblTotalEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalEdit.ForeColor = System.Drawing.Color.White;
-            this.lblTotalEdit.Location = new System.Drawing.Point(530, 198);
-            this.lblTotalEdit.Name = "lblTotalEdit";
-            this.lblTotalEdit.Size = new System.Drawing.Size(20, 17);
-            this.lblTotalEdit.TabIndex = 48;
-            this.lblTotalEdit.Text = "--";
-            this.lblTotalEdit.Visible = false;
             // 
             // PrecioDeVentaWF
             // 

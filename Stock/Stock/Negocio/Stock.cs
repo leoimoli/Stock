@@ -66,5 +66,25 @@ namespace Stock.Negocio
             { }
             return exito;
         }
+        public static bool CargarPrecioDeVenta(Entidades.PrecioDeVenta precio)
+        {
+            bool exito = false;
+            try
+            {
+                if (precio.Precio == 0)
+                {
+                    const string message = "El precio de venta es obligatorio.";
+                    const string caption = "Error";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Exclamation);
+                    throw new Exception();
+                }
+                exito = DAO.AgregarDao.InsertPrecioDeVenta(precio);
+            }
+            catch (Exception ex)
+            { }
+            return exito;
+        }
     }
 }

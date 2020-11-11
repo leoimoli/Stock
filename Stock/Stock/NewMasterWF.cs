@@ -108,5 +108,9 @@ namespace Stock
         {
             AbrirFormEnPanel(new ClientesNuevoWF());
         }
+        private void btnPagos_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new PreciosNuevoWF());
+        }
     }
 }

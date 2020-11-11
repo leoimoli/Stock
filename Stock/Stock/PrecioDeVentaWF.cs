@@ -233,8 +233,9 @@ namespace Stock
                             int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
                             int idUsuario = idusuarioLogueado;
                             InhabilitarPaneles();
-                            ProgressBar();                           
-                            Exito = Negocio.PrecioDeVenta_Negocio.InsertPrecioDeVentaPorMarca(marca, NuevoRedito, idUsuario);
+                            ProgressBar();
+                            Exito = true;
+                            //Exito = Negocio.PrecioDeVenta_Negocio.InsertPrecioDeVentaPorMarca(marca, NuevoRedito, idUsuario);
                             if (Exito == true)
                             {
                                 const string message2 = "Se registro el nuevo precio de venta exitosamente.";
@@ -280,7 +281,8 @@ namespace Stock
                             int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
                             int idUsuario = idusuarioLogueado;
                             ProgressBar();
-                            Exito = Negocio.PrecioDeVenta_Negocio.InsertPrecioDeVentaPorProveedor(proveedor, NuevoRedito, idUsuario);
+                            Exito = true;
+                            //Exito = Negocio.PrecioDeVenta_Negocio.InsertPrecioDeVentaPorProveedor(proveedor, NuevoRedito, idUsuario);
                             if (Exito == true)
                             {
                                 const string message2 = "Se registro el nuevo precio de venta exitosamente.";

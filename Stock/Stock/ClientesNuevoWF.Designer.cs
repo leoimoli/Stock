@@ -66,6 +66,7 @@
             this.Domicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnHistorial = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
@@ -455,12 +456,27 @@
             this.Marca.HeaderText = "Teléfono";
             this.Marca.Name = "Marca";
             // 
+            // btnHistorial
+            // 
+            this.btnHistorial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnHistorial.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnHistorial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHistorial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistorial.ForeColor = System.Drawing.Color.White;
+            this.btnHistorial.Location = new System.Drawing.Point(178, 513);
+            this.btnHistorial.Name = "btnHistorial";
+            this.btnHistorial.Size = new System.Drawing.Size(77, 28);
+            this.btnHistorial.TabIndex = 58;
+            this.btnHistorial.Text = "Historial";
+            this.btnHistorial.UseVisualStyleBackColor = false;
+            // 
             // ClientesNuevoWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(1099, 564);
+            this.Controls.Add(this.btnHistorial);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -519,5 +535,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button btnHistorial;
     }
 }

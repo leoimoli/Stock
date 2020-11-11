@@ -120,6 +120,23 @@ namespace Stock.DAO
             }
             return exito;
         }
+        public static bool CargarPrecioDeVenta(Entidades.Stock stock)
+        {
+            bool Exito = false;
+            connection.Close();
+            connection.Open();
+            string proceso = "CargarPrecioDeVenta";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("idProducto_in", stock.idProducto);
+            cmd.Parameters.AddWithValue("PrecioDeVenta_in", stock.PrecioDeVenta);
+            cmd.Parameters.AddWithValue("FechaActual_in", stock.FechaActual);
+            cmd.Parameters.AddWithValue("idUsuario_in", stock.idUsuario);
+            cmd.ExecuteNonQuery();
+
+            Exito = true;
+            return Exito;
+        }
         public static int GuardarArchivos(Archivos archivos)
         {
             int idMovimiento = DAO.ConsultarDao.BuscarUltimoMovimientoCargado();

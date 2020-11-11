@@ -165,7 +165,7 @@
             // progressBar1
             // 
             this.progressBar1.ForeColor = System.Drawing.Color.Lime;
-            this.progressBar1.Location = new System.Drawing.Point(125, -6);
+            this.progressBar1.Location = new System.Drawing.Point(125, 194);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(397, 23);
             this.progressBar1.Step = 50;
@@ -333,7 +333,6 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panel5.Controls.Add(this.progressBar1);
             this.panel5.Controls.Add(this.lblMensaje);
             this.panel5.Controls.Add(this.lblUsuarioEstadisticas);
             this.panel5.Location = new System.Drawing.Point(321, 321);
@@ -355,6 +354,7 @@
             // panel_Clientes
             // 
             this.panel_Clientes.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel_Clientes.Controls.Add(this.progressBar1);
             this.panel_Clientes.Controls.Add(this.btnCancelar);
             this.panel_Clientes.Controls.Add(this.btnGuardar);
             this.panel_Clientes.Controls.Add(this.label2);

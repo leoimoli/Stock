@@ -16,7 +16,7 @@ namespace Stock
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginNuevoWF());
+            Application.Run(new VentasNuevoWF());
         }
     }
 }

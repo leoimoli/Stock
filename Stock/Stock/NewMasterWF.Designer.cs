@@ -375,9 +375,10 @@
             this.btnPagos.Name = "btnPagos";
             this.btnPagos.Size = new System.Drawing.Size(195, 32);
             this.btnPagos.TabIndex = 16;
-            this.btnPagos.Text = "Pagos";
+            this.btnPagos.Text = "Precios";
             this.toolTip1.SetToolTip(this.btnPagos, "Pagos");
             this.btnPagos.UseVisualStyleBackColor = true;
+            this.btnPagos.Click += new System.EventHandler(this.btnPagos_Click);
             // 
             // panel6
             // 

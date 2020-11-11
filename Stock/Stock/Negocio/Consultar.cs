@@ -53,6 +53,19 @@ namespace Stock.Negocio
             }
             return _lista;
         }
+        public static List<Productos> ListaDeProductosPorMarca(string marca)
+        {
+            List<Productos> _lista = new List<Productos>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ListaDeProductosPorMarca(marca);
+            }
+            catch (Exception ex)
+            {
+            }
+            return _lista;
+        }
+
         public static List<ListaStock> ConsultarUltimosIngresosDeStock()
         {
             List<ListaStock> _lista = new List<ListaStock>();
@@ -71,6 +84,18 @@ namespace Stock.Negocio
             try
             {
                 _lista = DAO.ConsultarDao.BuscarClientePorApellidoNombre(apellido, nombre);
+            }
+            catch (Exception ex)
+            {
+            }
+            return _lista;
+        }
+        public static List<Productos> ListaDeProductosPorProveedor(string proveedor)
+        {
+            List<Productos> _lista = new List<Productos>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ListarProductosPorProveedor(proveedor);
             }
             catch (Exception ex)
             {
@@ -127,6 +152,19 @@ namespace Stock.Negocio
             }
             return _listaStock;
         }
+        public static List<HistorialProductoPrecioDeVenta> BuscarProductoHistorialPrecios(string codigo)
+        {
+            List<HistorialProductoPrecioDeVenta> _lista = new List<HistorialProductoPrecioDeVenta>();
+            try
+            {
+                _lista = DAO.ConsultarDao.BuscarProductoHistorialPrecios(codigo);
+            }
+            catch (Exception ex)
+            {
+            }
+            return _lista;
+        }
+
         public static List<ListaStock> ListaStockPorCodigoProducto(string codigo)
         {
             List<ListaStock> _listaStock = new List<ListaStock>();
@@ -496,12 +534,6 @@ namespace Stock.Negocio
             }
             catch (Exception ex)
             {
-                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
-                const string caption = "Atención";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.OK,
-                                           MessageBoxIcon.Warning);
-                throw new Exception();
             }
             return _listaHistorialProductoPrecioDeVenta;
         }

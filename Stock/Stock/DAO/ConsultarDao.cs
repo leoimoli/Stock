@@ -7,6 +7,7 @@ using Stock.Entidades;
 using MySql.Data.MySqlClient;
 using System.Data;
 using Stock.Negocio;
+using System.Windows.Forms;
 
 namespace Stock.DAO
 {
@@ -51,7 +52,44 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
+        public static List<Productos> ListaDeProductosPorMarca(string marca)
+        {
+            connection.Close();
+            connection.Open();
+            List<Productos> _listaProductos = new List<Productos>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("marca_in", marca) };
+            string proceso = "ListaDeProductosPorMarca";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Productos listaProducto = new Entidades.Productos();
+                    listaProducto.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    listaProducto.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaProducto.MarcaProducto = item["txMarcaProducto"].ToString();
+                    listaProducto.Descripcion = item["txDescripcion"].ToString();
+                    string Precio = item["txPrecioDeVenta"].ToString();
+                    if (Precio != null & Precio != "")
+                    {
+                        listaProducto.PrecioDeVenta = Convert.ToDecimal(item["txPrecioDeVenta"].ToString());
+                    }
+                    else
+                    {
+                        listaProducto.PrecioDeVenta = 0;
+                    }
+                    _listaProductos.Add(listaProducto);
+                }
+            }
+            connection.Close();
+            return _listaProductos;
+        }
         public static List<Archivos> BuscarArchivos(int idMovimiento)
         {
             connection.Close();
@@ -116,7 +154,57 @@ namespace Stock.DAO
             connection.Close();
             return _listaClientes;
         }
+        public static List<HistorialProductoPrecioDeVenta> BuscarProductoHistorialPrecios(string codigo)
+        {
+            bool Existe = ValidarProductoExistente(codigo);
+            List<HistorialProductoPrecioDeVenta> _lista = new List<HistorialProductoPrecioDeVenta>();
+            if (Existe == true)
+            {
+                connection.Close();
+                connection.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla = new DataTable();
+                MySqlParameter[] oParam = { new MySqlParameter("Codigo_in", codigo) };
+                string proceso = "BuscarProductoUltimoValorUnitario";
+                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt.SelectCommand.Parameters.AddRange(oParam);
+                dt.Fill(Tabla);
+                if (Tabla.Rows.Count > 0)
+                {
+                    foreach (DataRow item in Tabla.Rows)
+                    {
+                        Entidades.HistorialProductoPrecioDeVenta _historialProductoPrecioDeVenta = new Entidades.HistorialProductoPrecioDeVenta();
+                        _historialProductoPrecioDeVenta.ValorUnitario = Convert.ToDecimal(item["txValorUnitario"].ToString());
+                        _historialProductoPrecioDeVenta.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                        _lista.Add(_historialProductoPrecioDeVenta);
+                    }
+                }
+            }
+            else
+            {
+                const string message = "El Producto ingresado no existe ¿Desea crear el producto?";
+                const string caption = "Consulta";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Question);
+                {
+                    if (result == DialogResult.Yes)
+                    {
+                        AltaProductoWF _alta = new AltaProductoWF(codigo);
+                        _alta.Show();
+                    }
+                    else
+                    {
 
+                    }
+                }
+
+            }
+            connection.Close();
+            return _lista;
+        }
         public static List<Entidades.Clientes> BuscarClientePorDni(string dni)
         {
             connection.Close();
@@ -125,7 +213,7 @@ namespace Stock.DAO
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
-            MySqlParameter[] oParam = { 
+            MySqlParameter[] oParam = {
             new MySqlParameter("Dni_in", dni)};
             string proceso = "BuscarClientePorDni";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
@@ -507,31 +595,36 @@ namespace Stock.DAO
         public static List<Productos> ListarProductosPorProveedor(string proveedor)
         {
             List<Productos> _lista = new List<Productos>();
-            List<Entidades.Proveedores> Lista = new List<Entidades.Proveedores>();
-            Lista = BuscarProvedorPorNombre(proveedor);
-            if (Lista[0].idProveedor > 0)
+            connection.Close();
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("Proveedor_in", proveedor) };
+            string proceso = "ListarProductosPoridProveedor";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
             {
-                int idProveedor = Lista[0].idProveedor;
-                connection.Close();
-                connection.Open();
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = connection;
-                DataTable Tabla = new DataTable();
-                MySqlParameter[] oParam = { new MySqlParameter("idProveedor_in", idProveedor) };
-                string proceso = "ListarProductosPoridProveedor";
-                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
-                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dt.SelectCommand.Parameters.AddRange(oParam);
-                dt.Fill(Tabla);
-                if (Tabla.Rows.Count > 0)
+                foreach (DataRow item in Tabla.Rows)
                 {
-                    foreach (DataRow item in Tabla.Rows)
+                    Entidades.Productos listaProducto = new Entidades.Productos();
+                    listaProducto.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    listaProducto.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaProducto.MarcaProducto = item["txMarcaProducto"].ToString();
+                    listaProducto.Descripcion = item["txDescripcion"].ToString();
+                    string Precio = item["txPrecioDeVenta"].ToString();
+                    if (Precio != null & Precio != "")
                     {
-                        Entidades.Productos listaProducto = new Entidades.Productos();
-                        listaProducto.idProducto = Convert.ToInt32(item["idProducto"].ToString());
                         listaProducto.PrecioDeVenta = Convert.ToDecimal(item["txPrecioDeVenta"].ToString());
-                        _lista.Add(listaProducto);
                     }
+                    else
+                    {
+                        listaProducto.PrecioDeVenta = 0;
+                    }
+                    _lista.Add(listaProducto);
                 }
             }
             connection.Close();
@@ -1469,8 +1562,6 @@ namespace Stock.DAO
                     Entidades.HistorialProductoPrecioDeVenta _historialProductoPrecioDeVenta = new Entidades.HistorialProductoPrecioDeVenta();
                     _historialProductoPrecioDeVenta.idProducto = idProducto;
                     _historialProductoPrecioDeVenta.ValorUnitario = Convert.ToDecimal(item["txValorUnitario"].ToString());
-                    _historialProductoPrecioDeVenta.PrecioTotalDeCompra = Convert.ToDecimal(item["txPrecioTotal"].ToString());
-                    _historialProductoPrecioDeVenta.ReditoPorcentual = item["txReditoPorcentual"].ToString();
                     var asss = item["ultimoPrecioVenta"].ToString();
                     if (asss != "")
                     {
@@ -1835,6 +1926,15 @@ namespace Stock.DAO
                     listaProducto.NombreProducto = item["txNombreProducto"].ToString();
                     listaProducto.MarcaProducto = item["txMarcaProducto"].ToString();
                     listaProducto.Descripcion = item["txDescripcion"].ToString();
+                    string Precio = item["txPrecioDeVenta"].ToString();
+                    if (Precio != null & Precio != "")
+                    {
+                        listaProducto.PrecioDeVenta = Convert.ToDecimal(item["txPrecioDeVenta"].ToString());
+                    }
+                    else
+                    {
+                        listaProducto.PrecioDeVenta = 0;
+                    }
                     _listaProductos.Add(listaProducto);
                 }
             }
@@ -1896,10 +1996,10 @@ namespace Stock.DAO
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
             dt.Fill(Tabla);
-            DataSet ds = new DataSet();          
+            DataSet ds = new DataSet();
             if (Tabla.Rows.Count > 0)
             {
-               
+
                 foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.Proveedores listaProveedor = new Entidades.Proveedores();
