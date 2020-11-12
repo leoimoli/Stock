@@ -76,16 +76,16 @@ namespace Stock
                         }
                         foreach (DataGridViewRow row in dgvVentas.Rows)
                         {
-                            if (row.Cells[0].Value != null && row.Cells[0].Value.ToString() == codigoProducto)
+                            if (row.Cells[1].Value != null && row.Cells[1].Value.ToString() == codigoProducto)
                             {
-                                int CantidadOld = Convert.ToInt32(row.Cells[2].Value.ToString());
+                                int CantidadOld = Convert.ToInt32(row.Cells[3].Value.ToString());
                                 int CantidadNew = Convert.ToInt32(cantidadingresada.ToString());
                                 int cantidad = CantidadOld + CantidadNew;
                                 listaProductos[row.Index].Cantidad = cantidad;
-                                row.Cells[2].Value = cantidad;
-                                decimal ValorVenta = Convert.ToDecimal(row.Cells[3].Value.ToString());
+                                row.Cells[3].Value = cantidad;
+                                decimal ValorVenta = Convert.ToDecimal(row.Cells[4].Value.ToString());
                                 decimal PrecioFinal = cantidad * ValorVenta;
-                                row.Cells[4].Value = PrecioFinal;
+                                row.Cells[5].Value = PrecioFinal;
                             }
                         }
 
@@ -94,7 +94,7 @@ namespace Stock
                     foreach (DataGridViewRow row in dgvVentas.Rows)
                     {
                         if (row.Cells[4].Value != null)
-                            PrecioTotalFinal += Convert.ToDecimal(row.Cells[4].Value.ToString());
+                            PrecioTotalFinal += Convert.ToDecimal(row.Cells[5].Value.ToString());
                     }
                     txtCodigo.Clear();
                     lblTotalPagarReal.Text = Convert.ToString(PrecioTotalFinal);
@@ -133,16 +133,16 @@ namespace Stock
                     {
                         foreach (DataGridViewRow row in dgvVentas.Rows)
                         {
-                            if (row.Cells[0].Value != null && row.Cells[0].Value.ToString() == codigoProducto)
+                            if (row.Cells[1].Value != null && row.Cells[1].Value.ToString() == codigoProducto)
                             {
-                                int CantidadOld = Convert.ToInt32(row.Cells[2].Value.ToString());
+                                int CantidadOld = Convert.ToInt32(row.Cells[3].Value.ToString());
                                 int CantidadNew = Convert.ToInt32(cantidadingresada.ToString());
                                 int cantidad = CantidadOld + CantidadNew;
                                 listaProductos[row.Index].Cantidad = cantidad;
-                                row.Cells[2].Value = cantidad;
-                                decimal ValorVenta = Convert.ToDecimal(row.Cells[3].Value.ToString());
+                                row.Cells[3].Value = cantidad;
+                                decimal ValorVenta = Convert.ToDecimal(row.Cells[4].Value.ToString());
                                 decimal PrecioFinal = cantidad * ValorVenta;
-                                row.Cells[4].Value = PrecioFinal;
+                                row.Cells[5].Value = PrecioFinal;
                             }
                         }
                     }
@@ -153,8 +153,8 @@ namespace Stock
                     decimal PrecioTotalFinal = 0;
                     foreach (DataGridViewRow row in dgvVentas.Rows)
                     {
-                        if (row.Cells[4].Value != null)
-                            PrecioTotalFinal += Convert.ToDecimal(row.Cells[4].Value.ToString());
+                        if (row.Cells[5].Value != null)
+                            PrecioTotalFinal += Convert.ToDecimal(row.Cells[5].Value.ToString());
                     }
                     lblTotalPagarReal.Text = Convert.ToString(PrecioTotalFinal);
                 }
@@ -181,19 +181,7 @@ namespace Stock
                 catch (Exception ex)
                 { }
             }
-        }
-        private void btnMaximizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Maximized;
-            btnMaximizar.Visible = false;
-            btnRestaurar.Visible = true;
-        }
-        private void btnRestaurar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Normal;
-            btnMaximizar.Visible = true;
-            btnRestaurar.Visible = false;
-        }
+        }            
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
