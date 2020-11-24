@@ -112,5 +112,11 @@ namespace Stock
         {
             AbrirFormEnPanel(new PreciosNuevoWF());
         }
+        private void btnVentas_Click(object sender, EventArgs e)
+        {
+            VentasNuevoWF _ventas = new VentasNuevoWF();
+            _ventas.Show();
+            Hide();
+        }
     }
 }

@@ -578,6 +578,7 @@
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Documentos\Base De Datos\Procedure\1%29LoginUsuario.txt" />
+    <None Include="Resources\usuario %281%29.png" />
     <None Include="Resources\mas %282%29.png" />
     <None Include="Resources\sistema-de-archivos.png" />
     <None Include="Resources\usuario.png" />
