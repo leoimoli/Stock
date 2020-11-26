@@ -285,9 +285,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(10, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(363, 24);
+            this.label1.Size = new System.Drawing.Size(186, 24);
             this.label1.TabIndex = 50;
-            this.label1.Text = "Listado de Productos con Precio de Venta";
+            this.label1.Text = "Listado de Productos";
             // 
             // dgvProductos
             // 

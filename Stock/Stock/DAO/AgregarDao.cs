@@ -120,6 +120,37 @@ namespace Stock.DAO
             }
             return exito;
         }
+        public static int GuardarCargaMasivaProductos(List<Productos> listaStatic)
+        {
+            int Exito = 0;
+            foreach (var item in listaStatic)
+            {
+                bool ProductoExistente = Negocio.Consultar.ValidarProductoExistente(item.CodigoProducto);
+                if (ProductoExistente == true)
+                {
+                    continue;
+                }
+                else
+                {
+                    connection.Close();
+                    connection.Open();
+                    string proceso = "AltaProducto";
+                    MySqlCommand cmd = new MySqlCommand(proceso, connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("CodigoProducto_in", item.CodigoProducto);
+                    cmd.Parameters.AddWithValue("NombreProducto_in", item.NombreProducto);
+                    cmd.Parameters.AddWithValue("MarcaProducto_in", item.MarcaProducto);
+                    cmd.Parameters.AddWithValue("Descripcion_in", item.Descripcion);
+                    cmd.Parameters.AddWithValue("FechaDeAlta_in", item.FechaDeAlta);
+                    cmd.Parameters.AddWithValue("idUsuario_in", item.idUsuario);
+                    cmd.Parameters.AddWithValue("Foto_in", item.Foto);
+                    cmd.ExecuteNonQuery();
+                }
+                Exito = 1;
+            }
+            connection.Close();
+            return Exito;
+        }
         public static bool CargarPrecioDeVenta(Entidades.Stock stock)
         {
             bool Exito = false;

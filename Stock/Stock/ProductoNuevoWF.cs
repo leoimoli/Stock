@@ -22,6 +22,15 @@ namespace Stock
         {
             try
             {
+                string Perfil = Sesion.UsuarioLogueado.Perfil;
+                if (Perfil == "SUPER ADMIN")
+                {
+                    btnCargaMasiva.Visible = true;
+                }
+                else
+                {
+                    btnCargaMasiva.Visible = true;
+                }
                 FuncionListarProductos();
                 CargarCombo();
                 FuncionBuscartexto();
@@ -191,6 +200,12 @@ namespace Stock
             txtCodigoProducto.Focus();
             idProductoSeleccionado = 0;
             Funcion = 1;
+        }
+        private void btnCargaMasiva_Click(object sender, EventArgs e)
+        {
+            CargaMasivaProductosWF _carga = new CargaMasivaProductosWF();
+            _carga.Show();
+            Hide();
         }
     }
 }

@@ -25,16 +25,105 @@ namespace Stock
             int Clientes = DAO.ConsultarDao.ContadorClientes();
             int Productos = DAO.ConsultarDao.ContadorProductos();
             int Marcas = DAO.ConsultarDao.ContadorMarcas();
-            decimal Ventas = DAO.ConsultarDao.ContadorVentas();
+            int Ventas = DAO.ConsultarDao.ContadorVentas();
             int Usuarios = DAO.ConsultarDao.ContadorUsuarios();
 
-            lblContadorProveedores.Text = Convert.ToString(totalProvedores);
-            lblContadorClientes.Text = Convert.ToString(Clientes);
-            lblContadorProdcutos.Text = Convert.ToString(Productos);
-            lblContadorMarcas.Text = Convert.ToString(Marcas);
-            lblContadorVentas.Text = Convert.ToString(Ventas);
-            lblContadorUsuarios.Text = Convert.ToString(Usuarios);
-
+            if (Ventas > 9999)
+            {
+                lblContadorVentas.Text = "+ 10.000";
+            }
+            if (Ventas > 99999)
+            {
+                lblContadorVentas.Text = "+ 100.000";
+            }
+            if (Ventas > 999999)
+            {
+                lblContadorVentas.Text = "+ 1.000.000";
+            }
+            else
+            {
+                lblContadorVentas.Text = Convert.ToString(Ventas);
+            }
+            if (Productos > 9999)
+            {
+                lblContadorProdcutos.Text = "+ 10.000";
+            }
+            if (Productos > 99999)
+            {
+                lblContadorProdcutos.Text = "+ 100.000";
+            }
+            if (Productos > 999999)
+            {
+                lblContadorProdcutos.Text = "+ 1.000.000";
+            }
+            else
+            {
+                lblContadorProdcutos.Text = Convert.ToString(Productos);
+            }
+            if (Clientes > 9999)
+            {
+                lblContadorClientes.Text = "+ 10.000";
+            }
+            if (Clientes > 99999)
+            {
+                lblContadorClientes.Text = "+ 100.000";
+            }
+            if (Clientes > 999999)
+            {
+                lblContadorClientes.Text = "+ 1.000.000";
+            }
+            else
+            {
+                lblContadorClientes.Text = Convert.ToString(Clientes);
+            }
+            if (totalProvedores > 9999)
+            {
+                lblContadorProveedores.Text = "+ 10.000";
+            }
+            if (totalProvedores > 99999)
+            {
+                lblContadorProveedores.Text = "+ 100.000";
+            }
+            if (totalProvedores > 999999)
+            {
+                lblContadorProveedores.Text = "+ 1.000.000";
+            }
+            else
+            {
+                lblContadorProveedores.Text = Convert.ToString(totalProvedores);
+            }
+            if (Marcas > 9999)
+            {
+                lblContadorMarcas.Text = "+ 10.000";
+            }
+            if (Marcas > 99999)
+            {
+                lblContadorMarcas.Text = "+ 100.000";
+            }
+            if (Marcas > 999999)
+            {
+                lblContadorMarcas.Text = "+ 1.000.000";
+            }
+            else
+            {
+                lblContadorMarcas.Text = Convert.ToString(Marcas);
+            }
+            if (Usuarios > 9999)
+            {
+                lblContadorUsuarios.Text = "+ 10.000";
+            }
+            if (Usuarios > 99999)
+            {
+                lblContadorUsuarios.Text = "+ 100.000";
+            }
+            if (Usuarios > 999999)
+            {
+                lblContadorUsuarios.Text = "+ 1.000.000";
+            }
+            else
+            {
+                lblContadorUsuarios.Text = Convert.ToString(Usuarios);
+            }
             ///// Dia y Hora
             CheckForIllegalCrossThreadCalls = false;
             System.Timers.Timer t = new System.Timers.Timer(1000);
@@ -48,7 +137,7 @@ namespace Stock
             String Year = DateTime.Now.Year.ToString();
             int month = Convert.ToInt32(Month);
             int year = Convert.ToInt32(Year);
-            lblDia.Text = Dia + "," + " " + FechaDia +" "+"de" + " " + Mes + " " + Year;
+            lblDia.Text = Dia + "," + " " + FechaDia + " " + "de" + " " + Mes + " " + Year;
             ///// Completo Grilla con informacion
             List<Entidades.ListaStockFaltante> ListaStockFaltante = new List<Entidades.ListaStockFaltante>();
             ListaStockFaltante = Negocio.Consultar.ListaStockFaltante();

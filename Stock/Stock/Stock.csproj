@@ -101,6 +101,12 @@
     <Compile Include="CargaMasivaDeProductosWF.Designer.cs">
       <DependentUpon>CargaMasivaDeProductosWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="CargaMasivaProductosWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CargaMasivaProductosWF.Designer.cs">
+      <DependentUpon>CargaMasivaProductosWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="CargarPuntosWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -382,6 +388,12 @@
     <Compile Include="VerDetalleMovimientoWF.Designer.cs">
       <DependentUpon>VerDetalleMovimientoWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="VueltoNuevoWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VueltoNuevoWF.Designer.cs">
+      <DependentUpon>VueltoNuevoWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="VueltoWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -402,6 +414,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CargaMasivaDeProductosWF.resx">
       <DependentUpon>CargaMasivaDeProductosWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CargaMasivaProductosWF.resx">
+      <DependentUpon>CargaMasivaProductosWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CargarPuntosWF.resx">
       <DependentUpon>CargarPuntosWF.cs</DependentUpon>
@@ -518,6 +533,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VerDetalleMovimientoWF.resx">
       <DependentUpon>VerDetalleMovimientoWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VueltoNuevoWF.resx">
+      <DependentUpon>VueltoNuevoWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VueltoWF.resx">
       <DependentUpon>VueltoWF.cs</DependentUpon>

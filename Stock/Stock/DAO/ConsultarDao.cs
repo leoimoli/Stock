@@ -514,16 +514,16 @@ namespace Stock.DAO
             connection.Close();
             return total;
         }
-        public static decimal ContadorVentas()
+        public static int ContadorVentas()
         {
             connection.Close();
             connection.Open();
-            decimal total = 0;
+            int total = 0;
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = { };
-            string proceso = "ContadorVentas";
+            string proceso = "ContadorTotalDeVentas";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
@@ -532,7 +532,7 @@ namespace Stock.DAO
             {
                 foreach (DataRow item in Tabla.Rows)
                 {
-                    total = Convert.ToDecimal(item["Total"].ToString());
+                    total = Convert.ToInt32(item["Total"].ToString());
                 }
             }
             connection.Close();
@@ -689,6 +689,15 @@ namespace Stock.DAO
                     listaProducto.CodigoProducto = item["txCodigoProducto"].ToString();
                     listaProducto.MarcaProducto = item["txMarcaProducto"].ToString();
                     listaProducto.Descripcion = item["txDescripcion"].ToString();
+                    string Precio = item["txPrecioDeVenta"].ToString();
+                    if (Precio != null & Precio != "")
+                    {
+                        listaProducto.PrecioDeVenta = Convert.ToDecimal(item["txPrecioDeVenta"].ToString());
+                    }
+                    else
+                    {
+                        listaProducto.PrecioDeVenta = 0;
+                    }
                     lista.Add(listaProducto);
                 }
             }
@@ -720,6 +729,15 @@ namespace Stock.DAO
                     listaProducto.CodigoProducto = item["txCodigoProducto"].ToString();
                     listaProducto.MarcaProducto = item["txMarcaProducto"].ToString();
                     listaProducto.Descripcion = item["txDescripcion"].ToString();
+                    string Precio = item["txPrecioDeVenta"].ToString();
+                    if (Precio != null & Precio != "")
+                    {
+                        listaProducto.PrecioDeVenta = Convert.ToDecimal(item["txPrecioDeVenta"].ToString());
+                    }
+                    else
+                    {
+                        listaProducto.PrecioDeVenta = 0;
+                    }
                     lista.Add(listaProducto);
                 }
             }
@@ -1619,7 +1637,7 @@ namespace Stock.DAO
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = { new MySqlParameter("codigoProducto_in", codigoProducto) };
-            string proceso = "BuscarProductoParaVenta";
+            string proceso = "VentaDeProducto";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
@@ -1632,12 +1650,12 @@ namespace Stock.DAO
                     listaProducto.idProducto = Convert.ToInt32(item["idProducto"].ToString());
                     listaProducto.CodigoProducto = codigoProducto;
                     listaProducto.NombreProducto = item["txDescripcion"].ToString();
-                    listaProducto.PrecioUnitario = Convert.ToDecimal(item["txValorUnitario"].ToString());
+                    //listaProducto.PrecioUnitario = Convert.ToDecimal(item["txValorUnitario"].ToString());
                     listaProducto.PrecioVenta = Convert.ToDecimal(item["txPrecioDeVenta"].ToString());
-                    if (item[3].ToString() != string.Empty)
-                    {
-                        listaProducto.Foto = (byte[])item["txFoto"];
-                    }
+                    //if (item[3].ToString() != string.Empty)
+                    //{
+                    //    listaProducto.Foto = (byte[])item["txFoto"];
+                    //}
                     _lista.Add(listaProducto);
                 }
             }

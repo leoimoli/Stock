@@ -41,7 +41,11 @@ namespace Stock
                     {
                         dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto, item.PrecioDeVenta);
                     }
-                    else { continue; }
+                    else
+                    {
+                        item.PrecioDeVenta = Convert.ToDecimal("0.00");
+                        dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto, item.PrecioDeVenta);
+                    }
                 }
             }
             dgvProductos.ReadOnly = true;
@@ -67,7 +71,11 @@ namespace Stock
                         {
                             dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto, item.PrecioDeVenta);
                         }
-                        else { continue; }
+                        else
+                        {
+                            item.PrecioDeVenta = Convert.ToDecimal("0.00");
+                            dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto, item.PrecioDeVenta);
+                        }
                     }
                 }
                 dgvProductos.ReadOnly = true;
@@ -88,7 +96,11 @@ namespace Stock
                         {
                             dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto, item.PrecioDeVenta);
                         }
-                        else { continue; }
+                        else
+                        {
+                            item.PrecioDeVenta = Convert.ToDecimal("0.00");
+                            dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto, item.PrecioDeVenta);
+                        }
                     }
                 }
                 dgvProductos.ReadOnly = true;
@@ -252,17 +264,32 @@ namespace Stock
         }
         private void HabilitarCamposProdcutoSeleccionado(List<HistorialProductoPrecioDeVenta> precio)
         {
-            var ListaPrecio = precio.First();
-            txtValorUni.Text = Convert.ToString(ListaPrecio.ValorUnitario);
-            txtReditoPorcentual.Enabled = true;
-            txtPrecioVenta.Enabled = true;
-            idProductoIngresado = Convert.ToInt32(this.dgvProductos.CurrentRow.Cells[0].Value);
-            string codigo = Convert.ToString(this.dgvProductos.CurrentRow.Cells[1].Value);
-            string descripcion = Convert.ToString(this.dgvProductos.CurrentRow.Cells[2].Value);
-            string marca = Convert.ToString(this.dgvProductos.CurrentRow.Cells[3].Value);
-            string precioVenta = Convert.ToString(this.dgvProductos.CurrentRow.Cells[4].Value);
-            dgvProductos.Rows.Clear();
-            dgvProductos.Rows.Add(idProductoIngresado, codigo, descripcion, marca, precioVenta);
+            if (precio.Count > 0)
+            {
+                var ListaPrecio = precio.First();
+                txtValorUni.Text = Convert.ToString(ListaPrecio.ValorUnitario);
+                txtReditoPorcentual.Enabled = true;
+                txtPrecioVenta.Enabled = true;
+                idProductoIngresado = Convert.ToInt32(this.dgvProductos.CurrentRow.Cells[0].Value);
+                string codigo = Convert.ToString(this.dgvProductos.CurrentRow.Cells[1].Value);
+                string descripcion = Convert.ToString(this.dgvProductos.CurrentRow.Cells[2].Value);
+                string marca = Convert.ToString(this.dgvProductos.CurrentRow.Cells[3].Value);
+                string precioVenta = Convert.ToString(this.dgvProductos.CurrentRow.Cells[4].Value);
+                dgvProductos.Rows.Clear();
+                dgvProductos.Rows.Add(idProductoIngresado, codigo, descripcion, marca, precioVenta);
+            }
+            else
+            {
+                txtReditoPorcentual.Enabled = false;
+                txtPrecioVenta.Enabled = true;
+                idProductoIngresado = Convert.ToInt32(this.dgvProductos.CurrentRow.Cells[0].Value);
+                string codigo = Convert.ToString(this.dgvProductos.CurrentRow.Cells[1].Value);
+                string descripcion = Convert.ToString(this.dgvProductos.CurrentRow.Cells[2].Value);
+                string marca = Convert.ToString(this.dgvProductos.CurrentRow.Cells[3].Value);
+                string precioVenta = Convert.ToString(this.dgvProductos.CurrentRow.Cells[4].Value);
+                dgvProductos.Rows.Clear();
+                dgvProductos.Rows.Add(idProductoIngresado, codigo, descripcion, marca, precioVenta);
+            }
         }
         private void btnMasivos_Click(object sender, EventArgs e)
         {

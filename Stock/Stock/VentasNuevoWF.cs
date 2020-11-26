@@ -104,6 +104,10 @@ namespace Stock
                 catch (Exception ex)
                 { }
             }
+            if (e.KeyCode.ToString() == "F12")
+            {
+                FacturarVenta();
+            }
         }
         private void txtCantidad_KeyDown(object sender, KeyEventArgs e)
         {
@@ -183,6 +187,10 @@ namespace Stock
                 catch (Exception ex)
                 { }
             }
+            if (e.KeyCode.ToString() == "F12")
+            {
+                FacturarVenta();
+            }
         }
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
@@ -207,11 +215,8 @@ namespace Stock
                 //bool Exito = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
                 idVenta = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
                 BloquearPantalla();
-                const string message2 = "Se registro la venta exitosamente.";
-                const string caption2 = "Éxito";
-                var result2 = MessageBox.Show(message2, caption2,
-                                             MessageBoxButtons.OK,
-                                             MessageBoxIcon.Asterisk);
+                VueltoNuevoWF _vuelto = new VueltoNuevoWF(listaProductos[0].PrecioVentaFinal);
+                _vuelto.Show();
                 //GenerarTicket();               
             }
         }

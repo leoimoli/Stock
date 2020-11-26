@@ -34,10 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -53,10 +49,15 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnCargaMasiva = new System.Windows.Forms.Button();
             this.txtDescipcionBus = new System.Windows.Forms.TextBox();
             this.txtCodigoBus = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -105,32 +106,9 @@
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
             this.dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvProductos.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvProductos.Size = new System.Drawing.Size(633, 429);
             this.dgvProductos.TabIndex = 0;
-            // 
-            // idProducto
-            // 
-            this.idProducto.HeaderText = "id";
-            this.idProducto.Name = "idProducto";
-            this.idProducto.Width = 60;
-            // 
-            // CodigoProducto
-            // 
-            this.CodigoProducto.HeaderText = "Código de Producto";
-            this.CodigoProducto.Name = "CodigoProducto";
-            this.CodigoProducto.Width = 200;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripción";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.Width = 250;
-            // 
-            // Marca
-            // 
-            this.Marca.HeaderText = "Marca";
-            this.Marca.Name = "Marca";
-            this.Marca.Width = 73;
             // 
             // label1
             // 
@@ -303,6 +281,23 @@
             this.btnNuevo.UseVisualStyleBackColor = false;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
+            // btnCargaMasiva
+            // 
+            this.btnCargaMasiva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnCargaMasiva.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnCargaMasiva.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCargaMasiva.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCargaMasiva.ForeColor = System.Drawing.Color.White;
+            this.btnCargaMasiva.Location = new System.Drawing.Point(261, 523);
+            this.btnCargaMasiva.Name = "btnCargaMasiva";
+            this.btnCargaMasiva.Size = new System.Drawing.Size(112, 28);
+            this.btnCargaMasiva.TabIndex = 49;
+            this.btnCargaMasiva.Text = "Carga Masiva";
+            this.toolTip1.SetToolTip(this.btnCargaMasiva, "Eliminar Producto");
+            this.btnCargaMasiva.UseVisualStyleBackColor = false;
+            this.btnCargaMasiva.Visible = false;
+            this.btnCargaMasiva.Click += new System.EventHandler(this.btnCargaMasiva_Click);
+            // 
             // txtDescipcionBus
             // 
             this.txtDescipcionBus.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -343,12 +338,36 @@
             this.label6.TabIndex = 47;
             this.label6.Text = "Buscar porCódigo";
             // 
+            // idProducto
+            // 
+            this.idProducto.HeaderText = "id";
+            this.idProducto.Name = "idProducto";
+            this.idProducto.Width = 60;
+            // 
+            // CodigoProducto
+            // 
+            this.CodigoProducto.HeaderText = "Código de Producto";
+            this.CodigoProducto.Name = "CodigoProducto";
+            this.CodigoProducto.Width = 180;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripción";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.Width = 250;
+            // 
+            // Marca
+            // 
+            this.Marca.HeaderText = "Marca";
+            this.Marca.Name = "Marca";
+            // 
             // ProductoNuevoWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(1099, 564);
+            this.Controls.Add(this.btnCargaMasiva);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -386,10 +405,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.TextBox txtDescipcionBus;
@@ -397,5 +412,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnNuevo;
+        private System.Windows.Forms.Button btnCargaMasiva;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
     }
 }
