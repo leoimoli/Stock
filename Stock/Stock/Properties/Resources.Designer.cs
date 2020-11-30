@@ -363,6 +363,16 @@ namespace Stock.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cupon {
+            get {
+                object obj = ResourceManager.GetObject("cupon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap DescontarDeuda_Chico {
             get {
                 object obj = ResourceManager.GetObject("DescontarDeuda_Chico", resourceCulture);
@@ -386,6 +396,26 @@ namespace Stock.Properties {
         internal static System.Drawing.Bitmap desgaste_de_android {
             get {
                 object obj = ResourceManager.GetObject("desgaste-de-android", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dinero__1_ {
+            get {
+                object obj = ResourceManager.GetObject("dinero (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dinero__2_ {
+            get {
+                object obj = ResourceManager.GetObject("dinero (2)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -816,6 +846,46 @@ namespace Stock.Properties {
         internal static System.Drawing.Bitmap Nuevo_Usuario {
             get {
                 object obj = ResourceManager.GetObject("Nuevo Usuario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ordenador_portatil__1_ {
+            get {
+                object obj = ResourceManager.GetObject("ordenador-portatil (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ordenador_portatil__1_1 {
+            get {
+                object obj = ResourceManager.GetObject("ordenador-portatil (1)1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pagar__1_ {
+            get {
+                object obj = ResourceManager.GetObject("pagar (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pagar__2_ {
+            get {
+                object obj = ResourceManager.GetObject("pagar (2)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

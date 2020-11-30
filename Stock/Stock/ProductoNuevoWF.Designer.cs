@@ -34,6 +34,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -54,10 +58,6 @@
             this.txtCodigoBus = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -109,6 +109,29 @@
             this.dgvProductos.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvProductos.Size = new System.Drawing.Size(633, 429);
             this.dgvProductos.TabIndex = 0;
+            // 
+            // idProducto
+            // 
+            this.idProducto.HeaderText = "id";
+            this.idProducto.Name = "idProducto";
+            this.idProducto.Width = 60;
+            // 
+            // CodigoProducto
+            // 
+            this.CodigoProducto.HeaderText = "Código de Producto";
+            this.CodigoProducto.Name = "CodigoProducto";
+            this.CodigoProducto.Width = 180;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripción";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.Width = 250;
+            // 
+            // Marca
+            // 
+            this.Marca.HeaderText = "Marca";
+            this.Marca.Name = "Marca";
             // 
             // label1
             // 
@@ -337,29 +360,6 @@
             this.label6.Size = new System.Drawing.Size(107, 13);
             this.label6.TabIndex = 47;
             this.label6.Text = "Buscar porCódigo";
-            // 
-            // idProducto
-            // 
-            this.idProducto.HeaderText = "id";
-            this.idProducto.Name = "idProducto";
-            this.idProducto.Width = 60;
-            // 
-            // CodigoProducto
-            // 
-            this.CodigoProducto.HeaderText = "Código de Producto";
-            this.CodigoProducto.Name = "CodigoProducto";
-            this.CodigoProducto.Width = 180;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripción";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.Width = 250;
-            // 
-            // Marca
-            // 
-            this.Marca.HeaderText = "Marca";
-            this.Marca.Name = "Marca";
             // 
             // ProductoNuevoWF
             // 

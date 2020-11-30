@@ -145,6 +145,7 @@
     <Compile Include="DAO\AgregarDao.cs" />
     <Compile Include="DAO\ConsultarDao.cs" />
     <Compile Include="DAO\EditarDao.cs" />
+    <Compile Include="DAO\ReportesDao.cs" />
     <Compile Include="DescontarDeudaWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +185,9 @@
     <Compile Include="Entidades\ProveedorReducido.cs" />
     <Compile Include="Entidades\ReducirStockProducto.cs" />
     <Compile Include="Entidades\RegistroStock.cs" />
+    <Compile Include="Entidades\Reporte_Compras.cs" />
+    <Compile Include="Entidades\Reporte_Proveedores.cs" />
+    <Compile Include="Entidades\Reporte_Ventas.cs" />
     <Compile Include="Entidades\Series.cs" />
     <Compile Include="Entidades\Stock.cs" />
     <Compile Include="Entidades\StockReducido.cs" />
@@ -332,6 +336,12 @@
     </Compile>
     <Compile Include="RegistroStockWF.Designer.cs">
       <DependentUpon>RegistroStockWF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportesNuevoWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportesNuevoWF.Designer.cs">
+      <DependentUpon>ReportesNuevoWF.cs</DependentUpon>
     </Compile>
     <Compile Include="Reporte_ComprasWF.cs">
       <SubType>Form</SubType>
@@ -507,6 +517,9 @@
     <EmbeddedResource Include="RegistroStockWF.resx">
       <DependentUpon>RegistroStockWF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportesNuevoWF.resx">
+      <DependentUpon>ReportesNuevoWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reporte_ComprasWF.resx">
       <DependentUpon>Reporte_ComprasWF.cs</DependentUpon>
     </EmbeddedResource>
@@ -596,6 +609,10 @@
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Documentos\Base De Datos\Procedure\1%29LoginUsuario.txt" />
+    <None Include="Resources\ordenador-portatil %281%291.png" />
+    <None Include="Resources\pagar %282%29.png" />
+    <None Include="Resources\ordenador-portatil %281%29.png" />
+    <None Include="Resources\pagar %281%29.png" />
     <None Include="Resources\usuario %281%29.png" />
     <None Include="Resources\mas %282%29.png" />
     <None Include="Resources\sistema-de-archivos.png" />
@@ -687,6 +704,9 @@
     <None Include="Resources\desgaste-de-android.png" />
     <None Include="Resources\adjuntar-simbolo-de-clip.png" />
     <None Include="Resources\lente.png" />
+    <None Include="Resources\cupon.png" />
+    <None Include="Resources\dinero %281%29.png" />
+    <None Include="Resources\dinero %282%29.png" />
     <Content Include="Resources\login2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
