@@ -28,18 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.panel1 = new System.Windows.Forms.Panel();
             this.chartVentas = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -60,6 +61,12 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnVentasGenerales = new System.Windows.Forms.Button();
+            this.btnExportar = new System.Windows.Forms.Button();
+            this.btnExportarComprasProveedores = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartVentas)).BeginInit();
             this.panel2.SuspendLayout();
@@ -68,10 +75,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartProductos)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.btnExportar);
             this.panel1.Controls.Add(this.chartVentas);
             this.panel1.Location = new System.Drawing.Point(1, 48);
             this.panel1.Name = "panel1";
@@ -81,42 +91,43 @@
             // chartVentas
             // 
             this.chartVentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            chartArea4.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea4.AxisX.LineColor = System.Drawing.Color.White;
-            chartArea4.AxisX.MajorGrid.LineColor = System.Drawing.Color.Transparent;
-            chartArea4.AxisX.MajorTickMark.LineColor = System.Drawing.Color.DarkGreen;
-            chartArea4.AxisX.TitleForeColor = System.Drawing.Color.SeaGreen;
-            chartArea4.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea4.AxisY.LineColor = System.Drawing.Color.White;
-            chartArea4.AxisY.MajorGrid.LineColor = System.Drawing.Color.Transparent;
-            chartArea4.AxisY.MajorTickMark.LineColor = System.Drawing.Color.DarkSeaGreen;
-            chartArea4.BackColor = System.Drawing.Color.Transparent;
-            chartArea4.Name = "ChartArea1";
-            this.chartVentas.ChartAreas.Add(chartArea4);
-            legend4.Enabled = false;
-            legend4.Name = "Legend1";
-            this.chartVentas.Legends.Add(legend4);
-            this.chartVentas.Location = new System.Drawing.Point(10, 9);
+            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea1.AxisX.LineColor = System.Drawing.Color.White;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Transparent;
+            chartArea1.AxisX.MajorTickMark.LineColor = System.Drawing.Color.DarkGreen;
+            chartArea1.AxisX.TitleForeColor = System.Drawing.Color.SeaGreen;
+            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea1.AxisY.LineColor = System.Drawing.Color.White;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Transparent;
+            chartArea1.AxisY.MajorTickMark.LineColor = System.Drawing.Color.DarkSeaGreen;
+            chartArea1.BackColor = System.Drawing.Color.Transparent;
+            chartArea1.Name = "ChartArea1";
+            this.chartVentas.ChartAreas.Add(chartArea1);
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            this.chartVentas.Legends.Add(legend1);
+            this.chartVentas.Location = new System.Drawing.Point(10, 5);
             this.chartVentas.Name = "chartVentas";
             this.chartVentas.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.IsValueShownAsLabel = true;
-            series4.LabelForeColor = System.Drawing.Color.SeaGreen;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartVentas.Series.Add(series4);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.IsValueShownAsLabel = true;
+            series1.LabelForeColor = System.Drawing.Color.SeaGreen;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartVentas.Series.Add(series1);
             this.chartVentas.Size = new System.Drawing.Size(523, 214);
             this.chartVentas.TabIndex = 0;
             this.chartVentas.Text = "chartVentas";
-            title4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            title4.ForeColor = System.Drawing.Color.SeaGreen;
-            title4.Name = "Title1";
-            title4.Text = "Ventas del Año en curso";
-            this.chartVentas.Titles.Add(title4);
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            title1.ForeColor = System.Drawing.Color.SeaGreen;
+            title1.Name = "Title1";
+            title1.Text = "Ventas del Año en curso";
+            this.chartVentas.Titles.Add(title1);
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnExportarComprasProveedores);
             this.panel2.Controls.Add(this.chartProveedores);
             this.panel2.Location = new System.Drawing.Point(1, 309);
             this.panel2.Name = "panel2";
@@ -126,42 +137,42 @@
             // chartProveedores
             // 
             this.chartProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            chartArea5.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea5.AxisX.LineColor = System.Drawing.Color.White;
-            chartArea5.AxisX.MajorGrid.LineColor = System.Drawing.Color.Transparent;
-            chartArea5.AxisX.MajorTickMark.LineColor = System.Drawing.Color.DarkSeaGreen;
-            chartArea5.AxisX2.MajorTickMark.LineColor = System.Drawing.Color.Transparent;
-            chartArea5.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea5.AxisY.LineColor = System.Drawing.Color.White;
-            chartArea5.AxisY.MajorGrid.LineColor = System.Drawing.Color.Transparent;
-            chartArea5.AxisY.MajorTickMark.LineColor = System.Drawing.Color.DarkGreen;
-            chartArea5.BackColor = System.Drawing.Color.Transparent;
-            chartArea5.Name = "ChartArea1";
-            this.chartProveedores.ChartAreas.Add(chartArea5);
-            legend5.Enabled = false;
-            legend5.Name = "Legend1";
-            this.chartProveedores.Legends.Add(legend5);
+            chartArea2.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea2.AxisX.LineColor = System.Drawing.Color.White;
+            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.Transparent;
+            chartArea2.AxisX.MajorTickMark.LineColor = System.Drawing.Color.DarkSeaGreen;
+            chartArea2.AxisX2.MajorTickMark.LineColor = System.Drawing.Color.Transparent;
+            chartArea2.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea2.AxisY.LineColor = System.Drawing.Color.White;
+            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.Transparent;
+            chartArea2.AxisY.MajorTickMark.LineColor = System.Drawing.Color.DarkGreen;
+            chartArea2.BackColor = System.Drawing.Color.Transparent;
+            chartArea2.Name = "ChartArea1";
+            this.chartProveedores.ChartAreas.Add(chartArea2);
+            legend2.Enabled = false;
+            legend2.Name = "Legend1";
+            this.chartProveedores.Legends.Add(legend2);
             this.chartProveedores.Location = new System.Drawing.Point(11, 3);
             this.chartProveedores.Name = "chartProveedores";
             this.chartProveedores.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series5.Color = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            series5.IsValueShownAsLabel = true;
-            series5.IsXValueIndexed = true;
-            series5.LabelForeColor = System.Drawing.Color.Green;
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            series5.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            this.chartProveedores.Series.Add(series5);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            series2.IsValueShownAsLabel = true;
+            series2.IsXValueIndexed = true;
+            series2.LabelForeColor = System.Drawing.Color.Green;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            this.chartProveedores.Series.Add(series2);
             this.chartProveedores.Size = new System.Drawing.Size(523, 214);
             this.chartProveedores.TabIndex = 2;
             this.chartProveedores.Text = "chart1";
-            title5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            title5.ForeColor = System.Drawing.Color.SeaGreen;
-            title5.Name = "Title1";
-            title5.Text = "Compras a Proveedores";
-            this.chartProveedores.Titles.Add(title5);
+            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            title2.ForeColor = System.Drawing.Color.SeaGreen;
+            title2.Name = "Title1";
+            title2.Text = "Compras a Proveedores";
+            this.chartProveedores.Titles.Add(title2);
             // 
             // panel3
             // 
@@ -173,25 +184,32 @@
             // 
             // chartProductos
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chartProductos.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartProductos.Legends.Add(legend6);
+            this.chartProductos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            chartArea3.BackColor = System.Drawing.Color.Transparent;
+            chartArea3.Name = "ChartArea1";
+            this.chartProductos.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartProductos.Legends.Add(legend3);
             this.chartProductos.Location = new System.Drawing.Point(12, 3);
             this.chartProductos.Name = "chartProductos";
             this.chartProductos.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.chartProductos.Series.Add(series6);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series3.Color = System.Drawing.Color.Transparent;
+            series3.IsValueShownAsLabel = true;
+            series3.LabelForeColor = System.Drawing.Color.White;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            series3.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            this.chartProductos.Series.Add(series3);
             this.chartProductos.Size = new System.Drawing.Size(523, 214);
             this.chartProductos.TabIndex = 1;
             this.chartProductos.Text = "chart1";
-            title6.ForeColor = System.Drawing.Color.DarkGreen;
-            title6.Name = "Title1";
-            title6.Text = "Productos más Vendidos";
-            this.chartProductos.Titles.Add(title6);
+            title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            title3.ForeColor = System.Drawing.Color.SeaGreen;
+            title3.Name = "Title1";
+            title3.Text = "Productos más Vendidos";
+            this.chartProductos.Titles.Add(title3);
             // 
             // panel4
             // 
@@ -365,6 +383,61 @@
             this.btnVentasGenerales.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnVentasGenerales.UseVisualStyleBackColor = false;
             // 
+            // btnExportar
+            // 
+            this.btnExportar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnExportar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnExportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportar.ForeColor = System.Drawing.Color.White;
+            this.btnExportar.Image = global::Stock.Properties.Resources.sobresalir;
+            this.btnExportar.Location = new System.Drawing.Point(490, 222);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(36, 28);
+            this.btnExportar.TabIndex = 66;
+            this.btnExportar.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.toolTip1.SetToolTip(this.btnExportar, "Exportar a Excel");
+            this.btnExportar.UseVisualStyleBackColor = false;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
+            // btnExportarComprasProveedores
+            // 
+            this.btnExportarComprasProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnExportarComprasProveedores.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnExportarComprasProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportarComprasProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarComprasProveedores.ForeColor = System.Drawing.Color.White;
+            this.btnExportarComprasProveedores.Image = global::Stock.Properties.Resources.sobresalir;
+            this.btnExportarComprasProveedores.Location = new System.Drawing.Point(490, 221);
+            this.btnExportarComprasProveedores.Name = "btnExportarComprasProveedores";
+            this.btnExportarComprasProveedores.Size = new System.Drawing.Size(36, 28);
+            this.btnExportarComprasProveedores.TabIndex = 67;
+            this.btnExportarComprasProveedores.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.toolTip1.SetToolTip(this.btnExportarComprasProveedores, "Exportar a Excel");
+            this.btnExportarComprasProveedores.UseVisualStyleBackColor = false;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Fecha,
+            this.Precio});
+            this.dataGridView1.Location = new System.Drawing.Point(188, 225);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(203, 22);
+            this.dataGridView1.TabIndex = 67;
+            // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            // 
             // ReportesNuevoWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -393,6 +466,7 @@
             this.panel4.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -419,5 +493,11 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label lblCajaVentas;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnExportar;
+        private System.Windows.Forms.Button btnExportarComprasProveedores;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
     }
 }

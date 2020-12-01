@@ -118,5 +118,9 @@ namespace Stock
             _ventas.Show();
             Hide();
         }
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new ReportesNuevoWF());
+        }
     }
 }

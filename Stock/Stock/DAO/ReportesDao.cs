@@ -43,7 +43,33 @@ namespace Stock.DAO
             connection.Close();
             return _listaProveedores;
         }
-
+        public static List<Reporte_Ventas> BuscarProductosMasVendidos()
+        {
+            connection.Close();
+            connection.Open();
+            List<Reporte_Ventas> _listaventas = new List<Reporte_Ventas>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ProductoMasVendido";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Reporte_Ventas listaVentas = new Entidades.Reporte_Ventas();
+                    listaVentas.DescripcionProducto = item["txDescripcion"].ToString();
+                    listaVentas.ProductoMasVendido = Convert.ToInt32(item["TotalVentas"].ToString());
+                    _listaventas.Add(listaVentas);
+                }
+            }
+            connection.Close();
+            return _listaventas;
+        }
         public static List<Reporte_Ventas> CajaDeVentas()
         {
             connection.Close();
@@ -70,12 +96,59 @@ namespace Stock.DAO
             connection.Close();
             return _listaventas;
         }
-
         public static List<Reporte_Compras> TotalDeCompras()
         {
-            throw new NotImplementedException();
+            connection.Close();
+            connection.Open();
+            List<Reporte_Compras> _listaCompras = new List<Reporte_Compras>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "TotalDeCompras";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Reporte_Compras listaCompras = new Entidades.Reporte_Compras();
+                    listaCompras.TotalDeComprasGenerales = Convert.ToInt32(item["Total"].ToString());
+                    _listaCompras.Add(listaCompras);
+                }
+            }
+            connection.Close();
+            return _listaCompras;
         }
-
+        public static List<Reporte_Ventas> BuscarTodasLasVentas()
+        {
+            connection.Close();
+            connection.Open();
+            List<Reporte_Ventas> _listaventas = new List<Reporte_Ventas>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "BuscarTodasLasVentas";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Reporte_Ventas listaVentas = new Entidades.Reporte_Ventas();
+                    listaVentas.Fecha = Convert.ToDateTime(item["dtFecha"].ToString());
+                    listaVentas.Precio = Convert.ToDecimal(item["txPrecioVentaFinal"].ToString());
+                    _listaventas.Add(listaVentas);
+                }
+            }
+            connection.Close();
+            return _listaventas;
+        }
         public static List<Reporte_Ventas> TotalDeVentas()
         {
             connection.Close();
@@ -95,19 +168,57 @@ namespace Stock.DAO
                 foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.Reporte_Ventas listaVentas = new Entidades.Reporte_Ventas();
-                    listaVentas.TotalDeVentasGenerales =Convert.ToInt32(item["Total"].ToString());                   
+                    listaVentas.TotalDeVentasGenerales = Convert.ToInt32(item["Total"].ToString());
                     _listaventas.Add(listaVentas);
                 }
             }
             connection.Close();
             return _listaventas;
         }
-
         public static List<Reporte_Compras> PagosCompras()
         {
-            throw new NotImplementedException();
+            connection.Close();
+            connection.Open();
+            List<Reporte_Compras> _listaCompras = new List<Reporte_Compras>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ConsultaIngresoStock";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            Entidades.Reporte_Compras listaCompras = new Entidades.Reporte_Compras();
+            decimal CalculoGasto = 0;
+            decimal ValorFinal = 0;
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    listaCompras.Cantidad = Convert.ToInt32(item["txCantidad"].ToString());
+                    listaCompras.ValorUnitario = Convert.ToDecimal(item["txValorUnitario"].ToString());
+                    _listaCompras.Add(listaCompras);
+                }
+            }
+            if (_listaCompras.Count > 0)
+            {
+                foreach (var item in _listaCompras)
+                {
+                    CalculoGasto = item.Cantidad * item.ValorUnitario;
+                    ValorFinal = ValorFinal + CalculoGasto;
+                }
+                listaCompras.CajaDePagos = ValorFinal;
+                _listaCompras.Add(listaCompras);
+            }
+            else
+            {
+                listaCompras.CajaDePagos = 0;
+                _listaCompras.Add(listaCompras);
+            }
+            connection.Close();
+            return _listaCompras;
         }
-
         public static List<Reporte_Ventas> BuscarVentasPorMes()
         {
             String Año = DateTime.Now.Year.ToString();

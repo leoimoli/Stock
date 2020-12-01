@@ -405,6 +405,7 @@
             this.btnReportes.Text = "Reportes";
             this.toolTip1.SetToolTip(this.btnReportes, "Reportes");
             this.btnReportes.UseVisualStyleBackColor = true;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
             // 
             // panel5
             // 

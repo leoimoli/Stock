@@ -25,21 +25,24 @@ namespace Stock
             List<Reporte_Proveedores> listaProveedores = new List<Reporte_Proveedores>();
             List<Reporte_Ventas> listaVentas = new List<Reporte_Ventas>();
 
-
             ////// Grafico Proveedores
             listaProveedores = ReportesDao.BuscarTotalComprasRealizadasProveedores();
             if (listaProveedores.Count > 0)
             {
                 DiseñoGraficoProveedores(listaProveedores);
             }
-
             ////// Grafico Ventas
             listaVentas = ReportesDao.BuscarVentasPorMes();
             if (listaVentas.Count > 0)
             {
                 DiseñoGraficoVentas(listaVentas);
             }
-
+            ////// Grafico Producto Más Vendidos
+            listaVentas = ReportesDao.BuscarProductosMasVendidos();
+            if (listaVentas.Count > 0)
+            {
+                DiseñoGraficoProductosMasVendidos(listaVentas);
+            }
             ////// Reportes Botones
             /// Total de Ventas
             List<Reporte_Ventas> listaVentas2 = new List<Reporte_Ventas>();
@@ -48,15 +51,27 @@ namespace Stock
             /// Caja de Ventas
             List<Reporte_Ventas> listaVentas3 = new List<Reporte_Ventas>();
             listaVentas3 = ReportesDao.CajaDeVentas();
-            lblTotalVentas.Text = Convert.ToString(listaVentas3[0].CajaDeVentas);
+            lblCajaVentas.Text = Convert.ToString(listaVentas3[0].CajaDeVentas);
             /// Total de Compras
             List<Reporte_Compras> listaCompras = new List<Reporte_Compras>();
             listaCompras = ReportesDao.TotalDeCompras();
-            lblTotalVentas.Text = Convert.ToString(listaCompras[0].TotalDeComprasGenerales);
+            lblTotalCompras.Text = Convert.ToString(listaCompras[0].TotalDeComprasGenerales);
             /// Pagos de Compras
             List<Reporte_Compras> listaCompras2 = new List<Reporte_Compras>();
             listaCompras2 = ReportesDao.PagosCompras();
-            lblTotalVentas.Text = Convert.ToString(listaCompras2[0].CajaDePagos);
+            lblPagosProveedores.Text = Convert.ToString(listaCompras2[0].CajaDePagos);
+        }
+        private void DiseñoGraficoProductosMasVendidos(List<Reporte_Ventas> listaVentas)
+        {
+            List<string> Nombre = new List<string>();
+            List<string> Total = new List<string>();
+            foreach (var item in listaVentas)
+            {
+                Nombre.Add(item.DescripcionProducto);
+                string total = Convert.ToString(item.ProductoMasVendido);
+                Total.Add(total);
+            }
+            chartProductos.Series[0].Points.DataBindXY(Nombre, Total);
         }
         private void DiseñoGraficoVentas(List<Reporte_Ventas> listaVentas)
         {
@@ -71,7 +86,6 @@ namespace Stock
             }
             chartVentas.Series[0].Points.DataBindXY(Mes, Total);
         }
-
         private void DiseñoGraficoProveedores(List<Reporte_Proveedores> listaProveedores)
         {
             List<string> Nombre = new List<string>();
@@ -84,10 +98,38 @@ namespace Stock
             }
             chartProveedores.Series[0].Points.DataBindXY(Nombre, Total);
         }
-
         private void panel5_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            List<Reporte_Ventas> listaVentas = new List<Reporte_Ventas>();
+            listaVentas = ReportesDao.BuscarTodasLasVentas();
+            if (listaVentas.Count > 0)
+            {
+                foreach (var item in listaVentas)
+                {
+                    dataGridView1.Rows.Add(item.Fecha, item.Precio);
+                }                
+            }
+            dataGridView1.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            dataGridView1.MultiSelect = true;
+            dataGridView1.SelectAll();
+            DataObject dataObj = dataGridView1.GetClipboardContent();
+            if (dataObj != null)
+                Clipboard.SetDataObject(dataObj);
+            Microsoft.Office.Interop.Excel.Application xlexcel;
+            Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+            xlexcel = new Microsoft.Office.Interop.Excel.Application();
+            xlexcel.Visible = true;
+            xlWorkBook = xlexcel.Workbooks.Add(misValue);
+            xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            Microsoft.Office.Interop.Excel.Range CR = (Microsoft.Office.Interop.Excel.Range)xlWorkSheet.Cells[1, 1];
+            CR.Select();
+            xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
         }
     }
 }
