@@ -111,12 +111,41 @@ namespace Stock
                 foreach (var item in listaVentas)
                 {
                     dataGridView1.Rows.Add(item.Fecha, item.Precio);
-                }                
+                }
             }
             dataGridView1.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             dataGridView1.MultiSelect = true;
             dataGridView1.SelectAll();
             DataObject dataObj = dataGridView1.GetClipboardContent();
+            if (dataObj != null)
+                Clipboard.SetDataObject(dataObj);
+            Microsoft.Office.Interop.Excel.Application xlexcel;
+            Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+            xlexcel = new Microsoft.Office.Interop.Excel.Application();
+            xlexcel.Visible = true;
+            xlWorkBook = xlexcel.Workbooks.Add(misValue);
+            xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            Microsoft.Office.Interop.Excel.Range CR = (Microsoft.Office.Interop.Excel.Range)xlWorkSheet.Cells[1, 1];
+            CR.Select();
+            xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+        }
+        private void btnExportarComprasProveedores_Click(object sender, EventArgs e)
+        {
+            List<Reporte_Proveedores> listaComprasAProveedores = new List<Reporte_Proveedores>();
+            listaComprasAProveedores = ReportesDao.BuscarMovimientoStock();
+            if (listaComprasAProveedores.Count > 0)
+            {
+                foreach (var item in listaComprasAProveedores)
+                {
+                    dataGridView2.Rows.Add(item.Fecha, item.Proveedor, item.Remito);
+                }
+            }
+            dataGridView2.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            dataGridView2.MultiSelect = true;
+            dataGridView2.SelectAll();
+            DataObject dataObj = dataGridView2.GetClipboardContent();
             if (dataObj != null)
                 Clipboard.SetDataObject(dataObj);
             Microsoft.Office.Interop.Excel.Application xlexcel;

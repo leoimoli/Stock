@@ -11,5 +11,8 @@ namespace Stock.Entidades
         public int idProveedor { get; set; }
         public string NombreEmpresa { get; set; }
         public int TotalCompras { get; set; }
+        public DateTime Fecha { get; set; }
+        public string Proveedor { get; set; }
+        public string Remito { get; set; }
     }
 }

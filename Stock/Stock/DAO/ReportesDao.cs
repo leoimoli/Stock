@@ -149,6 +149,34 @@ namespace Stock.DAO
             connection.Close();
             return _listaventas;
         }
+        public static List<Reporte_Proveedores> BuscarMovimientoStock()
+        {
+            connection.Close();
+            connection.Open();
+            List<Reporte_Proveedores> _listaProveedores = new List<Reporte_Proveedores>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "BuscarMovimientoStock";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Reporte_Proveedores listaProveedores = new Entidades.Reporte_Proveedores();
+                    listaProveedores.Fecha = Convert.ToDateTime(item["FechaFactura"].ToString());
+                    listaProveedores.Proveedor = item["Proveedor"].ToString();
+                    listaProveedores.Remito = item["Remito"].ToString();
+                    _listaProveedores.Add(listaProveedores);
+                }
+            }
+            connection.Close();
+            return _listaProveedores;
+        }
         public static List<Reporte_Ventas> TotalDeVentas()
         {
             connection.Close();
