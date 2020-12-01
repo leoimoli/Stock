@@ -124,13 +124,21 @@ namespace Stock.DAO
         }
         public static List<Reporte_Ventas> BuscarTodasLasVentas()
         {
+            String Año = DateTime.Now.Year.ToString();
+
+            string FechaArmadaDesde = "01/01/" + Año;
+            DateTime FechaDesde = Convert.ToDateTime(FechaArmadaDesde);
+
+            string FechaArmadaHasta = "31/12/" + Año;
+            DateTime FechaHasta = Convert.ToDateTime(FechaArmadaHasta);
             connection.Close();
             connection.Open();
             List<Reporte_Ventas> _listaventas = new List<Reporte_Ventas>();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
-            MySqlParameter[] oParam = { };
+            MySqlParameter[] oParam = { new MySqlParameter("FechaDesde_in", FechaDesde),
+            new MySqlParameter("FechaHasta_in", FechaHasta)};
             string proceso = "BuscarTodasLasVentas";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;

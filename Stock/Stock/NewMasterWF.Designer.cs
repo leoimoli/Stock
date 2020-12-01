@@ -352,6 +352,7 @@
             this.btnUsuarios.Text = "Usuarios";
             this.toolTip1.SetToolTip(this.btnUsuarios, "Usuarios");
             this.btnUsuarios.UseVisualStyleBackColor = true;
+            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
             // panel7
             // 

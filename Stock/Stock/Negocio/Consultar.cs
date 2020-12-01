@@ -65,7 +65,18 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
+        public static List<Usuarios> BuscarUsuarioPorApellidoNombre(string ape, string nom)
+        {
+            List<Entidades.Usuarios> _lista = new List<Entidades.Usuarios>();
+            try
+            {
+                _lista = DAO.ConsultarDao.BuscarUsuarioPorApellidoNombre(ape, nom);
+            }
+            catch (Exception ex)
+            {
+            }
+            return _lista;
+        }
         public static List<ListaStock> ConsultarUltimosIngresosDeStock()
         {
             List<ListaStock> _lista = new List<ListaStock>();

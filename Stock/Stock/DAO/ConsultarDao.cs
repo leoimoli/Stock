@@ -90,6 +90,40 @@ namespace Stock.DAO
             connection.Close();
             return _listaProductos;
         }
+        public static List<Usuarios> BuscarUsuarioPorApellidoNombre(string ape, string nom)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.Usuarios> _listaUsuarios = new List<Entidades.Usuarios>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("Apellido_in", ape),
+            new MySqlParameter("Nombre_in", nom)};
+            string proceso = "BuscarUsuarioPorApellidoNombre";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Usuarios listaUsuarios = new Entidades.Usuarios();
+                    listaUsuarios.IdUsuario = Convert.ToInt32(item["idUsuarios"].ToString());
+                    listaUsuarios.Apellido = item["txApellido"].ToString();
+                    listaUsuarios.Nombre = item["txNombre"].ToString();
+                    listaUsuarios.Dni = item["txDni"].ToString();
+                    listaUsuarios.FechaDeAlta = Convert.ToDateTime(item["dtFechaDeAlta"].ToString());
+                    listaUsuarios.Contraseña = item["txContrasena"].ToString();
+                    listaUsuarios.Perfil = item["txPerfil"].ToString();
+                    listaUsuarios.Estado = item["txEstado"].ToString();
+                    _listaUsuarios.Add(listaUsuarios);
+                }
+            }
+            connection.Close();
+            return _listaUsuarios;
+        }
         public static List<Archivos> BuscarArchivos(int idMovimiento)
         {
             connection.Close();

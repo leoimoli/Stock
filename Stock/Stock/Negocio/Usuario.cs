@@ -33,7 +33,7 @@ namespace Stock.Negocio
             }
             catch (Exception ex)
             {
-               
+
             }
             return exito;
         }
@@ -67,24 +67,7 @@ namespace Stock.Negocio
                                            MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
-            if (String.IsNullOrEmpty(_usuario.Contraseña))
-            {
-                const string message = "El campo contraseña es obligatorio.";
-                const string caption = "Error";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.OK,
-                                           MessageBoxIcon.Exclamation);
-                throw new Exception();
-            }
-            if (_usuario.Contraseña != _usuario.Contraseña2)
-            {
-                const string message = "Las contraseñas ingresadas no coinciden.";
-                const string caption = "Error";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.OK,
-                                           MessageBoxIcon.Exclamation);
-                throw new Exception();
-            }
+
             if (String.IsNullOrEmpty(_usuario.Perfil))
             {
                 const string message = "El perfil es un campo obligatorio.";
@@ -114,7 +97,7 @@ namespace Stock.Negocio
             }
             catch (Exception ex)
             {
-              
+
             }
             return exito;
         }

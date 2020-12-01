@@ -119,6 +119,7 @@
     <Compile Include="Clases_Maestras\AutoCompletePorDescripcion.cs" />
     <Compile Include="Clases_Maestras\AutoCompleteProductosSinCodigo.cs" />
     <Compile Include="Clases_Maestras\AutoCompleteProveedores.cs" />
+    <Compile Include="Clases_Maestras\AutoCompleteUsuarios.cs" />
     <Compile Include="Clases_Maestras\Funciones.cs" />
     <Compile Include="Clases_Maestras\ListarProveedores.cs" />
     <Compile Include="Clases_Maestras\RutasDeAcceso.cs" />
@@ -374,6 +375,12 @@
     <Compile Include="StockWF.Designer.cs">
       <DependentUpon>StockWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsuariosNuevoWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsuariosNuevoWF.Designer.cs">
+      <DependentUpon>UsuariosNuevoWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsuariosWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -534,6 +541,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StockWF.resx">
       <DependentUpon>StockWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsuariosNuevoWF.resx">
+      <DependentUpon>UsuariosNuevoWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsuariosWF.resx">
       <DependentUpon>UsuariosWF.cs</DependentUpon>
