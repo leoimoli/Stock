@@ -75,10 +75,21 @@ namespace Stock
         private void btnEditar_Click(object sender, EventArgs e)
         {
             Funcion = 2;
-            idProductoSeleccionado = Convert.ToInt32(this.dgvProductos.CurrentRow.Cells[0].Value);
-            txtCodigoProducto.Text = dgvProductos.CurrentRow.Cells[1].Value.ToString();
-            cmbMarca.Text = dgvProductos.CurrentRow.Cells[3].Value.ToString();
-            textBox2.Text = dgvProductos.CurrentRow.Cells[2].Value.ToString();
+            if(this.dgvProductos.RowCount > 0)
+            {
+                idProductoSeleccionado = Convert.ToInt32(this.dgvProductos.CurrentRow.Cells[0].Value);
+                txtCodigoProducto.Text = dgvProductos.CurrentRow.Cells[1].Value.ToString();
+                cmbMarca.Text = dgvProductos.CurrentRow.Cells[3].Value.ToString();
+                textBox2.Text = dgvProductos.CurrentRow.Cells[2].Value.ToString();
+            }
+            else
+            {
+                const string message2 = "Debe seleccionar un producto de la grilla.";
+                const string caption2 = "Atención";
+                var result2 = MessageBox.Show(message2, caption2,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Asterisk);
+            }
         }
         public static int Funcion = 0;
         private void btnGuardar_Click(object sender, EventArgs e)

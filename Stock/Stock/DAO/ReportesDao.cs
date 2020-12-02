@@ -36,7 +36,14 @@ namespace Stock.DAO
                     Entidades.Reporte_Proveedores listaProveedores = new Entidades.Reporte_Proveedores();
                     //listaProveedores.idProveedor = Convert.ToInt32(item["idProducto"].ToString());
                     listaProveedores.NombreEmpresa = item["Proveedor"].ToString();
-                    listaProveedores.TotalCompras = Convert.ToInt32(item["Total"].ToString());
+                    if (Convert.ToInt32(item["Total"].ToString()) > 0)
+                    {
+                        listaProveedores.TotalCompras = Convert.ToInt32(item["Total"].ToString());
+                    }
+                    else
+                    {
+                        listaProveedores.TotalCompras = 0;
+                    }
                     _listaProveedores.Add(listaProveedores);
                 }
             }
@@ -89,7 +96,12 @@ namespace Stock.DAO
                 foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.Reporte_Ventas listaVentas = new Entidades.Reporte_Ventas();
-                    listaVentas.CajaDeVentas = Convert.ToDecimal(item["Total"].ToString());
+                    if (item["Total"].ToString() != null && item["Total"].ToString() != "" && Convert.ToDecimal(item["Total"].ToString()) > 0)
+                    {
+                        listaVentas.CajaDeVentas = Convert.ToDecimal(item["Total"].ToString());
+                    }
+                    else
+                    { listaVentas.CajaDeVentas = 0; }
                     _listaventas.Add(listaVentas);
                 }
             }
@@ -115,7 +127,12 @@ namespace Stock.DAO
                 foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.Reporte_Compras listaCompras = new Entidades.Reporte_Compras();
-                    listaCompras.TotalDeComprasGenerales = Convert.ToInt32(item["Total"].ToString());
+                    if (Convert.ToInt32(item["Total"].ToString()) > 0)
+                    {
+                        listaCompras.TotalDeComprasGenerales = Convert.ToInt32(item["Total"].ToString());
+                    }
+                    else
+                    { listaCompras.TotalDeComprasGenerales = 0; }
                     _listaCompras.Add(listaCompras);
                 }
             }
@@ -312,7 +329,12 @@ namespace Stock.DAO
                     Entidades.Reporte_Ventas listaVentas = new Entidades.Reporte_Ventas();
                     //listaProveedores.idProveedor = Convert.ToInt32(item["idProducto"].ToString());
                     listaVentas.mes = item["mes"].ToString();
-                    listaVentas.TotalVentasPorMes = Convert.ToInt32(item["Ventas"].ToString());
+                    if (Convert.ToInt32(item["Ventas"].ToString()) > 0)
+                    {
+                        listaVentas.TotalVentasPorMes = Convert.ToInt32(item["Ventas"].ToString());
+                    }
+                    else
+                    { listaVentas.TotalVentasPorMes = 0; }
                     _listaVentas.Add(listaVentas);
                 }
             }

@@ -31,18 +31,24 @@ namespace Stock
             {
                 DiseñoGraficoProveedores(listaProveedores);
             }
+            else
+            { btnExportarComprasProveedores.Visible = false; }
             ////// Grafico Ventas
             listaVentas = ReportesDao.BuscarVentasPorMes();
             if (listaVentas.Count > 0)
             {
                 DiseñoGraficoVentas(listaVentas);
             }
+            else
+            { btnExportar.Visible = false; }
             ////// Grafico Producto Más Vendidos
             listaVentas = ReportesDao.BuscarProductosMasVendidos();
             if (listaVentas.Count > 0)
             {
                 DiseñoGraficoProductosMasVendidos(listaVentas);
             }
+            else
+            { btnproductoMasVendido.Visible = false; }
             ////// Reportes Botones
             /// Total de Ventas
             List<Reporte_Ventas> listaVentas2 = new List<Reporte_Ventas>();

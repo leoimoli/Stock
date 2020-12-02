@@ -482,11 +482,11 @@
             // lblDia
             // 
             this.lblDia.AutoSize = true;
-            this.lblDia.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDia.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDia.ForeColor = System.Drawing.Color.SeaGreen;
             this.lblDia.Location = new System.Drawing.Point(662, 417);
             this.lblDia.Name = "lblDia";
-            this.lblDia.Size = new System.Drawing.Size(102, 36);
+            this.lblDia.Size = new System.Drawing.Size(96, 33);
             this.lblDia.TabIndex = 6;
             this.lblDia.Text = "label9";
             // 

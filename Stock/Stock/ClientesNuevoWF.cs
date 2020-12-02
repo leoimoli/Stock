@@ -226,15 +226,26 @@ namespace Stock
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            Funcion = 2;
-            idClienteSeleccionado = Convert.ToInt32(this.dgvClientes.CurrentRow.Cells[0].Value);
-            List<Entidades.Clientes> _clientes = new List<Entidades.Clientes>();
-            _clientes = Negocio.Consultar.BuscarClientePorID(idClienteSeleccionado);
-            HabilitarCamposClienteSeleccionado(_clientes);
+            if (this.dgvClientes.RowCount > 0)
+            {
+                Funcion = 2;
+                idClienteSeleccionado = Convert.ToInt32(this.dgvClientes.CurrentRow.Cells[0].Value);
+                List<Entidades.Clientes> _clientes = new List<Entidades.Clientes>();
+                _clientes = Negocio.Consultar.BuscarClientePorID(idClienteSeleccionado);
+                HabilitarCamposClienteSeleccionado(_clientes);
+            }
+            else
+            {
+                const string message2 = "Debe seleccionar un cliente de la grilla.";
+                const string caption2 = "Atención";
+                var result2 = MessageBox.Show(message2, caption2,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Asterisk);
+            }
         }
         private void HabilitarCamposClienteSeleccionado(List<Clientes> _cliente)
         {
-            btnGuardar.Visible = true;           
+            btnGuardar.Visible = true;
             var cliente = _cliente.First();
             txtDni.Text = cliente.Dni;
             txtDni.Enabled = false;

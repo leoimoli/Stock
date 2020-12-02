@@ -252,15 +252,26 @@ namespace Stock
         public static int Funcion = 0;
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            Funcion = 2;
-            List<Entidades.HistorialProductoPrecioDeVenta> _precio = new List<Entidades.HistorialProductoPrecioDeVenta>();
-            idProductoIngresado = Convert.ToInt32(this.dgvProductos.CurrentRow.Cells[0].Value);
-            txtCodigoProducto.Visible = true;
-            lblCodigo.Visible = true;
-            txtCodigoProducto.Enabled = false;
-            txtCodigoProducto.Text = Convert.ToString(this.dgvProductos.CurrentRow.Cells[1].Value);
-            _precio = Negocio.Consultar.HistorialPrecioDeVenta(idProductoIngresado);
-            HabilitarCamposProdcutoSeleccionado(_precio);
+            if (this.dgvProductos.RowCount > 0)
+            {
+                Funcion = 2;
+                List<Entidades.HistorialProductoPrecioDeVenta> _precio = new List<Entidades.HistorialProductoPrecioDeVenta>();
+                idProductoIngresado = Convert.ToInt32(this.dgvProductos.CurrentRow.Cells[0].Value);
+                txtCodigoProducto.Visible = true;
+                lblCodigo.Visible = true;
+                txtCodigoProducto.Enabled = false;
+                txtCodigoProducto.Text = Convert.ToString(this.dgvProductos.CurrentRow.Cells[1].Value);
+                _precio = Negocio.Consultar.HistorialPrecioDeVenta(idProductoIngresado);
+                HabilitarCamposProdcutoSeleccionado(_precio);
+            }
+            else
+            {
+                const string message2 = "Debe seleccionar un precio de la grilla.";
+                const string caption2 = "Atención";
+                var result2 = MessageBox.Show(message2, caption2,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Asterisk);
+            }
         }
         private void HabilitarCamposProdcutoSeleccionado(List<HistorialProductoPrecioDeVenta> precio)
         {

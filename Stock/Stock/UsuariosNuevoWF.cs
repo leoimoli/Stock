@@ -141,20 +141,31 @@ namespace Stock
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            Funcion = 2;
-            idUsuarioSeleccionado = Convert.ToInt32(this.dgvUsuarios.CurrentRow.Cells[0].Value);
-            string Persona = dgvUsuarios.CurrentRow.Cells[1].Value.ToString();
-            string Ape = Persona.Split(',')[0];
-            string Nom = Persona.Split(',')[1];
-            txtApellido.Text = Ape;
-            txtNombre.Text = Nom;
-            txtDni.Text = dgvUsuarios.CurrentRow.Cells[2].Value.ToString();
-            cmbPerfil.Text = dgvUsuarios.CurrentRow.Cells[3].Value.ToString();
-            txtContraseña.Enabled = false;
-            txtRepitaContraseña.Enabled = false;
-            chcActivo.Visible = true;
-            chcInactivo.Visible = true;
-            lblEstado.Visible = true;
+            if (this.dgvUsuarios.RowCount > 0)
+            {
+                Funcion = 2;
+                idUsuarioSeleccionado = Convert.ToInt32(this.dgvUsuarios.CurrentRow.Cells[0].Value);
+                string Persona = dgvUsuarios.CurrentRow.Cells[1].Value.ToString();
+                string Ape = Persona.Split(',')[0];
+                string Nom = Persona.Split(',')[1];
+                txtApellido.Text = Ape;
+                txtNombre.Text = Nom;
+                txtDni.Text = dgvUsuarios.CurrentRow.Cells[2].Value.ToString();
+                cmbPerfil.Text = dgvUsuarios.CurrentRow.Cells[3].Value.ToString();
+                txtContraseña.Enabled = false;
+                txtRepitaContraseña.Enabled = false;
+                chcActivo.Visible = true;
+                chcInactivo.Visible = true;
+                lblEstado.Visible = true;
+            }
+            else
+            {
+                const string message2 = "Debe seleccionar un usuario de la grilla.";
+                const string caption2 = "Atención";
+                var result2 = MessageBox.Show(message2, caption2,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Asterisk);
+            }
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {

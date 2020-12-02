@@ -76,10 +76,21 @@ namespace Stock
         private void btnEditar_Click(object sender, EventArgs e)
         {
             Funcion = 2;
-            List<Entidades.Proveedores> _proveedor = new List<Entidades.Proveedores>();
-            idProveedorSeleccionado = Convert.ToInt32(this.dgvProveedores.CurrentRow.Cells[0].Value);
-            _proveedor = Negocio.Consultar.BuscarProveedorPorID(idProveedorSeleccionado);
-            HabilitarCamposUsuarioSeleccionado(_proveedor);
+            if (this.dgvProveedores.RowCount > 0)
+            {
+                List<Entidades.Proveedores> _proveedor = new List<Entidades.Proveedores>();
+                idProveedorSeleccionado = Convert.ToInt32(this.dgvProveedores.CurrentRow.Cells[0].Value);
+                _proveedor = Negocio.Consultar.BuscarProveedorPorID(idProveedorSeleccionado);
+                HabilitarCamposUsuarioSeleccionado(_proveedor);
+            }
+            else
+            {
+                const string message2 = "Debe seleccionar un proveedor de la grilla.";
+                const string caption2 = "Atención";
+                var result2 = MessageBox.Show(message2, caption2,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Asterisk);
+            }
         }
         private void HabilitarCamposUsuarioSeleccionado(List<Proveedores> _proveedor)
         {
