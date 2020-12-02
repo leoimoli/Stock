@@ -1685,11 +1685,14 @@ namespace Stock.DAO
                     listaProducto.CodigoProducto = codigoProducto;
                     listaProducto.NombreProducto = item["txDescripcion"].ToString();
                     //listaProducto.PrecioUnitario = Convert.ToDecimal(item["txValorUnitario"].ToString());
-                    listaProducto.PrecioVenta = Convert.ToDecimal(item["txPrecioDeVenta"].ToString());
-                    //if (item[3].ToString() != string.Empty)
-                    //{
-                    //    listaProducto.Foto = (byte[])item["txFoto"];
-                    //}
+                    if (item["txPrecioDeVenta"].ToString() != null & item["txPrecioDeVenta"].ToString() != "")
+                    {
+                        listaProducto.PrecioVenta = Convert.ToDecimal(item["txPrecioDeVenta"].ToString());
+                    }
+                    else
+                    {
+                        listaProducto.PrecioVenta = Convert.ToDecimal("0.00");
+                    }
                     _lista.Add(listaProducto);
                 }
             }

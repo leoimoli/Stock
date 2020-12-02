@@ -185,6 +185,33 @@ namespace Stock.DAO
             connection.Close();
             return _listaProveedores;
         }
+        public static List<Reporte_Ventas> ListadoProductosMasVendidos()
+        {
+            connection.Close();
+            connection.Open();
+            List<Reporte_Ventas> _listaventas = new List<Reporte_Ventas>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ListadoProductosMasVendidos";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Reporte_Ventas listaVentas = new Entidades.Reporte_Ventas();
+                    listaVentas.DescripcionProducto = item["txDescripcion"].ToString();
+                    listaVentas.ProductoMasVendido = Convert.ToInt32(item["TotalVentas"].ToString());
+                    _listaventas.Add(listaVentas);
+                }
+            }
+            connection.Close();
+            return _listaventas;
+        }
         public static List<Reporte_Ventas> TotalDeVentas()
         {
             connection.Close();

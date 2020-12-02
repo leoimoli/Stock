@@ -58,7 +58,6 @@
             this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecioDeVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnMasivos = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
@@ -383,27 +382,12 @@
             this.btnMasivos.UseVisualStyleBackColor = false;
             this.btnMasivos.Click += new System.EventHandler(this.btnMasivos_Click);
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(262, 514);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(77, 38);
-            this.button1.TabIndex = 59;
-            this.button1.Text = "Historial";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // PreciosNuevoWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(1099, 564);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnMasivos);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.label6);
@@ -455,6 +439,5 @@
         private System.Windows.Forms.TextBox txtCodigoProducto;
         private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.Button btnMasivos;
-        private System.Windows.Forms.Button button1;
     }
 }

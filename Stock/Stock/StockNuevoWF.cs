@@ -107,11 +107,10 @@ namespace Stock
         }
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            //this.WindowState = FormWindowState.Minimized;
             RegistroStockWF _registro = new RegistroStockWF();
             _registro.Show();
         }
-
         private void btnVer_Click(object sender, EventArgs e)
         {
             int idMovimiento = Convert.ToInt32(dgvMovimientos.CurrentRow.Cells[0].Value.ToString());

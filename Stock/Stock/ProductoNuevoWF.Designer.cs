@@ -49,7 +49,6 @@
             this.txtDescripcion = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnNuevo = new System.Windows.Forms.Button();
@@ -256,22 +255,6 @@
             this.label3.TabIndex = 33;
             this.label3.Text = "Código Producto(*):";
             // 
-            // btnEliminar
-            // 
-            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.btnEliminar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Location = new System.Drawing.Point(178, 523);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(77, 28);
-            this.btnEliminar.TabIndex = 42;
-            this.btnEliminar.Text = "Eliminar";
-            this.toolTip1.SetToolTip(this.btnEliminar, "Eliminar Producto");
-            this.btnEliminar.UseVisualStyleBackColor = false;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
             // btnEditar
             // 
             this.btnEditar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
@@ -311,7 +294,7 @@
             this.btnCargaMasiva.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCargaMasiva.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCargaMasiva.ForeColor = System.Drawing.Color.White;
-            this.btnCargaMasiva.Location = new System.Drawing.Point(261, 523);
+            this.btnCargaMasiva.Location = new System.Drawing.Point(179, 523);
             this.btnCargaMasiva.Name = "btnCargaMasiva";
             this.btnCargaMasiva.Size = new System.Drawing.Size(112, 28);
             this.btnCargaMasiva.TabIndex = 49;
@@ -374,7 +357,6 @@
             this.Controls.Add(this.txtCodigoBus);
             this.Controls.Add(this.txtDescipcionBus);
             this.Controls.Add(this.btnEditar);
-            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvProductos);
@@ -403,7 +385,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ProgressBar progressBar1;

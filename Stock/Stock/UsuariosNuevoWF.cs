@@ -107,6 +107,8 @@ namespace Stock
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             txtDni.Enabled = true;
+            txtContraseña.Enabled = true;
+            txtRepitaContraseña.Enabled = true;
             LimpiarCampos();
             txtDni.Focus();
             idUsuarioSeleccionado = 0;

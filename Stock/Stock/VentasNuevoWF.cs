@@ -49,7 +49,7 @@ namespace Stock
                     if (!listaProductos.Any(x => x.CodigoProducto == codigoProducto))
                     {
                         _lista = Negocio.Consultar.BuscarProductoParaVenta(codigoProducto);
-                        if (_lista.Count > 0)
+                        if (_lista.Count > 0 && _lista[0].PrecioVenta > 0)
                         {
                             int cantidadingresada = Convert.ToInt32(txtCantidad.Text);
                             _lista[0].Cantidad = cantidadingresada;
