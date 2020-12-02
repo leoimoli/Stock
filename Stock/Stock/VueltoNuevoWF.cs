@@ -13,7 +13,6 @@ namespace Stock
     public partial class VueltoNuevoWF : Form
     {
         private decimal precioVentaFinal;
-
         public VueltoNuevoWF(decimal precioVentaFinal)
         {
             InitializeComponent();
@@ -51,6 +50,15 @@ namespace Stock
                                              MessageBoxIcon.Asterisk);
                 Close();
             }
+        }
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            const string message2 = "Se registro la venta exitosamente.";
+            const string caption2 = "Éxito";
+            var result2 = MessageBox.Show(message2, caption2,
+                                         MessageBoxButtons.OK,
+                                         MessageBoxIcon.Asterisk);
+            Close();
         }
     }
 }

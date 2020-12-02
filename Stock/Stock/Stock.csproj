@@ -718,6 +718,7 @@
     <None Include="Resources\cupon.png" />
     <None Include="Resources\dinero %281%29.png" />
     <None Include="Resources\dinero %282%29.png" />
+    <None Include="Resources\escapar.png" />
     <Content Include="Resources\login2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -217,7 +217,8 @@ namespace Stock
                 BloquearPantalla();
                 VueltoNuevoWF _vuelto = new VueltoNuevoWF(listaProductos[0].PrecioVentaFinal);
                 _vuelto.Show();
-                //GenerarTicket();               
+                //GenerarTicket();          
+                lblBack.Visible = true;
             }
         }
         private void GenerarTicket()
@@ -264,6 +265,7 @@ namespace Stock
             if (e.KeyCode == Keys.Back)
             {
                 DesbloquearPantalla();
+                lblBack.Visible = false;
             }
             if (e.KeyCode.ToString() == "F12")
             {
