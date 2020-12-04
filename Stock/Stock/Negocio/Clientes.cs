@@ -19,7 +19,11 @@ namespace Stock.Negocio
                 bool UsuarioExistente = Negocio.Consultar.ValidarClienteExistente(_cliente.Dni);
                 if (UsuarioExistente == true)
                 {
-                    MessageBox.Show("YA EXISTE UN CLIENTE REGISTRADO CON EL DNI INGRESADO.");
+                    const string message2 = "Ya existe un cliente con el dni ingresado.";
+                    const string caption2 = "Éxito";
+                    var result2 = MessageBox.Show(message2, caption2,
+                                                 MessageBoxButtons.OK,
+                                                 MessageBoxIcon.Exclamation);
                     throw new Exception();
                 }
                 else
@@ -29,12 +33,6 @@ namespace Stock.Negocio
             }
             catch (Exception ex)
             {
-                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
-                const string caption = "Atención";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.OK,
-                                           MessageBoxIcon.Warning);
-                throw new Exception();
             }
             return exito;
         }

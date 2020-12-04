@@ -59,57 +59,81 @@ namespace Stock
         {
             if (e.KeyCode == Keys.Enter)
             {
-                dgvClientes.Rows.Clear();
-                string Descripcion = txtDescipcionBus.Text;
-                string Ape = Descripcion.Split(',')[0];
-                string Nom = Descripcion.Split(',')[1];
-                List<Entidades.Clientes> ListaClientes = Negocio.Consultar.BuscarClientePorApellidoNombre(Ape, Nom);
-                if (ListaClientes.Count > 0)
-                {
-                    foreach (var item in ListaClientes)
-                    {
-                        string Apellido = item.Apellido;
-                        string Nombre = item.Nombre;
-                        string Persona = Apellido + "," + Nombre;
-                        string Domicilio = item.Calle + "N°" + item.Altura;
-                        dgvClientes.Rows.Add(item.IdCliente, Persona, Domicilio, item.Email, item.Telefono);
-                    }
-                }
-                dgvClientes.ReadOnly = true;
+                BuscarClientePorDescripcion();
             }
+        }
+        private void BuscarClientePorDescripcion()
+        {
+            dgvClientes.Rows.Clear();
+            string Descripcion = txtDescipcionBus.Text;
+            string Ape = Descripcion.Split(',')[0];
+            string Nom = Descripcion.Split(',')[1];
+            List<Entidades.Clientes> ListaClientes = Negocio.Consultar.BuscarClientePorApellidoNombre(Ape, Nom);
+            if (ListaClientes.Count > 0)
+            {
+                foreach (var item in ListaClientes)
+                {
+                    string Apellido = item.Apellido;
+                    string Nombre = item.Nombre;
+                    string Persona = Apellido + "," + Nombre;
+                    string Domicilio = item.Calle + "N°" + item.Altura;
+                    dgvClientes.Rows.Add(item.IdCliente, Persona, Domicilio, item.Email, item.Telefono);
+                }
+            }
+            dgvClientes.ReadOnly = true;
         }
         private void txtCodigoBus_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                dgvClientes.Rows.Clear();
-                string Dni = txtCodigoBus.Text;
-                List<Entidades.Clientes> ListaClientes = Negocio.Consultar.BuscarClientePorDni(Dni);
-                if (ListaClientes.Count > 0)
-                {
-                    foreach (var item in ListaClientes)
-                    {
-                        string Apellido = item.Apellido;
-                        string Nombre = item.Nombre;
-                        string Persona = Apellido + "," + Nombre;
-                        string Domicilio = item.Calle + "N°" + item.Altura;
-                        dgvClientes.Rows.Add(item.IdCliente, Persona, Domicilio, item.Email, item.Telefono);
-                    }
-                }
-                dgvClientes.ReadOnly = true;
+                BuscarClientePorDni();
             }
+        }
+        private void BuscarClientePorDni()
+        {
+            dgvClientes.Rows.Clear();
+            string Dni = txtCodigoBus.Text;
+            List<Entidades.Clientes> ListaClientes = Negocio.Consultar.BuscarClientePorDni(Dni);
+            if (ListaClientes.Count > 0)
+            {
+                foreach (var item in ListaClientes)
+                {
+                    string Apellido = item.Apellido;
+                    string Nombre = item.Nombre;
+                    string Persona = Apellido + "," + Nombre;
+                    string Domicilio = item.Calle + "N°" + item.Altura;
+                    dgvClientes.Rows.Add(item.IdCliente, Persona, Domicilio, item.Email, item.Telefono);
+                }
+            }
+            dgvClientes.ReadOnly = true;
         }
         public static int idClienteSeleccionado = 0;
         public static int Funcion = 0;
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
-            txtDni.Enabled = true;
-            txtDni.Focus();
+            HabilitarCamposClienteNuevo();
+
             idClienteSeleccionado = 0;
             Funcion = 1;
             CargarCombo();
         }
+
+        private void HabilitarCamposClienteNuevo()
+        {
+            txtDni.Enabled = true;
+            txtDni.Focus();
+            cmbSexo.Enabled = true;
+            txtApellido.Enabled = true;
+            txtNombre.Enabled = true;
+            txtEmail.Enabled = true;
+            txtCodArea.Enabled = true;
+            txtTelefono.Enabled = true;
+            txtCalle.Enabled = true;
+            txtAltura.Enabled = true;
+            CargarCombo();
+        }
+
         private void LimpiarCampos()
         {
             txtDni.Clear();
@@ -124,6 +148,7 @@ namespace Stock
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
             cmbSexo.Enabled = true;
+            CargarCombo();
         }
         private void CargarCombo()
         {
@@ -143,10 +168,10 @@ namespace Stock
                 if (idClienteSeleccionado > 0)
                 {
                     Entidades.Clientes _cliente = CargarEntidadEdicion();
-                    ProgressBar();
                     bool Exito = Negocio.Clientes.EditarCliente(_cliente, idClienteSeleccionado);
                     if (Exito == true)
                     {
+                        ProgressBar();
                         const string message2 = "La edición del cliente se registro exitosamente.";
                         const string caption2 = "Éxito";
                         var result2 = MessageBox.Show(message2, caption2,
@@ -158,10 +183,10 @@ namespace Stock
                 else
                 {
                     Entidades.Clientes _cliente = CargarEntidad();
-                    ProgressBar();
                     bool Exito = Negocio.Clientes.CargarCliente(_cliente);
                     if (Exito == true)
                     {
+                        ProgressBar();
                         const string message2 = "Se registro el cliente exitosamente.";
                         const string caption2 = "Éxito";
                         var result2 = MessageBox.Show(message2, caption2,
@@ -265,6 +290,23 @@ namespace Stock
             var split2 = var2.Split('-')[1];
             split2 = split2.Trim();
             txtTelefono.Text = split2;
+        }
+
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (txtCodigoBus.Text != "")
+            {
+                BuscarClientePorDni();
+            }
+            if (txtDescipcionBus.Text != "")
+            {
+                BuscarClientePorDescripcion();
+            }
+        }
+        private void SoloNumeros(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back);
         }
     }
 }
