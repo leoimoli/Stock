@@ -118,7 +118,6 @@ namespace Stock
             Funcion = 1;
             CargarCombo();
         }
-
         private void HabilitarCamposClienteNuevo()
         {
             txtDni.Enabled = true;
@@ -133,7 +132,6 @@ namespace Stock
             txtAltura.Enabled = true;
             CargarCombo();
         }
-
         private void LimpiarCampos()
         {
             txtDni.Clear();
@@ -178,6 +176,7 @@ namespace Stock
                                                      MessageBoxButtons.OK,
                                                      MessageBoxIcon.Asterisk);
                         LimpiarCampos();
+                        FuncionListarClientes();
                     }
                 }
                 else
@@ -193,6 +192,7 @@ namespace Stock
                                                      MessageBoxButtons.OK,
                                                      MessageBoxIcon.Asterisk);
                         LimpiarCampos();
+                        FuncionListarClientes();
                     }
                 }
             }
@@ -291,8 +291,6 @@ namespace Stock
             split2 = split2.Trim();
             txtTelefono.Text = split2;
         }
-
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             if (txtCodigoBus.Text != "")
