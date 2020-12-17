@@ -44,7 +44,7 @@ namespace Stock
                 {
                     string Calle = item.Calle;
                     string Altura = item.Altura;
-                    string Domicilio = Calle + "N° " + item.Altura;
+                    string Domicilio = Calle + " " + "N° " + item.Altura;
                     dgvProveedores.Rows.Add(item.idProveedor, item.NombreEmpresa, Domicilio, item.Telefono);
                 }
             }
@@ -59,6 +59,18 @@ namespace Stock
             txtNombreEmpresa.Enabled = true;
             idProveedorSeleccionado = 0;
             Funcion = 1;
+            HabilitarCamposNuevoProveedor();
+        }
+        private void HabilitarCamposNuevoProveedor()
+        {
+            txtNombreEmpresa.Enabled = true;
+            txtPersonaContacto.Enabled = true;
+            txtCodArea.Enabled = true;
+            txtTelefono.Enabled = true;
+            txtEmail.Enabled = true;
+            txtSitioWeb.Enabled = true;
+            txtCalle.Enabled = true;
+            txtAltura.Enabled = true;
         }
         private void LimpiarCampos()
         {
@@ -72,6 +84,15 @@ namespace Stock
             txtTelefono.Clear();
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
+
+            txtNombreEmpresa.Enabled = false;
+            txtPersonaContacto.Enabled = false;
+            txtCodArea.Enabled = false;
+            txtTelefono.Enabled = false;
+            txtEmail.Enabled = false;
+            txtSitioWeb.Enabled = false;
+            txtCalle.Enabled = false;
+            txtAltura.Enabled = false;
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -105,6 +126,7 @@ namespace Stock
             var codigo = proveedor.Telefono.Split('-');
             txtCodArea.Text = codigo[0];
             txtTelefono.Text = codigo[1];
+            HabilitarCamposNuevoProveedor();
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -209,6 +231,10 @@ namespace Stock
                 }
                 dgvProveedores.ReadOnly = true;
             }
+        }
+        private void SoloNumeros(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back);
         }
     }
 }

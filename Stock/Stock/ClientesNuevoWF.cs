@@ -105,6 +105,14 @@ namespace Stock
                     dgvClientes.Rows.Add(item.IdCliente, Persona, Domicilio, item.Email, item.Telefono);
                 }
             }
+            else
+            {
+                const string message2 = "No existe ningun cliente con el dni ingresado.";
+                const string caption2 = "Atención";
+                var result2 = MessageBox.Show(message2, caption2,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Exclamation);
+            }
             dgvClientes.ReadOnly = true;
         }
         public static int idClienteSeleccionado = 0;
@@ -142,10 +150,18 @@ namespace Stock
             txtEmail.Clear();
             txtCalle.Clear();
             txtAltura.Clear();
+            txtDni.Enabled = false;
+            txtApellido.Enabled = false;
+            txtNombre.Enabled = false;
+            txtCodArea.Enabled = false;
+            txtTelefono.Enabled = false;
+            txtEmail.Enabled = false;
+            txtCalle.Enabled = false;
+            txtAltura.Enabled = false;
             DateTime fecha = DateTime.Now;
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
-            cmbSexo.Enabled = true;
+            cmbSexo.Enabled = false;
             CargarCombo();
         }
         private void CargarCombo()
@@ -290,6 +306,16 @@ namespace Stock
             var split2 = var2.Split('-')[1];
             split2 = split2.Trim();
             txtTelefono.Text = split2;
+            txtDni.Enabled = true;
+            txtDni.Focus();
+            cmbSexo.Enabled = true;
+            txtApellido.Enabled = true;
+            txtNombre.Enabled = true;
+            txtEmail.Enabled = true;
+            txtCodArea.Enabled = true;
+            txtTelefono.Enabled = true;
+            txtCalle.Enabled = true;
+            txtAltura.Enabled = true;
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {

@@ -92,6 +92,12 @@
     <Compile Include="ActualizarCodigoProductoWF.Designer.cs">
       <DependentUpon>ActualizarCodigoProductoWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="AltaMarcaNuevoWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AltaMarcaNuevoWF.Designer.cs">
+      <DependentUpon>AltaMarcaNuevoWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="AltaProductoWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -440,6 +446,9 @@
     </Compile>
     <EmbeddedResource Include="ActualizarCodigoProductoWF.resx">
       <DependentUpon>ActualizarCodigoProductoWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AltaMarcaNuevoWF.resx">
+      <DependentUpon>AltaMarcaNuevoWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AltaProductoWF.resx">
       <DependentUpon>AltaProductoWF.cs</DependentUpon>

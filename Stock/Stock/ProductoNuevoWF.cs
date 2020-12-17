@@ -75,12 +75,17 @@ namespace Stock
         private void btnEditar_Click(object sender, EventArgs e)
         {
             Funcion = 2;
-            if(this.dgvProductos.RowCount > 0)
+            if (this.dgvProductos.RowCount > 0)
             {
+                btnCrear.Enabled = true;
                 idProductoSeleccionado = Convert.ToInt32(this.dgvProductos.CurrentRow.Cells[0].Value);
                 txtCodigoProducto.Text = dgvProductos.CurrentRow.Cells[1].Value.ToString();
                 cmbMarca.Text = dgvProductos.CurrentRow.Cells[3].Value.ToString();
                 textBox2.Text = dgvProductos.CurrentRow.Cells[2].Value.ToString();
+                string TotalCaracteres = Convert.ToString(textBox2.Text.Length);
+                lblContador.Visible = true;
+                lblTotal.Visible = true;
+                lblContador.Text = TotalCaracteres;
             }
             else
             {
@@ -202,6 +207,14 @@ namespace Stock
                         dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto);
                     }
                 }
+                else
+                {
+                    const string message2 = "No existe ningun producto con el código ingresado.";
+                    const string caption2 = "Atención";
+                    var result2 = MessageBox.Show(message2, caption2,
+                                                 MessageBoxButtons.OK,
+                                                 MessageBoxIcon.Exclamation);
+                }
                 dgvProductos.ReadOnly = true;
             }
         }
@@ -211,12 +224,26 @@ namespace Stock
             txtCodigoProducto.Focus();
             idProductoSeleccionado = 0;
             Funcion = 1;
+            btnCrear.Enabled = true;
+            lblContador.Visible = true;
+            lblTotal.Visible = true;
+            lblContador.Text = "0";
         }
         private void btnCargaMasiva_Click(object sender, EventArgs e)
         {
             CargaMasivaProductosWF _carga = new CargaMasivaProductosWF();
             _carga.Show();
             Hide();
+        }
+
+        private void lblContador_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            lblContador.Text = Convert.ToString(textBox2.Text.Length);
         }
     }
 }
