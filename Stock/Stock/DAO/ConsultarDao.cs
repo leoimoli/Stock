@@ -1021,7 +1021,7 @@ namespace Stock.DAO
                     listaVenta.idVenta = Convert.ToInt32(item["idventas"].ToString());
                     DateTime fechaReal = Convert.ToDateTime(item["dtFecha"].ToString());
                     listaVenta.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
-                    listaVenta.PrecioVenta = item["txPrecioVentaFinal"].ToString();
+                    listaVenta.PrecioVenta = Convert.ToDecimal(item["txPrecioVentaFinal"].ToString());
                     var usuario = item["txApellido"].ToString() + " " + item["txNombre"].ToString();
                     listaVenta.usuario = usuario;
                     lista.Add(listaVenta);
@@ -1460,7 +1460,7 @@ namespace Stock.DAO
                     listaVenta.idVenta = Convert.ToInt32(item["idventas"].ToString());
                     DateTime fechaReal = Convert.ToDateTime(item["dtFecha"].ToString());
                     listaVenta.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
-                    listaVenta.PrecioVenta = item["txPrecioVentaFinal"].ToString();
+                    listaVenta.PrecioVenta = Convert.ToDecimal(item["txPrecioVentaFinal"].ToString());
                     var usuario = item["txApellido"].ToString() + " " + item["txNombre"].ToString();
                     listaVenta.usuario = usuario;
                     lista.Add(listaVenta);

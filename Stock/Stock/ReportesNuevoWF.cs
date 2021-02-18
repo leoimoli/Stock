@@ -197,5 +197,12 @@ namespace Stock
             CR.Select();
             xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
         }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            Close();
+            Reportes_VentasNuevoWF _reporteVentas = new Reportes_VentasNuevoWF();
+            _reporteVentas.Show();
+        }
     }
 }

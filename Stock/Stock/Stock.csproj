@@ -754,6 +754,7 @@
     <None Include="Resources\dinero %282%29.png" />
     <None Include="Resources\escapar.png" />
     <None Include="Resources\buscar %282%29.png" />
+    <None Include="Resources\calendario %281%29.png" />
     <Content Include="Resources\login2.png" />
   </ItemGroup>
   <ItemGroup>

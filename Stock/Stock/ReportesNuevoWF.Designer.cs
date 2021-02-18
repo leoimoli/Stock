@@ -45,37 +45,40 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnExportar = new System.Windows.Forms.Button();
             this.chartVentas = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Remito = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnExportarComprasProveedores = new System.Windows.Forms.Button();
             this.chartProveedores = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnproductoMasVendido = new System.Windows.Forms.Button();
             this.chartProductos = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblPagosProveedores = new System.Windows.Forms.Label();
             this.lblTotalCompras = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.lblCajaVentas = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.lblTotalVentas = new System.Windows.Forms.Label();
-            this.btnVentasGenerales = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnproductoMasVendido = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnVentasGenerales = new System.Windows.Forms.Button();
+            this.btnExportarComprasProveedores = new System.Windows.Forms.Button();
+            this.btnFiltrar = new System.Windows.Forms.Button();
+            this.btnExportar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartVentas)).BeginInit();
@@ -91,6 +94,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnFiltrar);
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Controls.Add(this.btnExportar);
             this.panel1.Controls.Add(this.chartVentas);
@@ -121,23 +125,6 @@
             // 
             this.Precio.HeaderText = "Precio";
             this.Precio.Name = "Precio";
-            // 
-            // btnExportar
-            // 
-            this.btnExportar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.btnExportar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnExportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportar.ForeColor = System.Drawing.Color.White;
-            this.btnExportar.Image = global::Stock.Properties.Resources.sobresalir;
-            this.btnExportar.Location = new System.Drawing.Point(490, 222);
-            this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(36, 28);
-            this.btnExportar.TabIndex = 66;
-            this.btnExportar.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.toolTip1.SetToolTip(this.btnExportar, "Exportar a Excel");
-            this.btnExportar.UseVisualStyleBackColor = false;
-            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // chartVentas
             // 
@@ -215,23 +202,6 @@
             this.Remito.HeaderText = "Nro.Remito";
             this.Remito.Name = "Remito";
             // 
-            // btnExportarComprasProveedores
-            // 
-            this.btnExportarComprasProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.btnExportarComprasProveedores.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnExportarComprasProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportarComprasProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportarComprasProveedores.ForeColor = System.Drawing.Color.White;
-            this.btnExportarComprasProveedores.Image = global::Stock.Properties.Resources.sobresalir;
-            this.btnExportarComprasProveedores.Location = new System.Drawing.Point(490, 221);
-            this.btnExportarComprasProveedores.Name = "btnExportarComprasProveedores";
-            this.btnExportarComprasProveedores.Size = new System.Drawing.Size(36, 28);
-            this.btnExportarComprasProveedores.TabIndex = 67;
-            this.btnExportarComprasProveedores.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.toolTip1.SetToolTip(this.btnExportarComprasProveedores, "Exportar a Excel");
-            this.btnExportarComprasProveedores.UseVisualStyleBackColor = false;
-            this.btnExportarComprasProveedores.Click += new System.EventHandler(this.btnExportarComprasProveedores_Click);
-            // 
             // chartProveedores
             // 
             this.chartProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
@@ -305,23 +275,6 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "Total de Ventas";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
-            // btnproductoMasVendido
-            // 
-            this.btnproductoMasVendido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.btnproductoMasVendido.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnproductoMasVendido.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnproductoMasVendido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnproductoMasVendido.ForeColor = System.Drawing.Color.White;
-            this.btnproductoMasVendido.Image = global::Stock.Properties.Resources.sobresalir;
-            this.btnproductoMasVendido.Location = new System.Drawing.Point(499, 221);
-            this.btnproductoMasVendido.Name = "btnproductoMasVendido";
-            this.btnproductoMasVendido.Size = new System.Drawing.Size(36, 28);
-            this.btnproductoMasVendido.TabIndex = 68;
-            this.btnproductoMasVendido.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.toolTip1.SetToolTip(this.btnproductoMasVendido, "Exportar a Excel");
-            this.btnproductoMasVendido.UseVisualStyleBackColor = false;
-            this.btnproductoMasVendido.Click += new System.EventHandler(this.btnproductoMasVendido_Click);
-            // 
             // chartProductos
             // 
             this.chartProductos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
@@ -353,6 +306,8 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.lblPagosProveedores);
             this.panel4.Controls.Add(this.lblTotalCompras);
@@ -366,6 +321,28 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(547, 252);
             this.panel4.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(354, 174);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(16, 17);
+            this.label4.TabIndex = 68;
+            this.label4.Text = "$";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(354, 69);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(16, 17);
+            this.label3.TabIndex = 67;
+            this.label3.Text = "$";
             // 
             // label1
             // 
@@ -400,40 +377,6 @@
             this.lblTotalCompras.TabIndex = 63;
             this.lblTotalCompras.Text = "@";
             // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Image = global::Stock.Properties.Resources.ordenador_portatil__1_1;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(287, 150);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(181, 53);
-            this.button5.TabIndex = 59;
-            this.button5.Text = "Pagos  Proveedores";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Image = global::Stock.Properties.Resources.pagar__2_;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(70, 150);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(181, 53);
-            this.button4.TabIndex = 58;
-            this.button4.Text = "Total de Compras";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.button4.UseVisualStyleBackColor = false;
-            // 
             // lblCajaVentas
             // 
             this.lblCajaVentas.AutoSize = true;
@@ -445,23 +388,6 @@
             this.lblCajaVentas.TabIndex = 56;
             this.lblCajaVentas.Text = "@";
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = global::Stock.Properties.Resources.dinero__2_;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(287, 43);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(181, 53);
-            this.button2.TabIndex = 54;
-            this.button2.Text = "Caja de ventas";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
             // lblTotalVentas
             // 
             this.lblTotalVentas.AutoSize = true;
@@ -472,23 +398,6 @@
             this.lblTotalVentas.Size = new System.Drawing.Size(22, 17);
             this.lblTotalVentas.TabIndex = 52;
             this.lblTotalVentas.Text = "@";
-            // 
-            // btnVentasGenerales
-            // 
-            this.btnVentasGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.btnVentasGenerales.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnVentasGenerales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVentasGenerales.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVentasGenerales.ForeColor = System.Drawing.Color.White;
-            this.btnVentasGenerales.Image = global::Stock.Properties.Resources.cupon;
-            this.btnVentasGenerales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVentasGenerales.Location = new System.Drawing.Point(70, 43);
-            this.btnVentasGenerales.Name = "btnVentasGenerales";
-            this.btnVentasGenerales.Size = new System.Drawing.Size(181, 53);
-            this.btnVentasGenerales.TabIndex = 51;
-            this.btnVentasGenerales.Text = "Total de Ventas";
-            this.btnVentasGenerales.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnVentasGenerales.UseVisualStyleBackColor = false;
             // 
             // panel5
             // 
@@ -534,6 +443,142 @@
             this.label2.Size = new System.Drawing.Size(156, 23);
             this.label2.TabIndex = 43;
             this.label2.Text = "Menú Reportes";
+            // 
+            // btnproductoMasVendido
+            // 
+            this.btnproductoMasVendido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnproductoMasVendido.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnproductoMasVendido.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnproductoMasVendido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnproductoMasVendido.ForeColor = System.Drawing.Color.White;
+            this.btnproductoMasVendido.Image = global::Stock.Properties.Resources.sobresalir;
+            this.btnproductoMasVendido.Location = new System.Drawing.Point(499, 221);
+            this.btnproductoMasVendido.Name = "btnproductoMasVendido";
+            this.btnproductoMasVendido.Size = new System.Drawing.Size(36, 28);
+            this.btnproductoMasVendido.TabIndex = 68;
+            this.btnproductoMasVendido.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.toolTip1.SetToolTip(this.btnproductoMasVendido, "Exportar a Excel");
+            this.btnproductoMasVendido.UseVisualStyleBackColor = false;
+            this.btnproductoMasVendido.Click += new System.EventHandler(this.btnproductoMasVendido_Click);
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Image = global::Stock.Properties.Resources.ordenador_portatil__1_1;
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button5.Location = new System.Drawing.Point(287, 150);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(181, 53);
+            this.button5.TabIndex = 59;
+            this.button5.Text = "Pagos  Proveedores";
+            this.button5.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Image = global::Stock.Properties.Resources.pagar__2_;
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.Location = new System.Drawing.Point(70, 150);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(181, 53);
+            this.button4.TabIndex = 58;
+            this.button4.Text = "Total de Compras";
+            this.button4.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Image = global::Stock.Properties.Resources.dinero__2_;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(287, 43);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(181, 53);
+            this.button2.TabIndex = 54;
+            this.button2.Text = "Caja de ventas";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // btnVentasGenerales
+            // 
+            this.btnVentasGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnVentasGenerales.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnVentasGenerales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVentasGenerales.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVentasGenerales.ForeColor = System.Drawing.Color.White;
+            this.btnVentasGenerales.Image = global::Stock.Properties.Resources.cupon;
+            this.btnVentasGenerales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVentasGenerales.Location = new System.Drawing.Point(70, 43);
+            this.btnVentasGenerales.Name = "btnVentasGenerales";
+            this.btnVentasGenerales.Size = new System.Drawing.Size(181, 53);
+            this.btnVentasGenerales.TabIndex = 51;
+            this.btnVentasGenerales.Text = "Total de Ventas";
+            this.btnVentasGenerales.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnVentasGenerales.UseVisualStyleBackColor = false;
+            // 
+            // btnExportarComprasProveedores
+            // 
+            this.btnExportarComprasProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnExportarComprasProveedores.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnExportarComprasProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportarComprasProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarComprasProveedores.ForeColor = System.Drawing.Color.White;
+            this.btnExportarComprasProveedores.Image = global::Stock.Properties.Resources.sobresalir;
+            this.btnExportarComprasProveedores.Location = new System.Drawing.Point(490, 221);
+            this.btnExportarComprasProveedores.Name = "btnExportarComprasProveedores";
+            this.btnExportarComprasProveedores.Size = new System.Drawing.Size(36, 28);
+            this.btnExportarComprasProveedores.TabIndex = 67;
+            this.btnExportarComprasProveedores.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.toolTip1.SetToolTip(this.btnExportarComprasProveedores, "Exportar a Excel");
+            this.btnExportarComprasProveedores.UseVisualStyleBackColor = false;
+            this.btnExportarComprasProveedores.Click += new System.EventHandler(this.btnExportarComprasProveedores_Click);
+            // 
+            // btnFiltrar
+            // 
+            this.btnFiltrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnFiltrar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnFiltrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFiltrar.ForeColor = System.Drawing.Color.White;
+            this.btnFiltrar.Image = global::Stock.Properties.Resources.calendario__1_;
+            this.btnFiltrar.Location = new System.Drawing.Point(482, 221);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(36, 28);
+            this.btnFiltrar.TabIndex = 68;
+            this.btnFiltrar.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.toolTip1.SetToolTip(this.btnFiltrar, "Buscar por filtro");
+            this.btnFiltrar.UseVisualStyleBackColor = false;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
+            // 
+            // btnExportar
+            // 
+            this.btnExportar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnExportar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnExportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportar.ForeColor = System.Drawing.Color.White;
+            this.btnExportar.Image = global::Stock.Properties.Resources.sobresalir;
+            this.btnExportar.Location = new System.Drawing.Point(440, 221);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(36, 28);
+            this.btnExportar.TabIndex = 66;
+            this.btnExportar.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.toolTip1.SetToolTip(this.btnExportar, "Exportar a Excel");
+            this.btnExportar.UseVisualStyleBackColor = false;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // ReportesNuevoWF
             // 
@@ -607,5 +652,8 @@
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnFiltrar;
     }
 }

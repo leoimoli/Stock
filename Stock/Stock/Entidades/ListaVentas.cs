@@ -11,7 +11,7 @@ namespace Stock.Entidades
     {
         public int idVenta { get; set; }
         public DateTime Fecha { get; set; }
-        public string PrecioVenta { get; set; }
+        public decimal PrecioVenta { get; set; }
         public string usuario { get; set; }
     }
 }
