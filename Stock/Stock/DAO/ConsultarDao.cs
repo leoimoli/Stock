@@ -143,8 +143,9 @@ namespace Stock.DAO
                 foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.Archivos listaArchivos = new Entidades.Archivos();
+                    listaArchivos.idArchivosCompras = Convert.ToInt32(item["idArchivosCompras"].ToString());
                     if (item[0].ToString() != string.Empty)
-                    {
+                    {                        
                         listaArchivos.Archivo1 = (byte[])item["Archivo"];
                     }
                     _lista.Add(listaArchivos);
@@ -1449,8 +1450,7 @@ namespace Stock.DAO
             string proceso = "ConsultarVentasPorFecha";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
-            dt.SelectCommand.Parameters.AddRange(oParam);
-            //Entidades.ListaVentas listaVenta = new Entidades.ListaVentas();
+            dt.SelectCommand.Parameters.AddRange(oParam);           
             dt.Fill(Tabla);
             if (Tabla.Rows.Count > 0)
             {

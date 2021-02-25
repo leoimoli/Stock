@@ -12,5 +12,6 @@ namespace Stock.Entidades
         public byte[] Archivo2 { get; set; }
         public byte[] Archivo3 { get; set; }
         public byte[] Archivo4 { get; set; }
+        public int idArchivosCompras { get; set; }
     }
 }

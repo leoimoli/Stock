@@ -72,7 +72,9 @@ namespace Stock
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Close();
+            NewMasterWF _master = new NewMasterWF();
+            _master.Show();
+            Hide();
         }
         private void btnExportar_Click(object sender, EventArgs e)
         {

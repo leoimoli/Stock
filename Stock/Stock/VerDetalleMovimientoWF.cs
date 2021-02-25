@@ -51,8 +51,9 @@ namespace Stock
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Close();
-            this.WindowState = FormWindowState.Normal;
+            NewMasterWF _master = new NewMasterWF();
+            _master.Show();
+            Hide();
         }
         WebClient cliente = new WebClient();
         string ruta = null;
@@ -66,12 +67,12 @@ namespace Stock
                 Contador = Contador + 1;
                 Bitmap foto1 = Clases_Maestras.Funciones.byteToBipmap(item.Archivo1);
                 pictureBox2.Image = foto1;
-
-                string Nombre = "Porveedor'" + proveedor + "' ( '" + Contador + "' ) ";
-                string ruta = Path.Combine(@"C:\Descarga Stocom\ '" + Nombre + "' + .PNG");
+                int idArchivo = item.idArchivosCompras;
+                string Nombre = idArchivo + "(Proveedor'" + proveedor + "'( '" + Contador + "' ))";
+                string ruta = Path.Combine(@"C:\Descargas Stocom\ '" + Nombre + "' + .PNG");
                 foto1.Save(ruta, ImageFormat.Jpeg);
             }
-            const string message2 = "Se descargaron los archivos exitosamente en la carpeta C:\\Descarga Stocom\\.";
+            const string message2 = "Se descargaron los archivos exitosamente en la carpeta C:\\Descargas Stocom\\.";
             const string caption2 = "Éxito";
             var result2 = MessageBox.Show(message2, caption2,
                                          MessageBoxButtons.OK,
