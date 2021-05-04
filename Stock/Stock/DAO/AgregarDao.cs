@@ -631,6 +631,7 @@ namespace Stock.DAO
             cmd.Parameters.AddWithValue("FechaDeAlta_in", _producto.FechaDeAlta);
             cmd.Parameters.AddWithValue("idUsuario_in", _producto.idUsuario);
             cmd.Parameters.AddWithValue("Foto_in", _producto.Foto);
+            cmd.Parameters.AddWithValue("ProductoEspecial_in", _producto.ProductoEspecial);
             cmd.ExecuteNonQuery();
             exito = true;
             connection.Close();

@@ -20,5 +20,6 @@ namespace Stock.Entidades
         public decimal PrecioDeVenta { get; set; }
         public string Cantidad { get; set; }
         public int idProveedor { get; set; }
+        public int ProductoEspecial { get; set; }
     }
 }

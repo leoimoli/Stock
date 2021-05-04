@@ -141,6 +141,7 @@ namespace Stock
             CargarCombo();
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
+            chcProductoEspecial.Checked = false;
         }
         private void ProgressBar()
         {
@@ -160,7 +161,6 @@ namespace Stock
         }
         private Productos CargarEntidad()
         {
-
             ///// Harcodear idUsuarios
             Productos _producto = new Productos();
             int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
@@ -170,8 +170,25 @@ namespace Stock
             DateTime fechaActual = DateTime.Now;
             _producto.FechaDeAlta = fechaActual;
             _producto.idUsuario = idusuarioLogueado;
+            if (chcProductoEspecial.Checked == true)
+            {
+               _producto.CodigoProducto = GenerarProductoEspecial(_producto.Descripcion);
+                _producto.MarcaProducto = "No especifica";
+                _producto.ProductoEspecial = 1;
+            }
+            else { _producto.ProductoEspecial = 0; }
             return _producto;
         }
+
+        private string GenerarProductoEspecial(string descripcion)
+        {
+            String FechaDia = DateTime.Now.Day.ToString();
+            String Month = DateTime.Now.Month.ToString();
+            String Year = DateTime.Now.Year.ToString();
+            string codigoEspecial = descripcion + Year + Month + FechaDia;
+            return codigoEspecial;
+        }
+
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             Funcion = 3;
@@ -238,12 +255,28 @@ namespace Stock
 
         private void lblContador_TextChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             lblContador.Text = Convert.ToString(textBox2.Text.Length);
+        }
+
+        private void chcProductoEspecial_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chcProductoEspecial.Checked == true)
+            {
+                cmbMarca.Enabled = false;
+                txtCodigoProducto.Enabled = false;
+                txtDescripcion.Focus();
+            }
+            else
+            {
+                cmbMarca.Enabled = true;
+                txtCodigoProducto.Enabled = true;
+                txtCodigoProducto.Focus();
+            }
         }
     }
 }
