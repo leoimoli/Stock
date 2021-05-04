@@ -29,6 +29,11 @@ namespace Stock
 
         private void btnAcceder_Click(object sender, EventArgs e)
         {
+            Login();
+        }
+
+        private void Login()
+        {
             List<Entidades.Usuarios> usuarios = new List<Entidades.Usuarios>();
             try
             {
@@ -55,5 +60,21 @@ namespace Stock
             {
             }
         }
+        private void txtUsuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Login();
+            }
+        }
+
+        private void txtClave_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Login();
+            }
+        }
     }
 }
+

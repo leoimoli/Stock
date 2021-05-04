@@ -18,6 +18,8 @@ namespace Stock.Entidades
         public decimal PrecioVentaFinal { get; set; }
         //public int idUsuario { get; set; }
         public DateTime Fecha { get; set; }
+
+        public int ProductoEspecial { get; set; }
         //public decimal Efectivo { get; set; }
         //public decimal Vueto { get; set; }
     }

@@ -145,7 +145,7 @@ namespace Stock.DAO
                     Entidades.Archivos listaArchivos = new Entidades.Archivos();
                     listaArchivos.idArchivosCompras = Convert.ToInt32(item["idArchivosCompras"].ToString());
                     if (item[0].ToString() != string.Empty)
-                    {                        
+                    {
                         listaArchivos.Archivo1 = (byte[])item["Archivo"];
                     }
                     _lista.Add(listaArchivos);
@@ -1450,7 +1450,7 @@ namespace Stock.DAO
             string proceso = "ConsultarVentasPorFecha";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
-            dt.SelectCommand.Parameters.AddRange(oParam);           
+            dt.SelectCommand.Parameters.AddRange(oParam);
             dt.Fill(Tabla);
             if (Tabla.Rows.Count > 0)
             {
@@ -1693,6 +1693,7 @@ namespace Stock.DAO
                     {
                         listaProducto.PrecioVenta = Convert.ToDecimal("0.00");
                     }
+                    listaProducto.ProductoEspecial = Convert.ToInt32(item["ProductoEspecial"].ToString());
                     _lista.Add(listaProducto);
                 }
             }

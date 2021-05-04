@@ -21,7 +21,7 @@ namespace Stock
         private void VentasNuevoWF_Load(object sender, EventArgs e)
         {
             label2.Text = Sesion.UsuarioLogueado.Apellido + "  " + Sesion.UsuarioLogueado.Nombre;
-            txtCodigo.Focus();
+            txtNombreBuscar.Focus();
             listaProductos = new List<Entidades.ListaProductoVenta>();
             txtNombreBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompletePorDescripcion.Autocomplete();
             txtNombreBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -32,33 +32,54 @@ namespace Stock
         {
             if (e.KeyCode == Keys.Enter)
             {
-                try
+                BuscarProductoPorCodigo();
+            }
+            if (e.KeyCode.ToString() == "F12")
+            {
+                FacturarVenta();
+            }
+        }
+        List<Entidades.ListaProductoVenta> _listaEspeciales = new List<Entidades.ListaProductoVenta>();
+        private void BuscarProductoPorCodigo()
+        {
+            try
+            {
+                if (txtCodigo.Text == "0")
                 {
-                    if (txtCodigo.Text == "0")
+                    const string message = "El código del producto es invalido.";
+                    const string caption = "Atención";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Warning);
+                    throw new Exception();
+                }
+                string codigoProducto;
+                if (txtCodigo.Text != "")
+                { codigoProducto = txtCodigo.Text; }
+                else
+                { codigoProducto = txtNombreBuscar.Text; }
+                List<Entidades.ListaProductoVenta> _lista = new List<Entidades.ListaProductoVenta>();
+                if (!listaProductos.Any(x => x.CodigoProducto == codigoProducto))
+                {
+                    _lista = Negocio.Consultar.BuscarProductoParaVenta(codigoProducto);
+                    if (_lista.Count > 0 && _lista[0].ProductoEspecial == 0 && _lista[0].PrecioVenta > 0)
                     {
-                        const string message = "El código del producto es invalido.";
-                        const string caption = "Atención";
-                        var result = MessageBox.Show(message, caption,
-                                                     MessageBoxButtons.OK,
-                                                   MessageBoxIcon.Warning);
-                        throw new Exception();
+                        int cantidadingresada = Convert.ToInt32(txtCantidad.Text);
+                        _lista[0].Cantidad = cantidadingresada;
+                        var lista = _lista.First();
+                        listaProductos.Add(lista);
+                        decimal PrecioFinal = lista.PrecioVenta * cantidadingresada;
+                        dgvVentas.Rows.Add(lista.idProducto, lista.CodigoProducto, lista.NombreProducto, cantidadingresada, lista.PrecioVenta, PrecioFinal);
+                        txtCodigo.Clear();
+                        txtCantidad.Text = "1";
                     }
-                    string codigoProducto = txtCodigo.Text;
-                    List<Entidades.ListaProductoVenta> _lista = new List<Entidades.ListaProductoVenta>();
-
-                    if (!listaProductos.Any(x => x.CodigoProducto == codigoProducto))
+                    else
                     {
-                        _lista = Negocio.Consultar.BuscarProductoParaVenta(codigoProducto);
-                        if (_lista.Count > 0 && _lista[0].PrecioVenta > 0)
+                        if (_lista[0].ProductoEspecial == 1)
                         {
-                            int cantidadingresada = Convert.ToInt32(txtCantidad.Text);
-                            _lista[0].Cantidad = cantidadingresada;
-                            var lista = _lista.First();
-                            listaProductos.Add(lista);
-                            decimal PrecioFinal = lista.PrecioVenta * cantidadingresada;
-                            dgvVentas.Rows.Add(lista.idProducto, lista.CodigoProducto, lista.NombreProducto, cantidadingresada, lista.PrecioVenta, PrecioFinal);
-                            txtCodigo.Clear();
-                            txtCantidad.Text = "1";
+                            _listaEspeciales = _lista;
+                            groupBox1.Visible = true;
+                            txtMonto.Focus();
                         }
                         else
                         {
@@ -69,44 +90,67 @@ namespace Stock
                                                          MessageBoxIcon.Exclamation);
                         }
                     }
-                    else
+                }
+                else
+                {
+                    int cantidadingresada = 1;
+                    if (txtCantidad.Text != "")
                     {
-                        int cantidadingresada = 1;
-                        if (txtCantidad.Text != "")
-                        {
-                            cantidadingresada = Convert.ToInt32(txtCantidad.Text);
-                        }
-                        foreach (DataGridViewRow row in dgvVentas.Rows)
-                        {
-                            if (row.Cells[1].Value != null && row.Cells[1].Value.ToString() == codigoProducto)
-                            {
-                                int CantidadOld = Convert.ToInt32(row.Cells[3].Value.ToString());
-                                int CantidadNew = Convert.ToInt32(cantidadingresada.ToString());
-                                int cantidad = CantidadOld + CantidadNew;
-                                listaProductos[row.Index].Cantidad = cantidad;
-                                row.Cells[3].Value = cantidad;
-                                decimal ValorVenta = Convert.ToDecimal(row.Cells[4].Value.ToString());
-                                decimal PrecioFinal = cantidad * ValorVenta;
-                                row.Cells[5].Value = PrecioFinal;
-                            }
-                        }
-
+                        cantidadingresada = Convert.ToInt32(txtCantidad.Text);
                     }
-                    decimal PrecioTotalFinal = 0;
                     foreach (DataGridViewRow row in dgvVentas.Rows)
                     {
-                        if (row.Cells[4].Value != null)
-                            PrecioTotalFinal += Convert.ToDecimal(row.Cells[5].Value.ToString());
+                        if (row.Cells[1].Value != null && row.Cells[1].Value.ToString() == codigoProducto)
+                        {
+                            int CantidadOld = Convert.ToInt32(row.Cells[3].Value.ToString());
+                            int CantidadNew = Convert.ToInt32(cantidadingresada.ToString());
+                            int cantidad = CantidadOld + CantidadNew;
+                            listaProductos[row.Index].Cantidad = cantidad;
+                            row.Cells[3].Value = cantidad;
+                            decimal ValorVenta = Convert.ToDecimal(row.Cells[4].Value.ToString());
+                            decimal PrecioFinal = cantidad * ValorVenta;
+                            row.Cells[5].Value = PrecioFinal;
+                        }
                     }
-                    txtCodigo.Clear();
-                    lblTotalPagarReal.Text = Convert.ToString(PrecioTotalFinal);
+
                 }
-                catch (Exception ex)
-                { }
+                decimal PrecioTotalFinal = 0;
+                foreach (DataGridViewRow row in dgvVentas.Rows)
+                {
+                    if (row.Cells[4].Value != null)
+                        PrecioTotalFinal += Convert.ToDecimal(row.Cells[5].Value.ToString());
+                }
+                txtCodigo.Clear();
+                lblTotalPagarReal.Text = Convert.ToString(PrecioTotalFinal);
             }
-            if (e.KeyCode.ToString() == "F12")
+            catch (Exception ex)
+            { }
+        }
+        private void txtMonto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
             {
-                FacturarVenta();
+                decimal MontoEspecial = Convert.ToDecimal(txtMonto.Text);
+                int cantidadingresada = Convert.ToInt32(txtCantidad.Text);
+                _listaEspeciales[0].Cantidad = cantidadingresada;
+                var lista = _listaEspeciales.First();
+                listaProductos.Add(lista);
+                decimal PrecioFinal = MontoEspecial;
+                dgvVentas.Rows.Add(lista.idProducto, lista.CodigoProducto, lista.NombreProducto, cantidadingresada, lista.PrecioVenta, PrecioFinal);
+                txtCodigo.Clear();
+                txtCantidad.Text = "1";
+                txtMonto.Clear();
+                groupBox1.Visible = false;
+
+                decimal PrecioTotalFinal = 0;
+                foreach (DataGridViewRow row in dgvVentas.Rows)
+                {
+                    if (row.Cells[4].Value != null)
+                        PrecioTotalFinal += Convert.ToDecimal(row.Cells[5].Value.ToString());
+                }
+                txtCodigo.Clear();
+                lblTotalPagarReal.Text = Convert.ToString(PrecioTotalFinal);
+                txtNombreBuscar.Focus();
             }
         }
         private void txtCantidad_KeyDown(object sender, KeyEventArgs e)
@@ -115,7 +159,15 @@ namespace Stock
             {
                 try
                 {
-                    string codigoProducto = txtCodigo.Text;
+                    string codigoProducto;
+                    if (txtCodigo.Text == "")
+                    {
+                        codigoProducto = txtNombreBuscar.Text;
+                        codigoProducto = Convert.ToString(Negocio.Consultar.BuscarPorDescripcion(codigoProducto));
+                    }
+                    else
+                    { codigoProducto = txtCodigo.Text; }
+
                     List<Entidades.ListaProductoVenta> _lista = new List<Entidades.ListaProductoVenta>();
                     int cantidadingresada = 1;
                     if (txtCantidad.Text != "")
@@ -176,13 +228,16 @@ namespace Stock
                 {
                     string descripcion = txtNombreBuscar.Text;
                     var CodigoProducto = Negocio.Consultar.BuscarPorDescripcion(descripcion);
-                    if (CodigoProducto != "")
+                    if (CodigoProducto == "0")
+                    {
+                        BuscarProductoPorCodigo();
+                    }
+                    else
                     {
                         txtCodigo.Text = Convert.ToString(CodigoProducto);
-                        txtNombreBuscar.Clear();
-                        txtCodigo.Focus();
+                        BuscarProductoPorCodigo();
                     }
-
+                    LimpiarCampos();
                 }
                 catch (Exception ex)
                 { }
@@ -191,6 +246,14 @@ namespace Stock
             {
                 FacturarVenta();
             }
+           
+        }
+        private void LimpiarCampos()
+        {
+            txtCodigo.Clear();
+            txtNombreBuscar.Clear();
+            txtCantidad.Text = "1";
+            //txtNombreBuscar.Focus();
         }
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
@@ -306,10 +369,11 @@ namespace Stock
             txtCantidad.Enabled = true;
             lblTotalPagarReal.Text = "0"; txtCodigo.Clear();
             dgvVentas.Rows.Clear();
-            txtCodigo.Focus();
+            txtNombreBuscar.Focus();
             listaProductos = new List<Entidades.ListaProductoVenta>();
             dgvVentas.RowHeadersVisible = false;
             dgvVentas.ReadOnly = true;
+            lblBack.Visible = false;
         }
         private void VentasNuevoWF_KeyDown(object sender, KeyEventArgs e)
         {
