@@ -90,6 +90,30 @@ namespace Stock.DAO
             connection.Close();
             return _listaProductos;
         }
+
+        public static bool ValidarProductoEspecial(string codigoProducto)
+        {
+            connection.Close();
+            bool ProductoEspecial = false;
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("CodigoProducto_in", codigoProducto) };
+            string proceso = "ValidarProductoEspecial";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                ProductoEspecial = true;
+            }
+            connection.Close();
+            return ProductoEspecial;
+        }
+
         public static List<Usuarios> BuscarUsuarioPorApellidoNombre(string ape, string nom)
         {
             connection.Close();

@@ -58,61 +58,40 @@ namespace Stock
                 { codigoProducto = txtCodigo.Text; }
                 else
                 { codigoProducto = txtNombreBuscar.Text; }
-                List<Entidades.ListaProductoVenta> _lista = new List<Entidades.ListaProductoVenta>();
+                bool EsEspecial = Negocio.Consultar.ValidarProductoEspecial(codigoProducto);
+
                 if (!listaProductos.Any(x => x.CodigoProducto == codigoProducto))
                 {
-                    _lista = Negocio.Consultar.BuscarProductoParaVenta(codigoProducto);
-                    if (_lista.Count > 0 && _lista[0].ProductoEspecial == 0 && _lista[0].PrecioVenta > 0)
-                    {
-                        int cantidadingresada = Convert.ToInt32(txtCantidad.Text);
-                        _lista[0].Cantidad = cantidadingresada;
-                        var lista = _lista.First();
-                        listaProductos.Add(lista);
-                        decimal PrecioFinal = lista.PrecioVenta * cantidadingresada;
-                        dgvVentas.Rows.Add(lista.idProducto, lista.CodigoProducto, lista.NombreProducto, cantidadingresada, lista.PrecioVenta, PrecioFinal);
-                        txtCodigo.Clear();
-                        txtCantidad.Text = "1";
-                    }
-                    else
-                    {
-                        if (_lista[0].ProductoEspecial == 1)
-                        {
-                            _listaEspeciales = _lista;
-                            groupBox1.Visible = true;
-                            txtMonto.Focus();
-                        }
-                        else
-                        {
-                            const string message2 = "El producto ingresado no existe o no tiene un precio de venta cargado.";
-                            const string caption2 = "Error";
-                            var result2 = MessageBox.Show(message2, caption2,
-                                                         MessageBoxButtons.OK,
-                                                         MessageBoxIcon.Exclamation);
-                        }
-                    }
+                    ListaProductoEnGrilla();
                 }
                 else
                 {
-                    int cantidadingresada = 1;
-                    if (txtCantidad.Text != "")
+                    if (listaProductos.Any(x => x.CodigoProducto == codigoProducto) && EsEspecial == true)
                     {
-                        cantidadingresada = Convert.ToInt32(txtCantidad.Text);
+                        ListaProductoEnGrilla();
                     }
-                    foreach (DataGridViewRow row in dgvVentas.Rows)
+                    else
                     {
-                        if (row.Cells[1].Value != null && row.Cells[1].Value.ToString() == codigoProducto)
+                        int cantidadingresada = 1;
+                        if (txtCantidad.Text != "")
                         {
-                            int CantidadOld = Convert.ToInt32(row.Cells[3].Value.ToString());
-                            int CantidadNew = Convert.ToInt32(cantidadingresada.ToString());
-                            int cantidad = CantidadOld + CantidadNew;
-                            listaProductos[row.Index].Cantidad = cantidad;
-                            row.Cells[3].Value = cantidad;
-                            decimal ValorVenta = Convert.ToDecimal(row.Cells[4].Value.ToString());
-                            decimal PrecioFinal = cantidad * ValorVenta;
-                            row.Cells[5].Value = PrecioFinal;
+                            cantidadingresada = Convert.ToInt32(txtCantidad.Text);
+                        }
+                        foreach (DataGridViewRow row in dgvVentas.Rows)
+                        {
+                            if (row.Cells[1].Value != null && row.Cells[1].Value.ToString() == codigoProducto)
+                            {
+                                int CantidadOld = Convert.ToInt32(row.Cells[3].Value.ToString());
+                                int CantidadNew = Convert.ToInt32(cantidadingresada.ToString());
+                                int cantidad = CantidadOld + CantidadNew;
+                                listaProductos[row.Index].Cantidad = cantidad;
+                                row.Cells[3].Value = cantidad;
+                                decimal ValorVenta = Convert.ToDecimal(row.Cells[4].Value.ToString());
+                                decimal PrecioFinal = cantidad * ValorVenta;
+                                row.Cells[5].Value = PrecioFinal;
+                            }
                         }
                     }
-
                 }
                 decimal PrecioTotalFinal = 0;
                 foreach (DataGridViewRow row in dgvVentas.Rows)
@@ -125,6 +104,44 @@ namespace Stock
             }
             catch (Exception ex)
             { }
+        }
+        private void ListaProductoEnGrilla()
+        {
+            string codigoProducto;
+            if (txtCodigo.Text != "")
+            { codigoProducto = txtCodigo.Text; }
+            else
+            { codigoProducto = txtNombreBuscar.Text; }
+            List<Entidades.ListaProductoVenta> _lista = new List<Entidades.ListaProductoVenta>();
+            _lista = Negocio.Consultar.BuscarProductoParaVenta(codigoProducto);
+            if (_lista.Count > 0 && _lista[0].ProductoEspecial == 0 && _lista[0].PrecioVenta > 0)
+            {
+                int cantidadingresada = Convert.ToInt32(txtCantidad.Text);
+                _lista[0].Cantidad = cantidadingresada;
+                var lista = _lista.First();
+                listaProductos.Add(lista);
+                decimal PrecioFinal = lista.PrecioVenta * cantidadingresada;
+                dgvVentas.Rows.Add(lista.idProducto, lista.CodigoProducto, lista.NombreProducto, cantidadingresada, lista.PrecioVenta, PrecioFinal);
+                txtCodigo.Clear();
+                txtCantidad.Text = "1";
+            }
+            else
+            {
+                if (_lista[0].ProductoEspecial == 1)
+                {
+                    _listaEspeciales = _lista;
+                    groupBox1.Visible = true;
+                    txtMonto.Focus();
+                }
+                else
+                {
+                    const string message2 = "El producto ingresado no existe o no tiene un precio de venta cargado.";
+                    const string caption2 = "Error";
+                    var result2 = MessageBox.Show(message2, caption2,
+                                                 MessageBoxButtons.OK,
+                                                 MessageBoxIcon.Exclamation);
+                }
+            }
         }
         private void txtMonto_KeyDown(object sender, KeyEventArgs e)
         {
@@ -246,7 +263,7 @@ namespace Stock
             {
                 FacturarVenta();
             }
-           
+
         }
         private void LimpiarCampos()
         {
@@ -323,6 +340,7 @@ namespace Stock
             txtCantidad.Enabled = false;
             dgvVentas.Focus();
         }
+        public static string ProductoEliminar;
         private void dgvVentas_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Back)
@@ -333,6 +351,14 @@ namespace Stock
             if (e.KeyCode.ToString() == "F12")
             {
                 FacturarVenta();
+            }
+            if (e.KeyCode == Keys.Delete)
+            {
+                ProductoEliminar = dgvVentas.CurrentRow.Cells[1].Value.ToString();
+                decimal Monto = Convert.ToDecimal(dgvVentas.CurrentRow.Cells[5].Value.ToString());
+                dgvVentas.Rows.Remove(dgvVentas.CurrentRow);
+                EliminarProductoDeLista(Monto);
+                txtNombreBuscar.Focus();
             }
         }
         private void ModificarGrilla()
@@ -411,6 +437,30 @@ namespace Stock
             this.WindowState = FormWindowState.Normal;
             btnMaximizar.Visible = true;
             btnRestaurar.Visible = false;
+        }
+        private void EliminarProductoDeLista(decimal Monto)
+        {
+            try
+            {
+                foreach (var item in listaProductos)
+                {
+                    string BuscoCodigo = item.CodigoProducto;
+                    if (BuscoCodigo == ProductoEliminar)
+                    {
+                        decimal PrecioAcumuladoViejo = Convert.ToDecimal(lblTotalPagarReal.Text);
+                        decimal ValorRestar = Monto;
+                        decimal NuevoPrecioFinal = PrecioAcumuladoViejo - ValorRestar;
+                        item.PrecioVentaFinal = NuevoPrecioFinal;
+                        lblTotalPagarReal.Text = Convert.ToString(NuevoPrecioFinal);
+                        listaProductos.Remove(item);
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

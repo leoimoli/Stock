@@ -77,6 +77,11 @@ namespace Stock.Negocio
             }
             return _lista;
         }
+        public static bool ValidarProductoEspecial(string codigoProducto)
+        {
+            bool EsEspecial = DAO.ConsultarDao.ValidarProductoEspecial(codigoProducto);
+            return EsEspecial;
+        }
         public static List<ListaStock> ConsultarUltimosIngresosDeStock()
         {
             List<ListaStock> _lista = new List<ListaStock>();
