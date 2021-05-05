@@ -141,6 +141,7 @@
     <Compile Include="Clases_Maestras\AutoCompleteProductosSinCodigo.cs" />
     <Compile Include="Clases_Maestras\AutoCompleteProveedores.cs" />
     <Compile Include="Clases_Maestras\AutoCompleteUsuarios.cs" />
+    <Compile Include="Clases_Maestras\CrearTicket.cs" />
     <Compile Include="Clases_Maestras\Funciones.cs" />
     <Compile Include="Clases_Maestras\ListarProveedores.cs" />
     <Compile Include="Clases_Maestras\RutasDeAcceso.cs" />

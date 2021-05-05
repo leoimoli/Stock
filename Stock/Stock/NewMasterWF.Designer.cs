@@ -592,6 +592,7 @@
             this.btnMenuPequeño.Size = new System.Drawing.Size(35, 35);
             this.btnMenuPequeño.TabIndex = 1;
             this.btnMenuPequeño.TabStop = false;
+            this.btnMenuPequeño.Visible = false;
             this.btnMenuPequeño.Click += new System.EventHandler(this.btnMenuPequeño_Click);
             // 
             // NewMasterWF

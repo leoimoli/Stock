@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibPrintTicket;
+using Utils;
 
 namespace Stock
 {
@@ -294,12 +295,34 @@ namespace Stock
                 listaProductos[0].PrecioVentaFinal = Convert.ToDecimal(lblTotalPagarReal.Text);
                 //bool Exito = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
                 idVenta = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
-                BloquearPantalla();
+                //BloquearPantalla();
                 VueltoNuevoWF _vuelto = new VueltoNuevoWF(listaProductos[0].PrecioVentaFinal);
                 _vuelto.Show();
-                //GenerarTicket();          
+                Tkt(idVenta, listaProductos);
                 lblBack.Visible = true;
             }
+        }
+        public static void Tkt(int idVenta, List<Entidades.ListaProductoVenta> listaProducto)
+        {
+            CrearTicket ticket = new CrearTicket();
+            //if (venta.Comprobante.Cae_afip != null && venta.Comprobante.Cae_afip != "")
+            //ticket.Encabezado(venta.Comprobante.Numero_comprobante, true);
+            if (idVenta > 0)
+            {
+                ticket.Encabezado(Convert.ToString(idVenta), false);
+            }
+            //else
+            //    ticket.Encabezado(venta.IdVenta.ToString(), false);
+            foreach (var item in listaProducto)
+            {
+                ticket.AgregaArticulo(item.NombreProducto, item.Cantidad, Convert.ToDouble(item.PrecioUnitario), Convert.ToDouble(item.PrecioVenta));
+            }
+            //if (venta.Comprobante.Cae_afip != null && venta.Comprobante.Cae_afip != "")
+            //ticket.AgregaTotales(venta.Total, venta.Comprobante.Cae_afip, venta.Comprobante.Fecha_vto_cae_afip.Value.ToShortDateString());
+            
+            //ticket.AgregaTotales(Convert.ToDouble(listaProductos[0].PrecioVentaFinal), null, null);
+            //else
+                ticket.AgregaTotales(Convert.ToDouble(listaProductos[0].PrecioVentaFinal), null, null);
         }
         private void GenerarTicket()
         {
@@ -461,6 +484,19 @@ namespace Stock
             {
 
             }
+        }
+        private void SoloNumeros(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+            // solo 1 punto decimal
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+            {
+                e.Handled = true;
+            }
+            //e.Handled = !char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back);
         }
     }
 }

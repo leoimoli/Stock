@@ -60,17 +60,17 @@ namespace Stock
 
         private void btnMenuPequeño_Click(object sender, EventArgs e)
         {
-            if (MenuVertical.Width == 201)
-            {
-                MenuVertical.Width = 55;
-            }
-            else
-            {
-                if (MenuVertical.Width == 55)
-                {
-                    MenuVertical.Width = 201;
-                }
-            }
+            //if (MenuVertical.Width == 201)
+            //{
+            //    MenuVertical.Width = 55;
+            //}
+            //else
+            //{
+            //    if (MenuVertical.Width == 55)
+            //    {
+            //        MenuVertical.Width = 201;
+            //    }
+            //}
         }
         private void AbrirFormEnPanel(object formhija)
         {

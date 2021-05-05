@@ -67,6 +67,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblMaster_FechaHoraReal = new System.Windows.Forms.Label();
             this.lblDia = new System.Windows.Forms.Label();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -81,6 +83,7 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
+            this.panel13.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -425,7 +428,7 @@
             this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProductos.EnableHeadersVisualStyles = false;
             this.dgvProductos.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvProductos.Location = new System.Drawing.Point(60, 257);
+            this.dgvProductos.Location = new System.Drawing.Point(60, 241);
             this.dgvProductos.Name = "dgvProductos";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
@@ -438,7 +441,7 @@
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
             this.dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvProductos.Size = new System.Drawing.Size(596, 300);
+            this.dgvProductos.Size = new System.Drawing.Size(596, 286);
             this.dgvProductos.TabIndex = 3;
             // 
             // Descripcion
@@ -462,7 +465,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(65, 230);
+            this.label8.Location = new System.Drawing.Point(65, 214);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(231, 24);
             this.label8.TabIndex = 4;
@@ -490,12 +493,33 @@
             this.lblDia.TabIndex = 6;
             this.lblDia.Text = "label9";
             // 
+            // panel13
+            // 
+            this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.panel13.Controls.Add(this.label7);
+            this.panel13.Location = new System.Drawing.Point(0, 533);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(1099, 30);
+            this.panel13.TabIndex = 7;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(337, 7);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(272, 17);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "StoCom(Sistema Stock Comercial) V-1.0.0";
+            // 
             // InicioNuevoWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(1099, 564);
+            this.Controls.Add(this.panel13);
             this.Controls.Add(this.lblDia);
             this.Controls.Add(this.lblMaster_FechaHoraReal);
             this.Controls.Add(this.label8);
@@ -521,6 +545,8 @@
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
+            this.panel13.ResumeLayout(false);
+            this.panel13.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -562,5 +588,7 @@
         private System.Windows.Forms.Button lblContadorMarcas;
         private System.Windows.Forms.Button lblContadorProdcutos;
         private System.Windows.Forms.Button lblContadorClientes;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Label label7;
     }
 }

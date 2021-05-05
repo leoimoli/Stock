@@ -237,6 +237,7 @@ namespace Stock
         }
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            panel1.Enabled = true;
             LimpiarCampos();
             txtCodigoProducto.Focus();
             idProductoSeleccionado = 0;

@@ -227,6 +227,7 @@
             this.txtCantidad.TabIndex = 0;
             this.txtCantidad.Text = "1";
             this.txtCantidad.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCantidad_KeyDown);
+            this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
             // 
             // panel1
             // 
@@ -418,6 +419,7 @@
             this.txtMonto.Size = new System.Drawing.Size(114, 44);
             this.txtMonto.TabIndex = 153;
             this.txtMonto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMonto_KeyDown);
+            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
             // 
             // label4
             // 

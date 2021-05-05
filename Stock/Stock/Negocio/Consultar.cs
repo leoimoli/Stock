@@ -17,7 +17,7 @@ namespace Stock.Negocio
             if (lista.Count > 0)
             {
                 int idUsuario = Convert.ToInt32(lista[0].IdUsuario.ToString());
-                //ActualizarDAO.ActualizarUltimaConexion(idUsuario);
+                DAO.EditarDao.ActualizarUltimaConexion(idUsuario);
             }
             return lista;
         }
@@ -670,13 +670,8 @@ namespace Stock.Negocio
                 _listaUsuarios = DAO.ConsultarDao.ListarUsuarios();
             }
             catch (Exception ex)
-            {
-                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
-                const string caption = "Atención";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.OK,
-                                           MessageBoxIcon.Warning);
-                throw new Exception();
+            {            
+                
             }
             return _listaUsuarios;
         }

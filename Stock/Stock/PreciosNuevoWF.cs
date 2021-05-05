@@ -35,6 +35,7 @@ namespace Stock
             List<Entidades.Productos> ListaProductos = Negocio.Consultar.ListaDeProductos();
             if (ListaProductos.Count > 0)
             {
+                lblPrecioNulos.Visible = true;
                 foreach (var item in ListaProductos)
                 {
                     if (item.PrecioDeVenta > 0)
@@ -47,6 +48,10 @@ namespace Stock
                         dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto, item.PrecioDeVenta);
                     }
                 }
+            }
+            else
+            {
+                lblPrecioNulos.Visible = false;
             }
             dgvProductos.ReadOnly = true;
         }
@@ -65,6 +70,7 @@ namespace Stock
                 List<Entidades.Productos> ListaProductos = Negocio.Consultar.BuscarProductoPorCodigoIngresado(Codigo);
                 if (ListaProductos.Count > 0)
                 {
+                    lblPrecioNulos.Visible = false;
                     foreach (var item in ListaProductos)
                     {
                         if (item.PrecioDeVenta > 0)
@@ -78,6 +84,10 @@ namespace Stock
                         }
                     }
                 }
+                else
+                {
+                    lblPrecioNulos.Visible = true;
+                }
                 dgvProductos.ReadOnly = true;
             }
         }
@@ -90,6 +100,7 @@ namespace Stock
                 List<Entidades.Productos> ListaProductos = Negocio.Consultar.BuscarProductoPorDescripcion(Descripcion);
                 if (ListaProductos.Count > 0)
                 {
+                    lblPrecioNulos.Visible = false;
                     foreach (var item in ListaProductos)
                     {
                         if (item.PrecioDeVenta > 0)
@@ -102,6 +113,10 @@ namespace Stock
                             dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto, item.PrecioDeVenta);
                         }
                     }
+                }
+                else
+                {
+                    lblPrecioNulos.Visible = true;
                 }
                 dgvProductos.ReadOnly = true;
             }
@@ -175,6 +190,7 @@ namespace Stock
                                                  MessageBoxButtons.OK,
                                                  MessageBoxIcon.Asterisk);
                     LimpiarCampos();
+                    FuncionListarProductosConPrecios();
                 }
             }
             catch (Exception ex)
@@ -187,6 +203,7 @@ namespace Stock
             txtValorUni.Enabled = false;
             txtReditoPorcentual.Enabled = false;
             txtPrecioVenta.Enabled = false;
+            txtPrecioVenta.Clear();
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
         }
