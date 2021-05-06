@@ -653,6 +653,8 @@
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Documentos\Base De Datos\Procedure\1%29LoginUsuario.txt" />
+    <None Include="Resources\StoCom_logo_21.png" />
+    <None Include="Resources\StoCom_logo_2.png" />
     <None Include="Resources\sobresalir.png" />
     <None Include="Resources\ordenador-portatil %281%291.png" />
     <None Include="Resources\pagar %282%29.png" />

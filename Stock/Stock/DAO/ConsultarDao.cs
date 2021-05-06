@@ -113,7 +113,159 @@ namespace Stock.DAO
             connection.Close();
             return ProductoEspecial;
         }
+        public static List<ListaVentas> ConsultarVentasDelDia()
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaVentas> lista = new List<Entidades.ListaVentas>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ConsultarVentasDelDia";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaVentas listaVenta = new Entidades.ListaVentas();
+                    listaVenta.idVenta = Convert.ToInt32(item["idventas"].ToString());
+                    DateTime fechaReal = Convert.ToDateTime(item["dtFecha"].ToString());
+                    listaVenta.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
+                    listaVenta.PrecioVenta = Convert.ToDecimal(item["txPrecioVentaFinal"].ToString());
+                    var usuario = item["txApellido"].ToString() + " " + item["txNombre"].ToString();
+                    listaVenta.usuario = usuario;
+                    lista.Add(listaVenta);
+                }
+            }
+            return lista;
+        }
 
+        public static List<ListaVentas> ConsultarVentasDeAyer()
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaVentas> lista = new List<Entidades.ListaVentas>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ConsultarVentasDeAyer";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaVentas listaVenta = new Entidades.ListaVentas();
+                    listaVenta.idVenta = Convert.ToInt32(item["idventas"].ToString());
+                    DateTime fechaReal = Convert.ToDateTime(item["dtFecha"].ToString());
+                    listaVenta.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
+                    listaVenta.PrecioVenta = Convert.ToDecimal(item["txPrecioVentaFinal"].ToString());
+                    var usuario = item["txApellido"].ToString() + " " + item["txNombre"].ToString();
+                    listaVenta.usuario = usuario;
+                    lista.Add(listaVenta);
+                }
+            }
+            return lista;
+        }
+        public static List<ListaVentas> ConsultarVentasMesAnterior(int mes)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaVentas> lista = new List<Entidades.ListaVentas>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {new MySqlParameter("Mes_in", mes) };
+            string proceso = "ConsultarVentasMesAnterior";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaVentas listaVenta = new Entidades.ListaVentas();
+                    listaVenta.idVenta = Convert.ToInt32(item["idventas"].ToString());
+                    DateTime fechaReal = Convert.ToDateTime(item["dtFecha"].ToString());
+                    listaVenta.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
+                    listaVenta.PrecioVenta = Convert.ToDecimal(item["txPrecioVentaFinal"].ToString());
+                    var usuario = item["txApellido"].ToString() + " " + item["txNombre"].ToString();
+                    listaVenta.usuario = usuario;
+                    lista.Add(listaVenta);
+                }
+            }
+            return lista;
+        }
+        public static List<ListaVentas> ConsultarVentasUltimos30Dias(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaVentas> lista = new List<Entidades.ListaVentas>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {   new MySqlParameter("FechaDesde_in", fechaDesde),
+                                       new MySqlParameter("FechaHasta_in", fechaHasta)};
+            string proceso = "ConsultarVentasUltimos30Dias";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaVentas listaVenta = new Entidades.ListaVentas();
+                    listaVenta.idVenta = Convert.ToInt32(item["idventas"].ToString());
+                    DateTime fechaReal = Convert.ToDateTime(item["dtFecha"].ToString());
+                    listaVenta.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
+                    listaVenta.PrecioVenta = Convert.ToDecimal(item["txPrecioVentaFinal"].ToString());
+                    var usuario = item["txApellido"].ToString() + " " + item["txNombre"].ToString();
+                    listaVenta.usuario = usuario;
+                    lista.Add(listaVenta);
+                }
+            }
+            return lista;
+        }
+        public static List<ListaVentas> ConsultarVentasUltimosSieteDias(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaVentas> lista = new List<Entidades.ListaVentas>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {   new MySqlParameter("FechaDesde_in", fechaDesde),
+                                       new MySqlParameter("FechaHasta_in", fechaHasta)};
+            string proceso = "ConsultarVentasUltimosSieteDias";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaVentas listaVenta = new Entidades.ListaVentas();
+                    listaVenta.idVenta = Convert.ToInt32(item["idventas"].ToString());
+                    DateTime fechaReal = Convert.ToDateTime(item["dtFecha"].ToString());
+                    listaVenta.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
+                    listaVenta.PrecioVenta = Convert.ToDecimal(item["txPrecioVentaFinal"].ToString());
+                    var usuario = item["txApellido"].ToString() + " " + item["txNombre"].ToString();
+                    listaVenta.usuario = usuario;
+                    lista.Add(listaVenta);
+                }
+            }
+            return lista;
+        }
         public static List<Usuarios> BuscarUsuarioPorApellidoNombre(string ape, string nom)
         {
             connection.Close();
@@ -299,7 +451,6 @@ namespace Stock.DAO
             connection.Close();
             return _listaClientes;
         }
-
         public static int BuscarUltimoMovimientoCargado()
         {
             connection.Close();
@@ -324,7 +475,6 @@ namespace Stock.DAO
             connection.Close();
             return idMovimiento;
         }
-
         public static List<ListaStock> ListarDetalleStock(int idMovimiento)
         {
             connection.Close();

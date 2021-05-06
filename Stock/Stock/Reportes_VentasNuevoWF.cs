@@ -18,9 +18,9 @@ namespace Stock
         {
             InitializeComponent();
         }
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            LimpiarCampos();
             List<ListaVentas> resultado = new List<ListaVentas>();
             List<Entidades.ListaVentasEstadistica> listaVentasEstadistica = new List<ListaVentasEstadistica>();
             try
@@ -31,22 +31,9 @@ namespace Stock
                 resultado = Negocio.Consultar.ConsultarVentasPorFecha(FechaDesde, FechaHasta);
                 if (resultado.Count > 0)
                 {
-                    PanelResultado.Visible = true;
-                    decimal TotalVentas = 0;
-                    foreach (var item in resultado)
-                    {
-                        string fecha = item.Fecha.ToShortDateString();
-                        TotalVentas = Convert.ToDecimal(TotalVentas + item.PrecioVenta);
-                        dgvVentas.Rows.Add(item.idVenta, fecha, item.PrecioVenta);
-                    }
-                    /// Total de Ventas                 
-                    lblTotalVentas.Text = Convert.ToString(resultado.Count);
-                    /// Caja de Ventas
-                    List<Reporte_Ventas> listaVentas3 = new List<Reporte_Ventas>();
-                    listaVentas3 = ReportesDao.CajaDeVentas();
-                    lblCajaVentas.Text = Convert.ToString(TotalVentas);
+                    ArmoGrillaVentas(resultado);
                 }
-                else { PanelResultado.Visible = false; }
+                else { }
             }
             catch (Exception ex)
             { }
@@ -69,7 +56,6 @@ namespace Stock
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             NewMasterWF _master = new NewMasterWF();
@@ -96,7 +82,154 @@ namespace Stock
             CR.Select();
             xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
         }
+        private void btnVentasDelDia_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+            List<ListaVentas> resultado = new List<ListaVentas>();
+            List<Entidades.ListaVentasEstadistica> listaVentasEstadistica = new List<ListaVentasEstadistica>();
+            try
+            {
+                resultado = Negocio.Consultar.ConsultarVentasDelDia();
+                if (resultado.Count > 0)
+                {
+                    ArmoGrillaVentas(resultado);
+                }
+                else
+                { }
+            }
+            catch (Exception ex)
+            { }
+        }
+        private void ArmoGrillaVentas(List<ListaVentas> resultado)
+        {
+            PanelResultado.Visible = true;
+            decimal TotalVentas = 0;
+            foreach (var item in resultado)
+            {
+                string fecha = item.Fecha.ToShortDateString();
+                TotalVentas = Convert.ToDecimal(TotalVentas + item.PrecioVenta);
+                dgvVentas.Rows.Add(item.idVenta, fecha, item.PrecioVenta);
+            }
+            /// Total de Ventas                 
+            lblTotalVentas.Text = Convert.ToString(resultado.Count);
+            /// Caja de Ventas
+            List<Reporte_Ventas> listaVentas3 = new List<Reporte_Ventas>();
+            listaVentas3 = ReportesDao.CajaDeVentas();
+            lblCajaVentas.Text = Convert.ToString(TotalVentas);
+        }
+        private void btnVentasAyer_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+            List<ListaVentas> resultado = new List<ListaVentas>();
+            List<Entidades.ListaVentasEstadistica> listaVentasEstadistica = new List<ListaVentasEstadistica>();
+            try
+            {
+                resultado = Negocio.Consultar.ConsultarVentasDeAyer();
+                if (resultado.Count > 0)
+                {
+                    ArmoGrillaVentas(resultado);
+                }
+                else
+                { }
+            }
+            catch (Exception ex)
+            { }
+        }
+        private void btnVentasUltimosSiete_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+            DateTime FechaHasta = DateTime.Now;
+            DateTime FechaDesde = FechaHasta.AddDays(-7);
+            List<ListaVentas> resultado = new List<ListaVentas>();
+            List<Entidades.ListaVentasEstadistica> listaVentasEstadistica = new List<ListaVentasEstadistica>();
+            try
+            {
+                resultado = Negocio.Consultar.ConsultarVentasUltimosSieteDias(FechaDesde, FechaHasta);
+                if (resultado.Count > 0)
+                {
+                    ArmoGrillaVentas(resultado);
+                }
+                else
+                { }
+            }
+            catch (Exception ex)
+            { }
+        }
+        private void btnUltimosTreinta_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+            DateTime FechaHasta = DateTime.Now;
+            DateTime FechaDesde = FechaHasta.AddDays(-30);
+            List<ListaVentas> resultado = new List<ListaVentas>();
+            List<Entidades.ListaVentasEstadistica> listaVentasEstadistica = new List<ListaVentasEstadistica>();
+            try
+            {
+                resultado = Negocio.Consultar.ConsultarVentasUltimos30Dias(FechaDesde, FechaHasta);
+                if (resultado.Count > 0)
+                {
+                    ArmoGrillaVentas(resultado);
+                }
+                else
+                { }
+            }
+            catch (Exception ex)
+            { }
+        }
+        private void btnVentasMesAnterior_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+            String MesAnterior = DateTime.Now.Month.ToString();
+            int Mes = Convert.ToInt32(MesAnterior);
+            Mes = Mes - 1;
+            List<ListaVentas> resultado = new List<ListaVentas>();
+            List<Entidades.ListaVentasEstadistica> listaVentasEstadistica = new List<ListaVentasEstadistica>();
+            try
+            {
+                resultado = Negocio.Consultar.ConsultarVentasMesAnterior(Mes);
+                if (resultado.Count > 0)
+                {
+                    ArmoGrillaVentas(resultado);
+                }
+                else
+                { }
+            }
+            catch (Exception ex)
+            { }
+        }
+        private void btnEsteMes_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+            String MesAnterior = DateTime.Now.Month.ToString();
+            int Mes = Convert.ToInt32(MesAnterior);
+            List<ListaVentas> resultado = new List<ListaVentas>();
+            List<Entidades.ListaVentasEstadistica> listaVentasEstadistica = new List<ListaVentasEstadistica>();
+            try
+            {
+                resultado = Negocio.Consultar.ConsultarVentasMesAnterior(Mes);
+                if (resultado.Count > 0)
+                {
+                    ArmoGrillaVentas(resultado);
+                }
+                else
+                { }
+            }
+            catch (Exception ex)
+            { }
+        }
+        private void LimpiarCampos()
+        {
+            dgvVentas.Rows.Clear();
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            NewMasterWF _master = new NewMasterWF();
+            _master.Show();
+            Hide();
+        }
     }
 }
+
+
+
 
 

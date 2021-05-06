@@ -295,10 +295,11 @@ namespace Stock
                 listaProductos[0].PrecioVentaFinal = Convert.ToDecimal(lblTotalPagarReal.Text);
                 //bool Exito = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
                 idVenta = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
-                //BloquearPantalla();
+                BloquearPantalla();
                 VueltoNuevoWF _vuelto = new VueltoNuevoWF(listaProductos[0].PrecioVentaFinal);
                 _vuelto.Show();
                 Tkt(idVenta, listaProductos);
+                //DesbloquearPantalla();
                 lblBack.Visible = true;
             }
         }

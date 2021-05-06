@@ -254,6 +254,7 @@
             this.txtValorUni.Name = "txtValorUni";
             this.txtValorUni.Size = new System.Drawing.Size(170, 20);
             this.txtValorUni.TabIndex = 7;
+            this.txtValorUni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
             // 
             // txtDescripcion
             // 
@@ -320,6 +321,7 @@
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(170, 20);
             this.txtCantidad.TabIndex = 6;
+            this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
             // 
             // label7
             // 
@@ -350,9 +352,9 @@
             this.lblRepitaContraseña.ForeColor = System.Drawing.Color.White;
             this.lblRepitaContraseña.Location = new System.Drawing.Point(479, 77);
             this.lblRepitaContraseña.Name = "lblRepitaContraseña";
-            this.lblRepitaContraseña.Size = new System.Drawing.Size(63, 17);
+            this.lblRepitaContraseña.Size = new System.Drawing.Size(168, 17);
             this.lblRepitaContraseña.TabIndex = 137;
-            this.lblRepitaContraseña.Text = "Remito:";
+            this.lblRepitaContraseña.Text = "Nro.Factura o Remito:";
             // 
             // txtRemito
             // 
@@ -361,6 +363,7 @@
             this.txtRemito.Name = "txtRemito";
             this.txtRemito.Size = new System.Drawing.Size(170, 20);
             this.txtRemito.TabIndex = 5;
+            this.txtRemito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
             // 
             // dgvProductos
             // 

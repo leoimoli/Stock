@@ -50,6 +50,10 @@ namespace Stock
                                              MessageBoxIcon.Asterisk);
                 Close();
             }
+            if (e.KeyCode == Keys.Delete)
+            {              
+                Close();
+            }
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {

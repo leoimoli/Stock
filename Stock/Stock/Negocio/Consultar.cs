@@ -144,6 +144,19 @@ namespace Stock.Negocio
             }
             return _listaProductos;
         }
+        public static List<ListaVentas> ConsultarVentasDelDia()
+        {
+            List<ListaVentas> _lista = new List<ListaVentas>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarVentasDelDia();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _lista;
+        }
         public static List<Entidades.Clientes> BuscarClientePorDni(string dni)
         {
             List<Entidades.Clientes> _lista = new List<Entidades.Clientes>();
@@ -168,6 +181,20 @@ namespace Stock.Negocio
             }
             return _listaStock;
         }
+        public static List<ListaVentas> ConsultarVentasDeAyer()
+        {
+            List<ListaVentas> _lista = new List<ListaVentas>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarVentasDeAyer();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _lista;
+        }
+
         public static List<HistorialProductoPrecioDeVenta> BuscarProductoHistorialPrecios(string codigo)
         {
             List<HistorialProductoPrecioDeVenta> _lista = new List<HistorialProductoPrecioDeVenta>();
@@ -177,6 +204,20 @@ namespace Stock.Negocio
             }
             catch (Exception ex)
             {
+            }
+            return _lista;
+        }
+
+        public static List<ListaVentas> ConsultarVentasUltimosSieteDias(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            List<ListaVentas> _lista = new List<ListaVentas>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarVentasUltimosSieteDias(fechaDesde, fechaHasta);
+            }
+            catch (Exception ex)
+            {
+
             }
             return _lista;
         }
@@ -193,6 +234,34 @@ namespace Stock.Negocio
             }
             return _listaStock;
         }
+
+        public static List<ListaVentas> ConsultarVentasUltimos30Dias(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            List<ListaVentas> _lista = new List<ListaVentas>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarVentasUltimos30Dias(fechaDesde, fechaHasta);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _lista;
+        }
+        public static List<ListaVentas> ConsultarVentasMesAnterior(int mes)
+        {
+            List<ListaVentas> _lista = new List<ListaVentas>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarVentasMesAnterior(mes);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _lista;
+        }
+
         public static List<Productos> ListarProductoPorDescripcion(string descripcion)
         {
             List<Productos> _listaProductos = new List<Productos>();
@@ -341,12 +410,7 @@ namespace Stock.Negocio
             }
             catch (Exception ex)
             {
-                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
-                const string caption = "Atención";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.OK,
-                                           MessageBoxIcon.Warning);
-                throw new Exception();
+
             }
             return _lista;
         }
@@ -670,8 +734,8 @@ namespace Stock.Negocio
                 _listaUsuarios = DAO.ConsultarDao.ListarUsuarios();
             }
             catch (Exception ex)
-            {            
-                
+            {
+
             }
             return _listaUsuarios;
         }

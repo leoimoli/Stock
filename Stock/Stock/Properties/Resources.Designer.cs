@@ -1023,6 +1023,26 @@ namespace Stock.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap StoCom_logo_2 {
+            get {
+                object obj = ResourceManager.GetObject("StoCom_logo_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StoCom_logo_21 {
+            get {
+                object obj = ResourceManager.GetObject("StoCom_logo_21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap StoCom2 {
             get {
                 object obj = ResourceManager.GetObject("StoCom2", resourceCulture);
