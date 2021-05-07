@@ -223,6 +223,7 @@
             this.btnCrear.TabIndex = 156;
             this.toolTip1.SetToolTip(this.btnCrear, "Registrar Marca");
             this.btnCrear.UseVisualStyleBackColor = false;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // progressBar1
             // 

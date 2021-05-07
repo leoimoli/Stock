@@ -172,7 +172,7 @@ namespace Stock
             _producto.idUsuario = idusuarioLogueado;
             if (chcProductoEspecial.Checked == true)
             {
-               _producto.CodigoProducto = GenerarProductoEspecial(_producto.Descripcion);
+                _producto.CodigoProducto = GenerarProductoEspecial(_producto.Descripcion);
                 _producto.MarcaProducto = "No especifica";
                 _producto.ProductoEspecial = 1;
             }
@@ -278,6 +278,17 @@ namespace Stock
                 txtCodigoProducto.Enabled = true;
                 txtCodigoProducto.Focus();
             }
+        }
+
+        private void btnCrear_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AltaMarcaNuevoWF _alta = new AltaMarcaNuevoWF();
+                _alta.Show();
+            }
+            catch (Exception ex)
+            { }
         }
     }
 }

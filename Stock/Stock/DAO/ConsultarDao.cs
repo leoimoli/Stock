@@ -2141,7 +2141,7 @@ namespace Stock.DAO
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = { };
-            string proceso = "ListarProductos";
+            string proceso = "ListarProductosSinPrecio";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);

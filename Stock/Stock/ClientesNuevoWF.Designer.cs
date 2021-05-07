@@ -484,6 +484,7 @@
             this.btnHistorial.TabIndex = 58;
             this.btnHistorial.Text = "Historial";
             this.btnHistorial.UseVisualStyleBackColor = false;
+            this.btnHistorial.Visible = false;
             // 
             // btnBuscar
             // 
