@@ -150,9 +150,9 @@ namespace Stock.DAO
             connection.Open();
             List<Entidades.ListaVentas> lista = new List<Entidades.ListaVentas>();
             MySqlCommand cmd = new MySqlCommand();
-            cmd.Connection = connection;
+            cmd.Connection = connection;        
             DataTable Tabla = new DataTable();
-            MySqlParameter[] oParam = { };
+            MySqlParameter[] oParam = {};
             string proceso = "ConsultarVentasDeAyer";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;

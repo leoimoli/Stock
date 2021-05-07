@@ -95,10 +95,21 @@ namespace Stock
                     ArmoGrillaVentas(resultado);
                 }
                 else
-                { }
+                {
+                    SinResultados();
+                }
             }
             catch (Exception ex)
             { }
+        }
+        private void SinResultados()
+        {
+            LimpiarCampos();
+            const string message2 = "No se encontraron resultados disponibles.";
+            const string caption2 = "Atención";
+            var result2 = MessageBox.Show(message2, caption2,
+                                         MessageBoxButtons.OK,
+                                         MessageBoxIcon.Exclamation);
         }
         private void ArmoGrillaVentas(List<ListaVentas> resultado)
         {
@@ -120,6 +131,9 @@ namespace Stock
         private void btnVentasAyer_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
+            DateTime FechaHasta = DateTime.Now;
+            DateTime FechaDesde = FechaHasta.AddDays(-1);
+            FechaHasta = FechaDesde;
             List<ListaVentas> resultado = new List<ListaVentas>();
             List<Entidades.ListaVentasEstadistica> listaVentasEstadistica = new List<ListaVentasEstadistica>();
             try
@@ -130,7 +144,7 @@ namespace Stock
                     ArmoGrillaVentas(resultado);
                 }
                 else
-                { }
+                { SinResultados(); }
             }
             catch (Exception ex)
             { }
@@ -150,7 +164,7 @@ namespace Stock
                     ArmoGrillaVentas(resultado);
                 }
                 else
-                { }
+                { SinResultados(); }
             }
             catch (Exception ex)
             { }
@@ -170,7 +184,7 @@ namespace Stock
                     ArmoGrillaVentas(resultado);
                 }
                 else
-                { }
+                { SinResultados(); }
             }
             catch (Exception ex)
             { }
@@ -191,7 +205,7 @@ namespace Stock
                     ArmoGrillaVentas(resultado);
                 }
                 else
-                { }
+                { SinResultados(); }
             }
             catch (Exception ex)
             { }
@@ -211,13 +225,15 @@ namespace Stock
                     ArmoGrillaVentas(resultado);
                 }
                 else
-                { }
+                { SinResultados(); }
             }
             catch (Exception ex)
             { }
         }
         private void LimpiarCampos()
         {
+            lblCajaVentas.Text = "0";
+            lblTotalVentas.Text = "0";
             dgvVentas.Rows.Clear();
         }
         private void button1_Click(object sender, EventArgs e)
