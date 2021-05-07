@@ -131,7 +131,18 @@ namespace Stock.Negocio
             }
             return _listaProductos;
         }
-
+        public static List<Productos> ListaDeProductosSinPrecios()
+        {
+            List<Productos> _listaProductos = new List<Productos>();
+            try
+            {
+                _listaProductos = DAO.ConsultarDao.ListarProductosSinPrecio();
+            }
+            catch (Exception ex)
+            {
+            }
+            return _listaProductos;
+        }
         public static List<Productos> ConsultaProductoPorCodigo(string codigo)
         {
             List<Productos> _listaProductos = new List<Productos>();

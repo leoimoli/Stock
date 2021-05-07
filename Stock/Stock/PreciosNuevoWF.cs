@@ -32,7 +32,7 @@ namespace Stock
         {
             FuncionBuscartexto();
             dgvProductos.Rows.Clear();
-            List<Entidades.Productos> ListaProductos = Negocio.Consultar.ListaDeProductos();
+            List<Entidades.Productos> ListaProductos = Negocio.Consultar.ListaDeProductosSinPrecios();
             if (ListaProductos.Count > 0)
             {
                 lblPrecioNulos.Visible = true;

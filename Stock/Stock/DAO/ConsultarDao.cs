@@ -2141,6 +2141,45 @@ namespace Stock.DAO
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = { };
+            string proceso = "ListarProductos";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Productos listaProducto = new Entidades.Productos();
+                    listaProducto.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    listaProducto.CodigoProducto = item["txCodigoProducto"].ToString();
+                    listaProducto.NombreProducto = item["txNombreProducto"].ToString();
+                    listaProducto.MarcaProducto = item["txMarcaProducto"].ToString();
+                    listaProducto.Descripcion = item["txDescripcion"].ToString();
+                    string Precio = item["txPrecioDeVenta"].ToString();
+                    if (Precio != null & Precio != "")
+                    {
+                        listaProducto.PrecioDeVenta = Convert.ToDecimal(item["txPrecioDeVenta"].ToString());
+                    }
+                    else
+                    {
+                        listaProducto.PrecioDeVenta = 0;
+                    }
+                    _listaProductos.Add(listaProducto);
+                }
+            }
+            connection.Close();
+            return _listaProductos;
+        }
+        public static List<Productos> ListarProductosSinPrecio()
+        {
+            connection.Close();
+            connection.Open();
+            List<Productos> _listaProductos = new List<Productos>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
             string proceso = "ListarProductosSinPrecio";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;

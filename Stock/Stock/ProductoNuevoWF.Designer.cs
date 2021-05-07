@@ -273,6 +273,7 @@
             // 
             // textBox2
             // 
+            this.textBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBox2.Location = new System.Drawing.Point(165, 150);
             this.textBox2.MaxLength = 200;
             this.textBox2.Multiline = true;
