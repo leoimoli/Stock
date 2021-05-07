@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Reportes_VentasNuevoWF));
             this.panel8 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -57,13 +57,13 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnVentasDelDia = new System.Windows.Forms.Button();
-            this.btnVentasAyer = new System.Windows.Forms.Button();
-            this.btnVentasUltimosSiete = new System.Windows.Forms.Button();
-            this.btnUltimosTreinta = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnVentasMesAnterior = new System.Windows.Forms.Button();
             this.btnEsteMes = new System.Windows.Forms.Button();
+            this.btnVentasMesAnterior = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnUltimosTreinta = new System.Windows.Forms.Button();
+            this.btnVentasUltimosSiete = new System.Windows.Forms.Button();
+            this.btnVentasAyer = new System.Windows.Forms.Button();
+            this.btnVentasDelDia = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel8.SuspendLayout();
             this.PanelResultado.SuspendLayout();
@@ -133,43 +133,43 @@
             this.dgvVentas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
             this.dgvVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvVentas.ColumnHeadersHeight = 30;
             this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idProducto,
             this.Fecha,
             this.Descripcion});
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvVentas.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvVentas.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvVentas.EnableHeadersVisualStyles = false;
             this.dgvVentas.GridColor = System.Drawing.Color.SteelBlue;
             this.dgvVentas.Location = new System.Drawing.Point(106, 91);
             this.dgvVentas.Name = "dgvVentas";
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
-            dataGridViewCellStyle28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            this.dgvVentas.RowsDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            this.dgvVentas.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvVentas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvVentas.Size = new System.Drawing.Size(534, 224);
             this.dgvVentas.TabIndex = 67;
@@ -370,86 +370,23 @@
             this.panel2.Size = new System.Drawing.Size(248, 544);
             this.panel2.TabIndex = 156;
             // 
-            // btnVentasDelDia
+            // btnEsteMes
             // 
-            this.btnVentasDelDia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.btnVentasDelDia.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnVentasDelDia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVentasDelDia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVentasDelDia.ForeColor = System.Drawing.Color.White;
-            this.btnVentasDelDia.Image = global::Stock.Properties.Resources.lente;
-            this.btnVentasDelDia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVentasDelDia.Location = new System.Drawing.Point(38, 48);
-            this.btnVentasDelDia.Name = "btnVentasDelDia";
-            this.btnVentasDelDia.Size = new System.Drawing.Size(157, 53);
-            this.btnVentasDelDia.TabIndex = 52;
-            this.btnVentasDelDia.Text = "Hoy";
-            this.btnVentasDelDia.UseVisualStyleBackColor = false;
-            this.btnVentasDelDia.Click += new System.EventHandler(this.btnVentasDelDia_Click);
-            // 
-            // btnVentasAyer
-            // 
-            this.btnVentasAyer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.btnVentasAyer.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnVentasAyer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVentasAyer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVentasAyer.ForeColor = System.Drawing.Color.White;
-            this.btnVentasAyer.Image = ((System.Drawing.Image)(resources.GetObject("btnVentasAyer.Image")));
-            this.btnVentasAyer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVentasAyer.Location = new System.Drawing.Point(38, 136);
-            this.btnVentasAyer.Name = "btnVentasAyer";
-            this.btnVentasAyer.Size = new System.Drawing.Size(157, 53);
-            this.btnVentasAyer.TabIndex = 53;
-            this.btnVentasAyer.Text = "Ayer";
-            this.btnVentasAyer.UseVisualStyleBackColor = false;
-            this.btnVentasAyer.Click += new System.EventHandler(this.btnVentasAyer_Click);
-            // 
-            // btnVentasUltimosSiete
-            // 
-            this.btnVentasUltimosSiete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.btnVentasUltimosSiete.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnVentasUltimosSiete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVentasUltimosSiete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVentasUltimosSiete.ForeColor = System.Drawing.Color.White;
-            this.btnVentasUltimosSiete.Image = ((System.Drawing.Image)(resources.GetObject("btnVentasUltimosSiete.Image")));
-            this.btnVentasUltimosSiete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVentasUltimosSiete.Location = new System.Drawing.Point(38, 219);
-            this.btnVentasUltimosSiete.Name = "btnVentasUltimosSiete";
-            this.btnVentasUltimosSiete.Size = new System.Drawing.Size(157, 53);
-            this.btnVentasUltimosSiete.TabIndex = 54;
-            this.btnVentasUltimosSiete.Text = "Últimos 7 días";
-            this.btnVentasUltimosSiete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVentasUltimosSiete.UseVisualStyleBackColor = false;
-            this.btnVentasUltimosSiete.Click += new System.EventHandler(this.btnVentasUltimosSiete_Click);
-            // 
-            // btnUltimosTreinta
-            // 
-            this.btnUltimosTreinta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.btnUltimosTreinta.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnUltimosTreinta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUltimosTreinta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUltimosTreinta.ForeColor = System.Drawing.Color.White;
-            this.btnUltimosTreinta.Image = ((System.Drawing.Image)(resources.GetObject("btnUltimosTreinta.Image")));
-            this.btnUltimosTreinta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUltimosTreinta.Location = new System.Drawing.Point(38, 307);
-            this.btnUltimosTreinta.Name = "btnUltimosTreinta";
-            this.btnUltimosTreinta.Size = new System.Drawing.Size(157, 53);
-            this.btnUltimosTreinta.TabIndex = 55;
-            this.btnUltimosTreinta.Text = "Últimos 30 días";
-            this.btnUltimosTreinta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUltimosTreinta.UseVisualStyleBackColor = false;
-            this.btnUltimosTreinta.Click += new System.EventHandler(this.btnUltimosTreinta_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.SeaGreen;
-            this.label6.Location = new System.Drawing.Point(44, 10);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(151, 20);
-            this.label6.TabIndex = 68;
-            this.label6.Text = "Filtros de Busqueda";
+            this.btnEsteMes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnEsteMes.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnEsteMes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEsteMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEsteMes.ForeColor = System.Drawing.Color.White;
+            this.btnEsteMes.Image = ((System.Drawing.Image)(resources.GetObject("btnEsteMes.Image")));
+            this.btnEsteMes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEsteMes.Location = new System.Drawing.Point(38, 402);
+            this.btnEsteMes.Name = "btnEsteMes";
+            this.btnEsteMes.Size = new System.Drawing.Size(157, 53);
+            this.btnEsteMes.TabIndex = 70;
+            this.btnEsteMes.Text = "Mes actual";
+            this.btnEsteMes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEsteMes.UseVisualStyleBackColor = false;
+            this.btnEsteMes.Click += new System.EventHandler(this.btnEsteMes_Click);
             // 
             // btnVentasMesAnterior
             // 
@@ -469,23 +406,86 @@
             this.btnVentasMesAnterior.UseVisualStyleBackColor = false;
             this.btnVentasMesAnterior.Click += new System.EventHandler(this.btnVentasMesAnterior_Click);
             // 
-            // btnEsteMes
+            // label6
             // 
-            this.btnEsteMes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.btnEsteMes.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnEsteMes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEsteMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEsteMes.ForeColor = System.Drawing.Color.White;
-            this.btnEsteMes.Image = ((System.Drawing.Image)(resources.GetObject("btnEsteMes.Image")));
-            this.btnEsteMes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEsteMes.Location = new System.Drawing.Point(38, 402);
-            this.btnEsteMes.Name = "btnEsteMes";
-            this.btnEsteMes.Size = new System.Drawing.Size(157, 53);
-            this.btnEsteMes.TabIndex = 70;
-            this.btnEsteMes.Text = "Mes actual";
-            this.btnEsteMes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEsteMes.UseVisualStyleBackColor = false;
-            this.btnEsteMes.Click += new System.EventHandler(this.btnEsteMes_Click);
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.SeaGreen;
+            this.label6.Location = new System.Drawing.Point(44, 10);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(151, 20);
+            this.label6.TabIndex = 68;
+            this.label6.Text = "Filtros de Busqueda";
+            // 
+            // btnUltimosTreinta
+            // 
+            this.btnUltimosTreinta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnUltimosTreinta.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnUltimosTreinta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUltimosTreinta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUltimosTreinta.ForeColor = System.Drawing.Color.White;
+            this.btnUltimosTreinta.Image = ((System.Drawing.Image)(resources.GetObject("btnUltimosTreinta.Image")));
+            this.btnUltimosTreinta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUltimosTreinta.Location = new System.Drawing.Point(38, 307);
+            this.btnUltimosTreinta.Name = "btnUltimosTreinta";
+            this.btnUltimosTreinta.Size = new System.Drawing.Size(157, 53);
+            this.btnUltimosTreinta.TabIndex = 55;
+            this.btnUltimosTreinta.Text = "Últimos 30 días";
+            this.btnUltimosTreinta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUltimosTreinta.UseVisualStyleBackColor = false;
+            this.btnUltimosTreinta.Click += new System.EventHandler(this.btnUltimosTreinta_Click);
+            // 
+            // btnVentasUltimosSiete
+            // 
+            this.btnVentasUltimosSiete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnVentasUltimosSiete.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnVentasUltimosSiete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVentasUltimosSiete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVentasUltimosSiete.ForeColor = System.Drawing.Color.White;
+            this.btnVentasUltimosSiete.Image = ((System.Drawing.Image)(resources.GetObject("btnVentasUltimosSiete.Image")));
+            this.btnVentasUltimosSiete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVentasUltimosSiete.Location = new System.Drawing.Point(38, 219);
+            this.btnVentasUltimosSiete.Name = "btnVentasUltimosSiete";
+            this.btnVentasUltimosSiete.Size = new System.Drawing.Size(157, 53);
+            this.btnVentasUltimosSiete.TabIndex = 54;
+            this.btnVentasUltimosSiete.Text = "Últimos 7 días";
+            this.btnVentasUltimosSiete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVentasUltimosSiete.UseVisualStyleBackColor = false;
+            this.btnVentasUltimosSiete.Click += new System.EventHandler(this.btnVentasUltimosSiete_Click);
+            // 
+            // btnVentasAyer
+            // 
+            this.btnVentasAyer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnVentasAyer.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnVentasAyer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVentasAyer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVentasAyer.ForeColor = System.Drawing.Color.White;
+            this.btnVentasAyer.Image = ((System.Drawing.Image)(resources.GetObject("btnVentasAyer.Image")));
+            this.btnVentasAyer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVentasAyer.Location = new System.Drawing.Point(38, 136);
+            this.btnVentasAyer.Name = "btnVentasAyer";
+            this.btnVentasAyer.Size = new System.Drawing.Size(157, 53);
+            this.btnVentasAyer.TabIndex = 53;
+            this.btnVentasAyer.Text = "Ayer";
+            this.btnVentasAyer.UseVisualStyleBackColor = false;
+            this.btnVentasAyer.Click += new System.EventHandler(this.btnVentasAyer_Click);
+            // 
+            // btnVentasDelDia
+            // 
+            this.btnVentasDelDia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnVentasDelDia.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnVentasDelDia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVentasDelDia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVentasDelDia.ForeColor = System.Drawing.Color.White;
+            this.btnVentasDelDia.Image = global::Stock.Properties.Resources.lente;
+            this.btnVentasDelDia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVentasDelDia.Location = new System.Drawing.Point(38, 48);
+            this.btnVentasDelDia.Name = "btnVentasDelDia";
+            this.btnVentasDelDia.Size = new System.Drawing.Size(157, 53);
+            this.btnVentasDelDia.TabIndex = 52;
+            this.btnVentasDelDia.Text = "Hoy";
+            this.btnVentasDelDia.UseVisualStyleBackColor = false;
+            this.btnVentasDelDia.Click += new System.EventHandler(this.btnVentasDelDia_Click);
             // 
             // button1
             // 
@@ -515,6 +515,7 @@
             this.Controls.Add(this.PanelResultado);
             this.Controls.Add(this.panel8);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Reportes_VentasNuevoWF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reportes_VentasNuevoWF";

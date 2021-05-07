@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Free_Sample_By_Wix.ico</ApplicationIcon>
+    <ApplicationIcon>Icono.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="itextsharp">
@@ -653,6 +653,8 @@
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Documentos\Base De Datos\Procedure\1%29LoginUsuario.txt" />
+    <Content Include="Icono.ico" />
+    <Content Include="StoCom_logo_2.ico" />
     <None Include="Resources\StoCom_logo_21.png" />
     <None Include="Resources\StoCom_logo_2.png" />
     <None Include="Resources\sobresalir.png" />
