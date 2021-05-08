@@ -14,8 +14,8 @@ namespace Utils
     {
         string ticket = "";
         string parte1, parte2;
-        string impresora = "Impresora";
-        //WebConfigurationManager.AppSettings["ImpresoraTKT"].ToString(); // nombre exacto de la impresora como esta en el panel de control
+        string impresora = "POS58 Printer";
+        //string impresora = WebConfigurationManager.AppSettings["ImpresoraTKT"].ToString(); // nombre exacto de la impresora como esta en el panel de control
         //ticket.PrintTicket("EPSON TM-T88III Receipt");
         int max, cort;
         public void LineasGuion()
@@ -131,6 +131,7 @@ namespace Utils
             TextoIzquierda("                        ---------");
             TextoIzquierda(("TOTAL").PadRight((32 - string.Format("{0:N2}", total).Length), ' ') + string.Format("{0:N2}", total));
             TextoIzquierda("".PadRight(32, ' '));
+            TextoIzquierda("Gracias por su compra!!!".PadRight(32, ' '));
             if (cae != null)
             {
                 TextoIzquierda("CAE:" + cae);
@@ -138,6 +139,7 @@ namespace Utils
             }
             TextoIzquierda("".PadRight(32, ' '));
             TextoIzquierda("".PadRight(32, ' '));
+            
         }
         public void AgregaArticulo(string descripcion, int cant, double precio, double total)
         {
