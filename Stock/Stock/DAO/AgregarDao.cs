@@ -144,6 +144,7 @@ namespace Stock.DAO
                     cmd.Parameters.AddWithValue("FechaDeAlta_in", item.FechaDeAlta);
                     cmd.Parameters.AddWithValue("idUsuario_in", item.idUsuario);
                     cmd.Parameters.AddWithValue("Foto_in", item.Foto);
+                    cmd.Parameters.AddWithValue("ProductoEspecial_in", item.ProductoEspecial = 0);
                     cmd.ExecuteNonQuery();
                 }
                 Exito = 1;

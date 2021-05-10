@@ -90,7 +90,7 @@ namespace Stock
                         if (list.CodigoProducto == "0")
                         { continue; }
                         list.Descripcion = item[1].ToString();
-                        list.MarcaProducto = "No especifica";
+                        list.MarcaProducto = item[2].ToString();
                         list.idUsuario = Sesion.UsuarioLogueado.IdUsuario;
                         list.FechaDeAlta = DateTime.Now;
                         dgvProductos.Rows.Add(list.CodigoProducto, list.Descripcion, list.MarcaProducto);
