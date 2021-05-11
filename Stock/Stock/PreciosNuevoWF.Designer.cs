@@ -71,7 +71,7 @@
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(13, 514);
+            this.btnNuevo.Location = new System.Drawing.Point(13, 525);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(77, 38);
             this.btnNuevo.TabIndex = 57;
@@ -84,7 +84,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(379, 56);
+            this.label6.Location = new System.Drawing.Point(379, 73);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(107, 13);
             this.label6.TabIndex = 56;
@@ -95,7 +95,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(10, 56);
+            this.label5.Location = new System.Drawing.Point(10, 73);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(139, 13);
             this.label5.TabIndex = 55;
@@ -104,7 +104,7 @@
             // txtCodigoBus
             // 
             this.txtCodigoBus.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCodigoBus.Location = new System.Drawing.Point(492, 53);
+            this.txtCodigoBus.Location = new System.Drawing.Point(492, 70);
             this.txtCodigoBus.Name = "txtCodigoBus";
             this.txtCodigoBus.Size = new System.Drawing.Size(142, 20);
             this.txtCodigoBus.TabIndex = 54;
@@ -113,7 +113,7 @@
             // txtDescipcionBus
             // 
             this.txtDescipcionBus.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDescipcionBus.Location = new System.Drawing.Point(155, 53);
+            this.txtDescipcionBus.Location = new System.Drawing.Point(155, 70);
             this.txtDescipcionBus.Name = "txtDescipcionBus";
             this.txtDescipcionBus.Size = new System.Drawing.Size(219, 20);
             this.txtDescipcionBus.TabIndex = 53;
@@ -126,7 +126,7 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(96, 514);
+            this.btnEditar.Location = new System.Drawing.Point(96, 525);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(77, 38);
             this.btnEditar.TabIndex = 52;
@@ -148,7 +148,7 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtValorUni);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(640, 40);
+            this.panel1.Location = new System.Drawing.Point(640, 51);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(448, 468);
             this.panel1.TabIndex = 51;
@@ -286,7 +286,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(10, 23);
+            this.label1.Location = new System.Drawing.Point(10, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(186, 24);
             this.label1.TabIndex = 50;
@@ -324,7 +324,7 @@
             this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProductos.EnableHeadersVisualStyles = false;
             this.dgvProductos.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvProductos.Location = new System.Drawing.Point(13, 95);
+            this.dgvProductos.Location = new System.Drawing.Point(13, 106);
             this.dgvProductos.Name = "dgvProductos";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
@@ -378,7 +378,7 @@
             this.btnMasivos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMasivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMasivos.ForeColor = System.Drawing.Color.White;
-            this.btnMasivos.Location = new System.Drawing.Point(179, 514);
+            this.btnMasivos.Location = new System.Drawing.Point(179, 525);
             this.btnMasivos.Name = "btnMasivos";
             this.btnMasivos.Size = new System.Drawing.Size(77, 38);
             this.btnMasivos.TabIndex = 58;
@@ -391,7 +391,7 @@
             this.lblPrecioNulos.AutoSize = true;
             this.lblPrecioNulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrecioNulos.ForeColor = System.Drawing.Color.White;
-            this.lblPrecioNulos.Location = new System.Drawing.Point(10, 79);
+            this.lblPrecioNulos.Location = new System.Drawing.Point(10, 90);
             this.lblPrecioNulos.Name = "lblPrecioNulos";
             this.lblPrecioNulos.Size = new System.Drawing.Size(177, 13);
             this.lblPrecioNulos.TabIndex = 59;

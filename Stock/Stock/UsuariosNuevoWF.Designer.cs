@@ -75,7 +75,7 @@
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(13, 514);
+            this.btnNuevo.Location = new System.Drawing.Point(13, 535);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(77, 28);
             this.btnNuevo.TabIndex = 66;
@@ -88,7 +88,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(390, 56);
+            this.label6.Location = new System.Drawing.Point(390, 77);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(94, 13);
             this.label6.TabIndex = 65;
@@ -99,7 +99,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(10, 56);
+            this.label5.Location = new System.Drawing.Point(10, 77);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(174, 13);
             this.label5.TabIndex = 64;
@@ -108,7 +108,7 @@
             // txtCodigoBus
             // 
             this.txtCodigoBus.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCodigoBus.Location = new System.Drawing.Point(492, 53);
+            this.txtCodigoBus.Location = new System.Drawing.Point(492, 74);
             this.txtCodigoBus.Name = "txtCodigoBus";
             this.txtCodigoBus.Size = new System.Drawing.Size(142, 20);
             this.txtCodigoBus.TabIndex = 63;
@@ -117,7 +117,7 @@
             // txtDescipcionBus
             // 
             this.txtDescipcionBus.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDescipcionBus.Location = new System.Drawing.Point(183, 53);
+            this.txtDescipcionBus.Location = new System.Drawing.Point(183, 74);
             this.txtDescipcionBus.Name = "txtDescipcionBus";
             this.txtDescipcionBus.Size = new System.Drawing.Size(197, 20);
             this.txtDescipcionBus.TabIndex = 62;
@@ -130,7 +130,7 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(96, 514);
+            this.btnEditar.Location = new System.Drawing.Point(96, 535);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(77, 28);
             this.btnEditar.TabIndex = 61;
@@ -159,7 +159,7 @@
             this.panel1.Controls.Add(this.progressBar1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnGuardar);
-            this.panel1.Location = new System.Drawing.Point(649, 39);
+            this.panel1.Location = new System.Drawing.Point(649, 60);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(439, 468);
             this.panel1.TabIndex = 60;
@@ -363,7 +363,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(13, 23);
+            this.label1.Location = new System.Drawing.Point(13, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(174, 24);
             this.label1.TabIndex = 59;
@@ -400,7 +400,7 @@
             this.dgvUsuarios.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvUsuarios.EnableHeadersVisualStyles = false;
             this.dgvUsuarios.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvUsuarios.Location = new System.Drawing.Point(13, 79);
+            this.dgvUsuarios.Location = new System.Drawing.Point(13, 100);
             this.dgvUsuarios.Name = "dgvUsuarios";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));

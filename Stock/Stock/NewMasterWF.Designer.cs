@@ -71,6 +71,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.btnMenuPequeño = new System.Windows.Forms.PictureBox();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.MenuCabecera.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
@@ -86,6 +89,8 @@
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenuPequeño)).BeginInit();
+            this.panel13.SuspendLayout();
+            this.panel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuCabecera
@@ -546,10 +551,11 @@
             // PanelContenedor
             // 
             this.PanelContenedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
+            this.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelContenedor.ForeColor = System.Drawing.Color.White;
-            this.PanelContenedor.Location = new System.Drawing.Point(201, 86);
+            this.PanelContenedor.Location = new System.Drawing.Point(201, 35);
             this.PanelContenedor.Name = "PanelContenedor";
-            this.PanelContenedor.Size = new System.Drawing.Size(1099, 564);
+            this.PanelContenedor.Size = new System.Drawing.Size(1099, 615);
             this.PanelContenedor.TabIndex = 1;
             this.PanelContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelContenedor_Paint);
             // 
@@ -559,7 +565,8 @@
             this.panel8.Controls.Add(this.label6);
             this.panel8.Controls.Add(this.pictureBox5);
             this.panel8.Controls.Add(this.btnMenuPequeño);
-            this.panel8.Location = new System.Drawing.Point(201, 38);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(201, 35);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(1099, 45);
             this.panel8.TabIndex = 2;
@@ -569,7 +576,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(934, 17);
+            this.label6.Location = new System.Drawing.Point(964, 17);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(125, 17);
             this.label6.TabIndex = 3;
@@ -578,7 +585,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = global::Stock.Properties.Resources.usuario;
-            this.pictureBox5.Location = new System.Drawing.Point(893, 6);
+            this.pictureBox5.Location = new System.Drawing.Point(923, 6);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(35, 35);
             this.pictureBox5.TabIndex = 2;
@@ -596,12 +603,42 @@
             this.btnMenuPequeño.Visible = false;
             this.btnMenuPequeño.Click += new System.EventHandler(this.btnMenuPequeño_Click);
             // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.panel14);
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel13.Location = new System.Drawing.Point(201, 601);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(1099, 49);
+            this.panel13.TabIndex = 3;
+            // 
+            // panel14
+            // 
+            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.panel14.Controls.Add(this.label7);
+            this.panel14.Location = new System.Drawing.Point(0, 3);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(1099, 46);
+            this.panel14.TabIndex = 8;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(360, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(272, 17);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "StoCom(Sistema Stock Comercial) V-1.0.0";
+            // 
             // NewMasterWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(1300, 650);
+            this.Controls.Add(this.panel13);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.PanelContenedor);
             this.Controls.Add(this.MenuVertical);
@@ -630,6 +667,9 @@
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenuPequeño)).EndInit();
+            this.panel13.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -677,5 +717,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Button btnInicio;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Label label7;
     }
 }

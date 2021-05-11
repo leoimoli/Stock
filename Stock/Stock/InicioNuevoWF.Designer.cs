@@ -95,7 +95,7 @@
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.panel3);
-            this.panel1.Location = new System.Drawing.Point(60, 63);
+            this.panel1.Location = new System.Drawing.Point(60, 69);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(905, 144);
             this.panel1.TabIndex = 0;
@@ -393,7 +393,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(65, 36);
+            this.label1.Location = new System.Drawing.Point(65, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(207, 24);
             this.label1.TabIndex = 2;
@@ -429,7 +429,7 @@
             this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProductos.EnableHeadersVisualStyles = false;
             this.dgvProductos.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvProductos.Location = new System.Drawing.Point(60, 241);
+            this.dgvProductos.Location = new System.Drawing.Point(60, 247);
             this.dgvProductos.Name = "dgvProductos";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
@@ -466,7 +466,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(65, 214);
+            this.label8.Location = new System.Drawing.Point(65, 220);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(231, 24);
             this.label8.TabIndex = 4;
@@ -477,7 +477,7 @@
             this.lblMaster_FechaHoraReal.AutoSize = true;
             this.lblMaster_FechaHoraReal.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaster_FechaHoraReal.ForeColor = System.Drawing.Color.White;
-            this.lblMaster_FechaHoraReal.Location = new System.Drawing.Point(685, 339);
+            this.lblMaster_FechaHoraReal.Location = new System.Drawing.Point(721, 342);
             this.lblMaster_FechaHoraReal.Name = "lblMaster_FechaHoraReal";
             this.lblMaster_FechaHoraReal.Size = new System.Drawing.Size(226, 78);
             this.lblMaster_FechaHoraReal.TabIndex = 5;
@@ -488,7 +488,7 @@
             this.lblDia.AutoSize = true;
             this.lblDia.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDia.ForeColor = System.Drawing.Color.SeaGreen;
-            this.lblDia.Location = new System.Drawing.Point(662, 417);
+            this.lblDia.Location = new System.Drawing.Point(698, 420);
             this.lblDia.Name = "lblDia";
             this.lblDia.Size = new System.Drawing.Size(96, 33);
             this.lblDia.TabIndex = 6;
@@ -502,6 +502,7 @@
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(1099, 30);
             this.panel13.TabIndex = 7;
+            this.panel13.Visible = false;
             // 
             // label7
             // 

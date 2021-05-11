@@ -21,7 +21,7 @@ namespace Stock
         }
         private void VentasNuevoWF_Load(object sender, EventArgs e)
         {
-            label2.Text = Sesion.UsuarioLogueado.Apellido + "  " + Sesion.UsuarioLogueado.Nombre;
+            lblUsuario.Text = Sesion.UsuarioLogueado.Apellido + "  " + Sesion.UsuarioLogueado.Nombre;
             txtNombreBuscar.Focus();
             listaProductos = new List<Entidades.ListaProductoVenta>();
             txtNombreBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompletePorDescripcion.Autocomplete();
@@ -358,7 +358,7 @@ namespace Stock
         private void BloquearPantalla()
         {
             dgvVentas.Enabled = false;
-            panel1.Enabled = false;
+            panel4.Enabled = false;
             txtCodigo.Enabled = false;
             txtNombreBuscar.Enabled = false;
             txtCantidad.Enabled = false;
@@ -413,7 +413,7 @@ namespace Stock
         private void DesbloquearPantalla()
         {
             dgvVentas.Enabled = true;
-            panel1.Enabled = true;
+            panel4.Enabled = true;
             txtCodigo.Enabled = true;
             txtNombreBuscar.Enabled = true;
             txtCantidad.Enabled = true;

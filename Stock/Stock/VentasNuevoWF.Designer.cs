@@ -34,45 +34,54 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentasNuevoWF));
             this.dgvVentas = new System.Windows.Forms.DataGridView();
-            this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNombreBuscar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnCobrar = new System.Windows.Forms.Button();
-            this.lblTotalPagarReal = new System.Windows.Forms.Button();
-            this.lblTotalPagar = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.lblBack = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
-            this.btnMaximizar = new System.Windows.Forms.PictureBox();
-            this.btnRestaurar = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtMonto = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lblTotalPagarReal = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRestaurar = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnMaximizar = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel14.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvVentas
@@ -107,7 +116,7 @@
             this.dgvVentas.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvVentas.EnableHeadersVisualStyles = false;
             this.dgvVentas.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvVentas.Location = new System.Drawing.Point(25, 93);
+            this.dgvVentas.Location = new System.Drawing.Point(28, 81);
             this.dgvVentas.Name = "dgvVentas";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
@@ -120,10 +129,208 @@
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
             this.dgvVentas.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvVentas.Size = new System.Drawing.Size(845, 429);
+            this.dgvVentas.Size = new System.Drawing.Size(850, 420);
             this.dgvVentas.TabIndex = 7;
             this.dgvVentas.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_CellEndEdit);
             this.dgvVentas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvVentas_KeyDown);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(4, 12);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(107, 13);
+            this.label6.TabIndex = 49;
+            this.label6.Text = "Buscar porCódigo";
+            this.label6.Visible = false;
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCodigo.Location = new System.Drawing.Point(117, 9);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(195, 20);
+            this.txtCodigo.TabIndex = 48;
+            this.txtCodigo.Visible = false;
+            this.txtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigo_KeyDown);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(299, 56);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(101, 13);
+            this.label5.TabIndex = 51;
+            this.label5.Text = "Buscar Producto";
+            // 
+            // txtNombreBuscar
+            // 
+            this.txtNombreBuscar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNombreBuscar.Location = new System.Drawing.Point(415, 53);
+            this.txtNombreBuscar.Name = "txtNombreBuscar";
+            this.txtNombreBuscar.Size = new System.Drawing.Size(463, 20);
+            this.txtNombreBuscar.TabIndex = 1;
+            this.txtNombreBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombreBuscar_KeyDown);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(55, 56);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 53;
+            this.label1.Text = "Cantidad";
+            // 
+            // txtCantidad
+            // 
+            this.txtCantidad.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCantidad.Location = new System.Drawing.Point(118, 53);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(137, 20);
+            this.txtCantidad.TabIndex = 0;
+            this.txtCantidad.Text = "1";
+            this.txtCantidad.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCantidad_KeyDown);
+            this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
+            // 
+            // lblBack
+            // 
+            this.lblBack.AutoSize = true;
+            this.lblBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBack.ForeColor = System.Drawing.Color.White;
+            this.lblBack.Location = new System.Drawing.Point(40, 504);
+            this.lblBack.Name = "lblBack";
+            this.lblBack.Size = new System.Drawing.Size(152, 17);
+            this.lblBack.TabIndex = 148;
+            this.lblBack.Text = "(Back)Limpiar Grilla";
+            this.lblBack.Visible = false;
+            // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMinimizar.Image = global::Stock.Properties.Resources.menos__2_;
+            this.btnMinimizar.Location = new System.Drawing.Point(1445, 18);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(25, 25);
+            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimizar.TabIndex = 4;
+            this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrar.Image = global::Stock.Properties.Resources.cancelar1;
+            this.btnCerrar.Location = new System.Drawing.Point(1478, 18);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(25, 25);
+            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnCerrar.TabIndex = 3;
+            this.btnCerrar.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(463, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(169, 24);
+            this.label3.TabIndex = 151;
+            this.label3.Text = "Registro de Ventas";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtMonto);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Location = new System.Drawing.Point(373, 302);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(205, 115);
+            this.groupBox1.TabIndex = 152;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Visible = false;
+            // 
+            // txtMonto
+            // 
+            this.txtMonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMonto.Location = new System.Drawing.Point(45, 60);
+            this.txtMonto.Multiline = true;
+            this.txtMonto.Name = "txtMonto";
+            this.txtMonto.Size = new System.Drawing.Size(114, 44);
+            this.txtMonto.TabIndex = 153;
+            this.txtMonto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMonto_KeyDown);
+            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(39, 30);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(131, 24);
+            this.label4.TabIndex = 152;
+            this.label4.Text = "Ingrese Monto";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.panel2.Controls.Add(this.btnRestaurar);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.btnMaximizar);
+            this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1099, 43);
+            this.panel2.TabIndex = 153;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.panel1);
+            this.panel3.Controls.Add(this.txtNombreBuscar);
+            this.panel3.Controls.Add(this.txtCodigo);
+            this.panel3.Controls.Add(this.lblBack);
+            this.panel3.Controls.Add(this.groupBox1);
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.dgvVentas);
+            this.panel3.Controls.Add(this.txtCantidad);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 43);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1099, 521);
+            this.panel3.TabIndex = 154;
+            // 
+            // panel14
+            // 
+            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.panel14.Controls.Add(this.label7);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel14.Location = new System.Drawing.Point(0, 518);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(1099, 46);
+            this.panel14.TabIndex = 153;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(360, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(272, 17);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "StoCom(Sistema Stock Comercial) V-1.0.0";
             // 
             // idProducto
             // 
@@ -144,7 +351,7 @@
             this.Descripcion.HeaderText = "Descripción";
             this.Descripcion.Name = "Descripcion";
             this.Descripcion.ReadOnly = true;
-            this.Descripcion.Width = 250;
+            this.Descripcion.Width = 255;
             // 
             // Marca
             // 
@@ -166,95 +373,33 @@
             this.PrecioTotal.ReadOnly = true;
             this.PrecioTotal.Width = 130;
             // 
-            // label6
+            // panel4
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(16, 15);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(107, 13);
-            this.label6.TabIndex = 49;
-            this.label6.Text = "Buscar porCódigo";
-            this.label6.Visible = false;
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.panel4.Controls.Add(this.button1);
+            this.panel4.Controls.Add(this.lblTotalPagarReal);
+            this.panel4.Controls.Add(this.label8);
+            this.panel4.Controls.Add(this.lblUsuario);
+            this.panel4.Controls.Add(this.pictureBox4);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel4.Location = new System.Drawing.Point(10, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(208, 521);
+            this.panel4.TabIndex = 153;
             // 
-            // txtCodigo
+            // button1
             // 
-            this.txtCodigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCodigo.Location = new System.Drawing.Point(129, 12);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(195, 20);
-            this.txtCodigo.TabIndex = 48;
-            this.txtCodigo.Visible = false;
-            this.txtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigo_KeyDown);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(310, 70);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 13);
-            this.label5.TabIndex = 51;
-            this.label5.Text = "Buscar Producto";
-            // 
-            // txtNombreBuscar
-            // 
-            this.txtNombreBuscar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNombreBuscar.Location = new System.Drawing.Point(426, 67);
-            this.txtNombreBuscar.Name = "txtNombreBuscar";
-            this.txtNombreBuscar.Size = new System.Drawing.Size(417, 20);
-            this.txtNombreBuscar.TabIndex = 1;
-            this.txtNombreBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombreBuscar_KeyDown);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(66, 70);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 53;
-            this.label1.Text = "Cantidad";
-            // 
-            // txtCantidad
-            // 
-            this.txtCantidad.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCantidad.Location = new System.Drawing.Point(129, 67);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(137, 20);
-            this.txtCantidad.TabIndex = 0;
-            this.txtCantidad.Text = "1";
-            this.txtCantidad.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCantidad_KeyDown);
-            this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.panel1.Controls.Add(this.btnCobrar);
-            this.panel1.Controls.Add(this.lblTotalPagarReal);
-            this.panel1.Controls.Add(this.lblTotalPagar);
-            this.panel1.Location = new System.Drawing.Point(886, 291);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 231);
-            this.panel1.TabIndex = 54;
-            // 
-            // btnCobrar
-            // 
-            this.btnCobrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.btnCobrar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnCobrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCobrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCobrar.ForeColor = System.Drawing.Color.White;
-            this.btnCobrar.Location = new System.Drawing.Point(60, 155);
-            this.btnCobrar.Name = "btnCobrar";
-            this.btnCobrar.Size = new System.Drawing.Size(88, 54);
-            this.btnCobrar.TabIndex = 0;
-            this.btnCobrar.Text = "(F12) Cobrar";
-            this.btnCobrar.UseVisualStyleBackColor = false;
-            this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(78, 305);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 54);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "(F12) Cobrar";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // lblTotalPagarReal
             // 
@@ -263,199 +408,115 @@
             this.lblTotalPagarReal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTotalPagarReal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalPagarReal.ForeColor = System.Drawing.Color.White;
-            this.lblTotalPagarReal.Location = new System.Drawing.Point(30, 70);
+            this.lblTotalPagarReal.Location = new System.Drawing.Point(48, 220);
             this.lblTotalPagarReal.Name = "lblTotalPagarReal";
             this.lblTotalPagarReal.Size = new System.Drawing.Size(147, 60);
             this.lblTotalPagarReal.TabIndex = 57;
             this.lblTotalPagarReal.UseVisualStyleBackColor = false;
             // 
-            // lblTotalPagar
+            // label8
             // 
-            this.lblTotalPagar.AutoSize = true;
-            this.lblTotalPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalPagar.ForeColor = System.Drawing.Color.White;
-            this.lblTotalPagar.Location = new System.Drawing.Point(53, 25);
-            this.lblTotalPagar.Name = "lblTotalPagar";
-            this.lblTotalPagar.Size = new System.Drawing.Size(98, 39);
-            this.lblTotalPagar.TabIndex = 55;
-            this.lblTotalPagar.Text = "Total";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(71, 175);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(98, 39);
+            this.label8.TabIndex = 55;
+            this.label8.Text = "Total";
             // 
-            // label2
+            // lblUsuario
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(876, 116);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(252, 33);
-            this.label2.TabIndex = 56;
-            this.label2.Text = "Usuario Logueado";
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblUsuario.Location = new System.Drawing.Point(19, 21);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(186, 23);
+            this.lblUsuario.TabIndex = 56;
+            this.lblUsuario.Text = "Usuario Logueado";
             // 
-            // lblBack
+            // pictureBox4
             // 
-            this.lblBack.AutoSize = true;
-            this.lblBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBack.ForeColor = System.Drawing.Color.White;
-            this.lblBack.Location = new System.Drawing.Point(27, 542);
-            this.lblBack.Name = "lblBack";
-            this.lblBack.Size = new System.Drawing.Size(152, 17);
-            this.lblBack.TabIndex = 148;
-            this.lblBack.Text = "(Back)Limpiar Grilla";
-            this.lblBack.Visible = false;
+            this.pictureBox4.Image = global::Stock.Properties.Resources.usuario__1_;
+            this.pictureBox4.Location = new System.Drawing.Point(56, 64);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(110, 88);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 57;
+            this.pictureBox4.TabStop = false;
             // 
-            // pictureBox2
+            // panel1
             // 
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Image = global::Stock.Properties.Resources.menos__2_1;
-            this.pictureBox2.Location = new System.Drawing.Point(1046, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(26, 22);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 146;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Stock.Properties.Resources.usuario__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(937, 164);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(110, 88);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 57;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Image = global::Stock.Properties.Resources.cancelar2;
-            this.pictureBox3.Location = new System.Drawing.Point(1107, 2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(26, 22);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 145;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMinimizar.Image = global::Stock.Properties.Resources.menos__2_;
-            this.btnMinimizar.Location = new System.Drawing.Point(1481, 1);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(25, 25);
-            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMinimizar.TabIndex = 4;
-            this.btnMinimizar.TabStop = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCerrar.Image = global::Stock.Properties.Resources.cancelar1;
-            this.btnCerrar.Location = new System.Drawing.Point(1514, 1);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(25, 25);
-            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnCerrar.TabIndex = 3;
-            this.btnCerrar.TabStop = false;
-            // 
-            // btnMaximizar
-            // 
-            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMaximizar.Image = global::Stock.Properties.Resources.maximizar;
-            this.btnMaximizar.Location = new System.Drawing.Point(1078, 0);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(25, 25);
-            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMaximizar.TabIndex = 149;
-            this.btnMaximizar.TabStop = false;
-            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(881, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(218, 521);
+            this.panel1.TabIndex = 58;
             // 
             // btnRestaurar
             // 
             this.btnRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRestaurar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRestaurar.Image = global::Stock.Properties.Resources.restaurar__1_;
-            this.btnRestaurar.Location = new System.Drawing.Point(1079, 1);
+            this.btnRestaurar.Location = new System.Drawing.Point(1030, 8);
             this.btnRestaurar.Name = "btnRestaurar";
             this.btnRestaurar.Size = new System.Drawing.Size(25, 25);
             this.btnRestaurar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnRestaurar.TabIndex = 150;
+            this.btnRestaurar.TabIndex = 155;
             this.btnRestaurar.TabStop = false;
             this.btnRestaurar.Visible = false;
             this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
             // 
-            // label3
+            // pictureBox1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(422, 7);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(169, 24);
-            this.label3.TabIndex = 151;
-            this.label3.Text = "Registro de Ventas";
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = global::Stock.Properties.Resources.menos__2_;
+            this.pictureBox1.Location = new System.Drawing.Point(999, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 153;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
-            // groupBox1
+            // btnMaximizar
             // 
-            this.groupBox1.Controls.Add(this.txtMonto);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(357, 231);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(205, 93);
-            this.groupBox1.TabIndex = 152;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Visible = false;
+            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMaximizar.Image = global::Stock.Properties.Resources.maximizar;
+            this.btnMaximizar.Location = new System.Drawing.Point(1030, 8);
+            this.btnMaximizar.Name = "btnMaximizar";
+            this.btnMaximizar.Size = new System.Drawing.Size(25, 25);
+            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMaximizar.TabIndex = 154;
+            this.btnMaximizar.TabStop = false;
+            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
             // 
-            // txtMonto
+            // pictureBox2
             // 
-            this.txtMonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMonto.Location = new System.Drawing.Point(45, 43);
-            this.txtMonto.Multiline = true;
-            this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Size = new System.Drawing.Size(114, 44);
-            this.txtMonto.TabIndex = 153;
-            this.txtMonto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMonto_KeyDown);
-            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(39, 13);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(131, 24);
-            this.label4.TabIndex = 152;
-            this.label4.Text = "Ingrese Monto";
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Image = global::Stock.Properties.Resources.cancelar1;
+            this.pictureBox2.Location = new System.Drawing.Point(1061, 8);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 152;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // VentasNuevoWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
-            this.ClientSize = new System.Drawing.Size(1135, 600);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnRestaurar);
-            this.Controls.Add(this.btnMaximizar);
-            this.Controls.Add(this.lblBack);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtCantidad);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtNombreBuscar);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtCodigo);
-            this.Controls.Add(this.dgvVentas);
+            this.ClientSize = new System.Drawing.Size(1099, 564);
+            this.Controls.Add(this.panel14);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnMinimizar);
             this.Controls.Add(this.btnCerrar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -466,19 +527,25 @@
             this.Load += new System.EventHandler(this.VentasNuevoWF_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.VentasNuevoWF_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -492,26 +559,31 @@
         private System.Windows.Forms.TextBox txtNombreBuscar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCantidad;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblTotalPagar;
+        private System.Windows.Forms.Label lblBack;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtMonto;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridViewTextBoxColumn idProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioTotal;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button lblTotalPagarReal;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnCobrar;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label lblBack;
-        private System.Windows.Forms.PictureBox btnMaximizar;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox btnRestaurar;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtMonto;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox btnMaximizar;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
