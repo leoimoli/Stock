@@ -37,6 +37,8 @@ namespace Stock
         {
             try
             {
+                FuncionBuscartexto();
+                dgvUsuarios.Rows.Clear();
                 List<Entidades.Usuarios> Lista = Negocio.Consultar.ListaDeUsuarios();
                 if (Lista.Count > 0)
                 {
@@ -186,6 +188,7 @@ namespace Stock
                                                          MessageBoxButtons.OK,
                                                          MessageBoxIcon.Asterisk);
                             LimpiarCampos();
+                            FuncionListarUsuarios();
                         }
                     }
                 }
@@ -202,6 +205,7 @@ namespace Stock
                                                      MessageBoxButtons.OK,
                                                      MessageBoxIcon.Asterisk);
                         LimpiarCampos();
+                        FuncionListarUsuarios();
                     }
                 }
             }

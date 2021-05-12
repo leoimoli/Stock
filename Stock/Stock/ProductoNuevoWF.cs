@@ -29,7 +29,7 @@ namespace Stock
                 }
                 else
                 {
-                    btnCargaMasiva.Visible = true;
+                    btnCargaMasiva.Visible = false;
                 }
                 FuncionListarProductos();
                 CargarCombo();
@@ -289,6 +289,10 @@ namespace Stock
             }
             catch (Exception ex)
             { }
+        }      
+        private void ActualizarCombo(object sender, EventArgs e)
+        {
+            CargarCombo();
         }
     }
 }

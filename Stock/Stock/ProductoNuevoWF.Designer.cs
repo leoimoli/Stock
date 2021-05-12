@@ -270,6 +270,7 @@
             this.cmbMarca.Name = "cmbMarca";
             this.cmbMarca.Size = new System.Drawing.Size(227, 21);
             this.cmbMarca.TabIndex = 40;
+            this.cmbMarca.Click += new System.EventHandler(this.ActualizarCombo);
             // 
             // textBox2
             // 
