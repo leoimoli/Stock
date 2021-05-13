@@ -153,7 +153,8 @@ namespace Stock
                 _listaEspeciales[0].Cantidad = cantidadingresada;
                 var lista = _listaEspeciales.First();
                 listaProductos.Add(lista);
-                decimal PrecioFinal = MontoEspecial;
+                lista.PrecioVenta = MontoEspecial;
+                decimal PrecioFinal = MontoEspecial;               
                 dgvVentas.Rows.Add(lista.idProducto, lista.CodigoProducto, lista.NombreProducto, cantidadingresada, lista.PrecioVenta, PrecioFinal);
                 txtCodigo.Clear();
                 txtCantidad.Text = "1";
