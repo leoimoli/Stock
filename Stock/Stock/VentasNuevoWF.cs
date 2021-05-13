@@ -317,7 +317,8 @@ namespace Stock
             //    ticket.Encabezado(venta.IdVenta.ToString(), false);
             foreach (var item in listaProducto)
             {
-                ticket.AgregaArticulo(item.NombreProducto, item.Cantidad, Convert.ToDouble(item.PrecioUnitario), Convert.ToDouble(item.PrecioVenta));
+               double ProductoMontoTotal =Convert.ToDouble(item.Cantidad * item.PrecioVenta);
+                ticket.AgregaArticulo(item.NombreProducto, item.Cantidad, Convert.ToDouble(item.PrecioVenta), ProductoMontoTotal);
             }
             //if (venta.Comprobante.Cae_afip != null && venta.Comprobante.Cae_afip != "")
             //ticket.AgregaTotales(venta.Total, venta.Comprobante.Cae_afip, venta.Comprobante.Fecha_vto_cae_afip.Value.ToShortDateString());

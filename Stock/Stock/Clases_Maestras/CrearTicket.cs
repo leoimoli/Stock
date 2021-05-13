@@ -143,7 +143,7 @@ namespace Utils
         }
         public void AgregaArticulo(string descripcion, int cant, double precio, double total)
         {
-            TextoIzquierda(cant.ToString() + " x " + string.Format("{0:N2}", precio) + "(21.00)".PadLeft(19 - (cant.ToString().Length + string.Format("{0:N2}", precio).Length), ' '));
+            TextoIzquierda(cant.ToString() + " x " + string.Format("{0:N2}", precio) + "(21.00)".PadLeft(19 - (cant.ToString().Length + string.Format("{0:N2}", total).Length), ' '));
             max = descripcion.Length;
             while (max > 23)
             {
