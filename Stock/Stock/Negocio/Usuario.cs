@@ -77,7 +77,7 @@ namespace Stock.Negocio
                                            MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
-            if (_usuario.Perfil != "ADMINISTRADOR" & _usuario.Perfil != "OPERADOR" & _usuario.Perfil != "SUPERADMIN")
+            if (_usuario.Perfil != "1" & _usuario.Perfil != "2" )
             {
                 const string message = "El perfil ingresado es inexistente.";
                 const string caption = "Error";

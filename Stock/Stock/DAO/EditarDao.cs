@@ -248,5 +248,77 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
+        public static bool EliminarVenta(int idVenta)
+        {
+            bool exito = false;
+            exito = ActualizarStockVentaCancelada(idVenta);
+            if (exito == true)
+            {
+                connection.Close();
+                connection.Open();
+                string Actualizar = "EliminarDetalleVenta";
+                MySqlCommand cmd = new MySqlCommand(Actualizar, connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("idVenta_in", idVenta);
+                cmd.ExecuteNonQuery();
+                exito = true;
+                if (exito == true)
+                {
+                    connection.Close();
+                    connection.Open();
+                    string Actualizar2 = "EliminarVenta";
+                    MySqlCommand cmd2 = new MySqlCommand(Actualizar2, connection);
+                    cmd2.CommandType = CommandType.StoredProcedure;
+                    cmd2.Parameters.AddWithValue("idVenta_in", idVenta);
+                    cmd2.ExecuteNonQuery();
+                    exito = true;
+                }
+            }
+            connection.Close();
+            return exito;
+        }
+        private static bool ActualizarStockVentaCancelada(int idVenta)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            List<ListaStock> _stock = new List<ListaStock>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("idVenta_in", idVenta) };
+            string proceso = "BuscarProductosPorVenta";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaStock lista = new Entidades.ListaStock();
+                    lista.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    lista.Cantidad = Convert.ToInt32(item["txCantidad"].ToString());
+                    _stock.Add(lista);
+                }
+            }
+            if (_stock.Count > 0)
+            {
+                List<int> stockExistente = new List<int>();
+                foreach (var item in _stock)
+                {
+                    stockExistente = DAO.ConsultarDao.ValidarStockExistente(item.idProducto);
+                    if (stockExistente.Count > 0)
+                    {
+                        int cant = Convert.ToInt32(stockExistente[0].ToString());
+                        item.Cantidad = item.Cantidad + cant;
+                        ActualizarStock(item.idProducto, item.Cantidad);
+                    }
+                }
+            }
+            exito = true;
+            connection.Close();
+            return exito;
+        }
     }
 }

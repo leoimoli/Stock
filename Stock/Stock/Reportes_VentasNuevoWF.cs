@@ -242,6 +242,56 @@ namespace Stock
             _master.Show();
             Hide();
         }
+        private void Reportes_VentasNuevoWF_Load(object sender, EventArgs e)
+        {
+            string perfil = Sesion.UsuarioLogueado.Perfil;
+            if (perfil != "1" && perfil != "SUPER ADMIN")
+            {
+                btnEliminar.Visible = false;
+            }
+            else { btnEliminar.Visible = true; }
+        }
+        public static int idVenta;
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            List<Entidades.HistorialProductoPrecioDeVenta> _precio = new List<Entidades.HistorialProductoPrecioDeVenta>();
+            idVenta = Convert.ToInt32(this.dgvVentas.CurrentRow.Cells[0].Value);
+            string msj = "ATENCIÓN: Usted desea eliminar la venta Nro: '" + idVenta + "'?";
+            //const string message = msj;
+            const string caption = "Consulta";
+            var result = MessageBox.Show(msj, caption,
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
+            {
+                if (result == DialogResult.Yes)
+                {
+                    bool exito = DAO.EditarDao.EliminarVenta(idVenta);
+                    if (exito == true)
+                    {
+                        const string message2 = "Se elimino la venta exitosamente.";
+                        const string caption2 = "Éxito";
+                        var result2 = MessageBox.Show(message2, caption2,
+                                                     MessageBoxButtons.OK,
+                                                     MessageBoxIcon.Asterisk);
+                        LimpiarCampos();
+                    }
+                   else
+                    {
+                        const string message2 = "ATENCIÓN: No se pudo eliminar la venta.";
+                        const string caption2 = "Atención";
+                        var result2 = MessageBox.Show(message2, caption2,
+                                                     MessageBoxButtons.OK,
+                                                     MessageBoxIcon.Asterisk);
+                        LimpiarCampos();
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+        }
     }
 }
 

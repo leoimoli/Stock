@@ -22,6 +22,19 @@ namespace Stock
         {
             try
             {
+                string perfil = Sesion.UsuarioLogueado.Perfil;
+                if (perfil != "1" && perfil != "SUPER ADMIN")
+                {
+                    btnNuevo.Visible = false;
+                    btnEditar.Visible = false;
+                    btnMasivos.Visible = false;
+                }
+                else
+                {
+                    btnNuevo.Visible = true;
+                    btnEditar.Visible = true;
+                    btnMasivos.Visible = true;
+                }
                 FuncionListarProductosConPrecios();
                 FuncionBuscartexto();
             }

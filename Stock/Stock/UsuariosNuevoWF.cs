@@ -21,6 +21,17 @@ namespace Stock
         {
             try
             {
+                string perfil = Sesion.UsuarioLogueado.Perfil;
+                if (perfil != "1" && perfil != "SUPER ADMIN")
+                {
+                    btnNuevo.Visible = false;
+                    btnEditar.Visible = false;
+                }
+                else
+                {
+                    btnNuevo.Visible = true;
+                    btnEditar.Visible = true;
+                }
                 FuncionListarUsuarios();
                 FuncionBuscartexto();
             }
@@ -44,11 +55,15 @@ namespace Stock
                 {
                     foreach (var item in Lista)
                     {
+                        string Perfil = "";
                         string Apellido = item.Apellido;
                         string Nombre = item.Nombre;
                         string Persona = Apellido + "," + Nombre;
                         string Dni = item.Dni;
-                        string Perfil = item.Perfil;
+                        if (item.Perfil == "1")
+                        { Perfil = "ADMINISTRADOR"; }
+                        if (item.Perfil == "2")
+                        { Perfil = "OPERADOR"; }
                         dgvUsuarios.Rows.Add(item.IdUsuario, Persona, Dni, Perfil);
                     }
                 }
@@ -153,12 +168,17 @@ namespace Stock
                 txtApellido.Text = Ape;
                 txtNombre.Text = Nom;
                 txtDni.Text = dgvUsuarios.CurrentRow.Cells[2].Value.ToString();
-                cmbPerfil.Text = dgvUsuarios.CurrentRow.Cells[3].Value.ToString();
                 txtContraseña.Enabled = false;
                 txtRepitaContraseña.Enabled = false;
                 chcActivo.Visible = true;
                 chcInactivo.Visible = true;
                 lblEstado.Visible = true;
+                CargarCombo();
+                string perfil = dgvUsuarios.CurrentRow.Cells[3].Value.ToString();
+                if (perfil == "ADMINISTRADOR")
+                { cmbPerfil.Text = "ADMINISTRADOR"; }
+                if (perfil == "OPERADOR")
+                { cmbPerfil.Text = "OPERADOR"; }
             }
             else
             {
@@ -212,7 +232,6 @@ namespace Stock
             catch (Exception ex)
             { }
         }
-
         private Usuarios CargarEntidadEdicion()
         {
             string estado = "ACTIVO";
@@ -224,7 +243,10 @@ namespace Stock
             _usuario.Dni = txtDni.Text;
             _usuario.Apellido = txtApellido.Text;
             _usuario.Nombre = txtNombre.Text;
-            _usuario.Perfil = cmbPerfil.Text;
+            if (cmbPerfil.Text == "ADMINISTRADOR")
+            { _usuario.Perfil = "1"; }
+            if (cmbPerfil.Text == "OPERADOR")
+            { _usuario.Perfil = "2"; }
             _usuario.Estado = estado;
             return _usuario;
         }
@@ -253,13 +275,15 @@ namespace Stock
             DateTime fechaActual = DateTime.Now;
             _usuario.FechaDeAlta = fechaActual;
             _usuario.FechaUltimaConexion = fechaActual;
-            _usuario.Perfil = cmbPerfil.Text;
+            if (cmbPerfil.Text == "ADMINISTRADOR")
+            { _usuario.Perfil = "1"; }
+            if (cmbPerfil.Text == "OPERADOR")
+            { _usuario.Perfil = "2"; }
             _usuario.Estado = "ACTIVO";
             _usuario.Contraseña = txtContraseña.Text;
             _usuario.Contraseña2 = txtRepitaContraseña.Text;
             return _usuario;
         }
-
         private void chcInactivo_CheckedChanged(object sender, EventArgs e)
         {
             if (chcInactivo.Checked == true)
@@ -267,7 +291,6 @@ namespace Stock
                 chcActivo.Checked = false;
             }
         }
-
         private void chcActivo_CheckedChanged(object sender, EventArgs e)
         {
             if (chcActivo.Checked == true)

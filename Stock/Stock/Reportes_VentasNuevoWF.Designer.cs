@@ -37,11 +37,9 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.PanelResultado = new System.Windows.Forms.Panel();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.btnExportar = new System.Windows.Forms.Button();
             this.dgvVentas = new System.Windows.Forms.DataGridView();
-            this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.lblCajaVentas = new System.Windows.Forms.Label();
             this.btnCajaVentas = new System.Windows.Forms.Button();
@@ -65,6 +63,9 @@
             this.btnVentasAyer = new System.Windows.Forms.Button();
             this.btnVentasDelDia = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel8.SuspendLayout();
             this.PanelResultado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
@@ -97,6 +98,7 @@
             // PanelResultado
             // 
             this.PanelResultado.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PanelResultado.Controls.Add(this.btnEliminar);
             this.PanelResultado.Controls.Add(this.btnExportar);
             this.PanelResultado.Controls.Add(this.dgvVentas);
             this.PanelResultado.Controls.Add(this.label1);
@@ -109,6 +111,22 @@
             this.PanelResultado.Size = new System.Drawing.Size(795, 404);
             this.PanelResultado.TabIndex = 3;
             this.PanelResultado.Visible = false;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnEliminar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Location = new System.Drawing.Point(362, 347);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(123, 47);
+            this.btnEliminar.TabIndex = 158;
+            this.btnEliminar.Text = "Eliminar Venta";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Visible = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnExportar
             // 
@@ -171,26 +189,8 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
             this.dgvVentas.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvVentas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvVentas.Size = new System.Drawing.Size(534, 224);
+            this.dgvVentas.Size = new System.Drawing.Size(553, 224);
             this.dgvVentas.TabIndex = 67;
-            // 
-            // idProducto
-            // 
-            this.idProducto.HeaderText = "id";
-            this.idProducto.Name = "idProducto";
-            this.idProducto.Width = 60;
-            // 
-            // Fecha
-            // 
-            this.Fecha.HeaderText = "Fecha De Venta";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.Width = 180;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Precio de venta";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.Width = 250;
             // 
             // label1
             // 
@@ -502,6 +502,23 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // idProducto
+            // 
+            this.idProducto.HeaderText = "Nro.Venta";
+            this.idProducto.Name = "idProducto";
+            // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha De Venta";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.Width = 180;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Precio de venta";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.Width = 250;
+            // 
             // Reportes_VentasNuevoWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -519,6 +536,7 @@
             this.Name = "Reportes_VentasNuevoWF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reportes_VentasNuevoWF";
+            this.Load += new System.EventHandler(this.Reportes_VentasNuevoWF_Load);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.PanelResultado.ResumeLayout(false);
@@ -551,9 +569,6 @@
         private System.Windows.Forms.DateTimePicker dtFechaHasta;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.Button btnExportar;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolTip toolTip1;
@@ -566,5 +581,9 @@
         private System.Windows.Forms.Button btnVentasMesAnterior;
         private System.Windows.Forms.Button btnEsteMes;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
     }
 }
