@@ -122,7 +122,6 @@ namespace Stock
         {
             AbrirFormEnPanel(new ReportesNuevoWF());
         }
-
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel(new UsuariosNuevoWF());

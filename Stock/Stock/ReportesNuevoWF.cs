@@ -22,7 +22,6 @@ namespace Stock
 
         private void ReportesNuevoWF_Load(object sender, EventArgs e)
         {
-          
             List<Reporte_Proveedores> listaProveedores = new List<Reporte_Proveedores>();
             List<Reporte_Ventas> listaVentas = new List<Reporte_Ventas>();
             ////// Grafico Proveedores

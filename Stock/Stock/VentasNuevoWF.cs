@@ -154,7 +154,7 @@ namespace Stock
                 var lista = _listaEspeciales.First();
                 listaProductos.Add(lista);
                 lista.PrecioVenta = MontoEspecial;
-                decimal PrecioFinal = MontoEspecial;               
+                decimal PrecioFinal = MontoEspecial;
                 dgvVentas.Rows.Add(lista.idProducto, lista.CodigoProducto, lista.NombreProducto, cantidadingresada, lista.PrecioVenta, PrecioFinal);
                 txtCodigo.Clear();
                 txtCantidad.Text = "1";
@@ -287,10 +287,12 @@ namespace Stock
         {
             FacturarVenta();
         }
+        bool VentaCerrada = false;
         private void FacturarVenta()
         {
             if (listaProductos.Count > 0)
             {
+                VentaCerrada = true;
                 int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
                 int idusuario = idusuarioLogueado;
                 listaProductos[0].PrecioVentaFinal = Convert.ToDecimal(lblTotalPagarReal.Text);
@@ -317,15 +319,15 @@ namespace Stock
             //    ticket.Encabezado(venta.IdVenta.ToString(), false);
             foreach (var item in listaProducto)
             {
-               double ProductoMontoTotal =Convert.ToDouble(item.Cantidad * item.PrecioVenta);
+                double ProductoMontoTotal = Convert.ToDouble(item.Cantidad * item.PrecioVenta);
                 ticket.AgregaArticulo(item.NombreProducto, item.Cantidad, Convert.ToDouble(item.PrecioVenta), ProductoMontoTotal);
             }
             //if (venta.Comprobante.Cae_afip != null && venta.Comprobante.Cae_afip != "")
             //ticket.AgregaTotales(venta.Total, venta.Comprobante.Cae_afip, venta.Comprobante.Fecha_vto_cae_afip.Value.ToShortDateString());
-            
+
             //ticket.AgregaTotales(Convert.ToDouble(listaProductos[0].PrecioVentaFinal), null, null);
             //else
-                ticket.AgregaTotales(Convert.ToDouble(listaProductos[0].PrecioVentaFinal), null, null);
+            ticket.AgregaTotales(Convert.ToDouble(listaProductos[0].PrecioVentaFinal), null, null);
         }
         private void GenerarTicket()
         {
@@ -376,7 +378,9 @@ namespace Stock
             }
             if (e.KeyCode.ToString() == "F12")
             {
-                FacturarVenta();
+                if (VentaCerrada == true)
+                { }
+                else { FacturarVenta(); }               
             }
             if (e.KeyCode == Keys.Delete)
             {
@@ -385,6 +389,7 @@ namespace Stock
                 dgvVentas.Rows.Remove(dgvVentas.CurrentRow);
                 EliminarProductoDeLista(Monto);
                 txtNombreBuscar.Focus();
+                VentaCerrada = false;
             }
         }
         private void ModificarGrilla()
@@ -435,7 +440,9 @@ namespace Stock
             }
             if (e.KeyCode.ToString() == "F12")
             {
-                FacturarVenta();
+                if (VentaCerrada == true)
+                { }
+                else { FacturarVenta(); }
             }
         }
         private void dgvVentas_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -500,6 +507,48 @@ namespace Stock
                 e.Handled = true;
             }
             //e.Handled = !char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back);
+        }
+        private void btnClaro_Click(object sender, EventArgs e)
+        {
+            txtNombreBuscar.Focus();
+            panel3.BackColor = Color.WhiteSmoke;
+            dgvVentas.BackgroundColor = Color.WhiteSmoke;
+            panel4.BackColor = Color.Gray;
+            dgvVentas.GridColor = Color.LightSlateGray;
+            lblTotalPagarReal.BackColor = Color.White;
+            lblTotalPagarReal.ForeColor = Color.Black;
+            button1.BackColor = Color.White;
+            button1.ForeColor = Color.Black;
+            label1.ForeColor = Color.Black;
+            label5.ForeColor = Color.Black;
+            label4.ForeColor = Color.Black;
+            groupBox1.BackColor = Color.Gray;
+            txtMonto.ForeColor = Color.Black;
+            dgvVentas.ColumnHeadersDefaultCellStyle.BackColor = Color.WhiteSmoke;
+            dgvVentas.RowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
+            dgvVentas.RowsDefaultCellStyle.ForeColor = Color.Black;
+            dgvVentas.RowsDefaultCellStyle.SelectionBackColor = Color.Gray;
+        }
+        private void btnOscuro_Click(object sender, EventArgs e)
+        {
+            txtNombreBuscar.Focus();
+            panel3.BackColor = Color.FromArgb(49, 66, 82);
+            dgvVentas.BackgroundColor = Color.FromArgb(49, 66, 82);
+            panel4.BackColor = Color.FromArgb(49, 66, 82);
+            dgvVentas.GridColor = Color.LightSlateGray;
+            lblTotalPagarReal.BackColor = Color.FromArgb(49, 66, 82);
+            lblTotalPagarReal.ForeColor = Color.White;
+            button1.BackColor = Color.FromArgb(49, 66, 82);
+            button1.ForeColor = Color.White;
+            label1.ForeColor = Color.White;
+            label5.ForeColor = Color.White;
+            label4.ForeColor = Color.White;
+            groupBox1.BackColor = Color.FromArgb(49, 66, 82);
+            txtMonto.ForeColor = Color.Black;
+            dgvVentas.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
+            dgvVentas.RowsDefaultCellStyle.BackColor = Color.FromArgb(49, 66, 82);
+            dgvVentas.RowsDefaultCellStyle.ForeColor = Color.White;
+            dgvVentas.RowsDefaultCellStyle.SelectionBackColor = Color.SteelBlue;
         }
     }
 }

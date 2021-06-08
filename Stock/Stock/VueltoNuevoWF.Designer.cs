@@ -171,6 +171,7 @@
             this.Name = "VueltoNuevoWF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VueltoNuevoWF";
+            this.Load += new System.EventHandler(this.VueltoNuevoWF_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.VueltoNuevoWF_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

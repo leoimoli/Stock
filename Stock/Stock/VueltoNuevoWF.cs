@@ -51,7 +51,7 @@ namespace Stock
                 Close();
             }
             if (e.KeyCode == Keys.Delete)
-            {              
+            {
                 Close();
             }
         }
@@ -63,6 +63,10 @@ namespace Stock
                                          MessageBoxButtons.OK,
                                          MessageBoxIcon.Asterisk);
             Close();
+        }
+        private void VueltoNuevoWF_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -54,6 +54,8 @@
             this.txtMonto = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnOscuro = new System.Windows.Forms.Button();
+            this.btnClaros = new System.Windows.Forms.Button();
             this.btnRestaurar = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
@@ -126,6 +128,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvVentas.RowHeadersVisible = false;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
             this.dgvVentas.RowsDefaultCellStyle = dataGridViewCellStyle4;
@@ -323,6 +326,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.panel2.Controls.Add(this.btnOscuro);
+            this.panel2.Controls.Add(this.btnClaros);
             this.panel2.Controls.Add(this.btnRestaurar);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.btnMaximizar);
@@ -333,6 +338,38 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1099, 43);
             this.panel2.TabIndex = 153;
+            // 
+            // btnOscuro
+            // 
+            this.btnOscuro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnOscuro.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnOscuro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOscuro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOscuro.ForeColor = System.Drawing.Color.White;
+            this.btnOscuro.Location = new System.Drawing.Point(164, 6);
+            this.btnOscuro.Name = "btnOscuro";
+            this.btnOscuro.Size = new System.Drawing.Size(104, 34);
+            this.btnOscuro.TabIndex = 156;
+            this.btnOscuro.Text = "Estilo Oscuro";
+            this.btnOscuro.UseVisualStyleBackColor = false;
+            this.btnOscuro.Visible = false;
+            this.btnOscuro.Click += new System.EventHandler(this.btnOscuro_Click);
+            // 
+            // btnClaros
+            // 
+            this.btnClaros.BackColor = System.Drawing.Color.Gray;
+            this.btnClaros.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnClaros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClaros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClaros.ForeColor = System.Drawing.Color.White;
+            this.btnClaros.Location = new System.Drawing.Point(58, 6);
+            this.btnClaros.Name = "btnClaros";
+            this.btnClaros.Size = new System.Drawing.Size(104, 34);
+            this.btnClaros.TabIndex = 58;
+            this.btnClaros.Text = "Estilo Claro";
+            this.btnClaros.UseVisualStyleBackColor = false;
+            this.btnClaros.Visible = false;
+            this.btnClaros.Click += new System.EventHandler(this.btnClaro_Click);
             // 
             // btnRestaurar
             // 
@@ -586,5 +623,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox btnMaximizar;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnClaros;
+        private System.Windows.Forms.Button btnOscuro;
     }
 }
