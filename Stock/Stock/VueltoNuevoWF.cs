@@ -17,7 +17,8 @@ namespace Stock
         {
             InitializeComponent();
             this.precioVentaFinal = precioVentaFinal;
-            lblTotal.Text = Convert.ToString(precioVentaFinal);
+            lblTotal.Text = Convert.ToString(precioVentaFinal);           
+            lblTotal.ForeColor = Color.White;
             lblEfectivo.Focus();
         }
         private void lblEfectivo_KeyDown(object sender, KeyEventArgs e)
@@ -27,7 +28,8 @@ namespace Stock
                 decimal Total = Convert.ToDecimal(lblTotal.Text);
                 decimal Efectivo = Convert.ToDecimal(lblEfectivo.Text);
                 decimal Vuelto = Efectivo - Total;
-                lblVuelto.Text = Convert.ToString(Vuelto);
+                lblVuelto.Text = Convert.ToString(Vuelto);               
+                lblVuelto.ForeColor = Color.White;               
             }
             if (e.KeyCode == Keys.Escape)
             {
@@ -37,7 +39,7 @@ namespace Stock
                                              MessageBoxButtons.OK,
                                              MessageBoxIcon.Asterisk);
                 Close();
-            }
+            }            
         }
         private void VueltoNuevoWF_KeyDown(object sender, KeyEventArgs e)
         {

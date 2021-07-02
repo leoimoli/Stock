@@ -77,6 +77,7 @@ namespace Stock
             Funcion = 2;
             if (this.dgvProductos.RowCount > 0)
             {
+                panel1.Enabled = true;
                 btnCrear.Enabled = true;
                 idProductoSeleccionado = Convert.ToInt32(this.dgvProductos.CurrentRow.Cells[0].Value);
                 txtCodigoProducto.Text = dgvProductos.CurrentRow.Cells[1].Value.ToString();

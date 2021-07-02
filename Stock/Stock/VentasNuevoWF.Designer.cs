@@ -507,11 +507,11 @@
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(19, 21);
+            this.lblUsuario.Location = new System.Drawing.Point(6, 21);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(186, 23);
+            this.lblUsuario.Size = new System.Drawing.Size(150, 21);
             this.lblUsuario.TabIndex = 56;
             this.lblUsuario.Text = "Usuario Logueado";
             // 

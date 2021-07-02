@@ -35,16 +35,15 @@
             this.lblVuelto = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblEfectivo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblEfectivo = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTotal
             // 
             this.lblTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.lblTotal.Enabled = false;
             this.lblTotal.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
             this.lblTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -80,7 +79,6 @@
             // lblVuelto
             // 
             this.lblVuelto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.lblVuelto.Enabled = false;
             this.lblVuelto.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
             this.lblVuelto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblVuelto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -113,19 +111,6 @@
             this.label3.TabIndex = 131;
             this.label3.Text = "Calcular Vuelto";
             // 
-            // lblEfectivo
-            // 
-            this.lblEfectivo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.lblEfectivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEfectivo.ForeColor = System.Drawing.Color.White;
-            this.lblEfectivo.Location = new System.Drawing.Point(171, 151);
-            this.lblEfectivo.Multiline = true;
-            this.lblEfectivo.Name = "lblEfectivo";
-            this.lblEfectivo.Size = new System.Drawing.Size(147, 60);
-            this.lblEfectivo.TabIndex = 132;
-            this.lblEfectivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.lblEfectivo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lblEfectivo_KeyDown);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -150,6 +135,18 @@
             this.pictureBox1.TabIndex = 133;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // lblEfectivo
+            // 
+            this.lblEfectivo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.lblEfectivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEfectivo.ForeColor = System.Drawing.Color.White;
+            this.lblEfectivo.Location = new System.Drawing.Point(171, 155);
+            this.lblEfectivo.Name = "lblEfectivo";
+            this.lblEfectivo.Size = new System.Drawing.Size(147, 38);
+            this.lblEfectivo.TabIndex = 132;
+            this.lblEfectivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.lblEfectivo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lblEfectivo_KeyDown);
             // 
             // VueltoNuevoWF
             // 
@@ -187,8 +184,8 @@
         private System.Windows.Forms.Button lblVuelto;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox lblEfectivo;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox lblEfectivo;
     }
 }
