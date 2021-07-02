@@ -301,7 +301,7 @@
             this.panel3.Controls.Add(this.chartProductos);
             this.panel3.Location = new System.Drawing.Point(563, 346);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(547, 217);
+            this.panel3.Size = new System.Drawing.Size(524, 217);
             this.panel3.TabIndex = 3;
             // 
             // dataGridView3
@@ -335,7 +335,7 @@
             this.btnproductoMasVendido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnproductoMasVendido.ForeColor = System.Drawing.Color.White;
             this.btnproductoMasVendido.Image = global::Stock.Properties.Resources.sobresalir;
-            this.btnproductoMasVendido.Location = new System.Drawing.Point(481, 185);
+            this.btnproductoMasVendido.Location = new System.Drawing.Point(458, 185);
             this.btnproductoMasVendido.Name = "btnproductoMasVendido";
             this.btnproductoMasVendido.Size = new System.Drawing.Size(36, 28);
             this.btnproductoMasVendido.TabIndex = 68;
@@ -352,7 +352,7 @@
             this.chartProductos.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
             this.chartProductos.Legends.Add(legend3);
-            this.chartProductos.Location = new System.Drawing.Point(12, -9);
+            this.chartProductos.Location = new System.Drawing.Point(7, -9);
             this.chartProductos.Name = "chartProductos";
             this.chartProductos.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series3.ChartArea = "ChartArea1";

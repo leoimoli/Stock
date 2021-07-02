@@ -219,9 +219,9 @@
             this.panel1.Controls.Add(this.btnVer);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.dgvMovimientos);
-            this.panel1.Location = new System.Drawing.Point(648, 73);
+            this.panel1.Location = new System.Drawing.Point(641, 73);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(449, 455);
+            this.panel1.Size = new System.Drawing.Size(446, 455);
             this.panel1.TabIndex = 58;
             // 
             // label3
@@ -243,7 +243,7 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.txtDesde);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Location = new System.Drawing.Point(13, 26);
+            this.panel2.Location = new System.Drawing.Point(10, 26);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(426, 79);
             this.panel2.TabIndex = 154;
@@ -256,7 +256,7 @@
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
             this.btnBuscar.Image = global::Stock.Properties.Resources.lente;
-            this.btnBuscar.Location = new System.Drawing.Point(386, 44);
+            this.btnBuscar.Location = new System.Drawing.Point(362, 44);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(37, 32);
             this.btnBuscar.TabIndex = 154;
@@ -386,7 +386,7 @@
             this.dgvMovimientos.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvMovimientos.EnableHeadersVisualStyles = false;
             this.dgvMovimientos.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvMovimientos.Location = new System.Drawing.Point(13, 147);
+            this.dgvMovimientos.Location = new System.Drawing.Point(10, 129);
             this.dgvMovimientos.Name = "dgvMovimientos";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
