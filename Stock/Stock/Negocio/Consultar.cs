@@ -20,7 +20,7 @@ namespace Stock.Negocio
                 DAO.EditarDao.ActualizarUltimaConexion(idUsuario);
             }
             return lista;
-        }
+        }       
         public static List<Entidades.Pagos> ListaDePagos()
         {
             {
@@ -82,6 +82,13 @@ namespace Stock.Negocio
             bool EsEspecial = DAO.ConsultarDao.ValidarProductoEspecial(codigoProducto);
             return EsEspecial;
         }
+
+        public static bool ValidarOferta(List<Ofertas> lista)
+        {
+            bool OfertaExistente = DAO.ConsultarDao.ValidarOferta(lista);
+            return OfertaExistente;
+        }
+
         public static List<ListaStock> ConsultarUltimosIngresosDeStock()
         {
             List<ListaStock> _lista = new List<ListaStock>();

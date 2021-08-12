@@ -91,6 +91,48 @@ namespace Stock.DAO
             return _listaProductos;
         }
 
+        public static bool ValidarOferta(List<Ofertas> lista)
+        {
+            connection.Close();
+            bool Existe = false;
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            List<string> listaId = new List<string>();
+            int ElementosLista = lista.Count;
+            int Contador = 1;
+            string Valor;
+            foreach (var item in lista)
+            {
+                if (Contador == lista.Count)
+                {
+                    Valor = Convert.ToString(item.idProducto);
+                    listaId.Add(Valor);
+                }
+                else
+                {
+                    Valor = item.idProducto + ",";
+                    listaId.Add(Valor);
+                    Contador = Contador + 1;
+                }
+            }
+            string listaString = listaId.Aggregate((x, y) => x + y);
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("listaId_in", listaString) };
+            string proceso = "ValidarOfertaExistente";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                Existe = true;
+            }
+            connection.Close();
+            return Existe;
+        }
+
         public static bool ValidarProductoEspecial(string codigoProducto)
         {
             connection.Close();
@@ -150,9 +192,9 @@ namespace Stock.DAO
             connection.Open();
             List<Entidades.ListaVentas> lista = new List<Entidades.ListaVentas>();
             MySqlCommand cmd = new MySqlCommand();
-            cmd.Connection = connection;        
+            cmd.Connection = connection;
             DataTable Tabla = new DataTable();
-            MySqlParameter[] oParam = {};
+            MySqlParameter[] oParam = { };
             string proceso = "ConsultarVentasDeAyer";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -182,7 +224,7 @@ namespace Stock.DAO
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
-            MySqlParameter[] oParam = {new MySqlParameter("Mes_in", mes) };
+            MySqlParameter[] oParam = { new MySqlParameter("Mes_in", mes) };
             string proceso = "ConsultarVentasMesAnterior";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;

@@ -50,6 +50,61 @@ namespace Stock.DAO
             connection.Close();
             return idUltimoVenta;
         }
+
+        public static int RegistrarOferta(Ofertas oferta, List<Ofertas> lista)
+        {
+            int idUltimaOferta = 0;
+            int Exito = 0;
+            connection.Close();
+            connection.Open();
+            string proceso = "AltaOferta";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("NombreOferta_in", oferta.NombreOferta);
+            cmd.Parameters.AddWithValue("FechaDelRegistro_in", oferta.FechaDelRegistro);
+            cmd.Parameters.AddWithValue("FechaDesde_in", oferta.FechaDesde);
+            if (oferta.FechaHasta == Convert.ToDateTime("1 / 1 / 1900 00:00:00"))
+            {
+                cmd.Parameters.AddWithValue("FechaHasta_in", null);
+            }
+            else
+            { cmd.Parameters.AddWithValue("FechaHasta_in", oferta.FechaHasta); }
+            cmd.Parameters.AddWithValue("PrecioCombo_in", oferta.PrecioCombo);
+            cmd.Parameters.AddWithValue("Estado_in", oferta.Estado);
+            cmd.Parameters.AddWithValue("idUsuario_in", oferta.idUsuario);
+            MySqlDataReader r = cmd.ExecuteReader();
+            while (r.Read())
+            {
+                idUltimaOferta = Convert.ToInt32(r["ID"].ToString());
+            }
+            if (idUltimaOferta > 0)
+            {
+                Exito = RegistrarDetalleOferta(lista, idUltimaOferta);
+            }
+            connection.Close();
+            return idUltimaOferta;
+        }
+
+        private static int RegistrarDetalleOferta(List<Ofertas> lista, int idUltimaOferta)
+        {
+            int exito = 0;
+            for (int i = 0; i < lista.Count; i++)
+            {
+                connection.Close();
+                connection.Open();
+                string proceso = "RegistrarDetalleOferta";
+                MySqlCommand cmd = new MySqlCommand(proceso, connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("idUltimaOferta_in", idUltimaOferta);
+                cmd.Parameters.AddWithValue("idProducto_in", lista[i].idProducto);
+                cmd.Parameters.AddWithValue("Unidades_in", lista[i].Unidades);
+                cmd.ExecuteNonQuery();
+            }
+            exito = 1;
+            connection.Close();
+            return exito;
+        }
+
         public static bool InsertarListaStock(List<RegistroStock> listaStock)
         {
             bool exito = false;

@@ -17,6 +17,11 @@ namespace Stock
         {
             InitializeComponent();
             AbrirFormEnPanel(new InicioNuevoWF());
+            if (Sesion.UsuarioLogueado.Perfil == "1" || Sesion.UsuarioLogueado.Perfil == "SUPER ADMIN")
+            {
+                btnOfertas.Visible = true;
+            }
+            else { btnOfertas.Visible = false; }
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -125,6 +130,11 @@ namespace Stock
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel(new UsuariosNuevoWF());
+        }
+
+        private void btnOfertas_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new OfertasWF());
         }
     }
 }

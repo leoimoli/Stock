@@ -52,10 +52,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="itextsharp">
-      <HintPath>..\..\..\..\..\Desktop\Stock V1.0\Aplicacion\itextsharp.dll</HintPath>
+      <HintPath>..\..\..\SicoNew\Sico\Sico\bin\Debug\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="LibPrintTicket">
-      <HintPath>..\..\..\..\..\Desktop\Stock V1.0\Aplicacion\LibPrintTicket.dll</HintPath>
+      <HintPath>..\..\..\Stock\Stock\Stock\bin\Debug\LibPrintTicket.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -199,6 +199,7 @@
     <Compile Include="Entidades\ListaVentasEstadistica.cs" />
     <Compile Include="Entidades\Marca.cs" />
     <Compile Include="Entidades\HistorialProductoPrecioDeVenta.cs" />
+    <Compile Include="Entidades\Ofertas.cs" />
     <Compile Include="Entidades\Pagos.cs" />
     <Compile Include="Entidades\PagosReducidos.cs" />
     <Compile Include="Entidades\PrecioDeVenta.cs" />
@@ -273,6 +274,7 @@
     <Compile Include="Negocio\Clientes.cs" />
     <Compile Include="Negocio\Consultar.cs" />
     <Compile Include="Negocio\Marca.cs" />
+    <Compile Include="Negocio\OfertasNeg.cs" />
     <Compile Include="Negocio\Pagos.cs" />
     <Compile Include="Negocio\PrecioDeVenta_Negocio.cs" />
     <Compile Include="Negocio\Producto.cs" />
@@ -291,6 +293,12 @@
     </Compile>
     <Compile Include="New_MasterWF.Designer.cs">
       <DependentUpon>New_MasterWF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfertasWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfertasWF.Designer.cs">
+      <DependentUpon>OfertasWF.cs</DependentUpon>
     </Compile>
     <Compile Include="PagosDeudaWF.cs">
       <SubType>Form</SubType>
@@ -517,6 +525,9 @@
     <EmbeddedResource Include="New_MasterWF.resx">
       <DependentUpon>New_MasterWF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OfertasWF.resx">
+      <DependentUpon>OfertasWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PagosDeudaWF.resx">
       <DependentUpon>PagosDeudaWF.cs</DependentUpon>
     </EmbeddedResource>
@@ -654,6 +665,9 @@
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Documentos\Base De Datos\Procedure\1%29LoginUsuario.txt" />
     <Content Include="Icono.ico" />
+    <None Include="Resources\oferta.png" />
+    <None Include="Resources\oferta %281%29.png" />
+    <None Include="Resources\oferta %282%29.png" />
     <Content Include="StoCom_logo_2.ico" />
     <None Include="Resources\StoCom_logo_21.png" />
     <None Include="Resources\StoCom_logo_2.png" />
