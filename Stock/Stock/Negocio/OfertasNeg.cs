@@ -16,8 +16,8 @@ namespace Stock.Negocio
             try
             {
                 ValidarDatos(oferta);
-                bool MarcaExistente = Negocio.Consultar.ValidarOferta(lista);
-                if (MarcaExistente == true)
+                bool OfertaExistente = Negocio.Consultar.ValidarOferta(lista);
+                if (OfertaExistente == true)
                 {
                     const string message = "Ya existe una oferta Vigente para los productos ingresados.";
                     const string caption = "Atención";
@@ -48,14 +48,17 @@ namespace Stock.Negocio
                 throw new Exception();
             }
 
-            if (oferta.FechaDesde < oferta.FechaHasta)
-            {
-                const string message = "La fecha hasta no puede ser mayor a la fecha desde .";
-                const string caption = "Error";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.OK,
-                                           MessageBoxIcon.Exclamation);
-                throw new Exception();
+            if (oferta.FechaHasta != Convert.ToDateTime("1 / 1 / 1900 00:00:00"))
+                {
+                if (oferta.FechaDesde > oferta.FechaHasta)
+                {
+                    const string message = "La fecha hasta no puede ser mayor a la fecha desde .";
+                    const string caption = "Error";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Exclamation);
+                    throw new Exception();
+                }
             }
 
             if (oferta.PrecioCombo <= 0)

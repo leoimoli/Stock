@@ -63,15 +63,17 @@
             this.txtCodigoProducto = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.dgvOfertas = new System.Windows.Forms.DataGridView();
+            this.btnNuevo = new System.Windows.Forms.Button();
             this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaDesde = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaHasta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnNuevo = new System.Windows.Forms.Button();
+            this.Detalle = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOfertasCombo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOfertas)).BeginInit();
             this.SuspendLayout();
             // 
             // label5
@@ -90,7 +92,7 @@
             this.txtDescipcionBus.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDescipcionBus.Location = new System.Drawing.Point(145, 66);
             this.txtDescipcionBus.Name = "txtDescipcionBus";
-            this.txtDescipcionBus.Size = new System.Drawing.Size(419, 20);
+            this.txtDescipcionBus.Size = new System.Drawing.Size(409, 20);
             this.txtDescipcionBus.TabIndex = 50;
             // 
             // panel1
@@ -180,6 +182,7 @@
             this.dgvOfertasCombo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvOfertasCombo.Size = new System.Drawing.Size(512, 176);
             this.dgvOfertasCombo.TabIndex = 110;
+            this.dgvOfertasCombo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvOfertasCombo_KeyDown);
             // 
             // id
             // 
@@ -382,12 +385,12 @@
             this.label1.TabIndex = 48;
             this.label1.Text = "Listado de Ofertas";
             // 
-            // dgvProductos
+            // dgvOfertas
             // 
-            this.dgvProductos.AllowUserToAddRows = false;
-            this.dgvProductos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
-            this.dgvProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvOfertas.AllowUserToAddRows = false;
+            this.dgvOfertas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
+            this.dgvOfertas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvOfertas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.HotTrack;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -395,14 +398,16 @@
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvProductos.ColumnHeadersHeight = 30;
-            this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvOfertas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvOfertas.ColumnHeadersHeight = 30;
+            this.dgvOfertas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvOfertas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idProducto,
             this.CodigoProducto,
             this.FechaDesde,
-            this.FechaHasta});
+            this.FechaHasta,
+            this.Detalle,
+            this.Eliminar});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -410,11 +415,11 @@
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvProductos.EnableHeadersVisualStyles = false;
-            this.dgvProductos.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvProductos.Location = new System.Drawing.Point(3, 92);
-            this.dgvProductos.Name = "dgvProductos";
+            this.dgvOfertas.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvOfertas.EnableHeadersVisualStyles = false;
+            this.dgvOfertas.GridColor = System.Drawing.Color.SteelBlue;
+            this.dgvOfertas.Location = new System.Drawing.Point(3, 92);
+            this.dgvOfertas.Name = "dgvOfertas";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -422,14 +427,31 @@
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvProductos.RowHeadersVisible = false;
+            this.dgvOfertas.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvOfertas.RowHeadersVisible = false;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            this.dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvProductos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvProductos.Size = new System.Drawing.Size(551, 380);
-            this.dgvProductos.TabIndex = 47;
+            this.dgvOfertas.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvOfertas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvOfertas.Size = new System.Drawing.Size(551, 380);
+            this.dgvOfertas.TabIndex = 47;
+            this.dgvOfertas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOfertas_CellClick);
+            this.dgvOfertas.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvOfertas_CellPainting);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnNuevo.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevo.ForeColor = System.Drawing.Color.White;
+            this.btnNuevo.Location = new System.Drawing.Point(12, 478);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(77, 38);
+            this.btnNuevo.TabIndex = 58;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // idProducto
             // 
@@ -453,20 +475,17 @@
             this.FechaHasta.HeaderText = "Fecha Hasta";
             this.FechaHasta.Name = "FechaHasta";
             // 
-            // btnNuevo
+            // Detalle
             // 
-            this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.btnNuevo.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(12, 478);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(77, 38);
-            this.btnNuevo.TabIndex = 58;
-            this.btnNuevo.Text = "Nuevo";
-            this.btnNuevo.UseVisualStyleBackColor = false;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            this.Detalle.HeaderText = "Detalle";
+            this.Detalle.Name = "Detalle";
+            this.Detalle.Width = 55;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.Width = 60;
             // 
             // OfertasWF
             // 
@@ -479,7 +498,7 @@
             this.Controls.Add(this.txtDescipcionBus);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dgvProductos);
+            this.Controls.Add(this.dgvOfertas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OfertasWF";
@@ -489,7 +508,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOfertasCombo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOfertas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -506,7 +525,7 @@
         private System.Windows.Forms.TextBox txtCodigoProducto;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dgvProductos;
+        private System.Windows.Forms.DataGridView dgvOfertas;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtFechaHasta;
@@ -519,15 +538,17 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgvOfertasCombo;
         private System.Windows.Forms.CheckBox chcFechaHasta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FechaDesde;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FechaHasta;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn uni;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaDesde;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaHasta;
+        private System.Windows.Forms.DataGridViewButtonColumn Detalle;
+        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
     }
 }

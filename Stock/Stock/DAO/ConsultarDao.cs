@@ -52,6 +52,41 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
+        public static List<Ofertas> ListaOfertas()
+        {
+            connection.Close();
+            connection.Open();
+            List<Ofertas> _listaProductos = new List<Ofertas>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ListaOfertas";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Ofertas listaProducto = new Entidades.Ofertas();
+                    listaProducto.idOferta = Convert.ToInt32(item["idOferta"].ToString());
+                    listaProducto.NombreOferta = item["NombreCombo"].ToString();
+                    listaProducto.FechaDesde = Convert.ToDateTime(item["FechaDesde"].ToString());
+                    string fecha = item["FechaHasta"].ToString();
+                    if (fecha != "")
+                    {
+                        listaProducto.FechaHasta = Convert.ToDateTime(item["FechaHasta"].ToString());
+                    }
+                    else { listaProducto.FechaHasta = Convert.ToDateTime("1 / 1 / 1900 00:00:00"); }
+                    string Precio = item["PrecioCombo"].ToString();
+                    _listaProductos.Add(listaProducto);
+                }
+            }
+            connection.Close();
+            return _listaProductos;
+        }
         public static List<Productos> ListaDeProductosPorMarca(string marca)
         {
             connection.Close();
@@ -90,7 +125,6 @@ namespace Stock.DAO
             connection.Close();
             return _listaProductos;
         }
-
         public static bool ValidarOferta(List<Ofertas> lista)
         {
             connection.Close();
@@ -119,7 +153,8 @@ namespace Stock.DAO
             }
             string listaString = listaId.Aggregate((x, y) => x + y);
             MySqlParameter[] oParam = {
-                                      new MySqlParameter("listaId_in", listaString) };
+                                      new MySqlParameter("listaId_in", listaString),
+            new MySqlParameter("CantidadElementos_in", lista.Count)};
             string proceso = "ValidarOfertaExistente";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -127,12 +162,23 @@ namespace Stock.DAO
             dt.Fill(Tabla);
             if (Tabla.Rows.Count > 0)
             {
-                Existe = true;
+
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    string valor = Convert.ToString(item.ItemArray[0]);
+                    if (valor == "0")
+                    {
+                        Existe = false;
+                    }
+                    if (valor == "1")
+                    {
+                        Existe = true;
+                    }
+                }               
             }
             connection.Close();
             return Existe;
         }
-
         public static bool ValidarProductoEspecial(string codigoProducto)
         {
             connection.Close();
@@ -185,7 +231,6 @@ namespace Stock.DAO
             }
             return lista;
         }
-
         public static List<ListaVentas> ConsultarVentasDeAyer()
         {
             connection.Close();

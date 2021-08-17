@@ -24,6 +24,28 @@ namespace Stock
             txtCodigoProducto.AutoCompleteCustomSource = Clases_Maestras.AutoCompletePorDescripcion.Autocomplete();
             txtCodigoProducto.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtCodigoProducto.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            FuncionListarOfertas();
+        }
+        private void FuncionListarOfertas()
+        {
+            dgvOfertas.Rows.Clear();
+            List<Entidades.Ofertas> ListaOfertas = Negocio.Consultar.ListaOfertas();
+            if (ListaOfertas.Count > 0)
+            {
+                foreach (var item in ListaOfertas)
+                {
+                    string fechaDesde = item.FechaDesde.ToShortDateString();                    
+                    if (item.FechaHasta == Convert.ToDateTime("1 / 1 / 1900 00:00:00"))
+                    {
+                        dgvOfertas.Rows.Add(item.idOferta, item.NombreOferta, fechaDesde, null);
+                    }
+                    else
+                    {
+                        string fechaHasta = item.FechaHasta.ToShortDateString();
+                        dgvOfertas.Rows.Add(item.idOferta, item.NombreOferta, fechaDesde, fechaHasta); }
+                }
+            }
+            dgvOfertas.ReadOnly = true;
         }
         private void txtCodigoProducto_KeyDown(object sender, KeyEventArgs e)
         {
@@ -48,7 +70,6 @@ namespace Stock
                 { }
             }
         }
-
         private void LimpiarCamposExito()
         {
             txtNombreCombo.Clear();
@@ -59,12 +80,14 @@ namespace Stock
             dtFechaHasta.Value = DateTime.Now;
             txtPrecioCombo.Clear();
             dgvOfertasCombo.Rows.Clear();
+            dtFechaHasta.Value = Convert.ToDateTime("1 / 1 / 1900 00:00:00");
             chcFechaHasta.Checked = false;
             dtFechaHasta.Enabled = false;
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
+            txtNombreCombo.Focus();
+            listaProductos.Clear();
         }
-
         private void LimpiarCampos()
         {
             txtCodigoProducto.Clear();
@@ -131,6 +154,7 @@ namespace Stock
                                                  MessageBoxButtons.OK,
                                                  MessageBoxIcon.Asterisk);
                     LimpiarCamposExito();
+                    FuncionListarOfertas();
                 }
             }
             catch (Exception ex)
@@ -177,7 +201,11 @@ namespace Stock
                 dtFechaHasta.Enabled = true;
                 dtFechaHasta.Value = DateTime.Now;
             }
-            else { dtFechaHasta.Enabled = false; }
+            else
+            {
+                dtFechaHasta.Value = Convert.ToDateTime("1 / 1 / 1900 00:00:00");
+                dtFechaHasta.Enabled = false;
+            }
         }
         private void SoloNumeros(object sender, KeyPressEventArgs e)
         {
@@ -196,6 +224,76 @@ namespace Stock
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             panel1.Enabled = true;
+        }
+
+        private void dgvOfertasCombo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                dgvOfertasCombo.Rows.Remove(dgvOfertasCombo.CurrentRow);
+            }
+        }
+
+        private void dgvOfertas_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && this.dgvOfertas.Columns[e.ColumnIndex].Name == "Detalle" && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                DataGridViewButtonCell BotonVer = this.dgvOfertas.Rows[e.RowIndex].Cells["Detalle"] as DataGridViewButtonCell;
+                Icon icoAtomico = new Icon(Environment.CurrentDirectory + "\\" + @"Ver1.ico");
+                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 20, e.CellBounds.Top + 4);
+                this.dgvOfertas.Rows[e.RowIndex].Height = icoAtomico.Height + 8;
+                this.dgvOfertas.Columns[e.ColumnIndex].Width = icoAtomico.Width + 40;
+                e.Handled = true;
+            }
+            if (e.ColumnIndex >= 0 && this.dgvOfertas.Columns[e.ColumnIndex].Name == "Eliminar" && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                DataGridViewButtonCell BotonVer = this.dgvOfertas.Rows[e.RowIndex].Cells["Eliminar"] as DataGridViewButtonCell;
+                Icon icoAtomico = new Icon(Environment.CurrentDirectory + "\\" + @"Eliminar1.ico");
+                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 20, e.CellBounds.Top + 4);
+                this.dgvOfertas.Rows[e.RowIndex].Height = icoAtomico.Height + 8;
+                this.dgvOfertas.Columns[e.ColumnIndex].Width = icoAtomico.Width + 40;
+                e.Handled = true;
+            }
+        }
+        private void dgvOfertas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvOfertas.CurrentCell.ColumnIndex == 4)
+            {
+                int idOferta = Convert.ToInt32(this.dgvOfertas.CurrentRow.Cells[0].Value.ToString());
+                //RegistrarPagoWF frm2 = new RegistrarPagoWF(idPlan, MontoTotal);
+                //frm2.Show();
+            }
+
+            if (dgvOfertas.CurrentCell.ColumnIndex == 5)
+            {
+                const string message = "Desea dar de baja la oferta seleccionada?";
+                const string caption = "Atención:";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Question);
+                {
+                    if (result == DialogResult.Yes)
+                    {
+                        int idOferta = Convert.ToInt32(this.dgvOfertas.CurrentRow.Cells[0].Value.ToString());
+                        bool Exito = DAO.EditarDao.ActualizarEstadoOferta(idOferta);
+                        if (Exito == true)
+                        {
+                            const string message2 = "Se elimino la oferta exitosamente.";
+                            const string caption2 = "Éxito";
+                            var result2 = MessageBox.Show(message2, caption2,
+                                                         MessageBoxButtons.OK,
+                                                         MessageBoxIcon.Asterisk);
+                            FuncionListarOfertas();
+                        }
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
         }
     }
 }

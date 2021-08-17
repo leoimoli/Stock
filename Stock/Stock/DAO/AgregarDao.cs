@@ -82,7 +82,7 @@ namespace Stock.DAO
                 Exito = RegistrarDetalleOferta(lista, idUltimaOferta);
             }
             connection.Close();
-            return idUltimaOferta;
+            return Exito;
         }
 
         private static int RegistrarDetalleOferta(List<Ofertas> lista, int idUltimaOferta)

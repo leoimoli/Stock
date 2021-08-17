@@ -41,6 +41,18 @@ namespace Stock.Negocio
                 return _listaPagos;
             }
         }
+        public static List<Ofertas> ListaOfertas()
+        {
+            List<Ofertas> _lista = new List<Ofertas>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ListaOfertas();
+            }
+            catch (Exception ex)
+            {
+            }
+            return _lista;
+        }
         public static List<ListaStock> ListarDetalleStock(int idMovimiento)
         {
             List<ListaStock> _lista = new List<ListaStock>();
@@ -82,7 +94,6 @@ namespace Stock.Negocio
             bool EsEspecial = DAO.ConsultarDao.ValidarProductoEspecial(codigoProducto);
             return EsEspecial;
         }
-
         public static bool ValidarOferta(List<Ofertas> lista)
         {
             bool OfertaExistente = DAO.ConsultarDao.ValidarOferta(lista);

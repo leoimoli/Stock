@@ -175,6 +175,12 @@
     <Compile Include="DescontarDeudaWF.Designer.cs">
       <DependentUpon>DescontarDeudaWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="DetallaVentaWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetallaVentaWF.Designer.cs">
+      <DependentUpon>DetallaVentaWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditarCodigoProductoWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -488,6 +494,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DescontarDeudaWF.resx">
       <DependentUpon>DescontarDeudaWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetallaVentaWF.resx">
+      <DependentUpon>DetallaVentaWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditarCodigoProductoWF.resx">
       <DependentUpon>EditarCodigoProductoWF.cs</DependentUpon>

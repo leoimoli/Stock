@@ -277,6 +277,21 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
+        public static bool ActualizarEstadoOferta(int idOferta)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string Actualizar = "ActualizarEstadoOferta";
+            MySqlCommand cmd = new MySqlCommand(Actualizar, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("idoferta_in", idOferta);
+            cmd.Parameters.AddWithValue("Estado_in", 0);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
         private static bool ActualizarStockVentaCancelada(int idVenta)
         {
             bool exito = false;
