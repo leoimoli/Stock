@@ -62,13 +62,21 @@ namespace Stock.DAO
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("NombreOferta_in", oferta.NombreOferta);
             cmd.Parameters.AddWithValue("FechaDelRegistro_in", oferta.FechaDelRegistro);
-            cmd.Parameters.AddWithValue("FechaDesde_in", oferta.FechaDesde);
+
+            string fechaDesdeConver = oferta.FechaDesde.ToShortDateString();
+            DateTime FechaDesde = Convert.ToDateTime(fechaDesdeConver);
+            cmd.Parameters.AddWithValue("FechaDesde_in", FechaDesde);
+
             if (oferta.FechaHasta == Convert.ToDateTime("1 / 1 / 1900 00:00:00"))
             {
                 cmd.Parameters.AddWithValue("FechaHasta_in", null);
             }
             else
-            { cmd.Parameters.AddWithValue("FechaHasta_in", oferta.FechaHasta); }
+            {
+                string fechaHastaConver = oferta.FechaHasta.ToShortDateString();
+                DateTime FechaHasta = Convert.ToDateTime(fechaHastaConver);
+                cmd.Parameters.AddWithValue("FechaHasta_in", FechaHasta);
+            }
             cmd.Parameters.AddWithValue("PrecioCombo_in", oferta.PrecioCombo);
             cmd.Parameters.AddWithValue("Estado_in", oferta.Estado);
             cmd.Parameters.AddWithValue("idUsuario_in", oferta.idUsuario);
@@ -84,7 +92,6 @@ namespace Stock.DAO
             connection.Close();
             return Exito;
         }
-
         private static int RegistrarDetalleOferta(List<Ofertas> lista, int idUltimaOferta)
         {
             int exito = 0;
@@ -695,3 +702,4 @@ namespace Stock.DAO
         }
     }
 }
+

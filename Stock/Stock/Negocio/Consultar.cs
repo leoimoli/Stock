@@ -394,6 +394,21 @@ namespace Stock.Negocio
             }
             return PuntosViejos;
         }
+
+        public static List<Ofertas> ListaOfertasPorDescripcion(string NombreCombo)
+        {
+            List<Ofertas> _listaOfertas = new List<Ofertas>();
+            try
+            {
+                _listaOfertas = DAO.ConsultarDao.ListaOfertasPorDescripcion(NombreCombo);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _listaOfertas;
+        }
+
         public static List<Productos> BuscarProductoPorCodigoIngresado(string codigo)
         {
             List<Productos> _listaProductos = new List<Productos>();

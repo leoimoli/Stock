@@ -24,6 +24,11 @@ namespace Stock
             txtCodigoProducto.AutoCompleteCustomSource = Clases_Maestras.AutoCompletePorDescripcion.Autocomplete();
             txtCodigoProducto.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtCodigoProducto.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            txtDescipcionBus.AutoCompleteCustomSource = Clases_Maestras.AutoCompletePorOferta.Autocomplete();
+            txtDescipcionBus.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtDescipcionBus.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
             FuncionListarOfertas();
         }
         private void FuncionListarOfertas()
@@ -34,7 +39,7 @@ namespace Stock
             {
                 foreach (var item in ListaOfertas)
                 {
-                    string fechaDesde = item.FechaDesde.ToShortDateString();                    
+                    string fechaDesde = item.FechaDesde.ToShortDateString();
                     if (item.FechaHasta == Convert.ToDateTime("1 / 1 / 1900 00:00:00"))
                     {
                         dgvOfertas.Rows.Add(item.idOferta, item.NombreOferta, fechaDesde, null);
@@ -42,7 +47,8 @@ namespace Stock
                     else
                     {
                         string fechaHasta = item.FechaHasta.ToShortDateString();
-                        dgvOfertas.Rows.Add(item.idOferta, item.NombreOferta, fechaDesde, fechaHasta); }
+                        dgvOfertas.Rows.Add(item.idOferta, item.NombreOferta, fechaDesde, fechaHasta);
+                    }
                 }
             }
             dgvOfertas.ReadOnly = true;
@@ -110,22 +116,34 @@ namespace Stock
                 //bool EsEspecial = Negocio.Consultar.ValidarProductoEspecial(codigoProducto);
                 _lista = Negocio.Consultar.BuscarProductoParaVenta(codigoProducto);
 
+
                 var lista = _lista.First();
-                int unidades = Convert.ToInt32(txtCantidad.Text);
-                if (!listaProductos.Any(x => x.CodigoProducto == codigoProducto))
+                if (lista.PrecioVenta == 0)
                 {
-                    listaProductos.Add(lista);
-                    dgvOfertasCombo.Rows.Add(lista.idProducto, lista.CodigoProducto, lista.NombreProducto, lista.PrecioVenta, unidades);
-                }
-                else
-                {
-                    const string message = "Ya se encuentra cargado en la lista el producto de seleccionado.";
+                    const string message = "El producto seleccionado no posee un precio de venta.";
                     const string caption = "Atención";
                     var result = MessageBox.Show(message, caption,
                                                  MessageBoxButtons.OK,
                                                MessageBoxIcon.Warning);
                 }
-                txtCodigoProducto.Clear();
+                else
+                {
+                    int unidades = Convert.ToInt32(txtCantidad.Text);
+                    if (!listaProductos.Any(x => x.CodigoProducto == codigoProducto))
+                    {
+                        listaProductos.Add(lista);
+                        dgvOfertasCombo.Rows.Add(lista.idProducto, lista.CodigoProducto, lista.NombreProducto, lista.PrecioVenta, unidades);
+                    }
+                    else
+                    {
+                        const string message = "Ya se encuentra cargado en la lista el producto de seleccionado.";
+                        const string caption = "Atención";
+                        var result = MessageBox.Show(message, caption,
+                                                     MessageBoxButtons.OK,
+                                                   MessageBoxIcon.Warning);
+                    }
+                    txtCodigoProducto.Clear();
+                }
             }
             catch (Exception ex)
             { }
@@ -224,6 +242,7 @@ namespace Stock
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             panel1.Enabled = true;
+            txtNombreCombo.Focus();
         }
 
         private void dgvOfertasCombo_KeyDown(object sender, KeyEventArgs e)
@@ -262,8 +281,8 @@ namespace Stock
             if (dgvOfertas.CurrentCell.ColumnIndex == 4)
             {
                 int idOferta = Convert.ToInt32(this.dgvOfertas.CurrentRow.Cells[0].Value.ToString());
-                //RegistrarPagoWF frm2 = new RegistrarPagoWF(idPlan, MontoTotal);
-                //frm2.Show();
+                DetallaVentaWF frm2 = new DetallaVentaWF(idOferta);
+                frm2.Show();
             }
 
             if (dgvOfertas.CurrentCell.ColumnIndex == 5)
@@ -293,6 +312,32 @@ namespace Stock
 
                     }
                 }
+            }
+        }
+
+        private void txtDescipcionBus_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                dgvOfertas.Rows.Clear();
+                List<Entidades.Ofertas> ListaOfertas = Negocio.Consultar.ListaOfertasPorDescripcion(txtDescipcionBus.Text);
+                if (ListaOfertas.Count > 0)
+                {
+                    foreach (var item in ListaOfertas)
+                    {
+                        string fechaDesde = item.FechaDesde.ToShortDateString();
+                        if (item.FechaHasta == Convert.ToDateTime("1 / 1 / 1900 00:00:00"))
+                        {
+                            dgvOfertas.Rows.Add(item.idOferta, item.NombreOferta, fechaDesde, null);
+                        }
+                        else
+                        {
+                            string fechaHasta = item.FechaHasta.ToShortDateString();
+                            dgvOfertas.Rows.Add(item.idOferta, item.NombreOferta, fechaDesde, fechaHasta);
+                        }
+                    }
+                }
+                dgvOfertas.ReadOnly = true;
             }
         }
     }

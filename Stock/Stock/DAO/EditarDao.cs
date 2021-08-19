@@ -49,6 +49,20 @@ namespace Stock.DAO
             connection.Close();
         }
 
+        public static void ActualizarEstadoOferta()
+        {
+            DateTime FechaActual = DateTime.Now;
+            connection.Close();
+            connection.Open();
+            ///PROCEDIMIENTO
+            string proceso = "ActualizarEstadoOfertaAutomatico";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("FechaActual_in", FechaActual);          
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
+
         public static bool EditarProducto(Productos _producto, int idProductoGrillaSeleccionado)
         {
             bool exito = false;

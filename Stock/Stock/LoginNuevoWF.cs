@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Stock.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -54,6 +55,7 @@ namespace Stock
                     NewMasterWF _inicio = new NewMasterWF();
                     _inicio.Show();
                     Hide();
+                    EditarDao.ActualizarEstadoOferta();
                 }
             }
             catch (Exception ex)

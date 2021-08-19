@@ -64,13 +64,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvOfertas = new System.Windows.Forms.DataGridView();
-            this.btnNuevo = new System.Windows.Forms.Button();
             this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaDesde = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaHasta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Detalle = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnNuevo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOfertasCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOfertas)).BeginInit();
@@ -81,7 +81,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(0, 69);
+            this.label5.Location = new System.Drawing.Point(0, 93);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(139, 13);
             this.label5.TabIndex = 51;
@@ -90,10 +90,11 @@
             // txtDescipcionBus
             // 
             this.txtDescipcionBus.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDescipcionBus.Location = new System.Drawing.Point(145, 66);
+            this.txtDescipcionBus.Location = new System.Drawing.Point(145, 90);
             this.txtDescipcionBus.Name = "txtDescipcionBus";
             this.txtDescipcionBus.Size = new System.Drawing.Size(409, 20);
             this.txtDescipcionBus.TabIndex = 50;
+            this.txtDescipcionBus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDescipcionBus_KeyDown);
             // 
             // panel1
             // 
@@ -379,7 +380,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(3, 36);
+            this.label1.Location = new System.Drawing.Point(8, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(160, 24);
             this.label1.TabIndex = 48;
@@ -418,7 +419,7 @@
             this.dgvOfertas.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvOfertas.EnableHeadersVisualStyles = false;
             this.dgvOfertas.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvOfertas.Location = new System.Drawing.Point(3, 92);
+            this.dgvOfertas.Location = new System.Drawing.Point(3, 116);
             this.dgvOfertas.Name = "dgvOfertas";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
@@ -433,25 +434,10 @@
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.SteelBlue;
             this.dgvOfertas.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvOfertas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvOfertas.Size = new System.Drawing.Size(551, 380);
+            this.dgvOfertas.Size = new System.Drawing.Size(551, 353);
             this.dgvOfertas.TabIndex = 47;
             this.dgvOfertas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOfertas_CellClick);
             this.dgvOfertas.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvOfertas_CellPainting);
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.btnNuevo.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(12, 478);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(77, 38);
-            this.btnNuevo.TabIndex = 58;
-            this.btnNuevo.Text = "Nuevo";
-            this.btnNuevo.UseVisualStyleBackColor = false;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // idProducto
             // 
@@ -486,6 +472,21 @@
             this.Eliminar.HeaderText = "Eliminar";
             this.Eliminar.Name = "Eliminar";
             this.Eliminar.Width = 60;
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnNuevo.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevo.ForeColor = System.Drawing.Color.White;
+            this.btnNuevo.Location = new System.Drawing.Point(12, 485);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(77, 38);
+            this.btnNuevo.TabIndex = 58;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // OfertasWF
             // 

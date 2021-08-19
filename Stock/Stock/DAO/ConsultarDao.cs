@@ -52,6 +52,38 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
+
+        public static List<DetalleOferta> BuscarDetalleOferta(int idOferta)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.DetalleOferta> lista = new List<Entidades.DetalleOferta>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("idOferta_in", idOferta) };
+            string proceso = "BuscarDetalleOferta";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    DetalleOferta listaProductos = new DetalleOferta();
+                    listaProductos.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    listaProductos.CodigoProducto = item["CodigoProducto"].ToString();
+                    listaProductos.Descripcion = item["Descripcion"].ToString();
+                    listaProductos.Unidades = Convert.ToInt32(item["Unidades"].ToString());
+                    listaProductos.PrecioOferta = Convert.ToDecimal(item["PrecioOferta"].ToString());
+                    lista.Add(listaProductos);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
         public static List<Ofertas> ListaOfertas()
         {
             connection.Close();
@@ -174,7 +206,7 @@ namespace Stock.DAO
                     {
                         Existe = true;
                     }
-                }               
+                }
             }
             connection.Close();
             return Existe;
@@ -261,6 +293,42 @@ namespace Stock.DAO
             }
             return lista;
         }
+        public static List<Ofertas> ListaOfertasPorDescripcion(string nombreCombo)
+        {
+            connection.Close();
+            connection.Open();
+            List<Ofertas> _listaProductos = new List<Ofertas>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("nombreCombo_in", nombreCombo) };
+            string proceso = "ListaOfertasPorDescripcion";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Ofertas listaProducto = new Entidades.Ofertas();
+                    listaProducto.idOferta = Convert.ToInt32(item["idOferta"].ToString());
+                    listaProducto.NombreOferta = item["NombreCombo"].ToString();
+                    listaProducto.FechaDesde = Convert.ToDateTime(item["FechaDesde"].ToString());
+                    string fecha = item["FechaHasta"].ToString();
+                    if (fecha != "")
+                    {
+                        listaProducto.FechaHasta = Convert.ToDateTime(item["FechaHasta"].ToString());
+                    }
+                    else { listaProducto.FechaHasta = Convert.ToDateTime("1 / 1 / 1900 00:00:00"); }
+                    string Precio = item["PrecioCombo"].ToString();
+                    _listaProductos.Add(listaProducto);
+                }
+            }
+            connection.Close();
+            return _listaProductos;
+        }
+
         public static List<ListaVentas> ConsultarVentasMesAnterior(int mes)
         {
             connection.Close();

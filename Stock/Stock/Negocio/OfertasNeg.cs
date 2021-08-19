@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Stock.DAO;
 using Stock.Entidades;
 
 namespace Stock.Negocio
@@ -34,6 +35,20 @@ namespace Stock.Negocio
             catch (Exception ex)
             { }
             return exito;
+        }
+
+        public static List<DetalleOferta> BuscarDetalleOferta(int idOferta)
+        {
+            List<DetalleOferta> _listaProducto = new List<DetalleOferta>();
+            try
+            {
+                _listaProducto = ConsultarDao.BuscarDetalleOferta(idOferta);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _listaProducto;
         }
 
         private static void ValidarDatos(Ofertas oferta)
