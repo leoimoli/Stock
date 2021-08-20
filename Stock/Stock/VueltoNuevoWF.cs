@@ -13,13 +13,14 @@ namespace Stock
     public partial class VueltoNuevoWF : Form
     {
         private decimal precioVentaFinal;
-        public VueltoNuevoWF(decimal precioVentaFinal)
+        private bool AplicaDescuento;
+        public VueltoNuevoWF(decimal precioVentaFinal, bool AplicaDescuento)
         {
             InitializeComponent();
             this.precioVentaFinal = precioVentaFinal;
-            lblTotal.Text = Convert.ToString(precioVentaFinal);           
+            this.AplicaDescuento = AplicaDescuento;
+            lblTotal.Text = Convert.ToString(precioVentaFinal);
             lblTotal.ForeColor = Color.White;
-            lblEfectivo.Focus();
         }
         private void lblEfectivo_KeyDown(object sender, KeyEventArgs e)
         {
@@ -28,8 +29,8 @@ namespace Stock
                 decimal Total = Convert.ToDecimal(lblTotal.Text);
                 decimal Efectivo = Convert.ToDecimal(lblEfectivo.Text);
                 decimal Vuelto = Efectivo - Total;
-                lblVuelto.Text = Convert.ToString(Vuelto);               
-                lblVuelto.ForeColor = Color.White;               
+                lblVuelto.Text = Convert.ToString(Vuelto);
+                lblVuelto.ForeColor = Color.White;
             }
             if (e.KeyCode == Keys.Escape)
             {
@@ -39,7 +40,7 @@ namespace Stock
                                              MessageBoxButtons.OK,
                                              MessageBoxIcon.Asterisk);
                 Close();
-            }            
+            }
         }
         private void VueltoNuevoWF_KeyDown(object sender, KeyEventArgs e)
         {
@@ -68,6 +69,18 @@ namespace Stock
         }
         private void VueltoNuevoWF_Load(object sender, EventArgs e)
         {
+            if (AplicaDescuento == true)
+            {
+                lblDescuentos.Visible = true;
+                this.ActiveControl = lblEfectivo;
+                lblEfectivo.Focus();
+            }
+            else
+            {
+                lblDescuentos.Visible = false;
+                this.ActiveControl = lblEfectivo;
+                lblEfectivo.Focus();
+            }
 
         }
     }

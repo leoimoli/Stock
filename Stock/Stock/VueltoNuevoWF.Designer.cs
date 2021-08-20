@@ -38,6 +38,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblEfectivo = new System.Windows.Forms.TextBox();
+            this.lblDescuentos = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +49,7 @@
             this.lblTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.Color.White;
-            this.lblTotal.Location = new System.Drawing.Point(171, 67);
+            this.lblTotal.Location = new System.Drawing.Point(165, 104);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(147, 60);
             this.lblTotal.TabIndex = 58;
@@ -59,7 +60,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(23, 85);
+            this.label8.Location = new System.Drawing.Point(17, 122);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(142, 25);
             this.label8.TabIndex = 128;
@@ -70,7 +71,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(76, 164);
+            this.label1.Location = new System.Drawing.Point(70, 201);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 25);
             this.label1.TabIndex = 129;
@@ -83,7 +84,7 @@
             this.lblVuelto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblVuelto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVuelto.ForeColor = System.Drawing.Color.White;
-            this.lblVuelto.Location = new System.Drawing.Point(171, 229);
+            this.lblVuelto.Location = new System.Drawing.Point(165, 266);
             this.lblVuelto.Name = "lblVuelto";
             this.lblVuelto.Size = new System.Drawing.Size(147, 60);
             this.lblVuelto.TabIndex = 60;
@@ -94,7 +95,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(91, 247);
+            this.label2.Location = new System.Drawing.Point(85, 284);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 25);
             this.label2.TabIndex = 130;
@@ -105,11 +106,11 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.SeaGreen;
-            this.label3.Location = new System.Drawing.Point(129, 20);
+            this.label3.Location = new System.Drawing.Point(128, 18);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(162, 23);
+            this.label3.Size = new System.Drawing.Size(190, 23);
             this.label3.TabIndex = 131;
-            this.label3.Text = "Calcular Vuelto";
+            this.label3.Text = "Venta Confiramda";
             // 
             // label5
             // 
@@ -118,7 +119,7 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Image = global::Stock.Properties.Resources.escapar;
             this.label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label5.Location = new System.Drawing.Point(154, 296);
+            this.label5.Location = new System.Drawing.Point(148, 333);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(188, 17);
             this.label5.TabIndex = 134;
@@ -139,21 +140,35 @@
             // lblEfectivo
             // 
             this.lblEfectivo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.lblEfectivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEfectivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEfectivo.ForeColor = System.Drawing.Color.White;
-            this.lblEfectivo.Location = new System.Drawing.Point(171, 155);
+            this.lblEfectivo.Location = new System.Drawing.Point(165, 181);
+            this.lblEfectivo.Multiline = true;
             this.lblEfectivo.Name = "lblEfectivo";
-            this.lblEfectivo.Size = new System.Drawing.Size(147, 38);
+            this.lblEfectivo.Size = new System.Drawing.Size(147, 68);
             this.lblEfectivo.TabIndex = 132;
             this.lblEfectivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.lblEfectivo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lblEfectivo_KeyDown);
+            // 
+            // lblDescuentos
+            // 
+            this.lblDescuentos.AutoSize = true;
+            this.lblDescuentos.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescuentos.ForeColor = System.Drawing.Color.White;
+            this.lblDescuentos.Location = new System.Drawing.Point(11, 56);
+            this.lblDescuentos.Name = "lblDescuentos";
+            this.lblDescuentos.Size = new System.Drawing.Size(428, 19);
+            this.lblDescuentos.TabIndex = 135;
+            this.lblDescuentos.Text = "Atención: Se aplicaron Descuentos por ofertas vigentes";
+            this.lblDescuentos.Visible = false;
             // 
             // VueltoNuevoWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
-            this.ClientSize = new System.Drawing.Size(441, 344);
+            this.ClientSize = new System.Drawing.Size(441, 386);
+            this.Controls.Add(this.lblDescuentos);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblEfectivo);
@@ -187,5 +202,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox lblEfectivo;
+        private System.Windows.Forms.Label lblDescuentos;
     }
 }

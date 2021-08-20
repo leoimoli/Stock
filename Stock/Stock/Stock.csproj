@@ -200,6 +200,7 @@
     <Compile Include="Entidades\ListaPagosDeDeudas.cs" />
     <Compile Include="Entidades\ListaProducto.cs" />
     <Compile Include="Entidades\ListaProductoVenta.cs" />
+    <Compile Include="Entidades\ListaProductoVentaEspejo.cs" />
     <Compile Include="Entidades\ListaStock.cs" />
     <Compile Include="Entidades\ListaStockFaltante.cs" />
     <Compile Include="Entidades\ListaStockProducto.cs" />
