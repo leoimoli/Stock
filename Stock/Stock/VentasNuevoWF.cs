@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibPrintTicket;
+using Stock.Entidades;
+using Stock.Negocio;
 using Utils;
 
 namespace Stock
@@ -29,6 +31,7 @@ namespace Stock
             txtNombreBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
         public static List<Entidades.ListaProductoVenta> listaProductos;
+        public static List<Entidades.ListaProductoVenta> listaProductosConDescuentos;
         private void txtCodigo_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -288,24 +291,7 @@ namespace Stock
             FacturarVenta();
         }
         bool VentaCerrada = false;
-        private void FacturarVenta()
-        {
-            if (listaProductos.Count > 0)
-            {
-                VentaCerrada = true;
-                int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
-                int idusuario = idusuarioLogueado;
-                listaProductos[0].PrecioVentaFinal = Convert.ToDecimal(lblTotalPagarReal.Text);
-                //bool Exito = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
-                idVenta = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
-                BloquearPantalla();
-                VueltoNuevoWF _vuelto = new VueltoNuevoWF(listaProductos[0].PrecioVentaFinal);
-                _vuelto.Show();
-                Tkt(idVenta, listaProductos);
-                //DesbloquearPantalla();
-                lblBack.Visible = true;
-            }
-        }
+
         public static void Tkt(int idVenta, List<Entidades.ListaProductoVenta> listaProducto)
         {
             CrearTicket ticket = new CrearTicket();
@@ -380,7 +366,7 @@ namespace Stock
             {
                 if (VentaCerrada == true)
                 { }
-                else { FacturarVenta(); }               
+                else { FacturarVenta(); }
             }
             if (e.KeyCode == Keys.Delete)
             {
@@ -550,5 +536,130 @@ namespace Stock
             dgvVentas.RowsDefaultCellStyle.ForeColor = Color.White;
             dgvVentas.RowsDefaultCellStyle.SelectionBackColor = Color.SteelBlue;
         }
+        public static decimal PrecioFinal;
+        private void FacturarVenta()
+        {
+
+            if (listaProductos.Count > 0)
+            {
+                listaProductosConDescuentos = BuscarPromociones(listaProductos);
+                if (listaProductosConDescuentos.Count > 0)
+                {
+                    decimal PrecioVentaOrig = Convert.ToDecimal(lblTotalPagarReal.Text);
+                    foreach (var item in listaProductosConDescuentos)
+                    {
+                        PrecioFinal = PrecioVentaOrig + item.PrecioVentaFinal;
+                    }
+                    //decimal PrecioVentaOrig = Convert.ToDecimal(lblTotalPagarReal.Text);
+                    //listaProductos[0].PrecioVentaFinal = Convert.ToDecimal(lblTotalPagarReal.Text);
+                    listaProductos[0].PrecioVentaFinal = PrecioFinal;
+                }
+                else
+                {
+                    VentaCerrada = true;
+                    int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
+                    int idusuario = idusuarioLogueado;
+                    listaProductos[0].PrecioVentaFinal = Convert.ToDecimal(lblTotalPagarReal.Text);
+                    //bool Exito = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
+                    idVenta = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
+                    BloquearPantalla();
+                    VueltoNuevoWF _vuelto = new VueltoNuevoWF(listaProductos[0].PrecioVentaFinal);
+                    _vuelto.Show();
+                    Tkt(idVenta, listaProductos);
+                    //DesbloquearPantalla();
+                    lblBack.Visible = true;
+                }
+            }
+        }
+
+        private List<Entidades.ListaProductoVenta> BuscarPromociones(List<Entidades.ListaProductoVenta> listaProducto)
+        {
+            double totalDescuento = 0;
+            List<Entidades.ListaProductoVenta> listaDescuentos = new List<Entidades.ListaProductoVenta>();
+            foreach (var producto in listaProducto)
+            {
+                if (producto.Cantidad > 0)
+                {
+                    List<Ofertas> promociones = Ventas.BuscarPromociones("", producto.idProducto, 2).OrderBy(x => x.PrecioCombo).ToList();
+                    foreach (var item in promociones)
+                    {
+                        if (item.Productos.Count == 1)
+                        {
+                            int cantidad = producto.Cantidad / item.Productos.First().Unidades;
+                            if (cantidad != 0)
+                            {
+                                double descuento_promocion = Convert.ToDouble((producto.PrecioVenta * (cantidad * item.Productos.First().Unidades)) - (cantidad * item.PrecioCombo));
+                                Entidades.ListaProductoVenta descuento = new Entidades.ListaProductoVenta();
+                                descuento.idOferta = item.idOferta;
+                                descuento.PrecioVentaFinal = Convert.ToDecimal(-descuento_promocion);
+                                descuento.NombreProducto = "DESCUENTO APLICADO POR " + item.NombreOferta;
+                                descuento.Cantidad = cantidad;
+                                descuento.PrecioUnitario = item.PrecioCombo;
+                                listaDescuentos.Add(descuento);
+                                totalDescuento = totalDescuento + descuento_promocion;
+                                producto.Cantidad = producto.Cantidad - (cantidad * item.Productos.First().Unidades);
+                            }
+                        }
+                        else
+                        {
+                            if (!listaDescuentos.Exists(e => e.idOferta == item.idOferta))
+                            {
+                                double totalProductosPromocion = 0;
+                                int cantidadPromociones = 10000;
+                                bool promocionCompleta = true;
+                                foreach (var itemNEW in item.Productos)
+                                {
+                                    Entidades.ListaProductoVenta productoVenta = listaProducto.Find(e => e.idProducto == itemNEW.idProducto);
+                                    if (productoVenta != null)
+                                    {
+                                        if ((productoVenta.Cantidad / itemNEW.Unidades) == 0)
+                                        {
+                                            promocionCompleta = false;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            int posiblesPromociones = productoVenta.Cantidad / itemNEW.Unidades;
+                                            cantidadPromociones = cantidadPromociones > posiblesPromociones ? posiblesPromociones : cantidadPromociones;
+                                            totalProductosPromocion = totalProductosPromocion + Convert.ToDouble(productoVenta.PrecioVenta);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        promocionCompleta = false;
+                                        break;
+                                    }
+                                }
+                                if (promocionCompleta)
+                                {
+                                    if (!listaDescuentos.Exists(e => e.idOferta == item.idOferta))
+                                    {
+                                        Entidades.ListaProductoVenta descuento = new Entidades.ListaProductoVenta();
+                                        double descuento_promocion = ((cantidadPromociones * totalProductosPromocion) - (cantidadPromociones * Convert.ToDouble(item.PrecioCombo)));
+                                        descuento.idOferta = item.idOferta;
+                                        descuento.PrecioVentaFinal = Convert.ToDecimal(-descuento_promocion);
+                                        descuento.NombreProducto = "DESCUENTO X " + item.NombreOferta;
+                                        descuento.Cantidad = cantidadPromociones;
+                                        descuento.PrecioUnitario = item.PrecioCombo;
+                                        listaDescuentos.Add(descuento);
+                                        totalDescuento = totalDescuento + descuento_promocion;
+                                        foreach (var item2 in item.Productos)
+                                        {
+                                            Entidades.ListaProductoVenta productoVenta = listaProducto.Find(e => e.idProducto == item2.idProducto);
+                                            productoVenta.Cantidad = productoVenta.Cantidad - (cantidadPromociones * item2.Unidades);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+            }
+            //lbDescuento.Text = string.Format("{0:N2}", totalDescuento);
+            return listaDescuentos;
+        }
     }
 }
+

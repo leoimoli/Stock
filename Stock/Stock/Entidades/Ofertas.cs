@@ -18,5 +18,7 @@ namespace Stock.Entidades
         public int idProducto { get; set; }
         public int Unidades { get; set; }
         public int idUsuario { get; set; }
+        public List<Entidades.Productos>  Productos { get; set; }
     }
 }
+ 

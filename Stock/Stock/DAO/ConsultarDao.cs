@@ -52,6 +52,68 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
+        public static List<Ofertas> BuscarProductosDePromocion(List<Ofertas> promocion)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.Ofertas> lista = new List<Entidades.Ofertas>();
+            foreach (var item in promocion)
+            {
+                item.Productos = new List<Productos>();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla = new DataTable();
+                MySqlParameter[] oParam = { new MySqlParameter("idOferta_in", item.idOferta) };
+                string proceso = "BuscarProductosPorPromociones";
+                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt.SelectCommand.Parameters.AddRange(oParam);
+                dt.Fill(Tabla);
+                if (Tabla.Rows.Count > 0)
+                {
+                    foreach (DataRow item2 in Tabla.Rows)
+                    {
+                        Entidades.Productos listaPrueba = new Entidades.Productos();
+                        listaPrueba.idProducto = Convert.ToInt32(item2["idProducto"].ToString());
+                        listaPrueba.Unidades = Convert.ToInt32(item2["Unidades"].ToString());
+                        item.Productos.Add(listaPrueba);
+                    }
+                }
+                lista.Add(item);
+            }
+            connection.Close();
+            return lista;
+        }
+        public static List<Ofertas> BuscarPromociones(int idProducto)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.Ofertas> lista = new List<Entidades.Ofertas>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("idProducto_in", idProducto) };
+            string proceso = "BuscarPromociones";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Ofertas listaProductos = new Ofertas();
+                    listaProductos.idProducto = Convert.ToInt32(item["idProducto"].ToString());
+                    listaProductos.idOferta = Convert.ToInt32(item["idOferta"].ToString());
+                    listaProductos.Unidades = Convert.ToInt32(item["Unidades"].ToString());
+                    listaProductos.PrecioCombo = Convert.ToDecimal(item["PrecioCombo"].ToString());
+                    listaProductos.NombreOferta = item["NombreCombo"].ToString();
+                    lista.Add(listaProductos);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
 
         public static List<DetalleOferta> BuscarDetalleOferta(int idOferta)
         {

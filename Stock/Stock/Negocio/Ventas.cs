@@ -20,5 +20,21 @@ namespace Stock.Negocio
             { }
             return idVenta;
         }
+
+        public static List<Ofertas> BuscarPromociones(string v1, int idProducto, int v2)
+        {
+            List<Ofertas> promocion = new List<Ofertas>();
+            try
+            {
+                promocion = DAO.ConsultarDao.BuscarPromociones(idProducto);
+                if (promocion.Count > 0)
+                {
+                    promocion = DAO.ConsultarDao.BuscarProductosDePromocion(promocion);
+                }
+            }
+            catch (Exception ex)
+            { }
+            return promocion;
+        }
     }
 }

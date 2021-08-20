@@ -21,5 +21,7 @@ namespace Stock.Entidades
         public string Cantidad { get; set; }
         public int idProveedor { get; set; }
         public int ProductoEspecial { get; set; }
+
+        public int Unidades { get; set; }
     }
 }
