@@ -149,6 +149,7 @@
             this.lblEfectivo.TabIndex = 132;
             this.lblEfectivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.lblEfectivo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lblEfectivo_KeyDown);
+            this.lblEfectivo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
             // 
             // lblDescuentos
             // 

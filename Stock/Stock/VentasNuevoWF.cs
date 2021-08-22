@@ -29,6 +29,12 @@ namespace Stock
             txtNombreBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompletePorDescripcion.Autocomplete();
             txtNombreBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtNombreBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            if (Sesion.UsuarioLogueado.Perfil == "1" || Sesion.UsuarioLogueado.Perfil == "SUPER ADMIN")
+            {
+                btnDescuentos.Visible = true;
+            }
+            else { btnDescuentos.Visible = false; }
         }
         public static List<Entidades.ListaProductoVenta> listaProductos;
         public static List<Entidades.ListaProductoVenta> listaProductosConDescuentos;
@@ -539,6 +545,7 @@ namespace Stock
         public static decimal PrecioFinal;
         private void FacturarVenta()
         {
+            contadorModificaciones = 1;
             if (listaProductos.Count > 0)
             {
                 List<Entidades.ListaProductoVentaEspejo> listaProductosOriginal = new List<ListaProductoVentaEspejo>();
@@ -717,6 +724,68 @@ namespace Stock
 
             }
             return listaDescuentos;
+        }
+
+        private void btnDescuentos_Click(object sender, EventArgs e)
+        {
+            grbDescuentos.Visible = true;
+        }
+
+        private void btnAplicarPorcentaje_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CalcularCostos();
+            }
+            catch (Exception ex)
+            { }
+        }
+        public static decimal ValorVentaOriginal;
+        public static int contadorModificaciones = 1;
+        private void CalcularCostos()
+        {
+            if (contadorModificaciones == 1)
+            {
+                ValorVentaOriginal = Convert.ToDecimal(lblTotalPagarReal.Text);
+                decimal NuevoValorVenta = Convert.ToDecimal(lblTotalPagarReal.Text);
+                decimal ValorVenta = ValorVentaOriginal;
+                if (txtReditoPorcentual.Text != "   %" && ValorVenta > 0)
+                {
+                    var split = txtReditoPorcentual.Text.Split('%')[0];
+                    split = split.Trim();
+                    decimal porcentaje = Convert.ToDecimal(split) / 100;
+                    decimal ValorVentaCalculado;
+                    if (ValorVenta > 0 & porcentaje > 0)
+                    {
+                        ValorVentaCalculado = ValorVenta - ValorVenta * porcentaje;
+                        lblTotalPagarReal.Text = Convert.ToString(decimal.Round(ValorVentaCalculado, 2));
+                    }
+                }
+                contadorModificaciones = contadorModificaciones + 1;
+            }
+            if (contadorModificaciones > 1)
+            {
+                decimal NuevoValorVenta = ValorVentaOriginal;
+                decimal ValorVenta = ValorVentaOriginal;
+                if (txtReditoPorcentual.Text != "   %" && ValorVenta > 0)
+                {
+                    var split = txtReditoPorcentual.Text.Split('%')[0];
+                    split = split.Trim();
+                    decimal porcentaje = Convert.ToDecimal(split) / 100;
+                    decimal ValorVentaCalculado;
+                    if (ValorVenta > 0 & porcentaje > 0)
+                    {
+                        ValorVentaCalculado = ValorVenta - ValorVenta * porcentaje;
+                        lblTotalPagarReal.Text = Convert.ToString(decimal.Round(ValorVentaCalculado, 2));
+                    }
+                }
+                contadorModificaciones = contadorModificaciones + 1;
+            }
+        }
+
+        private void btnAplicarPrecio_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

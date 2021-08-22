@@ -47,8 +47,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.lblBack = new System.Windows.Forms.Label();
-            this.btnMinimizar = new System.Windows.Forms.PictureBox();
-            this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtMonto = new System.Windows.Forms.TextBox();
@@ -56,34 +54,45 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnOscuro = new System.Windows.Forms.Button();
             this.btnClaros = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.grbDescuentos = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtPrecioVenta = new System.Windows.Forms.TextBox();
+            this.txtReditoPorcentual = new System.Windows.Forms.MaskedTextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lblTotalPagarReal = new System.Windows.Forms.Button();
+            this.btnDescuentos = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnAplicarPrecio = new System.Windows.Forms.Button();
+            this.btnAplicarPorcentaje = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnRestaurar = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.lblTotalPagarReal = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblUsuario = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
+            this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.btnCerrar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.grbDescuentos.SuspendLayout();
+            this.panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel3.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvVentas
@@ -254,31 +263,6 @@
             this.lblBack.Text = "(Back)Limpiar Grilla";
             this.lblBack.Visible = false;
             // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMinimizar.Image = global::Stock.Properties.Resources.menos__2_;
-            this.btnMinimizar.Location = new System.Drawing.Point(1445, 18);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(25, 25);
-            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMinimizar.TabIndex = 4;
-            this.btnMinimizar.TabStop = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCerrar.Image = global::Stock.Properties.Resources.cancelar1;
-            this.btnCerrar.Location = new System.Drawing.Point(1478, 18);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(25, 25);
-            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnCerrar.TabIndex = 3;
-            this.btnCerrar.TabStop = false;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -371,6 +355,233 @@
             this.btnClaros.Visible = false;
             this.btnClaros.Click += new System.EventHandler(this.btnClaro_Click);
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.panel1);
+            this.panel3.Controls.Add(this.txtNombreBuscar);
+            this.panel3.Controls.Add(this.txtCodigo);
+            this.panel3.Controls.Add(this.lblBack);
+            this.panel3.Controls.Add(this.groupBox1);
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.dgvVentas);
+            this.panel3.Controls.Add(this.txtCantidad);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 43);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1099, 521);
+            this.panel3.TabIndex = 154;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(881, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(218, 521);
+            this.panel1.TabIndex = 58;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.panel4.Controls.Add(this.grbDescuentos);
+            this.panel4.Controls.Add(this.button1);
+            this.panel4.Controls.Add(this.lblTotalPagarReal);
+            this.panel4.Controls.Add(this.btnDescuentos);
+            this.panel4.Controls.Add(this.label8);
+            this.panel4.Controls.Add(this.lblUsuario);
+            this.panel4.Controls.Add(this.pictureBox4);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel4.Location = new System.Drawing.Point(10, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(208, 521);
+            this.panel4.TabIndex = 153;
+            // 
+            // grbDescuentos
+            // 
+            this.grbDescuentos.Controls.Add(this.btnAplicarPrecio);
+            this.grbDescuentos.Controls.Add(this.btnAplicarPorcentaje);
+            this.grbDescuentos.Controls.Add(this.label9);
+            this.grbDescuentos.Controls.Add(this.label2);
+            this.grbDescuentos.Controls.Add(this.txtPrecioVenta);
+            this.grbDescuentos.Controls.Add(this.txtReditoPorcentual);
+            this.grbDescuentos.Location = new System.Drawing.Point(3, 367);
+            this.grbDescuentos.Name = "grbDescuentos";
+            this.grbDescuentos.Size = new System.Drawing.Size(202, 102);
+            this.grbDescuentos.TabIndex = 153;
+            this.grbDescuentos.TabStop = false;
+            this.grbDescuentos.Visible = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(65, 56);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(85, 17);
+            this.label9.TabIndex = 154;
+            this.label9.Text = "Nuevo Total";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(30, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(148, 17);
+            this.label2.TabIndex = 153;
+            this.label2.Text = "Descuento Procentual";
+            // 
+            // txtPrecioVenta
+            // 
+            this.txtPrecioVenta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtPrecioVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrecioVenta.Location = new System.Drawing.Point(57, 73);
+            this.txtPrecioVenta.Name = "txtPrecioVenta";
+            this.txtPrecioVenta.Size = new System.Drawing.Size(108, 26);
+            this.txtPrecioVenta.TabIndex = 66;
+            this.txtPrecioVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
+            // 
+            // txtReditoPorcentual
+            // 
+            this.txtReditoPorcentual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReditoPorcentual.Location = new System.Drawing.Point(73, 27);
+            this.txtReditoPorcentual.Mask = "000%";
+            this.txtReditoPorcentual.Name = "txtReditoPorcentual";
+            this.txtReditoPorcentual.Size = new System.Drawing.Size(73, 26);
+            this.txtReditoPorcentual.TabIndex = 67;
+            this.txtReditoPorcentual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(76, 258);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 54);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "(F12) Cobrar";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.btnCobrar_Click);
+            // 
+            // lblTotalPagarReal
+            // 
+            this.lblTotalPagarReal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.lblTotalPagarReal.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.lblTotalPagarReal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblTotalPagarReal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalPagarReal.ForeColor = System.Drawing.Color.White;
+            this.lblTotalPagarReal.Location = new System.Drawing.Point(48, 192);
+            this.lblTotalPagarReal.Name = "lblTotalPagarReal";
+            this.lblTotalPagarReal.Size = new System.Drawing.Size(147, 60);
+            this.lblTotalPagarReal.TabIndex = 57;
+            this.lblTotalPagarReal.UseVisualStyleBackColor = false;
+            // 
+            // btnDescuentos
+            // 
+            this.btnDescuentos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnDescuentos.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnDescuentos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDescuentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDescuentos.ForeColor = System.Drawing.Color.White;
+            this.btnDescuentos.Location = new System.Drawing.Point(32, 318);
+            this.btnDescuentos.Name = "btnDescuentos";
+            this.btnDescuentos.Size = new System.Drawing.Size(164, 44);
+            this.btnDescuentos.TabIndex = 58;
+            this.btnDescuentos.Text = "(F10) Aplicar Descuento";
+            this.btnDescuentos.UseVisualStyleBackColor = false;
+            this.btnDescuentos.Visible = false;
+            this.btnDescuentos.Click += new System.EventHandler(this.btnDescuentos_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(68, 150);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(98, 39);
+            this.label8.TabIndex = 55;
+            this.label8.Text = "Total";
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblUsuario.Location = new System.Drawing.Point(6, 6);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(150, 21);
+            this.lblUsuario.TabIndex = 56;
+            this.lblUsuario.Text = "Usuario Logueado";
+            // 
+            // panel14
+            // 
+            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.panel14.Controls.Add(this.label7);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel14.Location = new System.Drawing.Point(0, 518);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(1099, 46);
+            this.panel14.TabIndex = 153;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(360, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(272, 17);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "StoCom(Sistema Stock Comercial) V-1.0.0";
+            // 
+            // btnAplicarPrecio
+            // 
+            this.btnAplicarPrecio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnAplicarPrecio.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnAplicarPrecio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAplicarPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAplicarPrecio.ForeColor = System.Drawing.Color.White;
+            this.btnAplicarPrecio.Image = global::Stock.Properties.Resources.boton_de_play;
+            this.btnAplicarPrecio.Location = new System.Drawing.Point(171, 77);
+            this.btnAplicarPrecio.Name = "btnAplicarPrecio";
+            this.btnAplicarPrecio.Size = new System.Drawing.Size(21, 19);
+            this.btnAplicarPrecio.TabIndex = 158;
+            this.btnAplicarPrecio.UseVisualStyleBackColor = false;
+            this.btnAplicarPrecio.Click += new System.EventHandler(this.btnAplicarPrecio_Click);
+            // 
+            // btnAplicarPorcentaje
+            // 
+            this.btnAplicarPorcentaje.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnAplicarPorcentaje.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnAplicarPorcentaje.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAplicarPorcentaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAplicarPorcentaje.ForeColor = System.Drawing.Color.White;
+            this.btnAplicarPorcentaje.Image = global::Stock.Properties.Resources.boton_de_play;
+            this.btnAplicarPorcentaje.Location = new System.Drawing.Point(171, 32);
+            this.btnAplicarPorcentaje.Name = "btnAplicarPorcentaje";
+            this.btnAplicarPorcentaje.Size = new System.Drawing.Size(21, 19);
+            this.btnAplicarPorcentaje.TabIndex = 157;
+            this.btnAplicarPorcentaje.UseVisualStyleBackColor = false;
+            this.btnAplicarPorcentaje.Click += new System.EventHandler(this.btnAplicarPorcentaje_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::Stock.Properties.Resources.usuario__1_;
+            this.pictureBox4.Location = new System.Drawing.Point(56, 49);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(110, 88);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 57;
+            this.pictureBox4.TabStop = false;
+            // 
             // btnRestaurar
             // 
             this.btnRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -424,127 +635,30 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
-            // panel3
+            // btnMinimizar
             // 
-            this.panel3.Controls.Add(this.panel1);
-            this.panel3.Controls.Add(this.txtNombreBuscar);
-            this.panel3.Controls.Add(this.txtCodigo);
-            this.panel3.Controls.Add(this.lblBack);
-            this.panel3.Controls.Add(this.groupBox1);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.dgvVentas);
-            this.panel3.Controls.Add(this.txtCantidad);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 43);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1099, 521);
-            this.panel3.TabIndex = 154;
+            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMinimizar.Image = global::Stock.Properties.Resources.menos__2_;
+            this.btnMinimizar.Location = new System.Drawing.Point(1445, 18);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(25, 25);
+            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimizar.TabIndex = 4;
+            this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
-            // panel1
+            // btnCerrar
             // 
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(881, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(218, 521);
-            this.panel1.TabIndex = 58;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.panel4.Controls.Add(this.button1);
-            this.panel4.Controls.Add(this.lblTotalPagarReal);
-            this.panel4.Controls.Add(this.label8);
-            this.panel4.Controls.Add(this.lblUsuario);
-            this.panel4.Controls.Add(this.pictureBox4);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(10, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(208, 521);
-            this.panel4.TabIndex = 153;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(78, 305);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 54);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "(F12) Cobrar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.btnCobrar_Click);
-            // 
-            // lblTotalPagarReal
-            // 
-            this.lblTotalPagarReal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.lblTotalPagarReal.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.lblTotalPagarReal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblTotalPagarReal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalPagarReal.ForeColor = System.Drawing.Color.White;
-            this.lblTotalPagarReal.Location = new System.Drawing.Point(48, 220);
-            this.lblTotalPagarReal.Name = "lblTotalPagarReal";
-            this.lblTotalPagarReal.Size = new System.Drawing.Size(147, 60);
-            this.lblTotalPagarReal.TabIndex = 57;
-            this.lblTotalPagarReal.UseVisualStyleBackColor = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(71, 175);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(98, 39);
-            this.label8.TabIndex = 55;
-            this.label8.Text = "Total";
-            // 
-            // lblUsuario
-            // 
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(6, 21);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(150, 21);
-            this.lblUsuario.TabIndex = 56;
-            this.lblUsuario.Text = "Usuario Logueado";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::Stock.Properties.Resources.usuario__1_;
-            this.pictureBox4.Location = new System.Drawing.Point(56, 64);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(110, 88);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 57;
-            this.pictureBox4.TabStop = false;
-            // 
-            // panel14
-            // 
-            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.panel14.Controls.Add(this.label7);
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel14.Location = new System.Drawing.Point(0, 518);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(1099, 46);
-            this.panel14.TabIndex = 153;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(360, 16);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(272, 17);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "StoCom(Sistema Stock Comercial) V-1.0.0";
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrar.Image = global::Stock.Properties.Resources.cancelar1;
+            this.btnCerrar.Location = new System.Drawing.Point(1478, 18);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(25, 25);
+            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnCerrar.TabIndex = 3;
+            this.btnCerrar.TabStop = false;
             // 
             // VentasNuevoWF
             // 
@@ -565,24 +679,26 @@
             this.Load += new System.EventHandler(this.VentasNuevoWF_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.VentasNuevoWF_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.grbDescuentos.ResumeLayout(false);
+            this.grbDescuentos.PerformLayout();
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -625,5 +741,13 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnClaros;
         private System.Windows.Forms.Button btnOscuro;
+        private System.Windows.Forms.Button btnDescuentos;
+        private System.Windows.Forms.GroupBox grbDescuentos;
+        private System.Windows.Forms.MaskedTextBox txtReditoPorcentual;
+        private System.Windows.Forms.TextBox txtPrecioVenta;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnAplicarPrecio;
+        private System.Windows.Forms.Button btnAplicarPorcentaje;
     }
 }

@@ -680,6 +680,7 @@
     <None Include="Resources\oferta.png" />
     <None Include="Resources\oferta %281%29.png" />
     <None Include="Resources\oferta %282%29.png" />
+    <None Include="Resources\boton-de-play.png" />
     <Content Include="StoCom_logo_2.ico" />
     <None Include="Resources\StoCom_logo_21.png" />
     <None Include="Resources\StoCom_logo_2.png" />
