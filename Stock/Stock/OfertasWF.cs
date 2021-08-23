@@ -153,15 +153,25 @@ namespace Stock
         {
             try
             {
+                decimal ValorTotal = 0;
                 List<Ofertas> _lista = new List<Ofertas>();
                 foreach (DataGridViewRow dr in dgvOfertasCombo.Rows)
                 {
                     Entidades.Ofertas _item = new Entidades.Ofertas();
                     _item.idProducto = Convert.ToInt32(dr.Cells["id"].Value);
                     _item.Unidades = Convert.ToInt32(dr.Cells["uni"].Value);
+                    _item.ValorProducto = Convert.ToDecimal(dr.Cells["PrecioVenta"].Value);
                     _lista.Add(_item);
                 }
+                foreach (var item in _lista)
+                {
+                    decimal calculoValorCantidad = item.ValorProducto * item.Unidades;
+                    ValorTotal = ValorTotal + calculoValorCantidad;
+                }
+                decimal MontoCombo = Convert.ToDecimal(txtPrecioCombo.Text);
+                decimal MontoDescuento = ValorTotal - MontoCombo;
                 Entidades.Ofertas _oferta = CargarEntidad();
+                _oferta.MontoDescuento = MontoDescuento;
                 int Exito = Negocio.OfertasNeg.RegistrarOferta(_oferta, _lista);
                 if (Exito == 1)
                 {

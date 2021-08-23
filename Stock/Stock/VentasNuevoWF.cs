@@ -29,12 +29,6 @@ namespace Stock
             txtNombreBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompletePorDescripcion.Autocomplete();
             txtNombreBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtNombreBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
-
-            if (Sesion.UsuarioLogueado.Perfil == "1" || Sesion.UsuarioLogueado.Perfil == "SUPER ADMIN")
-            {
-                btnDescuentos.Visible = true;
-            }
-            else { btnDescuentos.Visible = false; }
         }
         public static List<Entidades.ListaProductoVenta> listaProductos;
         public static List<Entidades.ListaProductoVenta> listaProductosConDescuentos;
@@ -543,15 +537,16 @@ namespace Stock
             dgvVentas.RowsDefaultCellStyle.SelectionBackColor = Color.SteelBlue;
         }
         public static decimal PrecioFinal;
+        public static List<DetalleOferta> listaOfertas;
         private void FacturarVenta()
         {
-            contadorModificaciones = 1;
+            List<DetalleOferta> lista = new List<DetalleOferta>();
             if (listaProductos.Count > 0)
             {
                 List<Entidades.ListaProductoVentaEspejo> listaProductosOriginal = new List<ListaProductoVentaEspejo>();
-                Entidades.ListaProductoVentaEspejo ProductosOriginal = new Entidades.ListaProductoVentaEspejo();
                 foreach (var item in listaProductos)
                 {
+                    Entidades.ListaProductoVentaEspejo ProductosOriginal = new Entidades.ListaProductoVentaEspejo();
                     ProductosOriginal.Cantidad = item.Cantidad;
                     ProductosOriginal.CodigoProducto = item.CodigoProducto;
 
@@ -585,11 +580,18 @@ namespace Stock
                             PrecioFinal = PrecioFinal + item.PrecioVentaFinal;
                             contarDescuentos = contarDescuentos + 1;
                         }
+
+                        DetalleOferta detalle = new DetalleOferta();
+                        detalle.Descripcion = item.NombreProducto;
+                        detalle.PrecioOferta = item.PrecioUnitario;
+                        detalle.MontoDescuento = item.MontoDescuento;
+                        lista.Add(detalle);
                     }
                     List<Entidades.ListaProductoVenta> listaProductos = new List<ListaProductoVenta>();
-                    Entidades.ListaProductoVenta Productos = new Entidades.ListaProductoVenta();
+                  
                     foreach (var item in listaProductosOriginal)
                     {
+                        Entidades.ListaProductoVenta Productos = new Entidades.ListaProductoVenta();
                         Productos.Cantidad = item.Cantidad;
                         Productos.CodigoProducto = item.CodigoProducto;
 
@@ -606,6 +608,7 @@ namespace Stock
                         Productos.ProductoEspecial = item.ProductoEspecial;
                         listaProductos.Add(Productos);
                     }
+                    listaOfertas = lista;
                     VentaCerrada = true;
                     int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
                     int idusuario = idusuarioLogueado;
@@ -613,9 +616,9 @@ namespace Stock
                     idVenta = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
                     bool AplicaDescuento = true;
                     BloquearPantalla();
-                    VueltoNuevoWF _vuelto = new VueltoNuevoWF(listaProductos[0].PrecioVentaFinal, AplicaDescuento);
+                    VueltoNuevoWF _vuelto = new VueltoNuevoWF(listaProductos[0].PrecioVentaFinal, AplicaDescuento, idVenta, listaProductos, listaOfertas);
                     _vuelto.Show();
-                    Tkt(idVenta, listaProductos);
+                    //Tkt(idVenta, listaProductos);
                     //DesbloquearPantalla();
                     lblBack.Visible = true;
                 }
@@ -629,7 +632,7 @@ namespace Stock
                     idVenta = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
                     bool AplicaDescuento = false;
                     BloquearPantalla();
-                    VueltoNuevoWF _vuelto = new VueltoNuevoWF(listaProductos[0].PrecioVentaFinal, AplicaDescuento);
+                    VueltoNuevoWF _vuelto = new VueltoNuevoWF(listaProductos[0].PrecioVentaFinal, AplicaDescuento, idVenta, listaProductos, listaOfertas);
                     _vuelto.Show();
                     Tkt(idVenta, listaProductos);
                     //DesbloquearPantalla();
@@ -661,6 +664,7 @@ namespace Stock
                                 descuento.NombreProducto = "DESCUENTO APLICADO POR " + item.NombreOferta;
                                 descuento.Cantidad = cantidad;
                                 descuento.PrecioUnitario = item.PrecioCombo;
+                                descuento.MontoDescuento = item.MontoDescuento;
                                 listaDescuentos.Add(descuento);
                                 totalDescuento = totalDescuento + descuento_promocion;
                                 producto.Cantidad = producto.Cantidad - (cantidad * item.Productos.First().Unidades);
@@ -707,6 +711,7 @@ namespace Stock
                                         descuento.NombreProducto = "DESCUENTO APLICADO POR " + item.NombreOferta;
                                         descuento.Cantidad = cantidadPromociones;
                                         descuento.PrecioUnitario = item.PrecioCombo;
+                                        descuento.MontoDescuento = item.MontoDescuento;
                                         listaDescuentos.Add(descuento);
                                         totalDescuento = totalDescuento + descuento_promocion;
                                         foreach (var item2 in item.Productos)
@@ -724,68 +729,6 @@ namespace Stock
 
             }
             return listaDescuentos;
-        }
-
-        private void btnDescuentos_Click(object sender, EventArgs e)
-        {
-            grbDescuentos.Visible = true;
-        }
-
-        private void btnAplicarPorcentaje_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                CalcularCostos();
-            }
-            catch (Exception ex)
-            { }
-        }
-        public static decimal ValorVentaOriginal;
-        public static int contadorModificaciones = 1;
-        private void CalcularCostos()
-        {
-            if (contadorModificaciones == 1)
-            {
-                ValorVentaOriginal = Convert.ToDecimal(lblTotalPagarReal.Text);
-                decimal NuevoValorVenta = Convert.ToDecimal(lblTotalPagarReal.Text);
-                decimal ValorVenta = ValorVentaOriginal;
-                if (txtReditoPorcentual.Text != "   %" && ValorVenta > 0)
-                {
-                    var split = txtReditoPorcentual.Text.Split('%')[0];
-                    split = split.Trim();
-                    decimal porcentaje = Convert.ToDecimal(split) / 100;
-                    decimal ValorVentaCalculado;
-                    if (ValorVenta > 0 & porcentaje > 0)
-                    {
-                        ValorVentaCalculado = ValorVenta - ValorVenta * porcentaje;
-                        lblTotalPagarReal.Text = Convert.ToString(decimal.Round(ValorVentaCalculado, 2));
-                    }
-                }
-                contadorModificaciones = contadorModificaciones + 1;
-            }
-            if (contadorModificaciones > 1)
-            {
-                decimal NuevoValorVenta = ValorVentaOriginal;
-                decimal ValorVenta = ValorVentaOriginal;
-                if (txtReditoPorcentual.Text != "   %" && ValorVenta > 0)
-                {
-                    var split = txtReditoPorcentual.Text.Split('%')[0];
-                    split = split.Trim();
-                    decimal porcentaje = Convert.ToDecimal(split) / 100;
-                    decimal ValorVentaCalculado;
-                    if (ValorVenta > 0 & porcentaje > 0)
-                    {
-                        ValorVentaCalculado = ValorVenta - ValorVenta * porcentaje;
-                        lblTotalPagarReal.Text = Convert.ToString(decimal.Round(ValorVentaCalculado, 2));
-                    }
-                }
-                contadorModificaciones = contadorModificaciones + 1;
-            }
-        }
-
-        private void btnAplicarPrecio_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

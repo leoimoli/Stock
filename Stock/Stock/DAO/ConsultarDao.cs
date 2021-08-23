@@ -108,6 +108,7 @@ namespace Stock.DAO
                     listaProductos.Unidades = Convert.ToInt32(item["Unidades"].ToString());
                     listaProductos.PrecioCombo = Convert.ToDecimal(item["PrecioCombo"].ToString());
                     listaProductos.NombreOferta = item["NombreCombo"].ToString();
+                    listaProductos.MontoDescuento = Convert.ToDecimal(item["MontoDescuento"].ToString());
                     lista.Add(listaProductos);
                 }
             }

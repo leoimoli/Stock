@@ -21,7 +21,7 @@ namespace Stock.Entidades
 
         public int ProductoEspecial { get; set; }
         public int idOferta { get; set; }
-
+        public decimal MontoDescuento { get; set; }
         //public decimal Efectivo { get; set; }
         //public decimal Vueto { get; set; }
     }

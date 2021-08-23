@@ -34,6 +34,25 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
+
+        public static bool ActualizarVenta(decimal valorNuevo , int idVenta)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            ///PROCEDIMIENTO
+            string proceso = "ActualizarVenta";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("valorNuevo_in", valorNuevo);
+            DateTime Fecha = DateTime.Now;
+            cmd.Parameters.AddWithValue("idVenta_in", idVenta);
+            cmd.ExecuteNonQuery();
+            connection.Close();
+            exito = true;
+            return exito;
+        }
+
         public static void ActualizarUltimaConexion(int idUsuario)
         {
             connection.Close();

@@ -14,5 +14,6 @@ namespace Stock.Entidades
         public string Descripcion { get; set; }
         public int Unidades { get; set; }
         public decimal PrecioOferta { get; set; }
+        public decimal MontoDescuento { get; set; }
     }
 }

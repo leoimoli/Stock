@@ -118,6 +118,33 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnCancelarDescuento1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH5QgXDi4NCMtc7QAAATJJREFU
+        OE+lk01OAkEQRmeFlxAvMHgHA3ElegjkAETvQZSgngPX/hCvgN5A3fuz1IzvNTWjzgRc+CUvqfqqq5ru
+        abK6iqLYhlO4h/fA+AQ6sawpihtwDp8whxH0A2M9a2fQiralMGy+gUfYCbshal14gmv4HkJyATZvhrVS
+        rGmDQ6al4Zk/YOXOdbG2Fz25iZdzG7Uk8ksYRGp+qBdpEvkdjA0eYBR+EvkA3MFGMa4GKvIjWBi8wV74
+        lfCGYKMMw66Etw+v5YB++JVsgnUDDuDF4N9H8BLn4SeR1y/RgbNIk8irS+yAO3Sj9qdYuxs9eWn4PH0c
+        7WSsEWu24BkmYSWzBT5Ph/TCboiaO9t8BY3/g0Om4E/zfF6Sn0qOw7M2gd/NP0UxhzEswE8sxnrLM1fK
+        si+GDNSzg64q1AAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="btnCancelaDescuento2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH5QgXDi4NCMtc7QAAATJJREFU
+        OE+lk01OAkEQRmeFlxAvMHgHA3ElegjkAETvQZSgngPX/hCvgN5A3fuz1IzvNTWjzgRc+CUvqfqqq5ru
+        abK6iqLYhlO4h/fA+AQ6sawpihtwDp8whxH0A2M9a2fQiralMGy+gUfYCbshal14gmv4HkJyATZvhrVS
+        rGmDQ6al4Zk/YOXOdbG2Fz25iZdzG7Uk8ksYRGp+qBdpEvkdjA0eYBR+EvkA3MFGMa4GKvIjWBi8wV74
+        lfCGYKMMw66Etw+v5YB++JVsgnUDDuDF4N9H8BLn4SeR1y/RgbNIk8irS+yAO3Sj9qdYuxs9eWn4PH0c
+        7WSsEWu24BkmYSWzBT5Ph/TCboiaO9t8BY3/g0Om4E/zfF6Sn0qOw7M2gd/NP0UxhzEswE8sxnrLM1fK
+        si+GDNSzg64q1AAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAgIAAAAEAIAAoCAEAFgAAACgAAACAAAAAAAEAAAEAIAAAAAAAAAABANcNAADXDQAAAAAAAAAA

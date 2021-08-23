@@ -141,6 +141,22 @@ namespace Utils
             TextoIzquierda("".PadRight(32, ' '));
             
         }
+
+        public void AgregarDescuentos(string descripcion, object p1, double precio, object p2)
+        {
+            //TextoIzquierda(cant.ToString() + " x " + string.Format("{0:N2}", precio) + "(21.00)".PadLeft(19 - (cant.ToString().Length + string.Format("{0:N2}", precio).Length), ' '));
+            max = descripcion.Length;
+            while (max > 23)
+            {
+                cort = max - 23;
+                parte1 = descripcion.Remove(23, cort);
+                TextoIzquierda(parte1);
+                descripcion = descripcion.Remove(0, 23);
+                max = descripcion.Length;
+            }
+            TextoIzquierda(descripcion.PadRight((32 - string.Format("{0:N2}", precio).Length), ' ') + string.Format("{0:N2}", precio));
+        }
+
         public void AgregaArticulo(string descripcion, int cant, double precio, double total)
         {
             TextoIzquierda(cant.ToString() + " x " + string.Format("{0:N2}", precio) + "(21.00)".PadLeft(19 - (cant.ToString().Length + string.Format("{0:N2}", total).Length), ' '));

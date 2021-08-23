@@ -36,5 +36,16 @@ namespace Stock.Negocio
             { }
             return promocion;
         }
+        public static bool ActualizarVenta(decimal valorNuevo, int idVenta)
+        {
+            bool Exito = false;
+            try
+            {
+                Exito = DAO.EditarDao.ActualizarVenta(valorNuevo, idVenta);
+            }
+            catch (Exception ex)
+            { }
+            return Exito;
+        }
     }
 }

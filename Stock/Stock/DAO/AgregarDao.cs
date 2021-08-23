@@ -50,7 +50,6 @@ namespace Stock.DAO
             connection.Close();
             return idUltimoVenta;
         }
-
         public static int RegistrarOferta(Ofertas oferta, List<Ofertas> lista)
         {
             int idUltimaOferta = 0;
@@ -80,6 +79,7 @@ namespace Stock.DAO
             cmd.Parameters.AddWithValue("PrecioCombo_in", oferta.PrecioCombo);
             cmd.Parameters.AddWithValue("Estado_in", oferta.Estado);
             cmd.Parameters.AddWithValue("idUsuario_in", oferta.idUsuario);
+            cmd.Parameters.AddWithValue("MontoDescuento_in", oferta.MontoDescuento);
             MySqlDataReader r = cmd.ExecuteReader();
             while (r.Read())
             {
