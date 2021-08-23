@@ -69,8 +69,15 @@ namespace Stock
                 pictureBox2.Image = foto1;
                 int idArchivo = item.idArchivosCompras;
                 string Nombre = idArchivo + "(Proveedor'" + proveedor + "'( '" + Contador + "' ))";
-                string ruta = Path.Combine(@"C:\Descargas Stocom\ '" + Nombre + "' + .PNG");
+                string folderPath = "C:\\StoCom Archivos\\Archivos\\";
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+                string ruta = Path.Combine(@"C:\\StoCom Archivos\\Archivos\\ '" + Nombre + "' + .PNG");
                 foto1.Save(ruta, ImageFormat.Jpeg);
+
+               
             }
             const string message2 = "Se descargaron los archivos exitosamente en la carpeta C:\\Descargas Stocom\\.";
             const string caption2 = "Éxito";
