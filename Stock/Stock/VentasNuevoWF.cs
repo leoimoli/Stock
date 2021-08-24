@@ -588,7 +588,7 @@ namespace Stock
                         lista.Add(detalle);
                     }
                     List<Entidades.ListaProductoVenta> listaProductos = new List<ListaProductoVenta>();
-                  
+
                     foreach (var item in listaProductosOriginal)
                     {
                         Entidades.ListaProductoVenta Productos = new Entidades.ListaProductoVenta();
@@ -634,7 +634,7 @@ namespace Stock
                     BloquearPantalla();
                     VueltoNuevoWF _vuelto = new VueltoNuevoWF(listaProductos[0].PrecioVentaFinal, AplicaDescuento, idVenta, listaProductos, listaOfertas);
                     _vuelto.Show();
-                    Tkt(idVenta, listaProductos);
+                    //Tkt(idVenta, listaProductos);
                     //DesbloquearPantalla();
                     lblBack.Visible = true;
                 }

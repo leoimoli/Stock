@@ -132,9 +132,8 @@ namespace Stock
                 }
                 if (Bonificaciones == true)
                 {
-                    ticket.AgregarDescuentos("BONIFICACIÓN APLICADA", null, Convert.ToDouble(MontoBonificacion), null);
+                    ticket.AgregarDescuentos("BONIFICACION APLICADA", null, Convert.ToDouble(MontoBonificacion), null);
                 }
-
 
                 //if (venta.Comprobante.Cae_afip != null && venta.Comprobante.Cae_afip != "")
                 //ticket.AgregaTotales(venta.Total, venta.Comprobante.Cae_afip, venta.Comprobante.Fecha_vto_cae_afip.Value.ToShortDateString());
@@ -160,7 +159,7 @@ namespace Stock
                 }
                 if (Bonificaciones == true)
                 {
-                    ticket.AgregarDescuentos("BONIFICACIÓN APLICADA", null, Convert.ToDouble(MontoBonificacion), null);
+                    ticket.AgregarDescuentos("BONIFICACION APLICADA", null, Convert.ToDouble(MontoBonificacion), null);
                 }
                 //if (venta.Comprobante.Cae_afip != null && venta.Comprobante.Cae_afip != "")
                 //ticket.AgregaTotales(venta.Total, venta.Comprobante.Cae_afip, venta.Comprobante.Fecha_vto_cae_afip.Value.ToShortDateString());
