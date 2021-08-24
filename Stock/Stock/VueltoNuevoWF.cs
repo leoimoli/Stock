@@ -168,6 +168,7 @@ namespace Stock
                 //else
                 ticket.AgregaTotales(Convert.ToDouble(listaProductos[0].PrecioVentaFinal), null, null);
             }
+            Bonificaciones = false;
         }
         private void VueltoNuevoWF_Load(object sender, EventArgs e)
         {
@@ -221,6 +222,7 @@ namespace Stock
         public static int contadorModificaciones = 1;
         private void CalcularCostos()
         {
+            decimal ValorVentaCalculado = 0;
             if (contadorModificaciones == 1)
             {
                 ValorVentaOriginal = Convert.ToDecimal(lblTotal.Text);
@@ -231,13 +233,13 @@ namespace Stock
                     var split = txtReditoPorcentual.Text.Split('%')[0];
                     split = split.Trim();
                     decimal porcentaje = Convert.ToDecimal(split) / 100;
-                    decimal ValorVentaCalculado;
                     if (ValorVenta > 0 & porcentaje > 0)
                     {
                         ValorVentaCalculado = ValorVenta - ValorVenta * porcentaje;
                         lblTotal.Text = Convert.ToString(decimal.Round(ValorVentaCalculado, 2));
                         txtPrecioVenta.Text = Convert.ToString(decimal.Round(ValorVentaCalculado, 2));
-                        MontoBonificacion = Convert.ToDecimal(decimal.Round(ValorVentaCalculado, 2));
+                        decimal Bonificacio = ValorVentaOriginal - ValorVentaCalculado;
+                        MontoBonificacion = Convert.ToDecimal(decimal.Round(Bonificacio, 2));
                     }
                 }
                 contadorModificaciones = contadorModificaciones + 1;
@@ -251,17 +253,20 @@ namespace Stock
                     var split = txtReditoPorcentual.Text.Split('%')[0];
                     split = split.Trim();
                     decimal porcentaje = Convert.ToDecimal(split) / 100;
-                    decimal ValorVentaCalculado;
+
                     if (ValorVenta > 0 & porcentaje > 0)
                     {
                         ValorVentaCalculado = ValorVenta - ValorVenta * porcentaje;
                         lblTotal.Text = Convert.ToString(decimal.Round(ValorVentaCalculado, 2));
                         txtPrecioVenta.Text = Convert.ToString(decimal.Round(ValorVentaCalculado, 2));
-                        MontoBonificacion = Convert.ToDecimal(decimal.Round(ValorVentaCalculado, 2));
+                        decimal Bonificacio = ValorVentaOriginal - ValorVentaCalculado;
+                        MontoBonificacion = Convert.ToDecimal(decimal.Round(Bonificacio, 2));
                     }
                 }
                 contadorModificaciones = contadorModificaciones + 1;
             }
+            var listaNuevPrecio = lista.First();
+            listaNuevPrecio.PrecioVentaFinal = decimal.Round(ValorVentaCalculado, 2);
             lblEfectivo.Focus();
         }
         private void btnAplicarPrecio_Click(object sender, EventArgs e)
@@ -275,19 +280,24 @@ namespace Stock
         }
         private void AplicarNuevoPrecio()
         {
+            decimal ValorNuevo = 0;
             if (contadorModificaciones == 1)
             {
                 ValorVentaOriginal = Convert.ToDecimal(lblTotal.Text);
-                decimal ValorNuevo = Convert.ToDecimal(txtPrecioVenta.Text);
+                ValorNuevo = Convert.ToDecimal(txtPrecioVenta.Text);
                 lblTotal.Text = Convert.ToString(decimal.Round(ValorNuevo, 2));
                 contadorModificaciones = contadorModificaciones + 1;
             }
             else if (contadorModificaciones > 1)
             {
-                decimal ValorNuevo = Convert.ToDecimal(txtPrecioVenta.Text);
+                ValorNuevo = Convert.ToDecimal(txtPrecioVenta.Text);
                 lblTotal.Text = Convert.ToString(decimal.Round(ValorNuevo, 2));
                 contadorModificaciones = contadorModificaciones + 1;
             }
+            var listaNuevPrecio = lista.First();
+            listaNuevPrecio.PrecioVentaFinal = decimal.Round(ValorNuevo, 2);
+            decimal Bonificacion = ValorVentaOriginal - ValorNuevo;
+            MontoBonificacion = Convert.ToDecimal(decimal.Round(Bonificacion, 2));
             lblEfectivo.Focus();
         }
 
@@ -320,7 +330,7 @@ namespace Stock
             {
                 CalcularCostos();
             }
-           
+
         }
         private void txtPrecioVenta_KeyDown(object sender, KeyEventArgs e)
         {

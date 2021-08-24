@@ -25,7 +25,7 @@ namespace Stock.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;Port=3306;User Id=root;password=admin;database=stock_prod;Persis" +
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;Port=3307;User Id=root;password=admin;database=stock_prod;Persis" +
             "t Security Info=True")]
         public string db {
             get {
