@@ -37,8 +37,6 @@ namespace Stock
             }
             catch (Exception ex)
             { }
-
-
         }
         private void ValidarFechas(DateTime fechaDesde, DateTime fechaHasta)
         {

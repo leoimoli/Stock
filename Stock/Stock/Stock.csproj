@@ -383,6 +383,12 @@
     <Compile Include="RegistroStockWF.Designer.cs">
       <DependentUpon>RegistroStockWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportePagoAProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportePagoAProveedores.Designer.cs">
+      <DependentUpon>ReportePagoAProveedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportesNuevoWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -586,6 +592,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegistroStockWF.resx">
       <DependentUpon>RegistroStockWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportePagoAProveedores.resx">
+      <DependentUpon>ReportePagoAProveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportesNuevoWF.resx">
       <DependentUpon>ReportesNuevoWF.cs</DependentUpon>

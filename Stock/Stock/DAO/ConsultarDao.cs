@@ -52,6 +52,192 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
+
+        public static List<ListaCompras> ConsultarComprasDelDia()
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaCompras> lista = new List<Entidades.ListaCompras>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ConsultarComprasDelDia";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaCompras listaCompras = new Entidades.ListaCompras();
+                    listaCompras.idCompra = Convert.ToInt32(item["idMovimientoStock"].ToString());
+                    listaCompras.Proveedor = item["Proveedor"].ToString();
+                    DateTime fechaReal = Convert.ToDateTime(item["FechaFactura"].ToString());
+                    listaCompras.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
+                    listaCompras.MontoTotal = Convert.ToDecimal(item["MontoTotal"].ToString());                    
+                    lista.Add(listaCompras);
+                }
+            }
+            return lista;
+        }
+
+        public static List<ListaCompras> ConsultarComprasDeAyer()
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaCompras> lista = new List<Entidades.ListaCompras>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ConsultarComprasDeAyer";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaCompras listaCompras = new Entidades.ListaCompras();
+                    listaCompras.idCompra = Convert.ToInt32(item["idMovimientoStock"].ToString());
+                    listaCompras.Proveedor = item["Proveedor"].ToString();
+                    DateTime fechaReal = Convert.ToDateTime(item["FechaFactura"].ToString());
+                    listaCompras.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
+                    listaCompras.MontoTotal = Convert.ToDecimal(item["MontoTotal"].ToString());
+                    lista.Add(listaCompras);
+                }
+            }
+            return lista;
+        }
+
+        public static List<ListaCompras> ConsultarComprasUltimos30Dias(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaCompras> lista = new List<Entidades.ListaCompras>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {   new MySqlParameter("FechaDesde_in", fechaDesde),
+                                       new MySqlParameter("FechaHasta_in", fechaHasta)};
+            string proceso = "ConsultarComprasUltimos30Dias";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaCompras listaCompras = new Entidades.ListaCompras();
+                    listaCompras.idCompra = Convert.ToInt32(item["idMovimientoStock"].ToString());
+                    listaCompras.Proveedor = item["Proveedor"].ToString();
+                    DateTime fechaReal = Convert.ToDateTime(item["FechaFactura"].ToString());
+                    listaCompras.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
+                    listaCompras.MontoTotal = Convert.ToDecimal(item["MontoTotal"].ToString());
+                    lista.Add(listaCompras);
+                }
+            }
+            return lista;
+        }
+
+        public static List<ListaCompras> ConsultarComprasMesAnterior(int mes)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaCompras> lista = new List<Entidades.ListaCompras>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("Mes_in", mes) };
+            string proceso = "ConsultarComprasMesAnterior";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaCompras listaCompras = new Entidades.ListaCompras();
+                    listaCompras.idCompra = Convert.ToInt32(item["idMovimientoStock"].ToString());
+                    listaCompras.Proveedor = item["Proveedor"].ToString();
+                    DateTime fechaReal = Convert.ToDateTime(item["FechaFactura"].ToString());
+                    listaCompras.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
+                    listaCompras.MontoTotal = Convert.ToDecimal(item["MontoTotal"].ToString());
+                    lista.Add(listaCompras);
+                }
+            }
+            return lista;
+        }
+
+        public static List<ListaCompras> ConsultarComprasReportePorFecha(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaCompras> lista = new List<Entidades.ListaCompras>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("FechaDesde_in", fechaDesde),
+                                       new MySqlParameter("FechaHasta_in", fechaHasta)};
+            string proceso = "ConsultarComprasReportePorFecha";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaCompras listaCompras = new Entidades.ListaCompras();
+                    listaCompras.idCompra = Convert.ToInt32(item["idMovimientoStock"].ToString());
+                    listaCompras.Proveedor = item["Proveedor"].ToString();
+                    DateTime fechaReal = Convert.ToDateTime(item["FechaFactura"].ToString());
+                    listaCompras.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
+                    listaCompras.MontoTotal = Convert.ToDecimal(item["MontoTotal"].ToString());
+                    lista.Add(listaCompras);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
+        public static List<ListaCompras> ConsultarComprasUltimosSieteDias(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaCompras> lista = new List<Entidades.ListaCompras>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {   new MySqlParameter("FechaDesde_in", fechaDesde),
+                                       new MySqlParameter("FechaHasta_in", fechaHasta)};
+            string proceso = "ConsultarComprasUltimosSieteDias";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaCompras listaCompras = new Entidades.ListaCompras();
+                    listaCompras.idCompra = Convert.ToInt32(item["idMovimientoStock"].ToString());
+                    listaCompras.Proveedor = item["Proveedor"].ToString();
+                    DateTime fechaReal = Convert.ToDateTime(item["FechaFactura"].ToString());
+                    listaCompras.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
+                    listaCompras.MontoTotal = Convert.ToDecimal(item["MontoTotal"].ToString());
+                    lista.Add(listaCompras);
+                }
+            }
+            return lista;
+        }
+
         public static List<Ofertas> BuscarProductosDePromocion(List<Ofertas> promocion)
         {
             connection.Close();

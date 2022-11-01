@@ -41,6 +41,21 @@ namespace Stock.Negocio
                 return _listaPagos;
             }
         }
+
+        public static List<ListaCompras> ConsultarComprasDelDia()
+        {
+            List<ListaCompras> _lista = new List<ListaCompras>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarComprasDelDia();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _lista;
+        }
+
         public static List<Ofertas> ListaOfertas()
         {
             List<Ofertas> _lista = new List<Ofertas>();
@@ -89,11 +104,41 @@ namespace Stock.Negocio
             }
             return _lista;
         }
+
+        public static List<ListaCompras> ConsultarComprasDeAyer()
+        {
+            List<ListaCompras> _lista = new List<ListaCompras>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarComprasDeAyer();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _lista;
+        }
+
         public static bool ValidarProductoEspecial(string codigoProducto)
         {
             bool EsEspecial = DAO.ConsultarDao.ValidarProductoEspecial(codigoProducto);
             return EsEspecial;
         }
+
+        public static List<ListaCompras> ConsultarComprasUltimosSieteDias(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            List<ListaCompras> _lista = new List<ListaCompras>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarComprasUltimosSieteDias(fechaDesde, fechaHasta);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _lista;
+        }
+
         public static bool ValidarOferta(List<Ofertas> lista)
         {
             bool OfertaExistente = DAO.ConsultarDao.ValidarOferta(lista);
@@ -112,6 +157,21 @@ namespace Stock.Negocio
             }
             return _lista;
         }
+
+        public static List<ListaCompras> ConsultarComprasUltimos30Dias(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            List<ListaCompras> _lista = new List<ListaCompras>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarComprasUltimos30Dias(fechaDesde, fechaHasta);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _lista;
+        }
+
         public static List<Entidades.Clientes> BuscarClientePorApellidoNombre(string apellido, string nombre)
         {
             List<Entidades.Clientes> _lista = new List<Entidades.Clientes>();
@@ -121,6 +181,19 @@ namespace Stock.Negocio
             }
             catch (Exception ex)
             {
+            }
+            return _lista;
+        }
+        public static List<ListaCompras> ConsultarComprasMesAnterior(int mes)
+        {
+            List<ListaCompras> _lista = new List<ListaCompras>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarComprasMesAnterior(mes);
+            }
+            catch (Exception ex)
+            {
+
             }
             return _lista;
         }
@@ -161,6 +234,21 @@ namespace Stock.Negocio
             }
             return _listaProductos;
         }
+
+        public static List<ListaCompras> ConsultarComprasReportePorFecha(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            List<ListaCompras> _lista = new List<ListaCompras>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarComprasReportePorFecha(fechaDesde, fechaHasta);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _lista;
+        }
+
         public static List<Productos> ConsultaProductoPorCodigo(string codigo)
         {
             List<Productos> _listaProductos = new List<Productos>();

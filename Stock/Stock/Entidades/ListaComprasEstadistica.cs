@@ -11,5 +11,6 @@ namespace Stock.Entidades
         public string anno { get; set; }
         public string mes { get; set; }
         public int TotalComprasPorMes { get; set; }
+
     }
 }

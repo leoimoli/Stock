@@ -12,5 +12,6 @@ namespace Stock.Entidades
         public decimal CajaDePagos { get; set; }
         public int Cantidad { get; set; }
         public decimal ValorUnitario { get; set; }
+        public decimal CajaDeCompras { get; set; }
     }
 }

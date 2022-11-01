@@ -13,5 +13,6 @@ namespace Stock.Entidades
         //public string PrecioVenta { get; set; }
         public string CodigoProducto { get; set; }
         public string Proveedor { get; set; }
+        public decimal MontoTotal { get; set; }
     }
 }

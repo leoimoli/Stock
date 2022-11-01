@@ -203,5 +203,11 @@ namespace Stock
             Reportes_VentasNuevoWF _reporteVentas = new Reportes_VentasNuevoWF();
             _reporteVentas.Show();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ReportePagoAProveedores _reporteCompras = new ReportePagoAProveedores();
+            _reporteCompras.Show();
+        }
     }
 }
