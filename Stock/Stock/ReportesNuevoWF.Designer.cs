@@ -352,7 +352,7 @@
             this.chartProductos.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
             this.chartProductos.Legends.Add(legend3);
-            this.chartProductos.Location = new System.Drawing.Point(7, -9);
+            this.chartProductos.Location = new System.Drawing.Point(4, -9);
             this.chartProductos.Name = "chartProductos";
             this.chartProductos.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series3.ChartArea = "ChartArea1";

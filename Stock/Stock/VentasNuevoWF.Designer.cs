@@ -55,35 +55,37 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnOscuro = new System.Windows.Forms.Button();
             this.btnClaros = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.lblTotalPagarReal = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblUsuario = new System.Windows.Forms.Label();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnRestaurar = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.picNavidad = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lblTotalPagarReal = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picNavidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.SuspendLayout();
@@ -315,6 +317,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1099, 43);
             this.panel2.TabIndex = 153;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // btnOscuro
             // 
@@ -347,128 +350,6 @@
             this.btnClaros.UseVisualStyleBackColor = false;
             this.btnClaros.Visible = false;
             this.btnClaros.Click += new System.EventHandler(this.btnClaro_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.panel1);
-            this.panel3.Controls.Add(this.txtNombreBuscar);
-            this.panel3.Controls.Add(this.txtCodigo);
-            this.panel3.Controls.Add(this.lblBack);
-            this.panel3.Controls.Add(this.groupBox1);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.dgvVentas);
-            this.panel3.Controls.Add(this.txtCantidad);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 43);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1099, 521);
-            this.panel3.TabIndex = 154;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(881, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(218, 521);
-            this.panel1.TabIndex = 58;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.panel4.Controls.Add(this.button1);
-            this.panel4.Controls.Add(this.lblTotalPagarReal);
-            this.panel4.Controls.Add(this.label8);
-            this.panel4.Controls.Add(this.lblUsuario);
-            this.panel4.Controls.Add(this.pictureBox4);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(3, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(215, 521);
-            this.panel4.TabIndex = 153;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(75, 319);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 54);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "(F12) Cobrar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.btnCobrar_Click);
-            // 
-            // lblTotalPagarReal
-            // 
-            this.lblTotalPagarReal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.lblTotalPagarReal.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.lblTotalPagarReal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblTotalPagarReal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalPagarReal.ForeColor = System.Drawing.Color.White;
-            this.lblTotalPagarReal.Location = new System.Drawing.Point(46, 229);
-            this.lblTotalPagarReal.Name = "lblTotalPagarReal";
-            this.lblTotalPagarReal.Size = new System.Drawing.Size(147, 60);
-            this.lblTotalPagarReal.TabIndex = 57;
-            this.lblTotalPagarReal.UseVisualStyleBackColor = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(68, 171);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(98, 39);
-            this.label8.TabIndex = 55;
-            this.label8.Text = "Total";
-            // 
-            // lblUsuario
-            // 
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(3, 9);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(150, 21);
-            this.lblUsuario.TabIndex = 56;
-            this.lblUsuario.Text = "Usuario Logueado";
-            // 
-            // panel14
-            // 
-            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.panel14.Controls.Add(this.label7);
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel14.Location = new System.Drawing.Point(0, 518);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(1099, 46);
-            this.panel14.TabIndex = 153;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(360, 16);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(272, 17);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "StoCom(Sistema Stock Comercial) V-1.0.0";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::Stock.Properties.Resources.usuario__1_;
-            this.pictureBox4.Location = new System.Drawing.Point(61, 56);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(110, 88);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 57;
-            this.pictureBox4.TabStop = false;
             // 
             // btnRestaurar
             // 
@@ -523,6 +404,138 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.panel1);
+            this.panel3.Controls.Add(this.txtNombreBuscar);
+            this.panel3.Controls.Add(this.txtCodigo);
+            this.panel3.Controls.Add(this.lblBack);
+            this.panel3.Controls.Add(this.groupBox1);
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.dgvVentas);
+            this.panel3.Controls.Add(this.txtCantidad);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 43);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1099, 521);
+            this.panel3.TabIndex = 154;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(881, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(218, 521);
+            this.panel1.TabIndex = 58;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.panel4.Controls.Add(this.picNavidad);
+            this.panel4.Controls.Add(this.button1);
+            this.panel4.Controls.Add(this.lblTotalPagarReal);
+            this.panel4.Controls.Add(this.label8);
+            this.panel4.Controls.Add(this.lblUsuario);
+            this.panel4.Controls.Add(this.pictureBox4);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel4.Location = new System.Drawing.Point(3, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(215, 521);
+            this.panel4.TabIndex = 153;
+            // 
+            // picNavidad
+            // 
+            this.picNavidad.Location = new System.Drawing.Point(17, 391);
+            this.picNavidad.Name = "picNavidad";
+            this.picNavidad.Size = new System.Drawing.Size(186, 78);
+            this.picNavidad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picNavidad.TabIndex = 58;
+            this.picNavidad.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(75, 319);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 54);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "(F12) Cobrar";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.btnCobrar_Click);
+            // 
+            // lblTotalPagarReal
+            // 
+            this.lblTotalPagarReal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.lblTotalPagarReal.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.lblTotalPagarReal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblTotalPagarReal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalPagarReal.ForeColor = System.Drawing.Color.White;
+            this.lblTotalPagarReal.Location = new System.Drawing.Point(46, 229);
+            this.lblTotalPagarReal.Name = "lblTotalPagarReal";
+            this.lblTotalPagarReal.Size = new System.Drawing.Size(147, 60);
+            this.lblTotalPagarReal.TabIndex = 57;
+            this.lblTotalPagarReal.UseVisualStyleBackColor = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(68, 171);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(98, 39);
+            this.label8.TabIndex = 55;
+            this.label8.Text = "Total";
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblUsuario.Location = new System.Drawing.Point(3, 9);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(150, 21);
+            this.lblUsuario.TabIndex = 56;
+            this.lblUsuario.Text = "Usuario Logueado";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::Stock.Properties.Resources.usuario__1_;
+            this.pictureBox4.Location = new System.Drawing.Point(61, 56);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(110, 88);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 57;
+            this.pictureBox4.TabStop = false;
+            // 
+            // panel14
+            // 
+            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.panel14.Controls.Add(this.label7);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel14.Location = new System.Drawing.Point(0, 518);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(1099, 46);
+            this.panel14.TabIndex = 153;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(360, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(272, 17);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "StoCom(Sistema Stock Comercial) V-1.0.0";
+            // 
             // btnMinimizar
             // 
             this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -571,18 +584,19 @@
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picNavidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             this.ResumeLayout(false);
@@ -628,5 +642,6 @@
         private System.Windows.Forms.Button btnClaros;
         private System.Windows.Forms.Button btnOscuro;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.PictureBox picNavidad;
     }
 }

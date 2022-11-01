@@ -20,7 +20,30 @@ namespace Stock
         public VentasNuevoWF()
         {
             InitializeComponent();
+            ValidarFiestasFestivas();
         }
+
+        private void ValidarFiestasFestivas()
+        {
+            int AñoActual = DateTime.Now.Year;
+            DateTime FechaActual = DateTime.Now;
+            string PruebaIncio = Convert.ToString(30 + "/" + 10 + "/" + AñoActual + " " + "23" + ":59" + ":59");
+            string PruebaFin = Convert.ToString(02 + "/" + 11 + "/" + AñoActual + " " + "23" + ":59" + ":59");
+            string FiestasNavideñas = Convert.ToString(07 + "/" + 12 + "/" + AñoActual + " " + "23" + ":59" + ":59");
+            string FechaFinFiestas = Convert.ToString(06 + "/" + 01 + "/" + AñoActual + " " + "23" + ":59" + ":59");
+            //// Imagenes Navideñas
+            //if (FechaActual > Convert.ToDateTime(PruebaIncio) && Convert.ToDateTime(FechaActual) < Convert.ToDateTime(PruebaFin))
+            if (FechaActual > Convert.ToDateTime(FiestasNavideñas) && Convert.ToDateTime(FechaActual) < Convert.ToDateTime(FechaFinFiestas))
+            {
+                Image imgFiestas = Image.FromFile(Environment.CurrentDirectory + "\\" + @"Navidad-5.gif");
+                picNavidad.Image = imgFiestas;
+            }
+            else
+            {
+                picNavidad.Visible = false;
+            }
+        }
+
         private void VentasNuevoWF_Load(object sender, EventArgs e)
         {
             lblUsuario.Text = Sesion.UsuarioLogueado.Apellido + "  " + Sesion.UsuarioLogueado.Nombre;
@@ -729,6 +752,11 @@ namespace Stock
 
             }
             return listaDescuentos;
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

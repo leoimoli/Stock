@@ -145,7 +145,9 @@ namespace Stock
             {
                 foreach (var item in ListaStockFaltante)
                 {
-                    dgvProductos.Rows.Add(item.Nombre, item.Marca, item.Cantidad);
+                    if (item.CodigoProducto != "PAGOPROVEEDORES22")
+                    { dgvProductos.Rows.Add(item.Nombre, item.Marca, item.Cantidad); }
+                    
                 }
             }
             dgvProductos.ReadOnly = true;

@@ -36,7 +36,7 @@ namespace Stock
                         txtDescripcion.Text = item.NombreProducto;
                         txtMarca.Text = item.Marca;
                     }
-                    if (Descripcion == "PAGO A PROVEEDOR" || Descripcion == "Pago a Proveedor")
+                    if (Descripcion == "PAGO PROVEEDORES" || Descripcion == "Pago Proveedores")
                     {
                         txtCantidad.Text = "1";
                     }
