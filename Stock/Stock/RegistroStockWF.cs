@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -34,6 +35,14 @@ namespace Stock
                         txtCodigoProducto.Text = item.CodigoProducto;
                         txtDescripcion.Text = item.NombreProducto;
                         txtMarca.Text = item.Marca;
+                    }
+                    if (Descripcion == "PAGO A PROVEEDOR" || Descripcion == "Pago a Proveedor")
+                    {
+                        txtCantidad.Text = "1";
+                    }
+                    else
+                    {
+                        txtCantidad.Text = "";
                     }
                     ListaProveedores();
                     txtProveedor.Focus();
@@ -107,7 +116,8 @@ namespace Stock
         private void btnCargar_Click(object sender, EventArgs e)
         {
             Entidades.RegistroStock Entidad = CargarEntidad();
-            dgvProductos.Rows.Add(Entidad.idProducto, Entidad.CodigoProducto, Entidad.Descripcion, Entidad.Cantidad, Entidad.ValorUnitario);
+            decimal MontoTotalProducto = Entidad.Cantidad * Entidad.ValorUnitario;
+            dgvProductos.Rows.Add(Entidad.idProducto, Entidad.CodigoProducto, Entidad.Descripcion, Entidad.Cantidad, Entidad.ValorUnitario, MontoTotalProducto);
             txtProveedor.Enabled = false;
             dtFechaCompra.Enabled = false;
             txtRemito.Enabled = false;
@@ -117,6 +127,16 @@ namespace Stock
             txtMarca.Clear();
             txtDescripcion.Clear();
             txtDescipcionBus.Focus();
+
+            decimal PrecioTotalFinal = 0;
+            foreach (DataGridViewRow row in dgvProductos.Rows)
+            {
+                if (row.Cells[5].Value != null)
+                    PrecioTotalFinal += Convert.ToDecimal(row.Cells[5].Value.ToString());
+            }
+            string PrecioMostrar = PrecioTotalFinal.ToString("N", new CultureInfo("es-CL"));
+            //lblTotalPagarReal.Text = Convert.ToString(PrecioTotalFinal);
+            lblTotalPagarReal.Text = Convert.ToString(PrecioMostrar);
         }
         private RegistroStock CargarEntidad()
         {
@@ -151,6 +171,14 @@ namespace Stock
         {
             idProductoSeleccionado = dgvProductos.CurrentRow.Cells[0].Value.ToString();
             dgvProductos.Rows.Remove(dgvProductos.CurrentRow);
+            decimal PrecioTotalFinal = 0;
+            foreach (DataGridViewRow row in dgvProductos.Rows)
+            {
+                if (row.Cells[5].Value != null)
+                    PrecioTotalFinal += Convert.ToDecimal(row.Cells[5].Value.ToString());
+            }
+            string PrecioMostrar = PrecioTotalFinal.ToString("N", new CultureInfo("es-CL"));
+            lblTotalPagarReal.Text = Convert.ToString(PrecioMostrar);
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -207,6 +235,7 @@ namespace Stock
             dgvProductos.Rows.Clear();
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
+            lblTotalPagarReal.Text = Convert.ToString(0);
         }
         private List<RegistroStock> CargarEntidadFinal()
         {
@@ -225,6 +254,7 @@ namespace Stock
                 Lista.FechaFactura = Convert.ToDateTime(dtFechaCompra.Text);
                 Lista.ValorUnitario = Convert.ToDecimal(row.Cells[4].Value.ToString());
                 Lista.Cantidad = Convert.ToInt32(row.Cells[3].Value.ToString());
+                Lista.ValorTotalDeCompra = Convert.ToDecimal(lblTotalPagarReal.Text);
                 ListaStock.Add(Lista);
             }
             return ListaStock;

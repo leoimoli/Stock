@@ -82,28 +82,28 @@ namespace Stock
 
                 dataGridView1.Columns[0].HeaderText = "Nro.Venta";
                 dataGridView1.Columns[0].Width = 65;
-                dataGridView1.Columns[0].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView1.Columns[0].HeaderCell.Style.BackColor = System.Drawing.Color.DarkBlue;
                 dataGridView1.Columns[0].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 7, FontStyle.Bold);
-                dataGridView1.Columns[0].HeaderCell.Style.ForeColor = Color.White;
+                dataGridView1.Columns[0].HeaderCell.Style.ForeColor = System.Drawing.Color.White;
                 ////dataGridView1.Columns[0].Visible = true;
 
                 dataGridView1.Columns[1].HeaderText = "Fecha";
                 dataGridView1.Columns[1].Width = 90;
-                dataGridView1.Columns[1].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView1.Columns[1].HeaderCell.Style.BackColor = System.Drawing.Color.DarkBlue;
                 dataGridView1.Columns[1].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
-                dataGridView1.Columns[1].HeaderCell.Style.ForeColor = Color.White;
+                dataGridView1.Columns[1].HeaderCell.Style.ForeColor = System.Drawing.Color.White;
 
                 dataGridView1.Columns[2].HeaderText = "Monto";
                 dataGridView1.Columns[2].Width = 65;
-                dataGridView1.Columns[2].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView1.Columns[2].HeaderCell.Style.BackColor = System.Drawing.Color.DarkBlue;
                 dataGridView1.Columns[2].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
-                dataGridView1.Columns[2].HeaderCell.Style.ForeColor = Color.White;
+                dataGridView1.Columns[2].HeaderCell.Style.ForeColor = System.Drawing.Color.White;
 
                 dataGridView1.Columns[3].HeaderText = "Usuario";
                 dataGridView1.Columns[3].Width = 95;
-                dataGridView1.Columns[3].HeaderCell.Style.BackColor = Color.DarkBlue;
+                dataGridView1.Columns[3].HeaderCell.Style.BackColor = System.Drawing.Color.DarkBlue;
                 dataGridView1.Columns[3].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
-                dataGridView1.Columns[3].HeaderCell.Style.ForeColor = Color.White;
+                dataGridView1.Columns[3].HeaderCell.Style.ForeColor = System.Drawing.Color.White;
             }
         }
 

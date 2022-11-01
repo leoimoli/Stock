@@ -77,6 +77,36 @@ namespace Stock
                 Login();
             }
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            ConexionWF _cone = new ConexionWF();
+            _cone.Show();
+        }
+
+        private void LoginNuevoWF_Load(object sender, EventArgs e)
+        {
+            ValidarFechasFestivas();
+        }
+        private void ValidarFechasFestivas()
+        {
+            int AñoActual = DateTime.Now.Year;
+            DateTime FechaActual = DateTime.Now;
+            string PruebaIncio = Convert.ToString(30 + "/" + 10 + "/" + AñoActual + " " + "23" + ":59" + ":59");
+            string PruebaFin = Convert.ToString(02 + "/" + 11 + "/" + AñoActual + " " + "23" + ":59" + ":59");
+            string FiestasNavideñas = Convert.ToString(07 + "/" + 12 + "/" + AñoActual + " " + "23" + ":59" + ":59");
+            string FechaFinFiestas = Convert.ToString(06 + "/" + 01 + "/" + AñoActual + " " + "23" + ":59" + ":59");
+            //// Imagenes Navideñas
+            if (FechaActual > Convert.ToDateTime(PruebaIncio) && Convert.ToDateTime(FechaActual) < Convert.ToDateTime(PruebaFin))
+            {
+                Image imgFiestas = Image.FromFile(Environment.CurrentDirectory + "\\" + @"Feliz-Fiesta-Login.gif");
+                picFiestas.Image = imgFiestas;
+            }
+            else
+            {
+                picFiestas.Visible = false;
+            }
+        }
     }
 }
 

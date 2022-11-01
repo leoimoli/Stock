@@ -76,6 +76,7 @@
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.picNavidad = new System.Windows.Forms.PictureBox();
             this.MenuCabecera.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
@@ -93,6 +94,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnMenuPequeño)).BeginInit();
             this.panel13.SuspendLayout();
             this.panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picNavidad)).BeginInit();
             this.SuspendLayout();
             // 
             // MenuCabecera
@@ -594,6 +596,7 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.panel8.Controls.Add(this.picNavidad);
             this.panel8.Controls.Add(this.label6);
             this.panel8.Controls.Add(this.pictureBox5);
             this.panel8.Controls.Add(this.btnMenuPequeño);
@@ -662,7 +665,16 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(272, 17);
             this.label7.TabIndex = 6;
-            this.label7.Text = "StoCom(Sistema Stock Comercial) V-1.1.0";
+            this.label7.Text = "StoCom(Sistema Stock Comercial) V-1.0.2";
+            // 
+            // picNavidad
+            // 
+            this.picNavidad.Location = new System.Drawing.Point(445, -3);
+            this.picNavidad.Name = "picNavidad";
+            this.picNavidad.Size = new System.Drawing.Size(185, 48);
+            this.picNavidad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picNavidad.TabIndex = 8;
+            this.picNavidad.TabStop = false;
             // 
             // NewMasterWF
             // 
@@ -702,6 +714,7 @@
             this.panel13.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picNavidad)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -754,5 +767,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Button btnOfertas;
+        private System.Windows.Forms.PictureBox picNavidad;
     }
 }

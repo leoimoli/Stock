@@ -51,18 +51,18 @@
     <ApplicationIcon>Icono.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="itextsharp">
-      <HintPath>..\..\..\SicoNew\Sico\Sico\bin\Debug\itextsharp.dll</HintPath>
+    <Reference Include="iTextSharp">
+      <HintPath>..\..\..\ElObrador\ElObrador\ElObrador\bin\Debug\iTextSharp.dll</HintPath>
     </Reference>
     <Reference Include="LibPrintTicket">
-      <HintPath>..\..\..\Stock\Stock\Stock\bin\Debug\LibPrintTicket.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\JliCode\StoCom\LibPrintTicket.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.10.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.6.10.5\lib\net452\MySql.Data.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="MySql.Data, Version=6.5.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Interactivo\Interactivo\Interactivo\bin\Debug\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -158,6 +158,12 @@
     </Compile>
     <Compile Include="ClientesWF.Designer.cs">
       <DependentUpon>ClientesWF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConexionWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConexionWF.Designer.cs">
+      <DependentUpon>ConexionWF.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlador\Respuesta.cs" />
     <Compile Include="CuentaCorrienteWF.cs">
@@ -491,6 +497,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClientesWF.resx">
       <DependentUpon>ClientesWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConexionWF.resx">
+      <DependentUpon>ConexionWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CuentaCorrienteWF.resx">
       <DependentUpon>CuentaCorrienteWF.cs</DependentUpon>

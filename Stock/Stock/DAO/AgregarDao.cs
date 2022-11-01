@@ -127,6 +127,7 @@ namespace Stock.DAO
             cmd.Parameters.AddWithValue("FechaActual_in", DateTime.Now);
             cmd.Parameters.AddWithValue("idUsuario_in", listaStock[0].idUsuario);
             cmd.Parameters.AddWithValue("Archivos_in", 0);
+            cmd.Parameters.AddWithValue("MontoTotal_in", listaStock[0].ValorTotalDeCompra);
             MySqlDataReader r = cmd.ExecuteReader();
             while (r.Read())
             {
