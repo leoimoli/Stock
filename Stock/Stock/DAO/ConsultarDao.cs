@@ -74,15 +74,14 @@ namespace Stock.DAO
                     Entidades.ListaCompras listaCompras = new Entidades.ListaCompras();
                     listaCompras.idCompra = Convert.ToInt32(item["idMovimientoStock"].ToString());
                     listaCompras.Proveedor = item["Proveedor"].ToString();
-                    DateTime fechaReal = Convert.ToDateTime(item["FechaFactura"].ToString());
+                    DateTime fechaReal = Convert.ToDateTime(item["FechaPago"].ToString());
                     listaCompras.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
-                    listaCompras.MontoTotal = Convert.ToDecimal(item["MontoTotal"].ToString());                    
+                    listaCompras.MontoTotal = Convert.ToDecimal(item["MontoTotal"].ToString());
                     lista.Add(listaCompras);
                 }
             }
             return lista;
         }
-
         public static List<ListaCompras> ConsultarComprasDeAyer()
         {
             connection.Close();
@@ -104,7 +103,7 @@ namespace Stock.DAO
                     Entidades.ListaCompras listaCompras = new Entidades.ListaCompras();
                     listaCompras.idCompra = Convert.ToInt32(item["idMovimientoStock"].ToString());
                     listaCompras.Proveedor = item["Proveedor"].ToString();
-                    DateTime fechaReal = Convert.ToDateTime(item["FechaFactura"].ToString());
+                    DateTime fechaReal = Convert.ToDateTime(item["FechaPago"].ToString());
                     listaCompras.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
                     listaCompras.MontoTotal = Convert.ToDecimal(item["MontoTotal"].ToString());
                     lista.Add(listaCompras);
@@ -112,7 +111,6 @@ namespace Stock.DAO
             }
             return lista;
         }
-
         public static List<ListaCompras> ConsultarComprasUltimos30Dias(DateTime fechaDesde, DateTime fechaHasta)
         {
             connection.Close();
@@ -135,7 +133,7 @@ namespace Stock.DAO
                     Entidades.ListaCompras listaCompras = new Entidades.ListaCompras();
                     listaCompras.idCompra = Convert.ToInt32(item["idMovimientoStock"].ToString());
                     listaCompras.Proveedor = item["Proveedor"].ToString();
-                    DateTime fechaReal = Convert.ToDateTime(item["FechaFactura"].ToString());
+                    DateTime fechaReal = Convert.ToDateTime(item["FechaPago"].ToString());
                     listaCompras.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
                     listaCompras.MontoTotal = Convert.ToDecimal(item["MontoTotal"].ToString());
                     lista.Add(listaCompras);
@@ -143,7 +141,6 @@ namespace Stock.DAO
             }
             return lista;
         }
-
         public static List<ListaCompras> ConsultarComprasMesAnterior(int mes)
         {
             connection.Close();
@@ -165,7 +162,7 @@ namespace Stock.DAO
                     Entidades.ListaCompras listaCompras = new Entidades.ListaCompras();
                     listaCompras.idCompra = Convert.ToInt32(item["idMovimientoStock"].ToString());
                     listaCompras.Proveedor = item["Proveedor"].ToString();
-                    DateTime fechaReal = Convert.ToDateTime(item["FechaFactura"].ToString());
+                    DateTime fechaReal = Convert.ToDateTime(item["FechaPago"].ToString());
                     listaCompras.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
                     listaCompras.MontoTotal = Convert.ToDecimal(item["MontoTotal"].ToString());
                     lista.Add(listaCompras);
@@ -173,7 +170,6 @@ namespace Stock.DAO
             }
             return lista;
         }
-
         public static List<ListaCompras> ConsultarComprasReportePorFecha(DateTime fechaDesde, DateTime fechaHasta)
         {
             connection.Close();
@@ -197,7 +193,7 @@ namespace Stock.DAO
                     Entidades.ListaCompras listaCompras = new Entidades.ListaCompras();
                     listaCompras.idCompra = Convert.ToInt32(item["idMovimientoStock"].ToString());
                     listaCompras.Proveedor = item["Proveedor"].ToString();
-                    DateTime fechaReal = Convert.ToDateTime(item["FechaFactura"].ToString());
+                    DateTime fechaReal = Convert.ToDateTime(item["FechaPago"].ToString());
                     listaCompras.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
                     listaCompras.MontoTotal = Convert.ToDecimal(item["MontoTotal"].ToString());
                     lista.Add(listaCompras);
@@ -206,7 +202,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<ListaCompras> ConsultarComprasUltimosSieteDias(DateTime fechaDesde, DateTime fechaHasta)
         {
             connection.Close();
@@ -229,7 +224,7 @@ namespace Stock.DAO
                     Entidades.ListaCompras listaCompras = new Entidades.ListaCompras();
                     listaCompras.idCompra = Convert.ToInt32(item["idMovimientoStock"].ToString());
                     listaCompras.Proveedor = item["Proveedor"].ToString();
-                    DateTime fechaReal = Convert.ToDateTime(item["FechaFactura"].ToString());
+                    DateTime fechaReal = Convert.ToDateTime(item["FechaPago"].ToString());
                     listaCompras.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
                     listaCompras.MontoTotal = Convert.ToDecimal(item["MontoTotal"].ToString());
                     lista.Add(listaCompras);
@@ -237,7 +232,6 @@ namespace Stock.DAO
             }
             return lista;
         }
-
         public static List<Ofertas> BuscarProductosDePromocion(List<Ofertas> promocion)
         {
             connection.Close();
@@ -301,7 +295,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<DetalleOferta> BuscarDetalleOferta(int idOferta)
         {
             connection.Close();
@@ -332,7 +325,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<Ofertas> ListaOfertas()
         {
             connection.Close();
@@ -577,7 +569,6 @@ namespace Stock.DAO
             connection.Close();
             return _listaProductos;
         }
-
         public static List<ListaVentas> ConsultarVentasMesAnterior(int mes)
         {
             connection.Close();
@@ -933,6 +924,7 @@ namespace Stock.DAO
                     DateTime fecha = Convert.ToDateTime(item["FechaFactura"].ToString());
                     listaStock.FechaIngreso = Convert.ToDateTime(fecha);
                     listaStock.Proveedor = item["Proveedor"].ToString();
+                    listaStock.FacturaPagada = Convert.ToInt32(item["FacturaPaga"].ToString());
                     _listaStocks.Add(listaStock);
                 }
             }

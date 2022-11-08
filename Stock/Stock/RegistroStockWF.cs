@@ -255,6 +255,16 @@ namespace Stock
                 Lista.ValorUnitario = Convert.ToDecimal(row.Cells[4].Value.ToString());
                 Lista.Cantidad = Convert.ToInt32(row.Cells[3].Value.ToString());
                 Lista.ValorTotalDeCompra = Convert.ToDecimal(lblTotalPagarReal.Text);
+                if (chcFacturaImpaga.Checked == true)
+                {
+                    Lista.FacturaPagada = 0;                   
+                }
+                else
+                {
+                    Lista.FacturaPagada = 1;
+                    string Fecha = DateTime.Now.ToShortDateString();
+                    Lista.FechaFacturaPago = Convert.ToDateTime(Fecha);
+                }
                 ListaStock.Add(Lista);
             }
             return ListaStock;

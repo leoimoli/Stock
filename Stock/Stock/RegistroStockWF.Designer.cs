@@ -61,6 +61,12 @@
             this.lblRepitaContraseña = new System.Windows.Forms.Label();
             this.txtRemito = new System.Windows.Forms.TextBox();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MontoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -71,12 +77,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MontoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chcFacturaImpaga = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
@@ -99,6 +100,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.panel1.Controls.Add(this.chcFacturaImpaga);
             this.panel1.Controls.Add(this.lblTotalPagarReal);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.btnQuitar);
@@ -444,6 +446,41 @@
             this.dgvProductos.Size = new System.Drawing.Size(675, 169);
             this.dgvProductos.TabIndex = 142;
             // 
+            // idProducto
+            // 
+            this.idProducto.HeaderText = "id";
+            this.idProducto.Name = "idProducto";
+            this.idProducto.Visible = false;
+            this.idProducto.Width = 60;
+            // 
+            // CodigoProducto
+            // 
+            this.CodigoProducto.HeaderText = "Código de Producto";
+            this.CodigoProducto.Name = "CodigoProducto";
+            this.CodigoProducto.Width = 131;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripción";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.Width = 230;
+            // 
+            // Marca
+            // 
+            this.Marca.HeaderText = "Cantidad";
+            this.Marca.Name = "Marca";
+            this.Marca.Width = 73;
+            // 
+            // ValorUnitario
+            // 
+            this.ValorUnitario.HeaderText = "Valor Unitario";
+            this.ValorUnitario.Name = "ValorUnitario";
+            // 
+            // MontoTotal
+            // 
+            this.MontoTotal.HeaderText = "MontoTotal";
+            this.MontoTotal.Name = "MontoTotal";
+            // 
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
@@ -546,40 +583,17 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // idProducto
+            // chcFacturaImpaga
             // 
-            this.idProducto.HeaderText = "id";
-            this.idProducto.Name = "idProducto";
-            this.idProducto.Visible = false;
-            this.idProducto.Width = 60;
-            // 
-            // CodigoProducto
-            // 
-            this.CodigoProducto.HeaderText = "Código de Producto";
-            this.CodigoProducto.Name = "CodigoProducto";
-            this.CodigoProducto.Width = 131;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripción";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.Width = 230;
-            // 
-            // Marca
-            // 
-            this.Marca.HeaderText = "Cantidad";
-            this.Marca.Name = "Marca";
-            this.Marca.Width = 73;
-            // 
-            // ValorUnitario
-            // 
-            this.ValorUnitario.HeaderText = "Valor Unitario";
-            this.ValorUnitario.Name = "ValorUnitario";
-            // 
-            // MontoTotal
-            // 
-            this.MontoTotal.HeaderText = "MontoTotal";
-            this.MontoTotal.Name = "MontoTotal";
+            this.chcFacturaImpaga.AutoSize = true;
+            this.chcFacturaImpaga.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chcFacturaImpaga.ForeColor = System.Drawing.Color.White;
+            this.chcFacturaImpaga.Location = new System.Drawing.Point(21, 468);
+            this.chcFacturaImpaga.Name = "chcFacturaImpaga";
+            this.chcFacturaImpaga.Size = new System.Drawing.Size(135, 20);
+            this.chcFacturaImpaga.TabIndex = 148;
+            this.chcFacturaImpaga.Text = "Factura Impaga";
+            this.chcFacturaImpaga.UseVisualStyleBackColor = true;
             // 
             // RegistroStockWF
             // 
@@ -657,5 +671,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorUnitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn MontoTotal;
+        private System.Windows.Forms.CheckBox chcFacturaImpaga;
     }
 }

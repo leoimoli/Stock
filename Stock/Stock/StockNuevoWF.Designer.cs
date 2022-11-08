@@ -62,10 +62,11 @@
             this.btnVer = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvMovimientos = new System.Windows.Forms.DataGridView();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.FacturaPaga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -375,7 +376,8 @@
             this.dgvMovimientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
-            this.Proveedor});
+            this.Proveedor,
+            this.FacturaPaga});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -420,6 +422,12 @@
             this.Proveedor.HeaderText = "Proveedor";
             this.Proveedor.Name = "Proveedor";
             this.Proveedor.Width = 220;
+            // 
+            // FacturaPaga
+            // 
+            this.FacturaPaga.HeaderText = "Factura Paga";
+            this.FacturaPaga.Name = "FacturaPaga";
+            this.FacturaPaga.Visible = false;
             // 
             // StockNuevoWF
             // 
@@ -470,9 +478,6 @@
         private System.Windows.Forms.Button btnVer;
         private System.Windows.Forms.Label lblTotalEdit;
         private System.Windows.Forms.Label lblTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Proveedor;
         private System.Windows.Forms.MaskedTextBox txtHasta;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
@@ -481,5 +486,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Proveedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FacturaPaga;
     }
 }

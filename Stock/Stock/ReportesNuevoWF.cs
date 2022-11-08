@@ -63,8 +63,9 @@ namespace Stock
             lblTotalCompras.Text = Convert.ToString(listaCompras[0].TotalDeComprasGenerales);
             /// Pagos de Compras
             List<Reporte_Compras> listaCompras2 = new List<Reporte_Compras>();
-            listaCompras2 = ReportesDao.PagosCompras();
-            lblPagosProveedores.Text = Convert.ToString(listaCompras2[0].CajaDePagos);
+            //listaCompras2 = ReportesDao.PagosCompras();
+            listaCompras2 = ReportesDao.PagoAProveedores();
+            lblPagosProveedores.Text = Convert.ToString(listaCompras2[0].PagoAProveedores);
         }
         private void DiseñoGraficoProductosMasVendidos(List<Reporte_Ventas> listaVentas)
         {

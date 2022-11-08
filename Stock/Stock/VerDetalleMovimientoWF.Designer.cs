@@ -52,6 +52,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnCancelarDeuda = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicArchivos)).BeginInit();
@@ -248,7 +249,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(352, 389);
+            this.pictureBox2.Location = new System.Drawing.Point(656, 380);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(46, 35);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -256,12 +257,27 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Visible = false;
             // 
+            // btnCancelarDeuda
+            // 
+            this.btnCancelarDeuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnCancelarDeuda.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnCancelarDeuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarDeuda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarDeuda.ForeColor = System.Drawing.Color.White;
+            this.btnCancelarDeuda.Location = new System.Drawing.Point(381, 387);
+            this.btnCancelarDeuda.Name = "btnCancelarDeuda";
+            this.btnCancelarDeuda.Size = new System.Drawing.Size(136, 28);
+            this.btnCancelarDeuda.TabIndex = 147;
+            this.btnCancelarDeuda.Text = "Cancelar Deuda";
+            this.btnCancelarDeuda.UseVisualStyleBackColor = false;
+            // 
             // VerDetalleMovimientoWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnCancelarDeuda);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.PicArchivos);
             this.Controls.Add(this.label2);
@@ -305,5 +321,6 @@
         private System.Windows.Forms.PictureBox PicArchivos;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnCancelarDeuda;
     }
 }

@@ -35,11 +35,17 @@ namespace Stock
             List<Entidades.ListaStock> ListaProductos = Negocio.Consultar.ConsultarUltimosIngresosDeStock();
             if (ListaProductos.Count > 0)
             {
-                foreach (var item in ListaProductos)
+                int Contador = 0;
+                for (int item = 0; item < ListaProductos.Count; item++)
                 {
-                    string Fecha = item.FechaIngreso.ToShortDateString();
-                    dgvMovimientos.Rows.Add(item.idProducto, Fecha, item.Proveedor);
-                }
+                    Contador = Contador + 1;
+                    string Fecha = ListaProductos[item].FechaIngreso.ToShortDateString();
+                    dgvMovimientos.Rows.Add(ListaProductos[item].idProducto, Fecha, ListaProductos[item].Proveedor, ListaProductos[item].FacturaPagada);
+                    if (ListaProductos[item].FacturaPagada == 0)
+                    {
+                        dgvMovimientos.Rows[item].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
+                    }
+                }                
                 lblTotal.Visible = true;
                 lblTotalEdit.Visible = true;
                 lblTotalEdit.Text = Convert.ToString(ListaProductos.Count);
@@ -55,7 +61,10 @@ namespace Stock
             {
                 foreach (var item in ListaProductos)
                 {
-                    dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.NombreProducto, item.Cantidad);
+                    if (item.CodigoProducto != "PAGOPROVEEDORES22")
+                    {
+                        dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.NombreProducto, item.Cantidad);
+                    }
                 }
             }
             dgvProductos.ReadOnly = true;
@@ -116,8 +125,9 @@ namespace Stock
             int idMovimiento = Convert.ToInt32(dgvMovimientos.CurrentRow.Cells[0].Value.ToString());
             string Fecha = dgvMovimientos.CurrentRow.Cells[1].Value.ToString();
             string Proveedor = dgvMovimientos.CurrentRow.Cells[2].Value.ToString();
+            int FacturaPaga = Convert.ToInt32(dgvMovimientos.CurrentRow.Cells[3].Value.ToString());
             this.WindowState = FormWindowState.Minimized;
-            VerDetalleMovimientoWF _ver = new VerDetalleMovimientoWF(idMovimiento, Fecha, Proveedor);
+            VerDetalleMovimientoWF _ver = new VerDetalleMovimientoWF(idMovimiento, Fecha, Proveedor, FacturaPaga);
             _ver.Show();
         }
 

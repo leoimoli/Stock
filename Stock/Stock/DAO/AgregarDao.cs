@@ -128,6 +128,8 @@ namespace Stock.DAO
             cmd.Parameters.AddWithValue("idUsuario_in", listaStock[0].idUsuario);
             cmd.Parameters.AddWithValue("Archivos_in", 0);
             cmd.Parameters.AddWithValue("MontoTotal_in", listaStock[0].ValorTotalDeCompra);
+            cmd.Parameters.AddWithValue("FacturaPagada_in", listaStock[0].FacturaPagada);
+            cmd.Parameters.AddWithValue("FechaFacturaPago_in", listaStock[0].FechaFacturaPago);
             MySqlDataReader r = cmd.ExecuteReader();
             while (r.Read())
             {

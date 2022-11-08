@@ -77,6 +77,39 @@ namespace Stock.DAO
             connection.Close();
             return _listaventas;
         }
+
+        public static List<Reporte_Compras> PagoAProveedores()
+        {
+            connection.Close();
+            connection.Open();
+            List<Reporte_Compras> _listaventas = new List<Reporte_Compras>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ConsultaagoAProveedores";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.Reporte_Compras lista = new Entidades.Reporte_Compras();
+                    if (item["MontoTotal"].ToString() != null && item["MontoTotal"].ToString() != "" && Convert.ToDecimal(item["MontoTotal"].ToString()) > 0)
+                    {
+                        lista.PagoAProveedores = Convert.ToDecimal(item["MontoTotal"].ToString());
+                    }
+                    else
+                    { lista.PagoAProveedores = 0; }
+                    _listaventas.Add(lista);
+                }
+            }
+            connection.Close();
+            return _listaventas;
+        }
+
         public static List<Reporte_Ventas> CajaDeVentas()
         {
             connection.Close();

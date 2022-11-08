@@ -19,17 +19,27 @@ namespace Stock
         private int idMovimiento;
         private string fecha;
         private string proveedor;
-        public VerDetalleMovimientoWF(int idMovimiento, string fecha, string proveedor)
+        private int facturaPaga;
+        public VerDetalleMovimientoWF(int idMovimiento, string fecha, string proveedor, int facturaPaga)
         {
             InitializeComponent();
             this.idMovimiento = idMovimiento;
             this.fecha = fecha;
             this.proveedor = proveedor;
+            this.facturaPaga = facturaPaga;
         }
 
         private void VerDetalleMovimientoWF_Load(object sender, EventArgs e)
         {
             dgvProductos.Rows.Clear();
+            if (facturaPaga == 1)
+            {
+                btnCancelarDeuda.Visible = false;
+            }
+            else
+            {
+                btnCancelarDeuda.Visible = true;
+            }
             List<Entidades.ListaStock> ListaProductos = Negocio.Consultar.ListarDetalleStock(idMovimiento);
             if (ListaProductos.Count > 0)
             {

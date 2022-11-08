@@ -19,6 +19,7 @@ namespace Stock.Entidades
         public DateTime FechaFactura { get; set; }
         public Decimal ValorUnitario { get; set; }
         public Decimal ValorTotalDeCompra { get; set; }
-
+        public int FacturaPagada { get; set; }
+        public DateTime FechaFacturaPago { get; set; }        
     }
 }

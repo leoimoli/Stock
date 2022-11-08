@@ -18,5 +18,7 @@ namespace Stock.Entidades
         public string Remito { get; set; }
         public string Proveedor { get; set; }
         public int Archivos { get; set; }
+        public int FacturaPagada { get; set; }
+        public DateTime FechaFacturaPago { get; set; }
     }
 }

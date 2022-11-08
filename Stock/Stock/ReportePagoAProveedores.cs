@@ -24,27 +24,7 @@ namespace Stock
             Close();
         }
 
-        private void btnVentasDelDia_Click(object sender, EventArgs e)
-        {
-            LimpiarCampos();
-            List<ListaCompras> resultado = new List<ListaCompras>();
-            List<Entidades.ListaComprasEstadistica> listaComprasEstadistica = new List<ListaComprasEstadistica>();
-            try
-            {
-                resultado = Negocio.Consultar.ConsultarComprasDelDia();
-                if (resultado.Count > 0)
-                {
-                    ArmoGrillaVentas(resultado);
-                }
-                else
-                {
-                    SinResultados();
-                }
-            }
-            catch (Exception ex)
-            { }
-        }
-
+      
         private void ArmoGrillaVentas(List<ListaCompras> resultado)
         {
             PanelResultado.Visible = true;
@@ -77,7 +57,26 @@ namespace Stock
             lblTotalVentas.Text = "0";
             dgvCompras.Rows.Clear();
         }
-
+        private void btnVentasDelDia_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+            List<ListaCompras> resultado = new List<ListaCompras>();
+            List<Entidades.ListaComprasEstadistica> listaComprasEstadistica = new List<ListaComprasEstadistica>();
+            try
+            {
+                resultado = Negocio.Consultar.ConsultarComprasDelDia();
+                if (resultado.Count > 0)
+                {
+                    ArmoGrillaVentas(resultado);
+                }
+                else
+                {
+                    SinResultados();
+                }
+            }
+            catch (Exception ex)
+            { }
+        }
         private void btnVentasAyer_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
@@ -99,7 +98,6 @@ namespace Stock
             catch (Exception ex)
             { }
         }
-
         private void btnVentasUltimosSiete_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
@@ -120,7 +118,6 @@ namespace Stock
             catch (Exception ex)
             { }
         }
-
         private void btnUltimosTreinta_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
@@ -141,7 +138,6 @@ namespace Stock
             catch (Exception ex)
             { }
         }
-
         private void btnEsteMes_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
@@ -162,7 +158,6 @@ namespace Stock
             catch (Exception ex)
             { }
         }
-
         private void btnVentasMesAnterior_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
@@ -184,12 +179,10 @@ namespace Stock
             catch (Exception ex)
             { }
         }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
@@ -222,7 +215,6 @@ namespace Stock
                 throw new Exception();
             }
         }
-
         private void btnExportar_Click(object sender, EventArgs e)
         {
             dgvCompras.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
@@ -243,7 +235,6 @@ namespace Stock
             CR.Select();
             xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
         }
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
 
