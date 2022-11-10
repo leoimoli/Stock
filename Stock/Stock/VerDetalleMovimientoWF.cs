@@ -34,11 +34,13 @@ namespace Stock
             dgvProductos.Rows.Clear();
             if (facturaPaga == 1)
             {
-                btnCancelarDeuda.Visible = false;
+                //btnHistorialDePago.Visible = false;
+               
             }
             else
             {
-                btnCancelarDeuda.Visible = true;
+                btnHistorialDePago.BackColor = Color.Red;
+                //btnHistorialDePago.Visible = true;
             }
             List<Entidades.ListaStock> ListaProductos = Negocio.Consultar.ListarDetalleStock(idMovimiento);
             if (ListaProductos.Count > 0)
@@ -58,7 +60,6 @@ namespace Stock
             txtProveedor.Text = proveedor;
             txtFecha.Text = fecha;
         }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             NewMasterWF _master = new NewMasterWF();
@@ -87,7 +88,7 @@ namespace Stock
                 string ruta = Path.Combine(@"C:\\StoCom Archivos\\Archivos\\ '" + Nombre + "' + .PNG");
                 foto1.Save(ruta, ImageFormat.Jpeg);
 
-               
+
             }
             const string message2 = "Se descargaron los archivos exitosamente en la carpeta C:\\Descargas Stocom\\.";
             const string caption2 = "Éxito";
@@ -104,6 +105,13 @@ namespace Stock
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnCancelarDeuda_Click(object sender, EventArgs e)
+        {
+            Close();
+            HistorialPagoProveedoresWF _ver = new HistorialPagoProveedoresWF(idMovimiento);
+            _ver.Show();
         }
     }
 }

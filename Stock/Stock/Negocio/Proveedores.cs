@@ -61,5 +61,17 @@ namespace Stock.Negocio
             }
             return exito;
         }
+
+        public static bool InsertarPagoAProveedores(HistorialPagoProveedores pago)
+        {
+            bool exito = false;
+            try
+            {
+                exito = DAO.AgregarDao.InsertarPagoAProveedores(pago);
+            }
+            catch (Exception ex)
+            { }
+            return exito;
+        }
     }
 }

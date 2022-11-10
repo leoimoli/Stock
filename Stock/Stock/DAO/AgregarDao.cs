@@ -92,6 +92,46 @@ namespace Stock.DAO
             connection.Close();
             return Exito;
         }
+        public static bool InsertarPagoAProveedores(HistorialPagoProveedores pago)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string proceso = "InsertarPagoAProveedores";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("FechaPago_in", pago.FechaPago);
+            cmd.Parameters.AddWithValue("Monto_in", pago.Monto);
+            cmd.Parameters.AddWithValue("idMovimiento_in", pago.idMovimiento);
+            cmd.Parameters.AddWithValue("FechaRegistro_in", pago.FechaRegistro);
+            cmd.Parameters.AddWithValue("idUsuario_in", pago.idUsuario);
+            cmd.Parameters.AddWithValue("MontoAdeudado_in", pago.MontoAdeudado);
+            cmd.Parameters.AddWithValue("Descripcion_in", pago.Descripcion);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            if (pago.FacturaPaga == 1)
+            {
+              exito = CerrarPagoMovimientoStock(pago.FacturaPaga, pago.FechaPago, pago.idMovimiento);
+            }
+            return exito;
+        }
+        private static bool CerrarPagoMovimientoStock(int facturaPaga, DateTime fechaPago, int idMovimiento)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();        
+            string proceso = "CerrarPagoMovimientoStock";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("facturaPaga_in", facturaPaga);         
+            cmd.Parameters.AddWithValue("fechaPago_in", fechaPago);
+            cmd.Parameters.AddWithValue("idMovimiento_in", idMovimiento);
+            cmd.ExecuteNonQuery();
+            connection.Close();
+            exito = true;
+            return exito;
+        }
         private static int RegistrarDetalleOferta(List<Ofertas> lista, int idUltimaOferta)
         {
             int exito = 0;
@@ -111,7 +151,6 @@ namespace Stock.DAO
             connection.Close();
             return exito;
         }
-
         public static bool InsertarListaStock(List<RegistroStock> listaStock)
         {
             bool exito = false;

@@ -20,7 +20,7 @@ namespace Stock.Negocio
                 DAO.EditarDao.ActualizarUltimaConexion(idUsuario);
             }
             return lista;
-        }       
+        }
         public static List<Entidades.Pagos> ListaDePagos()
         {
             {
@@ -41,7 +41,19 @@ namespace Stock.Negocio
                 return _listaPagos;
             }
         }
+        public static List<HistorialPagoProveedores> HistorialPagoAProveedores(int idMovimiento)
+        {
+            List<HistorialPagoProveedores> _lista = new List<HistorialPagoProveedores>();
+            try
+            {
+                _lista = DAO.ConsultarDao.HistorialPagoAProveedores(idMovimiento);
+            }
+            catch (Exception ex)
+            {
 
+            }
+            return _lista;
+        }
         public static List<ListaCompras> ConsultarComprasDelDia()
         {
             List<ListaCompras> _lista = new List<ListaCompras>();

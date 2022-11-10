@@ -53,6 +53,73 @@ namespace Stock.DAO
             return lista;
         }
 
+        public static List<HistorialPagoProveedores> HistorialPagoAProveedores(int idMovimiento)
+        {
+            List<Entidades.HistorialPagoProveedores> lista = new List<Entidades.HistorialPagoProveedores>();
+            lista = ObtenerDetalleInicialDeCompra(idMovimiento);
+            connection.Close();
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("idMovimiento_in", idMovimiento) };
+            string proceso = "HistorialPagoAProveedoresPorIdMovimiento";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    HistorialPagoProveedores listaProductos = new HistorialPagoProveedores();
+                    listaProductos.idHistorial = Convert.ToInt32(item["idMovimientoStock"].ToString());
+                    listaProductos.FechaPago = Convert.ToDateTime(item["FechaPago"].ToString());
+                    listaProductos.Monto = Convert.ToDecimal(item["Monto"].ToString());
+                    listaProductos.idMovimiento = Convert.ToInt32(item["idMovimientoStock"].ToString());
+                    listaProductos.idUsuario = Convert.ToInt32(item["idUsuario"].ToString());
+                    listaProductos.NombreUsuario = item["Apellido"].ToString() + ", " + item["Nombre"].ToString();
+                    listaProductos.MontoAdeudado = Convert.ToDecimal(item["MontoAdeudado"].ToString());
+                    lista.Add(listaProductos);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
+        private static List<HistorialPagoProveedores> ObtenerDetalleInicialDeCompra(int idMovimiento)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.HistorialPagoProveedores> lista = new List<Entidades.HistorialPagoProveedores>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("idMovimiento_in", idMovimiento) };
+            string proceso = "ObtenerDetalleInicialDeCompra";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    HistorialPagoProveedores listaProductos = new HistorialPagoProveedores();
+                    listaProductos.idHistorial = Convert.ToInt32(item["idMovimientoStock"].ToString());
+                    listaProductos.FechaPago = Convert.ToDateTime(item["FechaPago"].ToString());
+                    listaProductos.Monto = Convert.ToDecimal(item["MontoTotal"].ToString());
+                    listaProductos.idMovimiento = Convert.ToInt32(item["idMovimientoStock"].ToString());
+                    listaProductos.idUsuario = Convert.ToInt32(item["idUsuario"].ToString());
+                    listaProductos.NombreUsuario = item["Apellido"].ToString() + ", " + item["Nombre"].ToString();
+                    listaProductos.FacturaPaga = Convert.ToInt32(item["FacturaPaga"].ToString());
+                    lista.Add(listaProductos);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
         public static List<ListaCompras> ConsultarComprasDelDia()
         {
             connection.Close();

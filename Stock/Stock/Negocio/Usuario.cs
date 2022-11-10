@@ -86,7 +86,7 @@ namespace Stock.Negocio
                                            MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
-        }
+        }        
         public static bool EditarUsuario(Usuarios _usuario, int idusuario)
         {
             bool exito = false;
