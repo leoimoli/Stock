@@ -234,6 +234,20 @@ namespace Stock.Negocio
             }
             return _listaProductos;
         }
+
+        public static List<ListaCompras> ConsultarComprasReportePorRemito(string text)
+        {
+            List<ListaCompras> _listaProductos = new List<ListaCompras>();
+            try
+            {
+                _listaProductos = DAO.ConsultarDao.ConsultarComprasReportePorRemito(text);
+            }
+            catch (Exception ex)
+            {
+            }
+            return _listaProductos;
+        }
+
         public static List<Productos> ListaDeProductosSinPrecios()
         {
             List<Productos> _listaProductos = new List<Productos>();

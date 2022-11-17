@@ -24,7 +24,7 @@ namespace Stock
             Close();
         }
 
-      
+
         private void ArmoGrillaVentas(List<ListaCompras> resultado)
         {
             PanelResultado.Visible = true;
@@ -190,15 +190,27 @@ namespace Stock
             List<Entidades.ListaComprasEstadistica> listaVentasEstadistica = new List<ListaComprasEstadistica>();
             try
             {
-                DateTime FechaDesde = dtFechaDesde.Value.Date;
-                DateTime FechaHasta = dtFechaHasta.Value.Date;
-                ValidarFechas(FechaDesde, FechaHasta);
-                resultado = Negocio.Consultar.ConsultarComprasReportePorFecha(FechaDesde, FechaHasta);
-                if (resultado.Count > 0)
+                if (txtRemito.Text != "")
                 {
-                    ArmoGrillaVentas(resultado);
+                    resultado = Negocio.Consultar.ConsultarComprasReportePorRemito(txtRemito.Text);
+                    if (resultado.Count > 0)
+                    {
+                        ArmoGrillaVentas(resultado);
+                    }
+                    else { }
                 }
-                else { }
+                else
+                {
+                    DateTime FechaDesde = dtFechaDesde.Value.Date;
+                    DateTime FechaHasta = dtFechaHasta.Value.Date;
+                    ValidarFechas(FechaDesde, FechaHasta);
+                    resultado = Negocio.Consultar.ConsultarComprasReportePorFecha(FechaDesde, FechaHasta);
+                    if (resultado.Count > 0)
+                    {
+                        ArmoGrillaVentas(resultado);
+                    }
+                    else { }
+                }
             }
             catch (Exception ex)
             { }

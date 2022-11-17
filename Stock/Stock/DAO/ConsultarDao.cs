@@ -149,6 +149,36 @@ namespace Stock.DAO
             }
             return lista;
         }
+        public static List<ListaCompras> ConsultarComprasReportePorRemito(string text)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaCompras> lista = new List<Entidades.ListaCompras>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("NroRemito_in", text) };
+            string proceso = "ConsultarComprasReportePorRemito";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaCompras listaCompras = new Entidades.ListaCompras();
+                    listaCompras.idCompra = Convert.ToInt32(item["idMovimientoStock"].ToString());
+                    listaCompras.Proveedor = item["Proveedor"].ToString();
+                    DateTime fechaReal = Convert.ToDateTime(item["FechaPago"].ToString());
+                    listaCompras.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
+                    listaCompras.MontoTotal = Convert.ToDecimal(item["MontoTotal"].ToString());
+                    lista.Add(listaCompras);
+                }
+            }
+            return lista;
+        }
+
         public static List<ListaCompras> ConsultarComprasDeAyer()
         {
             connection.Close();

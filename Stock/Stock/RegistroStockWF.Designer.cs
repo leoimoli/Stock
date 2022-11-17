@@ -36,6 +36,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistroStockWF));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chcFacturaImpaga = new System.Windows.Forms.CheckBox();
             this.lblTotalPagarReal = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.btnQuitar = new System.Windows.Forms.Button();
@@ -77,7 +78,6 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.chcFacturaImpaga = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
@@ -114,6 +114,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(776, 552);
             this.panel1.TabIndex = 59;
+            // 
+            // chcFacturaImpaga
+            // 
+            this.chcFacturaImpaga.AutoSize = true;
+            this.chcFacturaImpaga.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chcFacturaImpaga.ForeColor = System.Drawing.Color.White;
+            this.chcFacturaImpaga.Location = new System.Drawing.Point(21, 468);
+            this.chcFacturaImpaga.Name = "chcFacturaImpaga";
+            this.chcFacturaImpaga.Size = new System.Drawing.Size(135, 20);
+            this.chcFacturaImpaga.TabIndex = 148;
+            this.chcFacturaImpaga.Text = "Factura Impaga";
+            this.chcFacturaImpaga.UseVisualStyleBackColor = true;
             // 
             // lblTotalPagarReal
             // 
@@ -582,18 +594,6 @@
             this.pictureBox1.TabIndex = 60;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // chcFacturaImpaga
-            // 
-            this.chcFacturaImpaga.AutoSize = true;
-            this.chcFacturaImpaga.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chcFacturaImpaga.ForeColor = System.Drawing.Color.White;
-            this.chcFacturaImpaga.Location = new System.Drawing.Point(21, 468);
-            this.chcFacturaImpaga.Name = "chcFacturaImpaga";
-            this.chcFacturaImpaga.Size = new System.Drawing.Size(135, 20);
-            this.chcFacturaImpaga.TabIndex = 148;
-            this.chcFacturaImpaga.Text = "Factura Impaga";
-            this.chcFacturaImpaga.UseVisualStyleBackColor = true;
             // 
             // RegistroStockWF
             // 
