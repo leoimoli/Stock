@@ -70,13 +70,13 @@
             this.PanelContenedor = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel8 = new System.Windows.Forms.Panel();
+            this.picNavidad = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.btnMenuPequeño = new System.Windows.Forms.PictureBox();
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.picNavidad = new System.Windows.Forms.PictureBox();
             this.MenuCabecera.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
@@ -90,11 +90,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picNavidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenuPequeño)).BeginInit();
             this.panel13.SuspendLayout();
             this.panel14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picNavidad)).BeginInit();
             this.SuspendLayout();
             // 
             // MenuCabecera
@@ -606,6 +606,15 @@
             this.panel8.Size = new System.Drawing.Size(1075, 45);
             this.panel8.TabIndex = 2;
             // 
+            // picNavidad
+            // 
+            this.picNavidad.Location = new System.Drawing.Point(445, -3);
+            this.picNavidad.Name = "picNavidad";
+            this.picNavidad.Size = new System.Drawing.Size(185, 48);
+            this.picNavidad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picNavidad.TabIndex = 8;
+            this.picNavidad.TabStop = false;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -665,16 +674,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(272, 17);
             this.label7.TabIndex = 6;
-            this.label7.Text = "StoCom(Sistema Stock Comercial) V-1.0.2";
-            // 
-            // picNavidad
-            // 
-            this.picNavidad.Location = new System.Drawing.Point(445, -3);
-            this.picNavidad.Name = "picNavidad";
-            this.picNavidad.Size = new System.Drawing.Size(185, 48);
-            this.picNavidad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picNavidad.TabIndex = 8;
-            this.picNavidad.TabStop = false;
+            this.label7.Text = "StoCom(Sistema Stock Comercial) V-1.0.3";
             // 
             // NewMasterWF
             // 
@@ -709,12 +709,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picNavidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenuPequeño)).EndInit();
             this.panel13.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picNavidad)).EndInit();
             this.ResumeLayout(false);
 
         }
