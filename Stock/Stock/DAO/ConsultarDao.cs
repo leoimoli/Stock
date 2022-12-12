@@ -53,6 +53,36 @@ namespace Stock.DAO
             return lista;
         }
 
+        public static List<FechasFestivas> BuscarFechasFestivas()
+        {
+            connection.Close();
+            connection.Open();
+            List<FechasFestivas> lista = new List<FechasFestivas>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "BuscarFechasFestivas";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    FechasFestivas listaFechas = new FechasFestivas();
+                    listaFechas.idFechaFestiva = Convert.ToInt32(item["idFechasFestivas"].ToString());
+                    listaFechas.NombreEvento = item["NombreEvento"].ToString();
+                    listaFechas.FechaDesde = item["FechaDesde"].ToString();
+                    listaFechas.FechaHasta = item["FechaHasta"].ToString();
+                    listaFechas.NombreImagen = item["NombreImagen"].ToString();
+                    lista.Add(listaFechas);
+                }
+            }
+            return lista;
+        }
+
         public static List<HistorialPagoProveedores> HistorialPagoAProveedores(int idMovimiento)
         {
             List<Entidades.HistorialPagoProveedores> lista = new List<Entidades.HistorialPagoProveedores>();

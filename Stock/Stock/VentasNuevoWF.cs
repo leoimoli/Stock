@@ -24,32 +24,30 @@ namespace Stock
         }
         private void ValidarFechasFestivas()
         {
+            List<FechasFestivas> _listaFechas = new List<FechasFestivas>();
+            _listaFechas = DAO.ConsultarDao.BuscarFechasFestivas();
             int AñoActual = DateTime.Now.Year;
-            int AñoSiguiente = DateTime.Now.Year + 1;
+            //AñoActual = AñoActual + 1;
             DateTime FechaActual = DateTime.Now;
-            string PruebaIncio = Convert.ToString(30 + "/" + 10 + "/" + AñoActual + " " + "23" + ":59" + ":59");
-            string PruebaFin = Convert.ToString(30 + "/" + 11 + "/" + AñoActual + " " + "23" + ":59" + ":59");
-            string FiestasNavideñas = Convert.ToString(07 + "/" + 12 + "/" + AñoActual + " " + "23" + ":59" + ":59");
-            string FiestasReyes = Convert.ToString(01 + "/" + 01 + "/" + AñoSiguiente + " " + "23" + ":59" + ":59");
-            string FechaFinFiestas = Convert.ToString(06 + "/" + 01 + "/" + AñoActual + " " + "23" + ":59" + ":59");
-            //// Imagenes Navideñas
-            if (FechaActual > Convert.ToDateTime(FiestasNavideñas) && Convert.ToDateTime(FechaActual) < Convert.ToDateTime(FiestasReyes))
-            //if (FechaActual > Convert.ToDateTime(PruebaIncio) && Convert.ToDateTime(FechaActual) < Convert.ToDateTime(PruebaFin))
+            //DateTime FechaActual = DateTime.Now.AddDays(+111);
+
+            foreach (var item in _listaFechas)
             {
-                Image imgFiestas = Image.FromFile(Environment.CurrentDirectory + "\\" + @"Navidad-5.gif");
-                picNavidad.Image = imgFiestas;
-            }
-           else if (FechaActual > Convert.ToDateTime(FiestasReyes) && Convert.ToDateTime(FechaActual) < Convert.ToDateTime(FechaFinFiestas))
-            {
-                Image imgFiestas = Image.FromFile(Environment.CurrentDirectory + "\\" + @"Reyes4.gif");
-                picNavidad.Image = imgFiestas;
-            }
-            else
-            {
-                picNavidad.Visible = false;
+                string FechaDesde = item.FechaDesde + "/" + AñoActual;
+                string FechaHasta = item.FechaHasta + "/" + AñoActual;
+                if (FechaActual > Convert.ToDateTime(FechaDesde) && Convert.ToDateTime(FechaActual) < Convert.ToDateTime(FechaHasta))
+                {
+                    picNavidad.Visible = true;
+                    Image imgFiestas = Image.FromFile(Environment.CurrentDirectory + "\\" + item.NombreImagen);
+                    picNavidad.Image = imgFiestas;
+                    break;
+                }
+                else
+                {
+                    picNavidad.Visible = false;
+                }
             }
         }
-
         private void VentasNuevoWF_Load(object sender, EventArgs e)
         {
             lblUsuario.Text = Sesion.UsuarioLogueado.Apellido + "  " + Sesion.UsuarioLogueado.Nombre;

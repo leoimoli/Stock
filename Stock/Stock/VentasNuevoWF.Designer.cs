@@ -448,9 +448,9 @@
             // 
             // picNavidad
             // 
-            this.picNavidad.Location = new System.Drawing.Point(17, 391);
+            this.picNavidad.Location = new System.Drawing.Point(16, 370);
             this.picNavidad.Name = "picNavidad";
-            this.picNavidad.Size = new System.Drawing.Size(186, 78);
+            this.picNavidad.Size = new System.Drawing.Size(186, 100);
             this.picNavidad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picNavidad.TabIndex = 58;
             this.picNavidad.TabStop = false;
@@ -462,7 +462,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(75, 319);
+            this.button1.Location = new System.Drawing.Point(75, 291);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(88, 54);
             this.button1.TabIndex = 0;
@@ -477,7 +477,7 @@
             this.lblTotalPagarReal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTotalPagarReal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalPagarReal.ForeColor = System.Drawing.Color.White;
-            this.lblTotalPagarReal.Location = new System.Drawing.Point(46, 229);
+            this.lblTotalPagarReal.Location = new System.Drawing.Point(46, 213);
             this.lblTotalPagarReal.Name = "lblTotalPagarReal";
             this.lblTotalPagarReal.Size = new System.Drawing.Size(147, 60);
             this.lblTotalPagarReal.TabIndex = 57;

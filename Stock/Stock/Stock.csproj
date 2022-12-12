@@ -199,6 +199,7 @@
     <Compile Include="Entidades\Clientes.cs" />
     <Compile Include="Entidades\CuentaCorriente.cs" />
     <Compile Include="Entidades\DetalleOferta.cs" />
+    <Compile Include="Entidades\FechasFestivas.cs" />
     <Compile Include="Entidades\HistorialDelProductoSeleccionado.cs" />
     <Compile Include="Entidades\HistorialDelProveedor.cs" />
     <Compile Include="Entidades\HistorialPagoProveedores.cs" />

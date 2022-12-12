@@ -1,4 +1,5 @@
 ﻿using Stock.DAO;
+using Stock.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -90,22 +91,28 @@ namespace Stock
         }
         private void ValidarFechasFestivas()
         {
+            List<FechasFestivas> _listaFechas = new List<FechasFestivas>();
+            _listaFechas = DAO.ConsultarDao.BuscarFechasFestivas();
             int AñoActual = DateTime.Now.Year;
+            //AñoActual = AñoActual + 1;
             DateTime FechaActual = DateTime.Now;
-            string PruebaIncio = Convert.ToString(30 + "/" + 10 + "/" + AñoActual + " " + "23" + ":59" + ":59");
-            string PruebaFin = Convert.ToString(02 + "/" + 11 + "/" + AñoActual + " " + "23" + ":59" + ":59");
-            string FiestasNavideñas = Convert.ToString(07 + "/" + 12 + "/" + AñoActual + " " + "23" + ":59" + ":59");
-            string FechaFinFiestas = Convert.ToString(06 + "/" + 01 + "/" + AñoActual + " " + "23" + ":59" + ":59");
-            //// Imagenes Navideñas
-            //if (FechaActual > Convert.ToDateTime(PruebaIncio) && Convert.ToDateTime(FechaActual) < Convert.ToDateTime(PruebaFin))
-            if (FechaActual > Convert.ToDateTime(FiestasNavideñas) && Convert.ToDateTime(FechaActual) < Convert.ToDateTime(FechaFinFiestas))
+            //DateTime FechaActual = DateTime.Now.AddDays(+111);
+
+            foreach (var item in _listaFechas)
             {
-                Image imgFiestas = Image.FromFile(Environment.CurrentDirectory + "\\" + @"Feliz-Fiesta-Login.gif");
-                picFiestas.Image = imgFiestas;
-            }
-            else
-            {
-                picFiestas.Visible = false;
+                string FechaDesde = item.FechaDesde + "/" + AñoActual;
+                string FechaHasta = item.FechaHasta + "/" + AñoActual;
+                if (FechaActual > Convert.ToDateTime(FechaDesde) && Convert.ToDateTime(FechaActual) < Convert.ToDateTime(FechaHasta))
+                {
+                    picFiestas.Visible = true;
+                    Image imgFiestas = Image.FromFile(Environment.CurrentDirectory + "\\" + item.NombreImagen);
+                    picFiestas.Image = imgFiestas;
+                    break;
+                }
+                else
+                {
+                    picFiestas.Visible = false;
+                }
             }
         }
     }

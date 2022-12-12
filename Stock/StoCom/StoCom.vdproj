@@ -75,6 +75,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_2CB709A0DAA6446DA5A746457956EA1A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2FFFC3EB44613EE4E218516F3FBC7B3D"
         "OwnerKey" = "8:_6EDC22BB14604CF29078CB7163C73E12"
         "MsmSig" = "8:_UNDEFINED"
@@ -261,6 +267,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A50F6423F4944C4CA70CF23056765DB4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A7407292A1276CC691A71E582E0D6ECA"
         "OwnerKey" = "8:_6EDC22BB14604CF29078CB7163C73E12"
         "MsmSig" = "8:_UNDEFINED"
@@ -309,12 +321,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CE61EC6760B5D9AA7ECAE9C1306F6D6D"
-        "OwnerKey" = "8:_6EDC22BB14604CF29078CB7163C73E12"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_D065AF2BC1F3FF3EFD37DAE88F784022"
         "OwnerKey" = "8:_6EDC22BB14604CF29078CB7163C73E12"
         "MsmSig" = "8:_UNDEFINED"
@@ -357,6 +363,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_F3DC274DED623A57654926F3A59E317B"
+        "OwnerKey" = "8:_6EDC22BB14604CF29078CB7163C73E12"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F4A9328868B18F13687E4BBEC7686E14"
         "OwnerKey" = "8:_6EDC22BB14604CF29078CB7163C73E12"
         "MsmSig" = "8:_UNDEFINED"
@@ -376,7 +388,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CE61EC6760B5D9AA7ECAE9C1306F6D6D"
+        "OwnerKey" = "8:_4835378D459D422A00E410746793CBE9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -388,7 +400,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4835378D459D422A00E410746793CBE9"
+        "OwnerKey" = "8:_F3DC274DED623A57654926F3A59E317B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -727,6 +739,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -743,6 +771,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -1069,6 +1105,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2CB709A0DAA6446DA5A746457956EA1A"
+            {
+            "SourcePath" = "8:..\\Stock\\bin\\Debug\\Reyes3.gif"
+            "TargetName" = "8:Reyes3.gif"
+            "Tag" = "8:"
+            "Folder" = "8:_733B6AFEDCB94058AD780ECA431A8115"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2FFFC3EB44613EE4E218516F3FBC7B3D"
@@ -1979,6 +2035,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A50F6423F4944C4CA70CF23056765DB4"
+            {
+            "SourcePath" = "8:..\\Stock\\bin\\Debug\\Reyes4.gif"
+            "TargetName" = "8:Reyes4.gif"
+            "Tag" = "8:"
+            "Folder" = "8:_733B6AFEDCB94058AD780ECA431A8115"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A7407292A1276CC691A71E582E0D6ECA"
             {
             "AssemblyRegister" = "3:1"
@@ -2227,37 +2303,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CE61EC6760B5D9AA7ECAE9C1306F6D6D"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:LibPrintTicket, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_CE61EC6760B5D9AA7ECAE9C1306F6D6D"
-                    {
-                    "Name" = "8:LibPrintTicket.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:LibPrintTicket.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_733B6AFEDCB94058AD780ECA431A8115"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D065AF2BC1F3FF3EFD37DAE88F784022"
             {
             "AssemblyRegister" = "3:1"
@@ -2464,6 +2509,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F3DC274DED623A57654926F3A59E317B"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:LibPrintTicket, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_F3DC274DED623A57654926F3A59E317B"
+                    {
+                    "Name" = "8:LibPrintTicket.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:LibPrintTicket.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_733B6AFEDCB94058AD780ECA431A8115"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F4A9328868B18F13687E4BBEC7686E14"
             {
             "AssemblyRegister" = "3:1"
@@ -2614,7 +2690,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:StoCom"
         "ProductCode" = "8:{6558866D-370A-4986-8DC9-53C3C3076E61}"
-        "PackageCode" = "8:{1F0E2997-9AFF-46CC-9ADA-1D8CAE9ECD64}"
+        "PackageCode" = "8:{37E4B565-8168-42C3-B678-147C5785C4E8}"
         "UpgradeCode" = "8:{038DCFA0-F36E-4274-BC4B-B17F0EFDEB0D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
