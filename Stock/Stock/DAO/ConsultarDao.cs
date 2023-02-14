@@ -82,6 +82,32 @@ namespace Stock.DAO
             }
             return lista;
         }
+        public static List<string> CargarComboCategoria()
+        {
+            connection.Close();
+            connection.Open();
+            List<string> _listaMarcas = new List<string>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ListarCategorias";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            DataSet ds = new DataSet();
+            dt.Fill(ds, "categoriaproductos");
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in ds.Tables[0].Rows)
+                {
+                    _listaMarcas.Add(item["Nombre"].ToString());
+                }
+            }
+            connection.Close();
+            return _listaMarcas;
+        }
 
         public static List<HistorialPagoProveedores> HistorialPagoAProveedores(int idMovimiento)
         {
@@ -238,6 +264,57 @@ namespace Stock.DAO
             }
             return lista;
         }
+
+        public static int BuscarIdMarca(string marca)
+        {
+            connection.Close();
+            connection.Open();
+            int idMarca = 0;
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("Marca_in", marca) };
+            string proceso = "BuscarIdMarca";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    idMarca = Convert.ToInt32(item["idMarca"].ToString());
+                }
+            }
+            connection.Close();
+            return idMarca;
+        }
+
+        public static int BuscarIdCategoria(string categoria)
+        {
+            connection.Close();
+            connection.Open();
+            int idCategoria = 0;
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("Categoria_in", categoria) };
+            string proceso = "BuscarIdCategoria";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    idCategoria = Convert.ToInt32(item["idCategoriaProductos"].ToString());
+                }
+            }
+            connection.Close();
+            return idCategoria;
+        }
+
         public static List<ListaCompras> ConsultarComprasUltimos30Dias(DateTime fechaDesde, DateTime fechaHasta)
         {
             connection.Close();
@@ -2678,6 +2755,7 @@ namespace Stock.DAO
                     listaProducto.CodigoProducto = item["txCodigoProducto"].ToString();
                     listaProducto.NombreProducto = item["txNombreProducto"].ToString();
                     listaProducto.MarcaProducto = item["txMarcaProducto"].ToString();
+                    listaProducto.NombreCategoria = item["NombreCategoria"].ToString();
                     listaProducto.Descripcion = item["txDescripcion"].ToString();
                     string Precio = item["txPrecioDeVenta"].ToString();
                     if (Precio != null & Precio != "")

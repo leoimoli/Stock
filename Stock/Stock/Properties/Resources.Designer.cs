@@ -373,6 +373,16 @@ namespace Stock.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap codigo_de_barras3 {
+            get {
+                object obj = ResourceManager.GetObject("codigo-de-barras3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap compras65x50 {
             get {
                 object obj = ResourceManager.GetObject("compras65x50", resourceCulture);
@@ -726,6 +736,16 @@ namespace Stock.Properties {
         internal static System.Drawing.Bitmap hombre2_Nuevo {
             get {
                 object obj = ResourceManager.GetObject("hombre2_Nuevo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap impresora {
+            get {
+                object obj = ResourceManager.GetObject("impresora", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

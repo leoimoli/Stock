@@ -80,6 +80,13 @@ namespace Stock.Negocio
             }
             return _lista;
         }
+        public static List<string> CargarComboCategoria()
+        {
+            List<string> lista = new List<string>();
+            lista = DAO.ConsultarDao.CargarComboCategoria();
+            return lista;
+        }
+
         public static List<ListaStock> ListarDetalleStock(int idMovimiento)
         {
             List<ListaStock> _lista = new List<ListaStock>();
@@ -116,7 +123,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<ListaCompras> ConsultarComprasDeAyer()
         {
             List<ListaCompras> _lista = new List<ListaCompras>();
@@ -169,7 +175,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<ListaCompras> ConsultarComprasUltimos30Dias(DateTime fechaDesde, DateTime fechaHasta)
         {
             List<ListaCompras> _lista = new List<ListaCompras>();
@@ -183,7 +188,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<Entidades.Clientes> BuscarClientePorApellidoNombre(string apellido, string nombre)
         {
             List<Entidades.Clientes> _lista = new List<Entidades.Clientes>();
@@ -221,7 +225,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<Productos> ListaDeProductos()
         {
             List<Productos> _listaProductos = new List<Productos>();
@@ -234,7 +237,6 @@ namespace Stock.Negocio
             }
             return _listaProductos;
         }
-
         public static List<ListaCompras> ConsultarComprasReportePorRemito(string text)
         {
             List<ListaCompras> _listaProductos = new List<ListaCompras>();
@@ -247,7 +249,6 @@ namespace Stock.Negocio
             }
             return _listaProductos;
         }
-
         public static List<Productos> ListaDeProductosSinPrecios()
         {
             List<Productos> _listaProductos = new List<Productos>();
@@ -260,7 +261,6 @@ namespace Stock.Negocio
             }
             return _listaProductos;
         }
-
         public static List<ListaCompras> ConsultarComprasReportePorFecha(DateTime fechaDesde, DateTime fechaHasta)
         {
             List<ListaCompras> _lista = new List<ListaCompras>();
@@ -274,7 +274,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<Productos> ConsultaProductoPorCodigo(string codigo)
         {
             List<Productos> _listaProductos = new List<Productos>();
@@ -337,7 +336,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<HistorialProductoPrecioDeVenta> BuscarProductoHistorialPrecios(string codigo)
         {
             List<HistorialProductoPrecioDeVenta> _lista = new List<HistorialProductoPrecioDeVenta>();
@@ -350,7 +348,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<ListaVentas> ConsultarVentasUltimosSieteDias(DateTime fechaDesde, DateTime fechaHasta)
         {
             List<ListaVentas> _lista = new List<ListaVentas>();
@@ -364,7 +361,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<ListaStock> ListaStockPorCodigoProducto(string codigo)
         {
             List<ListaStock> _listaStock = new List<ListaStock>();
@@ -376,6 +372,34 @@ namespace Stock.Negocio
             {
             }
             return _listaStock;
+        }
+
+        public static int BuscarIdCategoria(string categoria)
+        {
+            int idCategoria = 0;
+            try
+            {
+                idCategoria = DAO.ConsultarDao.BuscarIdCategoria(categoria);
+            }
+            catch (Exception ex)
+            {
+               
+            }
+            return idCategoria;
+        }
+
+        public static int BuscarIdMarca(string marca)
+        {
+            int idMarca = 0;
+            try
+            {
+                idMarca = DAO.ConsultarDao.BuscarIdMarca(marca);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return idMarca;
         }
 
         public static List<ListaVentas> ConsultarVentasUltimos30Dias(DateTime fechaDesde, DateTime fechaHasta)
@@ -404,7 +428,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<Productos> ListarProductoPorDescripcion(string descripcion)
         {
             List<Productos> _listaProductos = new List<Productos>();
@@ -508,7 +531,6 @@ namespace Stock.Negocio
             }
             return PuntosViejos;
         }
-
         public static List<Ofertas> ListaOfertasPorDescripcion(string NombreCombo)
         {
             List<Ofertas> _listaOfertas = new List<Ofertas>();
@@ -522,7 +544,6 @@ namespace Stock.Negocio
             }
             return _listaOfertas;
         }
-
         public static List<Productos> BuscarProductoPorCodigoIngresado(string codigo)
         {
             List<Productos> _listaProductos = new List<Productos>();
@@ -590,7 +611,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<ListaVentas> ConsultarVentasPorUsuario(string dniUsuario)
         {
             List<ListaVentas> _lista = new List<ListaVentas>();
@@ -609,7 +629,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<ListaCompras> ConsultarComprasPorFecha(DateTime fechaDesde, DateTime fechaHasta)
         {
             List<ListaCompras> _lista = new List<ListaCompras>();
@@ -628,7 +647,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<ListaComprasEstadistica> ConsultarComprasPorFechaEstadistica(DateTime fechaDesde, DateTime fechaHasta)
         {
             List<ListaComprasEstadistica> _lista = new List<ListaComprasEstadistica>();
@@ -647,7 +665,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<ListaCompras> ConsultarComprasPorProveedor(string proveedor)
         {
             List<ListaCompras> _lista = new List<ListaCompras>();
@@ -666,7 +683,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<ListaVentasEstadistica> ConsultarVentasPorUsuarioEstadistica(string dniUsuario)
         {
             List<ListaVentasEstadistica> _lista = new List<ListaVentasEstadistica>();
@@ -685,7 +701,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<ListaComprasEstadistica> ConsultarComprasPorProveedorEstadistica(string proveedor)
         {
             List<ListaComprasEstadistica> _lista = new List<ListaComprasEstadistica>();
@@ -704,7 +719,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<ListaCompras> ConsultarComprasPorRemito(string remito)
         {
             List<ListaCompras> _lista = new List<ListaCompras>();
@@ -723,8 +737,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
-
         public static List<ListaProductoVenta> BuscarProductoParaVenta(string codigoProducto)
         {
             List<ListaProductoVenta> _lista = new List<ListaProductoVenta>();
@@ -743,7 +755,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<ListaComprasEstadistica> ConsultarComprasPorRemitoEstadistica(string remito)
         {
             List<ListaComprasEstadistica> _lista = new List<ListaComprasEstadistica>();
@@ -762,7 +773,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<HistorialProductoPrecioDeVenta> HistorialPrecioDeVenta(int idProducto)
         {
             List<HistorialProductoPrecioDeVenta> _listaHistorialProductoPrecioDeVenta = new List<HistorialProductoPrecioDeVenta>();
@@ -775,12 +785,10 @@ namespace Stock.Negocio
             }
             return _listaHistorialProductoPrecioDeVenta;
         }
-
         public static int BuscaridProductoPorCodigo(string text)
         {
             throw new NotImplementedException();
         }
-
         public static List<HistorialDelProductoSeleccionado> HistorialProducto(int idProducto)
         {
             List<HistorialDelProductoSeleccionado> _historialProducto = new List<HistorialDelProductoSeleccionado>();
@@ -848,27 +856,23 @@ namespace Stock.Negocio
             }
             return CodigoProducto;
         }
-
         public static bool ValidarProveedorExistente(string nombreEmpresa)
         {
             bool existe = DAO.ConsultarDao.ValidarProveedorExistente(nombreEmpresa);
             return existe;
         }
-
         public static List<string> CargarComboProveedor()
         {
             List<string> lista = new List<string>();
             lista = DAO.ConsultarDao.CargarComboProveedor();
             return lista;
         }
-
         public static List<string> CargarComboMarcas()
         {
             List<string> lista = new List<string>();
             lista = DAO.ConsultarDao.CargarCombomMarcas();
             return lista;
         }
-
         public static bool ValidarMarcaExistente(string nombreMarca)
         {
             bool existe = DAO.ConsultarDao.ValidarMarcaExistente(nombreMarca);
@@ -915,7 +919,6 @@ namespace Stock.Negocio
             }
             return _listaUsuarios;
         }
-
         public static List<Productos> BuscarProductoPorID(int idProductoGrilla)
         {
             List<Productos> _listaProductos = new List<Productos>();
@@ -934,7 +937,6 @@ namespace Stock.Negocio
             }
             return _listaProductos;
         }
-
         public static List<Usuarios> BuscarUsuarioPorDNI(string dni)
         {
             List<Usuarios> _listaUsuarios = new List<Usuarios>();
@@ -953,7 +955,6 @@ namespace Stock.Negocio
             }
             return _listaUsuarios;
         }
-
         public static List<Entidades.Proveedores> ListaDeProveedores()
         {
             List<Entidades.Proveedores> _listaProveedores = new List<Entidades.Proveedores>();
@@ -990,7 +991,6 @@ namespace Stock.Negocio
             }
             return _listaProveedores;
         }
-
         public static List<HistorialDelProveedor> HistorialDelProveedor(string Proveedor)
         {
             List<Entidades.HistorialDelProveedor> _listaHistorialProveedores = new List<Entidades.HistorialDelProveedor>();
@@ -1009,7 +1009,6 @@ namespace Stock.Negocio
             }
             return _listaHistorialProveedores;
         }
-
         public static List<HistorialDelProductoSeleccionado> ListaHistorialPrecioDeVenta()
         {
             List<HistorialDelProductoSeleccionado> _listaHistorialProductoPrecioDeVenta = new List<HistorialDelProductoSeleccionado>();
@@ -1028,7 +1027,6 @@ namespace Stock.Negocio
             }
             return _listaHistorialProductoPrecioDeVenta;
         }
-
         public static List<Entidades.Clientes> BuscarClientePorID(int idClienteSeleccionado)
         {
             List<Entidades.Clientes> _Cliente = new List<Entidades.Clientes>();
@@ -1047,7 +1045,6 @@ namespace Stock.Negocio
             }
             return _Cliente;
         }
-
         public static List<ListaStock> ListaDeStockPoridProdcuto(int idProducto)
         {
             List<ListaStock> _listaStock = new List<ListaStock>();

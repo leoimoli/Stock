@@ -1,9 +1,12 @@
-﻿using Stock.Entidades;
+﻿using BarcodeLib;
+using Stock.Entidades;
+using Stock.Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +36,7 @@ namespace Stock
                 }
                 FuncionListarProductos();
                 CargarCombo();
+                CargarComboCategoria();
                 FuncionBuscartexto();
             }
             catch (Exception ex)
@@ -54,7 +58,7 @@ namespace Stock
             {
                 foreach (var item in ListaProductos)
                 {
-                    dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto);
+                    dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto, item.NombreCategoria);
                 }
             }
             dgvProductos.ReadOnly = true;
@@ -71,6 +75,18 @@ namespace Stock
                 cmbMarca.Items.Add(item);
             }
         }
+        public void CargarComboCategoria()
+        {
+            List<string> Categoria = new List<string>();
+            Categoria = Negocio.Consultar.CargarComboCategoria();
+            cmbCategoria.Items.Add("Seleccione");
+            cmbCategoria.Items.Clear();
+            foreach (string item in Categoria)
+            {
+                cmbCategoria.Text = "Seleccione";
+                cmbCategoria.Items.Add(item);
+            }
+        }
         public static int idProductoSeleccionado = 0;
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -82,7 +98,9 @@ namespace Stock
                 idProductoSeleccionado = Convert.ToInt32(this.dgvProductos.CurrentRow.Cells[0].Value);
                 txtCodigoProducto.Text = dgvProductos.CurrentRow.Cells[1].Value.ToString();
                 cmbMarca.Text = dgvProductos.CurrentRow.Cells[3].Value.ToString();
+                cmbCategoria.Text = dgvProductos.CurrentRow.Cells[4].Value.ToString();
                 textBox2.Text = dgvProductos.CurrentRow.Cells[2].Value.ToString();
+
                 string TotalCaracteres = Convert.ToString(textBox2.Text.Length);
                 lblContador.Visible = true;
                 lblTotal.Visible = true;
@@ -100,16 +118,58 @@ namespace Stock
         public static int Funcion = 0;
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            Entidades.Productos _producto = CargarEntidad();
-            if (idProductoSeleccionado > 0)
+            try
             {
-                if (Funcion == 2)
+                Entidades.Productos _producto = CargarEntidad();
+                if (idProductoSeleccionado > 0)
                 {
-                    ProgressBar();
-                    bool Exito = Negocio.Producto.EditarProducto(_producto, idProductoSeleccionado);
+                    if (Funcion == 2)
+                    {
+                        ProgressBar();
+                        bool Exito = Negocio.Producto.EditarProducto(_producto, idProductoSeleccionado);
+                        if (Exito == true)
+                        {
+                            const string message2 = "La edición del producto se registro exitosamente.";
+                            const string caption2 = "Éxito";
+                            var result2 = MessageBox.Show(message2, caption2,
+                                                         MessageBoxButtons.OK,
+                                                         MessageBoxIcon.Asterisk);
+                            LimpiarCampos();
+                            FuncionListarProductos();
+                        }
+                    }
+                }
+                else
+                {
+                    if (chcProductoEspecial.Checked == true)
+                    {
+                        if (panelCodigo.BackgroundImage != null)
+                        {
+                            /////GUARDO EL CODIGO DE BARRA GENERADO.
+                            string folderPath = "C:\\Stocom-Archivos\\CodigoDeBarra\\";
+                            if (!Directory.Exists(folderPath))
+                            {
+                                Directory.CreateDirectory(folderPath);
+                            }
+                            string NombreArchivo = codigoStatico.RawData;
+                            codigoStatico.SaveImage(folderPath + NombreArchivo + "' .jpg", SaveTypes.JPG);
+                        }
+                        else
+                        {
+                            const string message2 = "Atención: De generar un código de barra para el producto.";
+                            const string caption2 = "Atención";
+                            var result2 = MessageBox.Show(message2, caption2,
+                                                         MessageBoxButtons.OK,
+                                                         MessageBoxIcon.Asterisk);
+
+                        }
+                    }
+
+                    bool Exito = Negocio.Producto.CargarProducto(_producto);
                     if (Exito == true)
                     {
-                        const string message2 = "La edición del producto se registro exitosamente.";
+                        ProgressBar();
+                        const string message2 = "Se registro el producto exitosamente.";
                         const string caption2 = "Éxito";
                         var result2 = MessageBox.Show(message2, caption2,
                                                      MessageBoxButtons.OK,
@@ -119,21 +179,8 @@ namespace Stock
                     }
                 }
             }
-            else
-            {
-                bool Exito = Negocio.Producto.CargarProducto(_producto);
-                if (Exito == true)
-                {
-                    ProgressBar();
-                    const string message2 = "Se registro el producto exitosamente.";
-                    const string caption2 = "Éxito";
-                    var result2 = MessageBox.Show(message2, caption2,
-                                                 MessageBoxButtons.OK,
-                                                 MessageBoxIcon.Asterisk);
-                    LimpiarCampos();
-                    FuncionListarProductos();
-                }
-            }
+            catch (Exception ex)
+            { }
         }
         private void LimpiarCampos()
         {
@@ -143,6 +190,8 @@ namespace Stock
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
             chcProductoEspecial.Checked = false;
+            panelCodigo.BackgroundImage = null;
+            codigoStatico = null;
         }
         private void ProgressBar()
         {
@@ -167,14 +216,15 @@ namespace Stock
             int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
             _producto.CodigoProducto = txtCodigoProducto.Text;
             _producto.MarcaProducto = cmbMarca.Text;
+            _producto.idCategoria = Consultar.BuscarIdCategoria(cmbCategoria.Text);
             _producto.Descripcion = textBox2.Text;
             DateTime fechaActual = DateTime.Now;
             _producto.FechaDeAlta = fechaActual;
             _producto.idUsuario = idusuarioLogueado;
             if (chcProductoEspecial.Checked == true)
             {
-                _producto.CodigoProducto = GenerarProductoEspecial(_producto.Descripcion);
-                _producto.MarcaProducto = "No especifica";
+                // _producto.CodigoProducto = GenerarProductoEspecial(_producto.Descripcion);
+                //_producto.MarcaProducto = "No especifica";
                 _producto.ProductoEspecial = 1;
             }
             else { _producto.ProductoEspecial = 0; }
@@ -238,6 +288,12 @@ namespace Stock
         }
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            FuncionNuevoProducto_HabilitarCampos();
+
+        }
+
+        private void FuncionNuevoProducto_HabilitarCampos()
+        {
             panel1.Enabled = true;
             LimpiarCampos();
             txtCodigoProducto.Focus();
@@ -247,7 +303,16 @@ namespace Stock
             lblContador.Visible = true;
             lblTotal.Visible = true;
             lblContador.Text = "0";
+            chcProductoEspecial.Enabled = true;
+            btnGuardar.Enabled = true;
+            textBox2.Enabled = true;
+            btnImprimirCodigo.Enabled = true;
+            txtCodigoProducto.Enabled = true;
+            cmbCategoria.Enabled = true;
+            cmbMarca.Enabled = true;
+            txtDescripcion.Enabled = true;
         }
+
         private void btnCargaMasiva_Click(object sender, EventArgs e)
         {
             CargaMasivaProductosWF _carga = new CargaMasivaProductosWF();
@@ -269,15 +334,16 @@ namespace Stock
         {
             if (chcProductoEspecial.Checked == true)
             {
-                cmbMarca.Enabled = false;
                 txtCodigoProducto.Enabled = false;
-                txtDescripcion.Focus();
+                cmbCategoria.Focus();
+                btnGenerarCodigo.Visible = true;
             }
             else
             {
-                cmbMarca.Enabled = true;
                 txtCodigoProducto.Enabled = true;
                 txtCodigoProducto.Focus();
+                btnGenerarCodigo.Visible = false;
+                panelCodigo.Visible = false;
             }
         }
 
@@ -290,10 +356,161 @@ namespace Stock
             }
             catch (Exception ex)
             { }
-        }      
+        }
         private void ActualizarCombo(object sender, EventArgs e)
         {
             CargarCombo();
+        }
+
+        public static Barcode codigoStatico = null;
+        private void GenerarCodigoDeBarra()
+        {
+            string InicioCodigo = "999";
+            int idMarca = Consultar.BuscarIdMarca(cmbMarca.Text);
+            int idCategoria = Consultar.BuscarIdCategoria(cmbCategoria.Text);
+
+            string ParteCentralCodigo = Convert.ToString(idMarca + idCategoria + 1);
+            string Dia = Convert.ToString(DateTime.Now.Date.Day);
+            string Mes = Convert.ToString(DateTime.Now.Date.Month);
+            string Año = Convert.ToString(DateTime.Now.Date.Year);
+            string Hora = Convert.ToString(DateTime.Now.Hour);
+            string Minutos = Convert.ToString(DateTime.Now.Minute);
+            string Segundos = Convert.ToString(DateTime.Now.Second);
+            string ParteFinalCodigo = Dia + Mes + Año;
+            string CodigoArmado = InicioCodigo + ParteCentralCodigo + ParteFinalCodigo + Hora + Minutos + Segundos;
+
+            ///// Validamos que el código ya no exista.
+            bool CodigoExistente = Consultar.ValidarProductoExistente(CodigoArmado);
+            if (CodigoExistente == false)
+            {
+                string Contenido = CodigoArmado;
+                Barcode codigo = new Barcode();
+                codigo.IncludeLabel = true;
+                codigo.Alignment = AlignmentPositions.CENTER;
+                codigo.LabelFont = new Font(FontFamily.GenericMonospace, 14, FontStyle.Regular);
+                Image img = codigo.Encode(TYPE.CODE128, Contenido, Color.Black, Color.White, 200, 140);
+                codigoStatico = codigo;
+                //codigoStatico.SaveImage(@"C:\Users\Usuario\source\repos\Pulpejitos-Repositorio\VETERINARIA\Img\Codigos_De_Barra\ '" + CodigoArmado + "' .jpg", SaveTypes.JPG);
+                panelCodigo.BackgroundImage = codigo.Encode(TYPE.CODE128, Contenido, Color.Black, Color.White, 400, 100);
+                txtCodigoProducto.Text = CodigoArmado;
+            }
+            else
+            {
+                CodigoArmado = InicioCodigo + ParteCentralCodigo + ParteFinalCodigo + Hora + Minutos + Segundos + 1;
+                string Contenido = CodigoArmado;
+                Barcode codigo = new Barcode();
+                codigo.IncludeLabel = true;
+                codigo.Alignment = AlignmentPositions.CENTER;
+                codigo.LabelFont = new Font(FontFamily.GenericMonospace, 14, FontStyle.Regular);
+                Image img = codigo.Encode(TYPE.CODE128, Contenido, Color.Black, Color.White, 200, 140);
+                codigoStatico = codigo;
+                //codigoStatico.SaveImage(@"C:\Users\Usuario\source\repos\Pulpejitos-Repositorio\VETERINARIA\Img\Codigos_De_Barra\ '" + CodigoArmado + "' .jpg", SaveTypes.JPG);
+                panelCodigo.BackgroundImage = codigo.Encode(TYPE.CODE128, Contenido, Color.Black, Color.White, 400, 100);
+                txtCodigoProducto.Text = CodigoArmado;
+            }
+        }
+        private void btnGenerarCodigo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ValidarCamposobligatorios();
+                GenerarCodigoDeBarra();
+            }
+            catch (Exception ex)
+            { }
+        }
+        private void ValidarCamposobligatorios()
+        {
+            if (String.IsNullOrEmpty(cmbCategoria.Text))
+            {
+                const string message = "Atención: Para generar un código de barra de seleccionar un items del campo Categoria.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
+            }
+            if (String.IsNullOrEmpty(cmbMarca.Text))
+            {
+                const string message = "Atención: Para generar un código de barra de seleccionar un items del campo Marca.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
+            }
+        }
+        private void btnImprimirCod_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Funcion = 4;
+                if (this.dgvProductos.RowCount > 0)
+                {
+                    FuncionImprimirCodigo_HabilitarCampos();
+
+                }
+                else
+                {
+                    const string message2 = "Debe seleccionar un producto de la grilla.";
+                    const string caption2 = "Atención";
+                    var result2 = MessageBox.Show(message2, caption2,
+                                                 MessageBoxButtons.OK,
+                                                 MessageBoxIcon.Asterisk);
+                }
+            }
+            catch (Exception ex)
+            { }
+        }
+        public static Barcode codigoStaticoImpimir = null;
+        private void FuncionImprimirCodigo_HabilitarCampos()
+        {
+            panel1.Enabled = true;
+            btnCrear.Enabled = true;
+            idProductoSeleccionado = Convert.ToInt32(this.dgvProductos.CurrentRow.Cells[0].Value);
+            txtCodigoProducto.Text = dgvProductos.CurrentRow.Cells[1].Value.ToString();
+            cmbMarca.Text = dgvProductos.CurrentRow.Cells[3].Value.ToString();
+            cmbCategoria.Text = dgvProductos.CurrentRow.Cells[4].Value.ToString();
+            textBox2.Text = dgvProductos.CurrentRow.Cells[2].Value.ToString();
+            chcProductoEspecial.Enabled = false;
+            btnGuardar.Enabled = false;
+            textBox2.Enabled = false;
+            btnImprimirCodigo.Enabled = true;
+            txtCodigoProducto.Enabled = false;
+            cmbCategoria.Enabled = false;
+            cmbMarca.Enabled = false;
+            txtDescripcion.Enabled = false;
+            string TotalCaracteres = Convert.ToString(textBox2.Text.Length);
+            lblContador.Visible = true;
+            lblTotal.Visible = true;
+            lblContador.Text = TotalCaracteres;
+
+            string CodigoArmado = txtCodigoProducto.Text;
+            string Contenido = CodigoArmado;
+            Barcode codigo = new Barcode();
+            codigo.IncludeLabel = true;
+            codigo.Alignment = AlignmentPositions.CENTER;
+            codigo.LabelFont = new Font(FontFamily.GenericMonospace, 14, FontStyle.Regular);
+            Image img = codigo.Encode(TYPE.CODE128, Contenido, Color.Black, Color.White, 200, 140);
+            codigoStaticoImpimir = codigo;
+            panelCodigo.BackgroundImage = codigo.Encode(TYPE.CODE128, Contenido, Color.Black, Color.White, 400, 100);
+            btnImprimirCodigo.Visible = true;
+        }
+
+        private void btnImprimirCodigo_Click(object sender, EventArgs e)
+        {
+            System.Drawing.Printing.PrintDocument doc = new System.Drawing.Printing.PrintDocument();
+            doc.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(doc_PrintPage);
+            doc.Print();
+        }
+        private void doc_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Panel grd = new Panel();
+            Bitmap bmp = new Bitmap(panelCodigo.Width, panelCodigo.Height, panelCodigo.CreateGraphics());
+            grd.DrawToBitmap(bmp, new Rectangle(0, 0, panelCodigo.Width, panelCodigo.Height));
+            RectangleF bounds = e.PageSettings.PrintableArea;
+            float factor = ((float)bmp.Height / (float)bmp.Width);
+            e.Graphics.DrawImage(bmp, bounds.Left, bounds.Top, bounds.Width, factor * bounds.Width);
         }
     }
 }

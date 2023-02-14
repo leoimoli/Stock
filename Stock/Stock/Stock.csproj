@@ -51,11 +51,16 @@
     <ApplicationIcon>Icono.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="iTextSharp">
+    <Reference Include="BarcodeLib">
+      <HintPath>..\..\..\Pulpejitos-Repositorio\VETERINARIA\Bin\BarcodeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="iTextSharp, Version=4.1.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\ElObrador\ElObrador\ElObrador\bin\Debug\iTextSharp.dll</HintPath>
     </Reference>
-    <Reference Include="LibPrintTicket">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\JliCode\StoCom\LibPrintTicket.dll</HintPath>
+    <Reference Include="LibPrintTicket, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Stock\Stock\Stock\bin\Debug\LibPrintTicket.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -712,6 +717,8 @@
     <None Include="Resources\oferta %282%29.png" />
     <None Include="Resources\boton-de-play.png" />
     <None Include="Resources\error.png" />
+    <None Include="Resources\codigo-de-barras3.png" />
+    <None Include="Resources\impresora.png" />
     <Content Include="StoCom_logo_2.ico" />
     <None Include="Resources\StoCom_logo_21.png" />
     <None Include="Resources\StoCom_logo_2.png" />

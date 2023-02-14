@@ -95,6 +95,7 @@ namespace Stock.DAO
             cmd.Parameters.AddWithValue("CodigoProducto_in", _producto.CodigoProducto);
             cmd.Parameters.AddWithValue("NombreProducto_in", _producto.NombreProducto);
             cmd.Parameters.AddWithValue("MarcaProducto_in", _producto.MarcaProducto);
+            cmd.Parameters.AddWithValue("idCategoria_in", _producto.idCategoria);
             cmd.Parameters.AddWithValue("Descripcion_in", _producto.Descripcion);
             cmd.Parameters.AddWithValue("Foto_in", _producto.Foto);
             cmd.ExecuteNonQuery();
