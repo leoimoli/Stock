@@ -15,6 +15,7 @@ namespace Utils
         string ticket = "";
         string parte1, parte2;
         string impresora = "POS58 Printer";
+        //string impresora = "POS80 Pro";
         //string impresora = WebConfigurationManager.AppSettings["ImpresoraTKT"].ToString(); // nombre exacto de la impresora como esta en el panel de control
         //ticket.PrintTicket("EPSON TM-T88III Receipt");
         int max, cort;
@@ -139,7 +140,7 @@ namespace Utils
             }
             TextoIzquierda("".PadRight(32, ' '));
             TextoIzquierda("".PadRight(32, ' '));
-            
+
         }
 
         public void AgregarDescuentos(string descripcion, object p1, double precio, object p2)

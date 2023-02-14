@@ -54,7 +54,6 @@ namespace Stock.Negocio
             { }
             return exito;
         }
-
         public static int GuardarArchivos(Archivos archivos)
         {
             int exito = 0;

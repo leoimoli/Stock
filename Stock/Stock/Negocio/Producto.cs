@@ -98,7 +98,6 @@ namespace Stock.Negocio
                 throw new Exception();
             }
         }
-
         public static bool EditarCodigo(string nuevoCodigo, int idProductoSeleccionado, string MarcaProducto)
         {
             bool exito = false;
@@ -130,7 +129,6 @@ namespace Stock.Negocio
             }
             return exito;
         }
-
         public static int GaurdarProductosMasivo(List<Productos> listaGuardar)
         {
             int exito = 0;

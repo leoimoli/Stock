@@ -29,10 +29,12 @@ namespace Stock
         {
             List<FechasFestivas> _listaFechas = new List<FechasFestivas>();
             _listaFechas = DAO.ConsultarDao.BuscarFechasFestivas();
-            int AñoActual = DateTime.Now.Year;
-            //AñoActual = AñoActual + 1;
+            int AñoActual = DateTime.Now.Year;         
             DateTime FechaActual = DateTime.Now;
-            //DateTime FechaActual = DateTime.Now.AddDays(+111);
+
+            ///// Codigo para forzar fechas
+            //AñoActual = AñoActual + 1;
+            //FechaActual = Clases_Maestras.FechasFestivasForzadas.ForzarFecha();
 
             foreach (var item in _listaFechas)
             {

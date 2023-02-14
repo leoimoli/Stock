@@ -50,7 +50,6 @@ namespace Stock
                     {
                         txt1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
                         Imagen = ms.ToArray();
-
                     }
                 }
                 else
