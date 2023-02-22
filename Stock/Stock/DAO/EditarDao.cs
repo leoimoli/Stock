@@ -28,7 +28,7 @@ namespace Stock.DAO
             //cmd.Parameters.AddWithValue("Contraseña_in", _usuario.Contraseña);
             cmd.Parameters.AddWithValue("Perfil_in", _usuario.Perfil);
             cmd.Parameters.AddWithValue("Estado_in", _usuario.Estado);
-            //cmd.Parameters.AddWithValue("Foto_in", _usuario.Foto);
+            cmd.Parameters.AddWithValue("CodigoAnulacion_in", _usuario.CodigoAnulacion);
             cmd.ExecuteNonQuery();
             exito = true;
             connection.Close();

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BarcodeLib;
 using Stock.Entidades;
 
 namespace Stock
@@ -144,6 +146,8 @@ namespace Stock
             CargarCombo();
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
+            panelCodigo.Visible = false;
+            panelCodigo.BackgroundImage = null;
         }
         private void CargarCombo()
         {
@@ -195,7 +199,7 @@ namespace Stock
             {
                 if (idUsuarioSeleccionado > 0)
                 {
-                    if (Funcion == 2)
+                    if (Funcion == 2 || Funcion == 4)
                     {
                         Entidades.Usuarios _usuario = CargarEntidadEdicion();
                         bool Exito = Negocio.Usuario.EditarUsuario(_usuario, idUsuarioSeleccionado);
@@ -248,6 +252,7 @@ namespace Stock
             if (cmbPerfil.Text == "OPERADOR")
             { _usuario.Perfil = "2"; }
             _usuario.Estado = estado;
+            _usuario.CodigoAnulacion = codigoStaticoAnulacion;
             return _usuario;
         }
         private void ProgressBar()
@@ -297,6 +302,88 @@ namespace Stock
             {
                 chcInactivo.Checked = false;
             }
+        }
+
+        private void btnImprimirCodigo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Funcion = 4;
+                if (this.dgvUsuarios.RowCount > 0)
+                {
+                    FuncionImprimirCodigo_HabilitarCampos();
+
+                }
+                else
+                {
+                    const string message2 = "Debe seleccionar un usuario de la grilla.";
+                    const string caption2 = "Atención";
+                    var result2 = MessageBox.Show(message2, caption2,
+                                                 MessageBoxButtons.OK,
+                                                 MessageBoxIcon.Asterisk);
+                }
+            }
+            catch (Exception ex)
+            { }
+        }
+        public static Barcode codigoStaticoImpimir = null;
+        public static string codigoStaticoAnulacion = "";
+        private void FuncionImprimirCodigo_HabilitarCampos()
+        {
+            panel1.Enabled = true;
+            idUsuarioSeleccionado = Convert.ToInt32(this.dgvUsuarios.CurrentRow.Cells[0].Value);
+            string Persona = dgvUsuarios.CurrentRow.Cells[1].Value.ToString();
+            txtApellido.Text = Persona.Split(',')[0];
+            txtNombre.Text = Persona.Split(',')[1];
+            txtDni.Text = dgvUsuarios.CurrentRow.Cells[2].Value.ToString();
+            cmbPerfil.Text = dgvUsuarios.CurrentRow.Cells[3].Value.ToString();
+
+            bool CamposHabilitados = false;
+            inhabilitarCampos(CamposHabilitados);
+
+            string CodigoArmado = "8722" +  txtDni.Text;
+            codigoStaticoAnulacion = CodigoArmado;
+            string Contenido = CodigoArmado;
+            Barcode codigo = new Barcode();
+            codigo.IncludeLabel = true;
+            codigo.Alignment = AlignmentPositions.CENTER;
+            codigo.LabelFont = new Font(FontFamily.GenericMonospace, 14, FontStyle.Regular);
+            Image img = codigo.Encode(TYPE.CODE128, Contenido, Color.Black, Color.White, 200, 140);
+            codigoStaticoImpimir = codigo;
+            panelCodigo.BackgroundImage = codigo.Encode(TYPE.CODE128, Contenido, Color.Black, Color.White, 400, 100);
+            btnImprimirCodigo.Visible = true;
+            btnImprimirCodigo.Enabled = true;
+        }
+
+        private void inhabilitarCampos(bool CamposHabilitados)
+        {
+            txtDni.Enabled = CamposHabilitados;
+            txtApellido.Enabled = CamposHabilitados;
+            txtNombre.Enabled = CamposHabilitados;
+            txtRepitaContraseña.Enabled = CamposHabilitados;
+            txtContraseña.Enabled = CamposHabilitados;
+            cmbPerfil.Enabled = CamposHabilitados;
+            chcActivo.Enabled = CamposHabilitados;
+            chcInactivo.Enabled = CamposHabilitados;
+        }
+
+        private void btnImprimirCodigo_Click_1(object sender, EventArgs e)
+        {
+            printDocument1 = new PrintDocument();
+            PrinterSettings ps = new PrinterSettings();
+            printDocument1.PrinterSettings = ps;
+            printDocument1.PrintPage += Imprimir;
+            printDocument1.Print();
+        }
+        private void Imprimir(object sender, PrintPageEventArgs e)
+        {
+            Font font = new Font("Arial", 14, FontStyle.Regular, GraphicsUnit.Point);
+            Image newImage = panelCodigo.BackgroundImage;
+            float x = 0;
+            float y = 0;
+            RectangleF srcRect = new RectangleF(0.0F, -20.0F, 500.0F, 150.0F);
+            GraphicsUnit units = GraphicsUnit.Pixel;            
+            e.Graphics.DrawImage(newImage, x, y, srcRect, units);
         }
     }
 }

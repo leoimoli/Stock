@@ -23,5 +23,6 @@ namespace Stock.Entidades
         public int NroLote { get; set; }
         public int CantidadVentasDelMes { get; set; }
         public decimal EfectivoVentasDelMes { get; set; }
+        public string CodigoAnulacion { get; set; }
     }
 }
