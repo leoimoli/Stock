@@ -1497,6 +1497,7 @@ namespace Stock.DAO
                     listaProducto.idProducto = Convert.ToInt32(item["idProducto"].ToString());
                     listaProducto.CodigoProducto = item["txCodigoProducto"].ToString();
                     listaProducto.MarcaProducto = item["txMarcaProducto"].ToString();
+                    listaProducto.NombreCategoria = item["NombreCategoria"].ToString();
                     listaProducto.Descripcion = item["txDescripcion"].ToString();
                     string Precio = item["txPrecioDeVenta"].ToString();
                     if (Precio != null & Precio != "")
@@ -1537,6 +1538,7 @@ namespace Stock.DAO
                     listaProducto.idProducto = Convert.ToInt32(item["idProducto"].ToString());
                     listaProducto.CodigoProducto = item["txCodigoProducto"].ToString();
                     listaProducto.MarcaProducto = item["txMarcaProducto"].ToString();
+                    listaProducto.NombreCategoria = item["NombreCategoria"].ToString();
                     listaProducto.Descripcion = item["txDescripcion"].ToString();
                     string Precio = item["txPrecioDeVenta"].ToString();
                     if (Precio != null & Precio != "")

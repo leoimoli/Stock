@@ -181,7 +181,7 @@ namespace Stock
             if (e.KeyCode == Keys.Enter)
             {
                 decimal MontoEspecial = Convert.ToDecimal(txtMonto.Text);
-                int cantidadingresada = Convert.ToInt32(txtCantidad.Text);
+                int cantidadingresada = Convert.ToInt32(txtCantidad.Text);              
                 _listaEspeciales[0].Cantidad = cantidadingresada;
                 var lista = _listaEspeciales.First();
                 listaProductos.Add(lista);
@@ -202,6 +202,7 @@ namespace Stock
                 txtCodigo.Clear();
                 lblTotalPagarReal.Text = Convert.ToString(PrecioTotalFinal);
                 txtNombreBuscar.Focus();
+                lblCategoria.Text = "";
             }
         }
         private void txtCantidad_KeyDown(object sender, KeyEventArgs e)
@@ -273,7 +274,7 @@ namespace Stock
         }
         private void txtNombreBuscar_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || KeyCodeSubValor == "Sub_Enter")
             {
                 try
                 {
@@ -384,6 +385,7 @@ namespace Stock
             dgvVentas.Focus();
         }
         public static string ProductoEliminar;
+        public static string KeyCodeSubValor = "";
         private void dgvVentas_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Back)
@@ -405,6 +407,58 @@ namespace Stock
                 EliminarProductoDeLista(Monto);
                 txtNombreBuscar.Focus();
                 VentaCerrada = false;
+            }
+            if (e.KeyCode == Keys.C)
+            {
+                string Descripcion = "Carniceria";
+                string CodigoProducto = DAO.ConsultarDao.BuscarProductoPorDescripcion(Descripcion);
+                txtNombreBuscar.Text = CodigoProducto;
+                KeyCodeSubValor = "Sub_Enter";
+                txtNombreBuscar_KeyDown(Keys.Enter, e);
+                lblCategoria.Visible = true;
+                lblCategoria.Text = "Carniceria";               
+                groupBox1.Visible = true;
+                txtMonto.Focus();
+                KeyCodeSubValor = "";
+            }
+            if (e.KeyCode == Keys.V)
+            {
+                string Descripcion = "Verduleria";
+                string CodigoProducto = DAO.ConsultarDao.BuscarProductoPorDescripcion(Descripcion);
+                txtNombreBuscar.Text = CodigoProducto;
+                KeyCodeSubValor = "Sub_Enter";
+                txtNombreBuscar_KeyDown(Keys.Enter, e);
+                lblCategoria.Visible = true;
+                lblCategoria.Text = "Verduleria";
+                groupBox1.Visible = true;
+                txtMonto.Focus();
+                KeyCodeSubValor = "";
+            }
+            if (e.KeyCode == Keys.F)
+            {
+                string Descripcion = "Fiambreria";
+                string CodigoProducto = DAO.ConsultarDao.BuscarProductoPorDescripcion(Descripcion);
+                txtNombreBuscar.Text = CodigoProducto;
+                KeyCodeSubValor = "Sub_Enter";
+                txtNombreBuscar_KeyDown(Keys.Enter, e);
+                lblCategoria.Visible = true;
+                lblCategoria.Text = "Fiambreria";
+                groupBox1.Visible = true;
+                txtMonto.Focus();
+                KeyCodeSubValor = "";
+            }
+            if (e.KeyCode == Keys.P)
+            {
+                string Descripcion = "Panaderia";
+                string CodigoProducto = DAO.ConsultarDao.BuscarProductoPorDescripcion(Descripcion);
+                txtNombreBuscar.Text = CodigoProducto;
+                KeyCodeSubValor = "Sub_Enter";
+                txtNombreBuscar_KeyDown(Keys.Enter, e);
+                lblCategoria.Visible = true;
+                lblCategoria.Text = "Panaderia";
+                groupBox1.Visible = true;
+                txtMonto.Focus();
+                KeyCodeSubValor = "";
             }
         }
         private void ModificarGrilla()
@@ -763,6 +817,12 @@ namespace Stock
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void pictureBox3_Click_1(object sender, EventArgs e)
+        {
+            lblCategoria.Text = "";
+            groupBox1.Visible = false;
         }
     }
 }

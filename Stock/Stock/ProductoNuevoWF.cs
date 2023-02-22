@@ -256,7 +256,7 @@ namespace Stock
                 {
                     foreach (var item in ListaProductos)
                     {
-                        dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto);
+                        dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto, item.NombreCategoria);
                     }
                 }
                 dgvProductos.ReadOnly = true;
@@ -273,7 +273,7 @@ namespace Stock
                 {
                     foreach (var item in ListaProductos)
                     {
-                        dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto);
+                        dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Descripcion, item.MarcaProducto, item.NombreCategoria);
                     }
                 }
                 else
@@ -366,7 +366,7 @@ namespace Stock
         public static Barcode codigoStatico = null;
         private void GenerarCodigoDeBarra()
         {
-            string InicioCodigo = "999";
+            string InicioCodigo = "";
             int idMarca = Consultar.BuscarIdMarca(cmbMarca.Text);
             int idCategoria = Consultar.BuscarIdCategoria(cmbCategoria.Text);
 
@@ -378,7 +378,23 @@ namespace Stock
             string Minutos = Convert.ToString(DateTime.Now.Minute);
             string Segundos = Convert.ToString(DateTime.Now.Second);
             string ParteFinalCodigo = Dia + Mes + Año;
-            string CodigoArmado = InicioCodigo + ParteCentralCodigo + ParteFinalCodigo + Hora + Minutos + Segundos;
+            string CodigoArmado = ParteCentralCodigo + ParteFinalCodigo + Hora + Minutos + Segundos;
+            int ContadorCaracteresInt = CodigoArmado.Length;
+            if (ContadorCaracteresInt <= 16)
+            {
+                InicioCodigo = "999";
+                CodigoArmado = InicioCodigo + ParteCentralCodigo + ParteFinalCodigo + Hora + Minutos + Segundos;
+            }
+            if (ContadorCaracteresInt == 17)
+            {
+                InicioCodigo = "99";
+                CodigoArmado = InicioCodigo + ParteCentralCodigo + ParteFinalCodigo + Hora + Minutos + Segundos;
+            }
+            if (ContadorCaracteresInt == 18)
+            {
+                InicioCodigo = "9";
+                CodigoArmado = InicioCodigo + ParteCentralCodigo + ParteFinalCodigo + Hora + Minutos + Segundos;
+            }
 
             ///// Validamos que el código ya no exista.
             bool CodigoExistente = Consultar.ValidarProductoExistente(CodigoArmado);
@@ -513,7 +529,7 @@ namespace Stock
             Image newImage = panelCodigo.BackgroundImage;
             float x = 0;
             float y = 0;
-            RectangleF srcRect = new RectangleF(0.0F, -20.0F,500.0F, 150.0F);
+            RectangleF srcRect = new RectangleF(0.0F, -20.0F, 500.0F, 150.0F);
             GraphicsUnit units = GraphicsUnit.Pixel;
             //e.Graphics.DrawString("Hola Mundo", font, Brushes.Black, new RectangleF(0, 10, 120, 20));
             e.Graphics.DrawImage(newImage, x, y, srcRect, units);
