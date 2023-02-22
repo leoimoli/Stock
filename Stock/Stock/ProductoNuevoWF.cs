@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -499,18 +500,23 @@ namespace Stock
 
         private void btnImprimirCodigo_Click(object sender, EventArgs e)
         {
-            System.Drawing.Printing.PrintDocument doc = new System.Drawing.Printing.PrintDocument();
-            doc.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(doc_PrintPage);
-            doc.Print();
+            printDocument1 = new PrintDocument();
+            PrinterSettings ps = new PrinterSettings();
+            printDocument1.PrinterSettings = ps;
+            printDocument1.PrintPage += Imprimir;
+            printDocument1.Print();
         }
-        private void doc_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+
+        private void Imprimir(object sender, PrintPageEventArgs e)
         {
-            Panel grd = new Panel();
-            Bitmap bmp = new Bitmap(panelCodigo.Width, panelCodigo.Height, panelCodigo.CreateGraphics());
-            grd.DrawToBitmap(bmp, new Rectangle(0, 0, panelCodigo.Width, panelCodigo.Height));
-            RectangleF bounds = e.PageSettings.PrintableArea;
-            float factor = ((float)bmp.Height / (float)bmp.Width);
-            e.Graphics.DrawImage(bmp, bounds.Left, bounds.Top, bounds.Width, factor * bounds.Width);
+            Font font = new Font("Arial", 14, FontStyle.Regular, GraphicsUnit.Point);
+            Image newImage = panelCodigo.BackgroundImage;
+            float x = 0;
+            float y = 0;
+            RectangleF srcRect = new RectangleF(0.0F, -20.0F,500.0F, 150.0F);
+            GraphicsUnit units = GraphicsUnit.Pixel;
+            //e.Graphics.DrawString("Hola Mundo", font, Brushes.Black, new RectangleF(0, 10, 120, 20));
+            e.Graphics.DrawImage(newImage, x, y, srcRect, units);
         }
     }
 }
