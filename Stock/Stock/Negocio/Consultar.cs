@@ -41,6 +41,21 @@ namespace Stock.Negocio
                 return _listaPagos;
             }
         }
+
+        public static List<ListaVentas> ConsultarVentasPorFechaAndCategoria(DateTime fechaDesde, DateTime fechaHasta, int idCategoria)
+        {
+            List<ListaVentas> _lista = new List<ListaVentas>();
+            try
+            {
+                _lista = DAO.ConsultarDao.ConsultarVentasPorFechaAndCategoria(fechaDesde, fechaHasta, idCategoria);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _lista;
+        }
+
         public static List<HistorialPagoProveedores> HistorialPagoAProveedores(int idMovimiento)
         {
             List<HistorialPagoProveedores> _lista = new List<HistorialPagoProveedores>();

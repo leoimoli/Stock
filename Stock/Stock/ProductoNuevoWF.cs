@@ -67,24 +67,28 @@ namespace Stock
         public void CargarCombo()
         {
             List<string> Marcas = new List<string>();
-            Marcas = Negocio.Consultar.CargarComboMarcas();
-            cmbMarca.Items.Add("Seleccione");
-            cmbMarca.Items.Clear();
+            Marcas = Negocio.Consultar.CargarComboMarcas();           
             foreach (string item in Marcas)
             {
-                cmbMarca.Text = "Seleccione";
+                if (cmbMarca.Items.Count == 0)
+                {
+                    cmbMarca.Items.Insert(0, "Seleccione");
+                    cmbMarca.SelectedIndex = 0;
+                }
                 cmbMarca.Items.Add(item);
             }
         }
         public void CargarComboCategoria()
         {
             List<string> Categoria = new List<string>();
-            Categoria = Negocio.Consultar.CargarComboCategoria();
-            cmbCategoria.Items.Add("Seleccione");
-            cmbCategoria.Items.Clear();
+            Categoria = Negocio.Consultar.CargarComboCategoria();           
             foreach (string item in Categoria)
             {
-                cmbCategoria.Text = "Seleccione";
+                if (cmbCategoria.Items.Count == 0)
+                {
+                    cmbCategoria.Items.Insert(0, "Seleccione");
+                    cmbCategoria.SelectedIndex = 0;
+                }
                 cmbCategoria.Items.Add(item);
             }
         }

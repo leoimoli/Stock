@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Reportes_VentasNuevoWF));
             this.panel8 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,6 +40,9 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnExportar = new System.Windows.Forms.Button();
             this.dgvVentas = new System.Windows.Forms.DataGridView();
+            this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.lblCajaVentas = new System.Windows.Forms.Label();
             this.btnCajaVentas = new System.Windows.Forms.Button();
@@ -63,9 +66,8 @@
             this.btnVentasAyer = new System.Windows.Forms.Button();
             this.btnVentasDelDia = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.panel8.SuspendLayout();
             this.PanelResultado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
@@ -106,9 +108,9 @@
             this.PanelResultado.Controls.Add(this.btnCajaVentas);
             this.PanelResultado.Controls.Add(this.lblTotalVentas);
             this.PanelResultado.Controls.Add(this.btnVentasGenerales);
-            this.PanelResultado.Location = new System.Drawing.Point(266, 211);
+            this.PanelResultado.Location = new System.Drawing.Point(266, 231);
             this.PanelResultado.Name = "PanelResultado";
-            this.PanelResultado.Size = new System.Drawing.Size(795, 404);
+            this.PanelResultado.Size = new System.Drawing.Size(795, 383);
             this.PanelResultado.TabIndex = 3;
             this.PanelResultado.Visible = false;
             // 
@@ -119,7 +121,7 @@
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Location = new System.Drawing.Point(362, 347);
+            this.btnEliminar.Location = new System.Drawing.Point(363, 325);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(123, 47);
             this.btnEliminar.TabIndex = 158;
@@ -136,7 +138,7 @@
             this.btnExportar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportar.ForeColor = System.Drawing.Color.White;
             this.btnExportar.Image = global::Stock.Properties.Resources.sobresalir;
-            this.btnExportar.Location = new System.Drawing.Point(728, 356);
+            this.btnExportar.Location = new System.Drawing.Point(729, 334);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(46, 40);
             this.btnExportar.TabIndex = 68;
@@ -151,53 +153,70 @@
             this.dgvVentas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
             this.dgvVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.dgvVentas.ColumnHeadersHeight = 30;
             this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idProducto,
             this.Fecha,
             this.Descripcion});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvVentas.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvVentas.DefaultCellStyle = dataGridViewCellStyle22;
             this.dgvVentas.EnableHeadersVisualStyles = false;
             this.dgvVentas.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvVentas.Location = new System.Drawing.Point(106, 91);
+            this.dgvVentas.Location = new System.Drawing.Point(107, 91);
             this.dgvVentas.Name = "dgvVentas";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            this.dgvVentas.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            this.dgvVentas.RowsDefaultCellStyle = dataGridViewCellStyle24;
             this.dgvVentas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvVentas.Size = new System.Drawing.Size(553, 224);
             this.dgvVentas.TabIndex = 67;
+            // 
+            // idProducto
+            // 
+            this.idProducto.HeaderText = "Nro.Venta";
+            this.idProducto.Name = "idProducto";
+            // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha De Venta";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.Width = 180;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Precio de venta";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.Width = 250;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SeaGreen;
-            this.label1.Location = new System.Drawing.Point(285, 6);
+            this.label1.Location = new System.Drawing.Point(286, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(154, 20);
             this.label1.TabIndex = 66;
@@ -208,7 +227,7 @@
             this.lblCajaVentas.AutoSize = true;
             this.lblCajaVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCajaVentas.ForeColor = System.Drawing.Color.White;
-            this.lblCajaVentas.Location = new System.Drawing.Point(516, 54);
+            this.lblCajaVentas.Location = new System.Drawing.Point(518, 59);
             this.lblCajaVentas.Name = "lblCajaVentas";
             this.lblCajaVentas.Size = new System.Drawing.Size(22, 17);
             this.lblCajaVentas.TabIndex = 56;
@@ -223,7 +242,7 @@
             this.btnCajaVentas.ForeColor = System.Drawing.Color.White;
             this.btnCajaVentas.Image = global::Stock.Properties.Resources.dinero__2_;
             this.btnCajaVentas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCajaVentas.Location = new System.Drawing.Point(427, 29);
+            this.btnCajaVentas.Location = new System.Drawing.Point(428, 29);
             this.btnCajaVentas.Name = "btnCajaVentas";
             this.btnCajaVentas.Size = new System.Drawing.Size(181, 53);
             this.btnCajaVentas.TabIndex = 54;
@@ -236,7 +255,7 @@
             this.lblTotalVentas.AutoSize = true;
             this.lblTotalVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalVentas.ForeColor = System.Drawing.Color.White;
-            this.lblTotalVentas.Location = new System.Drawing.Point(210, 54);
+            this.lblTotalVentas.Location = new System.Drawing.Point(213, 59);
             this.lblTotalVentas.Name = "lblTotalVentas";
             this.lblTotalVentas.Size = new System.Drawing.Size(22, 17);
             this.lblTotalVentas.TabIndex = 52;
@@ -251,7 +270,7 @@
             this.btnVentasGenerales.ForeColor = System.Drawing.Color.White;
             this.btnVentasGenerales.Image = global::Stock.Properties.Resources.cupon;
             this.btnVentasGenerales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVentasGenerales.Location = new System.Drawing.Point(128, 29);
+            this.btnVentasGenerales.Location = new System.Drawing.Point(129, 29);
             this.btnVentasGenerales.Name = "btnVentasGenerales";
             this.btnVentasGenerales.Size = new System.Drawing.Size(181, 53);
             this.btnVentasGenerales.TabIndex = 51;
@@ -262,6 +281,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.cmbCategoria);
+            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.btnBuscar);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.dtFechaHasta);
@@ -270,7 +291,7 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(266, 71);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(795, 134);
+            this.panel1.Size = new System.Drawing.Size(795, 154);
             this.panel1.TabIndex = 4;
             // 
             // btnBuscar
@@ -281,7 +302,7 @@
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
             this.btnBuscar.Image = global::Stock.Properties.Resources.lente;
-            this.btnBuscar.Location = new System.Drawing.Point(705, 88);
+            this.btnBuscar.Location = new System.Drawing.Point(705, 103);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(46, 40);
             this.btnBuscar.TabIndex = 155;
@@ -293,7 +314,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.SeaGreen;
-            this.label5.Location = new System.Drawing.Point(484, 35);
+            this.label5.Location = new System.Drawing.Point(484, 26);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(132, 23);
             this.label5.TabIndex = 70;
@@ -305,7 +326,7 @@
             this.dtFechaHasta.CalendarTitleForeColor = System.Drawing.Color.White;
             this.dtFechaHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtFechaHasta.Location = new System.Drawing.Point(488, 62);
+            this.dtFechaHasta.Location = new System.Drawing.Point(488, 53);
             this.dtFechaHasta.Name = "dtFechaHasta";
             this.dtFechaHasta.Size = new System.Drawing.Size(128, 26);
             this.dtFechaHasta.TabIndex = 69;
@@ -315,7 +336,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.SeaGreen;
-            this.label4.Location = new System.Drawing.Point(103, 35);
+            this.label4.Location = new System.Drawing.Point(103, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(139, 23);
             this.label4.TabIndex = 68;
@@ -327,7 +348,7 @@
             this.dtFechaDesde.CalendarTitleForeColor = System.Drawing.Color.White;
             this.dtFechaDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtFechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtFechaDesde.Location = new System.Drawing.Point(107, 62);
+            this.dtFechaDesde.Location = new System.Drawing.Point(107, 53);
             this.dtFechaDesde.Name = "dtFechaDesde";
             this.dtFechaDesde.Size = new System.Drawing.Size(128, 26);
             this.dtFechaDesde.TabIndex = 5;
@@ -337,7 +358,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.SeaGreen;
-            this.label3.Location = new System.Drawing.Point(288, 10);
+            this.label3.Location = new System.Drawing.Point(288, 6);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(148, 20);
             this.label3.TabIndex = 67;
@@ -502,22 +523,25 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // idProducto
+            // label7
             // 
-            this.idProducto.HeaderText = "Nro.Venta";
-            this.idProducto.Name = "idProducto";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.SeaGreen;
+            this.label7.Location = new System.Drawing.Point(103, 82);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(108, 23);
+            this.label7.TabIndex = 156;
+            this.label7.Text = "Categoria";
             // 
-            // Fecha
+            // cmbCategoria
             // 
-            this.Fecha.HeaderText = "Fecha De Venta";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.Width = 180;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Precio de venta";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.Width = 250;
+            this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategoria.FormattingEnabled = true;
+            this.cmbCategoria.Location = new System.Drawing.Point(107, 108);
+            this.cmbCategoria.Name = "cmbCategoria";
+            this.cmbCategoria.Size = new System.Drawing.Size(128, 21);
+            this.cmbCategoria.TabIndex = 163;
             // 
             // Reportes_VentasNuevoWF
             // 
@@ -585,5 +609,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cmbCategoria;
     }
 }

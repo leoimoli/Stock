@@ -1,5 +1,6 @@
 ﻿using Stock.DAO;
 using Stock.Entidades;
+using Stock.Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,14 +27,34 @@ namespace Stock
             try
             {
                 DateTime FechaDesde = dtFechaDesde.Value.Date;
-                DateTime FechaHasta = dtFechaHasta.Value.Date;
-                ValidarFechas(FechaDesde, FechaHasta);
-                resultado = Negocio.Consultar.ConsultarVentasPorFecha(FechaDesde, FechaHasta);
-                if (resultado.Count > 0)
+                string Hora = "23";
+                string Minutos = "59";
+                string Segundos = "59";
+
+                DateTime Fecha = dtFechaHasta.Value.Date;
+                string FechaArmada = Convert.ToString(Fecha.ToShortDateString() + " "+ Hora + ":" + Minutos+ ":" + Segundos);
+                DateTime FechaHasta = Convert.ToDateTime(FechaArmada);
+                int idCategoria = Consultar.BuscarIdCategoria(cmbCategoria.Text);
+                if (cmbCategoria.Text == "Seleccione")
                 {
-                    ArmoGrillaVentas(resultado);
+                    ValidarFechas(FechaDesde, FechaHasta);
+                    resultado = Negocio.Consultar.ConsultarVentasPorFecha(FechaDesde, FechaHasta);
+                    if (resultado.Count > 0)
+                    {
+                        ArmoGrillaVentas(resultado);
+                    }
+                    else { }
                 }
-                else { }
+                if (idCategoria > 0)
+                {
+                    ValidarFechas(FechaDesde, FechaHasta);
+                    resultado = Negocio.Consultar.ConsultarVentasPorFechaAndCategoria(FechaDesde, FechaHasta, idCategoria);
+                    if (resultado.Count > 0)
+                    {
+                        ArmoGrillaVentas(resultado);
+                    }
+                    else { }
+                }
             }
             catch (Exception ex)
             { }
@@ -242,6 +263,7 @@ namespace Stock
         }
         private void Reportes_VentasNuevoWF_Load(object sender, EventArgs e)
         {
+            CargarComboCategoria();
             string perfil = Sesion.UsuarioLogueado.Perfil;
             if (perfil != "1" && perfil != "SUPER ADMIN")
             {
@@ -249,6 +271,22 @@ namespace Stock
             }
             else { btnEliminar.Visible = true; }
         }
+
+        private void CargarComboCategoria()
+        {
+            List<string> Categoria = new List<string>();
+            Categoria = Negocio.Consultar.CargarComboCategoria();
+            foreach (string item in Categoria)
+            {
+                if (cmbCategoria.Items.Count == 0)
+                {
+                    cmbCategoria.Items.Insert(0, "Seleccione");
+                    cmbCategoria.SelectedIndex = 0;
+                }
+                cmbCategoria.Items.Add(item);
+            }
+        }
+
         public static int idVenta;
         private void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -273,7 +311,7 @@ namespace Stock
                                                      MessageBoxIcon.Asterisk);
                         LimpiarCampos();
                     }
-                   else
+                    else
                     {
                         const string message2 = "ATENCIÓN: No se pudo eliminar la venta.";
                         const string caption2 = "Atención";

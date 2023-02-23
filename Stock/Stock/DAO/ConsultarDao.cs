@@ -53,6 +53,41 @@ namespace Stock.DAO
             return lista;
         }
 
+        public static List<ListaVentas> ConsultarVentasPorFechaAndCategoria(DateTime fechaDesde, DateTime fechaHasta, int idCategoria)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.ListaVentas> lista = new List<Entidades.ListaVentas>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("FechaDesde_in", fechaDesde),
+                                       new MySqlParameter("FechaHasta_in", fechaHasta),
+             new MySqlParameter("idCategoria_in", idCategoria)};
+            string proceso = "ConsultarVentasPorFechaAndCategoria";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.ListaVentas listaVenta = new Entidades.ListaVentas();
+                    listaVenta.idVenta = Convert.ToInt32(item["idventa"].ToString());
+                    DateTime fechaReal = Convert.ToDateTime(item["dtFecha"].ToString());
+                    listaVenta.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
+                    listaVenta.PrecioVenta = Convert.ToDecimal(item["txPrecioVentaFinal"].ToString());
+                    var usuario = item["txApellido"].ToString() + " " + item["txNombre"].ToString();
+                    listaVenta.usuario = usuario;
+                    lista.Add(listaVenta);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
         public static List<FechasFestivas> BuscarFechasFestivas()
         {
             connection.Close();
@@ -697,7 +732,7 @@ namespace Stock.DAO
                 foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.ListaVentas listaVenta = new Entidades.ListaVentas();
-                    listaVenta.idVenta = Convert.ToInt32(item["idventas"].ToString());
+                    listaVenta.idVenta = Convert.ToInt32(item["idVenta"].ToString());
                     DateTime fechaReal = Convert.ToDateTime(item["dtFecha"].ToString());
                     listaVenta.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
                     listaVenta.PrecioVenta = Convert.ToDecimal(item["txPrecioVentaFinal"].ToString());
@@ -716,7 +751,13 @@ namespace Stock.DAO
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
-            MySqlParameter[] oParam = { };
+            string Fecha = DateTime.Today.AddDays(-1).ToShortDateString();
+            string fechaDes = Fecha + " 00:" + "00:" + "00";
+            string fechaHas = Fecha + " 23:" + "59:" + "59";
+            DateTime FechaDesde = Convert.ToDateTime(fechaDes);
+            DateTime FechaHasta = Convert.ToDateTime(fechaHas);
+            MySqlParameter[] oParam = { new MySqlParameter("FechaDesde_in", FechaDesde),
+            new MySqlParameter("FechaHasta_in", FechaHasta)};
             string proceso = "ConsultarVentasDeAyer";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -727,7 +768,7 @@ namespace Stock.DAO
                 foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.ListaVentas listaVenta = new Entidades.ListaVentas();
-                    listaVenta.idVenta = Convert.ToInt32(item["idventas"].ToString());
+                    listaVenta.idVenta = Convert.ToInt32(item["idVenta"].ToString());
                     DateTime fechaReal = Convert.ToDateTime(item["dtFecha"].ToString());
                     listaVenta.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
                     listaVenta.PrecioVenta = Convert.ToDecimal(item["txPrecioVentaFinal"].ToString());
@@ -792,7 +833,7 @@ namespace Stock.DAO
                 foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.ListaVentas listaVenta = new Entidades.ListaVentas();
-                    listaVenta.idVenta = Convert.ToInt32(item["idventas"].ToString());
+                    listaVenta.idVenta = Convert.ToInt32(item["idVenta"].ToString());
                     DateTime fechaReal = Convert.ToDateTime(item["dtFecha"].ToString());
                     listaVenta.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
                     listaVenta.PrecioVenta = Convert.ToDecimal(item["txPrecioVentaFinal"].ToString());
@@ -850,7 +891,7 @@ namespace Stock.DAO
                 foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.ListaVentas listaVenta = new Entidades.ListaVentas();
-                    listaVenta.idVenta = Convert.ToInt32(item["idventas"].ToString());
+                    listaVenta.idVenta = Convert.ToInt32(item["idVenta"].ToString());
                     DateTime fechaReal = Convert.ToDateTime(item["dtFecha"].ToString());
                     listaVenta.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
                     listaVenta.PrecioVenta = Convert.ToDecimal(item["txPrecioVentaFinal"].ToString());
@@ -881,7 +922,7 @@ namespace Stock.DAO
                 foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.ListaVentas listaVenta = new Entidades.ListaVentas();
-                    listaVenta.idVenta = Convert.ToInt32(item["idventas"].ToString());
+                    listaVenta.idVenta = Convert.ToInt32(item["idVenta"].ToString());
                     DateTime fechaReal = Convert.ToDateTime(item["dtFecha"].ToString());
                     listaVenta.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
                     listaVenta.PrecioVenta = Convert.ToDecimal(item["txPrecioVentaFinal"].ToString());
@@ -2260,7 +2301,7 @@ namespace Stock.DAO
                 foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.ListaVentas listaVenta = new Entidades.ListaVentas();
-                    listaVenta.idVenta = Convert.ToInt32(item["idventas"].ToString());
+                    listaVenta.idVenta = Convert.ToInt32(item["idVenta"].ToString());
                     DateTime fechaReal = Convert.ToDateTime(item["dtFecha"].ToString());
                     listaVenta.Fecha = Convert.ToDateTime(fechaReal.ToShortDateString());
                     listaVenta.PrecioVenta = Convert.ToDecimal(item["txPrecioVentaFinal"].ToString());
