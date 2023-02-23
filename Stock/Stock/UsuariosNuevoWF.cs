@@ -28,11 +28,13 @@ namespace Stock
                 {
                     btnNuevo.Visible = false;
                     btnEditar.Visible = false;
+                    btnImprimirCod.Visible = false;
                 }
                 else
                 {
                     btnNuevo.Visible = true;
                     btnEditar.Visible = true;
+                    btnImprimirCod.Visible = true;
                 }
                 FuncionListarUsuarios();
                 FuncionBuscartexto();

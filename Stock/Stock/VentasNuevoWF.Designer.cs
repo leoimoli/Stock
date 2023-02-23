@@ -50,6 +50,7 @@
             this.lblBack = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblCategoria = new System.Windows.Forms.Label();
             this.txtMonto = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -74,9 +75,13 @@
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.txtCodigoAnulacion = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -90,7 +95,8 @@
             this.panel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvVentas
@@ -285,6 +291,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Visible = false;
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox3.Image = global::Stock.Properties.Resources.cancelar1;
+            this.pictureBox3.Location = new System.Drawing.Point(178, 8);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 155;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click_1);
+            // 
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
@@ -423,6 +442,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.groupBox2);
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Controls.Add(this.txtNombreBuscar);
             this.panel3.Controls.Add(this.txtCodigo);
@@ -578,18 +598,52 @@
             this.btnCerrar.TabIndex = 3;
             this.btnCerrar.TabStop = false;
             // 
-            // pictureBox3
+            // groupBox2
             // 
-            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Image = global::Stock.Properties.Resources.cancelar1;
-            this.pictureBox3.Location = new System.Drawing.Point(178, 8);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 155;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click_1);
+            this.groupBox2.Controls.Add(this.pictureBox5);
+            this.groupBox2.Controls.Add(this.txtCodigoAnulacion);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Location = new System.Drawing.Point(302, 171);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(379, 113);
+            this.groupBox2.TabIndex = 153;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Visible = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox5.Image = global::Stock.Properties.Resources.cancelar1;
+            this.pictureBox5.Location = new System.Drawing.Point(352, 8);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 155;
+            this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
+            // 
+            // txtCodigoAnulacion
+            // 
+            this.txtCodigoAnulacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoAnulacion.Location = new System.Drawing.Point(6, 51);
+            this.txtCodigoAnulacion.Multiline = true;
+            this.txtCodigoAnulacion.Name = "txtCodigoAnulacion";
+            this.txtCodigoAnulacion.PasswordChar = '*';
+            this.txtCodigoAnulacion.Size = new System.Drawing.Size(367, 44);
+            this.txtCodigoAnulacion.TabIndex = 153;
+            this.txtCodigoAnulacion.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigoAnulacion_KeyDown);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(86, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(188, 24);
+            this.label9.TabIndex = 152;
+            this.label9.Text = "Código de Anulación";
             // 
             // VentasNuevoWF
             // 
@@ -612,6 +666,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
@@ -629,7 +684,9 @@
             this.panel14.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -676,5 +733,9 @@
         private System.Windows.Forms.PictureBox picNavidad;
         private System.Windows.Forms.Label lblCategoria;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.TextBox txtCodigoAnulacion;
+        private System.Windows.Forms.Label label9;
     }
 }

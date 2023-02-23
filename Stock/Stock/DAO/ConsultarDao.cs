@@ -803,6 +803,33 @@ namespace Stock.DAO
             }
             return lista;
         }
+
+        public static bool ValidarCodigoAnulacion(string CodigoAnulacion)
+        {
+            connection.Close();
+            bool Existe = false;
+            connection.Open();
+            List<Entidades.Marca> lista = new List<Entidades.Marca>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("CodigoAnulacion_in", CodigoAnulacion) };
+            string proceso = "ValidarCodigoAnulacion";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            DataSet ds = new DataSet();
+            dt.Fill(ds, "usuarios");
+            if (Tabla.Rows.Count > 0)
+            {
+                Existe = true;
+            }
+            connection.Close();
+            return Existe;
+        }
+
         public static List<ListaVentas> ConsultarVentasUltimos30Dias(DateTime fechaDesde, DateTime fechaHasta)
         {
             connection.Close();

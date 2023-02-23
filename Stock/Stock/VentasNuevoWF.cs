@@ -181,7 +181,7 @@ namespace Stock
             if (e.KeyCode == Keys.Enter)
             {
                 decimal MontoEspecial = Convert.ToDecimal(txtMonto.Text);
-                int cantidadingresada = Convert.ToInt32(txtCantidad.Text);              
+                int cantidadingresada = Convert.ToInt32(txtCantidad.Text);
                 _listaEspeciales[0].Cantidad = cantidadingresada;
                 var lista = _listaEspeciales.First();
                 listaProductos.Add(lista);
@@ -401,12 +401,16 @@ namespace Stock
             }
             if (e.KeyCode == Keys.Delete)
             {
-                ProductoEliminar = dgvVentas.CurrentRow.Cells[1].Value.ToString();
-                decimal Monto = Convert.ToDecimal(dgvVentas.CurrentRow.Cells[5].Value.ToString());
-                dgvVentas.Rows.Remove(dgvVentas.CurrentRow);
-                EliminarProductoDeLista(Monto);
-                txtNombreBuscar.Focus();
-                VentaCerrada = false;
+
+                groupBox2.Visible = true;
+                txtCodigoAnulacion.Focus();
+
+                //ProductoEliminar = dgvVentas.CurrentRow.Cells[1].Value.ToString();
+                //decimal Monto = Convert.ToDecimal(dgvVentas.CurrentRow.Cells[5].Value.ToString());
+                //dgvVentas.Rows.Remove(dgvVentas.CurrentRow);
+                //EliminarProductoDeLista(Monto);
+                //txtNombreBuscar.Focus();
+                //VentaCerrada = false;
             }
             if (e.KeyCode == Keys.C)
             {
@@ -416,7 +420,7 @@ namespace Stock
                 KeyCodeSubValor = "Sub_Enter";
                 txtNombreBuscar_KeyDown(Keys.Enter, e);
                 lblCategoria.Visible = true;
-                lblCategoria.Text = "Carniceria";               
+                lblCategoria.Text = "Carniceria";
                 groupBox1.Visible = true;
                 txtMonto.Focus();
                 KeyCodeSubValor = "";
@@ -723,7 +727,6 @@ namespace Stock
                 }
             }
         }
-
         private List<Entidades.ListaProductoVenta> BuscarPromociones(List<Entidades.ListaProductoVenta> listaProductosEspejo)
         {
             double totalDescuento = 0;
@@ -813,16 +816,52 @@ namespace Stock
             }
             return listaDescuentos;
         }
-
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
         private void pictureBox3_Click_1(object sender, EventArgs e)
         {
             lblCategoria.Text = "";
             groupBox1.Visible = false;
+        }
+
+        private void txtCodigoAnulacion_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    string CodigoAnulacion = txtCodigoAnulacion.Text;
+                    bool CodigoValido = DAO.ConsultarDao.ValidarCodigoAnulacion(CodigoAnulacion);
+                    if (CodigoValido == true)
+                    {
+                        txtCodigoAnulacion.Clear();
+                        groupBox2.Visible = false;
+                        ProductoEliminar = dgvVentas.CurrentRow.Cells[1].Value.ToString();
+                        decimal Monto = Convert.ToDecimal(dgvVentas.CurrentRow.Cells[5].Value.ToString());
+                        dgvVentas.Rows.Remove(dgvVentas.CurrentRow);
+                        EliminarProductoDeLista(Monto);
+                        txtNombreBuscar.Focus();
+                        VentaCerrada = false;
+                    }
+                    else
+                    {
+                        txtCodigoAnulacion.Clear();
+                        const string message2 = "Atención: El código ingresado es incorrecto.";
+                        const string caption2 = "Atención";
+                        var result2 = MessageBox.Show(message2, caption2,
+                                                     MessageBoxButtons.OK,
+                                                     MessageBoxIcon.Exclamation);
+                    }
+                }
+            }
+            catch (Exception ex)
+            { }
+        }
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {           
+            groupBox2.Visible = false;
         }
     }
 }
