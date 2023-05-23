@@ -38,6 +38,15 @@ namespace Stock.Negocio
 
         private static void ValidarDatos(Entidades.Proveedores _proveedor)
         {
+            if (String.IsNullOrEmpty(_proveedor.Cuit))
+            {
+                const string message = "El campo Cuit es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
+            }
             if (String.IsNullOrEmpty(_proveedor.NombreEmpresa))
             {
                 const string message = "El campo nombre es obligatorio.";

@@ -9,12 +9,12 @@ namespace Stock.Negocio
 {
     public class Ventas
     {
-        public static int RegistrarVenta(List<ListaProductoVenta> listaProductos, int idusuario)
+        public static int RegistrarVenta(List<ListaProductoVenta> listaProductos, int idusuario, int MedioDePago)
         {
             int idVenta = 0;
             try
             {
-                idVenta = DAO.AgregarDao.InsertVenta(listaProductos, idusuario);
+                idVenta = DAO.AgregarDao.InsertVenta(listaProductos, idusuario, MedioDePago);
             }
             catch (Exception ex)
             { }
@@ -45,6 +45,20 @@ namespace Stock.Negocio
             }
             catch (Exception ex)
             { }
+            return Exito;
+        }
+
+        public static bool RegistrarDescuentosParaVenta(int idVenta, List<DetalleOferta> listaOfertas)
+        {            
+            bool Exito = false;
+            try
+            {
+                Exito = DAO.AgregarDao.RegistrarDescuentosParaVenta(idVenta, listaOfertas);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             return Exito;
         }
     }

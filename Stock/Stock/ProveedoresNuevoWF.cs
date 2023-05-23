@@ -45,7 +45,7 @@ namespace Stock
                     string Calle = item.Calle;
                     string Altura = item.Altura;
                     string Domicilio = Calle + " " + "N° " + item.Altura;
-                    dgvProveedores.Rows.Add(item.idProveedor, item.NombreEmpresa, Domicilio, item.Telefono);
+                    dgvProveedores.Rows.Add(item.idProveedor, item.Cuit, item.NombreEmpresa, Domicilio, item.Telefono);
                 }
             }
             dgvProveedores.ReadOnly = true;
@@ -63,6 +63,7 @@ namespace Stock
         }
         private void HabilitarCamposNuevoProveedor()
         {
+            txtCuit.Enabled = true;
             txtNombreEmpresa.Enabled = true;
             txtPersonaContacto.Enabled = true;
             txtCodArea.Enabled = true;
@@ -74,6 +75,7 @@ namespace Stock
         }
         private void LimpiarCampos()
         {
+            txtCuit.Clear();
             txtNombreEmpresa.Clear();
             txtPersonaContacto.Clear();
             txtEmail.Clear();
@@ -116,6 +118,8 @@ namespace Stock
         private void HabilitarCamposUsuarioSeleccionado(List<Proveedores> _proveedor)
         {
             var proveedor = _proveedor.First();
+            txtCuit.Text = proveedor.Cuit;
+            txtCuit.Enabled = false;
             txtNombreEmpresa.Text = proveedor.NombreEmpresa;
             txtNombreEmpresa.Enabled = false;
             txtPersonaContacto.Text = proveedor.Contacto;
@@ -126,8 +130,20 @@ namespace Stock
             var codigo = proveedor.Telefono.Split('-');
             txtCodArea.Text = codigo[0];
             txtTelefono.Text = codigo[1];
-            HabilitarCamposNuevoProveedor();
+            HabilitarCamposEditarProveedor();
         }
+
+        private void HabilitarCamposEditarProveedor()
+        {
+            txtPersonaContacto.Enabled = true;
+            txtCodArea.Enabled = true;
+            txtTelefono.Enabled = true;
+            txtEmail.Enabled = true;
+            txtSitioWeb.Enabled = true;
+            txtCalle.Enabled = true;
+            txtAltura.Enabled = true;
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (idProveedorSeleccionado > 0)
@@ -150,10 +166,10 @@ namespace Stock
             else
             {
                 Entidades.Proveedores _proveedor = CargarEntidad();
-                ProgressBar();
                 bool Exito = Negocio.Proveedores.CargarProducto(_proveedor);
                 if (Exito == true)
                 {
+                    ProgressBar();
                     const string message2 = "Se registro el proveedor exitosamente.";
                     const string caption2 = "Éxito";
                     var result2 = MessageBox.Show(message2, caption2,
@@ -168,6 +184,7 @@ namespace Stock
         {
             Proveedores _proveedor = new Proveedores();
             int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
+            _proveedor.Cuit = txtCuit.Text;
             _proveedor.NombreEmpresa = txtNombreEmpresa.Text;
             _proveedor.Contacto = txtPersonaContacto.Text;
             _proveedor.Email = txtEmail.Text;
@@ -185,6 +202,7 @@ namespace Stock
         {
             Proveedores _proveedor = new Proveedores();
             int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
+            _proveedor.Cuit = txtCuit.Text;
             _proveedor.NombreEmpresa = txtNombreEmpresa.Text;
             _proveedor.Contacto = txtPersonaContacto.Text;
             _proveedor.Email = txtEmail.Text;

@@ -14,7 +14,7 @@ namespace Stock.DAO
     {
         private static MySql.Data.MySqlClient.MySqlConnection connection = new MySqlConnection(Properties.Settings.Default.db);
 
-        public static int InsertVenta(List<ListaProductoVenta> listaProductos, int idUsuario)
+        public static int InsertVenta(List<ListaProductoVenta> listaProductos, int idUsuario, int MedioDePago)
         {
             int idUltimoVenta = 0;
             connection.Close();
@@ -27,6 +27,7 @@ namespace Stock.DAO
             cmd.Parameters.AddWithValue("PrecioVentaFinal_in", producto.PrecioVentaFinal);
             cmd.Parameters.AddWithValue("idUsuario_in", idUsuario);
             cmd.Parameters.AddWithValue("Fecha_in", producto.Fecha);
+            cmd.Parameters.AddWithValue("MedioDePago_in", MedioDePago);
             //cmd.ExecuteNonQuery();
             MySqlDataReader r = cmd.ExecuteReader();
             while (r.Read())
@@ -50,6 +51,27 @@ namespace Stock.DAO
             connection.Close();
             return idUltimoVenta;
         }
+
+        public static bool RegistrarDescuentosParaVenta(int idVenta, List<DetalleOferta> listaOfertas)
+        {
+            bool exito = false;
+            for (int i = 0; i < listaOfertas.Count; i++)
+            {
+                connection.Close();
+                connection.Open();
+                string proceso = "SP_Insetar_RegistrarDescuentosParaVenta";
+                MySqlCommand cmd = new MySqlCommand(proceso, connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("idVenta_in", idVenta);
+                cmd.Parameters.AddWithValue("idOferta_in", listaOfertas[i].idOferta);
+                cmd.Parameters.AddWithValue("PrecioOferta_in", listaOfertas[i].PrecioOferta);
+                cmd.Parameters.AddWithValue("MontoDescuento_in", listaOfertas[i].MontoDescuento);
+                cmd.ExecuteNonQuery();
+                exito = true;
+            }
+            return exito;
+        }
+
         public static int RegistrarOferta(Ofertas oferta, List<Ofertas> lista)
         {
             int idUltimaOferta = 0;
@@ -691,6 +713,7 @@ namespace Stock.DAO
             string proceso = "AltaProveedor";
             MySqlCommand cmd = new MySqlCommand(proceso, connection);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("Cuit_in", _proveedor.Cuit);
             cmd.Parameters.AddWithValue("NombreEmpresa_in", _proveedor.NombreEmpresa);
             cmd.Parameters.AddWithValue("Contacto_in", _proveedor.Contacto);
             cmd.Parameters.AddWithValue("Email_in", _proveedor.Email);

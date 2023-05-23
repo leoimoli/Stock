@@ -189,7 +189,9 @@ namespace Stock
                 int idusuario = idusuarioLogueado;
                 listaProductos[0].PrecioVentaFinal = Convert.ToDecimal(lblTotalPagarReal.Text);
                 //bool Exito = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
-                idVenta = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
+                //int idMedioDePago = DAO.ConsultarDao.SeleccionarIdMedioDePagoPorNombre(cmbMediosDePago.Text);
+                int idMedioDePago = 1;
+                idVenta = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario, idMedioDePago);
                 BloquearPantalla();
                 ///// GENERAR TICKET.........
                 Ticket ticket = new Ticket();
@@ -271,7 +273,9 @@ namespace Stock
                     int idusuario = idusuarioLogueado;
                     listaProductos[0].PrecioVentaFinal = Convert.ToDecimal(lblTotalPagarReal.Text);
                     //bool Exito = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
-                    idVenta = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
+                    //int idMedioDePago = DAO.ConsultarDao.SeleccionarIdMedioDePagoPorNombre(cmbMediosDePago.Text);
+                    int idMedioDePago = 1;
+                    idVenta = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario, idMedioDePago);
                     BloquearPantalla();
                     ///// GENERAR TICKET.........
                     Ticket ticket = new Ticket();

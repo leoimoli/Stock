@@ -31,7 +31,7 @@ namespace Stock
 
             ///// Codigo para forzar fechas
             //AñoActual = AñoActual + 1;
-            //FechaActual = Clases_Maestras.FechasFestivasForzadas.ForzarFecha();           
+            //FechaActual = Clases_Maestras.FechasFestivasForzadas.ForzarFecha();          
 
             foreach (var item in _listaFechas)
             {
@@ -52,6 +52,7 @@ namespace Stock
         }
         private void VentasNuevoWF_Load(object sender, EventArgs e)
         {
+            CargarComboMediosDePago();
             lblUsuario.Text = Sesion.UsuarioLogueado.Apellido + "  " + Sesion.UsuarioLogueado.Nombre;
             txtNombreBuscar.Focus();
             listaProductos = new List<Entidades.ListaProductoVenta>();
@@ -59,6 +60,18 @@ namespace Stock
             txtNombreBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtNombreBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
+
+        private void CargarComboMediosDePago()
+        {
+            List<string> Medios = DAO.ConsultarDao.CargarMediosDePago();
+            cmbMediosDePago.Items.Clear();
+            foreach (string item in Medios)
+            {
+                cmbMediosDePago.Text = "EFECTIVO";
+                cmbMediosDePago.Items.Add(item);
+            }
+        }
+
         public static List<Entidades.ListaProductoVenta> listaProductos;
         public static List<Entidades.ListaProductoVenta> listaProductosConDescuentos;
         private void txtCodigo_KeyDown(object sender, KeyEventArgs e)
@@ -289,6 +302,8 @@ namespace Stock
                         txtCodigo.Text = Convert.ToString(CodigoProducto);
                         BuscarProductoPorCodigo();
                     }
+
+                    //CalcularTotales();
                     LimpiarCampos();
                 }
                 catch (Exception ex)
@@ -300,6 +315,45 @@ namespace Stock
             }
 
         }
+
+        private void CalcularTotales()
+        {
+            List<Entidades.ListaProductoVenta> listaProductosDinamica = new List<ListaProductoVenta>();
+            decimal SubTotal = 0;
+            int TotalProductos = 0;
+            decimal MontoDescuento = 0;
+            decimal MontoTotal = 0;
+            int CantidadReal = 0;
+            foreach (DataGridViewRow row in dgvVentas.Rows)
+            {
+                ///// Calculo SUBTOTAL
+                decimal PrecioTotal = Convert.ToInt32(row.Cells["PrecioTotal"].Value);
+                SubTotal = SubTotal + PrecioTotal;
+                //lblSubtotal.Text = Convert.ToString(SubTotal);
+
+                ///// Calculo la cantidad de productos.
+                int Valor = Convert.ToInt32(row.Cells["Cantidad"].Value);
+                TotalProductos = TotalProductos + Valor;
+                //lblTotalProductos.Text = Convert.ToString(TotalProductos);
+
+                /////// Busco Descuentos             
+
+                //listaProductosConDescuentos = BuscarPromociones(listaProductos);
+                //if (listaProductosConDescuentos.Count > 0)
+                //{
+                //    foreach (var item in listaProductosConDescuentos)
+                //    {
+                //        DetalleOferta detalle = new DetalleOferta();
+                //        MontoDescuento = MontoDescuento + item.MontoDescuento;
+                //        lblDescuentos.Text = Convert.ToString(MontoDescuento);
+                //    }
+                //}
+                ///// Calculo Total 
+                MontoTotal = SubTotal - MontoDescuento;
+                //lblTotal.Text = Convert.ToString(MontoTotal);
+            }
+        }
+
         private void LimpiarCampos()
         {
             txtCodigo.Clear();
@@ -650,6 +704,8 @@ namespace Stock
                     ProductosOriginal.ProductoEspecial = item.ProductoEspecial;
                     listaProductosOriginal.Add(ProductosOriginal);
                 }
+                int idMedioDePago = DAO.ConsultarDao.SeleccionarIdMedioDePagoPorNombre(cmbMediosDePago.Text);
+
                 listaProductosConDescuentos = BuscarPromociones(listaProductos);
                 if (listaProductosConDescuentos.Count > 0)
                 {
@@ -671,7 +727,8 @@ namespace Stock
                         DetalleOferta detalle = new DetalleOferta();
                         detalle.Descripcion = item.NombreProducto;
                         detalle.PrecioOferta = item.PrecioUnitario;
-                        detalle.MontoDescuento = item.MontoDescuento;
+                        detalle.MontoDescuento = item.MontoDescuento * item.Cantidad;
+                        detalle.idOferta = item.idOferta;
                         lista.Add(detalle);
                     }
                     List<Entidades.ListaProductoVenta> listaProductos = new List<ListaProductoVenta>();
@@ -700,7 +757,8 @@ namespace Stock
                     int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
                     int idusuario = idusuarioLogueado;
                     listaProductos[0].PrecioVentaFinal = PrecioFinal;
-                    idVenta = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
+                    idVenta = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario, idMedioDePago);
+                    bool Exito = Negocio.Ventas.RegistrarDescuentosParaVenta(idVenta, listaOfertas);
                     bool AplicaDescuento = true;
                     BloquearPantalla();
                     VueltoNuevoWF _vuelto = new VueltoNuevoWF(listaProductos[0].PrecioVentaFinal, AplicaDescuento, idVenta, listaProductos, listaOfertas);
@@ -716,7 +774,7 @@ namespace Stock
                     int idusuario = idusuarioLogueado;
                     listaProductos[0].PrecioVentaFinal = Convert.ToDecimal(lblTotalPagarReal.Text);
                     //bool Exito = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
-                    idVenta = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario);
+                    idVenta = Negocio.Ventas.RegistrarVenta(listaProductos, idusuario, idMedioDePago);
                     bool AplicaDescuento = false;
                     BloquearPantalla();
                     VueltoNuevoWF _vuelto = new VueltoNuevoWF(listaProductos[0].PrecioVentaFinal, AplicaDescuento, idVenta, listaProductos, listaOfertas);
@@ -860,8 +918,13 @@ namespace Stock
             { }
         }
         private void pictureBox5_Click(object sender, EventArgs e)
-        {           
+        {
             groupBox2.Visible = false;
+        }
+
+        private void txtNombreBuscar_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

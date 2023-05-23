@@ -53,6 +53,30 @@ namespace Stock.DAO
             return lista;
         }
 
+        public static List<string> CargarMediosDePago()
+        {
+            connection.Close();
+            connection.Open();
+            List<string> lista = new List<string>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "CargarMediosDePago";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                   lista.Add(item["nombre"].ToString());
+                }
+            }
+            return lista;
+        }
+
         public static List<ListaVentas> ConsultarVentasPorFechaAndCategoria(DateTime fechaDesde, DateTime fechaHasta, int idCategoria)
         {
             connection.Close();
@@ -637,6 +661,31 @@ namespace Stock.DAO
             connection.Close();
             return _listaProductos;
         }
+
+        public static int SeleccionarIdMedioDePagoPorNombre(string MedioDePago)
+        {
+            connection.Close();
+            connection.Open();
+            int idMedioPago = 0;
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("MedioDePago_in", MedioDePago) };
+            string proceso = "SeleccionarIdMedioDePagoPorNombre";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    idMedioPago = Convert.ToInt32(item["idMedioPago"].ToString());
+                }
+            }
+            return idMedioPago;
+        }       
+
         public static bool ValidarOferta(List<Ofertas> lista)
         {
             connection.Close();
@@ -844,7 +893,6 @@ namespace Stock.DAO
             }
             return lista;
         }
-
         public static bool ValidarCodigoAnulacion(string CodigoAnulacion)
         {
             connection.Close();
@@ -870,7 +918,6 @@ namespace Stock.DAO
             connection.Close();
             return Existe;
         }
-
         public static List<ListaVentas> ConsultarVentasUltimos30Dias(DateTime fechaDesde, DateTime fechaHasta)
         {
             connection.Close();
@@ -1581,7 +1628,6 @@ namespace Stock.DAO
             }
             return lista;
         }
-
         public static List<Productos> BusquedaProductoPorDescripcion(string descripcion)
         {
             connection.Close();
@@ -1809,7 +1855,6 @@ namespace Stock.DAO
             connection.Close();
             return Existe;
         }
-
         public static List<ListaPagosDeDeudas> ConsultaPagoDeuda(int idClienteSeleccionado)
         {
             connection.Close();
@@ -1842,7 +1887,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<ListaVentas> ConsultarVentasPorUsuario(string dniUsuario)
         {
             connection.Close();
@@ -1908,7 +1952,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<CuentaCorriente> BuscarDeudaPorCliente(int idClienteSeleccionado)
         {
             connection.Close();
@@ -2905,6 +2948,7 @@ namespace Stock.DAO
                 {
                     Entidades.Proveedores listaProveedor = new Entidades.Proveedores();
                     listaProveedor.idProveedor = Convert.ToInt32(item["idProveedores"].ToString());
+                    listaProveedor.Cuit = item["Cuit"].ToString();
                     listaProveedor.NombreEmpresa = item["txNombreEmpresa"].ToString();
                     listaProveedor.Contacto = item["txNombreContacto"].ToString();
                     listaProveedor.Email = item["txEmail"].ToString();
@@ -2912,7 +2956,7 @@ namespace Stock.DAO
                     listaProveedor.Calle = item["txCalle"].ToString();
                     listaProveedor.Altura = item["txAltura"].ToString();
                     listaProveedor.Telefono = item["txTelefono"].ToString();
-                    if (item[10].ToString() != string.Empty)
+                    if (item[11].ToString() != string.Empty)
                     {
                         listaProveedor.Foto = (byte[])item["txFoto"];
                     }
@@ -2944,6 +2988,7 @@ namespace Stock.DAO
                 {
                     Entidades.Proveedores listaProveedor = new Entidades.Proveedores();
                     listaProveedor.idProveedor = Convert.ToInt32(item["idProveedores"].ToString());
+                    listaProveedor.Cuit = item["Cuit"].ToString();
                     listaProveedor.NombreEmpresa = item["txNombreEmpresa"].ToString();
                     listaProveedor.Contacto = item["txNombreContacto"].ToString();
                     listaProveedor.Email = item["txEmail"].ToString();

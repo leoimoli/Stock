@@ -38,7 +38,7 @@
             this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValorVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecioTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
@@ -62,6 +62,10 @@
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.txtCodigoAnulacion = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.picNavidad = new System.Windows.Forms.PictureBox();
@@ -75,10 +79,8 @@
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.txtCodigoAnulacion = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbMediosDePago = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -88,6 +90,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picNavidad)).BeginInit();
@@ -95,8 +99,6 @@
             this.panel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvVentas
@@ -118,7 +120,7 @@
             this.idProducto,
             this.CodigoProducto,
             this.Descripcion,
-            this.Marca,
+            this.Cantidad,
             this.ValorVenta,
             this.PrecioTotal});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -145,7 +147,7 @@
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
             this.dgvVentas.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvVentas.Size = new System.Drawing.Size(850, 420);
+            this.dgvVentas.Size = new System.Drawing.Size(850, 339);
             this.dgvVentas.TabIndex = 7;
             this.dgvVentas.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_CellEndEdit);
             this.dgvVentas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvVentas_KeyDown);
@@ -171,11 +173,11 @@
             this.Descripcion.ReadOnly = true;
             this.Descripcion.Width = 255;
             // 
-            // Marca
+            // Cantidad
             // 
-            this.Marca.HeaderText = "Cantidad";
-            this.Marca.Name = "Marca";
-            this.Marca.Width = 73;
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.Width = 73;
             // 
             // ValorVenta
             // 
@@ -231,6 +233,7 @@
             this.txtNombreBuscar.Name = "txtNombreBuscar";
             this.txtNombreBuscar.Size = new System.Drawing.Size(463, 20);
             this.txtNombreBuscar.TabIndex = 1;
+            this.txtNombreBuscar.TextChanged += new System.EventHandler(this.txtNombreBuscar_TextChanged);
             this.txtNombreBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombreBuscar_KeyDown);
             // 
             // label1
@@ -284,7 +287,7 @@
             this.groupBox1.Controls.Add(this.lblCategoria);
             this.groupBox1.Controls.Add(this.txtMonto);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(373, 282);
+            this.groupBox1.Location = new System.Drawing.Point(371, 251);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(205, 135);
             this.groupBox1.TabIndex = 152;
@@ -459,6 +462,53 @@
             this.panel3.Size = new System.Drawing.Size(1099, 521);
             this.panel3.TabIndex = 154;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.pictureBox5);
+            this.groupBox2.Controls.Add(this.txtCodigoAnulacion);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Location = new System.Drawing.Point(302, 132);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(379, 113);
+            this.groupBox2.TabIndex = 153;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Visible = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox5.Image = global::Stock.Properties.Resources.cancelar1;
+            this.pictureBox5.Location = new System.Drawing.Point(352, 8);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 155;
+            this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
+            // 
+            // txtCodigoAnulacion
+            // 
+            this.txtCodigoAnulacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoAnulacion.Location = new System.Drawing.Point(6, 51);
+            this.txtCodigoAnulacion.Multiline = true;
+            this.txtCodigoAnulacion.Name = "txtCodigoAnulacion";
+            this.txtCodigoAnulacion.PasswordChar = '*';
+            this.txtCodigoAnulacion.Size = new System.Drawing.Size(367, 44);
+            this.txtCodigoAnulacion.TabIndex = 153;
+            this.txtCodigoAnulacion.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigoAnulacion_KeyDown);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(86, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(188, 24);
+            this.label9.TabIndex = 152;
+            this.label9.Text = "Código de Anulación";
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.panel4);
@@ -471,6 +521,8 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.panel4.Controls.Add(this.cmbMediosDePago);
+            this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.picNavidad);
             this.panel4.Controls.Add(this.button1);
             this.panel4.Controls.Add(this.lblTotalPagarReal);
@@ -499,9 +551,9 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(75, 291);
+            this.button1.Location = new System.Drawing.Point(71, 315);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 54);
+            this.button1.Size = new System.Drawing.Size(82, 44);
             this.button1.TabIndex = 0;
             this.button1.Text = "(F12) Cobrar";
             this.button1.UseVisualStyleBackColor = false;
@@ -514,9 +566,9 @@
             this.lblTotalPagarReal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTotalPagarReal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalPagarReal.ForeColor = System.Drawing.Color.White;
-            this.lblTotalPagarReal.Location = new System.Drawing.Point(46, 213);
+            this.lblTotalPagarReal.Location = new System.Drawing.Point(38, 168);
             this.lblTotalPagarReal.Name = "lblTotalPagarReal";
-            this.lblTotalPagarReal.Size = new System.Drawing.Size(147, 60);
+            this.lblTotalPagarReal.Size = new System.Drawing.Size(147, 47);
             this.lblTotalPagarReal.TabIndex = 57;
             this.lblTotalPagarReal.UseVisualStyleBackColor = false;
             // 
@@ -525,7 +577,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(68, 171);
+            this.label8.Location = new System.Drawing.Point(64, 125);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(98, 39);
             this.label8.TabIndex = 55;
@@ -545,9 +597,9 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::Stock.Properties.Resources.usuario__1_;
-            this.pictureBox4.Location = new System.Drawing.Point(61, 56);
+            this.pictureBox4.Location = new System.Drawing.Point(75, 53);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(110, 88);
+            this.pictureBox4.Size = new System.Drawing.Size(66, 54);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 57;
             this.pictureBox4.TabStop = false;
@@ -598,52 +650,24 @@
             this.btnCerrar.TabIndex = 3;
             this.btnCerrar.TabStop = false;
             // 
-            // groupBox2
+            // label2
             // 
-            this.groupBox2.Controls.Add(this.pictureBox5);
-            this.groupBox2.Controls.Add(this.txtCodigoAnulacion);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Location = new System.Drawing.Point(302, 171);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(379, 113);
-            this.groupBox2.TabIndex = 153;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Visible = false;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(33, 231);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(157, 25);
+            this.label2.TabIndex = 59;
+            this.label2.Text = "Medio de Pago";
             // 
-            // pictureBox5
+            // cmbMediosDePago
             // 
-            this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox5.Image = global::Stock.Properties.Resources.cancelar1;
-            this.pictureBox5.Location = new System.Drawing.Point(352, 8);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 155;
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
-            // 
-            // txtCodigoAnulacion
-            // 
-            this.txtCodigoAnulacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigoAnulacion.Location = new System.Drawing.Point(6, 51);
-            this.txtCodigoAnulacion.Multiline = true;
-            this.txtCodigoAnulacion.Name = "txtCodigoAnulacion";
-            this.txtCodigoAnulacion.PasswordChar = '*';
-            this.txtCodigoAnulacion.Size = new System.Drawing.Size(367, 44);
-            this.txtCodigoAnulacion.TabIndex = 153;
-            this.txtCodigoAnulacion.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigoAnulacion_KeyDown);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(86, 16);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(188, 24);
-            this.label9.TabIndex = 152;
-            this.label9.Text = "Código de Anulación";
+            this.cmbMediosDePago.FormattingEnabled = true;
+            this.cmbMediosDePago.Location = new System.Drawing.Point(17, 263);
+            this.cmbMediosDePago.Name = "cmbMediosDePago";
+            this.cmbMediosDePago.Size = new System.Drawing.Size(186, 21);
+            this.cmbMediosDePago.TabIndex = 60;
             // 
             // VentasNuevoWF
             // 
@@ -675,6 +699,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -684,9 +711,6 @@
             this.panel14.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -710,12 +734,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ValorVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioTotal;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button lblTotalPagarReal;
@@ -737,5 +755,13 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.TextBox txtCodigoAnulacion;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValorVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioTotal;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbMediosDePago;
     }
 }

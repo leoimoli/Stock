@@ -234,6 +234,7 @@ namespace Stock.DAO
             MySqlCommand cmd = new MySqlCommand(Actualizar, connection);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("idProveedor_in", idProductoGrillaSeleccionado);
+            cmd.Parameters.AddWithValue("Cuit_in", _proveedor.Cuit);
             cmd.Parameters.AddWithValue("NombreEmpresa_in", _proveedor.NombreEmpresa);
             cmd.Parameters.AddWithValue("Contacto_in", _proveedor.Contacto);
             cmd.Parameters.AddWithValue("Email_in", _proveedor.Email);
