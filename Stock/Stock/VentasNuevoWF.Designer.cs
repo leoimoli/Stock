@@ -68,6 +68,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.cmbMediosDePago = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.picNavidad = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lblTotalPagarReal = new System.Windows.Forms.Button();
@@ -79,8 +81,6 @@
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            this.cmbMediosDePago = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -535,6 +535,25 @@
             this.panel4.Size = new System.Drawing.Size(215, 521);
             this.panel4.TabIndex = 153;
             // 
+            // cmbMediosDePago
+            // 
+            this.cmbMediosDePago.FormattingEnabled = true;
+            this.cmbMediosDePago.Location = new System.Drawing.Point(17, 263);
+            this.cmbMediosDePago.Name = "cmbMediosDePago";
+            this.cmbMediosDePago.Size = new System.Drawing.Size(186, 21);
+            this.cmbMediosDePago.TabIndex = 60;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(33, 231);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(157, 25);
+            this.label2.TabIndex = 59;
+            this.label2.Text = "Medio de Pago";
+            // 
             // picNavidad
             // 
             this.picNavidad.Location = new System.Drawing.Point(16, 370);
@@ -649,25 +668,6 @@
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnCerrar.TabIndex = 3;
             this.btnCerrar.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(33, 231);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(157, 25);
-            this.label2.TabIndex = 59;
-            this.label2.Text = "Medio de Pago";
-            // 
-            // cmbMediosDePago
-            // 
-            this.cmbMediosDePago.FormattingEnabled = true;
-            this.cmbMediosDePago.Location = new System.Drawing.Point(17, 263);
-            this.cmbMediosDePago.Name = "cmbMediosDePago";
-            this.cmbMediosDePago.Size = new System.Drawing.Size(186, 21);
-            this.cmbMediosDePago.TabIndex = 60;
             // 
             // VentasNuevoWF
             // 

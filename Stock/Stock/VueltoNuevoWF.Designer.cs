@@ -168,7 +168,7 @@
             // 
             this.lblDescuentos.AutoSize = true;
             this.lblDescuentos.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescuentos.ForeColor = System.Drawing.Color.White;
+            this.lblDescuentos.ForeColor = System.Drawing.Color.Red;
             this.lblDescuentos.Location = new System.Drawing.Point(11, 56);
             this.lblDescuentos.Name = "lblDescuentos";
             this.lblDescuentos.Size = new System.Drawing.Size(428, 19);

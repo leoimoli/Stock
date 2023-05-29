@@ -174,7 +174,7 @@ namespace Stock
         {
             if (Sesion.UsuarioLogueado.Perfil == "1" || Sesion.UsuarioLogueado.Perfil == "SUPER ADMIN")
             {
-                btnDescuentos.Visible = true;
+                btnDescuentos.Visible = false;
             }
             else { btnDescuentos.Visible = false; }
 
