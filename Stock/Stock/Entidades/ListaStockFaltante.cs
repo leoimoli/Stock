@@ -8,6 +8,7 @@ namespace Stock.Entidades
 {
     public class ListaStockFaltante
     {
+        public int idProducto { get; set; }
         public string CodigoProducto { get; set; }
         public string Nombre { get; set; }
         public string Marca { get; set; }

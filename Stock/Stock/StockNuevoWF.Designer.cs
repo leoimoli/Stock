@@ -62,11 +62,12 @@
             this.btnVer = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvMovimientos = new System.Windows.Forms.DataGridView();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FacturaPaga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnStockFaltante = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -429,12 +430,28 @@
             this.FacturaPaga.Name = "FacturaPaga";
             this.FacturaPaga.Visible = false;
             // 
+            // btnStockFaltante
+            // 
+            this.btnStockFaltante.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnStockFaltante.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnStockFaltante.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockFaltante.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockFaltante.ForeColor = System.Drawing.Color.White;
+            this.btnStockFaltante.Location = new System.Drawing.Point(154, 534);
+            this.btnStockFaltante.Name = "btnStockFaltante";
+            this.btnStockFaltante.Size = new System.Drawing.Size(136, 28);
+            this.btnStockFaltante.TabIndex = 59;
+            this.btnStockFaltante.Text = "Stock Faltante";
+            this.btnStockFaltante.UseVisualStyleBackColor = false;
+            this.btnStockFaltante.Click += new System.EventHandler(this.btnStockFaltante_Click);
+            // 
             // StockNuevoWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(1099, 564);
+            this.Controls.Add(this.btnStockFaltante);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.label6);
@@ -490,5 +507,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Proveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn FacturaPaga;
+        private System.Windows.Forms.Button btnStockFaltante;
     }
 }

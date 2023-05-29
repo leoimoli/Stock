@@ -587,7 +587,7 @@ namespace Stock.DAO
                 cmd.Parameters.AddWithValue("idUltimaVenta_in", idUltimoVenta);
                 cmd.Parameters.AddWithValue("idProducto_in", listaProductos[i].idProducto);
                 cmd.Parameters.AddWithValue("Cantidad_in", listaProductos[i].Cantidad);
-                cmd.Parameters.AddWithValue("PrecioUnitario_in", listaProductos[i].PrecioUnitario);
+                cmd.Parameters.AddWithValue("PrecioUnitario_in", listaProductos[i].PrecioVenta);
                 cmd.ExecuteNonQuery();
             }
             exito = true;

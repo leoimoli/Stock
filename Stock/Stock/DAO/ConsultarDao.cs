@@ -71,7 +71,7 @@ namespace Stock.DAO
             {
                 foreach (DataRow item in Tabla.Rows)
                 {
-                   lista.Add(item["nombre"].ToString());
+                    lista.Add(item["nombre"].ToString());
                 }
             }
             return lista;
@@ -141,6 +141,112 @@ namespace Stock.DAO
             }
             return lista;
         }
+
+        public static List<DetalleCajaDiaria> ObtenerCajaDiaria()
+        {
+            List<DetalleCajaDiaria> cajaDiaria = new List<DetalleCajaDiaria>();
+            connection.Close();
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("fechaHoy_in", DateTime.Now.AddHours(-3)) };
+            string proceso = "ConsultarDetalleCajaDiaria";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            int idDescuentoUsuado = 0;
+            List<int> ListaidDescuento = new List<int>();
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    DetalleCajaDiaria caja = new DetalleCajaDiaria();
+                    caja.fecha = item["FECHA"].ToString();
+
+                    DateTime fecha = Convert.ToDateTime(item["FECHA"].ToString());
+
+                    caja.fecha = fecha.Day.ToString().PadLeft(2, '0') +
+                           "/" + fecha.Month.ToString().PadLeft(2, '0') +
+                           "/" + fecha.Year.ToString().PadLeft(4, '0');
+
+                    caja.cantidad = item["CANTIDAD"].ToString();
+                    caja.precio = item["PRECIO"].ToString();
+                    caja.producto = item["PRODUCTO"].ToString();
+                    caja.categoria = item["CATEGORIA"].ToString();
+                    caja.medio = item["MEDIO"].ToString();
+                    caja.idventa = item["ID"].ToString();
+
+                    List<Descuentos> _listaDescuento = ObtenerDescuentos(caja.idventa);
+
+                    if (_listaDescuento.Count > 0)
+                    {
+                        foreach (var itemDescuentos in _listaDescuento)
+                        {
+                            bool yaExiste = ListaidDescuento.Any(x => x == itemDescuentos.idDescuento);
+                            if (yaExiste == false && caja.producto == itemDescuentos.Descripcion)
+                            {
+                                decimal Precio = Convert.ToDecimal(caja.precio) - itemDescuentos.Descuento;
+                                caja.precio = Convert.ToString(Precio);
+                                ListaidDescuento.Add(itemDescuentos.idDescuento);
+                            }
+                        }
+                        //var elementoDescuento = _listaDescuento.Where(x => x.Descripcion == caja.producto).ToList();
+                        //if (elementoDescuento != null && elementoDescuento.Count > 0 && (idDescuentoUsuado == 0 || idDescuentoUsuado != elementoDescuento.FirstOrDefault().idDescuento))
+                        //{
+                        //    decimal Precio = Convert.ToDecimal(caja.precio) - elementoDescuento.FirstOrDefault().Descuento;
+                        //    idDescuentoUsuado = elementoDescuento.FirstOrDefault().idDescuento;
+                        //    caja.precio = Convert.ToString(Precio);
+                        //}
+                    }
+                    cajaDiaria.Add(caja);
+                }
+            }
+            connection.Close();
+            return cajaDiaria;
+        }
+
+        private static List<Descuentos> ObtenerDescuentos(string idventa)
+        {
+            List<Descuentos> _lista = new List<Descuentos>();
+            try
+            {
+                connection.Close();
+                connection.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla = new DataTable();
+                MySqlParameter[] oParam = { new MySqlParameter("idventa_in", idventa) };
+                string proceso = "ObtenerDescuentosEnVentas";
+                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt.SelectCommand.Parameters.AddRange(oParam);
+                dt.Fill(Tabla);
+                if (Tabla.Rows.Count > 0)
+                {
+                    foreach (DataRow item in Tabla.Rows)
+                    {
+                        if (item["idDescuento"].ToString() != "")
+                        {
+                            Descuentos listaProducto = new Descuentos();
+                            listaProducto.idDescuento = Convert.ToInt32(item["idDescuento"].ToString());
+                            listaProducto.Descripcion = item["Descripcion"].ToString();
+                            listaProducto.Descuento = Convert.ToDecimal(item["Descuento"].ToString());
+                            _lista.Add(listaProducto);
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return _lista;
+        }
+
         public static List<string> CargarComboCategoria()
         {
             connection.Close();
@@ -167,7 +273,6 @@ namespace Stock.DAO
             connection.Close();
             return _listaMarcas;
         }
-
         public static List<HistorialPagoProveedores> HistorialPagoAProveedores(int idMovimiento)
         {
             List<Entidades.HistorialPagoProveedores> lista = new List<Entidades.HistorialPagoProveedores>();
@@ -201,7 +306,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         private static List<HistorialPagoProveedores> ObtenerDetalleInicialDeCompra(int idMovimiento)
         {
             connection.Close();
@@ -234,7 +338,6 @@ namespace Stock.DAO
             connection.Close();
             return lista;
         }
-
         public static List<ListaCompras> ConsultarComprasDelDia()
         {
             connection.Close();
@@ -293,7 +396,6 @@ namespace Stock.DAO
             }
             return lista;
         }
-
         public static List<ListaCompras> ConsultarComprasDeAyer()
         {
             connection.Close();
@@ -323,7 +425,6 @@ namespace Stock.DAO
             }
             return lista;
         }
-
         public static int BuscarIdMarca(string marca)
         {
             connection.Close();
@@ -348,7 +449,6 @@ namespace Stock.DAO
             connection.Close();
             return idMarca;
         }
-
         public static int BuscarIdCategoria(string categoria)
         {
             connection.Close();
@@ -373,7 +473,6 @@ namespace Stock.DAO
             connection.Close();
             return idCategoria;
         }
-
         public static List<ListaCompras> ConsultarComprasUltimos30Dias(DateTime fechaDesde, DateTime fechaHasta)
         {
             connection.Close();
@@ -684,7 +783,7 @@ namespace Stock.DAO
                 }
             }
             return idMedioPago;
-        }       
+        }
 
         public static bool ValidarOferta(List<Ofertas> lista)
         {
@@ -2220,6 +2319,7 @@ namespace Stock.DAO
                 foreach (DataRow item in Tabla.Rows)
                 {
                     Entidades.ListaStockFaltante listaStock = new Entidades.ListaStockFaltante();
+                    listaStock.idProducto = Convert.ToInt32(item["idProducto"].ToString());
                     listaStock.CodigoProducto = item["txCodigoProducto"].ToString();
                     listaStock.Nombre = item["txDescripcion"].ToString();
                     listaStock.Marca = item["txMarcaProducto"].ToString();

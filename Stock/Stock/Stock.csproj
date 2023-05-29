@@ -204,6 +204,8 @@
     <Compile Include="Entidades\ClienteReducido.cs" />
     <Compile Include="Entidades\Clientes.cs" />
     <Compile Include="Entidades\CuentaCorriente.cs" />
+    <Compile Include="Entidades\Descuentos.cs" />
+    <Compile Include="Entidades\DetalleCajaDiaria.cs" />
     <Compile Include="Entidades\DetalleOferta.cs" />
     <Compile Include="Entidades\FechasFestivas.cs" />
     <Compile Include="Entidades\HistorialDelProductoSeleccionado.cs" />

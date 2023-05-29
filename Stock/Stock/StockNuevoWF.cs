@@ -208,5 +208,23 @@ namespace Stock
                 return false;
             }
         }
+
+        private void btnStockFaltante_Click(object sender, EventArgs e)
+        {
+            ///// Completo Grilla con informacion
+            List<Entidades.ListaStockFaltante> ListaStockFaltante = new List<Entidades.ListaStockFaltante>();
+            ListaStockFaltante = Negocio.Consultar.ListaStockFaltante();
+            if (ListaStockFaltante.Count > 0)
+            {
+                dgvProductos.Rows.Clear();
+                foreach (var item in ListaStockFaltante)
+                {
+                    if (item.CodigoProducto != "PAGOPROVEEDORES22")
+                    { dgvProductos.Rows.Add(item.idProducto, item.CodigoProducto, item.Nombre, item.Cantidad); }
+
+                }
+            }
+            dgvProductos.ReadOnly = true;
+        }
     }
 }

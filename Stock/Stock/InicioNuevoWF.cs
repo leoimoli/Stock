@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Stock.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -140,20 +141,73 @@ namespace Stock
             int month = Convert.ToInt32(Month);
             int year = Convert.ToInt32(Year);
             lblDia.Text = Dia + "," + " " + FechaDia + " " + "de" + " " + Mes + " " + Year;
-            ///// Completo Grilla con informacion
-            List<Entidades.ListaStockFaltante> ListaStockFaltante = new List<Entidades.ListaStockFaltante>();
-            ListaStockFaltante = Negocio.Consultar.ListaStockFaltante();
-            if (ListaStockFaltante.Count > 0)
-            {
-                foreach (var item in ListaStockFaltante)
-                {
-                    if (item.CodigoProducto != "PAGOPROVEEDORES22")
-                    { dgvProductos.Rows.Add(item.Nombre, item.Marca, item.Cantidad); }
+            /////// Completo Grilla con informacion
+            //List<Entidades.ListaStockFaltante> ListaStockFaltante = new List<Entidades.ListaStockFaltante>();
+            //ListaStockFaltante = Negocio.Consultar.ListaStockFaltante();
+            //if (ListaStockFaltante.Count > 0)
+            //{
+            //    foreach (var item in ListaStockFaltante)
+            //    {
+            //        if (item.CodigoProducto != "PAGOPROVEEDORES22")
+            //        { dgvProductos.Rows.Add(item.Nombre, item.Marca, item.Cantidad); }
 
+            //    }
+            //}
+            //dgvProductos.ReadOnly = true;
+
+            /////// Completo Caja Diaria
+            ObtengoCajaDiaria();
+
+        }
+
+        private void ObtengoCajaDiaria()
+        {
+            List<DetalleCajaDiaria> ListaVentasDiarias = new List<DetalleCajaDiaria>();
+            List<DetalleCajaDiaria> ListaVentasDiariasFinal = new List<DetalleCajaDiaria>();
+            // Completo Grilla con informacion para las ventas diarias.
+            ListaVentasDiarias = DAO.ConsultarDao.ObtenerCajaDiaria();
+            if (ListaVentasDiarias.Count > 0)
+            {
+                DetalleCajaDiaria detalle = new DetalleCajaDiaria();
+
+                foreach (var item in ListaVentasDiarias)
+                {
+                    if (string.IsNullOrEmpty(detalle.medio) || detalle.medio != item.medio)
+                    {
+                        if (!string.IsNullOrEmpty(detalle.precio))
+                            ListaVentasDiariasFinal.Add(detalle);
+
+                        detalle = new DetalleCajaDiaria();
+                        detalle.producto = "-";
+                        detalle.categoria = "-";
+                        detalle.cantidad = "-";
+                        detalle.idventa = "-";
+                        detalle.medio = item.medio;
+                        detalle.precio = item.precio;
+                        detalle.fecha = DateTime.Today.Day.ToString().PadLeft(2, '0') +
+                                        "/" + DateTime.Today.Month.ToString().PadLeft(2, '0') +
+                                        "/" + DateTime.Today.Year.ToString().PadLeft(4, '0');
+
+
+
+                    }
+                    else
+                    {
+                        detalle.precio = (decimal.Parse(detalle.precio) + decimal.Parse(item.precio)).ToString();
+                    }
+                    ListaVentasDiariasFinal.Add(item);
+                }
+
+                ListaVentasDiariasFinal.Add(detalle);
+                if (ListaVentasDiariasFinal.Count > 0)
+                {
+                    foreach (var item in ListaVentasDiariasFinal)
+                    {
+                        dgvProductos.Rows.Add(item.idventa, item.fecha, item.producto, item.cantidad, item.precio, item.categoria, item.medio);
+                    }
+                    dgvProductos.ReadOnly = true;
                 }
             }
-            dgvProductos.ReadOnly = true;
-
         }
         private void ObtenerInformacion()
         {
