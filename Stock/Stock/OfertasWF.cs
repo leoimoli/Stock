@@ -267,23 +267,23 @@ namespace Stock
         {
             if (e.ColumnIndex >= 0 && this.dgvOfertas.Columns[e.ColumnIndex].Name == "Detalle" && e.RowIndex >= 0)
             {
-                //e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-                //DataGridViewButtonCell BotonVer = this.dgvOfertas.Rows[e.RowIndex].Cells["Detalle"] as DataGridViewButtonCell;
-                //Icon icoAtomico = new Icon(Environment.CurrentDirectory + "\\" + @"Ver1.ico");
-                //e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 20, e.CellBounds.Top + 4);
-                //this.dgvOfertas.Rows[e.RowIndex].Height = icoAtomico.Height + 8;
-                //this.dgvOfertas.Columns[e.ColumnIndex].Width = icoAtomico.Width + 40;
-                //e.Handled = true;
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                DataGridViewButtonCell BotonVer = this.dgvOfertas.Rows[e.RowIndex].Cells["Detalle"] as DataGridViewButtonCell;
+                Icon icoAtomico = new Icon(Environment.CurrentDirectory + "\\" + @"Ver1.ico");
+                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 20, e.CellBounds.Top + 4);
+                this.dgvOfertas.Rows[e.RowIndex].Height = icoAtomico.Height + 8;
+                this.dgvOfertas.Columns[e.ColumnIndex].Width = icoAtomico.Width + 40;
+                e.Handled = true;
             }
             if (e.ColumnIndex >= 0 && this.dgvOfertas.Columns[e.ColumnIndex].Name == "Eliminar" && e.RowIndex >= 0)
             {
-                //e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-                //DataGridViewButtonCell BotonVer = this.dgvOfertas.Rows[e.RowIndex].Cells["Eliminar"] as DataGridViewButtonCell;
-                //Icon icoAtomico = new Icon(Environment.CurrentDirectory + "\\" + @"Eliminar1.ico");
-                //e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 20, e.CellBounds.Top + 4);
-                //this.dgvOfertas.Rows[e.RowIndex].Height = icoAtomico.Height + 8;
-                //this.dgvOfertas.Columns[e.ColumnIndex].Width = icoAtomico.Width + 40;
-                //e.Handled = true;
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                DataGridViewButtonCell BotonVer = this.dgvOfertas.Rows[e.RowIndex].Cells["Eliminar"] as DataGridViewButtonCell;
+                Icon icoAtomico = new Icon(Environment.CurrentDirectory + "\\" + @"Eliminar1.ico");
+                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 20, e.CellBounds.Top + 4);
+                this.dgvOfertas.Rows[e.RowIndex].Height = icoAtomico.Height + 8;
+                this.dgvOfertas.Columns[e.ColumnIndex].Width = icoAtomico.Width + 40;
+                e.Handled = true;
             }
         }
         private void dgvOfertas_CellClick(object sender, DataGridViewCellEventArgs e)

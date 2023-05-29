@@ -70,6 +70,7 @@
             this.lblDia = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -85,11 +86,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.panel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.panel7);
             this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel4);
@@ -97,7 +98,7 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Location = new System.Drawing.Point(60, 69);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(905, 144);
+            this.panel1.Size = new System.Drawing.Size(605, 144);
             this.panel1.TabIndex = 0;
             // 
             // panel7
@@ -106,10 +107,11 @@
             this.panel7.Controls.Add(this.lblContadorUsuarios);
             this.panel7.Controls.Add(this.button6);
             this.panel7.Controls.Add(this.pictureBox6);
-            this.panel7.Location = new System.Drawing.Point(679, 13);
+            this.panel7.Location = new System.Drawing.Point(668, 262);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(110, 128);
+            this.panel7.Size = new System.Drawing.Size(87, 88);
             this.panel7.TabIndex = 5;
+            this.panel7.Visible = false;
             // 
             // lblContadorUsuarios
             // 
@@ -154,7 +156,7 @@
             this.panel6.Controls.Add(this.lblContadorVentas);
             this.panel6.Controls.Add(this.button5);
             this.panel6.Controls.Add(this.pictureBox5);
-            this.panel6.Location = new System.Drawing.Point(537, 13);
+            this.panel6.Location = new System.Drawing.Point(483, 13);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(110, 128);
             this.panel6.TabIndex = 5;
@@ -202,7 +204,7 @@
             this.panel5.Controls.Add(this.lblContadorMarcas);
             this.panel5.Controls.Add(this.button4);
             this.panel5.Controls.Add(this.pictureBox4);
-            this.panel5.Location = new System.Drawing.Point(403, 13);
+            this.panel5.Location = new System.Drawing.Point(364, 13);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(110, 128);
             this.panel5.TabIndex = 5;
@@ -250,7 +252,7 @@
             this.panel4.Controls.Add(this.lblContadorProdcutos);
             this.panel4.Controls.Add(this.button3);
             this.panel4.Controls.Add(this.pictureBox3);
-            this.panel4.Location = new System.Drawing.Point(271, 13);
+            this.panel4.Location = new System.Drawing.Point(246, 13);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(110, 128);
             this.panel4.TabIndex = 5;
@@ -346,7 +348,7 @@
             this.panel3.Controls.Add(this.lblContadorClientes);
             this.panel3.Controls.Add(this.button2);
             this.panel3.Controls.Add(this.pictureBox2);
-            this.panel3.Location = new System.Drawing.Point(139, 13);
+            this.panel3.Location = new System.Drawing.Point(127, 13);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(110, 128);
             this.panel3.TabIndex = 4;
@@ -515,12 +517,22 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "StoCom(Sistema Stock Comercial) V-1.0.0";
             // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Location = new System.Drawing.Point(671, 69);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(403, 187);
+            this.pictureBox7.TabIndex = 8;
+            this.pictureBox7.TabStop = false;
+            // 
             // InicioNuevoWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(1099, 564);
+            this.Controls.Add(this.panel7);
+            this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.panel13);
             this.Controls.Add(this.lblDia);
             this.Controls.Add(this.lblMaster_FechaHoraReal);
@@ -550,6 +562,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -593,5 +606,6 @@
         private System.Windows.Forms.Button lblContadorClientes;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox pictureBox7;
     }
 }

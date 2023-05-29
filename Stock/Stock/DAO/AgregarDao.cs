@@ -687,6 +687,10 @@ namespace Stock.DAO
             {
                 exito = DAO.EditarDao.ActualizarPrecioDeVentaProducto(idProducto, precioDeVenta);
             }
+            if (exito == true)
+            {
+                exito = DAO.EditarDao.AnularOfertasExistentesParaElProducto(idProducto);
+            }
             return exito;
         }
         private static bool InsertarStock(int idProducto, int cantidad, string codigoProducto)

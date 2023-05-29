@@ -45,6 +45,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1DCE023A640A41A8A29712B269549EBD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1E0DEA1A4F20025C2422CB3AF8AF915B"
         "OwnerKey" = "8:_6EDC22BB14604CF29078CB7163C73E12"
         "MsmSig" = "8:_UNDEFINED"
@@ -89,6 +95,12 @@
         {
         "MsmKey" = "8:_31D310E39D447CD0B99B53A9A411A567"
         "OwnerKey" = "8:_6EDC22BB14604CF29078CB7163C73E12"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_32B094CC67FD4E5B8DA10DB871D00ACC"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -339,6 +351,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_DB45ECFF0F467BF6B9B8F149F6A5E1E3"
+        "OwnerKey" = "8:_6EDC22BB14604CF29078CB7163C73E12"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_DC2C1282186746C1B5399D2D3B09A737"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -357,13 +375,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_EE95E81E3A82E6797591C687AC89D675"
+        "MsmKey" = "8:_EBE3F0590CD563F81085E0AD775B6E93"
         "OwnerKey" = "8:_6EDC22BB14604CF29078CB7163C73E12"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F3DC274DED623A57654926F3A59E317B"
+        "MsmKey" = "8:_EE95E81E3A82E6797591C687AC89D675"
         "OwnerKey" = "8:_6EDC22BB14604CF29078CB7163C73E12"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -400,7 +418,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F3DC274DED623A57654926F3A59E317B"
+        "OwnerKey" = "8:_EBE3F0590CD563F81085E0AD775B6E93"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_DB45ECFF0F467BF6B9B8F149F6A5E1E3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -778,6 +802,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
     }
@@ -950,6 +982,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1DCE023A640A41A8A29712B269549EBD"
+            {
+            "SourcePath" = "8:..\\Stock\\bin\\Debug\\Eliminar1.ico"
+            "TargetName" = "8:Eliminar1.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_733B6AFEDCB94058AD780ECA431A8115"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1E0DEA1A4F20025C2422CB3AF8AF915B"
@@ -1187,6 +1239,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_32B094CC67FD4E5B8DA10DB871D00ACC"
+            {
+            "SourcePath" = "8:..\\Stock\\bin\\Debug\\Ver1.ico"
+            "TargetName" = "8:Ver1.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_733B6AFEDCB94058AD780ECA431A8115"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_387D1D574D447525015FCDBA8F59EEAB"
@@ -2396,6 +2468,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DB45ECFF0F467BF6B9B8F149F6A5E1E3"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:BarcodeLib, Version=1.0.0.20, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_DB45ECFF0F467BF6B9B8F149F6A5E1E3"
+                    {
+                    "Name" = "8:BarcodeLib.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:BarcodeLib.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_733B6AFEDCB94058AD780ECA431A8115"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DC2C1282186746C1B5399D2D3B09A737"
             {
             "SourcePath" = "8:..\\Stock\\bin\\Debug\\Navidad-5.gif"
@@ -2478,20 +2581,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EE95E81E3A82E6797591C687AC89D675"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EBE3F0590CD563F81085E0AD775B6E93"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.IO, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+            "AssemblyAsmDisplayName" = "8:LibPrintTicket, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_EE95E81E3A82E6797591C687AC89D675"
+                    "_EBE3F0590CD563F81085E0AD775B6E93"
                     {
-                    "Name" = "8:System.IO.dll"
+                    "Name" = "8:LibPrintTicket.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:System.IO.dll"
+            "SourcePath" = "8:LibPrintTicket.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_733B6AFEDCB94058AD780ECA431A8115"
@@ -2509,20 +2612,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F3DC274DED623A57654926F3A59E317B"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EE95E81E3A82E6797591C687AC89D675"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:LibPrintTicket, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:System.IO, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_F3DC274DED623A57654926F3A59E317B"
+                    "_EE95E81E3A82E6797591C687AC89D675"
                     {
-                    "Name" = "8:LibPrintTicket.dll"
+                    "Name" = "8:System.IO.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:LibPrintTicket.dll"
+            "SourcePath" = "8:System.IO.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_733B6AFEDCB94058AD780ECA431A8115"

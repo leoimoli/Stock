@@ -20,6 +20,8 @@ namespace Stock
 
         private void InicioNuevoWF_Load(object sender, EventArgs e)
         {
+            ////// Obtener Informacion clima
+            ObtenerInformacion();
             ///// Armo Panel de Informacion
             int totalProvedores = DAO.ConsultarDao.ContadorProveedores();
             int Clientes = DAO.ConsultarDao.ContadorClientes();
@@ -147,11 +149,19 @@ namespace Stock
                 {
                     if (item.CodigoProducto != "PAGOPROVEEDORES22")
                     { dgvProductos.Rows.Add(item.Nombre, item.Marca, item.Cantidad); }
-                    
+
                 }
             }
             dgvProductos.ReadOnly = true;
 
+        }
+        private void ObtenerInformacion()
+        {
+            BuscarClima();
+        }
+        private void BuscarClima()
+        {
+            pictureBox7.Load($"https://w.bookcdn.com/weather/picture/3_55558_1_4_137AE9_350_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=49053&domid=582&anc_id=81469");
         }
         private string ValidarDia(string diaDeLaSemana)
         {

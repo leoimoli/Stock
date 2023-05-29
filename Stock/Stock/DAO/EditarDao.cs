@@ -35,7 +35,7 @@ namespace Stock.DAO
             return exito;
         }
 
-        public static bool ActualizarVenta(decimal valorNuevo , int idVenta)
+        public static bool ActualizarVenta(decimal valorNuevo, int idVenta)
         {
             bool exito = false;
             connection.Close();
@@ -77,7 +77,7 @@ namespace Stock.DAO
             string proceso = "ActualizarEstadoOfertaAutomatico";
             MySqlCommand cmd = new MySqlCommand(proceso, connection);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("FechaActual_in", FechaActual);          
+            cmd.Parameters.AddWithValue("FechaActual_in", FechaActual);
             cmd.ExecuteNonQuery();
             connection.Close();
         }
@@ -369,6 +369,76 @@ namespace Stock.DAO
             exito = true;
             connection.Close();
             return exito;
+        }
+
+        public static bool AnularOfertasExistentesParaElProducto(int idProductoSeleccionado)
+        {
+            bool Exito = false;
+            try
+            {
+                List<Ofertas> listaOfertas = ListarOfertasPorProducto(idProductoSeleccionado);
+                if (listaOfertas.Count > 0)
+                    foreach (var item in listaOfertas)
+                    {
+                        connection.Close();
+                        connection.Open();
+                        string Actualizar = "SP_Editar_ActualizarEstadoOfertaPorCambioDePrecio";
+                        MySqlCommand cmd = new MySqlCommand(Actualizar, connection);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("idoferta_in", item.idOferta);
+                        cmd.Parameters.AddWithValue("Estado_in", 0);
+                        cmd.ExecuteNonQuery();
+                        Exito = true;
+                        connection.Close();
+                    }
+            }
+            catch (Exception ex)
+            { }
+
+            return Exito;
+        }
+        private static List<Ofertas> ListarOfertasPorProducto(int idProductoSeleccionado)
+        {
+            List<Ofertas> _lista = new List<Ofertas>();
+            try
+            {
+                connection.Close();
+                connection.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla = new DataTable();
+                MySqlParameter[] oParam = { new MySqlParameter("idProductoSeleccionado_in", idProductoSeleccionado) };
+                string proceso = "ListarOfertasPorProducto";
+                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt.SelectCommand.Parameters.AddRange(oParam);
+                dt.Fill(Tabla);
+                if (Tabla.Rows.Count > 0)
+                {
+                    foreach (DataRow item in Tabla.Rows)
+                    {
+                        Ofertas listaProducto = new Ofertas();
+                        listaProducto.idOferta = Convert.ToInt32(item["idOferta"].ToString());
+                        listaProducto.NombreOferta = item["Nombre"].ToString();
+                        listaProducto.FechaDesde = Convert.ToDateTime(item["FechaDesde"].ToString());
+                        string fecha = item["FechaHasta"].ToString();
+                        if (fecha != "")
+                        {
+                            listaProducto.FechaHasta = Convert.ToDateTime(item["FechaHasta"].ToString());
+                        }
+                        else { listaProducto.FechaHasta = Convert.ToDateTime("1 / 1 / 1900 00:00:00"); }
+                        string Precio = item["PrecioCombo"].ToString();
+                        listaProducto.PrecioCombo = Convert.ToDecimal(Precio);
+                        _lista.Add(listaProducto);
+                    }
+                }
+                connection.Close();
+
+            }
+            catch (Exception ex)
+            { }
+            return _lista;
         }
     }
 }
