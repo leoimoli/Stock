@@ -552,6 +552,7 @@
             // 
             this.Categoria.HeaderText = "Categoria";
             this.Categoria.Name = "Categoria";
+            this.Categoria.Width = 80;
             // 
             // Medio
             // 

@@ -179,6 +179,7 @@
             // grbDescuentos
             // 
             this.grbDescuentos.Controls.Add(this.btnCancelarDescuento1);
+            this.grbDescuentos.Controls.Add(this.btnDescuentos);
             this.grbDescuentos.Controls.Add(this.btnCancelaDescuento2);
             this.grbDescuentos.Controls.Add(this.btnAplicarPrecio);
             this.grbDescuentos.Controls.Add(this.btnAplicarPorcentaje);
@@ -308,7 +309,7 @@
             this.btnDescuentos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDescuentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDescuentos.ForeColor = System.Drawing.Color.White;
-            this.btnDescuentos.Location = new System.Drawing.Point(154, 326);
+            this.btnDescuentos.Location = new System.Drawing.Point(56, 30);
             this.btnDescuentos.Name = "btnDescuentos";
             this.btnDescuentos.Size = new System.Drawing.Size(164, 44);
             this.btnDescuentos.TabIndex = 154;
@@ -322,9 +323,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
-            this.ClientSize = new System.Drawing.Size(487, 513);
+            this.ClientSize = new System.Drawing.Size(487, 337);
             this.Controls.Add(this.grbDescuentos);
-            this.Controls.Add(this.btnDescuentos);
             this.Controls.Add(this.lblDescuentos);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.pictureBox1);
