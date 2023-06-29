@@ -40,7 +40,7 @@ namespace Stock
             try
             {
                 string usuario = txtUsuario.Text;
-                string contraseña = txtClave.Text;               
+                string contraseña = txtClave.Text;
                 usuarios = Negocio.Consultar.LoginUsuario(usuario, contraseña);
                 if (usuarios.Count == 0)
                 {
@@ -56,11 +56,12 @@ namespace Stock
                     NewMasterWF _inicio = new NewMasterWF();
                     _inicio.Show();
                     Hide();
-                    EditarDao.ActualizarEstadoOferta();
+                   EditarDao.ActualizarEstadoOferta();
                 }
             }
             catch (Exception ex)
-            {
+            {               
+                throw new Exception(ex.Message);
             }
         }
         private void txtUsuario_KeyDown(object sender, KeyEventArgs e)

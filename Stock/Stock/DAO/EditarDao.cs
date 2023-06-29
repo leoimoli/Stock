@@ -55,31 +55,51 @@ namespace Stock.DAO
 
         public static void ActualizarUltimaConexion(int idUsuario)
         {
-            connection.Close();
-            connection.Open();
-            ///PROCEDIMIENTO
-            string proceso = "ActualizarUltimaConexion";
-            MySqlCommand cmd = new MySqlCommand(proceso, connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("idUsuario_in", idUsuario);
-            DateTime Fecha = DateTime.Now;
-            cmd.Parameters.AddWithValue("FechaUltimaConexion_in", Fecha);
-            cmd.ExecuteNonQuery();
-            connection.Close();
+            try
+            {
+                connection.Close();
+                connection.Open();
+                ///PROCEDIMIENTO
+                string proceso = "ActualizarUltimaConexion";
+                MySqlCommand cmd = new MySqlCommand(proceso, connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("idUsuario_in", idUsuario);
+                DateTime Fecha = DateTime.Now;
+                cmd.Parameters.AddWithValue("FechaUltimaConexion_in", Fecha);
+                cmd.ExecuteNonQuery();
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                string msj = ex.Message;
+                string msjFinal = "Metodo: ActualizarUltimaConexion ---- '" + msj + "' ";
+                throw new Exception(msj);
+            }
         }
 
         public static void ActualizarEstadoOferta()
         {
-            DateTime FechaActual = DateTime.Now;
-            connection.Close();
-            connection.Open();
-            ///PROCEDIMIENTO
-            string proceso = "ActualizarEstadoOfertaAutomatico";
-            MySqlCommand cmd = new MySqlCommand(proceso, connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("FechaActual_in", FechaActual);
-            cmd.ExecuteNonQuery();
-            connection.Close();
+            string fecha = "";
+            try
+            {
+                DateTime FechaActual = DateTime.Now;
+                fecha = Convert.ToString(FechaActual);
+                connection.Close();
+                connection.Open();
+                ///PROCEDIMIENTO
+                string proceso = "ActualizarEstadoOfertaAutomatico";
+                MySqlCommand cmd = new MySqlCommand(proceso, connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("FechaActual_in", FechaActual);
+                cmd.ExecuteNonQuery();
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                string msj = ex.Message;
+                string msjFinal = "Metodo: ActualizarEstadoOfertaAutomatico ---- '" + msj + "' ";
+                throw new Exception(msj);
+            }
         }
 
         public static bool EditarProducto(Productos _producto, int idProductoGrillaSeleccionado)

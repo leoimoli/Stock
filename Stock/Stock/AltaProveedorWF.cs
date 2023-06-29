@@ -57,6 +57,7 @@ namespace Stock
         {
             Proveedores _proveedor = new Proveedores();
             int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
+            _proveedor.Cuit = txtCuit.Text;
             _proveedor.NombreEmpresa = txtNombreEmpresa.Text;
             _proveedor.Contacto = txtPersonaContacto.Text;
             _proveedor.Email = txtEmail.Text;

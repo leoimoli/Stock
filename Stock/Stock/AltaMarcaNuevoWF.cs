@@ -73,5 +73,10 @@ namespace Stock
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
         }
+
+        private void AltaMarcaNuevoWF_Load(object sender, EventArgs e)
+        {
+           
+        }      
     }
 }

@@ -585,7 +585,6 @@
             // PanelContenedor
             // 
             this.PanelContenedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
-            this.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelContenedor.ForeColor = System.Drawing.Color.White;
             this.PanelContenedor.Location = new System.Drawing.Point(225, 35);
             this.PanelContenedor.Name = "PanelContenedor";
@@ -674,7 +673,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(272, 17);
             this.label7.TabIndex = 6;
-            this.label7.Text = "StoCom(Sistema Stock Comercial) V-1.0.3";
+            this.label7.Text = "StoCom(Sistema Stock Comercial) V-1.0.4";
             // 
             // NewMasterWF
             // 

@@ -16,41 +16,50 @@ namespace Stock.DAO
         private static MySql.Data.MySqlClient.MySqlConnection connection = new MySqlConnection(Properties.Settings.Default.db);
         public static List<Usuarios> LoginUsuario(string usuario, string contraseña)
         {
-            connection.Close();
-            string estado = "ACTIVO";
-            connection.Open();
-            List<Entidades.Usuarios> lista = new List<Entidades.Usuarios>();
-            MySqlCommand cmd = new MySqlCommand();
-            cmd.Connection = connection;
-            DataTable Tabla = new DataTable();
-            MySqlParameter[] oParam = {
+            try
+            {
+                connection.Close();
+                string estado = "ACTIVO";
+                connection.Open();
+                List<Entidades.Usuarios> lista = new List<Entidades.Usuarios>();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla = new DataTable();
+                MySqlParameter[] oParam = {
                                       new MySqlParameter("Dni_in", usuario),
                                        new MySqlParameter("Contraseña_in", contraseña),
              new MySqlParameter("Estado_in", estado)};
-            string proceso = "LoginUsuario";
-            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
-            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
-            dt.SelectCommand.Parameters.AddRange(oParam);
-            dt.Fill(Tabla);
-            if (Tabla.Rows.Count > 0)
-            {
-                foreach (DataRow item in Tabla.Rows)
+                string proceso = "LoginUsuario";
+                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt.SelectCommand.Parameters.AddRange(oParam);
+                dt.Fill(Tabla);
+                if (Tabla.Rows.Count > 0)
                 {
-                    Entidades.Usuarios listaUsuario = new Entidades.Usuarios();
-                    listaUsuario.IdUsuario = Convert.ToInt32(item["idUsuarios"].ToString());
-                    listaUsuario.Apellido = item["txApellido"].ToString();
-                    listaUsuario.Nombre = item["txNombre"].ToString();
-                    listaUsuario.Dni = item["txDni"].ToString();
-                    listaUsuario.FechaDeAlta = Convert.ToDateTime(item["dtFechaDeAlta"].ToString());
-                    listaUsuario.FechaUltimaConexion = Convert.ToDateTime(item["dtFechaUltimaConexion"].ToString());
-                    listaUsuario.Contraseña = item["txContrasena"].ToString();
-                    listaUsuario.Estado = item["txEstado"].ToString();
-                    listaUsuario.Perfil = item["txPerfil"].ToString();
-                    lista.Add(listaUsuario);
+                    foreach (DataRow item in Tabla.Rows)
+                    {
+                        Entidades.Usuarios listaUsuario = new Entidades.Usuarios();
+                        listaUsuario.IdUsuario = Convert.ToInt32(item["idUsuarios"].ToString());
+                        listaUsuario.Apellido = item["txApellido"].ToString();
+                        listaUsuario.Nombre = item["txNombre"].ToString();
+                        listaUsuario.Dni = item["txDni"].ToString();
+                        //listaUsuario.FechaDeAlta = Convert.ToDateTime(item["dtFechaDeAlta"].ToString());
+                        //listaUsuario.FechaUltimaConexion = Convert.ToDateTime(item["dtFechaUltimaConexion"].ToString());
+                        listaUsuario.Contraseña = item["txContrasena"].ToString();
+                        listaUsuario.Estado = item["txEstado"].ToString();
+                        listaUsuario.Perfil = item["txPerfil"].ToString();
+                        lista.Add(listaUsuario);
+                    }
                 }
+                connection.Close();
+                return lista;
             }
-            connection.Close();
-            return lista;
+            catch (Exception ex)
+            {
+                string msj = ex.Message;
+                string msjFinal = "Metodo: loginUsuario ---- '" + msj + "' ";
+                throw new Exception(msj);
+            }
         }
 
         public static List<string> CargarMediosDePago()

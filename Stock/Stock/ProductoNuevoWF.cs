@@ -66,7 +66,9 @@ namespace Stock
         }
         public void CargarCombo()
         {
+
             List<string> Marcas = new List<string>();
+            cmbMarca.Items.Clear();
             Marcas = Negocio.Consultar.CargarComboMarcas();           
             foreach (string item in Marcas)
             {
@@ -81,6 +83,7 @@ namespace Stock
         public void CargarComboCategoria()
         {
             List<string> Categoria = new List<string>();
+            cmbCategoria.Items.Clear();
             Categoria = Negocio.Consultar.CargarComboCategoria();           
             foreach (string item in Categoria)
             {
@@ -161,7 +164,7 @@ namespace Stock
                         }
                         else
                         {
-                            const string message2 = "Atención: De generar un código de barra para el producto.";
+                            const string message2 = "Atención: Debe generar un código de barra para el producto.";
                             const string caption2 = "Atención";
                             var result2 = MessageBox.Show(message2, caption2,
                                                          MessageBoxButtons.OK,
@@ -180,6 +183,8 @@ namespace Stock
                                                      MessageBoxButtons.OK,
                                                      MessageBoxIcon.Asterisk);
                         LimpiarCampos();
+                        CargarCombo();
+                        CargarComboCategoria();
                         FuncionListarProductos();
                     }
                 }
@@ -197,6 +202,7 @@ namespace Stock
             chcProductoEspecial.Checked = false;
             panelCodigo.BackgroundImage = null;
             codigoStatico = null;
+            CargarComboCategoria();
         }
         private void ProgressBar()
         {
@@ -289,6 +295,7 @@ namespace Stock
                                                  MessageBoxIcon.Exclamation);
                 }
                 dgvProductos.ReadOnly = true;
+                txtCodigoBus.Clear();
             }
         }
         private void btnNuevo_Click(object sender, EventArgs e)

@@ -97,6 +97,16 @@ namespace Stock.Negocio
                                            MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
+            if (_producto.idCategoria == 0)
+            {
+
+                const string message = "El campo Categoria es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
+            }
         }
         public static bool EditarCodigo(string nuevoCodigo, int idProductoSeleccionado, string MarcaProducto)
         {

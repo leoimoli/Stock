@@ -195,7 +195,16 @@ namespace Stock
             {
                 decimal MontoEspecial = Convert.ToDecimal(txtMonto.Text);
                 int cantidadingresada = Convert.ToInt32(txtCantidad.Text);
-                _listaEspeciales[0].Cantidad = cantidadingresada;
+                if (_listaEspeciales.Count == 0)
+                {
+                    ListaProductoVenta elemento = new ListaProductoVenta();
+                    elemento.Cantidad = cantidadingresada;
+                    _listaEspeciales.Add(elemento);
+                }
+                else
+                {
+                    _listaEspeciales[0].Cantidad = cantidadingresada;
+                }
                 var lista = _listaEspeciales.First();
                 listaProductos.Add(lista);
                 lista.PrecioVenta = MontoEspecial;

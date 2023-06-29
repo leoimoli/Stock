@@ -153,10 +153,10 @@ namespace Stock
         {
             AbrirFormEnPanel(new UsuariosNuevoWF());
         }
-
         private void btnOfertas_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel(new OfertasWF());
         }
+                    
     }
 }
