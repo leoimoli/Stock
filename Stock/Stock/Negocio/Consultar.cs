@@ -21,6 +21,20 @@ namespace Stock.Negocio
             }
             return lista;
         }
+
+        public static bool ValidarProveedorExistentePorCuit(string cuit)
+        {
+            bool existe = false;
+            try
+            {
+                existe = DAO.ConsultarDao.ValidarProveedorExistentePorCuit(cuit);
+
+            }
+            catch (Exception ex)
+            { }
+            return existe;
+        }
+
         public static List<Entidades.Pagos> ListaDePagos()
         {
             {
@@ -41,7 +55,6 @@ namespace Stock.Negocio
                 return _listaPagos;
             }
         }
-
         public static List<ListaVentas> ConsultarVentasPorFechaAndCategoria(DateTime fechaDesde, DateTime fechaHasta, int idCategoria)
         {
             List<ListaVentas> _lista = new List<ListaVentas>();
@@ -55,7 +68,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<HistorialPagoProveedores> HistorialPagoAProveedores(int idMovimiento)
         {
             List<HistorialPagoProveedores> _lista = new List<HistorialPagoProveedores>();
@@ -82,7 +94,6 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static List<Ofertas> ListaOfertas()
         {
             List<Ofertas> _lista = new List<Ofertas>();
@@ -101,7 +112,6 @@ namespace Stock.Negocio
             lista = DAO.ConsultarDao.CargarComboCategoria();
             return lista;
         }
-
         public static List<ListaStock> ListarDetalleStock(int idMovimiento)
         {
             List<ListaStock> _lista = new List<ListaStock>();
@@ -151,13 +161,11 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static bool ValidarProductoEspecial(string codigoProducto)
         {
             bool EsEspecial = DAO.ConsultarDao.ValidarProductoEspecial(codigoProducto);
             return EsEspecial;
         }
-
         public static List<ListaCompras> ConsultarComprasUltimosSieteDias(DateTime fechaDesde, DateTime fechaHasta)
         {
             List<ListaCompras> _lista = new List<ListaCompras>();
@@ -171,13 +179,11 @@ namespace Stock.Negocio
             }
             return _lista;
         }
-
         public static bool ValidarOferta(List<Ofertas> lista)
         {
             bool OfertaExistente = DAO.ConsultarDao.ValidarOferta(lista);
             return OfertaExistente;
         }
-
         public static List<ListaStock> ConsultarUltimosIngresosDeStock()
         {
             List<ListaStock> _lista = new List<ListaStock>();
@@ -398,7 +404,7 @@ namespace Stock.Negocio
             }
             catch (Exception ex)
             {
-               
+
             }
             return idCategoria;
         }

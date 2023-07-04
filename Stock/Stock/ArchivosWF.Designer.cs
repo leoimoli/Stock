@@ -49,6 +49,7 @@
             this.txt4 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt2)).BeginInit();
@@ -73,7 +74,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(38, 77);
+            this.label5.Location = new System.Drawing.Point(38, 95);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(97, 13);
             this.label5.TabIndex = 129;
@@ -84,7 +85,7 @@
             this.lbl2.AutoSize = true;
             this.lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl2.ForeColor = System.Drawing.Color.White;
-            this.lbl2.Location = new System.Drawing.Point(38, 172);
+            this.lbl2.Location = new System.Drawing.Point(38, 190);
             this.lbl2.Name = "lbl2";
             this.lbl2.Size = new System.Drawing.Size(97, 13);
             this.lbl2.TabIndex = 148;
@@ -96,7 +97,7 @@
             this.lbl3.AutoSize = true;
             this.lbl3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl3.ForeColor = System.Drawing.Color.White;
-            this.lbl3.Location = new System.Drawing.Point(38, 261);
+            this.lbl3.Location = new System.Drawing.Point(38, 279);
             this.lbl3.Name = "lbl3";
             this.lbl3.Size = new System.Drawing.Size(97, 13);
             this.lbl3.TabIndex = 151;
@@ -108,7 +109,7 @@
             this.lbl4.AutoSize = true;
             this.lbl4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl4.ForeColor = System.Drawing.Color.White;
-            this.lbl4.Location = new System.Drawing.Point(38, 349);
+            this.lbl4.Location = new System.Drawing.Point(38, 367);
             this.lbl4.Name = "lbl4";
             this.lbl4.Size = new System.Drawing.Size(97, 13);
             this.lbl4.TabIndex = 154;
@@ -122,7 +123,7 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(139, 447);
+            this.btnGuardar.Location = new System.Drawing.Point(139, 465);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(124, 38);
             this.btnGuardar.TabIndex = 156;
@@ -138,7 +139,7 @@
             this.btnAdjuntar4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdjuntar4.ForeColor = System.Drawing.Color.White;
             this.btnAdjuntar4.Image = ((System.Drawing.Image)(resources.GetObject("btnAdjuntar4.Image")));
-            this.btnAdjuntar4.Location = new System.Drawing.Point(274, 336);
+            this.btnAdjuntar4.Location = new System.Drawing.Point(274, 354);
             this.btnAdjuntar4.Name = "btnAdjuntar4";
             this.btnAdjuntar4.Size = new System.Drawing.Size(60, 38);
             this.btnAdjuntar4.TabIndex = 155;
@@ -155,7 +156,7 @@
             this.btnAdjuntar3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdjuntar3.ForeColor = System.Drawing.Color.White;
             this.btnAdjuntar3.Image = ((System.Drawing.Image)(resources.GetObject("btnAdjuntar3.Image")));
-            this.btnAdjuntar3.Location = new System.Drawing.Point(274, 248);
+            this.btnAdjuntar3.Location = new System.Drawing.Point(274, 266);
             this.btnAdjuntar3.Name = "btnAdjuntar3";
             this.btnAdjuntar3.Size = new System.Drawing.Size(60, 38);
             this.btnAdjuntar3.TabIndex = 152;
@@ -172,7 +173,7 @@
             this.btnAdjuntar2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdjuntar2.ForeColor = System.Drawing.Color.White;
             this.btnAdjuntar2.Image = ((System.Drawing.Image)(resources.GetObject("btnAdjuntar2.Image")));
-            this.btnAdjuntar2.Location = new System.Drawing.Point(274, 159);
+            this.btnAdjuntar2.Location = new System.Drawing.Point(274, 177);
             this.btnAdjuntar2.Name = "btnAdjuntar2";
             this.btnAdjuntar2.Size = new System.Drawing.Size(60, 38);
             this.btnAdjuntar2.TabIndex = 149;
@@ -189,7 +190,7 @@
             this.btnAdjuntar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdjuntar1.ForeColor = System.Drawing.Color.White;
             this.btnAdjuntar1.Image = ((System.Drawing.Image)(resources.GetObject("btnAdjuntar1.Image")));
-            this.btnAdjuntar1.Location = new System.Drawing.Point(274, 64);
+            this.btnAdjuntar1.Location = new System.Drawing.Point(274, 82);
             this.btnAdjuntar1.Name = "btnAdjuntar1";
             this.btnAdjuntar1.Size = new System.Drawing.Size(60, 38);
             this.btnAdjuntar1.TabIndex = 146;
@@ -214,7 +215,7 @@
             // 
             // txt1
             // 
-            this.txt1.Location = new System.Drawing.Point(154, 43);
+            this.txt1.Location = new System.Drawing.Point(154, 61);
             this.txt1.Name = "txt1";
             this.txt1.Size = new System.Drawing.Size(100, 84);
             this.txt1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -223,7 +224,7 @@
             // 
             // txt2
             // 
-            this.txt2.Location = new System.Drawing.Point(154, 133);
+            this.txt2.Location = new System.Drawing.Point(154, 151);
             this.txt2.Name = "txt2";
             this.txt2.Size = new System.Drawing.Size(100, 84);
             this.txt2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -232,7 +233,7 @@
             // 
             // txt3
             // 
-            this.txt3.Location = new System.Drawing.Point(154, 223);
+            this.txt3.Location = new System.Drawing.Point(154, 241);
             this.txt3.Name = "txt3";
             this.txt3.Size = new System.Drawing.Size(100, 84);
             this.txt3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -241,7 +242,7 @@
             // 
             // txt4
             // 
-            this.txt4.Location = new System.Drawing.Point(154, 315);
+            this.txt4.Location = new System.Drawing.Point(154, 333);
             this.txt4.Name = "txt4";
             this.txt4.Size = new System.Drawing.Size(100, 84);
             this.txt4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -261,12 +262,23 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(58, 405);
+            this.progressBar1.Location = new System.Drawing.Point(58, 423);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(276, 23);
             this.progressBar1.TabIndex = 162;
             this.progressBar1.Value = 50;
             this.progressBar1.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(75, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(242, 13);
+            this.label1.TabIndex = 163;
+            this.label1.Text = "Atención: Formatos admitidos(.JPG .PNG)";
             // 
             // ArchivosWF
             // 
@@ -274,6 +286,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
             this.ClientSize = new System.Drawing.Size(379, 512);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.txt4);
@@ -330,5 +343,6 @@
         private System.Windows.Forms.PictureBox txt4;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label label1;
     }
 }

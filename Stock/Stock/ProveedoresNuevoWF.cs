@@ -55,7 +55,7 @@ namespace Stock
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
-            txtNombreEmpresa.Focus();
+            txtCuit.Focus();
             txtNombreEmpresa.Enabled = true;
             idProveedorSeleccionado = 0;
             Funcion = 1;

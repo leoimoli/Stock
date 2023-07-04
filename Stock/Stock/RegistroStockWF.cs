@@ -115,28 +115,63 @@ namespace Stock
         }
         private void btnCargar_Click(object sender, EventArgs e)
         {
-            Entidades.RegistroStock Entidad = CargarEntidad();
-            decimal MontoTotalProducto = Entidad.Cantidad * Entidad.ValorUnitario;
-            dgvProductos.Rows.Add(Entidad.idProducto, Entidad.CodigoProducto, Entidad.Descripcion, Entidad.Cantidad, Entidad.ValorUnitario, MontoTotalProducto);
-            txtProveedor.Enabled = false;
-            dtFechaCompra.Enabled = false;
-            txtRemito.Enabled = false;
-            txtCantidad.Clear();
-            txtValorUni.Clear();
-            txtCodigoProducto.Clear();
-            txtMarca.Clear();
-            txtDescripcion.Clear();
-            txtDescipcionBus.Focus();
-
-            decimal PrecioTotalFinal = 0;
-            foreach (DataGridViewRow row in dgvProductos.Rows)
+            try
             {
-                if (row.Cells[5].Value != null)
-                    PrecioTotalFinal += Convert.ToDecimal(row.Cells[5].Value.ToString());
+                ////// VALIDO EL PROVEEDOR.
+                if (txtProveedor.Text != "")
+                {
+                    List<Proveedores> _listaProveedor = new List<Proveedores>();
+                    _listaProveedor = DAO.ConsultarDao.BuscarProvedorPorNombre(txtProveedor.Text);
+                    if (_listaProveedor.Count == 0)
+                    {
+                        txtProveedor.Clear();
+                        txtProveedor.Focus();
+                        const string message = "El Proveedor ingresado no es valido.";
+                        const string caption = "Error";
+                        var result = MessageBox.Show(message, caption,
+                                                     MessageBoxButtons.OK,
+                                                   MessageBoxIcon.Exclamation);
+                        throw new Exception();
+                    }
+                }
+                else
+                {
+                    txtProveedor.Clear();
+                    txtProveedor.Focus();
+                    const string message = "Debe ingresar un proveedor..";
+                    const string caption = "Error";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Exclamation);
+                    throw new Exception();
+                }
+                Entidades.RegistroStock Entidad = CargarEntidad();
+                decimal MontoTotalProducto = Entidad.Cantidad * Entidad.ValorUnitario;
+                dgvProductos.Rows.Add(Entidad.idProducto, Entidad.CodigoProducto, Entidad.Descripcion, Entidad.Cantidad, Entidad.ValorUnitario, MontoTotalProducto);
+                txtProveedor.Enabled = false;
+                dtFechaCompra.Enabled = false;
+                txtRemito.Enabled = false;
+                txtCantidad.Clear();
+                txtValorUni.Clear();
+                txtCodigoProducto.Clear();
+                txtMarca.Clear();
+                txtDescripcion.Clear();
+                txtDescipcionBus.Focus();                          
+
+                decimal PrecioTotalFinal = 0;
+                foreach (DataGridViewRow row in dgvProductos.Rows)
+                {
+                    if (row.Cells[5].Value != null)
+                        PrecioTotalFinal += Convert.ToDecimal(row.Cells[5].Value.ToString());
+                }
+                string PrecioMostrar = PrecioTotalFinal.ToString("N", new CultureInfo("es-CL"));
+                //lblTotalPagarReal.Text = Convert.ToString(PrecioTotalFinal);
+                lblTotalPagarReal.Text = Convert.ToString(PrecioMostrar);
             }
-            string PrecioMostrar = PrecioTotalFinal.ToString("N", new CultureInfo("es-CL"));
-            //lblTotalPagarReal.Text = Convert.ToString(PrecioTotalFinal);
-            lblTotalPagarReal.Text = Convert.ToString(PrecioMostrar);
+            catch (Exception ex)
+            {
+                
+            }
         }
         private RegistroStock CargarEntidad()
         {
@@ -257,7 +292,7 @@ namespace Stock
                 Lista.ValorTotalDeCompra = Convert.ToDecimal(lblTotalPagarReal.Text);
                 if (chcFacturaImpaga.Checked == true)
                 {
-                    Lista.FacturaPagada = 0;                   
+                    Lista.FacturaPagada = 0;
                 }
                 else
                 {

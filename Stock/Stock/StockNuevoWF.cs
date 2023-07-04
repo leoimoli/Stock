@@ -126,7 +126,7 @@ namespace Stock
             string Fecha = dgvMovimientos.CurrentRow.Cells[1].Value.ToString();
             string Proveedor = dgvMovimientos.CurrentRow.Cells[2].Value.ToString();
             int FacturaPaga = Convert.ToInt32(dgvMovimientos.CurrentRow.Cells[3].Value.ToString());
-            this.WindowState = FormWindowState.Minimized;
+            //this.WindowState = FormWindowState.Minimized;
             VerDetalleMovimientoWF _ver = new VerDetalleMovimientoWF(idMovimiento, Fecha, Proveedor, FacturaPaga);
             _ver.Show();
         }

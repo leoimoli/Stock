@@ -58,8 +58,18 @@ namespace Stock
                     //txt1.ImageLocation = pictureBox1.Text;
                 }
                 lbl2.Visible = true;
-                txt2.Visible = true;
-                btnAdjuntar2.Visible = true;
+                if (txt1.Image != null)
+                {
+                    lbl2.Visible = true;
+                    txt2.Visible = true;
+                    btnAdjuntar2.Visible = true;
+                }
+                else
+                {
+                    lbl2.Visible = false;
+                    txt2.Visible = false;
+                    btnAdjuntar2.Visible = false;
+                }
                 urla = path;
             }
             catch (Exception ex)
@@ -96,9 +106,18 @@ namespace Stock
                     txt2.Text = path;
                     txt2.ImageLocation = pictureBox1.Text;
                 }
-                lbl3.Visible = true;
-                txt3.Visible = true;
-                btnAdjuntar3.Visible = true;
+                if (txt2.Image != null)
+                {
+                    lbl3.Visible = true;
+                    txt3.Visible = true;
+                    btnAdjuntar3.Visible = true;
+                }
+                else
+                {
+                    lbl3.Visible = false;
+                    txt3.Visible = false;
+                    btnAdjuntar3.Visible = false;
+                }
                 urla = path;
             }
             catch (Exception ex)
@@ -135,9 +154,19 @@ namespace Stock
                     txt3.Text = path;
                     txt3.ImageLocation = pictureBox1.Text;
                 }
-                lbl4.Visible = true;
-                txt4.Visible = true;
-                btnAdjuntar4.Visible = true;
+                if (txt3.Image != null)
+                {
+                    lbl4.Visible = true;
+                    txt4.Visible = true;
+                    btnAdjuntar4.Visible = true;
+                }
+                else
+                {
+                    lbl4.Visible = false;
+                    txt4.Visible = false;
+                    btnAdjuntar4.Visible = false;
+                }
+
                 urla = path;
             }
             catch (Exception ex)
@@ -186,16 +215,28 @@ namespace Stock
             try
             {
                 Archivos _archivos = CargarEntidad();
-                int CodigoRespuesta = Negocio.Stock.GuardarArchivos(_archivos);
-                if (CodigoRespuesta == 1)
+                if (txt1.Image == null & txt2.Image == null && txt3.Image == null && txt4.Image == null)
                 {
-                    ProgressBar();
-                    const string message2 = "Se registraron los archivos exitosamente.";
-                    const string caption2 = "Éxito";
-                    var result2 = MessageBox.Show(message2, caption2,
+                    const string message = "Atención: Debe adjuntar al menos un archivo para guardar.";
+                    const string caption = "Atención";
+                    var result = MessageBox.Show(message, caption,
                                                  MessageBoxButtons.OK,
-                                                 MessageBoxIcon.Asterisk);
-                    LimpiarCampos();
+                                               MessageBoxIcon.Exclamation);
+                    throw new Exception();
+                }
+                else
+                {
+                    int CodigoRespuesta = Negocio.Stock.GuardarArchivos(_archivos);
+                    if (CodigoRespuesta == 1)
+                    {
+                        ProgressBar();
+                        const string message2 = "Se registraron los archivos exitosamente.";
+                        const string caption2 = "Éxito";
+                        var result2 = MessageBox.Show(message2, caption2,
+                                                     MessageBoxButtons.OK,
+                                                     MessageBoxIcon.Asterisk);
+                        LimpiarCampos();
+                    }
                 }
             }
             catch (Exception ex)
@@ -256,7 +297,7 @@ namespace Stock
                 txt2.Image.Save(ms2, System.Drawing.Imaging.ImageFormat.Jpeg);
                 Imagen2 = ms2.ToArray();
                 _archivos.Archivo2 = Imagen2;
-            }            
+            }
 
             MemoryStream ms3 = new MemoryStream();
             if (txt3.Image != null)
@@ -265,14 +306,14 @@ namespace Stock
                 Imagen3 = ms3.ToArray();
                 _archivos.Archivo3 = Imagen3;
             }
-          
+
             MemoryStream ms4 = new MemoryStream();
             if (txt4.Image != null)
             {
                 txt3.Image.Save(ms4, System.Drawing.Imaging.ImageFormat.Jpeg);
                 Imagen4 = ms4.ToArray();
                 _archivos.Archivo4 = Imagen4;
-            }                
+            }
             return _archivos;
         }
         private void pictureBox2_Click(object sender, EventArgs e)

@@ -35,7 +35,7 @@ namespace Stock
             if (facturaPaga == 1)
             {
                 //btnHistorialDePago.Visible = false;
-               
+
             }
             else
             {
@@ -62,8 +62,6 @@ namespace Stock
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            NewMasterWF _master = new NewMasterWF();
-            _master.Show();
             Hide();
         }
         WebClient cliente = new WebClient();

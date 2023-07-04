@@ -16,10 +16,10 @@ namespace Stock.Negocio
             try
             {
                 ValidarDatos(_proveedor);
-                bool ProveedorExistente = Negocio.Consultar.ValidarProveedorExistente(_proveedor.NombreEmpresa);
+                bool ProveedorExistente = Negocio.Consultar.ValidarProveedorExistentePorCuit(_proveedor.Cuit);
                 if (ProveedorExistente == true)
                 {
-                    const string message = "Ya existe un proveedor registrado con el nombre ingresado.";
+                    const string message = "Ya existe un proveedor registrado.";
                     const string caption = "Error";
                     var result = MessageBox.Show(message, caption,
                                                  MessageBoxButtons.OK,

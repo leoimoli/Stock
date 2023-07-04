@@ -62,6 +62,38 @@ namespace Stock.DAO
             }
         }
 
+        public static bool ValidarProveedorExistentePorCuit(string cuit)
+        {
+            bool Existe = false;
+            try
+            {
+                connection.Close();               
+                connection.Open();
+                List<Entidades.Marca> lista = new List<Entidades.Marca>();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla = new DataTable();
+                MySqlParameter[] oParam = {
+                                      new MySqlParameter("Cuit_in", cuit) };
+                string proceso = "ValidarProveedorExistentePorCuit";
+                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt.SelectCommand.Parameters.AddRange(oParam);
+                dt.Fill(Tabla);
+                DataSet ds = new DataSet();
+                dt.Fill(ds, "proveedores");
+                if (Tabla.Rows.Count > 0)
+                {
+                    Existe = true;
+                }
+                connection.Close();
+                
+            }
+            catch (Exception ex)
+            { }
+            return Existe;
+        }
+
         public static List<string> CargarMediosDePago()
         {
             connection.Close();
