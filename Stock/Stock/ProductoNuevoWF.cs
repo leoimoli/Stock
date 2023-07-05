@@ -544,6 +544,6 @@ namespace Stock
             GraphicsUnit units = GraphicsUnit.Pixel;
             //e.Graphics.DrawString("Hola Mundo", font, Brushes.Black, new RectangleF(0, 10, 120, 20));
             e.Graphics.DrawImage(newImage, x, y, srcRect, units);
-        }
+        }       
     }
 }

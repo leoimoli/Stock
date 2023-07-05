@@ -42,6 +42,7 @@
             this.lblDescuentos = new System.Windows.Forms.Label();
             this.grbDescuentos = new System.Windows.Forms.GroupBox();
             this.btnCancelarDescuento1 = new System.Windows.Forms.Button();
+            this.btnDescuentos = new System.Windows.Forms.Button();
             this.btnCancelaDescuento2 = new System.Windows.Forms.Button();
             this.btnAplicarPrecio = new System.Windows.Forms.Button();
             this.btnAplicarPorcentaje = new System.Windows.Forms.Button();
@@ -49,10 +50,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtPrecioVenta = new System.Windows.Forms.TextBox();
             this.txtReditoPorcentual = new System.Windows.Forms.MaskedTextBox();
-            this.btnDescuentos = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grbDescuentos.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTotal
@@ -62,7 +64,7 @@
             this.lblTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.Color.White;
-            this.lblTotal.Location = new System.Drawing.Point(165, 82);
+            this.lblTotal.Location = new System.Drawing.Point(189, 90);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(147, 60);
             this.lblTotal.TabIndex = 58;
@@ -73,7 +75,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(17, 100);
+            this.label8.Location = new System.Drawing.Point(41, 108);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(142, 25);
             this.label8.TabIndex = 128;
@@ -84,7 +86,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(70, 179);
+            this.label1.Location = new System.Drawing.Point(94, 187);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 25);
             this.label1.TabIndex = 129;
@@ -97,7 +99,7 @@
             this.lblVuelto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblVuelto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVuelto.ForeColor = System.Drawing.Color.White;
-            this.lblVuelto.Location = new System.Drawing.Point(165, 244);
+            this.lblVuelto.Location = new System.Drawing.Point(189, 252);
             this.lblVuelto.Name = "lblVuelto";
             this.lblVuelto.Size = new System.Drawing.Size(147, 60);
             this.lblVuelto.TabIndex = 60;
@@ -108,7 +110,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(85, 262);
+            this.label2.Location = new System.Drawing.Point(109, 270);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 25);
             this.label2.TabIndex = 130;
@@ -119,7 +121,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.SeaGreen;
-            this.label3.Location = new System.Drawing.Point(128, 18);
+            this.label3.Location = new System.Drawing.Point(158, 29);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(190, 23);
             this.label3.TabIndex = 131;
@@ -142,7 +144,7 @@
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Stock.Properties.Resources.cancelar2;
-            this.pictureBox1.Location = new System.Drawing.Point(456, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(455, 11);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(26, 22);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -155,7 +157,7 @@
             this.lblEfectivo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
             this.lblEfectivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEfectivo.ForeColor = System.Drawing.Color.White;
-            this.lblEfectivo.Location = new System.Drawing.Point(165, 159);
+            this.lblEfectivo.Location = new System.Drawing.Point(189, 167);
             this.lblEfectivo.Multiline = true;
             this.lblEfectivo.Name = "lblEfectivo";
             this.lblEfectivo.Size = new System.Drawing.Size(147, 68);
@@ -169,7 +171,7 @@
             this.lblDescuentos.AutoSize = true;
             this.lblDescuentos.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescuentos.ForeColor = System.Drawing.Color.Red;
-            this.lblDescuentos.Location = new System.Drawing.Point(11, 56);
+            this.lblDescuentos.Location = new System.Drawing.Point(29, 62);
             this.lblDescuentos.Name = "lblDescuentos";
             this.lblDescuentos.Size = new System.Drawing.Size(428, 19);
             this.lblDescuentos.TabIndex = 135;
@@ -209,6 +211,22 @@
             this.toolTip1.SetToolTip(this.btnCancelarDescuento1, "Cancelar Descuento");
             this.btnCancelarDescuento1.UseVisualStyleBackColor = false;
             this.btnCancelarDescuento1.Click += new System.EventHandler(this.btnCancelarDescuento1_Click);
+            // 
+            // btnDescuentos
+            // 
+            this.btnDescuentos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnDescuentos.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnDescuentos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDescuentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDescuentos.ForeColor = System.Drawing.Color.White;
+            this.btnDescuentos.Location = new System.Drawing.Point(56, 30);
+            this.btnDescuentos.Name = "btnDescuentos";
+            this.btnDescuentos.Size = new System.Drawing.Size(164, 44);
+            this.btnDescuentos.TabIndex = 154;
+            this.btnDescuentos.Text = "(F10) Aplicar Descuento";
+            this.btnDescuentos.UseVisualStyleBackColor = false;
+            this.btnDescuentos.Visible = false;
+            this.btnDescuentos.Click += new System.EventHandler(this.btnDescuentos_Click);
             // 
             // btnCancelaDescuento2
             // 
@@ -302,21 +320,23 @@
             this.txtReditoPorcentual.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtReditoPorcentual_KeyDown);
             this.txtReditoPorcentual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
             // 
-            // btnDescuentos
+            // groupBox1
             // 
-            this.btnDescuentos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.btnDescuentos.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnDescuentos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDescuentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDescuentos.ForeColor = System.Drawing.Color.White;
-            this.btnDescuentos.Location = new System.Drawing.Point(56, 30);
-            this.btnDescuentos.Name = "btnDescuentos";
-            this.btnDescuentos.Size = new System.Drawing.Size(164, 44);
-            this.btnDescuentos.TabIndex = 154;
-            this.btnDescuentos.Text = "(F10) Aplicar Descuento";
-            this.btnDescuentos.UseVisualStyleBackColor = false;
-            this.btnDescuentos.Visible = false;
-            this.btnDescuentos.Click += new System.EventHandler(this.btnDescuentos_Click);
+            this.groupBox1.Controls.Add(this.lblVuelto);
+            this.groupBox1.Controls.Add(this.lblTotal);
+            this.groupBox1.Controls.Add(this.lblDescuentos);
+            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.lblEfectivo);
+            this.groupBox1.Location = new System.Drawing.Point(0, 5);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(484, 328);
+            this.groupBox1.TabIndex = 156;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox1_Paint);
             // 
             // VueltoNuevoWF
             // 
@@ -324,17 +344,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(487, 337);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grbDescuentos);
-            this.Controls.Add(this.lblDescuentos);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.lblEfectivo);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.lblVuelto);
-            this.Controls.Add(this.lblTotal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VueltoNuevoWF";
@@ -345,6 +357,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grbDescuentos.ResumeLayout(false);
             this.grbDescuentos.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -373,5 +387,6 @@
         private System.Windows.Forms.MaskedTextBox txtReditoPorcentual;
         private System.Windows.Forms.Button btnDescuentos;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
