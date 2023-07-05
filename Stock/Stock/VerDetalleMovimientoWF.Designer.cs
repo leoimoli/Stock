@@ -41,23 +41,25 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtProveedor = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnHistorialDePago = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.PicArchivos = new System.Windows.Forms.PictureBox();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValorUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.PicArchivos = new System.Windows.Forms.PictureBox();
-            this.btnHistorialDePago = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicArchivos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicArchivos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -69,7 +71,7 @@
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.txtProveedor);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Location = new System.Drawing.Point(26, 62);
+            this.panel2.Location = new System.Drawing.Point(6, 50);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(762, 67);
             this.panel2.TabIndex = 125;
@@ -134,6 +136,82 @@
             this.label5.TabIndex = 122;
             this.label5.Text = "Proveedor";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.SeaGreen;
+            this.label2.Location = new System.Drawing.Point(6, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(197, 23);
+            this.label2.TabIndex = 144;
+            this.label2.Text = "Detalle de Compra";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Stock.Properties.Resources.cancelar2;
+            this.pictureBox1.Location = new System.Drawing.Point(753, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(26, 22);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 62;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnHistorialDePago);
+            this.groupBox1.Controls.Add(this.pictureBox2);
+            this.groupBox1.Controls.Add(this.PicArchivos);
+            this.groupBox1.Controls.Add(this.dgvProductos);
+            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.panel2);
+            this.groupBox1.Location = new System.Drawing.Point(10, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(785, 435);
+            this.groupBox1.TabIndex = 148;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox1_Paint);
+            // 
+            // btnHistorialDePago
+            // 
+            this.btnHistorialDePago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnHistorialDePago.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnHistorialDePago.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHistorialDePago.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistorialDePago.ForeColor = System.Drawing.Color.White;
+            this.btnHistorialDePago.Location = new System.Drawing.Point(364, 379);
+            this.btnHistorialDePago.Name = "btnHistorialDePago";
+            this.btnHistorialDePago.Size = new System.Drawing.Size(136, 28);
+            this.btnHistorialDePago.TabIndex = 151;
+            this.btnHistorialDePago.Text = "Historial de Pago";
+            this.btnHistorialDePago.UseVisualStyleBackColor = false;
+            this.btnHistorialDePago.Click += new System.EventHandler(this.btnCancelarDeuda_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(639, 372);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(46, 35);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 150;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
+            // 
+            // PicArchivos
+            // 
+            this.PicArchivos.Image = global::Stock.Properties.Resources.sistema_de_archivos;
+            this.PicArchivos.Location = new System.Drawing.Point(727, 369);
+            this.PicArchivos.Name = "PicArchivos";
+            this.PicArchivos.Size = new System.Drawing.Size(41, 38);
+            this.PicArchivos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PicArchivos.TabIndex = 149;
+            this.PicArchivos.TabStop = false;
+            this.toolTip1.SetToolTip(this.PicArchivos, "Ver Archivos");
+            this.PicArchivos.Visible = false;
+            this.PicArchivos.Click += new System.EventHandler(this.PicArchivos_Click);
+            // 
             // dgvProductos
             // 
             this.dgvProductos.AllowUserToAddRows = false;
@@ -166,7 +244,7 @@
             this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProductos.EnableHeadersVisualStyles = false;
             this.dgvProductos.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvProductos.Location = new System.Drawing.Point(26, 146);
+            this.dgvProductos.Location = new System.Drawing.Point(9, 138);
             this.dgvProductos.Name = "dgvProductos";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
@@ -180,7 +258,7 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
             this.dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvProductos.Size = new System.Drawing.Size(759, 225);
-            this.dgvProductos.TabIndex = 143;
+            this.dgvProductos.TabIndex = 148;
             // 
             // idProducto
             // 
@@ -212,79 +290,13 @@
             this.ValorUnitario.HeaderText = "Valor Unitario";
             this.ValorUnitario.Name = "ValorUnitario";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.SeaGreen;
-            this.label2.Location = new System.Drawing.Point(23, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(150, 18);
-            this.label2.TabIndex = 144;
-            this.label2.Text = "Detalle de Compra";
-            // 
-            // PicArchivos
-            // 
-            this.PicArchivos.Image = global::Stock.Properties.Resources.sistema_de_archivos;
-            this.PicArchivos.Location = new System.Drawing.Point(744, 377);
-            this.PicArchivos.Name = "PicArchivos";
-            this.PicArchivos.Size = new System.Drawing.Size(41, 38);
-            this.PicArchivos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PicArchivos.TabIndex = 145;
-            this.PicArchivos.TabStop = false;
-            this.toolTip1.SetToolTip(this.PicArchivos, "Ver Archivos");
-            this.PicArchivos.Visible = false;
-            this.PicArchivos.Click += new System.EventHandler(this.PicArchivos_Click);
-            // 
-            // btnHistorialDePago
-            // 
-            this.btnHistorialDePago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.btnHistorialDePago.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnHistorialDePago.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHistorialDePago.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHistorialDePago.ForeColor = System.Drawing.Color.White;
-            this.btnHistorialDePago.Location = new System.Drawing.Point(381, 387);
-            this.btnHistorialDePago.Name = "btnHistorialDePago";
-            this.btnHistorialDePago.Size = new System.Drawing.Size(136, 28);
-            this.btnHistorialDePago.TabIndex = 147;
-            this.btnHistorialDePago.Text = "Historial de Pago";
-            this.btnHistorialDePago.UseVisualStyleBackColor = false;
-            this.btnHistorialDePago.Click += new System.EventHandler(this.btnCancelarDeuda_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(656, 380);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(46, 35);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 146;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Visible = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Stock.Properties.Resources.cancelar2;
-            this.pictureBox1.Location = new System.Drawing.Point(771, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(26, 22);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 62;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // VerDetalleMovimientoWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnHistorialDePago);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.PicArchivos);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.dgvProductos);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerDetalleMovimientoWF";
@@ -294,12 +306,13 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VerDetalleMovimientoWF_MouseDown);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicArchivos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicArchivos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -312,16 +325,17 @@
         private System.Windows.Forms.TextBox txtFecha;
         private System.Windows.Forms.TextBox txtRemito;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnHistorialDePago;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox PicArchivos;
         private System.Windows.Forms.DataGridView dgvProductos;
         private System.Windows.Forms.DataGridViewTextBoxColumn idProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorUnitario;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox PicArchivos;
-        private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button btnHistorialDePago;
     }
 }
