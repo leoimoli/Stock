@@ -42,6 +42,8 @@ namespace Stock
                     resultado = Negocio.Consultar.ConsultarVentasPorFecha(FechaDesde, FechaHasta);
                     if (resultado.Count > 0)
                     {
+                        ReportesDao.EliminarVentasTemporales(Sesion.UsuarioLogueado.IdUsuario);
+                        bool exito = ReportesDao.GenerarTablaTemporalDetalleVenta(resultado, Sesion.UsuarioLogueado.IdUsuario);
                         ArmoGrillaVentas(resultado);
                     }
                     else { }
@@ -52,6 +54,8 @@ namespace Stock
                     resultado = Negocio.Consultar.ConsultarVentasPorFechaAndCategoria(FechaDesde, FechaHasta, idCategoria);
                     if (resultado.Count > 0)
                     {
+                        ReportesDao.EliminarVentasTemporales(Sesion.UsuarioLogueado.IdUsuario);
+                        bool exito = ReportesDao.GenerarTablaTemporalDetalleVenta(resultado, Sesion.UsuarioLogueado.IdUsuario);
                         ArmoGrillaVentas(resultado);
                     }
                     else { }
