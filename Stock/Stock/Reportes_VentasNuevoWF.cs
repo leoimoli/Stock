@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +33,7 @@ namespace Stock
                 string Segundos = "59";
 
                 DateTime Fecha = dtFechaHasta.Value.Date;
-                string FechaArmada = Convert.ToString(Fecha.ToShortDateString() + " "+ Hora + ":" + Minutos+ ":" + Segundos);
+                string FechaArmada = Convert.ToString(Fecha.ToShortDateString() + " " + Hora + ":" + Minutos + ":" + Segundos);
                 DateTime FechaHasta = Convert.ToDateTime(FechaArmada);
                 int idCategoria = Consultar.BuscarIdCategoria(cmbCategoria.Text);
                 if (cmbCategoria.Text == "Seleccione")
@@ -111,6 +112,9 @@ namespace Stock
                 resultado = Negocio.Consultar.ConsultarVentasDelDia();
                 if (resultado.Count > 0)
                 {
+                    ReportesDao.EliminarVentasTemporales(Sesion.UsuarioLogueado.IdUsuario);
+                    bool exito = ReportesDao.GenerarTablaTemporalDetalleVenta(resultado, Sesion.UsuarioLogueado.IdUsuario);
+
                     ArmoGrillaVentas(resultado);
                 }
                 else
@@ -123,6 +127,17 @@ namespace Stock
         }
         private void SinResultados()
         {
+            decimal Efectivo = 0;
+            decimal Debito = 0;
+            decimal Credito = 0;
+            decimal CuentaDni = 0;
+            decimal MercadoPago = 0;
+            txtEfectivo.Text = Efectivo.ToString("N", new CultureInfo("es-CL"));
+            txtDebito.Text = Debito.ToString("N", new CultureInfo("es-CL"));
+            txtCredito.Text = Credito.ToString("N", new CultureInfo("es-CL"));
+            txtCuentaDni.Text = CuentaDni.ToString("N", new CultureInfo("es-CL"));
+            txtMercadoPago.Text = MercadoPago.ToString("N", new CultureInfo("es-CL"));
+
             LimpiarCampos();
             const string message2 = "No se encontraron resultados disponibles.";
             const string caption2 = "Atención";
@@ -132,6 +147,7 @@ namespace Stock
         }
         private void ArmoGrillaVentas(List<ListaVentas> resultado)
         {
+            List<DetalleCajaDiaria> ListaVentasDiarias = new List<DetalleCajaDiaria>();
             PanelResultado.Visible = true;
             decimal TotalVentas = 0;
             foreach (var item in resultado)
@@ -140,6 +156,47 @@ namespace Stock
                 TotalVentas = Convert.ToDecimal(TotalVentas + item.PrecioVenta);
                 dgvVentas.Rows.Add(item.idVenta, fecha, item.PrecioVenta);
             }
+
+            decimal Efectivo = 0;
+            decimal Debito = 0;
+            decimal Credito = 0;
+            decimal CuentaDni = 0;
+            decimal MercadoPago = 0;
+            int CantidadProductos = 0;
+            ListaVentasDiarias = ReportesDao.BuscarDetalleVenta(Sesion.UsuarioLogueado.IdUsuario);
+            if (ListaVentasDiarias.Count > 0)
+            {
+                foreach (var item in ListaVentasDiarias)
+                {
+                    groupBox1.Visible = true;
+                    if (item.medio == "EFECTIVO")
+                    {
+                        Efectivo = Efectivo + Convert.ToDecimal(item.precio);
+                    }
+                    if (item.medio == "DEBITO")
+                    {
+                        Debito = Debito + Convert.ToDecimal(item.precio);
+                    }
+                    if (item.medio == "CREDITO")
+                    {
+                        Credito = Credito + Convert.ToDecimal(item.precio);
+                    }
+                    if (item.medio == "CUENTA DNI PROVINCIA")
+                    {
+                        CuentaDni = CuentaDni + Convert.ToDecimal(item.precio);
+                    }
+                    if (item.medio == "MERCADO PAGO")
+                    {
+                        MercadoPago = MercadoPago + Convert.ToDecimal(item.precio);
+                    }
+                }
+            }
+            txtEfectivo.Text = Efectivo.ToString("N", new CultureInfo("es-CL"));
+            txtDebito.Text = Debito.ToString("N", new CultureInfo("es-CL"));
+            txtCredito.Text = Credito.ToString("N", new CultureInfo("es-CL"));
+            txtCuentaDni.Text = CuentaDni.ToString("N", new CultureInfo("es-CL"));
+            txtMercadoPago.Text = MercadoPago.ToString("N", new CultureInfo("es-CL"));
+
             /// Total de Ventas                 
             lblTotalVentas.Text = Convert.ToString(resultado.Count);
             /// Caja de Ventas
@@ -158,6 +215,8 @@ namespace Stock
             try
             {
                 resultado = Negocio.Consultar.ConsultarVentasDeAyer();
+                ReportesDao.EliminarVentasTemporales(Sesion.UsuarioLogueado.IdUsuario);
+                bool exito = ReportesDao.GenerarTablaTemporalDetalleVenta(resultado, Sesion.UsuarioLogueado.IdUsuario);
                 if (resultado.Count > 0)
                 {
                     ArmoGrillaVentas(resultado);
@@ -178,6 +237,8 @@ namespace Stock
             try
             {
                 resultado = Negocio.Consultar.ConsultarVentasUltimosSieteDias(FechaDesde, FechaHasta);
+                ReportesDao.EliminarVentasTemporales(Sesion.UsuarioLogueado.IdUsuario);
+                bool exito = ReportesDao.GenerarTablaTemporalDetalleVenta(resultado, Sesion.UsuarioLogueado.IdUsuario);
                 if (resultado.Count > 0)
                 {
                     ArmoGrillaVentas(resultado);
@@ -198,6 +259,8 @@ namespace Stock
             try
             {
                 resultado = Negocio.Consultar.ConsultarVentasUltimos30Dias(FechaDesde, FechaHasta);
+                ReportesDao.EliminarVentasTemporales(Sesion.UsuarioLogueado.IdUsuario);
+                bool exito = ReportesDao.GenerarTablaTemporalDetalleVenta(resultado, Sesion.UsuarioLogueado.IdUsuario);
                 if (resultado.Count > 0)
                 {
                     ArmoGrillaVentas(resultado);
@@ -219,6 +282,8 @@ namespace Stock
             try
             {
                 resultado = Negocio.Consultar.ConsultarVentasMesAnterior(Mes);
+                ReportesDao.EliminarVentasTemporales(Sesion.UsuarioLogueado.IdUsuario);
+                bool exito = ReportesDao.GenerarTablaTemporalDetalleVenta(resultado, Sesion.UsuarioLogueado.IdUsuario);
                 if (resultado.Count > 0)
                 {
                     ArmoGrillaVentas(resultado);
@@ -239,6 +304,8 @@ namespace Stock
             try
             {
                 resultado = Negocio.Consultar.ConsultarVentasMesAnterior(Mes);
+                ReportesDao.EliminarVentasTemporales(Sesion.UsuarioLogueado.IdUsuario);
+                bool exito = ReportesDao.GenerarTablaTemporalDetalleVenta(resultado, Sesion.UsuarioLogueado.IdUsuario);
                 if (resultado.Count > 0)
                 {
                     ArmoGrillaVentas(resultado);
@@ -326,6 +393,44 @@ namespace Stock
 
                 }
 
+            }
+        }
+
+        private void Reportes_VentasNuevoWF_Paint(object sender, PaintEventArgs e)
+        {
+            GroupBox box = sender as GroupBox;
+            DrawGroupBox(box, e.Graphics, Color.Red, Color.Transparent);
+        }
+        private void DrawGroupBox(GroupBox box, Graphics g, Color textColor, Color borderColor)
+        {
+            if (box != null)
+            {
+                Brush textBrush = new SolidBrush(textColor);
+                Brush borderBrush = new SolidBrush(borderColor);
+                Pen borderPen = new Pen(borderBrush);
+                SizeF strSize = g.MeasureString(box.Text, box.Font);
+                Rectangle rect = new Rectangle(box.ClientRectangle.X,
+                                               box.ClientRectangle.Y + (int)(strSize.Height / 2),
+                                               box.ClientRectangle.Width - 1,
+                                               box.ClientRectangle.Height - (int)(strSize.Height / 2) - 1);
+
+                // Clear text and border
+                g.Clear(this.BackColor);
+
+                // Draw text
+                g.DrawString(box.Text, box.Font, textBrush, box.Padding.Left, 0);
+
+                // Drawing Border
+                //Left
+                g.DrawLine(borderPen, rect.Location, new Point(rect.X, rect.Y + rect.Height));
+                //Right
+                g.DrawLine(borderPen, new Point(rect.X + rect.Width, rect.Y), new Point(rect.X + rect.Width, rect.Y + rect.Height));
+                //Bottom
+                g.DrawLine(borderPen, new Point(rect.X, rect.Y + rect.Height), new Point(rect.X + rect.Width, rect.Y + rect.Height));
+                //Top1
+                g.DrawLine(borderPen, new Point(rect.X, rect.Y), new Point(rect.X + box.Padding.Left, rect.Y));
+                //Top2
+                g.DrawLine(borderPen, new Point(rect.X + box.Padding.Left + (int)(strSize.Width), rect.Y), new Point(rect.X + rect.Width, rect.Y));
             }
         }
     }

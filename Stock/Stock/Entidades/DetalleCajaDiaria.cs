@@ -15,6 +15,6 @@ namespace Stock.Entidades
         public string producto { get; set; }
         public string categoria { get; set; }
         public string medio { get; set; }
-        public decimal MontoDescuento { get; set; }
+        public decimal MontoDescuento { get; set; }    
     }
 }

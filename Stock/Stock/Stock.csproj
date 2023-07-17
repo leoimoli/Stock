@@ -721,6 +721,13 @@
     <None Include="Resources\error.png" />
     <None Include="Resources\codigo-de-barras3.png" />
     <None Include="Resources\impresora.png" />
+    <None Include="Resources\play.png" />
+    <None Include="Resources\Efectivo_Icono.png" />
+    <None Include="Resources\Debito_Icono.png" />
+    <None Include="Resources\Credito_Icono.png" />
+    <None Include="Resources\CuentaDNI_Icono.png" />
+    <None Include="Resources\MercadoPago_Icono.png" />
+    <None Include="Resources\MercadoPago_Icono %282%29.png" />
     <Content Include="StoCom_logo_2.ico" />
     <None Include="Resources\StoCom_logo_21.png" />
     <None Include="Resources\StoCom_logo_2.png" />

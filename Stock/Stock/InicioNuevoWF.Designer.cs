@@ -74,6 +74,17 @@
             this.lblDia = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtCuentaDni = new System.Windows.Forms.Button();
+            this.txtEfectivo = new System.Windows.Forms.Button();
+            this.txtMercadoPago = new System.Windows.Forms.Button();
+            this.txtDebito = new System.Windows.Forms.Button();
+            this.txtCredito = new System.Windows.Forms.Button();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -90,6 +101,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.panel13.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,7 +112,7 @@
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.panel3);
-            this.panel1.Location = new System.Drawing.Point(14, 69);
+            this.panel1.Location = new System.Drawing.Point(14, 72);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(651, 144);
             this.panel1.TabIndex = 0;
@@ -351,7 +363,7 @@
             this.panel7.Controls.Add(this.lblContadorUsuarios);
             this.panel7.Controls.Add(this.button6);
             this.panel7.Controls.Add(this.pictureBox6);
-            this.panel7.Location = new System.Drawing.Point(668, 262);
+            this.panel7.Location = new System.Drawing.Point(694, 262);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(87, 88);
             this.panel7.TabIndex = 5;
@@ -399,7 +411,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(19, 42);
+            this.label1.Location = new System.Drawing.Point(19, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(207, 24);
             this.label1.TabIndex = 2;
@@ -439,7 +451,7 @@
             this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProductos.EnableHeadersVisualStyles = false;
             this.dgvProductos.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvProductos.Location = new System.Drawing.Point(12, 247);
+            this.dgvProductos.Location = new System.Drawing.Point(14, 246);
             this.dgvProductos.Name = "dgvProductos";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
@@ -453,7 +465,7 @@
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
             this.dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvProductos.Size = new System.Drawing.Size(644, 286);
+            this.dgvProductos.Size = new System.Drawing.Size(644, 230);
             this.dgvProductos.TabIndex = 3;
             // 
             // Codigo
@@ -502,7 +514,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(19, 220);
+            this.label8.Location = new System.Drawing.Point(19, 219);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(108, 24);
             this.label8.TabIndex = 4;
@@ -551,9 +563,174 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "StoCom(Sistema Stock Comercial) V-1.0.0";
             // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.button9.FlatAppearance.BorderSize = 0;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.ForeColor = System.Drawing.Color.White;
+            this.button9.Location = new System.Drawing.Point(16, 11);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(103, 26);
+            this.button9.TabIndex = 1;
+            this.button9.Text = "Efectivo";
+            this.button9.UseVisualStyleBackColor = false;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.ForeColor = System.Drawing.Color.White;
+            this.button7.Location = new System.Drawing.Point(149, 11);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(103, 26);
+            this.button7.TabIndex = 51;
+            this.button7.Text = "Debito";
+            this.button7.UseVisualStyleBackColor = false;
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.button10.FlatAppearance.BorderSize = 0;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.ForeColor = System.Drawing.Color.White;
+            this.button10.Location = new System.Drawing.Point(281, 11);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(103, 26);
+            this.button10.TabIndex = 53;
+            this.button10.Text = "Credito";
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button12
+            // 
+            this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.button12.FlatAppearance.BorderSize = 0;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button12.ForeColor = System.Drawing.Color.White;
+            this.button12.Location = new System.Drawing.Point(407, 11);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(115, 26);
+            this.button12.TabIndex = 55;
+            this.button12.Text = "Cuenta DNI";
+            this.button12.UseVisualStyleBackColor = false;
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.button14.FlatAppearance.BorderSize = 0;
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button14.ForeColor = System.Drawing.Color.White;
+            this.button14.Location = new System.Drawing.Point(537, 11);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(119, 26);
+            this.button14.TabIndex = 57;
+            this.button14.Text = "Mercado Pago";
+            this.button14.UseVisualStyleBackColor = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtCuentaDni);
+            this.groupBox1.Controls.Add(this.button14);
+            this.groupBox1.Controls.Add(this.txtEfectivo);
+            this.groupBox1.Controls.Add(this.txtMercadoPago);
+            this.groupBox1.Controls.Add(this.button9);
+            this.groupBox1.Controls.Add(this.button12);
+            this.groupBox1.Controls.Add(this.txtDebito);
+            this.groupBox1.Controls.Add(this.button7);
+            this.groupBox1.Controls.Add(this.button10);
+            this.groupBox1.Controls.Add(this.txtCredito);
+            this.groupBox1.Location = new System.Drawing.Point(9, 487);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(663, 83);
+            this.groupBox1.TabIndex = 59;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox1_Paint);
+            // 
+            // txtCuentaDni
+            // 
+            this.txtCuentaDni.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.txtCuentaDni.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.txtCuentaDni.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.txtCuentaDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCuentaDni.ForeColor = System.Drawing.Color.White;
+            this.txtCuentaDni.Image = global::Stock.Properties.Resources.CuentaDNI_Icono;
+            this.txtCuentaDni.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtCuentaDni.Location = new System.Drawing.Point(399, 41);
+            this.txtCuentaDni.Name = "txtCuentaDni";
+            this.txtCuentaDni.Size = new System.Drawing.Size(128, 34);
+            this.txtCuentaDni.TabIndex = 56;
+            this.txtCuentaDni.UseVisualStyleBackColor = false;
+            // 
+            // txtEfectivo
+            // 
+            this.txtEfectivo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.txtEfectivo.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.txtEfectivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.txtEfectivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEfectivo.ForeColor = System.Drawing.Color.White;
+            this.txtEfectivo.Image = global::Stock.Properties.Resources.Efectivo_Icono;
+            this.txtEfectivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtEfectivo.Location = new System.Drawing.Point(3, 41);
+            this.txtEfectivo.Name = "txtEfectivo";
+            this.txtEfectivo.Size = new System.Drawing.Size(128, 34);
+            this.txtEfectivo.TabIndex = 50;
+            this.txtEfectivo.UseVisualStyleBackColor = false;
+            // 
+            // txtMercadoPago
+            // 
+            this.txtMercadoPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.txtMercadoPago.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.txtMercadoPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.txtMercadoPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMercadoPago.ForeColor = System.Drawing.Color.White;
+            this.txtMercadoPago.Image = global::Stock.Properties.Resources.MercadoPago_Icono__2_;
+            this.txtMercadoPago.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtMercadoPago.Location = new System.Drawing.Point(532, 41);
+            this.txtMercadoPago.Name = "txtMercadoPago";
+            this.txtMercadoPago.Size = new System.Drawing.Size(128, 34);
+            this.txtMercadoPago.TabIndex = 58;
+            this.txtMercadoPago.UseVisualStyleBackColor = false;
+            // 
+            // txtDebito
+            // 
+            this.txtDebito.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.txtDebito.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.txtDebito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.txtDebito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDebito.ForeColor = System.Drawing.Color.White;
+            this.txtDebito.Image = global::Stock.Properties.Resources.Debito_Icono;
+            this.txtDebito.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtDebito.Location = new System.Drawing.Point(136, 41);
+            this.txtDebito.Name = "txtDebito";
+            this.txtDebito.Size = new System.Drawing.Size(128, 34);
+            this.txtDebito.TabIndex = 52;
+            this.txtDebito.UseVisualStyleBackColor = false;
+            // 
+            // txtCredito
+            // 
+            this.txtCredito.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.txtCredito.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.txtCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.txtCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCredito.ForeColor = System.Drawing.Color.White;
+            this.txtCredito.Image = global::Stock.Properties.Resources.Credito_Icono;
+            this.txtCredito.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtCredito.Location = new System.Drawing.Point(268, 41);
+            this.txtCredito.Name = "txtCredito";
+            this.txtCredito.Size = new System.Drawing.Size(128, 34);
+            this.txtCredito.TabIndex = 54;
+            this.txtCredito.UseVisualStyleBackColor = false;
+            // 
             // pictureBox7
             // 
-            this.pictureBox7.Location = new System.Drawing.Point(671, 69);
+            this.pictureBox7.Location = new System.Drawing.Point(671, 72);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(403, 187);
             this.pictureBox7.TabIndex = 8;
@@ -565,6 +742,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(1099, 564);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.panel13);
@@ -580,6 +758,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InicioNuevoWF";
             this.Load += new System.EventHandler(this.InicioNuevoWF_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox1_Paint);
             this.panel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -596,6 +775,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -645,5 +825,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn Medio;
+        private System.Windows.Forms.Button txtEfectivo;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button txtDebito;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button txtCredito;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button txtCuentaDni;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button txtMercadoPago;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

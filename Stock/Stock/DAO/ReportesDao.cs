@@ -141,6 +141,143 @@ namespace Stock.DAO
             connection.Close();
             return _listaventas;
         }
+
+        public static void EliminarVentasTemporales(int idUsuario)
+        {
+            try
+            {
+                connection.Close();
+                connection.Open();
+                string proceso = "SP_Eliminar_VentaTemporal";
+                MySqlCommand cmd = new MySqlCommand(proceso, connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("idUsuario_in", idUsuario);
+                cmd.ExecuteNonQuery();
+                connection.Close();
+            }
+            catch (Exception ex)
+            { }
+        }
+
+        public static List<DetalleCajaDiaria> BuscarDetalleVenta(int idUsuario)
+        {
+            List<DetalleCajaDiaria> cajaDiaria = new List<DetalleCajaDiaria>();
+            connection.Close();
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("idUsuario_in", idUsuario) };
+
+            string proceso = "SP_Consultar_BuscarDetalleVentaPorId";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            List<int> ListaidDescuento = new List<int>();
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    DetalleCajaDiaria caja = new DetalleCajaDiaria();
+                    caja.fecha = item["FECHA"].ToString();
+
+                    DateTime fecha = Convert.ToDateTime(item["FECHA"].ToString());
+
+                    caja.fecha = fecha.Day.ToString().PadLeft(2, '0') +
+                           "/" + fecha.Month.ToString().PadLeft(2, '0') +
+                           "/" + fecha.Year.ToString().PadLeft(4, '0');
+
+                    caja.cantidad = item["CANTIDAD"].ToString();
+                    caja.precio = item["PRECIO"].ToString();
+                    caja.producto = item["PRODUCTO"].ToString();
+                    caja.categoria = item["CATEGORIA"].ToString();
+                    caja.medio = item["MEDIO"].ToString();
+                    caja.idventa = item["ID"].ToString();
+
+                    List<Descuentos> _listaDescuento = ObtenerDescuentos(caja.idventa);
+
+                    if (_listaDescuento.Count > 0)
+                    {
+                        foreach (var itemDescuentos in _listaDescuento)
+                        {
+                            bool yaExiste = ListaidDescuento.Any(x => x == itemDescuentos.idDescuento);
+                            if (yaExiste == false && caja.producto == itemDescuentos.Descripcion)
+                            {
+                                decimal Precio = Convert.ToDecimal(caja.precio) - itemDescuentos.Descuento;
+                                caja.precio = Convert.ToString(Precio);
+                                ListaidDescuento.Add(itemDescuentos.idDescuento);
+                            }
+                        }
+                    }
+                    cajaDiaria.Add(caja);
+                }
+            }
+            connection.Close();
+            return cajaDiaria;
+        }
+        private static List<Descuentos> ObtenerDescuentos(string idventa)
+        {
+            List<Descuentos> _lista = new List<Descuentos>();
+            try
+            {
+                connection.Close();
+                connection.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla = new DataTable();
+                MySqlParameter[] oParam = { new MySqlParameter("idventa_in", idventa) };
+                string proceso = "ObtenerDescuentosEnVentas";
+                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt.SelectCommand.Parameters.AddRange(oParam);
+                dt.Fill(Tabla);
+                if (Tabla.Rows.Count > 0)
+                {
+                    foreach (DataRow item in Tabla.Rows)
+                    {
+                        if (item["idDescuento"].ToString() != "")
+                        {
+                            Descuentos listaProducto = new Descuentos();
+                            listaProducto.idDescuento = Convert.ToInt32(item["idDescuento"].ToString());
+                            listaProducto.Descripcion = item["Descripcion"].ToString();
+                            listaProducto.Descuento = Convert.ToDecimal(item["Descuento"].ToString());
+                            _lista.Add(listaProducto);
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return _lista;
+        }
+        public static bool GenerarTablaTemporalDetalleVenta(List<ListaVentas> resultado, int idUsuario)
+        {
+            bool Exito = false;
+            try
+            {
+                foreach (var item in resultado)
+                {
+                    connection.Close();
+                    connection.Open();
+                    string proceso = "SP_Insertar_InsertarVentaTemporal";
+                    MySqlCommand cmd = new MySqlCommand(proceso, connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("idVenta_in", item.idVenta);
+                    cmd.Parameters.AddWithValue("idUsuario_in", idUsuario);
+                    cmd.ExecuteNonQuery();
+                }
+                Exito = true;
+                connection.Close();
+            }
+            catch (Exception ex)
+            { }
+            return Exito;
+        }
         public static List<Reporte_Compras> CajaDeCompras()
         {
             connection.Close();

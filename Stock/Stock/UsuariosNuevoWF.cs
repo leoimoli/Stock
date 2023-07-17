@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BarcodeLib;
+using Stock.DAO;
 using Stock.Entidades;
 
 namespace Stock
@@ -174,8 +175,20 @@ namespace Stock
                 txtApellido.Text = Ape;
                 txtNombre.Text = Nom;
                 txtDni.Text = dgvUsuarios.CurrentRow.Cells[2].Value.ToString();
-                txtContraseña.Enabled = false;
-                txtRepitaContraseña.Enabled = false;
+
+                if (Sesion.UsuarioLogueado.Perfil == "1" || Sesion.UsuarioLogueado.Perfil == "SUPER ADMIN")
+                {
+                    Usuarios _usuario = ConsultarDao.ListaUsuarioPorId(idUsuarioSeleccionado);
+                    txtContraseña.Text = _usuario.Contraseña;
+                    txtRepitaContraseña.Text = _usuario.Contraseña;
+                    txtContraseña.Enabled = true;
+                    txtRepitaContraseña.Enabled = true;
+                }
+                else
+                {
+                    txtContraseña.Enabled = false;
+                    txtRepitaContraseña.Enabled = false;
+                }
                 chcActivo.Visible = true;
                 chcInactivo.Visible = true;
                 lblEstado.Visible = true;
@@ -249,6 +262,7 @@ namespace Stock
             _usuario.Dni = txtDni.Text;
             _usuario.Apellido = txtApellido.Text;
             _usuario.Nombre = txtNombre.Text;
+            _usuario.Contraseña = txtContraseña.Text;
             if (cmbPerfil.Text == "ADMINISTRADOR")
             { _usuario.Perfil = "1"; }
             if (cmbPerfil.Text == "OPERADOR")
@@ -343,7 +357,7 @@ namespace Stock
             bool CamposHabilitados = false;
             inhabilitarCampos(CamposHabilitados);
 
-            string CodigoArmado = "8722" +  txtDni.Text;
+            string CodigoArmado = "8722" + txtDni.Text;
             codigoStaticoAnulacion = CodigoArmado;
             string Contenido = CodigoArmado;
             Barcode codigo = new Barcode();
@@ -384,7 +398,7 @@ namespace Stock
             float x = 0;
             float y = 0;
             RectangleF srcRect = new RectangleF(0.0F, -20.0F, 500.0F, 150.0F);
-            GraphicsUnit units = GraphicsUnit.Pixel;            
+            GraphicsUnit units = GraphicsUnit.Pixel;
             e.Graphics.DrawImage(newImage, x, y, srcRect, units);
         }
     }

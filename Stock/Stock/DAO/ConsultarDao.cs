@@ -67,7 +67,7 @@ namespace Stock.DAO
             bool Existe = false;
             try
             {
-                connection.Close();               
+                connection.Close();
                 connection.Open();
                 List<Entidades.Marca> lista = new List<Entidades.Marca>();
                 MySqlCommand cmd = new MySqlCommand();
@@ -87,7 +87,7 @@ namespace Stock.DAO
                     Existe = true;
                 }
                 connection.Close();
-                
+
             }
             catch (Exception ex)
             { }
@@ -151,6 +151,39 @@ namespace Stock.DAO
             }
             connection.Close();
             return lista;
+        }
+
+        public static Usuarios ListaUsuarioPorId(int idUsuarioSeleccionado)
+        {
+            connection.Close();
+            connection.Open();
+            Entidades.Usuarios listaUsuario = new Entidades.Usuarios();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("idUsuarioSeleccionado_in", idUsuarioSeleccionado) };
+            string proceso = "ListaUsuarioPorId";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    listaUsuario.IdUsuario = Convert.ToInt32(item["idUsuarios"].ToString());
+                    listaUsuario.Apellido = item["txApellido"].ToString();
+                    listaUsuario.Nombre = item["txNombre"].ToString();
+                    listaUsuario.Dni = item["txDni"].ToString();
+                    listaUsuario.FechaDeAlta = Convert.ToDateTime(item["dtFechaDeAlta"].ToString());
+                    listaUsuario.FechaUltimaConexion = Convert.ToDateTime(item["dtFechaUltimaConexion"].ToString());
+                    listaUsuario.Contraseña = item["txContrasena"].ToString();
+                    listaUsuario.Estado = item["txEstado"].ToString();
+                    listaUsuario.Perfil = item["txPerfil"].ToString();
+                }
+            }
+            connection.Close();
+            return listaUsuario;
         }
 
         public static List<FechasFestivas> BuscarFechasFestivas()

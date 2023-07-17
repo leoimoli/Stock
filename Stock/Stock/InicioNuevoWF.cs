@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -162,6 +163,11 @@ namespace Stock
 
         private void ObtengoCajaDiaria()
         {
+            decimal Efectivo = 0;
+            decimal Debito = 0;
+            decimal Credito = 0;
+            decimal CuentaDni = 0;
+            decimal MercadoPago = 0;
             List<DetalleCajaDiaria> ListaVentasDiarias = new List<DetalleCajaDiaria>();
             List<DetalleCajaDiaria> ListaVentasDiariasFinal = new List<DetalleCajaDiaria>();
             // Completo Grilla con informacion para las ventas diarias.
@@ -196,9 +202,33 @@ namespace Stock
                         detalle.precio = (decimal.Parse(detalle.precio) + decimal.Parse(item.precio)).ToString();
                     }
                     ListaVentasDiariasFinal.Add(item);
+                    if (item.medio == "EFECTIVO")
+                    {
+                        Efectivo = Efectivo + Convert.ToDecimal(item.precio);
+                    }
+                    if (item.medio == "DEBITO")
+                    {
+                        Debito = Debito + Convert.ToDecimal(item.precio);
+                    }
+                    if (item.medio == "CREDITO")
+                    {
+                        Credito = Credito + Convert.ToDecimal(item.precio);
+                    }
+                    if (item.medio == "CUENTA DNI PROVINCIA")
+                    {
+                        CuentaDni = CuentaDni + Convert.ToDecimal(item.precio);
+                    }
+                    if (item.medio == "MERCADO PAGO")
+                    {
+                        MercadoPago = MercadoPago + Convert.ToDecimal(item.precio);
+                    }
                 }
-
                 ListaVentasDiariasFinal.Add(detalle);
+                txtEfectivo.Text = Efectivo.ToString("N", new CultureInfo("es-CL"));
+                txtDebito.Text = Debito.ToString("N", new CultureInfo("es-CL"));
+                txtCredito.Text = Credito.ToString("N", new CultureInfo("es-CL"));
+                txtCuentaDni.Text = CuentaDni.ToString("N", new CultureInfo("es-CL"));
+                txtMercadoPago.Text = MercadoPago.ToString("N", new CultureInfo("es-CL"));
                 if (ListaVentasDiariasFinal.Count > 0)
                 {
                     foreach (var item in ListaVentasDiariasFinal)
@@ -307,6 +337,50 @@ namespace Stock
         {
             CheckForIllegalCrossThreadCalls = false;
             lblMaster_FechaHoraReal.Text = Convert.ToString(DateTime.Now.ToString("HH:mm:ss"));
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void groupBox1_Paint(object sender, PaintEventArgs e)
+        {
+            GroupBox box = sender as GroupBox;
+            DrawGroupBox(box, e.Graphics, Color.Red, Color.Transparent);
+        }
+        private void DrawGroupBox(GroupBox box, Graphics g, Color textColor, Color borderColor)
+        {
+            if (box != null)
+            {
+                Brush textBrush = new SolidBrush(textColor);
+                Brush borderBrush = new SolidBrush(borderColor);
+                Pen borderPen = new Pen(borderBrush);
+                SizeF strSize = g.MeasureString(box.Text, box.Font);
+                Rectangle rect = new Rectangle(box.ClientRectangle.X,
+                                               box.ClientRectangle.Y + (int)(strSize.Height / 2),
+                                               box.ClientRectangle.Width - 1,
+                                               box.ClientRectangle.Height - (int)(strSize.Height / 2) - 1);
+
+                // Clear text and border
+                g.Clear(this.BackColor);
+
+                // Draw text
+                g.DrawString(box.Text, box.Font, textBrush, box.Padding.Left, 0);
+
+                // Drawing Border
+                //Left
+                g.DrawLine(borderPen, rect.Location, new Point(rect.X, rect.Y + rect.Height));
+                //Right
+                g.DrawLine(borderPen, new Point(rect.X + rect.Width, rect.Y), new Point(rect.X + rect.Width, rect.Y + rect.Height));
+                //Bottom
+                g.DrawLine(borderPen, new Point(rect.X, rect.Y + rect.Height), new Point(rect.X + rect.Width, rect.Y + rect.Height));
+                //Top1
+                g.DrawLine(borderPen, new Point(rect.X, rect.Y), new Point(rect.X + box.Padding.Left, rect.Y));
+                //Top2
+                g.DrawLine(borderPen, new Point(rect.X + box.Padding.Left + (int)(strSize.Width), rect.Y), new Point(rect.X + rect.Width, rect.Y));
+            }
         }
     }
 }
