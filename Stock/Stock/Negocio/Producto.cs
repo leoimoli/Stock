@@ -62,7 +62,20 @@ namespace Stock.Negocio
             try
             {
                 ValidarDatos(_producto);
-                exito = DAO.EditarDao.EditarProducto(_producto, idProductoGrillaSeleccionado);
+                bool UsuarioExistente = Negocio.Consultar.ValidarProductoExistente(_producto.CodigoProducto);
+                if (UsuarioExistente == true)
+                {
+                    const string message = "Ya existe un producto registrado con el código ingresado.";
+                    const string caption = "Error";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Exclamation);
+                    throw new Exception();
+                }
+                else
+                {
+                    exito = DAO.EditarDao.EditarProducto(_producto, idProductoGrillaSeleccionado);
+                }               
             }
             catch (Exception ex)
             {

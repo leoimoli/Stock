@@ -416,6 +416,7 @@ namespace Stock.DAO
             {
                 List<Ofertas> listaOfertas = ListarOfertasPorProducto(idProductoSeleccionado);
                 if (listaOfertas.Count > 0)
+                {
                     foreach (var item in listaOfertas)
                     {
                         connection.Close();
@@ -429,6 +430,11 @@ namespace Stock.DAO
                         Exito = true;
                         connection.Close();
                     }
+                }
+                else
+                {
+                    Exito = true;
+                }
             }
             catch (Exception ex)
             { }
