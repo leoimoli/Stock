@@ -40,6 +40,8 @@
             this.txtDescipcionBus = new System.Windows.Forms.TextBox();
             this.btnEditar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnImprimirCodigo = new System.Windows.Forms.Button();
+            this.panelCodigo = new System.Windows.Forms.Panel();
             this.chcInactivo = new System.Windows.Forms.CheckBox();
             this.chcActivo = new System.Windows.Forms.CheckBox();
             this.lblEstado = new System.Windows.Forms.Label();
@@ -65,8 +67,6 @@
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Domicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnImprimirCod = new System.Windows.Forms.Button();
-            this.panelCodigo = new System.Windows.Forms.Panel();
-            this.btnImprimirCodigo = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
@@ -170,6 +170,30 @@
             this.panel1.Size = new System.Drawing.Size(439, 468);
             this.panel1.TabIndex = 60;
             // 
+            // btnImprimirCodigo
+            // 
+            this.btnImprimirCodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnImprimirCodigo.Enabled = false;
+            this.btnImprimirCodigo.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnImprimirCodigo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimirCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirCodigo.ForeColor = System.Drawing.Color.White;
+            this.btnImprimirCodigo.Image = global::Stock.Properties.Resources.impresora;
+            this.btnImprimirCodigo.Location = new System.Drawing.Point(374, 398);
+            this.btnImprimirCodigo.Name = "btnImprimirCodigo";
+            this.btnImprimirCodigo.Size = new System.Drawing.Size(46, 29);
+            this.btnImprimirCodigo.TabIndex = 165;
+            this.btnImprimirCodigo.UseVisualStyleBackColor = false;
+            this.btnImprimirCodigo.Visible = false;
+            this.btnImprimirCodigo.Click += new System.EventHandler(this.btnImprimirCodigo_Click_1);
+            // 
+            // panelCodigo
+            // 
+            this.panelCodigo.Location = new System.Drawing.Point(6, 274);
+            this.panelCodigo.Name = "panelCodigo";
+            this.panelCodigo.Size = new System.Drawing.Size(414, 121);
+            this.panelCodigo.TabIndex = 114;
+            // 
             // chcInactivo
             // 
             this.chcInactivo.AutoSize = true;
@@ -214,6 +238,7 @@
             // 
             // cmbPerfil
             // 
+            this.cmbPerfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPerfil.FormattingEnabled = true;
             this.cmbPerfil.Location = new System.Drawing.Point(196, 220);
             this.cmbPerfil.Name = "cmbPerfil";
@@ -461,30 +486,6 @@
             this.btnImprimirCod.Text = "Código Anulación";
             this.btnImprimirCod.UseVisualStyleBackColor = false;
             this.btnImprimirCod.Click += new System.EventHandler(this.btnImprimirCodigo_Click);
-            // 
-            // panelCodigo
-            // 
-            this.panelCodigo.Location = new System.Drawing.Point(6, 274);
-            this.panelCodigo.Name = "panelCodigo";
-            this.panelCodigo.Size = new System.Drawing.Size(414, 121);
-            this.panelCodigo.TabIndex = 114;
-            // 
-            // btnImprimirCodigo
-            // 
-            this.btnImprimirCodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.btnImprimirCodigo.Enabled = false;
-            this.btnImprimirCodigo.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnImprimirCodigo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimirCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimirCodigo.ForeColor = System.Drawing.Color.White;
-            this.btnImprimirCodigo.Image = global::Stock.Properties.Resources.impresora;
-            this.btnImprimirCodigo.Location = new System.Drawing.Point(374, 398);
-            this.btnImprimirCodigo.Name = "btnImprimirCodigo";
-            this.btnImprimirCodigo.Size = new System.Drawing.Size(46, 29);
-            this.btnImprimirCodigo.TabIndex = 165;
-            this.btnImprimirCodigo.UseVisualStyleBackColor = false;
-            this.btnImprimirCodigo.Visible = false;
-            this.btnImprimirCodigo.Click += new System.EventHandler(this.btnImprimirCodigo_Click_1);
             // 
             // UsuariosNuevoWF
             // 

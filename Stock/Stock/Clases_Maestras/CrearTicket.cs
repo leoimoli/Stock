@@ -15,7 +15,7 @@ namespace Utils
         string ticket = "";
         string parte1, parte2;
 
-        string impresora = "POS58 Pro";
+        string impresora = "POS-58C";
         //string impresora = "POS58 Printer";
         //string impresora = "POS80 Pro";
         //string impresora = WebConfigurationManager.AppSettings["ImpresoraTKT"].ToString(); // nombre exacto de la impresora como esta en el panel de control

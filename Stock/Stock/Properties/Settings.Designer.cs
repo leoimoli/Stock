@@ -47,5 +47,17 @@ namespace Stock.Properties {
                 this["Imagen"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public string imprimeTicket {
+            get {
+                return ((string)(this["imprimeTicket"]));
+            }
+            set {
+                this["imprimeTicket"] = value;
+            }
+        }
     }
 }

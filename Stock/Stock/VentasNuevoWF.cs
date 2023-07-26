@@ -772,7 +772,11 @@ namespace Stock
                     BloquearPantalla();
                     VueltoNuevoWF _vuelto = new VueltoNuevoWF(listaProductos[0].PrecioVentaFinal, AplicaDescuento, idVenta, listaProductos, listaOfertas);
                     _vuelto.Show();
-                    Tkt(idVenta, listaProductos);
+                    string ImprimeTicket = Properties.Settings.Default.imprimeTicket;
+                    if (ImprimeTicket == "True")
+                    { Tkt(idVenta, listaProductos); }
+
+
                     //DesbloquearPantalla();
                     lblBack.Visible = true;
                 }
@@ -788,7 +792,9 @@ namespace Stock
                     BloquearPantalla();
                     VueltoNuevoWF _vuelto = new VueltoNuevoWF(listaProductos[0].PrecioVentaFinal, AplicaDescuento, idVenta, listaProductos, listaOfertas);
                     _vuelto.Show();
-                    Tkt(idVenta, listaProductos);
+                    string ImprimeTicket = Properties.Settings.Default.imprimeTicket;
+                    if (ImprimeTicket == "True")
+                    { Tkt(idVenta, listaProductos); }
                     //DesbloquearPantalla();
                     lblBack.Visible = true;
                 }
