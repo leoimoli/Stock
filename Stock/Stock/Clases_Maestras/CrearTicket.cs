@@ -15,7 +15,7 @@ namespace Utils
         string ticket = "";
         string parte1, parte2;
 
-        string impresora = "POS-58C";
+        string impresora = "POS58 Printer";
         //string impresora = "POS58 Printer";
         //string impresora = "POS80 Pro";
         //string impresora = WebConfigurationManager.AppSettings["ImpresoraTKT"].ToString(); // nombre exacto de la impresora como esta en el panel de control
@@ -144,7 +144,6 @@ namespace Utils
             TextoIzquierda("".PadRight(32, ' '));
 
         }
-
         public void AgregarDescuentos(string descripcion, object p1, double precio, object p2)
         {
             //TextoIzquierda(cant.ToString() + " x " + string.Format("{0:N2}", precio) + "(21.00)".PadLeft(19 - (cant.ToString().Length + string.Format("{0:N2}", precio).Length), ' '));
@@ -159,7 +158,6 @@ namespace Utils
             }
             TextoIzquierda(descripcion.PadRight((32 - string.Format("{0:N2}", precio).Length), ' ') + string.Format("{0:N2}", precio));
         }
-
         public void AgregaArticulo(string descripcion, int cant, double precio, double total)
         {
             TextoIzquierda(cant.ToString() + " x " + string.Format("{0:N2}", precio) + "(21.00)".PadLeft(19 - (cant.ToString().Length + string.Format("{0:N2}", total).Length), ' '));
@@ -219,8 +217,9 @@ namespace Utils
         {
             Int32 dwError = 0, dwWritten = 0;
             IntPtr hPrinter = new IntPtr(0);
+
             DOCINFOA di = new DOCINFOA();
-            bool bSuccess = false; // Assume failure unless you specifically succeed.
+            bool bSuccess = false; // Assume failure unless you specifically succeed.            
 
             di.pDocName = "My C#.NET RAW Document";
             di.pDataType = "RAW";
@@ -248,6 +247,7 @@ namespace Utils
             {
                 dwError = Marshal.GetLastWin32Error();
             }
+
             return bSuccess;
         }
 

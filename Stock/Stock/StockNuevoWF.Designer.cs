@@ -96,9 +96,9 @@
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(378, 76);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(107, 13);
+            this.label6.Size = new System.Drawing.Size(111, 13);
             this.label6.TabIndex = 56;
-            this.label6.Text = "Buscar porCódigo";
+            this.label6.Text = "Buscar por Código";
             // 
             // label5
             // 

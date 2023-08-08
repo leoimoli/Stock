@@ -93,7 +93,12 @@ namespace Stock
             else { Exito = true; }
             if (Exito == true)
             {
-                Tkt(idVenta, lista);
+                string ImprimeTicket = Properties.Settings.Default.imprimeTicket;
+                if (ImprimeTicket == "True")
+                {
+                    Tkt(idVenta, listaProductos);
+                }
+               // Tkt(idVenta, lista);
                 const string message2 = "Se registro la venta exitosamente.";
                 const string caption2 = "Éxito";
                 var result2 = MessageBox.Show(message2, caption2,
@@ -169,6 +174,29 @@ namespace Stock
                 ticket.AgregaTotales(Convert.ToDouble(listaProductos[0].PrecioVentaFinal), null, null);
             }
             Bonificaciones = false;
+
+
+            ///// ABRO CAJA DE PLATA........
+            
+            System.Drawing.Printing.PrintDocument pd = new System.Drawing.Printing.PrintDocument();
+            //pd.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(pd_PrintPage);
+            //pd.BeginPrint += new System.Drawing.Printing.PrintEventHandler(pd_BeginPrint);
+            //pd.EndPrint += new System.Drawing.Printing.PrintEventHandler(pd_EndPrint);
+            pd.Print();
+
+            //void pd_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+            //{
+            //    e.Graphics.DrawString("", new Font("Arial", 20f), new SolidBrush(Color.Red), new PointF(20, 20));
+
+            //}
+            //void pd_EndPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+            //{
+
+            //}
+            //void pd_BeginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+            //{
+
+            //}
         }
         private void VueltoNuevoWF_Load(object sender, EventArgs e)
         {

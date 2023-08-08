@@ -54,6 +54,9 @@
     <Reference Include="BarcodeLib">
       <HintPath>..\..\..\Pulpejitos-Repositorio\VETERINARIA\Bin\BarcodeLib.dll</HintPath>
     </Reference>
+    <Reference Include="CashDrawer, Version=0.2.7.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\CashDrawer.0.2.7\lib\net40-client\CashDrawer.exe</HintPath>
+    </Reference>
     <Reference Include="iTextSharp, Version=4.1.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\ElObrador\ElObrador\ElObrador\bin\Debug\iTextSharp.dll</HintPath>
@@ -701,6 +704,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="150 x 150.ico" />
+    <Content Include="cashdraw instructions.txt" />
     <Content Include="docs\MySqlCommand.xml" />
     <Content Include="docs\MySqlCommandBuilder.xml" />
     <Content Include="docs\MySqlConnection.xml" />
@@ -713,6 +717,7 @@
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Documentos\Base De Datos\Procedure\1%29LoginUsuario.txt" />
+    <Content Include="e_logo_cashdraw_128.ico" />
     <Content Include="Icono.ico" />
     <None Include="Resources\oferta.png" />
     <None Include="Resources\oferta %281%29.png" />
@@ -728,6 +733,7 @@
     <None Include="Resources\CuentaDNI_Icono.png" />
     <None Include="Resources\MercadoPago_Icono.png" />
     <None Include="Resources\MercadoPago_Icono %282%29.png" />
+    <Content Include="open.txt" />
     <Content Include="StoCom_logo_2.ico" />
     <None Include="Resources\StoCom_logo_21.png" />
     <None Include="Resources\StoCom_logo_2.png" />

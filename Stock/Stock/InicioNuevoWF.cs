@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
@@ -22,15 +23,61 @@ namespace Stock
 
         private void InicioNuevoWF_Load(object sender, EventArgs e)
         {
-            ////// Obtener Informacion clima
-            ObtenerInformacion();
             ///// Armo Panel de Informacion
-            int totalProvedores = DAO.ConsultarDao.ContadorProveedores();
-            int Clientes = DAO.ConsultarDao.ContadorClientes();
-            int Productos = DAO.ConsultarDao.ContadorProductos();
-            int Marcas = DAO.ConsultarDao.ContadorMarcas();
-            int Ventas = DAO.ConsultarDao.ContadorVentas();
-            int Usuarios = DAO.ConsultarDao.ContadorUsuarios();
+            int totalProvedores = 0;
+            int Clientes = 0;
+            int Productos = 0;
+            int Marcas = 0;
+            int Ventas = 0;
+            int Usuarios = 0;
+            try
+            {
+                totalProvedores = DAO.ConsultarDao.ContadorProveedores();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            try
+            {
+                Clientes = DAO.ConsultarDao.ContadorClientes();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            try
+            {
+                Productos = DAO.ConsultarDao.ContadorProductos();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            try
+            {
+                Marcas = DAO.ConsultarDao.ContadorMarcas();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            try
+            {
+                Ventas = DAO.ConsultarDao.ContadorVentas();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            try
+            {
+                Usuarios = DAO.ConsultarDao.ContadorUsuarios();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
 
             if (Ventas > 9999)
             {
@@ -159,6 +206,8 @@ namespace Stock
             /////// Completo Caja Diaria
             ObtengoCajaDiaria();
 
+            ////// Obtener Informacion clima
+            ObtenerInformacion();
         }
 
         private void ObtengoCajaDiaria()
@@ -245,7 +294,10 @@ namespace Stock
         }
         private void BuscarClima()
         {
-            pictureBox7.Load($"https://w.bookcdn.com/weather/picture/3_55558_1_4_137AE9_350_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=49053&domid=582&anc_id=81469");
+            if (NetworkInterface.GetIsNetworkAvailable())
+            {
+                pictureBox7.Load($"https://w.bookcdn.com/weather/picture/3_55558_1_4_137AE9_350_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=49053&domid=582&anc_id=81469");
+            }
         }
         private string ValidarDia(string diaDeLaSemana)
         {

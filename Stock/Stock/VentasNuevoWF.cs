@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
+using System.IO.Ports;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -383,7 +385,7 @@ namespace Stock
         {
             FacturarVenta();
         }
-        bool VentaCerrada = false;
+        bool VentaCerrada = false;    
 
         public static void Tkt(int idVenta, List<Entidades.ListaProductoVenta> listaProducto)
         {
@@ -406,8 +408,9 @@ namespace Stock
 
             //ticket.AgregaTotales(Convert.ToDouble(listaProductos[0].PrecioVentaFinal), null, null);
             //else
-            ticket.AgregaTotales(Convert.ToDouble(listaProductos[0].PrecioVentaFinal), null, null);
+            ticket.AgregaTotales(Convert.ToDouble(listaProductos[0].PrecioVentaFinal), null, null);          
         }
+      
         private void GenerarTicket()
         {
             ///// GENERAR TICKET.........
@@ -772,9 +775,11 @@ namespace Stock
                     BloquearPantalla();
                     VueltoNuevoWF _vuelto = new VueltoNuevoWF(listaProductos[0].PrecioVentaFinal, AplicaDescuento, idVenta, listaProductos, listaOfertas);
                     _vuelto.Show();
-                    string ImprimeTicket = Properties.Settings.Default.imprimeTicket;
-                    if (ImprimeTicket == "True")
-                    { Tkt(idVenta, listaProductos); }
+                    //string ImprimeTicket = Properties.Settings.Default.imprimeTicket;
+                    //if (ImprimeTicket == "True")
+                    //{
+                    //    Tkt(idVenta, listaProductos);
+                    //}
 
 
                     //DesbloquearPantalla();
@@ -792,14 +797,18 @@ namespace Stock
                     BloquearPantalla();
                     VueltoNuevoWF _vuelto = new VueltoNuevoWF(listaProductos[0].PrecioVentaFinal, AplicaDescuento, idVenta, listaProductos, listaOfertas);
                     _vuelto.Show();
-                    string ImprimeTicket = Properties.Settings.Default.imprimeTicket;
-                    if (ImprimeTicket == "True")
-                    { Tkt(idVenta, listaProductos); }
+                    //string ImprimeTicket = Properties.Settings.Default.imprimeTicket;
+                    //if (ImprimeTicket == "True")
+                    //{
+                    //    //GenerateTicketAndOpenCashDrawer();
+                    //    Tkt(idVenta, listaProductos);
+                    //}
                     //DesbloquearPantalla();
                     lblBack.Visible = true;
                 }
             }
         }
+
         private List<Entidades.ListaProductoVenta> BuscarPromociones(List<Entidades.ListaProductoVenta> listaProductosEspejo)
         {
             double totalDescuento = 0;

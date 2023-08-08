@@ -1,0 +1,15 @@
+http://stackoverflow.com/questions/11309054/opening-a-cash-drawer-using-java-or-batch-file
+
+
+
+Edit: To get command sequence encoded in file (long but easy): 
+1. Get Notepad++ 
+2. Check you have Converter installed under plugins. If not, find and install it 
+3. Create new file in Notepad++ 
+4. Select ANSI under encoding 
+5. Enter 1b700019fa
+
+6. Select(highlight) string you entered (or select all with Ctl-A) 
+7. Go to plugins->Converter-> HEX --> ASCII 
+8. You should see garbled output (with letter p inside). Save 
+9. Send your file to printer.
