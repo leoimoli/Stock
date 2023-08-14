@@ -385,7 +385,7 @@ namespace Stock
         {
             FacturarVenta();
         }
-        bool VentaCerrada = false;    
+        bool VentaCerrada = false;
 
         public static void Tkt(int idVenta, List<Entidades.ListaProductoVenta> listaProducto)
         {
@@ -408,9 +408,9 @@ namespace Stock
 
             //ticket.AgregaTotales(Convert.ToDouble(listaProductos[0].PrecioVentaFinal), null, null);
             //else
-            ticket.AgregaTotales(Convert.ToDouble(listaProductos[0].PrecioVentaFinal), null, null);          
+            ticket.AgregaTotales(Convert.ToDouble(listaProductos[0].PrecioVentaFinal), null, null);
         }
-      
+
         private void GenerarTicket()
         {
             ///// GENERAR TICKET.........
@@ -602,14 +602,45 @@ namespace Stock
         {
             this.WindowState = FormWindowState.Maximized;
             btnMaximizar.Visible = false;
-            btnRestaurar.Visible = true;
+            //btnRestaurar.Visible = true;
+            DefinirTamañosFormMaximo();          
         }
+        private void DefinirTamañosFormNormal()
+        {
+            Form form1 = new Form();
+            form1.StartPosition = FormStartPosition.CenterScreen;
+            form1.Padding = new System.Windows.Forms.Padding(0);
+            this.panel3.Padding = new System.Windows.Forms.Padding(5);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel3.Width = 1099;
+            panel3.Height = 521;
+            dgvVentas.Height = 339;
+            dgvVentas.Width = 850;
+            dgvVentas.Columns[1].Width = 200;
+            dgvVentas.Columns[2].Width = 255;
+            
+            this.groupBox3.Location = new System.Drawing.Point(28, 397);
+        }
+        private void DefinirTamañosFormMaximo()
+        {
+            var bounds = Screen.FromControl(this).Bounds;
+            this.Width = bounds.Width - 100;
+            this.Height = bounds.Height - 100;
+            dgvVentas.Height = 500;
+            dgvVentas.Width = 1000;
+            dgvVentas.Columns[1].Width = 250;
+            dgvVentas.Columns[2].Width = 350;
+            this.groupBox3.Location = new System.Drawing.Point(28, 550);
+           
+        }
+
         private void btnRestaurar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
             btnMaximizar.Visible = true;
             btnRestaurar.Visible = false;
-        }
+            DefinirTamañosFormNormal();
+        }       
         private void EliminarProductoDeLista(decimal Monto)
         {
             try
@@ -987,6 +1018,12 @@ namespace Stock
                 //Top2
                 g.DrawLine(borderPen, new Point(rect.X + box.Padding.Left + (int)(strSize.Width), rect.Y), new Point(rect.X + rect.Width, rect.Y));
             }
+        }
+
+        private void groupBox3_Paint(object sender, PaintEventArgs e)
+        {
+            GroupBox box = sender as GroupBox;
+            DrawGroupBox(box, e.Graphics, Color.Red, Color.Transparent);
         }
     }
 }

@@ -87,6 +87,7 @@
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -105,6 +106,7 @@
             this.panel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvVentas
@@ -430,13 +432,12 @@
             this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMaximizar.Image = global::Stock.Properties.Resources.maximizar;
-            this.btnMaximizar.Location = new System.Drawing.Point(1030, 8);
+            this.btnMaximizar.Location = new System.Drawing.Point(1030, 9);
             this.btnMaximizar.Name = "btnMaximizar";
             this.btnMaximizar.Size = new System.Drawing.Size(25, 25);
             this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMaximizar.TabIndex = 154;
             this.btnMaximizar.TabStop = false;
-            this.btnMaximizar.Visible = false;
             this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
             // 
             // pictureBox2
@@ -454,12 +455,7 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label15);
-            this.panel3.Controls.Add(this.label14);
-            this.panel3.Controls.Add(this.label13);
-            this.panel3.Controls.Add(this.label12);
-            this.panel3.Controls.Add(this.label11);
-            this.panel3.Controls.Add(this.label10);
+            this.panel3.Controls.Add(this.groupBox3);
             this.panel3.Controls.Add(this.groupBox2);
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Controls.Add(this.txtNombreBuscar);
@@ -482,7 +478,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(635, 396);
+            this.label15.Location = new System.Drawing.Point(615, 11);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(60, 46);
             this.label15.TabIndex = 159;
@@ -493,7 +489,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(682, 414);
+            this.label14.Location = new System.Drawing.Point(662, 29);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(176, 17);
             this.label14.TabIndex = 158;
@@ -504,7 +500,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(389, 414);
+            this.label13.Location = new System.Drawing.Point(369, 29);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(214, 17);
             this.label13.TabIndex = 157;
@@ -515,7 +511,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(273, 414);
+            this.label12.Location = new System.Drawing.Point(253, 29);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(98, 17);
             this.label12.TabIndex = 156;
@@ -526,7 +522,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(148, 414);
+            this.label11.Location = new System.Drawing.Point(128, 29);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(99, 17);
             this.label11.TabIndex = 155;
@@ -537,7 +533,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(25, 414);
+            this.label10.Location = new System.Drawing.Point(5, 29);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(97, 17);
             this.label10.TabIndex = 154;
@@ -750,6 +746,21 @@
             this.btnCerrar.TabIndex = 3;
             this.btnCerrar.TabStop = false;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.label14);
+            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.label13);
+            this.groupBox3.Location = new System.Drawing.Point(28, 397);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(847, 73);
+            this.groupBox3.TabIndex = 160;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox3_Paint);
+            // 
             // VentasNuevoWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -792,6 +803,8 @@
             this.panel14.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -850,5 +863,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }
