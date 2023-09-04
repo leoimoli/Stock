@@ -86,6 +86,8 @@
             this.txtDebito = new System.Windows.Forms.Button();
             this.txtCredito = new System.Windows.Forms.Button();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.txtCuentaDniFDS = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -631,11 +633,13 @@
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(119, 26);
             this.button14.TabIndex = 57;
-            this.button14.Text = "Mercado Pago";
+            this.button14.Text = "Transferencia";
             this.button14.UseVisualStyleBackColor = false;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button8);
+            this.groupBox1.Controls.Add(this.txtCuentaDniFDS);
             this.groupBox1.Controls.Add(this.txtCuentaDni);
             this.groupBox1.Controls.Add(this.button14);
             this.groupBox1.Controls.Add(this.txtEfectivo);
@@ -648,7 +652,7 @@
             this.groupBox1.Controls.Add(this.txtCredito);
             this.groupBox1.Location = new System.Drawing.Point(9, 487);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(663, 83);
+            this.groupBox1.Size = new System.Drawing.Size(804, 83);
             this.groupBox1.TabIndex = 59;
             this.groupBox1.TabStop = false;
             this.groupBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox1_Paint);
@@ -735,6 +739,35 @@
             this.pictureBox7.Size = new System.Drawing.Size(403, 187);
             this.pictureBox7.TabIndex = 8;
             this.pictureBox7.TabStop = false;
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.ForeColor = System.Drawing.Color.White;
+            this.button8.Location = new System.Drawing.Point(671, 11);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(119, 26);
+            this.button8.TabIndex = 59;
+            this.button8.Text = "Cuenta DNI FDS";
+            this.button8.UseVisualStyleBackColor = false;
+            // 
+            // txtCuentaDniFDS
+            // 
+            this.txtCuentaDniFDS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.txtCuentaDniFDS.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.txtCuentaDniFDS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.txtCuentaDniFDS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCuentaDniFDS.ForeColor = System.Drawing.Color.White;
+            this.txtCuentaDniFDS.Image = global::Stock.Properties.Resources.CuentaDNI_Icono;
+            this.txtCuentaDniFDS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtCuentaDniFDS.Location = new System.Drawing.Point(666, 41);
+            this.txtCuentaDniFDS.Name = "txtCuentaDniFDS";
+            this.txtCuentaDniFDS.Size = new System.Drawing.Size(128, 34);
+            this.txtCuentaDniFDS.TabIndex = 60;
+            this.txtCuentaDniFDS.UseVisualStyleBackColor = false;
             // 
             // InicioNuevoWF
             // 
@@ -836,5 +869,7 @@
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button txtMercadoPago;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button txtCuentaDniFDS;
     }
 }

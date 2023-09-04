@@ -164,15 +164,17 @@ namespace Stock.DAO
             List<DetalleCajaDiaria> cajaDiaria = new List<DetalleCajaDiaria>();
             connection.Close();
             connection.Open();
-            MySqlCommand cmd = new MySqlCommand();
-            cmd.Connection = connection;
+            //MySqlCommand cmd = new MySqlCommand();
+            //cmd.Connection = connection;
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = { new MySqlParameter("idUsuario_in", idUsuario) };
+            //cmd.CommandTimeout = 6000;
 
             string proceso = "SP_Consultar_BuscarDetalleVentaPorId";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.SelectCommand.CommandTimeout = 3000;
             dt.Fill(Tabla);
             List<int> ListaidDescuento = new List<int>();
             if (Tabla.Rows.Count > 0)

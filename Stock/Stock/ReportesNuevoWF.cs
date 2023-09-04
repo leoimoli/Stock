@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,7 +57,8 @@ namespace Stock
             /// Caja de Ventas
             List<Reporte_Ventas> listaVentas3 = new List<Reporte_Ventas>();
             listaVentas3 = ReportesDao.CajaDeVentas();
-            lblCajaVentas.Text = Convert.ToString(listaVentas3[0].CajaDeVentas);
+            lblCajaVentas.Text = Convert.ToString(listaVentas3[0].CajaDeVentas.ToString("N", new CultureInfo("es-CL")));
+
             /// Total de Compras
             List<Reporte_Compras> listaCompras = new List<Reporte_Compras>();
             listaCompras = ReportesDao.TotalDeCompras();
@@ -65,7 +67,7 @@ namespace Stock
             List<Reporte_Compras> listaCompras2 = new List<Reporte_Compras>();
             //listaCompras2 = ReportesDao.PagosCompras();
             listaCompras2 = ReportesDao.PagoAProveedores();
-            lblPagosProveedores.Text = Convert.ToString(listaCompras2[0].PagoAProveedores);
+            lblPagosProveedores.Text = Convert.ToString(listaCompras2[0].PagoAProveedores.ToString("N", new CultureInfo("es-CL")));
         }
         private void DiseñoGraficoProductosMasVendidos(List<Reporte_Ventas> listaVentas)
         {

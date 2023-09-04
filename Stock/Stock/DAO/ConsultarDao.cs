@@ -996,7 +996,7 @@ namespace Stock.DAO
                     listaVenta.PrecioVenta = Convert.ToDecimal(item["txPrecioVentaFinal"].ToString());
                     var usuario = item["txApellido"].ToString() + " " + item["txNombre"].ToString();
                     listaVenta.usuario = usuario;
-                    lista.Add(listaVenta);
+                    lista.Add(listaVenta);                 
                 }
             }
             return lista;

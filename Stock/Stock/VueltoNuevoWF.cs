@@ -178,25 +178,10 @@ namespace Stock
 
             ///// ABRO CAJA DE PLATA........
             
-            System.Drawing.Printing.PrintDocument pd = new System.Drawing.Printing.PrintDocument();
-            //pd.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(pd_PrintPage);
-            //pd.BeginPrint += new System.Drawing.Printing.PrintEventHandler(pd_BeginPrint);
-            //pd.EndPrint += new System.Drawing.Printing.PrintEventHandler(pd_EndPrint);
-            pd.Print();
+            //System.Drawing.Printing.PrintDocument pd = new System.Drawing.Printing.PrintDocument();       
+            //pd.Print();
 
-            //void pd_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-            //{
-            //    e.Graphics.DrawString("", new Font("Arial", 20f), new SolidBrush(Color.Red), new PointF(20, 20));
-
-            //}
-            //void pd_EndPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
-            //{
-
-            //}
-            //void pd_BeginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
-            //{
-
-            //}
+        
         }
         private void VueltoNuevoWF_Load(object sender, EventArgs e)
         {

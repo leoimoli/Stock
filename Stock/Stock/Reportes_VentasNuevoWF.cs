@@ -167,6 +167,7 @@ namespace Stock
             decimal CuentaDni = 0;
             decimal MercadoPago = 0;
             int CantidadProductos = 0;
+            decimal CuentaDniFinDeSemana = 0;
             ListaVentasDiarias = ReportesDao.BuscarDetalleVenta(Sesion.UsuarioLogueado.IdUsuario);
             if (ListaVentasDiarias.Count > 0)
             {
@@ -193,6 +194,11 @@ namespace Stock
                     {
                         MercadoPago = MercadoPago + Convert.ToDecimal(item.precio);
                     }
+                    ///// Especial para Tincho
+                    if (item.medio == "CUENTA DNI Sabado y Domingo")
+                    {
+                        CuentaDniFinDeSemana = CuentaDniFinDeSemana + Convert.ToDecimal(item.precio);
+                    }
                 }
             }
             txtEfectivo.Text = Efectivo.ToString("N", new CultureInfo("es-CL"));
@@ -200,13 +206,15 @@ namespace Stock
             txtCredito.Text = Credito.ToString("N", new CultureInfo("es-CL"));
             txtCuentaDni.Text = CuentaDni.ToString("N", new CultureInfo("es-CL"));
             txtMercadoPago.Text = MercadoPago.ToString("N", new CultureInfo("es-CL"));
+            ///// Especial para Tincho
+            txtCuentaDniFDS.Text = CuentaDniFinDeSemana.ToString("N", new CultureInfo("es-CL"));
 
             /// Total de Ventas                 
             lblTotalVentas.Text = Convert.ToString(resultado.Count);
             /// Caja de Ventas
             List<Reporte_Ventas> listaVentas3 = new List<Reporte_Ventas>();
             listaVentas3 = ReportesDao.CajaDeVentas();
-            lblCajaVentas.Text = Convert.ToString(TotalVentas);
+            lblCajaVentas.Text = Convert.ToString(TotalVentas.ToString("N", new CultureInfo("es-CL")));
         }
         private void btnVentasAyer_Click(object sender, EventArgs e)
         {

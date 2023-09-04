@@ -31,7 +31,7 @@ namespace Stock
         {
             List<FechasFestivas> _listaFechas = new List<FechasFestivas>();
             _listaFechas = DAO.ConsultarDao.BuscarFechasFestivas();
-            int AñoActual = DateTime.Now.Year;         
+            int AñoActual = DateTime.Now.Year;
             DateTime FechaActual = DateTime.Now;
 
             ///// Codigo para forzar fechas
@@ -61,13 +61,16 @@ namespace Stock
         }
         private void btnMaximizar_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            this.Location = new Point(0, 0); //sobra si tienes la posición en el diseño
+            this.Size = new Size(this.Width +60, Screen.PrimaryScreen.WorkingArea.Size.Height);
+            //this.WindowState = FormWindowState.Maximized;
             btnMaximizar.Visible = false;
             btnRestaurar.Visible = true;
         }
         private void btnRestaurar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Normal;
+        {           
+            this.Location = new Point(50, 50); //sobra si tienes la posición en el diseño
+            this.Size = new Size(1300, 650);
             btnMaximizar.Visible = true;
             btnRestaurar.Visible = false;
         }

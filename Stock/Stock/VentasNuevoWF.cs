@@ -179,6 +179,8 @@ namespace Stock
                 {
                     _listaEspeciales = _lista;
                     groupBox1.Visible = true;
+                    lblCategoria.Visible = true;
+                    lblCategoria.Text = _lista[0].NombreProducto;
                     txtMonto.Focus();
                 }
                 else
@@ -364,7 +366,6 @@ namespace Stock
                 //lblTotal.Text = Convert.ToString(MontoTotal);
             }
         }
-
         private void LimpiarCampos()
         {
             txtCodigo.Clear();
@@ -448,6 +449,7 @@ namespace Stock
             txtCodigo.Enabled = false;
             txtNombreBuscar.Enabled = false;
             txtCantidad.Enabled = false;
+            CargarComboMediosDePago();
             dgvVentas.Focus();
         }
         public static string ProductoEliminar;
@@ -602,11 +604,12 @@ namespace Stock
         {
             this.WindowState = FormWindowState.Maximized;
             btnMaximizar.Visible = false;
-            //btnRestaurar.Visible = true;
-            DefinirTamañosFormMaximo();          
+            btnRestaurar.Visible = true;
+            DefinirTamañosFormMaximo();
         }
         private void DefinirTamañosFormNormal()
         {
+
             Form form1 = new Form();
             form1.StartPosition = FormStartPosition.CenterScreen;
             form1.Padding = new System.Windows.Forms.Padding(0);
@@ -618,8 +621,9 @@ namespace Stock
             dgvVentas.Width = 850;
             dgvVentas.Columns[1].Width = 200;
             dgvVentas.Columns[2].Width = 255;
-            
             this.groupBox3.Location = new System.Drawing.Point(28, 397);
+            this.Location = new Point(50, 50); //sobra si tienes la posición en el diseño
+            this.Size = new Size(1300, 650);
         }
         private void DefinirTamañosFormMaximo()
         {
@@ -631,7 +635,7 @@ namespace Stock
             dgvVentas.Columns[1].Width = 250;
             dgvVentas.Columns[2].Width = 350;
             this.groupBox3.Location = new System.Drawing.Point(28, 550);
-           
+
         }
 
         private void btnRestaurar_Click(object sender, EventArgs e)
@@ -640,7 +644,7 @@ namespace Stock
             btnMaximizar.Visible = true;
             btnRestaurar.Visible = false;
             DefinirTamañosFormNormal();
-        }       
+        }
         private void EliminarProductoDeLista(decimal Monto)
         {
             try
