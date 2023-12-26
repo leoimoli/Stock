@@ -52,14 +52,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BarcodeLib">
-      <HintPath>..\..\..\Pulpejitos-Repositorio\VETERINARIA\Bin\BarcodeLib.dll</HintPath>
+      <HintPath>..\..\..\..\StoCom-Derlys\Stock\Stock\bin\Debug\BarcodeLib.dll</HintPath>
     </Reference>
     <Reference Include="CashDrawer, Version=0.2.7.0, Culture=neutral, processorArchitecture=x86">
       <HintPath>..\packages\CashDrawer.0.2.7\lib\net40-client\CashDrawer.exe</HintPath>
     </Reference>
-    <Reference Include="iTextSharp, Version=4.1.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ElObrador\ElObrador\ElObrador\bin\Debug\iTextSharp.dll</HintPath>
+    <Reference Include="iTextSharp">
+      <HintPath>..\..\..\Stock\Stock\Stock\bin\Debug\iTextSharp.dll</HintPath>
     </Reference>
     <Reference Include="LibPrintTicket, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
